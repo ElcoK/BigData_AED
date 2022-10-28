@@ -1,11 +1,9 @@
 # Course introduction
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+Data is everywhere around us. But how can we make use of all this data to answer questions in sustainability sciences? How can twitter data help us to understand where and how severe people are affected by floods? Or how can we use earth observation data to classify land use? 
 
-Check out the content pages bundled with this sample book to see more.
+In the course Big Data in Sustainability Sciences, students will learn the tools and knowledge to work with large datasets that are widely used within sustainability sciences. This ranges from machine-learning approaches to identify objects on satellite images, to working with international supply-chain data to understand global patterns in food, energy and material use. 
+
 
 ```{tableofcontents}
 ```
