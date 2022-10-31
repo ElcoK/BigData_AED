@@ -1,4 +1,4 @@
-# Course introduction
+# Big Data for Sustainability Sciences
 
 Data is everywhere around us. But how can we make use of all this data to answer questions in sustainability sciences? How can twitter data help us to understand where and how severe people are affected by floods? Or how can we use earth observation data to classify land use? 
 
