@@ -1,5 +1,6 @@
 # Course schedule
 
+````{div} full-width
 |Week|Data type|Lecture|Tutorial #1|Tutorial #2|Assignment|
 |:---:|---|---|---|---|---|
 | 1  ||Course Introduction|Introduction to Python #1|Introduction to Python #2|Canvas Quiz (pass/fail)|
@@ -10,3 +11,4 @@
 | 6  |Social media data|Social Media and Natural Language Processing (NLP)|Twitter & NLP|Spatial mapping NLP|Assigment #4 (12%)|
 | 7  |Panel & spatial data|How to: visualisation|Visualising your results|   |Canvas Quiz (bonus)|
 | 8  |   |   |Exam (40%)|   |   |
+````
