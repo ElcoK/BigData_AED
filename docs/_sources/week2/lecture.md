@@ -13,7 +13,7 @@ kernelspec:
   name: python3
 ---
 
-# Introduction to Data Analysis
+# Lecture: Introduction to Data Analysis
 
 Jupyter Book also lets you write text-based notebooks using MyST Markdown.
 See [the Notebooks with MyST Markdown documentation](https://jupyterbook.org/file-types/myst-notebooks.html) for more detailed instructions.

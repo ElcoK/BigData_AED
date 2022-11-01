@@ -13,7 +13,7 @@ kernelspec:
   name: python3
 ---
 
-# Week 1: Exploring the future
+# Lecture: Exploring the future
 
 Jupyter Book also lets you write text-based notebooks using MyST Markdown.
 See [the Notebooks with MyST Markdown documentation](https://jupyterbook.org/file-types/myst-notebooks.html) for more detailed instructions.
