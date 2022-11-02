@@ -1,0 +1,51 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+
+parts:
+  - caption: Course overview
+    chapters:
+    - file: course_basics/course_intro.md
+    - file: course_basics/teachers.md
+    - file: course_basics/schedule.md    
+  - caption: Week 1
+    chapters:
+    - file: week1/lecture
+    - file: week1/tutorial1
+    - file: week1/tutorial2
+  - caption: Week 2
+    chapters:
+    - file: week2/lecture
+    - file: week2/tutorial1
+    - file: week2/tutorial2
+  - caption: Week 3
+    chapters:
+    - file: week3/lecture
+    - file: week3/tutorial1
+    - file: week3/tutorial2
+  - caption: Week 4
+    chapters:
+    - file: week4/lecture
+    - file: week4/tutorial1
+    - file: week4/tutorial2
+  - caption: Week 5
+    chapters:
+    - file: week5/lecture
+    - file: week5/tutorial1
+    - file: week5/tutorial2
+  - caption: Week 6
+    chapters:
+    - file: week6/lecture
+    - file: week6/tutorial1
+    - file: week6/tutorial2
+  - caption: Week 7
+    chapters:
+    - file: week7/lecture
+    - file: week7/tutorial1
+    - file: week7/tutorial2
+  - caption: Week 8
+    chapters:
+    - file: week8/exam
+
