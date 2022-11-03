@@ -50,8 +50,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lecture: Introduction to Data Analysis" href="../week2/lecture.html" />
@@ -1026,7 +1024,7 @@ title="Print to PDF"
 <div class="admonition-acknowledgements admonition">
 <p class="admonition-title">Acknowledgements</p>
 <p>This workbook is strongly based upon the work of others:
-<a class="reference external" href="https://www.tomasbeuzen.com/python-programming-for-data-science/">https://www.tomasbeuzen.com/python-programming-for-data-science/</a></p>
+https://www.tomasbeuzen.com/python-programming-for-data-science/</p>
 </div>
 <h2>Tutorial Outline<span class="tocSkip"></span></h2>
 <hr>
@@ -1077,7 +1075,7 @@ title="Print to PDF"
 </section>
 <section id="introduction-to-numpy">
 <h2>2. Introduction to NumPy<a class="headerlink" href="#introduction-to-numpy" title="Permalink to this headline">#</a></h2>
-<hr><p>&lt;img src=”../_static/images/numpy.png” class=”bg-primary”</p>
+<hr><a class="bg-primary mb-1 reference internal image-reference" href="../_images/numpy.png"><img alt="../_images/numpy.png" class="bg-primary mb-1 align-center" src="../_images/numpy.png" style="width: 200px;" /></a>
 <p>NumPy stands for “Numerical Python” and it is the standard Python library used for working with arrays (i.e., vectors &amp; matrices), linear algerba, and other numerical computations. NumPy is written in C, making NumPy arrays faster and more memory efficient than Python lists or arrays, read more: (<a class="reference external" href="https://www.datadiscuss.com/proof-that-numpy-is-much-faster-than-normal-python-array/">link 1</a>, <a class="reference external" href="https://www.jessicayung.com/numpy-arrays-memory-and-strides/">link 2</a>, <a class="reference external" href="https://www.labri.fr/perso/nrougier/from-python-to-numpy/">link 3</a>).</p>
 <p>NumPy can be installed using <code class="docutils literal notranslate"><span class="pre">conda</span></code> (if not already):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">numpy</span>
@@ -1323,11 +1321,11 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.37082568, 0.37637128],
-       [0.87465452, 0.27388391],
-       [0.55750505, 0.16990226],
-       [0.91625169, 0.55093674],
-       [0.22267117, 0.55850825]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.44722352, 0.8131454 ],
+       [0.46174871, 0.53635619],
+       [0.34077139, 0.31779082],
+       [0.35732718, 0.3207615 ],
+       [0.34789293, 0.64969206]])
 </pre></div>
 </div>
 </div>
@@ -1353,11 +1351,11 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.25416141, 0.41670282],
-       [0.60807012, 0.15883548],
-       [0.7152771 , 0.21111973],
-       [0.21412729, 0.09089855],
-       [0.16269801, 0.46737195]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.35391794, 0.00576602],
+       [0.21986591, 0.50542377],
+       [0.52804534, 0.97067028],
+       [0.0264088 , 0.56375487],
+       [0.26323491, 0.89504722]])
 </pre></div>
 </div>
 </div>
@@ -1369,8 +1367,8 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.25416141, 0.60807012, 0.7152771 , 0.21412729, 0.16269801],
-       [0.41670282, 0.15883548, 0.21111973, 0.09089855, 0.46737195]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.35391794, 0.21986591, 0.52804534, 0.0264088 , 0.26323491],
+       [0.00576602, 0.50542377, 0.97067028, 0.56375487, 0.89504722]])
 </pre></div>
 </div>
 </div>
@@ -1382,7 +1380,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.32992624592324243
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.43321350737163133
 </pre></div>
 </div>
 </div>
@@ -1899,7 +1897,7 @@ sales shape: (3, 3)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Broadcasting is 5.71x faster than looping here.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Broadcasting is 6.30x faster than looping here.
 </pre></div>
 </div>
 </div>
@@ -2239,10 +2237,10 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2, 7, 7, 7, 9, 0],
-       [6, 7, 2, 8, 9, 1],
-       [7, 1, 8, 8, 4, 9],
-       [8, 0, 5, 7, 7, 2]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[4, 2, 7, 1, 8, 7],
+       [9, 3, 7, 6, 6, 0],
+       [5, 0, 5, 7, 1, 6],
+       [9, 5, 6, 1, 1, 7]])
 </pre></div>
 </div>
 </div>
@@ -2254,7 +2252,7 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
 </pre></div>
 </div>
 </div>
@@ -2266,7 +2264,7 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
 </pre></div>
 </div>
 </div>
@@ -2278,7 +2276,7 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([8, 0, 5, 7, 7, 2])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([9, 5, 6, 1, 1, 7])
 </pre></div>
 </div>
 </div>
@@ -2314,7 +2312,7 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([7, 2, 8, 5])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([7, 7, 5, 6])
 </pre></div>
 </div>
 </div>
@@ -2326,8 +2324,8 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[7, 1, 8],
-       [8, 0, 5]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[5, 0, 5],
+       [9, 5, 6]])
 </pre></div>
 </div>
 </div>
@@ -2339,12 +2337,12 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2, 6, 7, 8],
-       [7, 7, 1, 0],
-       [7, 2, 8, 5],
-       [7, 8, 8, 7],
-       [9, 9, 4, 7],
-       [0, 1, 9, 2]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[4, 9, 5, 9],
+       [2, 3, 0, 5],
+       [7, 7, 5, 6],
+       [1, 6, 7, 1],
+       [8, 6, 1, 1],
+       [7, 0, 6, 7]])
 </pre></div>
 </div>
 </div>
@@ -2356,10 +2354,10 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2, 7, 7, 7, 9, 0],
-       [6, 7, 2, 8, 9, 1],
-       [7, 1, 8, 8, 4, 9],
-       [8, 0, 5, 7, 7, 2]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[4, 2, 7, 1, 8, 7],
+       [9, 3, 7, 6, 6, 0],
+       [5, 0, 5, 7, 1, 6],
+       [9, 5, 6, 1, 1, 7]])
 </pre></div>
 </div>
 </div>
@@ -2372,10 +2370,10 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[     2,      7,      7,      7,      9,      0],
-       [     6, 555555,      2,      8,      9,      1],
-       [     7,      1,      8,      8,      4,      9],
-       [     8,      0,      5,      7,      7,      2]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[     4,      2,      7,      1,      8,      7],
+       [     9, 555555,      7,      6,      6,      0],
+       [     5,      0,      5,      7,      1,      6],
+       [     9,      5,      6,      1,      1,      7]])
 </pre></div>
 </div>
 </div>
@@ -2417,8 +2415,8 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.99627839, 0.27725661, 0.44444079, 0.54325377, 0.69868078,
-       0.15965227, 0.35297454, 0.57694359, 0.78460693, 0.49084232])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.29328813, 0.23888978, 0.34540577, 0.29689934, 0.99690552,
+       0.07199199, 0.0179691 , 0.53037361, 0.33855762, 0.03484714])
 </pre></div>
 </div>
 </div>
@@ -2430,8 +2428,8 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.99627839, 1.27725661, 1.44444079, 1.54325377, 1.69868078,
-       1.15965227, 1.35297454, 1.57694359, 1.78460693, 1.49084232])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.29328813, 1.23888978, 1.34540577, 1.29689934, 1.99690552,
+       1.07199199, 1.0179691 , 1.53037361, 1.33855762, 1.03484714])
 </pre></div>
 </div>
 </div>
@@ -2444,7 +2442,7 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ True, False, False,  True,  True, False, False,  True,  True,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([False, False, False, False,  True, False, False,  True, False,
        False])
 </pre></div>
 </div>
@@ -2458,8 +2456,8 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.5       , 0.27725661, 0.44444079, 0.5       , 0.5       ,
-       0.15965227, 0.35297454, 0.5       , 0.5       , 0.49084232])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.29328813, 0.23888978, 0.34540577, 0.29689934, 0.5       ,
+       0.07199199, 0.0179691 , 0.5       , 0.33855762, 0.03484714])
 </pre></div>
 </div>
 </div>
@@ -2472,8 +2470,8 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.76695174, 0.16393939, 0.54379128, 0.38940213, 0.18238096,
-       0.97082445, 0.06003395, 0.76948379, 0.9805671 , 0.40146153])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.69961411, 0.93497932, 0.25678278, 0.1202333 , 0.99133946,
+       0.03625785, 0.24921856, 0.03219111, 0.38120825, 0.29684965])
 </pre></div>
 </div>
 </div>
@@ -2486,8 +2484,8 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.5       , 0.16393939, 0.5       , 0.38940213, 0.18238096,
-       0.5       , 0.06003395, 0.5       , 0.5       , 0.40146153])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.5       , 0.5       , 0.25678278, 0.1202333 , 0.5       ,
+       0.03625785, 0.24921856, 0.03219111, 0.38120825, 0.29684965])
 </pre></div>
 </div>
 </div>
@@ -2506,8 +2504,7 @@ Dimensions: 2
 </div>
 </div>
 <p>There are several ways we could solve this problem. We could directly use Pythagoras’s Theorem:</p>
-<div class="math notranslate nohighlight">
-\[c = \sqrt{a^2+b^2}\]</div>
+<p>$$c = \sqrt{a^2+b^2}$$</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">sides</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">sides</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">)]))</span>
@@ -2600,7 +2597,7 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vectorized operation is 3.65x faster than looping here.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vectorized operation is 4.19x faster than looping here.
 </pre></div>
 </div>
 </div>
