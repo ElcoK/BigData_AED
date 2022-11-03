@@ -15,7 +15,7 @@ table th:nth-of-type(2) {
 
 |Dr Elco Koks|Course coordinator|
 |:-:|:--|
-|![](~/_static/images/Elco.jpg?h=750&w=1260)|Elco Koks is an Assistant Professor within the department of Water and Climate Risk group at the Institute for Environmental Studies (IVM) and Honorary Research Fellow at the Oxford Programme for Sustainable Infrastructure Systems (OPSIS) at the University of Oxford, UK. His research combines knowledge from disaster impact modelling, critical infrastructure, network analysis and macroeconomics.|
+| <img src="../_static/images/Elco.jpg" alt="fishy" class="bg-primary" width="150px"> |Elco Koks is an Assistant Professor within the department of Water and Climate Risk group at the Institute for Environmental Studies (IVM) and Honorary Research Fellow at the Oxford Programme for Sustainable Infrastructure Systems (OPSIS) at the University of Oxford, UK. His research combines knowledge from disaster impact modelling, critical infrastructure, network analysis and macroeconomics.|
   
 &nbsp;
 &nbsp;  
