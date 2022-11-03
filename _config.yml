@@ -22,8 +22,8 @@ bibtex_bibfiles:
 # Launch button settings
 launch_buttons:
   notebook_interface        : classic  # The interface interactive links will activate ["classic", "jupyterlab"]
-  thebe                     : false  # Add a thebe button to pages (requires the repository to run on Binder)
   colab_url                 : "https://colab.research.google.com" # The URL of Google Colab ()
+  binderhub_url             : ""  # Binder seems to be broken often during link checks?
 
 # Information about where the book exists on the web
 repository:
