@@ -1,9 +1,10 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: Big Data for Sustainability Sciences
-author: Dr Elco Koks & Dr Thales Pupo-West
-logo: _static/images/logo.png
+title           : Big Data for Sustainability Sciences
+author          : Dr Elco Koks & Dr Thales Pupo-West
+logo            : _static/images/logo.png
+announcement    : "This course is work in progress!" # A banner announcement at the top of the site.
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
