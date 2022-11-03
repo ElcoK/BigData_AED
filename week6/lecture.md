@@ -66,7 +66,7 @@ That actually nailed it but it could be a little more comprehensive. Parsing ref
 
 Below is a parse tree for the sentence “The thief robbed the apartment.” Included is a description of the three different information types conveyed by the sentence.
 
-|<img src="https://builtin.com/sites/www.builtin.com/files/styles/ckeditor_optimize/public/inline-images/national/speech-nlp.jpg">
+<img src="https://builtin.com/sites/www.builtin.com/files/styles/ckeditor_optimize/public/inline-images/national/speech-nlp.jpg">
 
 
 The letters directly above the single words show the parts of speech for each word (noun, verb and determiner). One level higher is some hierarchical grouping of words into phrases. For example, “the thief” is a noun phrase, “robbed the apartment” is a verb phrase and when put together the two phrases form a sentence, which is marked one level higher.
@@ -106,9 +106,9 @@ Named entity recognition (NER) concentrates on determining which items in a text
 
 For example:
 
-Before NER: Martin bought 300 shares of SAP in 2016.
+Before NER: *Martin bought 300 shares of SAP in 2016.*
 
-After NER: [Martin]Person bought 300 shares of [SAP]Organization in [2016]Time.
+After NER: *[Martin]Person bought 300 shares of [SAP]Organization in [2016]Time.*
 
  
 **Relationship Extraction**
@@ -123,7 +123,7 @@ With sentiment analysis we want to determine the attitude (i.e. the sentiment) o
 With the use of sentiment analysis, for example, we may want to predict a customer’s opinion and attitude about a product based on a review they wrote. Sentiment analysis is widely applied to reviews, surveys, documents and much more.
 
 ```{admonition} Acknowledgements
-This explananation is strongly based upon the work of [others](https://builtin.com/data-science/introduction-nl/) 
+This explananation is strongly based upon the work of [others](https://builtin.com/data-science/introduction-nlp/) 
 ```
 
 ## Social Media data
