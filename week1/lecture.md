@@ -38,7 +38,7 @@ This course is going to start from the beginning, showing you to talk to the com
 
 Python is a well-established language, with the current version (version 3) released in 2008 and it is installed by default on nearly all modern Linux systems. Python is also available for OS X and Windows.
 
-```{tip} 
+```{seealso} 
 You can find much more info about Python [here](https://docs.python.org/3/faq/general.html#what-is-python)
 ```
 
