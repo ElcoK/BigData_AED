@@ -15,10 +15,11 @@ kernelspec:
 
 # Lecture: A guide to visualisation
 
-This week we will focus on data visualisation.
+This week we will focus on data visualisation. Data visualization is a graphical representation of data or information—for example, taking raw numbers from a spreadsheet and transforming that into a bar or line chart. Using data visualizations helps you to easily understand and analyze trends and outcomes within your data.
 
-`````{admonition}
-:class: warning
+Selecting the right graphical representation depends on the story you are trying to tell. You can choose any visualization and assume it’ll do the trick, but it’s worth the time and effort to select and customize the right visualization for long-lasting impact.
+
+`````{warning}
 This week is not exam material and is optional. 
 `````
 
