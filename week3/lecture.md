@@ -20,6 +20,7 @@ This week we will focus on the basic concepts of machine learning and how we can
 `````{admonition} Learning objectives week 3
 :class: important
 - Gain a basic understanding of machine learning and its most important concepts.
+- Understand the difference between supervised and unsupervised learning.
 - Understand and know how you can apply a machine learning model in Python. 
 - Know how to validate and interpret your results.
 `````
