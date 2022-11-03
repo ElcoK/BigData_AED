@@ -1,4 +1,4 @@
-![](images/vu_logo.jpg?h=750&w=1260)
+![](_static/images/vu_logo.jpg?h=750&w=1260)
 
 # Big Data for Sustainability Sciences
 
