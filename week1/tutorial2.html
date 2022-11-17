@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lecture: Introduction to Data Analysis" href="../week2/lecture.html" />
+    <link rel="next" title="Tutorial 3: Introduction to Data Analysis" href="tutorial3.html" />
     <link rel="prev" title="Tutorial 1: Introduction to Python" href="tutorial1.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -154,6 +154,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Tutorial 2: Introduction to NumPy and Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tutorial3.html">
+   Tutorial 3: Introduction to Data Analysis
   </a>
  </li>
 </ul>
@@ -1320,11 +1325,11 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.61348016, 0.01981349],
-       [0.6861735 , 0.83250003],
-       [0.44969282, 0.4562316 ],
-       [0.44652395, 0.9247225 ],
-       [0.19982414, 0.552842  ]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.58836011, 0.44992516],
+       [0.72040939, 0.36549294],
+       [0.77243973, 0.45777923],
+       [0.68639087, 0.2562766 ],
+       [0.34919183, 0.91555764]])
 </pre></div>
 </div>
 </div>
@@ -1350,11 +1355,11 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.71876559, 0.15034689],
-       [0.78857158, 0.27576966],
-       [0.17529937, 0.35004   ],
-       [0.03909153, 0.70274448],
-       [0.08727767, 0.49091226]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.29086934, 0.31629855],
+       [0.95914168, 0.24616609],
+       [0.62943863, 0.48160702],
+       [0.83304242, 0.42805397],
+       [0.19055127, 0.28561263]])
 </pre></div>
 </div>
 </div>
@@ -1366,8 +1371,8 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.71876559, 0.78857158, 0.17529937, 0.03909153, 0.08727767],
-       [0.15034689, 0.27576966, 0.35004   , 0.70274448, 0.49091226]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.29086934, 0.95914168, 0.62943863, 0.83304242, 0.19055127],
+       [0.31629855, 0.24616609, 0.48160702, 0.42805397, 0.28561263]])
 </pre></div>
 </div>
 </div>
@@ -1379,7 +1384,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.37788190359271595
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4660781595029514
 </pre></div>
 </div>
 </div>
@@ -1896,7 +1901,7 @@ sales shape: (3, 3)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Broadcasting is 5.64x faster than looping here.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Broadcasting is 5.65x faster than looping here.
 </pre></div>
 </div>
 </div>
@@ -2236,10 +2241,10 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2, 4, 3, 2, 3, 7],
-       [7, 3, 2, 1, 0, 7],
-       [1, 1, 8, 4, 6, 8],
-       [9, 2, 0, 6, 3, 7]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[5, 6, 6, 1, 2, 3],
+       [1, 8, 4, 9, 0, 7],
+       [0, 5, 6, 1, 5, 6],
+       [8, 3, 4, 1, 2, 4]])
 </pre></div>
 </div>
 </div>
@@ -2251,7 +2256,7 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
 </pre></div>
 </div>
 </div>
@@ -2263,7 +2268,7 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
 </pre></div>
 </div>
 </div>
@@ -2275,7 +2280,7 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([9, 2, 0, 6, 3, 7])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([8, 3, 4, 1, 2, 4])
 </pre></div>
 </div>
 </div>
@@ -2311,7 +2316,7 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3, 2, 8, 0])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([6, 4, 6, 4])
 </pre></div>
 </div>
 </div>
@@ -2323,8 +2328,8 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 1, 8],
-       [9, 2, 0]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 5, 6],
+       [8, 3, 4]])
 </pre></div>
 </div>
 </div>
@@ -2336,12 +2341,12 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2, 7, 1, 9],
-       [4, 3, 1, 2],
-       [3, 2, 8, 0],
-       [2, 1, 4, 6],
-       [3, 0, 6, 3],
-       [7, 7, 8, 7]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[5, 1, 0, 8],
+       [6, 8, 5, 3],
+       [6, 4, 6, 4],
+       [1, 9, 1, 1],
+       [2, 0, 5, 2],
+       [3, 7, 6, 4]])
 </pre></div>
 </div>
 </div>
@@ -2353,10 +2358,10 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2, 4, 3, 2, 3, 7],
-       [7, 3, 2, 1, 0, 7],
-       [1, 1, 8, 4, 6, 8],
-       [9, 2, 0, 6, 3, 7]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[5, 6, 6, 1, 2, 3],
+       [1, 8, 4, 9, 0, 7],
+       [0, 5, 6, 1, 5, 6],
+       [8, 3, 4, 1, 2, 4]])
 </pre></div>
 </div>
 </div>
@@ -2369,10 +2374,10 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[     2,      4,      3,      2,      3,      7],
-       [     7, 555555,      2,      1,      0,      7],
-       [     1,      1,      8,      4,      6,      8],
-       [     9,      2,      0,      6,      3,      7]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[     5,      6,      6,      1,      2,      3],
+       [     1, 555555,      4,      9,      0,      7],
+       [     0,      5,      6,      1,      5,      6],
+       [     8,      3,      4,      1,      2,      4]])
 </pre></div>
 </div>
 </div>
@@ -2414,8 +2419,8 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.4544606 , 0.84690453, 0.76415447, 0.81610202, 0.39299516,
-       0.43996568, 0.64613896, 0.20248268, 0.29965681, 0.94721326])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.57130207, 0.37735158, 0.22838536, 0.55430824, 0.09293447,
+       0.93131501, 0.04665138, 0.71615566, 0.36083224, 0.78922467])
 </pre></div>
 </div>
 </div>
@@ -2427,8 +2432,8 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.4544606 , 1.84690453, 1.76415447, 1.81610202, 1.39299516,
-       1.43996568, 1.64613896, 1.20248268, 1.29965681, 1.94721326])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.57130207, 1.37735158, 1.22838536, 1.55430824, 1.09293447,
+       1.93131501, 1.04665138, 1.71615566, 1.36083224, 1.78922467])
 </pre></div>
 </div>
 </div>
@@ -2441,7 +2446,7 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([False,  True,  True,  True, False, False,  True, False, False,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ True, False, False,  True, False,  True, False,  True, False,
         True])
 </pre></div>
 </div>
@@ -2455,8 +2460,8 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.4544606 , 0.5       , 0.5       , 0.5       , 0.39299516,
-       0.43996568, 0.5       , 0.20248268, 0.29965681, 0.5       ])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.5       , 0.37735158, 0.22838536, 0.5       , 0.09293447,
+       0.5       , 0.04665138, 0.5       , 0.36083224, 0.5       ])
 </pre></div>
 </div>
 </div>
@@ -2469,8 +2474,8 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.77360432, 0.50520249, 0.70231044, 0.07097638, 0.49778847,
-       0.20996851, 0.64370526, 0.08712238, 0.52163214, 0.82108056])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.13457581, 0.30125804, 0.80381608, 0.57091273, 0.07493895,
+       0.00786076, 0.494278  , 0.49414033, 0.81471319, 0.59046749])
 </pre></div>
 </div>
 </div>
@@ -2483,8 +2488,8 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.5       , 0.5       , 0.5       , 0.07097638, 0.49778847,
-       0.20996851, 0.5       , 0.08712238, 0.5       , 0.5       ])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.13457581, 0.30125804, 0.5       , 0.5       , 0.07493895,
+       0.00786076, 0.494278  , 0.49414033, 0.5       , 0.5       ])
 </pre></div>
 </div>
 </div>
@@ -2596,7 +2601,7 @@ Dimensions: 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vectorized operation is 3.00x faster than looping here.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vectorized operation is 3.67x faster than looping here.
 </pre></div>
 </div>
 </div>
@@ -2692,9 +2697,9 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0.636963
-1    1.225529
-2    0.003572
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0   -0.224210
+1   -0.832307
+2   -1.348634
 dtype: float64
 </pre></div>
 </div>
@@ -2741,11 +2746,11 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0   -0.493303
-1   -2.840317
-2    0.732756
-3    0.247861
-4   -1.306612
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0   -1.040247
+1   -0.460370
+2    1.083342
+3    0.086908
+4   -0.608400
 Name: random_series, dtype: float64
 </pre></div>
 </div>
@@ -2770,11 +2775,11 @@ Name: random_series, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0   -0.493303
-1   -2.840317
-2    0.732756
-3    0.247861
-4   -1.306612
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0   -1.040247
+1   -0.460370
+2    1.083342
+3    0.086908
+4   -0.608400
 Name: another_name, dtype: float64
 </pre></div>
 </div>
@@ -2801,7 +2806,7 @@ Name: another_name, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.49330349, -2.84031705,  0.73275585,  0.24786055, -1.30661185])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-1.04024687, -0.46037032,  1.08334228,  0.08690784, -0.60839999])
 </pre></div>
 </div>
 </div>
@@ -3566,43 +3571,43 @@ dtype: Int64
   <tbody>
     <tr>
       <th>row_1</th>
-      <td>-0.509611</td>
-      <td>-0.183494</td>
-      <td>-0.829928</td>
-      <td>0.565113</td>
-      <td>0.483389</td>
+      <td>-1.348926</td>
+      <td>-0.854937</td>
+      <td>0.028805</td>
+      <td>-1.841026</td>
+      <td>-0.382973</td>
     </tr>
     <tr>
       <th>row_2</th>
-      <td>0.365145</td>
-      <td>1.034837</td>
-      <td>1.813765</td>
-      <td>0.800539</td>
-      <td>1.332154</td>
+      <td>-1.880592</td>
+      <td>0.045680</td>
+      <td>0.415357</td>
+      <td>-0.887536</td>
+      <td>-1.239757</td>
     </tr>
     <tr>
       <th>row_3</th>
-      <td>0.294729</td>
-      <td>0.643470</td>
-      <td>1.840692</td>
-      <td>-0.612389</td>
-      <td>-0.263908</td>
+      <td>-1.189034</td>
+      <td>0.454073</td>
+      <td>2.016819</td>
+      <td>-1.676161</td>
+      <td>-1.713008</td>
     </tr>
     <tr>
       <th>row_4</th>
-      <td>2.756830</td>
-      <td>-0.812537</td>
-      <td>0.006603</td>
-      <td>0.937430</td>
-      <td>2.728888</td>
+      <td>-1.121293</td>
+      <td>-0.499138</td>
+      <td>1.883176</td>
+      <td>-0.619705</td>
+      <td>-0.062857</td>
     </tr>
     <tr>
       <th>row_5</th>
-      <td>0.904286</td>
-      <td>1.154949</td>
-      <td>0.079646</td>
-      <td>-0.018158</td>
-      <td>1.482852</td>
+      <td>-1.648772</td>
+      <td>-1.667769</td>
+      <td>-0.642660</td>
+      <td>-0.223483</td>
+      <td>0.833396</td>
     </tr>
   </tbody>
 </table>
@@ -6340,10 +6345,10 @@ dtype: float64
             <p class="prev-next-title">Tutorial 1: Introduction to Python</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../week2/lecture.html" title="next page">
+    <a class='right-next' id="next-link" href="tutorial3.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lecture: Introduction to Data Analysis</p>
+        <p class="prev-next-title">Tutorial 3: Introduction to Data Analysis</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
