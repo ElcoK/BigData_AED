@@ -37,4 +37,3 @@ table th:nth-of-type(2) {
 |Rhoda Odongo, MSc||
 |:-:|:--|
 |<img src="../_static/images/Rhoda.jpg" class="bg-primary" width="150px">|Rhoda Odongo is a PhD candidate in the department of Water and Climate Risk of the Institute for Environmental Studies (IVM) at Vrije Universiteit Amsterdam. She has a background in Water Resources Engineering from the Katholieke Universiteit Leuven and Biosystems Engineering from the University of Nairobi. She works on data-driven assessment of drought risk to understand existing and possible future interactions between climate, hydrology, land and water use, and management focusing mainly on the drought and subsurface water storage.|
-
