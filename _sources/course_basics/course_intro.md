@@ -5,9 +5,9 @@ In the course Big Data for Sustainability Sciences, you will learn the tools and
 The course is structured around six main data types and related methods. Specifically, we will:
 
 1. explore census data and use machine-learning methods to fill data gaps in data-scarce environments;
-2. better understand how you can use Earth Observation data to classify land use.
-3. assess how wildfires affect us through using remote sensing data;
-4. apply machine-learning methods to better understand what the future may bring;
+2. better understand how you can use Earth Observation data to classify land cover.
+3. assess how droughts affect us through using remote sensing data;
+4. understand how to use open-source and Volunteered geographic information (VGI);
 5. apply nature language processing techniques to identify the occurrence of floods through social media data;
 6. learn how the right visualization can help us to extract the right messages from our data. 
 
