@@ -15,6 +15,7 @@ parts:
     - file: week1/lecture
     - file: week1/tutorial1
     - file: week1/tutorial2
+    - file: week1/tutorial3
   - caption: Week 2
     chapters:
     - file: week2/lecture
