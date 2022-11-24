@@ -13,7 +13,7 @@ kernelspec:
   name: python3
 ---
 
-# Lecture: Introduction to Machine Learning
+# Lecture: Introduction to Artificial Neural Networks
 
 This week we will focus on the basic concepts of machine learning and how we can develop a simply machine learning model.
 
