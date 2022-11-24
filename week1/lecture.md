@@ -21,6 +21,7 @@ This week we will kick-off the course.
 :class: important
 - Understand the concept of Big Data and how it can be used in sustainability sciences
 - Know how this course is structured 
+- Understand the basics of machine learning 
 - Gain a basic understanding of Python and Jupyter Notebooks
 `````
 
