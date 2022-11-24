@@ -18,14 +18,14 @@ Traceback (most recent call last):
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
 df = pd.read_csv('data/cycling_data.csv')
-df.head()
+df
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-Cell [0;32mIn [2], line 1[0m
+Cell [0;32mIn [29], line 1[0m
 [0;32m----> 1[0m df [38;5;241m=[39m [43mpd[49m[38;5;241;43m.[39;49m[43mread_csv[49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43mdata/cycling_data.csv[39;49m[38;5;124;43m'[39;49m[43m)[49m
-[1;32m      2[0m df[38;5;241m.[39mhead()
+[1;32m      2[0m df
 
 File [0;32m/opt/hostedtoolcache/Python/3.8.14/x64/lib/python3.8/site-packages/pandas/util/_decorators.py:211[0m, in [0;36mdeprecate_kwarg.<locals>._deprecate_kwarg.<locals>.wrapper[0;34m(*args, **kwargs)[0m
 [1;32m    209[0m     [38;5;28;01melse[39;00m:
