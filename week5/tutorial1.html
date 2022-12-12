@@ -650,9 +650,130 @@ Map
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "683a717c4bec4e65b43d1adf5e2dbf1f", "version_major": 2, "version_minor": 0}
-</script></div>
+<div class="output text_html"><p>To authorize access needed by Earth Engine, open the following
+        URL in a web browser and follow the instructions:</p>
+        <p><a href=https://code.earthengine.google.com/client-auth?scopes=https%3A//www.googleapis.com/auth/earthengine%20https%3A//www.googleapis.com/auth/devstorage.full_control&request_id=QNNjmcBeVth8od3AR2vHstPQt6y6F_44jw6ppYQcorc&tc=8BwS3cYMlD6NtvyPKk66qjhHNZ1UsPeRKaxJ2kDnEBw&cc=xWlswOLpaPzpFp4E8LApP2FN7JHQ_JnS9k3VyiVuyqw>https://code.earthengine.google.com/client-auth?scopes=https%3A//www.googleapis.com/auth/earthengine%20https%3A//www.googleapis.com/auth/devstorage.full_control&request_id=QNNjmcBeVth8od3AR2vHstPQt6y6F_44jw6ppYQcorc&tc=8BwS3cYMlD6NtvyPKk66qjhHNZ1UsPeRKaxJ2kDnEBw&cc=xWlswOLpaPzpFp4E8LApP2FN7JHQ_JnS9k3VyiVuyqw</a></p>
+        <p>The authorization workflow will generate a code, which you should paste in the box below.</p>
+</div><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages/ee/data.py:221,</span> in <span class="ni">get_persistent_credentials</span><span class="nt">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">220</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">221</span>   <span class="k">return</span> <span class="n">Credentials</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">oauth</span><span class="o">.</span><span class="n">get_credentials_arguments</span><span class="p">())</span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span> <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages/ee/oauth.py:74,</span> in <span class="ni">get_credentials_arguments</span><span class="nt">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="k">def</span> <span class="nf">get_credentials_arguments</span><span class="p">():</span>
+<span class="ne">---&gt; </span><span class="mi">74</span>   <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">get_credentials_path</span><span class="p">())</span> <span class="k">as</span> <span class="n">creds</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span>     <span class="n">stored</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">creds</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/home/runner/.config/earthengine/credentials&#39;
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">EEException</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages/geemap/common.py:227,</span> in <span class="ni">ee_initialize</span><span class="nt">(token_name, auth_mode, service_account)</span>
+<span class="g g-Whitespace">    </span><span class="mi">225</span>                 <span class="n">copy_credentials_to_drive</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">227</span>     <span class="n">ee</span><span class="o">.</span><span class="n">Initialize</span><span class="p">(</span><span class="n">http_transport</span><span class="o">=</span><span class="n">httplib2</span><span class="o">.</span><span class="n">Http</span><span class="p">())</span>
+<span class="g g-Whitespace">    </span><span class="mi">228</span> <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages/ee/__init__.py:131,</span> in <span class="ni">Initialize</span><span class="nt">(credentials, opt_url, cloud_api_key, http_transport, project)</span>
+<span class="g g-Whitespace">    </span><span class="mi">130</span> <span class="k">if</span> <span class="n">credentials</span> <span class="o">==</span> <span class="s1">&#39;persistent&#39;</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">131</span>   <span class="n">credentials</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get_persistent_credentials</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">132</span> <span class="n">data</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">133</span>     <span class="n">credentials</span><span class="o">=</span><span class="n">credentials</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">134</span>     <span class="n">api_base_url</span><span class="o">=</span><span class="p">(</span><span class="n">opt_url</span> <span class="o">+</span> <span class="s1">&#39;/api&#39;</span> <span class="k">if</span> <span class="n">opt_url</span> <span class="k">else</span> <span class="kc">None</span><span class="p">),</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span>     <span class="n">project</span><span class="o">=</span><span class="n">project</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="n">http_transport</span><span class="o">=</span><span class="n">http_transport</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages/ee/data.py:223,</span> in <span class="ni">get_persistent_credentials</span><span class="nt">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span> <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">223</span>   <span class="k">raise</span> <span class="n">ee_exception</span><span class="o">.</span><span class="n">EEException</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">224</span>       <span class="s1">&#39;Please authorize access to your Earth Engine account by &#39;</span>
+<span class="g g-Whitespace">    </span><span class="mi">225</span>       <span class="s1">&#39;running</span><span class="se">\n\n</span><span class="s1">earthengine authenticate</span><span class="se">\n\n</span><span class="s1">&#39;</span>
+<span class="g g-Whitespace">    </span><span class="mi">226</span>       <span class="s1">&#39;in your command line, and then retry.&#39;</span><span class="p">)</span>
+
+<span class="ne">EEException</span>: Please authorize access to your Earth Engine account by running
+
+<span class="n">earthengine</span> <span class="n">authenticate</span>
+
+<span class="ow">in</span> <span class="n">your</span> <span class="n">command</span> <span class="n">line</span><span class="p">,</span> <span class="ow">and</span> <span class="n">then</span> <span class="n">retry</span><span class="o">.</span>
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">StdinNotImplementedError</span><span class="g g-Whitespace">                  </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">52.37</span><span class="p">,</span><span class="mf">4.5</span><span class="p">],</span><span class="n">zoom</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">Map</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages/geemap/geemap.py:52,</span> in <span class="ni">Map.__init__</span><span class="nt">(self, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;ee_initialize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="g g-Whitespace">     </span><span class="mi">51</span> <span class="k">if</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;ee_initialize&quot;</span><span class="p">]:</span>
+<span class="ne">---&gt; </span><span class="mi">52</span>     <span class="n">ee_initialize</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span> <span class="c1"># Default map center location (lat, lon) and zoom level</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="n">latlon</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages/geemap/common.py:229,</span> in <span class="ni">ee_initialize</span><span class="nt">(token_name, auth_mode, service_account)</span>
+<span class="g g-Whitespace">    </span><span class="mi">227</span>     <span class="n">ee</span><span class="o">.</span><span class="n">Initialize</span><span class="p">(</span><span class="n">http_transport</span><span class="o">=</span><span class="n">httplib2</span><span class="o">.</span><span class="n">Http</span><span class="p">())</span>
+<span class="g g-Whitespace">    </span><span class="mi">228</span> <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">229</span>     <span class="n">ee</span><span class="o">.</span><span class="n">Authenticate</span><span class="p">(</span><span class="n">auth_mode</span><span class="o">=</span><span class="n">auth_mode</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">230</span>     <span class="n">ee</span><span class="o">.</span><span class="n">Initialize</span><span class="p">(</span><span class="n">http_transport</span><span class="o">=</span><span class="n">httplib2</span><span class="o">.</span><span class="n">Http</span><span class="p">())</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages/ee/__init__.py:104,</span> in <span class="ni">Authenticate</span><span class="nt">(authorization_code, quiet, code_verifier, auth_mode, scopes)</span>
+<span class="g g-Whitespace">     </span><span class="mi">78</span> <span class="k">def</span> <span class="nf">Authenticate</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">79</span>     <span class="n">authorization_code</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">80</span>     <span class="n">quiet</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">81</span>     <span class="n">code_verifier</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">82</span>     <span class="n">auth_mode</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">83</span>     <span class="n">scopes</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">84</span>   <span class="sd">&quot;&quot;&quot;Prompts the user to authorize access to Earth Engine via OAuth2.</span>
+<span class="g g-Whitespace">     </span><span class="mi">85</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">86</span><span class="sd">   Args:</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">102</span><span class="sd">      (auth_url, code_verifier) when called with quiet=&#39;init_only&#39;</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span><span class="sd">   &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">104</span>   <span class="k">return</span> <span class="n">oauth</span><span class="o">.</span><span class="n">authenticate</span><span class="p">(</span><span class="n">authorization_code</span><span class="p">,</span> <span class="n">quiet</span><span class="p">,</span> <span class="n">code_verifier</span><span class="p">,</span> <span class="n">auth_mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">105</span>                             <span class="n">scopes</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages/ee/oauth.py:400,</span> in <span class="ni">authenticate</span><span class="nt">(cli_authorization_code, quiet, cli_code_verifier, auth_mode, scopes)</span>
+<span class="g g-Whitespace">    </span><span class="mi">397</span> <span class="k">if</span> <span class="n">flow</span><span class="o">.</span><span class="n">display_instructions</span><span class="p">(</span><span class="n">quiet</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">398</span>   <span class="n">_open_new_browser</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">auth_url</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">400</span> <span class="n">flow</span><span class="o">.</span><span class="n">save_code</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages/ee/oauth.py:443,</span> in <span class="ni">Flow.save_code</span><span class="nt">(self, code)</span>
+<span class="g g-Whitespace">    </span><span class="mi">441</span>   <span class="n">redirect_uri</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">url</span>
+<span class="g g-Whitespace">    </span><span class="mi">442</span>   <span class="n">code</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">fetch_code</span><span class="p">()</span>  <span class="c1"># Waits for oauth callback</span>
+<span class="ne">--&gt; </span><span class="mi">443</span> <span class="n">_obtain_and_write_token</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">code_verifier</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">scopes</span><span class="p">,</span> <span class="n">redirect_uri</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages/ee/oauth.py:181,</span> in <span class="ni">_obtain_and_write_token</span><span class="nt">(auth_code, code_verifier, scopes, redirect_uri)</span>
+<span class="g g-Whitespace">    </span><span class="mi">179</span>   <span class="n">client_info</span><span class="p">[</span><span class="s1">&#39;redirect_uri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">redirect_uri</span>
+<span class="g g-Whitespace">    </span><span class="mi">180</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">auth_code</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">181</span>   <span class="n">auth_code</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Enter verification code: &#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">182</span> <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">auth_code</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">string_types</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">183</span> <span class="n">scopes</span> <span class="o">=</span> <span class="n">scopes</span> <span class="ow">or</span> <span class="n">SCOPES</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages/ipykernel/kernelbase.py:1172,</span> in <span class="ni">Kernel.raw_input</span><span class="nt">(self, prompt)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1165</span> <span class="sd">&quot;&quot;&quot;Forward raw_input to frontends</span>
+<span class="g g-Whitespace">   </span><span class="mi">1166</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1167</span><span class="sd"> Raises</span>
+<span class="g g-Whitespace">   </span><span class="mi">1168</span><span class="sd"> ------</span>
+<span class="g g-Whitespace">   </span><span class="mi">1169</span><span class="sd"> StdinNotImplementedError if active frontend doesn&#39;t support stdin.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1170</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1171</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_allow_stdin</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1172</span>     <span class="k">raise</span> <span class="n">StdinNotImplementedError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1173</span>         <span class="s2">&quot;raw_input was called, but this frontend does not support input requests.&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1174</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1175</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_input_request</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1176</span>     <span class="nb">str</span><span class="p">(</span><span class="n">prompt</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1177</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_parent_ident</span><span class="p">[</span><span class="s2">&quot;shell&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1178</span>     <span class="bp">self</span><span class="o">.</span><span class="n">get_parent</span><span class="p">(</span><span class="s2">&quot;shell&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1179</span>     <span class="n">password</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1180</span> <span class="p">)</span>
+
+<span class="ne">StdinNotImplementedError</span>: raw_input was called, but this frontend does not support input requests.
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now we have succesfully managed to see a map of the Netherlands, let’s add Landsat data to the map</p>
 <div class="cell docutils container">
