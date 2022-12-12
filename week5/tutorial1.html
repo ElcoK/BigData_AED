@@ -536,6 +536,16 @@ title="Print to PDF"
    5. Classify and visualise the Landsat-8 using Corine Land Cover
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classify-the-landsat-8-using-esa-worldcover">
+   6. Classify the Landsat-8 using ESA WorldCover
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyze-and-assess-your-landsat-8-land-cover-map">
+   7. Analyze and assess your Landsat-8 land cover map
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -585,6 +595,16 @@ title="Print to PDF"
    5. Classify and visualise the Landsat-8 using Corine Land Cover
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classify-the-landsat-8-using-esa-worldcover">
+   6. Classify the Landsat-8 using ESA WorldCover
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyze-and-assess-your-landsat-8-land-cover-map">
+   7. Analyze and assess your Landsat-8 land cover map
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -605,15 +625,16 @@ title="Print to PDF"
 <li><span><a href="#2.-Extracting and exploring Landsat-8 data" data-toc-modified-id="2.-Extracting-exploring-landsat-3">2. Extracting and exploring Landsat-8 data</a></span></li>
 <li><span><a href="#3.-Create training data using Corine Land Cover" data-toc-modified-id="3.-Create-training-data-4">3. Create training data using Corine Land Cover</a></span></li>
 <li><span><a href="#4.-Train the classifier using Corine Land Cover" data-toc-modified-id="4.-Classifier-CLC-5">4.-Train the classifier using Corine Land Cover</a></span></li>
-<li><span><a href="#5.-Classify the Landsat-8 using Corine Land Cover" data-toc-modified-id="5.-Classify-CLC-6"> 5. Classify the Landsat-8 using Corine Land Cover</a></span></li></ul></div><section id="learning-objectives">
+<li><span><a href="#5.-Classify the Landsat-8 using Corine Land Cover" data-toc-modified-id="5.-Classify-CLC-6"> 5. Classify the Landsat-8 using Corine Land Cover</a></span></li>
+<li><span><a href="#6.-Classify the Landsat-8 using ESA WorldCover" data-toc-modified-id="6.-Classify-ESA-7"> 6. Classify the Landsat-8 using ESA WorldCover</a></span></li>
+<li><span><a href="#7.-Analyze and assess your Landsat-8 land cover map" data-toc-modified-id="6.-Analyze-LLC-7"> 7. Analyze and assess your Landsat-8 land cover map</a></span></li></ul></div><section id="learning-objectives">
 <h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
 <hr><ul class="simple">
-<li><p>.</p></li>
-<li><p>.</p></li>
-<li><p>.</p></li>
-<li><p>.</p></li>
-<li><p>.</p></li>
-<li><p>.</p></li>
+<li><p>To understand how one can extract data from the <strong>Google Earth Engine</strong>.</p></li>
+<li><p>To know how to visualize data from the <strong>Google Earth Engine</strong> in Python.</p></li>
+<li><p>To be able to create training data and a simple classifier.</p></li>
+<li><p>To classify Landsat-8 data using various training datasets.</p></li>
+<li><p>To be able to compare and judge the performance of a land-use classification.</p></li>
 </ul>
 </section>
 <section id="introducing-the-packages">
@@ -836,59 +857,20 @@ Map
 {"model_id": "3c9d8c70d0014402aecfa69fe8d9e93a", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
-<p>To render a categorical map, we can set two image properties: <code class="docutils literal notranslate"><span class="pre">landcover_class_values</span></code> and <code class="docutils literal notranslate"><span class="pre">landcover_class_palette</span></code>. We can use the same style as the NLCD so that it is easy to compare the two maps.</p>
+<p>To render a categorical map, we can set two image properties: <code class="docutils literal notranslate"><span class="pre">landcover_class_values</span></code> and <code class="docutils literal notranslate"><span class="pre">landcover_class_palette</span></code>. We can use the same style as the CLC so that it is easy to compare the two maps.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class_values = CLC.get(&#39;landcover_class_values&#39;).getInfo()
-class_values
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[111,
- 112,
- 121,
- 122,
- 123,
- 124,
- 131,
- 132,
- 133,
- 141,
- 142,
- 211,
- 212,
- 213,
- 221,
- 222,
- 223,
- 231,
- 241,
- 242,
- 243,
- 244,
- 311,
- 312,
- 313,
- 321,
- 322,
- 323,
- 324,
- 331,
- 332,
- 333,
- 334,
- 335,
- 411,
- 412,
- 421,
- 422,
- 423,
- 511,
- 512,
- 521,
- 522,
- 523]
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">class_values</span> <span class="o">=</span> <span class="n">CLC</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;landcover_class_values&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;CLC&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -896,55 +878,16 @@ class_values
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class_palette = CLC.get(&#39;landcover_class_palette&#39;).getInfo()
-class_palette
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;E6004D&#39;,
- &#39;FF0000&#39;,
- &#39;CC4DF2&#39;,
- &#39;CC0000&#39;,
- &#39;E6CCCC&#39;,
- &#39;E6CCE6&#39;,
- &#39;A600CC&#39;,
- &#39;A64DCC&#39;,
- &#39;FF4DFF&#39;,
- &#39;FFA6FF&#39;,
- &#39;FFE6FF&#39;,
- &#39;FFFFA8&#39;,
- &#39;FFFF00&#39;,
- &#39;E6E600&#39;,
- &#39;E68000&#39;,
- &#39;F2A64D&#39;,
- &#39;E6A600&#39;,
- &#39;E6E64D&#39;,
- &#39;FFE6A6&#39;,
- &#39;FFE64D&#39;,
- &#39;E6CC4D&#39;,
- &#39;F2CCA6&#39;,
- &#39;80FF00&#39;,
- &#39;00A600&#39;,
- &#39;4DFF00&#39;,
- &#39;CCF24D&#39;,
- &#39;A6FF80&#39;,
- &#39;A6E64D&#39;,
- &#39;A6F200&#39;,
- &#39;E6E6E6&#39;,
- &#39;CCCCCC&#39;,
- &#39;CCFFCC&#39;,
- &#39;000000&#39;,
- &#39;A6E6CC&#39;,
- &#39;A6A6FF&#39;,
- &#39;4D4DFF&#39;,
- &#39;CCCCFF&#39;,
- &#39;E6E6FF&#39;,
- &#39;A6A6E6&#39;,
- &#39;00CCF2&#39;,
- &#39;80F2E6&#39;,
- &#39;00FFA6&#39;,
- &#39;A6FFE6&#39;,
- &#39;E6F2FF&#39;]
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">class_palette</span> <span class="o">=</span> <span class="n">CLC</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;landcover_class_palette&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;CLC&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -970,6 +913,84 @@ Map
 {"model_id": "3c9d8c70d0014402aecfa69fe8d9e93a", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
+</section>
+<section id="classify-the-landsat-8-using-esa-worldcover">
+<h2>6. Classify the Landsat-8 using ESA WorldCover<a class="headerlink" href="#classify-the-landsat-8-using-esa-worldcover" title="Permalink to this headline">#</a></h2>
+<hr><p>While the Corine Land Cover data provides us with some promising results, it would be interesting to see if we can do something similar using a different data source. To do so, we are going to make use of the ESA WorldCover data.</p>
+<p>Let’s start again with exploring the data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ESA = ee.Image(&#39;ESA/WorldCover/v200&#39;).select(&#39;landcover&#39;).clip(image.geometry())
+Map.addLayer(CLC, {}, &#39;ESA&#39;)
+Map
+</pre></div>
+</div>
+</div>
+</div>
+<p>And now we generate the training set again:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>points = ESA.sample(
+    **{
+        &#39;region&#39;: image.geometry(),
+        &#39;scale&#39;: 30,
+        &#39;numPixels&#39;: 5000,
+        &#39;seed&#39;: 0,
+        &#39;geometries&#39;: True,  # Set this to False to ignore geometries
+    }
+)
+
+# Use these bands for prediction.
+bands = [&#39;B1&#39;, &#39;B2&#39;, &#39;B3&#39;, &#39;B4&#39;, &#39;B5&#39;, &#39;B6&#39;, &#39;B7&#39;]
+
+
+# This property of the table stores the land cover labels.
+label = &#39;landcover&#39;
+
+# Overlay the points on the imagery to get training.
+training = image.select(bands).sampleRegions(
+    **{&#39;collection&#39;: points, &#39;properties&#39;: [label], &#39;scale&#39;: 30}
+)
+
+# Train a CART classifier with default parameters.
+trained = ee.Classifier.smileCart().train(training, label, bands)
+
+# Classify the image with the same bands used for training.
+result_ESA = image.select(bands).classify(trained)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># # Display the clusters with random colors.
+Map.addLayer(result.randomVisualizer(), {}, &#39;classified&#39;)
+Map
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s visualize using the ESA legend.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class_values_ESA = ESA.get(&#39;landcover_class_values&#39;).getInfo()
+class_palette_ESA = ESA.get(&#39;landcover_class_palette&#39;).getInfo()
+
+landcover_ESA = result_ESA.set(&#39;classification_class_values&#39;, class_values_ESA)
+landcover_ESA = landcover_ESA.set(&#39;classification_class_palette&#39;, class_palette_ESA)
+
+Map.addLayer(landcover_ESA, {}, &#39;Land cover&#39;)
+Map.add_legend(builtin_legend=&#39;ESA/WorldCover/v200&#39;)
+Map
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="analyze-and-assess-your-landsat-8-land-cover-map">
+<h2>7. Analyze and assess your Landsat-8 land cover map<a class="headerlink" href="#analyze-and-assess-your-landsat-8-land-cover-map" title="Permalink to this headline">#</a></h2>
+<hr><p>Now we have two land cover maps generated for most part of the Netherlands, let’s analyze and judge their quality.</p>
+<p>To do so, you can either zoom in on the same area you used last week to learn OpenStreetMap, or specify a different area when it is outside the bounds of our land cover map.</p>
 </section>
 </section>
 
