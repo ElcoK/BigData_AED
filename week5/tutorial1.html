@@ -507,8 +507,33 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#code-blocks-and-outputs">
-   Code blocks and outputs
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning Objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introducing-the-packages">
+   1. Introducing the packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extracting-and-exploring-the-landsat-8-data">
+   2.Extracting and exploring the Landsat-8 data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-training-data-using-corine-land-cover">
+   3.Create training data using Corine Land Cover
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#train-the-classifier-using-corine-land-cover">
+   4.-Train the classifier using Corine Land Cover
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classify-and-visualise-the-landsat-8-using-corine-land-cover">
+   5. Classify and visualise the Landsat-8 using Corine Land Cover
   </a>
  </li>
 </ul>
@@ -531,8 +556,33 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#code-blocks-and-outputs">
-   Code blocks and outputs
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning Objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introducing-the-packages">
+   1. Introducing the packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extracting-and-exploring-the-landsat-8-data">
+   2.Extracting and exploring the Landsat-8 data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-training-data-using-corine-land-cover">
+   3.Create training data using Corine Land Cover
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#train-the-classifier-using-corine-land-cover">
+   4.-Train the classifier using Corine Land Cover
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classify-and-visualise-the-landsat-8-using-corine-land-cover">
+   5. Classify and visualise the Landsat-8 using Corine Land Cover
   </a>
  </li>
 </ul>
@@ -547,56 +597,379 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="tutorial-1-land-cover-classification">
 <h1>Tutorial 1: Land-cover classification<a class="headerlink" href="#tutorial-1-land-cover-classification" title="Permalink to this headline">#</a></h1>
-<p>You can also create content with Jupyter Notebooks. This means that you can include
-code blocks and their outputs in your book.</p>
-<section id="code-blocks-and-outputs">
-<h2>Code blocks and outputs<a class="headerlink" href="#code-blocks-and-outputs" title="Permalink to this headline">#</a></h2>
-<p>Jupyter Book will also embed your code blocks and output in your book.
-For example, here’s some sample Matplotlib code:</p>
+<p>In this tutorial we are going to explore the power of the Google Earth Engine through classifying land-use categories on satelite imagery.</p>
+<h2>Tutorial Outline<span class="tocSkip"></span></h2>
+<hr>
+<div class="toc"><ul class="toc-item">
+<li><span><a href="#1.-Introducing the packages" data-toc-modified-id="1.-Introducing-the-packages-2">1. Introducing the packages</a></span></li>
+<li><span><a href="#2.-Extracting and exploring Landsat-8 data" data-toc-modified-id="2.-Extracting-exploring-landsat-3">2. Extracting and exploring Landsat-8 data</a></span></li>
+<li><span><a href="#3.-Create training data using Corine Land Cover" data-toc-modified-id="3.-Create-training-data-4">3. Create training data using Corine Land Cover</a></span></li>
+<li><span><a href="#4.-Train the classifier using Corine Land Cover" data-toc-modified-id="4.-Classifier-CLC-5">4.-Train the classifier using Corine Land Cover</a></span></li>
+<li><span><a href="#5.-Classify the Landsat-8 using Corine Land Cover" data-toc-modified-id="5.-Classify-CLC-6"> 5. Classify the Landsat-8 using Corine Land Cover</a></span></li></ul></div><section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
+<hr><ul class="simple">
+<li><p>.</p></li>
+<li><p>.</p></li>
+<li><p>.</p></li>
+<li><p>.</p></li>
+<li><p>.</p></li>
+<li><p>.</p></li>
+</ul>
+</section>
+<section id="introducing-the-packages">
+<h2>1. Introducing the packages<a class="headerlink" href="#introducing-the-packages" title="Permalink to this headline">#</a></h2>
+<hr><p>Within this tutorial, we are going to make use of the following packages:</p>
+<p><a class="reference external" href="https://developers.google.com/earth-engine/guides/python_install"><strong>ee</strong></a> is a Python package to use the the Google Earth Engine.</p>
+<p><a class="reference external" href="https://geemap.org/"><strong>geemap</strong></a> is a Python package for interactive mapping with the Google Earth Engine.</p>
+<p><em>We will first need to install these packages in the cell below. Uncomment them to make sure we can pip install them</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from matplotlib import rcParams, cycler
-import matplotlib.pyplot as plt
-import numpy as np
-plt.ion()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#!pip install ee
+#!pip install geemap
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import ee
+import geemap
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="extracting-and-exploring-the-landsat-8-data">
+<h2>2.Extracting and exploring the Landsat-8 data<a class="headerlink" href="#extracting-and-exploring-the-landsat-8-data" title="Permalink to this headline">#</a></h2>
+<hr><p>Unfortunately it is not as simple as just running the  code below. As soon as you run it, you will notice that you need to authorize ourselves to be able to use the Google Earth Engine</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Map = geemap.Map(height=800,width=700,center=[52.37,4.5],zoom=7)
+Map
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;contextlib.ExitStack at 0x7fd7f8808280&gt;
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "683a717c4bec4e65b43d1adf5e2dbf1f", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>Now we have succesfully managed to see a map of the Netherlands, let’s add Landsat data to the map</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>point = ee.Geometry.Point([5.0, 51.37])
+# point = ee.Geometry.Point([-87.7719, 41.8799])
+
+image = (
+    ee.ImageCollection(&#39;LANDSAT/LC08/C01/T1_SR&#39;)
+    .filterBounds(point)
+    .filterDate(&#39;2020-01-01&#39;, &#39;2020-12-31&#39;)
+    .sort(&#39;CLOUD_COVER&#39;)
+    .first()
+    .select(&#39;B[1-7]&#39;)
+)
+
+vis_params = {&#39;min&#39;: 0, &#39;max&#39;: 3000, &#39;bands&#39;: [&#39;B5&#39;, &#39;B4&#39;, &#39;B3&#39;]}
+
+Map.centerObject(point, 8)
+Map.addLayer(image, vis_params, &quot;Landsat-8&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>It worked! As we have specified that we wanted landsat data with as little clouds as possible, let’s check the data and the actual cloud cover:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ee.Date(image.get(&#39;system:time_start&#39;)).format(&#39;YYYY-MM-dd&#39;).getInfo()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2020-07-31&#39;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Fixing random state for reproducibility
-np.random.seed(19680801)
-
-N = 10
-data = [np.logspace(0, 1, 100) + np.random.randn(100) + ii for ii in range(N)]
-data = np.array(data).T
-cmap = plt.cm.coolwarm
-rcParams[&#39;axes.prop_cycle&#39;] = cycler(color=cmap(np.linspace(0, 1, N)))
-
-
-from matplotlib.lines import Line2D
-custom_lines = [Line2D([0], [0], color=cmap(0.), lw=4),
-                Line2D([0], [0], color=cmap(.5), lw=4),
-                Line2D([0], [0], color=cmap(1.), lw=4)]
-
-fig, ax = plt.subplots(figsize=(10, 5))
-lines = ax.plot(data)
-ax.legend(custom_lines, [&#39;Cold&#39;, &#39;Medium&#39;, &#39;Hot&#39;]);
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>image.get(&#39;CLOUD_COVER&#39;).getInfo()
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/tutorial1_2_02.png" src="../_images/tutorial1_2_02.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2
+</pre></div>
 </div>
 </div>
-<p>There is a lot more that you can do with outputs (such as including interactive outputs)
-with your book. For more information about this, see <a class="reference external" href="https://jupyterbook.org">the Jupyter Book documentation</a></p>
+</div>
+</section>
+<section id="create-training-data-using-corine-land-cover">
+<h2>3.Create training data using Corine Land Cover<a class="headerlink" href="#create-training-data-using-corine-land-cover" title="Permalink to this headline">#</a></h2>
+<hr><p>There are several ways you can create a region for generating the training dataset.</p>
+<ul class="simple">
+<li><p>Draw a shape (e.g., rectangle) on the map and the use <code class="docutils literal notranslate"><span class="pre">region</span> <span class="pre">=</span> <span class="pre">Map.user_roi</span></code></p></li>
+<li><p>Define a geometry, such as <code class="docutils literal notranslate"><span class="pre">region</span> <span class="pre">=</span> <span class="pre">ee.Geometry.Rectangle([-122.6003,</span> <span class="pre">37.4831,</span> <span class="pre">-121.8036,</span> <span class="pre">37.8288])</span></code></p></li>
+<li><p>Create a buffer zone around a point, such as <code class="docutils literal notranslate"><span class="pre">region</span> <span class="pre">=</span> <span class="pre">ee.Geometry.Point([-122.4439,</span> <span class="pre">37.7538]).buffer(10000)</span></code></p></li>
+<li><p>If you don’t define a region, it will use the image footprint by default</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#region = Map.user_roi
+#region = ee.Geometry.Rectangle([-122.6003, 37.4831, -121.8036, 37.8288])
+region = ee.Geometry.Point([4.5, 52.37]).buffer(10000)
+</pre></div>
+</div>
+</div>
+</div>
+<p>And let’s explore the Corine Land Cover data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>CLC = ee.Image(&#39;COPERNICUS/CORINE/V20/100m/2012&#39;).select(&#39;landcover&#39;).clip(image.geometry())
+Map.addLayer(CLC, {}, &#39;CLC&#39;)
+Map
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "683a717c4bec4e65b43d1adf5e2dbf1f", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>Now we are going to make the training dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>points = CLC.sample(
+    **{
+        &#39;region&#39;: image.geometry(),
+        &#39;scale&#39;: 30,
+        &#39;numPixels&#39;: 5000,
+        &#39;seed&#39;: 0,
+        &#39;geometries&#39;: True,  # Set this to False to ignore geometries
+    }
+)
+
+Map.addLayer(points, {}, &#39;training&#39;, False)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(points.size().getInfo())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4952
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(points.first().getInfo())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;type&#39;: &#39;Feature&#39;, &#39;geometry&#39;: {&#39;type&#39;: &#39;Point&#39;, &#39;coordinates&#39;: [6.262549916271497, 51.256151849693374]}, &#39;id&#39;: &#39;0&#39;, &#39;properties&#39;: {&#39;landcover&#39;: 211}}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="train-the-classifier-using-corine-land-cover">
+<h2>4.-Train the classifier using Corine Land Cover<a class="headerlink" href="#train-the-classifier-using-corine-land-cover" title="Permalink to this headline">#</a></h2>
+<hr><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Use these bands for prediction.
+bands = [&#39;B1&#39;, &#39;B2&#39;, &#39;B3&#39;, &#39;B4&#39;, &#39;B5&#39;, &#39;B6&#39;, &#39;B7&#39;]
+
+
+# This property of the table stores the land cover labels.
+label = &#39;landcover&#39;
+
+# Overlay the points on the imagery to get training.
+training = image.select(bands).sampleRegions(
+    **{&#39;collection&#39;: points, &#39;properties&#39;: [label], &#39;scale&#39;: 30}
+)
+
+# Train a CART classifier with default parameters.
+trained = ee.Classifier.smileCart().train(training, label, bands)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(training.first().getInfo())
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;type&#39;: &#39;Feature&#39;, &#39;geometry&#39;: None, &#39;id&#39;: &#39;0_0&#39;, &#39;properties&#39;: {&#39;B1&#39;: 371, &#39;B2&#39;: 504, &#39;B3&#39;: 935, &#39;B4&#39;: 839, &#39;B5&#39;: 4024, &#39;B6&#39;: 1696, &#39;B7&#39;: 978, &#39;landcover&#39;: 211}}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="classify-and-visualise-the-landsat-8-using-corine-land-cover">
+<h2>5. Classify and visualise the Landsat-8 using Corine Land Cover<a class="headerlink" href="#classify-and-visualise-the-landsat-8-using-corine-land-cover" title="Permalink to this headline">#</a></h2>
+<hr><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Classify the image with the same bands used for training.
+result = image.select(bands).classify(trained)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># # Display the clusters with random colors.
+Map.addLayer(result.randomVisualizer(), {}, &#39;classified&#39;)
+Map
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "3c9d8c70d0014402aecfa69fe8d9e93a", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
+<p>To render a categorical map, we can set two image properties: <code class="docutils literal notranslate"><span class="pre">landcover_class_values</span></code> and <code class="docutils literal notranslate"><span class="pre">landcover_class_palette</span></code>. We can use the same style as the NLCD so that it is easy to compare the two maps.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class_values = nlcd.get(&#39;landcover_class_values&#39;).getInfo()
+class_values
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[111,
+ 112,
+ 121,
+ 122,
+ 123,
+ 124,
+ 131,
+ 132,
+ 133,
+ 141,
+ 142,
+ 211,
+ 212,
+ 213,
+ 221,
+ 222,
+ 223,
+ 231,
+ 241,
+ 242,
+ 243,
+ 244,
+ 311,
+ 312,
+ 313,
+ 321,
+ 322,
+ 323,
+ 324,
+ 331,
+ 332,
+ 333,
+ 334,
+ 335,
+ 411,
+ 412,
+ 421,
+ 422,
+ 423,
+ 511,
+ 512,
+ 521,
+ 522,
+ 523]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class_palette = nlcd.get(&#39;landcover_class_palette&#39;).getInfo()
+class_palette
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;E6004D&#39;,
+ &#39;FF0000&#39;,
+ &#39;CC4DF2&#39;,
+ &#39;CC0000&#39;,
+ &#39;E6CCCC&#39;,
+ &#39;E6CCE6&#39;,
+ &#39;A600CC&#39;,
+ &#39;A64DCC&#39;,
+ &#39;FF4DFF&#39;,
+ &#39;FFA6FF&#39;,
+ &#39;FFE6FF&#39;,
+ &#39;FFFFA8&#39;,
+ &#39;FFFF00&#39;,
+ &#39;E6E600&#39;,
+ &#39;E68000&#39;,
+ &#39;F2A64D&#39;,
+ &#39;E6A600&#39;,
+ &#39;E6E64D&#39;,
+ &#39;FFE6A6&#39;,
+ &#39;FFE64D&#39;,
+ &#39;E6CC4D&#39;,
+ &#39;F2CCA6&#39;,
+ &#39;80FF00&#39;,
+ &#39;00A600&#39;,
+ &#39;4DFF00&#39;,
+ &#39;CCF24D&#39;,
+ &#39;A6FF80&#39;,
+ &#39;A6E64D&#39;,
+ &#39;A6F200&#39;,
+ &#39;E6E6E6&#39;,
+ &#39;CCCCCC&#39;,
+ &#39;CCFFCC&#39;,
+ &#39;000000&#39;,
+ &#39;A6E6CC&#39;,
+ &#39;A6A6FF&#39;,
+ &#39;4D4DFF&#39;,
+ &#39;CCCCFF&#39;,
+ &#39;E6E6FF&#39;,
+ &#39;A6A6E6&#39;,
+ &#39;00CCF2&#39;,
+ &#39;80F2E6&#39;,
+ &#39;00FFA6&#39;,
+ &#39;A6FFE6&#39;,
+ &#39;E6F2FF&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>landcover = result.set(&#39;classification_class_values&#39;, class_values)
+landcover = landcover.set(&#39;classification_class_palette&#39;, class_palette)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Map.addLayer(landcover, {}, &#39;Land cover&#39;)
+Map.add_legend(builtin_legend=&#39;COPERNICUS/CORINE/V20/100m&#39;)
+Map
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "3c9d8c70d0014402aecfa69fe8d9e93a", "version_major": 2, "version_minor": 0}
+</script></div>
+</div>
 </section>
 </section>
 
