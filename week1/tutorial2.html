@@ -170,7 +170,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../week2/lecture.html">
-   Lecture: Introduction to Data Analysis
+   Lecture: Introduction to Random Forests
   </a>
  </li>
  <li class="toctree-l1">
@@ -1325,11 +1325,11 @@ array_2d
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.5224793 , 0.74226977],
-       [0.13292599, 0.33127727],
-       [0.95778619, 0.52924502],
-       [0.64417473, 0.31709145],
-       [0.71365678, 0.74573857]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.00914411, 0.98830808],
+       [0.52535503, 0.34267394],
+       [0.27064908, 0.70587874],
+       [0.97186749, 0.01797796],
+       [0.74520641, 0.31551347]])
 </pre></div>
 </div>
 </div>
@@ -1355,11 +1355,11 @@ x
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.70266544, 0.71158549],
-       [0.6470473 , 0.254294  ],
-       [0.23612397, 0.60214916],
-       [0.45185378, 0.80034175],
-       [0.82342287, 0.88065546]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.2575489 , 0.7231632 ],
+       [0.78969577, 0.88046949],
+       [0.31702947, 0.26050974],
+       [0.40449481, 0.2872277 ],
+       [0.57071198, 0.90674472]])
 </pre></div>
 </div>
 </div>
@@ -1371,8 +1371,8 @@ x
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.70266544, 0.6470473 , 0.23612397, 0.45185378, 0.82342287],
-       [0.71158549, 0.254294  , 0.60214916, 0.80034175, 0.88065546]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.2575489 , 0.78969577, 0.31702947, 0.40449481, 0.57071198],
+       [0.7231632 , 0.88046949, 0.26050974, 0.2872277 , 0.90674472]])
 </pre></div>
 </div>
 </div>
@@ -1384,7 +1384,7 @@ x
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6110139217299633
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5397595773147602
 </pre></div>
 </div>
 </div>
@@ -1901,7 +1901,7 @@ print(f&quot;Broadcasting is {time_loop.average / time_vec.average:.2f}x faster 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Broadcasting is 5.36x faster than looping here.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Broadcasting is 6.42x faster than looping here.
 </pre></div>
 </div>
 </div>
@@ -2241,10 +2241,10 @@ x
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2, 3, 7, 8, 0, 9],
-       [4, 8, 5, 2, 5, 3],
-       [2, 1, 8, 7, 9, 5],
-       [2, 3, 7, 2, 1, 7]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[5, 8, 2, 8, 3, 8],
+       [7, 7, 8, 1, 9, 6],
+       [6, 1, 7, 0, 4, 3],
+       [6, 2, 3, 1, 7, 2]])
 </pre></div>
 </div>
 </div>
@@ -2256,7 +2256,7 @@ x
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
 </pre></div>
 </div>
 </div>
@@ -2268,7 +2268,7 @@ x
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
 </pre></div>
 </div>
 </div>
@@ -2280,7 +2280,7 @@ x
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2, 3, 7, 2, 1, 7])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([6, 2, 3, 1, 7, 2])
 </pre></div>
 </div>
 </div>
@@ -2316,7 +2316,7 @@ x
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([7, 5, 8, 7])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2, 8, 7, 3])
 </pre></div>
 </div>
 </div>
@@ -2328,8 +2328,8 @@ x
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2, 1, 8],
-       [2, 3, 7]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[6, 1, 7],
+       [6, 2, 3]])
 </pre></div>
 </div>
 </div>
@@ -2341,12 +2341,12 @@ x
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2, 4, 2, 2],
-       [3, 8, 1, 3],
-       [7, 5, 8, 7],
-       [8, 2, 7, 2],
-       [0, 5, 9, 1],
-       [9, 3, 5, 7]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[5, 7, 6, 6],
+       [8, 7, 1, 2],
+       [2, 8, 7, 3],
+       [8, 1, 0, 1],
+       [3, 9, 4, 7],
+       [8, 6, 3, 2]])
 </pre></div>
 </div>
 </div>
@@ -2358,10 +2358,10 @@ x
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2, 3, 7, 8, 0, 9],
-       [4, 8, 5, 2, 5, 3],
-       [2, 1, 8, 7, 9, 5],
-       [2, 3, 7, 2, 1, 7]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[5, 8, 2, 8, 3, 8],
+       [7, 7, 8, 1, 9, 6],
+       [6, 1, 7, 0, 4, 3],
+       [6, 2, 3, 1, 7, 2]])
 </pre></div>
 </div>
 </div>
@@ -2374,10 +2374,10 @@ x
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[     2,      3,      7,      8,      0,      9],
-       [     4, 555555,      5,      2,      5,      3],
-       [     2,      1,      8,      7,      9,      5],
-       [     2,      3,      7,      2,      1,      7]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[     5,      8,      2,      8,      3,      8],
+       [     7, 555555,      8,      1,      9,      6],
+       [     6,      1,      7,      0,      4,      3],
+       [     6,      2,      3,      1,      7,      2]])
 </pre></div>
 </div>
 </div>
@@ -2419,8 +2419,8 @@ x
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.84172814, 0.44499923, 0.92635427, 0.41363546, 0.59368646,
-       0.63628753, 0.76567273, 0.69061795, 0.90625132, 0.07170585])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.21912798, 0.08494044, 0.62339369, 0.78994379, 0.56760857,
+       0.83767517, 0.02154525, 0.37057318, 0.04817973, 0.10755651])
 </pre></div>
 </div>
 </div>
@@ -2432,8 +2432,8 @@ x
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.84172814, 1.44499923, 1.92635427, 1.41363546, 1.59368646,
-       1.63628753, 1.76567273, 1.69061795, 1.90625132, 1.07170585])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.21912798, 1.08494044, 1.62339369, 1.78994379, 1.56760857,
+       1.83767517, 1.02154525, 1.37057318, 1.04817973, 1.10755651])
 </pre></div>
 </div>
 </div>
@@ -2446,7 +2446,7 @@ x_thresh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ True, False,  True, False,  True,  True,  True,  True,  True,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([False, False,  True,  True,  True,  True, False, False, False,
        False])
 </pre></div>
 </div>
@@ -2460,8 +2460,8 @@ x
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.5       , 0.44499923, 0.5       , 0.41363546, 0.5       ,
-       0.5       , 0.5       , 0.5       , 0.5       , 0.07170585])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.21912798, 0.08494044, 0.5       , 0.5       , 0.5       ,
+       0.5       , 0.02154525, 0.37057318, 0.04817973, 0.10755651])
 </pre></div>
 </div>
 </div>
@@ -2474,8 +2474,8 @@ x
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.66888828, 0.79847953, 0.48695868, 0.42491264, 0.935932  ,
-       0.22695996, 0.13400991, 0.38597742, 0.67402069, 0.04761658])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.72068493, 0.36798442, 0.96143146, 0.32654108, 0.38060694,
+       0.23801184, 0.23175998, 0.09411454, 0.00616087, 0.56207989])
 </pre></div>
 </div>
 </div>
@@ -2488,8 +2488,8 @@ x
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.5       , 0.5       , 0.48695868, 0.42491264, 0.5       ,
-       0.22695996, 0.13400991, 0.38597742, 0.5       , 0.04761658])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.5       , 0.36798442, 0.5       , 0.32654108, 0.38060694,
+       0.23801184, 0.23175998, 0.09411454, 0.00616087, 0.5       ])
 </pre></div>
 </div>
 </div>
@@ -2601,7 +2601,7 @@ print(f&quot;Vectorized operation is {time_loop.average / time_vec.average:.2f}x
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vectorized operation is 3.86x faster than looping here.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vectorized operation is 4.32x faster than looping here.
 </pre></div>
 </div>
 </div>
@@ -2697,9 +2697,9 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0   -0.042273
-1   -1.415795
-2   -1.152024
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0.219344
+1    0.850119
+2   -0.589778
 dtype: float64
 </pre></div>
 </div>
@@ -2746,11 +2746,11 @@ s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0.905192
-1   -1.480171
-2   -1.025363
-3    0.645146
-4   -0.595189
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    1.002736
+1    0.679239
+2    0.294697
+3    1.386109
+4   -0.571970
 Name: random_series, dtype: float64
 </pre></div>
 </div>
@@ -2775,11 +2775,11 @@ Name: random_series, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0.905192
-1   -1.480171
-2   -1.025363
-3    0.645146
-4   -0.595189
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    1.002736
+1    0.679239
+2    0.294697
+3    1.386109
+4   -0.571970
 Name: another_name, dtype: float64
 </pre></div>
 </div>
@@ -2806,7 +2806,7 @@ Name: another_name, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.9051917 , -1.48017117, -1.02536348,  0.6451464 , -0.59518928])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.00273618,  0.67923877,  0.29469706,  1.38610926, -0.57196963])
 </pre></div>
 </div>
 </div>
@@ -3571,43 +3571,43 @@ dtype: Int64
   <tbody>
     <tr>
       <th>row_1</th>
-      <td>0.815978</td>
-      <td>0.372600</td>
-      <td>-1.431908</td>
-      <td>-0.155012</td>
-      <td>-0.202765</td>
+      <td>0.308732</td>
+      <td>-0.719085</td>
+      <td>0.803231</td>
+      <td>-0.011356</td>
+      <td>-0.547531</td>
     </tr>
     <tr>
       <th>row_2</th>
-      <td>-0.893415</td>
-      <td>-1.682027</td>
-      <td>0.679655</td>
-      <td>0.653097</td>
-      <td>-0.665430</td>
+      <td>-1.807252</td>
+      <td>2.461719</td>
+      <td>-0.494119</td>
+      <td>0.312963</td>
+      <td>-0.732419</td>
     </tr>
     <tr>
       <th>row_3</th>
-      <td>0.002188</td>
-      <td>0.365271</td>
-      <td>-0.484134</td>
-      <td>1.523979</td>
-      <td>0.511411</td>
+      <td>1.561153</td>
+      <td>0.537928</td>
+      <td>0.373646</td>
+      <td>0.398192</td>
+      <td>-0.956455</td>
     </tr>
     <tr>
       <th>row_4</th>
-      <td>-0.104276</td>
-      <td>-0.632871</td>
-      <td>-3.643572</td>
-      <td>1.766826</td>
-      <td>-3.110975</td>
+      <td>0.026721</td>
+      <td>-0.489596</td>
+      <td>0.087871</td>
+      <td>-1.348016</td>
+      <td>0.252961</td>
     </tr>
     <tr>
       <th>row_5</th>
-      <td>-1.540851</td>
-      <td>-0.227362</td>
-      <td>0.537295</td>
-      <td>0.445703</td>
-      <td>0.154916</td>
+      <td>1.638632</td>
+      <td>-0.284920</td>
+      <td>0.746469</td>
+      <td>1.913877</td>
+      <td>0.899680</td>
     </tr>
   </tbody>
 </table>

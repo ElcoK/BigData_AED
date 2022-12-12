@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lecture: Introduction to Data Analysis" href="../week2/lecture.html" />
+    <link rel="next" title="Lecture: Introduction to Random Forests" href="../week2/lecture.html" />
     <link rel="prev" title="Tutorial 2: Introduction to NumPy and Pandas" href="tutorial2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -170,7 +170,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../week2/lecture.html">
-   Lecture: Introduction to Data Analysis
+   Lecture: Introduction to Random Forests
   </a>
  </li>
  <li class="toctree-l1">
@@ -775,8 +775,7 @@ title="Print to PDF"
                 
               <div>
                 
-  <p><img alt="" src="docs/banner.png" /></p>
-<section class="tex2jax_ignore mathjax_ignore" id="tutorial-3-introduction-to-data-analysis">
+  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-3-introduction-to-data-analysis">
 <h1>Tutorial 3: Introduction to Data Analysis<a class="headerlink" href="#tutorial-3-introduction-to-data-analysis" title="Permalink to this headline">#</a></h1>
 <p>In this tutorial you will further learn on how to use Pandas, one of the most important python packages to be used within data sciences.</p>
 <div class="admonition-acknowledgements admonition">
@@ -1407,23 +1406,23 @@ memory usage: 1.7+ KB
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.234544</td>
+      <td>0.203576</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.194539</td>
+      <td>0.579476</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.454899</td>
+      <td>0.720000</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.223798</td>
+      <td>0.789306</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.099986</td>
+      <td>0.948691</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1431,23 +1430,23 @@ memory usage: 1.7+ KB
     </tr>
     <tr>
       <th>95</th>
-      <td>0.643093</td>
+      <td>0.148797</td>
     </tr>
     <tr>
       <th>96</th>
-      <td>0.216968</td>
+      <td>0.343093</td>
     </tr>
     <tr>
       <th>97</th>
-      <td>0.521702</td>
+      <td>0.274716</td>
     </tr>
     <tr>
       <th>98</th>
-      <td>0.933547</td>
+      <td>0.468394</td>
     </tr>
     <tr>
       <th>99</th>
-      <td>0.516064</td>
+      <td>0.115203</td>
     </tr>
   </tbody>
 </table>
@@ -1943,126 +1942,122 @@ test.style.background_gradient(cmap=&#39;plasma&#39;)
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
-#T_1d998_row0_col0 {
-  background-color: #6001a6;
+#T_eb497_row0_col0, #T_eb497_row3_col2 {
+  background-color: #6700a8;
   color: #f1f1f1;
 }
-#T_1d998_row0_col1 {
-  background-color: #d6556d;
-  color: #f1f1f1;
-}
-#T_1d998_row0_col2, #T_1d998_row1_col4, #T_1d998_row2_col3, #T_1d998_row3_col1, #T_1d998_row4_col0 {
-  background-color: #f0f921;
-  color: #000000;
-}
-#T_1d998_row0_col3 {
-  background-color: #f9983e;
-  color: #000000;
-}
-#T_1d998_row0_col4 {
-  background-color: #ea7457;
-  color: #f1f1f1;
-}
-#T_1d998_row1_col0 {
-  background-color: #fba139;
-  color: #000000;
-}
-#T_1d998_row1_col1 {
-  background-color: #de6164;
-  color: #f1f1f1;
-}
-#T_1d998_row1_col2 {
-  background-color: #c6417d;
-  color: #f1f1f1;
-}
-#T_1d998_row1_col3 {
-  background-color: #4b03a1;
-  color: #f1f1f1;
-}
-#T_1d998_row2_col0, #T_1d998_row2_col1, #T_1d998_row3_col3, #T_1d998_row3_col4, #T_1d998_row4_col2 {
+#T_eb497_row0_col1, #T_eb497_row1_col2, #T_eb497_row1_col3, #T_eb497_row3_col0, #T_eb497_row4_col4 {
   background-color: #0d0887;
   color: #f1f1f1;
 }
-#T_1d998_row2_col2 {
-  background-color: #f6e626;
+#T_eb497_row0_col2 {
+  background-color: #febd2a;
   color: #000000;
 }
-#T_1d998_row2_col4 {
-  background-color: #c9447a;
+#T_eb497_row0_col3, #T_eb497_row2_col0, #T_eb497_row2_col2, #T_eb497_row3_col4, #T_eb497_row4_col1 {
+  background-color: #f0f921;
+  color: #000000;
+}
+#T_eb497_row0_col4 {
+  background-color: #d7566c;
   color: #f1f1f1;
 }
-#T_1d998_row3_col0 {
-  background-color: #f68d45;
+#T_eb497_row1_col0 {
+  background-color: #330597;
   color: #f1f1f1;
 }
-#T_1d998_row3_col2 {
-  background-color: #38049a;
+#T_eb497_row1_col1 {
+  background-color: #d8576b;
   color: #f1f1f1;
 }
-#T_1d998_row4_col1 {
-  background-color: #d14e72;
+#T_eb497_row1_col4 {
+  background-color: #c23c81;
   color: #f1f1f1;
 }
-#T_1d998_row4_col3 {
-  background-color: #9d189d;
+#T_eb497_row2_col1 {
+  background-color: #6a00a8;
   color: #f1f1f1;
 }
-#T_1d998_row4_col4 {
-  background-color: #c13b82;
+#T_eb497_row2_col3 {
+  background-color: #280592;
+  color: #f1f1f1;
+}
+#T_eb497_row2_col4 {
+  background-color: #df6263;
+  color: #f1f1f1;
+}
+#T_eb497_row3_col1 {
+  background-color: #7401a8;
+  color: #f1f1f1;
+}
+#T_eb497_row3_col3 {
+  background-color: #b22b8f;
+  color: #f1f1f1;
+}
+#T_eb497_row4_col0 {
+  background-color: #de6164;
+  color: #f1f1f1;
+}
+#T_eb497_row4_col2 {
+  background-color: #370499;
+  color: #f1f1f1;
+}
+#T_eb497_row4_col3 {
+  background-color: #9c179e;
   color: #f1f1f1;
 }
 </style>
-<table id="T_1d998">
+<table id="T_eb497">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_1d998_level0_col0" class="col_heading level0 col0" >feature_0</th>
-      <th id="T_1d998_level0_col1" class="col_heading level0 col1" >feature_1</th>
-      <th id="T_1d998_level0_col2" class="col_heading level0 col2" >feature_2</th>
-      <th id="T_1d998_level0_col3" class="col_heading level0 col3" >feature_3</th>
-      <th id="T_1d998_level0_col4" class="col_heading level0 col4" >feature_4</th>
+      <th id="T_eb497_level0_col0" class="col_heading level0 col0" >feature_0</th>
+      <th id="T_eb497_level0_col1" class="col_heading level0 col1" >feature_1</th>
+      <th id="T_eb497_level0_col2" class="col_heading level0 col2" >feature_2</th>
+      <th id="T_eb497_level0_col3" class="col_heading level0 col3" >feature_3</th>
+      <th id="T_eb497_level0_col4" class="col_heading level0 col4" >feature_4</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_1d998_level0_row0" class="row_heading level0 row0" >row_0</th>
-      <td id="T_1d998_row0_col0" class="data row0 col0" >-1.241160</td>
-      <td id="T_1d998_row0_col1" class="data row0 col1" >0.586660</td>
-      <td id="T_1d998_row0_col2" class="data row0 col2" >1.205200</td>
-      <td id="T_1d998_row0_col3" class="data row0 col3" >0.784906</td>
-      <td id="T_1d998_row0_col4" class="data row0 col4" >0.393076</td>
+      <th id="T_eb497_level0_row0" class="row_heading level0 row0" >row_0</th>
+      <td id="T_eb497_row0_col0" class="data row0 col0" >-1.169622</td>
+      <td id="T_eb497_row0_col1" class="data row0 col1" >-0.917199</td>
+      <td id="T_eb497_row0_col2" class="data row0 col2" >1.307059</td>
+      <td id="T_eb497_row0_col3" class="data row0 col3" >2.607958</td>
+      <td id="T_eb497_row0_col4" class="data row0 col4" >-0.458121</td>
     </tr>
     <tr>
-      <th id="T_1d998_level0_row1" class="row_heading level0 row1" >row_1</th>
-      <td id="T_1d998_row1_col0" class="data row1 col0" >-0.158502</td>
-      <td id="T_1d998_row1_col1" class="data row1 col1" >0.732541</td>
-      <td id="T_1d998_row1_col2" class="data row1 col2" >-0.640900</td>
-      <td id="T_1d998_row1_col3" class="data row1 col3" >-1.204737</td>
-      <td id="T_1d998_row1_col4" class="data row1 col4" >1.649030</td>
+      <th id="T_eb497_level0_row1" class="row_heading level0 row1" >row_1</th>
+      <td id="T_eb497_row1_col0" class="data row1 col0" >-1.477046</td>
+      <td id="T_eb497_row1_col1" class="data row1 col1" >0.456351</td>
+      <td id="T_eb497_row1_col2" class="data row1 col2" >-0.925958</td>
+      <td id="T_eb497_row1_col3" class="data row1 col3" >-0.957067</td>
+      <td id="T_eb497_row1_col4" class="data row1 col4" >-0.655370</td>
     </tr>
     <tr>
-      <th id="T_1d998_level0_row2" class="row_heading level0 row2" >row_2</th>
-      <td id="T_1d998_row2_col0" class="data row2 col0" >-1.545924</td>
-      <td id="T_1d998_row2_col1" class="data row2 col1" >-1.406730</td>
-      <td id="T_1d998_row2_col2" class="data row2 col2" >1.052499</td>
-      <td id="T_1d998_row2_col3" class="data row2 col3" >1.527451</td>
-      <td id="T_1d998_row2_col4" class="data row2 col4" >-0.189895</td>
+      <th id="T_eb497_level0_row2" class="row_heading level0 row2" >row_2</th>
+      <td id="T_eb497_row2_col0" class="data row2 col0" >0.872796</td>
+      <td id="T_eb497_row2_col1" class="data row2 col1" >-0.423733</td>
+      <td id="T_eb497_row2_col2" class="data row2 col2" >1.680365</td>
+      <td id="T_eb497_row2_col3" class="data row2 col3" >-0.799638</td>
+      <td id="T_eb497_row2_col4" class="data row2 col4" >-0.373202</td>
     </tr>
     <tr>
-      <th id="T_1d998_level0_row3" class="row_heading level0 row3" >row_3</th>
-      <td id="T_1d998_row3_col0" class="data row3 col0" >-0.257890</td>
-      <td id="T_1d998_row3_col1" class="data row3 col1" >2.224324</td>
-      <td id="T_1d998_row3_col2" class="data row3 col2" >-2.047499</td>
-      <td id="T_1d998_row3_col3" class="data row3 col3" >-1.585448</td>
-      <td id="T_1d998_row3_col4" class="data row3 col4" >-1.951487</td>
+      <th id="T_eb497_level0_row3" class="row_heading level0 row3" >row_3</th>
+      <td id="T_eb497_row3_col0" class="data row3 col0" >-1.653950</td>
+      <td id="T_eb497_row3_col1" class="data row3 col1" >-0.360502</td>
+      <td id="T_eb497_row3_col2" class="data row3 col2" >-0.419498</td>
+      <td id="T_eb497_row3_col3" class="data row3 col3" >0.480845</td>
+      <td id="T_eb497_row3_col4" class="data row3 col4" >0.494854</td>
     </tr>
     <tr>
-      <th id="T_1d998_level0_row4" class="row_heading level0 row4" >row_4</th>
-      <td id="T_1d998_row4_col0" class="data row4 col0" >0.225034</td>
-      <td id="T_1d998_row4_col1" class="data row4 col1" >0.506526</td>
-      <td id="T_1d998_row4_col2" class="data row4 col2" >-2.324341</td>
-      <td id="T_1d998_row4_col3" class="data row4 col3" >-0.529103</td>
-      <td id="T_1d998_row4_col4" class="data row4 col4" >-0.304565</td>
+      <th id="T_eb497_level0_row4" class="row_heading level0 row4" >row_4</th>
+      <td id="T_eb497_row4_col0" class="data row4 col0" >-0.171182</td>
+      <td id="T_eb497_row4_col1" class="data row4 col1" >1.550360</td>
+      <td id="T_eb497_row4_col2" class="data row4 col2" >-0.731615</td>
+      <td id="T_eb497_row4_col3" class="data row4 col3" >0.226898</td>
+      <td id="T_eb497_row4_col4" class="data row4 col4" >-1.638907</td>
     </tr>
   </tbody>
 </table>
@@ -2128,7 +2123,7 @@ test.style.background_gradient(cmap=&#39;plasma&#39;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1939/808031618.py:1: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1895/808031618.py:1: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
@@ -2195,8 +2190,8 @@ print(f&quot; The id of the indexed dataframe is: {id(df[df[&#39;Time&#39;] &gt;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The id of the original dataframe is: 140046209531712
- The id of the indexed dataframe is: 140045550323504
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The id of the original dataframe is: 139882690174400
+ The id of the indexed dataframe is: 139882690082608
 </pre></div>
 </div>
 </div>
@@ -7859,7 +7854,7 @@ df
     <a class='right-next' id="next-link" href="../week2/lecture.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lecture: Introduction to Data Analysis</p>
+        <p class="prev-next-title">Lecture: Introduction to Random Forests</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

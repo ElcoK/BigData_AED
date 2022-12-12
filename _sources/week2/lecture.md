@@ -13,7 +13,7 @@ kernelspec:
   name: python3
 ---
 
-# Lecture: Introduction to Data Analysis
+# Lecture: Introduction to Random Forests
 
 This week we focus on the basics of data analysis and regression analysis. 
 
