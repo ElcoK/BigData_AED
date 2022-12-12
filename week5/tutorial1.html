@@ -839,7 +839,7 @@ Map
 <p>To render a categorical map, we can set two image properties: <code class="docutils literal notranslate"><span class="pre">landcover_class_values</span></code> and <code class="docutils literal notranslate"><span class="pre">landcover_class_palette</span></code>. We can use the same style as the NLCD so that it is easy to compare the two maps.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class_values = nlcd.get(&#39;landcover_class_values&#39;).getInfo()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class_values = CLC.get(&#39;landcover_class_values&#39;).getInfo()
 class_values
 </pre></div>
 </div>
@@ -895,7 +895,7 @@ class_values
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class_palette = nlcd.get(&#39;landcover_class_palette&#39;).getInfo()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class_palette = CLC.get(&#39;landcover_class_palette&#39;).getInfo()
 class_palette
 </pre></div>
 </div>
