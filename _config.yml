@@ -9,9 +9,7 @@ announcement    : "This course is work in progress!" # A banner announcement at 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks:  auto
-  exclude_patterns:
-   - 'week5/tutorial1'
+  execute_notebooks: 'off'
 
 # Define the name of the latex output file for PDF builds
 latex:
