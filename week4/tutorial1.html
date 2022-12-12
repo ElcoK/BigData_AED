@@ -507,8 +507,43 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#code-blocks-and-outputs">
-   Code blocks and outputs
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning Objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introducing-the-packages">
+   1.Introducing the packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extract-and-visualize-land-use-information-from-openstreetmap">
+   2. Extract and visualize land-use information from OpenStreetMap
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rasterize-land-use-information">
+   3. Rasterize land-use information
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extracting-buildings-from-openstreetmap">
+   4. Extracting buildings from OpenStreetMap
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyze-and-visualize-building-stock">
+   5. Analyze and visualize building stock
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extracting-roads-from-openstreetmap">
+   6. Extracting roads from OpenStreetMap
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-routes-using-openstreetmap-and-folium">
+   7. Plot Routes Using OpenStreetMap and Folium
   </a>
  </li>
 </ul>
@@ -531,8 +566,43 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#code-blocks-and-outputs">
-   Code blocks and outputs
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning Objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introducing-the-packages">
+   1.Introducing the packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extract-and-visualize-land-use-information-from-openstreetmap">
+   2. Extract and visualize land-use information from OpenStreetMap
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rasterize-land-use-information">
+   3. Rasterize land-use information
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extracting-buildings-from-openstreetmap">
+   4. Extracting buildings from OpenStreetMap
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analyze-and-visualize-building-stock">
+   5. Analyze and visualize building stock
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extracting-roads-from-openstreetmap">
+   6. Extracting roads from OpenStreetMap
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-routes-using-openstreetmap-and-folium">
+   7. Plot Routes Using OpenStreetMap and Folium
   </a>
  </li>
 </ul>
@@ -547,56 +617,841 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="tutorial-1-working-with-openstreetmap">
 <h1>Tutorial 1: Working with OpenStreetMap<a class="headerlink" href="#tutorial-1-working-with-openstreetmap" title="Permalink to this headline">#</a></h1>
-<p>You can also create content with Jupyter Notebooks. This means that you can include
-code blocks and their outputs in your book.</p>
-<section id="code-blocks-and-outputs">
-<h2>Code blocks and outputs<a class="headerlink" href="#code-blocks-and-outputs" title="Permalink to this headline">#</a></h2>
-<p>Jupyter Book will also embed your code blocks and output in your book.
-For example, here’s some sample Matplotlib code:</p>
+<p>Within this tutorial, we will explore the power of OpenStreetMap. We will learn how to extract information from OpenStreetMap, how you can explore and visualize this, and how to use it for some basic analysis.</p>
+<h2>Tutorial Outline<span class="tocSkip"></span></h2>
+<hr>
+<div class="toc"><ul class="toc-item">
+<li><span><a href="#1.-Introducing the packages" data-toc-modified-id="1.-Introducing-the-packages-2">1. Introducing the packages</a></span></li>
+<li><span><a href="#2.-Extracting land-use information from OpenStreetMap" data-toc-modified-id="2.-Extracting-landuse-information-3">2. Extract and visualize land-use information from OpenStreetMap</a></span></li>
+<li><span><a href="#3.-Visualize and rasterize land-use information" data-toc-modified-id="3.-Visualize-Rasterize-4">3. Rasterize land-use information</a></span></li>
+<li><span><a href="#4.-Extracting buildings from OpenStreetMap" data-toc-modified-id="4.-Extracting-buildings-5">4. Extracting buildings from OpenStreetMap</a></span></li>
+<li><span><a href="#5.-Analyze and visualize building stock" data-toc-modified-id="5.-Analyze-buildings-6">5. Analyze and visualize building stock</a></span></li>
+<li><span><a href="#6.-Extracting roads from OpenStreetMap" data-toc-modified-id="4.-Extracting-roads-5">6. Extracting roads from OpenStreetMap</a></span></li>
+<li><span><a href="#7.-Plot Routes Using OpenStreetMap and Folium" data-toc-modified-id="5.-Plot-routes-6">7. Plot Routes Using OpenStreetMap and Folium</a></span></li></ul></div><section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
+<hr><ul class="simple">
+<li><p>.</p></li>
+<li><p>.</p></li>
+<li><p>.</p></li>
+<li><p>.</p></li>
+<li><p>.</p></li>
+<li><p>.</p></li>
+</ul>
+</section>
+<section id="introducing-the-packages">
+<h2>1.Introducing the packages<a class="headerlink" href="#introducing-the-packages" title="Permalink to this headline">#</a></h2>
+<hr><p>Within this tutorial, we are going to make use of three packages: <strong>OSMnx</strong>, <strong>rasterio</strong> and <strong>matplotlib</strong>.</p>
+<p><strong>OSMnx</strong> is a Python package that lets you download geospatial data from OpenStreetMap and model, project, visualize, and analyze real-world street networks and any other geospatial geometries. You can download and model walkable, drivable, or bikeable urban networks with a single line of Python code then easily analyze and visualize them. You can just as easily download and work with other infrastructure types, amenities/points of interest, building footprints, elevation data, street bearings/orientations, and speed/travel time.</p>
+<p><strong>NetworkX</strong> is a Python package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks.</p>
+<p><strong>Matplotlib</strong> is a comprehensive Python package for creating static, animated, and interactive visualizations in Python. Matplotlib makes easy things easy and hard things possible.</p>
+<p><strong>Geocube</strong> is a Python package to convert geopandas vector data into rasterized data.</p>
+<p><strong>Rasterio</strong> is a Python package to organize and store gridded raster datasets such as satellite imagery and terrain models. Rasterio reads and writes these formats and provides a Python API based on Numpy N-dimensional arrays and GeoJSON.</p>
+<p><em>We will first need to install these packages in the cell below:</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span><span class="p">,</span> <span class="n">cycler</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>!pip install osmnx
+!pip install geopandas
+!pip install geocube
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;contextlib.ExitStack at 0x7f09c0b2b910&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: osmnx in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (1.2.2)
+Requirement already satisfied: matplotlib&gt;=3.5 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from osmnx) (3.6.2)
+Requirement already satisfied: numpy&gt;=1.22 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from osmnx) (1.23.5)
+Requirement already satisfied: requests&gt;=2.28 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from osmnx) (2.28.1)
+Requirement already satisfied: Rtree&gt;=1.0 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from osmnx) (1.0.1)
+Requirement already satisfied: geopandas&gt;=0.11 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from osmnx) (0.12.2)
+Requirement already satisfied: pyproj&gt;=3.3 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from osmnx) (3.4.0)
+Requirement already satisfied: pandas&gt;=1.4 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from osmnx) (1.5.2)
+Requirement already satisfied: Shapely&lt;2.0,&gt;=1.8 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from osmnx) (1.8.5.post1)
+Requirement already satisfied: networkx&gt;=2.8 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from osmnx) (2.8.8)
+Requirement already satisfied: packaging in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from geopandas&gt;=0.11-&gt;osmnx) (22.0)
+Requirement already satisfied: fiona&gt;=1.8 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from geopandas&gt;=0.11-&gt;osmnx) (1.8.22)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from matplotlib&gt;=3.5-&gt;osmnx) (1.4.4)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from matplotlib&gt;=3.5-&gt;osmnx) (2.8.2)
+Requirement already satisfied: cycler&gt;=0.10 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from matplotlib&gt;=3.5-&gt;osmnx) (0.11.0)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from matplotlib&gt;=3.5-&gt;osmnx) (4.38.0)
+Requirement already satisfied: pillow&gt;=6.2.0 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from matplotlib&gt;=3.5-&gt;osmnx) (9.3.0)
+Requirement already satisfied: pyparsing&gt;=2.2.1 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from matplotlib&gt;=3.5-&gt;osmnx) (3.0.9)
+Requirement already satisfied: contourpy&gt;=1.0.1 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from matplotlib&gt;=3.5-&gt;osmnx) (1.0.6)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pytz&gt;=2020.1 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from pandas&gt;=1.4-&gt;osmnx) (2022.6)
+Requirement already satisfied: certifi in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from pyproj&gt;=3.3-&gt;osmnx) (2022.12.7)
+Requirement already satisfied: charset-normalizer&lt;3,&gt;=2 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from requests&gt;=2.28-&gt;osmnx) (2.1.1)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from requests&gt;=2.28-&gt;osmnx) (1.26.13)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from requests&gt;=2.28-&gt;osmnx) (3.4)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: munch in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from fiona&gt;=1.8-&gt;geopandas&gt;=0.11-&gt;osmnx) (2.5.0)
+Requirement already satisfied: click-plugins&gt;=1.0 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from fiona&gt;=1.8-&gt;geopandas&gt;=0.11-&gt;osmnx) (1.1.1)
+Requirement already satisfied: cligj&gt;=0.5 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from fiona&gt;=1.8-&gt;geopandas&gt;=0.11-&gt;osmnx) (0.7.2)
+Requirement already satisfied: attrs&gt;=17 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from fiona&gt;=1.8-&gt;geopandas&gt;=0.11-&gt;osmnx) (21.4.0)
+Requirement already satisfied: setuptools in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from fiona&gt;=1.8-&gt;geopandas&gt;=0.11-&gt;osmnx) (56.0.0)
+Requirement already satisfied: click&gt;=4.0 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from fiona&gt;=1.8-&gt;geopandas&gt;=0.11-&gt;osmnx) (8.1.3)
+Requirement already satisfied: six&gt;=1.7 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from fiona&gt;=1.8-&gt;geopandas&gt;=0.11-&gt;osmnx) (1.16.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: geopandas in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (0.12.2)
+Requirement already satisfied: pandas&gt;=1.0.0 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from geopandas) (1.5.2)
+Requirement already satisfied: packaging in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from geopandas) (22.0)
+Requirement already satisfied: fiona&gt;=1.8 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from geopandas) (1.8.22)
+Requirement already satisfied: pyproj&gt;=2.6.1.post1 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from geopandas) (3.4.0)
+Requirement already satisfied: shapely&gt;=1.7 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from geopandas) (1.8.5.post1)
+Requirement already satisfied: setuptools in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from fiona&gt;=1.8-&gt;geopandas) (56.0.0)
+Requirement already satisfied: munch in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from fiona&gt;=1.8-&gt;geopandas) (2.5.0)
+Requirement already satisfied: certifi in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from fiona&gt;=1.8-&gt;geopandas) (2022.12.7)
+Requirement already satisfied: attrs&gt;=17 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from fiona&gt;=1.8-&gt;geopandas) (21.4.0)
+Requirement already satisfied: six&gt;=1.7 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from fiona&gt;=1.8-&gt;geopandas) (1.16.0)
+Requirement already satisfied: click&gt;=4.0 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from fiona&gt;=1.8-&gt;geopandas) (8.1.3)
+Requirement already satisfied: cligj&gt;=0.5 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from fiona&gt;=1.8-&gt;geopandas) (0.7.2)
+Requirement already satisfied: click-plugins&gt;=1.0 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from fiona&gt;=1.8-&gt;geopandas) (1.1.1)
+Requirement already satisfied: python-dateutil&gt;=2.8.1 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from pandas&gt;=1.0.0-&gt;geopandas) (2.8.2)
+Requirement already satisfied: pytz&gt;=2020.1 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from pandas&gt;=1.0.0-&gt;geopandas) (2022.6)
+Requirement already satisfied: numpy&gt;=1.20.3 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from pandas&gt;=1.0.0-&gt;geopandas) (1.23.5)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: geocube in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (0.3.3)
+Requirement already satisfied: xarray&gt;=0.17 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from geocube) (2022.12.0)
+Requirement already satisfied: odc-geo in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from geocube) (0.3.2)
+Requirement already satisfied: scipy in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from geocube) (1.9.3)
+Requirement already satisfied: numpy&gt;=1.20 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from geocube) (1.23.5)
+Requirement already satisfied: click&gt;=6.0 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from geocube) (8.1.3)
+Requirement already satisfied: pyproj&gt;=2 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from geocube) (3.4.0)
+Requirement already satisfied: rioxarray&gt;=0.4 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from geocube) (0.13.1)
+Requirement already satisfied: rasterio in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from geocube) (1.3.4)
+Requirement already satisfied: geopandas&gt;=0.7 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from geocube) (0.12.2)
+Requirement already satisfied: appdirs in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from geocube) (1.4.4)
+Requirement already satisfied: pandas&gt;=1.0.0 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from geopandas&gt;=0.7-&gt;geocube) (1.5.2)
+Requirement already satisfied: shapely&gt;=1.7 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from geopandas&gt;=0.7-&gt;geocube) (1.8.5.post1)
+Requirement already satisfied: packaging in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from geopandas&gt;=0.7-&gt;geocube) (22.0)
+Requirement already satisfied: fiona&gt;=1.8 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from geopandas&gt;=0.7-&gt;geocube) (1.8.22)
+Requirement already satisfied: certifi in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from pyproj&gt;=2-&gt;geocube) (2022.12.7)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: snuggs&gt;=1.4.1 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from rasterio-&gt;geocube) (1.4.7)
+Requirement already satisfied: affine in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from rasterio-&gt;geocube) (2.3.1)
+Requirement already satisfied: click-plugins in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from rasterio-&gt;geocube) (1.1.1)
+Requirement already satisfied: setuptools in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from rasterio-&gt;geocube) (56.0.0)
+Requirement already satisfied: cligj&gt;=0.5 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from rasterio-&gt;geocube) (0.7.2)
+Requirement already satisfied: attrs in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from rasterio-&gt;geocube) (21.4.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: cachetools in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from odc-geo-&gt;geocube) (5.2.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: munch in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from fiona&gt;=1.8-&gt;geopandas&gt;=0.7-&gt;geocube) (2.5.0)
+Requirement already satisfied: six&gt;=1.7 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from fiona&gt;=1.8-&gt;geopandas&gt;=0.7-&gt;geocube) (1.16.0)
+Requirement already satisfied: python-dateutil&gt;=2.8.1 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from pandas&gt;=1.0.0-&gt;geopandas&gt;=0.7-&gt;geocube) (2.8.2)
+Requirement already satisfied: pytz&gt;=2020.1 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from pandas&gt;=1.0.0-&gt;geopandas&gt;=0.7-&gt;geocube) (2022.6)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pyparsing&gt;=2.1.6 in /opt/hostedtoolcache/Python/3.8.15/x64/lib/python3.8/site-packages (from snuggs&gt;=1.4.1-&gt;rasterio-&gt;geocube) (3.0.9)
+</pre></div>
+</div>
+</div>
+</div>
+<p>And we will import these packages in the cell below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import osmnx as ox
+import networkx as nx
+import contextily as cx
+
+from matplotlib.colors import LinearSegmentedColormap
+from matplotlib.patches import Patch
+import matplotlib.pyplot as plt
+from IPython.display import IFrame
+from geocube.api.core import make_geocube
+
+%matplotlib inline
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">osmnx</span> <span class="k">as</span> <span class="nn">ox</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">contextily</span> <span class="k">as</span> <span class="nn">cx</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LinearSegmentedColormap</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Patch</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;contextily&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="extract-and-visualize-land-use-information-from-openstreetmap">
+<h2>2. Extract and visualize land-use information from OpenStreetMap<a class="headerlink" href="#extract-and-visualize-land-use-information-from-openstreetmap" title="Permalink to this headline">#</a></h2>
+<hr><p>The first step is to define which area you want to focus on. In the cell below, you will now read “Steenwijk, The Netherlands”. Change this to any random or municipality in the Netherlands that (1) you can think of and (2) will work.</p>
+<p>In some cases, the function does not recognize the location. You could either try a different phrasing or try a different location. Many parts of the Netherlands should work.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>place_name = &quot;Steenwijk, The Netherlands&quot;
+area = ox.geocode_to_gdf(place_name)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let us visualize the bounding box of the area. As you will notice, we also estimate the size of the area. If the area size is above 50km2, or when you have many elements within your area (for example the amsterdam city centre), extracting the data from OpenStreetMap may take a little while.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>area_to_check = area.to_crs(epsg=3857)
+ax = area_to_check.plot(figsize=(10, 10), color=&quot;none&quot;, edgecolor=&quot;k&quot;, linewidth=4)
+ax.set_xticks([])
+ax.set_yticks([])
+ax.set_axis_off()
+cx.add_basemap(ax, zoom=14)
+
+size = int(area_to_check.area/1e6)
+
+ax.set_title(&quot;{}. Total area: {} km2&quot;.format(place_name,size),fontweight=&#39;bold&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Steenwijk, The Netherlands. Total area: 31 km2&#39;)
+</pre></div>
+</div>
+<img alt="../_images/tutorial1_13_1.png" src="../_images/tutorial1_13_1.png" />
+</div>
+</div>
+<p>Now we are satisfied with the selected area, we are going to extract the land-use information from OpenStreetMap. To find the right information from OpenStreetMap, we use <strong>tags</strong>.</p>
+<p>As you will see in the cell below, we use the tags <em>“landuse”</em> and <em>“natural”</em>. We need to use the <em>“natural”</em> tag to ensure we also obtain water bodies and other natural elements.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># List key-value pairs for tags
+tags = {&#39;landuse&#39;: True, &#39;natural&#39;: True}   
+landuse = ox.geometries_from_place(place_name, tags)
+</pre></div>
+</div>
+</div>
+</div>
+<p>To ensure we really only get the area that we want, we use geopandas’s <code class="docutils literal notranslate"><span class="pre">clip</span></code> function to only keep the area we want. This function does exactly the same as the <code class="docutils literal notranslate"><span class="pre">clip</span></code> function in QGIS.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>landuse = landuse.clip(area)
+</pre></div>
+</div>
+</div>
+</div>
+<p>When we want to visualize or analyse the data, we want all information in a single column. However, at the moment, all information that was tagged as <em>“natural”</em>, has no information stored in the <em>“landuse”</em> tags. It is, however, very convenient if we can just use a single column for further exploration of the data.</p>
+<p>To overcome this issue, we need to add the missing information to the landuse column, as done below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>landuse.loc[landuse.natural==&#39;water&#39;,&#39;landuse&#39;] = &#39;water&#39;
+landuse.loc[landuse.natural==&#39;beach&#39;,&#39;landuse&#39;] = &#39;beach&#39;
+landuse.loc[landuse.natural==&#39;grassland&#39;,&#39;landuse&#39;] = &#39;grass&#39;
+landuse.loc[landuse.natural==&#39;wetland&#39;,&#39;landuse&#39;] = &#39;wetlands&#39;
+landuse = landuse.dropna(subset=[&#39;landuse&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Our next step is to prepare the visualisation of a map. What better way to explore land-use information than plotting it on a map? As you will see below, we can create a dictionary with color codes that will color each land-use class based on the color code provided in this dictionary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>color_dict = {  &quot;grass&quot;:&#39;#c3eead&#39;,               &quot;railway&quot;: &quot;#000000&quot;,
+                &quot;forest&quot;:&#39;#1c7426&#39;,              &quot;orchard&quot;:&#39;#fe6729&#39;,
+                &quot;residential&quot;:&#39;#f13013&#39;,         &quot;industrial&quot;:&#39;#0f045c&#39;,
+                &quot;retail&quot;:&#39;#b71456&#39;,              &quot;education&quot;:&#39;#d61181&#39;,              
+                &quot;commercial&quot;:&#39;#981cb8&#39;,          &quot;farmland&quot;:&#39;#fcfcb9&#39;,
+                &quot;cemetery&quot;:&#39;#c39797&#39;,            &quot;construction&quot;:&#39;#c0c0c0&#39;,
+                &quot;meadow&quot;:&#39;#c3eead&#39;,              &quot;farmyard&quot;:&#39;#fcfcb9&#39;,
+                &quot;plant_nursery&quot;:&#39;#eaffe2&#39;,       &quot;scrub&quot;:&#39;#98574d&#39;,
+                &quot;allotments&quot;:&#39;#fbffe2&#39;,          &quot;reservoir&quot;:&#39;#8af4f2&#39;,
+                &quot;static_caravan&quot;:&#39;#ff3a55&#39;,      &quot;wetlands&quot;: &quot;#c9f5e5&quot;,
+                &quot;water&quot;: &quot;#c9e5f5&quot;,              &quot;beach&quot;: &quot;#ffeead&quot;,
+                &quot;landfill&quot; : &quot;#B08C4D&quot;,          &quot;recreation_ground&quot; : &quot;#c3eead&quot;,
+                &quot;brownfield&quot; : &quot;#B08C4D&quot;,        &quot;village_green&quot; : &quot;#f13013&quot; ,
+                &quot;military&quot;: &quot;#52514E&quot;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Unfortunately, OpenSteetMap very often contains elements that have a unique tag. As such, it may be the case that some of our land-use categories are not in the dictionary yet.</p>
+<p>Let’s first create an overview of the unique land-use categories within our data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>landuse.landuse.unique()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;water&#39;, &#39;forest&#39;, &#39;grass&#39;, &#39;residential&#39;, &#39;farmland&#39;,
+       &#39;industrial&#39;, &#39;landfill&#39;, &#39;allotments&#39;, &#39;cemetery&#39;,
+       &#39;village_green&#39;, &#39;meadow&#39;, &#39;recreation_ground&#39;, &#39;railway&#39;,
+       &#39;brownfield&#39;, &#39;commercial&#39;, &#39;retail&#39;, &#39;wetlands&#39;, &#39;military&#39;,
+       &#39;beach&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ofcourse we can visually compare the array above with our color_dict, but it is much quicker to use Sets to check if there is anything missing:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>set(landuse.landuse.unique())-set(color_dict)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>set()
+</pre></div>
+</div>
+</div>
+</div>
+<p>In case anything is missing, add them to the color_dict dictionairy and re-run that cell. You can find new hexcodes here: https://htmlcolorcodes.com/color-picker/. You can also use that website later on if you disagree with some of the color codes we already added to this dictionairy.</p>
+<p>Our next step is to make sure that we can connect our color codes to our dataframe with land-use categories.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Remove multiple keys from dictionary
+color_dict = {key: color_dict[key]
+             for key in color_dict if key not in  list(set(color_dict)-set(landuse.landuse.unique()))}
+
+map_dict = dict(zip(color_dict.keys(),[x for x in range(len(color_dict))]))
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fixing random state for reproducibility</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">19680801</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># make sure we add the colors for each land use to the dataframe
+landuse[&#39;col_landuse&#39;] = landuse.landuse.apply(lambda x: color_dict[x])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can plot the figure!</p>
+<p>As you will see in the cell below, we first state that we want to create a figure with a specific figure size. You can change the dimensions to your liking.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax = plt.subplots(1, 1,figsize=(12,10))
 
-<span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="n">ii</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span>
-<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.prop_cycle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycler</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)))</span>
+# add color scheme
+color_scheme_map = list(color_dict.values())
+cmap = LinearSegmentedColormap.from_list(name=&#39;landuse&#39;,
+                                     colors=color_scheme_map)  
 
+# and plot the land-use map.
+landuse.plot(color=landuse[&#39;col_landuse&#39;],ax=ax,linewidth=0)
 
-<span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="kn">import</span> <span class="n">Line2D</span>
-<span class="n">custom_lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">0.</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
-                <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">.5</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
-                <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">1.</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)]</span>
+# remove the ax labels
+ax.set_xticks([])
+ax.set_yticks([])
+ax.set_axis_off()
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">lines</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">custom_lines</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Cold&#39;</span><span class="p">,</span> <span class="s1">&#39;Medium&#39;</span><span class="p">,</span> <span class="s1">&#39;Hot&#39;</span><span class="p">]);</span>
+# add a legend:
+legend_elements = []
+for iter_,item in enumerate(color_dict):
+    legend_elements.append(Patch(facecolor=color_scheme_map[iter_],label=item))        
+
+ax.legend(handles=legend_elements,edgecolor=&#39;black&#39;,facecolor=&#39;#fefdfd&#39;,prop={&#39;size&#39;:12},loc=(1.02,0.2)) 
+
+# add a title
+ax.set_title(place_name,fontweight=&#39;bold&#39;)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/tutorial1_2_02.png" src="../_images/tutorial1_2_02.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Steenwijk, The Netherlands&#39;)
+</pre></div>
+</div>
+<img alt="../_images/tutorial1_30_1.png" src="../_images/tutorial1_30_1.png" />
 </div>
 </div>
-<p>There is a lot more that you can do with outputs (such as including interactive outputs)
-with your book. For more information about this, see <a class="reference external" href="https://jupyterbook.org">the Jupyter Book documentation</a></p>
+</section>
+<section id="rasterize-land-use-information">
+<h2>3. Rasterize land-use information<a class="headerlink" href="#rasterize-land-use-information" title="Permalink to this headline">#</a></h2>
+<hr><p>As you have noticed already during the lecture, and as we will again see next week when using the Google Earth Engine, most land-use data is in raster format.</p>
+<p>In OpenStreetMap, as you have just noticed, the land-use information is in vector format. While it is not always necessary to have this information in raster format, it is useful to know how to get your info.</p>
+<p>To do so, we make use of the <strong>GeoCube</strong> package, which is a newly developed Python package that can very easily convert vector data into a raster format.</p>
+<p>The first thing we will need to do is to define all the unique land-use classes and store them in a dictionary:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>categorical_enums = {&#39;landuse&#39;: landuse.landuse.drop_duplicates().values.tolist()
+}
+</pre></div>
+</div>
+</div>
+</div>
+<p>And now we simply use the <code class="docutils literal notranslate"><span class="pre">make_geocube()</span></code> function to convert our vector data into raster data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>out_grid = make_geocube(
+    vector_data=landuse,
+    output_crs=&quot;epsg:4326&quot;,
+    resolution=(-0.0001, 0.0001),
+    categorical_enums=categorical_enums
+)
+</pre></div>
+</div>
+</div>
+</div>
+<p>And let’s plot it to see the result!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>out_grid[&quot;landuse&quot;].plot()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x2051f5970a0&gt;
+</pre></div>
+</div>
+<img alt="../_images/tutorial1_38_1.png" src="../_images/tutorial1_38_1.png" />
+</div>
+</div>
+</section>
+<section id="extracting-buildings-from-openstreetmap">
+<h2>4. Extracting buildings from OpenStreetMap<a class="headerlink" href="#extracting-buildings-from-openstreetmap" title="Permalink to this headline">#</a></h2>
+<hr><p>There is a lot more data to extract from OpenStreetMap besides land-use information. Let’s extract some building data. To do so, we use the <em>“building”</em> tag.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tags = {&quot;building&quot;: True}
+buildings = ox.geometries_from_place(place_name, tags)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s see what information is actually extracted:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>buildings.head()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>addr:city</th>
+      <th>addr:housenumber</th>
+      <th>addr:postcode</th>
+      <th>addr:street</th>
+      <th>building</th>
+      <th>name</th>
+      <th>source</th>
+      <th>source:date</th>
+      <th>geometry</th>
+      <th>emergency</th>
+      <th>...</th>
+      <th>website</th>
+      <th>social_facility</th>
+      <th>social_facility:for</th>
+      <th>designation</th>
+      <th>substation</th>
+      <th>note:BAG</th>
+      <th>bridge:support</th>
+      <th>construction</th>
+      <th>ways</th>
+      <th>type</th>
+    </tr>
+    <tr>
+      <th>element_type</th>
+      <th>osmid</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>node</th>
+      <th>2823618780</th>
+      <td>Steenwijk</td>
+      <td>15</td>
+      <td>8332JD</td>
+      <td>Parallelweg</td>
+      <td>public</td>
+      <td>Wijkcentrum De Oerthe</td>
+      <td>BAG</td>
+      <td>2014-03-24</td>
+      <td>POINT (6.13482 52.78944)</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th rowspan="4" valign="top">way</th>
+      <th>58337006</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>yes</td>
+      <td>NaN</td>
+      <td>3dShapes</td>
+      <td>NaN</td>
+      <td>POLYGON ((6.10044 52.78450, 6.10086 52.78442, ...</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>58343657</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>roof</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>POLYGON ((6.12222 52.79196, 6.12202 52.79200, ...</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>265889057</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>yes</td>
+      <td>Dierenkliniek Steenwijk</td>
+      <td>BAG</td>
+      <td>2014-02-11</td>
+      <td>POLYGON ((6.12290 52.79493, 6.12284 52.79494, ...</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>265889058</th>
+      <td>Steenwijk</td>
+      <td>21</td>
+      <td>8332JE</td>
+      <td>Woldmeentherand</td>
+      <td>yes</td>
+      <td>McDonald's</td>
+      <td>BAG</td>
+      <td>2020-01-02</td>
+      <td>POLYGON ((6.12035 52.79910, 6.12013 52.79915, ...</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 64 columns</p>
+</div></div></div>
+</div>
+<p>As you notice in the output of the cell above, there are many columns which just contain “NaN”. And there even seem to be to many columns to even visualize properly in one view.</p>
+<p>Let’s check what information is collected for the different buildings:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>buildings.columns
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;addr:city&#39;, &#39;addr:housenumber&#39;, &#39;addr:postcode&#39;, &#39;addr:street&#39;,
+       &#39;building&#39;, &#39;name&#39;, &#39;source&#39;, &#39;source:date&#39;, &#39;geometry&#39;, &#39;emergency&#39;,
+       &#39;opening_hours&#39;, &#39;nodes&#39;, &#39;man_made&#39;, &#39;layer&#39;, &#39;amenity&#39;, &#39;ref:bag&#39;,
+       &#39;start_date&#39;, &#39;addr:country&#39;, &#39;brand&#39;, &#39;brand:wikidata&#39;,
+       &#39;brand:wikipedia&#39;, &#39;contact:phone&#39;, &#39;contact:website&#39;, &#39;cuisine&#39;,
+       &#39;delivery&#39;, &#39;description&#39;, &#39;drive_through&#39;, &#39;internet_access&#39;,
+       &#39;internet_access:fee&#39;, &#39;takeaway&#39;, &#39;toilets:wheelchair&#39;, &#39;wheelchair&#39;,
+       &#39;religion&#39;, &#39;heritage&#39;, &#39;ref:bag:old&#39;, &#39;power&#39;, &#39;shop&#39;,
+       &#39;building:levels&#39;, &#39;addr:housename&#39;, &#39;architect&#39;, &#39;architect:wikidata&#39;,
+       &#39;building:architecture&#39;, &#39;heritage:operator&#39;, &#39;historic&#39;, &#39;note&#39;,
+       &#39;ref:rce&#39;, &#39;survey:date&#39;, &#39;wikidata&#39;, &#39;wikipedia&#39;, &#39;year&#39;,
+       &#39;roof:levels&#39;, &#39;official_name&#39;, &#39;operator&#39;, &#39;denomination&#39;, &#39;website&#39;,
+       &#39;social_facility&#39;, &#39;social_facility:for&#39;, &#39;designation&#39;, &#39;substation&#39;,
+       &#39;note:BAG&#39;, &#39;bridge:support&#39;, &#39;construction&#39;, &#39;ways&#39;, &#39;type&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="analyze-and-visualize-building-stock">
+<h2>5. Analyze and visualize building stock<a class="headerlink" href="#analyze-and-visualize-building-stock" title="Permalink to this headline">#</a></h2>
+<hr><p>What we also noticed is that quite some buildings are identified as ‘yes’. This is not very useful as it does not really say much about the use of the building.</p>
+<p>Let’s see for how many buildings this is the case:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>buildings.building.value_counts()
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>house             6449
+yes               4617
+industrial         218
+apartments         174
+retail              72
+construction        59
+commercial          56
+static_caravan      23
+roof                11
+houseboat            6
+shed                 5
+office               5
+school               3
+church               3
+civic                1
+service              1
+public               1
+Name: building, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s visualize the buildings again. We need to create a similar color dictionary as we did for the land-use categories. Now its up to you to make it!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>color_dict = {  &quot;grass&quot;:&#39;#c3eead&#39;,               &quot;railway&quot;: &quot;#000000&quot;,
+                &quot;forest&quot;:&#39;#1c7426&#39;,              &quot;orchard&quot;:&#39;#fe6729&#39;,
+                &quot;residential&quot;:&#39;#f13013&#39;,         &quot;industrial&quot;:&#39;#0f045c&#39;,
+                &quot;retail&quot;:&#39;#b71456&#39;,              &quot;education&quot;:&#39;#d61181&#39;,              
+                &quot;commercial&quot;:&#39;#981cb8&#39;,          &quot;farmland&quot;:&#39;#fcfcb9&#39;,
+                &quot;cemetery&quot;:&#39;#c39797&#39;,            &quot;construction&quot;:&#39;#c0c0c0&#39;,
+                &quot;meadow&quot;:&#39;#c3eead&#39;,              &quot;farmyard&quot;:&#39;#fcfcb9&#39;,
+                &quot;plant_nursery&quot;:&#39;#eaffe2&#39;,       &quot;scrub&quot;:&#39;#98574d&#39;,
+                &quot;allotments&quot;:&#39;#fbffe2&#39;,          &quot;reservoir&quot;:&#39;#8af4f2&#39;,
+                &quot;static_caravan&quot;:&#39;#ff3a55&#39;,      &quot;wetlands&quot;: &quot;#c9f5e5&quot;,
+                &quot;water&quot;: &quot;#c9e5f5&quot;,              &quot;beach&quot;: &quot;#ffeead&quot;,}
+
+
+# Remove multiple keys from dictionary
+color_dict = {key: color_dict[key]
+             for key in color_dict if key not in  list(set(color_dict)-set(landuse.landuse.unique()))}
+
+map_dict = dict(zip(color_dict.keys(),[x for x in range(len(color_dict))]))
+</pre></div>
+</div>
+</div>
+</div>
+<p>And plot the figure in the same manner!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Plot the figure
+fig, ax = plt.subplots(1, 1,figsize=(12,10))
+color_scheme_map = list(color_dict.values())
+
+cmap = LinearSegmentedColormap.from_list(name=&#39;landuse&#39;,
+                                     colors=color_scheme_map)  
+
+buildings.plot(column=&#39;building&#39;,ax=ax,linewidth=0)
+
+ax.set_xticks([])
+ax.set_yticks([])
+ax.set_axis_off()
+#legend_elements = []
+#for iter_,item in enumerate(color_dict):
+#    legend_elements.append(Patch(facecolor=color_scheme_map[iter_],label=item))        
+
+#ax.legend(handles=legend_elements,edgecolor=&#39;black&#39;,facecolor=&#39;#fefdfd&#39;,prop={&#39;size&#39;:12},loc=(1.02,0.2)) 
+
+ax.set_title(place_name,fontweight=&#39;bold&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Steenwijk, The Netherlands&#39;)
+</pre></div>
+</div>
+<img alt="../_images/tutorial1_52_1.png" src="../_images/tutorial1_52_1.png" />
+</div>
+</div>
+</section>
+<section id="extracting-roads-from-openstreetmap">
+<h2>6. Extracting roads from OpenStreetMap<a class="headerlink" href="#extracting-roads-from-openstreetmap" title="Permalink to this headline">#</a></h2>
+<hr><p>Let’s continue (and end) this tutorial with the core data in OpenStreetMap (it is even in the name): roads!</p>
+<p>Now, instead of using tags, we want to identify what type of roads we would like to extract. Let’s first only extract roads that can be used to drive.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>G = ox.graph_from_place(place_name, network_type=&quot;drive&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># plot the street network with folium
+m1 = ox.plot_graph_folium(G, popup_attribute=&quot;name&quot;, weight=2, color=&quot;#8b0000&quot;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># save as html file then display map as an iframe
+filepath = &quot;data/graph.html&quot;
+m1.save(filepath)
+IFrame(filepath, width=600, height=500)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="600"
+    height="500"
+    src="data/graph.html"
+    frameborder="0"
+    allowfullscreen
+
+></iframe>
+</div></div>
+</div>
+</section>
+<section id="plot-routes-using-openstreetmap-and-folium">
+<h2>7. Plot Routes Using OpenStreetMap and Folium<a class="headerlink" href="#plot-routes-using-openstreetmap-and-folium" title="Permalink to this headline">#</a></h2>
+<hr><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># use networkx to calculate the shortest path between two nodes
+origin_node = list(G.nodes())[0]
+destination_node = list(G.nodes())[-1]
+route = nx.shortest_path(G, origin_node, destination_node)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># plot the route with folium
+# like above, you can pass keyword args along to folium PolyLine to style the lines
+m2 = ox.plot_route_folium(G, route, weight=10)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># save as html file then display map as an iframe
+filepath = &quot;data/route.html&quot;
+m2.save(filepath)
+IFrame(filepath, width=600, height=500)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="600"
+    height="500"
+    src="data/route.html"
+    frameborder="0"
+    allowfullscreen
+
+></iframe>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># plot the route with folium on top of the previously created graph_map
+m3 = ox.plot_route_folium(G, route, route_map=m1, popup_attribute=&quot;length&quot;, weight=7)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># save as html file then display map as an iframe
+filepath = &quot;data/route_graph.html&quot;
+m3.save(filepath)
+IFrame(filepath, width=600, height=500)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<iframe
+    width="600"
+    height="500"
+    src="data/route_graph.html"
+    frameborder="0"
+    allowfullscreen
+
+></iframe>
+</div></div>
+</div>
 </section>
 </section>
 
