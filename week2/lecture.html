@@ -644,7 +644,9 @@ title="Print to PDF"
 <ul class="simple">
 <li><p>Gain a basic understanding of using Pandas for data analysis.</p></li>
 <li><p>Understand and know how you can perform a regression analysis.</p></li>
-<li><p>Know how to interpret your results.</p></li>
+<li><p>Understand Random Forests and how they can be applied.</p></li>
+<li><p>Know how to apply and train a Random Forest model within Python.</p></li>
+<li><p>Know how to interpret your Random Forest model.</p></li>
 </ul>
 </div>
 <section id="linear-regression">
@@ -660,7 +662,7 @@ title="Print to PDF"
 <p>Random Forest is a supervised machine learning algorithm that grows and combines multiple decision trees to create a <em>forest</em>. It can be used for both classification and regression problems.</p>
 <p>A Random Forest model grows and combines multiple decision trees to create a <em>forest</em>. A decision tree is another type of algorithm used to classify data. In very simple terms, you can think of it like a flowchart that draws a clear pathway to a decision or outcome; it starts at a single point and then branches off into two or more directions, with each branch of the decision tree offering different possible outcomes.</p>
 <img src="../_static/images/decision-tree-example-2-1.jpg" class="bg-primary mb-1">
-*Figure 1: An example of a decision tree.*
+**Figure 1**: An example of a decision tree. <br>
 <p>Classification is an important and highly valuable branch of data science, and Random Forest is an algorithm that can be used for such classification tasks. Random Forest’s ensemble of trees outputs either the mode or mean of the individual trees. This method allows for more accurate and stable results by relying on a multitude of trees rather than a single decision tree. It’s kind of like the difference between a unicycle and a four-wheeler!</p>
 <p>The logic behind the Random Forest model is that multiple uncorrelated models (the individual decision trees) perform much better as a group than they do alone. When using Random Forest for classification, each tree gives a classification or a “vote.” The forest chooses the classification with the majority of the “votes.” When using Random Forest for regression, the forest picks the average of the outputs of all trees.</p>
 <p>The key here lies in the fact that there is low (or no) correlation between the individual models—that is, between the decision trees that make up the larger Random Forest model. While individual decision trees may produce errors, the majority of the group will be correct, thus moving the overall outcome in the right direction.</p>
