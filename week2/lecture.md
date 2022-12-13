@@ -21,7 +21,9 @@ This week we focus on the basics of data analysis and regression analysis.
 :class: important
 - Gain a basic understanding of using Pandas for data analysis.
 - Understand and know how you can perform a regression analysis. 
-- Know how to interpret your results.
+- Understand Random Forests and how they can be applied.
+- Know how to apply and train a Random Forest model within Python.
+- Know how to interpret your Random Forest model.
 `````
 
 ## Linear regression
@@ -36,7 +38,7 @@ Random Forest is a supervised machine learning algorithm that grows and combines
 A Random Forest model grows and combines multiple decision trees to create a *forest*. A decision tree is another type of algorithm used to classify data. In very simple terms, you can think of it like a flowchart that draws a clear pathway to a decision or outcome; it starts at a single point and then branches off into two or more directions, with each branch of the decision tree offering different possible outcomes.
 
 <img src="../_static/images/decision-tree-example-2-1.jpg" class="bg-primary mb-1">
-*Figure 1: An example of a decision tree.*
+**Figure 1**: An example of a decision tree. <br>
 
 Classification is an important and highly valuable branch of data science, and Random Forest is an algorithm that can be used for such classification tasks. Random Forest’s ensemble of trees outputs either the mode or mean of the individual trees. This method allows for more accurate and stable results by relying on a multitude of trees rather than a single decision tree. It’s kind of like the difference between a unicycle and a four-wheeler!
 
