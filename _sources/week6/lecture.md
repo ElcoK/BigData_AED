@@ -21,6 +21,7 @@ This week we will focus on how we can use Twitter data to map the impacts of nat
 :class: important
 - Understand the concept of Nature Language Processing
 - Gain a basic understand of how social media data can be explored and used.
+- Know how you can access Twitter data and use it in Python. 
 `````
 
 ## Natural Language Processing
@@ -94,9 +95,7 @@ These two sentences mean the exact same thing and the use of the word is identic
 Now, imagine all the English words in the vocabulary with all their different fixations at the end of them. To store them all would require a huge database containing many words that actually have the same meaning. This is solved by focusing only on a word’s stem. Popular algorithms for stemming include the Porter stemming algorithm from 1979, which still works well.
 
  
-
 **TEXT SEGMENTATION** 
-
 Text segmentation in natural language processing is the process of transforming text into meaningful units like words, sentences, different topics, the underlying intent and more. Mostly, the text is segmented into its component words, which can be a difficult task, depending on the language. This is again due to the complexity of human language. For example, it works relatively well in English to separate words by spaces, except for words like “icebox” that belong together but are separated by a space. The problem is that people sometimes also write it as “ice-box.”
 
 
@@ -126,4 +125,4 @@ With the use of sentiment analysis, for example, we may want to predict a custom
 This explananation is strongly based upon the work of [others](https://builtin.com/data-science/introduction-nlp/) 
 ```
 
-## Social Media data
+## Access to Twitter Data

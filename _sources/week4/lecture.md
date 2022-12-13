@@ -15,11 +15,18 @@ kernelspec:
 
 # Lecture: Big Data in the public domain
 
-This week we will focus on how we can use the various techniques we have learned over the past couple of weeks (e.g. data analysis and machine learning) to explore how the future may change.
+This week we will focus on the large amount of data available in the public domain that we can utilize within our research in sustainability sciences.
 
 `````{admonition} Learning objectives week 5
 :class: important
-- Understand the different drivers of future changes.
-- Gain a basic understanding of climate forecasting.
-- know how to translate future socioeconomic scenarios into spatially-explicit future changes of land-use
+- Understand what type of data is available.
+- Understand how licensing works.
+- Know how to access OpenStreetMap and perform basic spatial analysis on this data.
+- Know how to combine different open-access spatial datasets to perform a natural hazards risk assessment. 
 `````
+
+## Overview of data sources
+
+
+## Licencing of data in the public domain
+
