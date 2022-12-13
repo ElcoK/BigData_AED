@@ -46,6 +46,8 @@ You can find much more info about Python [here](https://docs.python.org/3/faq/ge
 ## What is machine learning?
 Machine learning is a subfield of artificial intelligence, which is broadly defined as the capability of a machine to imitate intelligent human behavior. Artificial intelligence systems are used to perform complex tasks in a way that is similar to how humans solve problems.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7gbGavTLUUE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Machine learning starts with data — numbers, photos, or text, like bank transactions, pictures of people or even bakery items, repair records, time series data from sensors, or sales reports. The data is gathered and prepared to be used as training data, or the information the machine learning model will be trained on. The more data, the better the program.
 
 “The function of a machine learning system can be *descriptive*, meaning that the system uses the data to explain what happened; *predictive*, meaning the system uses the data to predict what will happen; or *prescriptive*, meaning the system will use the data to make suggestions about what action to take,” the researchers wrote.  
@@ -60,6 +62,3 @@ In **unsupervised machine learning**, a program looks for patterns in unlabeled 
 
 <img src="../_static/images/machine-learning-infographic_2.jpg" class="bg-primary mb-1">
 
-**Neural networks** are a commonly used, specific class of machine learning algorithms. Artificial neural networks are modeled on the human brain, in which thousands or millions of processing nodes are interconnected and organized into layers.
-
-In an artificial neural network, cells, or nodes, are connected, with each cell processing inputs and producing an output that is sent to other neurons. Labeled data moves through the nodes, or cells, with each cell performing a different function. In a neural network trained to identify whether a picture contains a cat or not, the different nodes would assess the information and arrive at an output that indicates whether a picture features a cat.
