@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Tutorial 2: Regression Analysis &#8212; Big Data for Sustainability Sciences</title>
+    <title>Tutorial 2: Random Forests &#8212; Big Data for Sustainability Sciences</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lecture: Introduction to Artificial Neural Networks" href="../week3/lecture.html" />
-    <link rel="prev" title="Tutorial 1: Data Exploration" href="tutorial1.html" />
+    <link rel="prev" title="Tutorial 1: Data Exploration and regression analysis" href="tutorial1.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -175,12 +175,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="tutorial1.html">
-   Tutorial 1: Data Exploration
+   Tutorial 1: Data Exploration and regression analysis
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Tutorial 2: Regression Analysis
+   Tutorial 2: Random Forests
   </a>
  </li>
 </ul>
@@ -197,7 +197,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../week3/tutorial1.html">
-   Tutorial 1: Random Forests &amp; Neural Networks
+   Tutorial 1: Neural Networks
   </a>
  </li>
  <li class="toctree-l1">
@@ -224,7 +224,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../week4/tutorial2.html">
-   Tutorial 2: Flood Risk Assessment
+   Tutorial 2: Natural Hazard Risk Assessment
   </a>
  </li>
 </ul>
@@ -268,7 +268,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../week6/tutorial2.html">
-   Tutorial 2: Flood mapping using Twitter data
+   Tutorial 2: Social Media &amp; land aesthetics
   </a>
  </li>
 </ul>
@@ -285,7 +285,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../week7/tutorial1.html">
-   Tutorial: Visualising your results
+   Tutorial 1: Data Exploration and regression analysis
   </a>
  </li>
 </ul>
@@ -507,8 +507,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#code-blocks-and-outputs">
-   Code blocks and outputs
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning Objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introducing-the-packages">
+   1.Introducing the packages
   </a>
  </li>
 </ul>
@@ -520,7 +525,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Tutorial 2: Regression Analysis</h1>
+                <h1>Tutorial 2: Random Forests</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -531,8 +536,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#code-blocks-and-outputs">
-   Code blocks and outputs
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning Objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introducing-the-packages">
+   1.Introducing the packages
   </a>
  </li>
 </ul>
@@ -545,14 +555,32 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-2-regression-analysis">
-<h1>Tutorial 2: Regression Analysis<a class="headerlink" href="#tutorial-2-regression-analysis" title="Permalink to this headline">#</a></h1>
-<p>You can also create content with Jupyter Notebooks. This means that you can include
-code blocks and their outputs in your book.</p>
-<section id="code-blocks-and-outputs">
-<h2>Code blocks and outputs<a class="headerlink" href="#code-blocks-and-outputs" title="Permalink to this headline">#</a></h2>
-<p>Jupyter Book will also embed your code blocks and output in your book.
-For example, here’s some sample Matplotlib code:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-2-random-forests">
+<h1>Tutorial 2: Random Forests<a class="headerlink" href="#tutorial-2-random-forests" title="Permalink to this headline">#</a></h1>
+<h2>Tutorial Outline<span class="tocSkip"></span></h2>
+<hr>
+<div class="toc"><ul class="toc-item">
+<li><span><a href="#1.-Introducing the packages" data-toc-modified-id="1.-Introducing-the-packages-2">1. Introducing the packages</a></span></li>
+<li><span><a href="#2.-" data-toc-modified-id="2.-Extracting-landuse-information-3">2. </a></span></li>
+<li><span><a href="#3.-" data-toc-modified-id="3.-Visualize-Rasterize-4">3. </a></span></li>
+<li><span><a href="#4.-" data-toc-modified-id="4.-Extracting-buildings-5">4. </a></span></li>
+<li><span><a href="#5.-" data-toc-modified-id="5.-Analyze-buildings-6">5. </a></span></li>
+<li><span><a href="#6.-" data-toc-modified-id="4.-Extracting-roads-5">6. </a></span></li>
+<li><span><a href="#7.-" data-toc-modified-id="5.-Plot-routes-6">7. </a></span></li></ul></div><section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
+<hr><ul class="simple">
+<li><p>.</p></li>
+<li><p>.</p></li>
+<li><p>.</p></li>
+<li><p>.</p></li>
+<li><p>.</p></li>
+<li><p>.</p></li>
+</ul>
+</section>
+<section id="introducing-the-packages">
+<h2>1.Introducing the packages<a class="headerlink" href="#introducing-the-packages" title="Permalink to this headline">#</a></h2>
+<hr><p>Within this tutorial, we are going to make use of the following packages:</p>
+<p><em>We will first need to install these packages in the cell below. Uncomment them to make sure we can pip install them</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from matplotlib import rcParams, cycler
@@ -623,7 +651,7 @@ with your book. For more information about this, see <a class="reference externa
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Tutorial 1: Data Exploration</p>
+            <p class="prev-next-title">Tutorial 1: Data Exploration and regression analysis</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../week3/lecture.html" title="next page">
