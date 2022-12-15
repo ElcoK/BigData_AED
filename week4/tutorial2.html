@@ -527,13 +527,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#perform-a-damage-assessment-for-your-area-of-interest">
-   4. Perform a damage assessment for your area of interest
+  <a class="reference internal nav-link" href="#download-and-access-copernicus-land-cover-data">
+   4. Download and access Copernicus Land Cover data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#perform-a-damage-assessment-for-your-area-of-interest-using-coring-land-cover">
+   5. Perform a damage assessment for your area of interest using Coring Land Cover
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#perform-a-damage-assessment-for-your-area-of-interest-using-openstreetmap">
+   6. Perform a damage assessment for your area of interest using OpenStreetMap
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#interpret-and-visualize-your-damage-estimates">
-   5. Interpret and visualize your damage estimates
+   7. Interpret and visualize your damage estimates
   </a>
  </li>
 </ul>
@@ -576,13 +586,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#perform-a-damage-assessment-for-your-area-of-interest">
-   4. Perform a damage assessment for your area of interest
+  <a class="reference internal nav-link" href="#download-and-access-copernicus-land-cover-data">
+   4. Download and access Copernicus Land Cover data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#perform-a-damage-assessment-for-your-area-of-interest-using-coring-land-cover">
+   5. Perform a damage assessment for your area of interest using Coring Land Cover
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#perform-a-damage-assessment-for-your-area-of-interest-using-openstreetmap">
+   6. Perform a damage assessment for your area of interest using OpenStreetMap
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#interpret-and-visualize-your-damage-estimates">
-   5. Interpret and visualize your damage estimates
+   7. Interpret and visualize your damage estimates
   </a>
  </li>
 </ul>
@@ -597,12 +617,14 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="tutorial-2-natural-hazard-risk-assessment">
 <h1>Tutorial 2: Natural Hazard Risk Assessment<a class="headerlink" href="#tutorial-2-natural-hazard-risk-assessment" title="Permalink to this headline">#</a></h1>
-<p>In the second tutorial of this week, we are going to explore publicly available hazard data, and use OpenStreetMap to estimate the potential damage of natural hazards to the built environment.</p>
+<p>In the second tutorial of this week, we are going to use publicly available hazard data and exposure data to do a risk assessment for an area of choice within Europe. More specifically we will look at damage due to wind storms and flooding.</p>
+<p>We will use both Copernicus Land Cover data and OpenStreetMap to estimate the potential damage of natural hazards to the built environment. We will use Copernicus Land Cover data to estimate the damage to specific land-uses, whereas we will use OpenStreetMap to assess the potential damage to the road system.</p>
 <section id="learning-objectives">
 <h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
 <hr><ul class="simple">
-<li><p>To know where to find publicly available natural hazard data and how to download them.</p></li>
+<li><p>To know how to download data from the Copernicus Climate Data Store using the <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> and access it through Python.</p></li>
 <li><p>To be able to open and visualize this hazard data.</p></li>
+<li><p>To know how to access and open information from the Copernicus Land Monitoring System. Specifically the Corine Land Cover data.</p></li>
 <li><p>To understand the basic approach of a natural hazard risk assessment.</p></li>
 <li><p>To be able to use the <code class="docutils literal notranslate"><span class="pre">DamageScanner</span></code> to do a damage assessment.</p></li>
 <li><p>To interpret and visualize the damage estimates.</p></li>
@@ -613,8 +635,10 @@ title="Print to PDF"
 <li><span><a href="#1.-Introducing the packages" data-toc-modified-id="1.-Introducing-the-packages-2">1. Introducing the packages</a></span></li>
 <li><span><a href="#2.-Downloading and accessing natural hazard data" data-toc-modified-id="2.-Extracting-hazard-data-3">2. Downloading and accessing natural hazard data</a></span></li>
 <li><span><a href="#3.-Explore the natural hazard data for your area of interest" data-toc-modified-id="3.-Explore-hazard-data-4">3. Explore the natural hazard data for your area of interest</a></span></li>
-<li><span><a href="#4.-Perform a damage assessment for your area of interest" data-toc-modified-id="4.-Extracting-buildings-5">4. Perform a damage assessment for your area of interest</a></span></li>
-<li><span><a href="#5.-Interpret and visualize your damage estimates" data-toc-modified-id="5.-Analyze-buildings-6">5. Interpret and visualize your damage estimates</a></span></li></ul></div></section>
+<li><span><a href="#4.-Downloading and accessing Corine Land Cover" data-toc-modified-id="4.-Extracting-CLC-data-3">4. Downloading and accessing Corine Land Cover</a></span></li>    
+<li><span><a href="#5.-Perform a damage assessment for your area of interest using Coring Land Cover" data-toc-modified-id="5.-Damage-CLC-5">5. Perform a damage assessment for your area of interest using Coring Land Cover</a></span></li>
+<li><span><a href="#5.-Perform a damage assessment for your area of interest using OpenStreetMap" data-toc-modified-id="5.-Damage-OSM-5">6. Perform a damage assessment for your area of interest using OpenStreetMap</a></span></li>    
+<li><span><a href="#7.-Interpret and visualize your damage estimates" data-toc-modified-id="5.-Analyze-buildings-6">7. Interpret and visualize your damage estimates</a></span></li></ul></div></section>
 <section id="introducing-the-packages">
 <h2>1.Introducing the packages<a class="headerlink" href="#introducing-the-packages" title="Permalink to this headline">#</a></h2>
 <hr><p>Within this tutorial, we are going to make use of the following packages:</p>
@@ -623,15 +647,33 @@ title="Print to PDF"
 <p><a class="reference external" href="https://docs.xarray.dev/"><strong>xarray</strong></a> is a Python package that allows for easy and efficient use of multi-dimensional arrays.</p>
 <p><a class="reference external" href="https://matplotlib.org/"><strong>Matplotlib</strong></a> is a comprehensive Python package for creating static, animated, and interactive visualizations in Python. Matplotlib makes easy things easy and hard things possible.</p>
 <p><em>We will first need to install the missing packages in the cell below. Uncomment them to make sure we can pip install them</em></p>
-<p>#!pip install osmnx
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#!pip install osmnx
 #!pip install geopandas
-#!pip install contextily</p>
+#!pip install contextily
+</pre></div>
+</div>
+</div>
+</div>
 <p>And we will import these packages in the cell below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from matplotlib import rcParams, cycler
-import matplotlib.pyplot as plt
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import os
 import numpy as np
+import rasterio
+import cdsapi
+import xarray as xr
+import pygeos 
+import geopandas as gpd
+import osmnx as ox
+import matplotlib.pyplot as plt
+
+from zipfile import ZipFile
+from matplotlib import rcParams, cycler
+
+import urllib3
+urllib3.disable_warnings()
 </pre></div>
 </div>
 </div>
@@ -639,15 +681,147 @@ import numpy as np
 </section>
 <section id="downloading-and-accessing-natural-hazard-data">
 <h2>2. Downloading and accessing natural hazard data<a class="headerlink" href="#downloading-and-accessing-natural-hazard-data" title="Permalink to this headline">#</a></h2>
-<hr></section>
+<hr><p>We are going to perform a damage assessment using both windstorm data and flood data for Europe.</p>
+<p>The windstorm data will be downloaded from the <a class="reference external" href="https://cds.climate.copernicus.eu/">Copernicus Climate Data Store</a>. As we have seen during the lecture, and as you can also see by browsing on this website, there is an awful lot of climate data available through this Data Store. As such, it is very valuable to understand how to access and download this information to use within an analysis. To keep things simple, we only download one dataset today: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#%21/dataset/sis-european-wind-storm-indicators?tab=overview">A winter windstorm</a>.</p>
+<p>We will do so using an <strong>API</strong>, which is the acronym for application programming interface. It is a software intermediary that allows two applications to talk to each other. APIs are an accessible way to extract and share data within and across organizations. APIs are all around us. Every time you use a rideshare app, send a mobile payment, or change the thermostat temperature from your phone, you’re using an API.</p>
+<p>However, before we can access this <strong>API</strong>, we need to take a few steps. Most importantly, we need to register ourselves on the <a class="reference external" href="https://cds.climate.copernicus.eu/">Copernicus Climate Data Store</a> portal. To do so, we need to register, as explained in the video clip below:</p>
+<img alt="../_images/CDS_registration.gif" class="bg-primary mb-1" src="../_images/CDS_registration.gif" />
+<p>Now, the next step is to access the API. You can now login on the website of the <a class="reference external" href="https://cds.climate.copernicus.eu/">Copernicus Climate Data Store</a>. After you login, you can click on your name in the top right corner of the webpage (next to the login button). On the personal page that has just opened, you will find your user ID (<strong>uid</strong>) and your personal <strong>API</strong>. You need to add those in the cell below to be able to download the windstorm.</p>
+<p>As you can see in the cell below, we download a specific windstorm that has occured on the fifth of December in 2013. This is storm Xaver.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>uid = 76974
+apikey = &#39;ace04e3e-84e3-4d0c-ae9d-d248aca1f5e5&#39;
+
+c = cdsapi.Client(key=f&quot;{uid}:{apikey}&quot;, url=&quot;https://cds.climate.copernicus.eu/api/v2&quot;)
+
+c.retrieve(
+    &#39;sis-european-wind-storm-indicators&#39;,
+    {
+        &#39;variable&#39;: &#39;all&#39;,
+        &#39;format&#39;: &#39;zip&#39;,
+        &#39;product&#39;: &#39;windstorm_footprints&#39;,
+        &#39;year&#39;: &#39;2013&#39;,
+        &#39;month&#39;: &#39;12&#39;,
+        &#39;day&#39;: &#39;05&#39;,
+    },
+    &#39;Xaver.zip&#39;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-12-15 11:16:14,182 INFO Welcome to the CDS
+2022-12-15 11:16:14,184 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/sis-european-wind-storm-indicators
+2022-12-15 11:16:14,268 INFO Request is completed
+2022-12-15 11:16:14,270 INFO Downloading https://download-0021.copernicus-climate.eu/cache-compute-0021/cache/data0/dataset-sis-european-wind-storm-indicators-3532b693-f64c-4771-8a00-4bfaace9c079.zip to Xaver.zip (14.4M)
+2022-12-15 11:16:15,981 INFO Download rate 8.4M/s                                                                      
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Result(content_length=15087991,content_type=application/zip,location=https://download-0021.copernicus-climate.eu/cache-compute-0021/cache/data0/dataset-sis-european-wind-storm-indicators-3532b693-f64c-4771-8a00-4bfaace9c079.zip)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>with ZipFile(&#39;download.zip&#39;) as zf:
+    for file in zf.namelist():
+        with zf.open(file) as f:
+            ds_disk = xr.open_dataset(f)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df = ds_disk.to_dataframe()
+df = df.dropna()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gdf = gpd.GeoDataFrame(df.reset_index().drop(columns=[&#39;y&#39;,&#39;x&#39;,&#39;longitude&#39;,&#39;latitude&#39;]))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gdf = gdf.set_crs(&#39;epsg:4326&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>place_name = &quot;Nieuwland, Amersfoort, The Netherlands&quot;
+area = ox.geocode_to_gdf(place_name)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="explore-the-natural-hazard-data-for-your-area-of-interest">
 <h2>3. Explore the natural hazard data for your area of interest<a class="headerlink" href="#explore-the-natural-hazard-data-for-your-area-of-interest" title="Permalink to this headline">#</a></h2>
+<hr><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>zd
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="download-and-access-copernicus-land-cover-data">
+<h2>4. Download and access Copernicus Land Cover data<a class="headerlink" href="#download-and-access-copernicus-land-cover-data" title="Permalink to this headline">#</a></h2>
+<hr><p>Unfortunately, there is no API option to download the <a class="reference external" href="https://land.copernicus.eu/pan-european/corine-land-cover">Corine Land Cover</a> data. We will have to download the data from the website first.</p>
+<p>To do so, we will first have to register ourselves again on the website. Please find in the video clip below how to register yourself on the website of the <a class="reference external" href="https://land.copernicus.eu/">Copernicus Land Monitoring Service</a>:</p>
+<img alt="../_images/CLMS_registration.gif" class="bg-primary mb-1" src="../_images/CLMS_registration.gif" />
+<p>Now click on the Login button in the top right corner to login on the website. There are many interesting datasets on this website, but we just want to download the Corine Land Cover data, and specifically the latest version: <a class="reference external" href="https://land.copernicus.eu/pan-european/corine-land-cover/clc2018?tab=download">Corine Land Cover 2018</a>. To do so, please select the <strong>Corine Land Cover - 100 meter</strong>. Now click on the large green Download button. Your download should start any minute.</p>
+<p>Slightly annoying, the file you have downloaded is double zipped. Its slightly inconvenient to open this through Python and within Google Drive. So let’s unzip it twice and store the data in a directory named <code class="docutils literal notranslate"><span class="pre">Data</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>CLC_location = os.path.join(&#39;C:\Data\CLC\DATA&#39;,&#39;U2018_CLC2018_V2020_20u1.tif&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>CLC_location
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;C:\\Data\\CLC\\DATA\\U2018_CLC2018_V2020_20u1.tif&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>with rasterio.open(CLC_location) as src:
+    landuse = src.read()[0, :, :]
+    transform = src.transform
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-12-15 10:53:07,413 WARNING CPLE_AppDefined in The definition of projected CRS EPSG:3035 got from GeoTIFF keys is not the same as the one from the EPSG registry, which may cause issues during reprojection operations. Set GTIFF_SRS_SOURCE configuration option to EPSG to use official parameters (overriding the ones from GeoTIFF keys), or to GEOKEYS to use custom values from GeoTIFF keys and drop the EPSG code.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="perform-a-damage-assessment-for-your-area-of-interest-using-coring-land-cover">
+<h2>5. Perform a damage assessment for your area of interest using Coring Land Cover<a class="headerlink" href="#perform-a-damage-assessment-for-your-area-of-interest-using-coring-land-cover" title="Permalink to this headline">#</a></h2>
 <hr></section>
-<section id="perform-a-damage-assessment-for-your-area-of-interest">
-<h2>4. Perform a damage assessment for your area of interest<a class="headerlink" href="#perform-a-damage-assessment-for-your-area-of-interest" title="Permalink to this headline">#</a></h2>
+<section id="perform-a-damage-assessment-for-your-area-of-interest-using-openstreetmap">
+<h2>6. Perform a damage assessment for your area of interest using OpenStreetMap<a class="headerlink" href="#perform-a-damage-assessment-for-your-area-of-interest-using-openstreetmap" title="Permalink to this headline">#</a></h2>
 <hr></section>
 <section id="interpret-and-visualize-your-damage-estimates">
-<h2>5. Interpret and visualize your damage estimates<a class="headerlink" href="#interpret-and-visualize-your-damage-estimates" title="Permalink to this headline">#</a></h2>
+<h2>7. Interpret and visualize your damage estimates<a class="headerlink" href="#interpret-and-visualize-your-damage-estimates" title="Permalink to this headline">#</a></h2>
 <hr></section>
 </section>
 
