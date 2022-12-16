@@ -681,7 +681,7 @@ Map
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "935f07795d9b4af5b535d99c830bbc51", "version_major": 2, "version_minor": 0}
+{"model_id": "e8bafbc93ce2401f819735d458b1fcc9", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <p>Now we have succesfully managed to see a map of the Netherlands, let’s add Landsat data to the map</p>
@@ -770,7 +770,7 @@ Map
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "935f07795d9b4af5b535d99c830bbc51", "version_major": 2, "version_minor": 0}
+{"model_id": "e8bafbc93ce2401f819735d458b1fcc9", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <p>Now we are going to make the training dataset.</p>
@@ -1016,7 +1016,7 @@ Map
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "935f07795d9b4af5b535d99c830bbc51", "version_major": 2, "version_minor": 0}
+{"model_id": "e8bafbc93ce2401f819735d458b1fcc9", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <p>To render a categorical map, we can set two image properties: <code class="docutils literal notranslate"><span class="pre">landcover_class_values</span></code> and <code class="docutils literal notranslate"><span class="pre">landcover_class_palette</span></code>. We can use the same style as the CLC so that it is easy to compare the two maps.</p>
@@ -1027,6 +1027,61 @@ class_palette = CLC.get(&#39;landcover_class_palette&#39;).getInfo()
 
 landcover = result.set(&#39;classification_class_values&#39;, class_values)
 landcover = landcover.set(&#39;classification_class_palette&#39;, class_palette)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class_palette
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;E6004D&#39;,
+ &#39;FF0000&#39;,
+ &#39;CC4DF2&#39;,
+ &#39;CC0000&#39;,
+ &#39;E6CCCC&#39;,
+ &#39;E6CCE6&#39;,
+ &#39;A600CC&#39;,
+ &#39;A64DCC&#39;,
+ &#39;FF4DFF&#39;,
+ &#39;FFA6FF&#39;,
+ &#39;FFE6FF&#39;,
+ &#39;FFFFA8&#39;,
+ &#39;FFFF00&#39;,
+ &#39;E6E600&#39;,
+ &#39;E68000&#39;,
+ &#39;F2A64D&#39;,
+ &#39;E6A600&#39;,
+ &#39;E6E64D&#39;,
+ &#39;FFE6A6&#39;,
+ &#39;FFE64D&#39;,
+ &#39;E6CC4D&#39;,
+ &#39;F2CCA6&#39;,
+ &#39;80FF00&#39;,
+ &#39;00A600&#39;,
+ &#39;4DFF00&#39;,
+ &#39;CCF24D&#39;,
+ &#39;A6FF80&#39;,
+ &#39;A6E64D&#39;,
+ &#39;A6F200&#39;,
+ &#39;E6E6E6&#39;,
+ &#39;CCCCCC&#39;,
+ &#39;CCFFCC&#39;,
+ &#39;000000&#39;,
+ &#39;A6E6CC&#39;,
+ &#39;A6A6FF&#39;,
+ &#39;4D4DFF&#39;,
+ &#39;CCCCFF&#39;,
+ &#39;E6E6FF&#39;,
+ &#39;A6A6E6&#39;,
+ &#39;00CCF2&#39;,
+ &#39;80F2E6&#39;,
+ &#39;00FFA6&#39;,
+ &#39;A6FFE6&#39;,
+ &#39;E6F2FF&#39;]
 </pre></div>
 </div>
 </div>
@@ -1042,7 +1097,7 @@ Map
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "935f07795d9b4af5b535d99c830bbc51", "version_major": 2, "version_minor": 0}
+{"model_id": "e8bafbc93ce2401f819735d458b1fcc9", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 </section>
@@ -1060,7 +1115,7 @@ Map
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "935f07795d9b4af5b535d99c830bbc51", "version_major": 2, "version_minor": 0}
+{"model_id": "e8bafbc93ce2401f819735d458b1fcc9", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <p>And now we generate the training set again:</p>
