@@ -36,11 +36,11 @@ Big data is a collection of massive and complex data sets and data volume that i
 
 The basic concept of machine learning in data science involves using statistical learning (i.e., finding a predictive function based on data) and optimization methods that let computers analyze datasets and identify patterns: it is all about making ***predictions*** and ***classification***. 
 
-See this interactive examples from R2D3:
+See these interactive examples from R2D3:
 
-http://www.r2d3.us/visual-intro-to-machine-learning-part-1 
+[R2D3 Introduction to Machine Learning: Part 1](http://www.r2d3.us/visual-intro-to-machine-learning-part-1) 
 
-http://www.r2d3.us/visual-intro-to-machine-learning-part-2 
+[R2D3 Introduction to Machine Learning: Part 1](http://www.r2d3.us/visual-intro-to-machine-learning-part-2) 
 
 In general, a supervised machine learning algorithm consists of roughly three components:
 
