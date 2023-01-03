@@ -93,7 +93,7 @@ def DamageScanner(landuse_map,inun_map,curve_path,maxdam_path,cellsize=100):
         alldamage[landuse==n] = damage
 
     # create pandas dataframe with output
-    loss_df = pandas.DataFrame(damagebin.astype(float),columns=['landuse','losses','area','avg_depth']).groupby('landuse').sum()
+    loss_df = pandas.DataFrame(damagebin.astype(float),columns=['landuse','losses','area','avg_hzd_intensity']).groupby('landuse').sum()
     
     # return output
     return loss_df.sum().values[0],loss_df
