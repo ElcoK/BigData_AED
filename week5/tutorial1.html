@@ -535,6 +535,33 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#classify-and-visualise-the-landsat-8-using-corine-land-cover">
    5. Classify and visualise the Landsat-8 using Corine Land Cover
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#random-forests">
+     Random Forests
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cart-classifier">
+     CART Classifier
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#naive-bayes">
+     Naive Bayes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#support-vector-machine">
+     Support Vector Machine
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classify-and-visualize-output">
+     Classify and visualize output
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#classify-the-landsat-8-using-esa-worldcover">
@@ -594,6 +621,33 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#classify-and-visualise-the-landsat-8-using-corine-land-cover">
    5. Classify and visualise the Landsat-8 using Corine Land Cover
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#random-forests">
+     Random Forests
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cart-classifier">
+     CART Classifier
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#naive-bayes">
+     Naive Bayes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#support-vector-machine">
+     Support Vector Machine
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classify-and-visualize-output">
+     Classify and visualize output
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#classify-the-landsat-8-using-esa-worldcover">
@@ -653,16 +707,18 @@ title="Print to PDF"
 <p><em>We will first need to install these packages in the cell below. Uncomment them to make sure we can pip install them</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#!pip install ee
-#!pip install geemap
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install ee</span>
+<span class="c1">#!pip install geemap</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import ee
-import geemap
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ee</span>
+<span class="kn">import</span> <span class="nn">geemap</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">osmnx</span> <span class="k">as</span> <span class="nn">ox</span>
 </pre></div>
 </div>
 </div>
@@ -674,35 +730,35 @@ import geemap
 <p>To do so, we will first have to register ourselves. on the website of the <a class="reference external" href="https://earthengine.google.com/">Google Earth Engine</a>. In the video below we will show you how to do that:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Map = geemap.Map(height=800,width=700,center=[52.37,4.5],zoom=7)
-Map
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">52.37</span><span class="p">,</span><span class="mf">4.5</span><span class="p">],</span><span class="n">zoom</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">Map</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "e8bafbc93ce2401f819735d458b1fcc9", "version_major": 2, "version_minor": 0}
+{"model_id": "729ea0f1551741749a5d7327f7426052", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <p>Now we have succesfully managed to see a map of the Netherlands, let’s add Landsat data to the map</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>point = ee.Geometry.Point([5.0, 51.37])
-# point = ee.Geometry.Point([-87.7719, 41.8799])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">point</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point</span><span class="p">([</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">51.37</span><span class="p">])</span>
+<span class="c1"># point = ee.Geometry.Point([-87.7719, 41.8799])</span>
 
-image = (
-    ee.ImageCollection(&#39;LANDSAT/LC08/C01/T1_SR&#39;)
-    .filterBounds(point)
-    .filterDate(&#39;2020-01-01&#39;, &#39;2020-12-31&#39;)
-    .sort(&#39;CLOUD_COVER&#39;)
-    .first()
-    .select(&#39;B[1-7]&#39;)
-)
+<span class="n">image</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LC08/C01/T1_SR&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filterBounds</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;2020-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2020-12-31&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s1">&#39;CLOUD_COVER&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">first</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;B[1-7]&#39;</span><span class="p">)</span>
+<span class="p">)</span>
 
-vis_params = {&#39;min&#39;: 0, &#39;max&#39;: 3000, &#39;bands&#39;: [&#39;B4&#39;, &#39;B3&#39;, &#39;B2&#39;]}
+<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">3000</span><span class="p">,</span> <span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">]}</span>
 
-Map.centerObject(point, 8)
-Map.addLayer(image, vis_params, &quot;Landsat-8&quot;)
+<span class="n">Map</span><span class="o">.</span><span class="n">centerObject</span><span class="p">(</span><span class="n">point</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s2">&quot;Landsat-8&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -710,7 +766,7 @@ Map.addLayer(image, vis_params, &quot;Landsat-8&quot;)
 <p>It worked! As we have specified that we wanted landsat data with as little clouds as possible, let’s check the data and the actual cloud cover:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ee.Date(image.get(&#39;system:time_start&#39;)).format(&#39;YYYY-MM-dd&#39;).getInfo()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ee</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;system:time_start&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;YYYY-MM-dd&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -722,7 +778,7 @@ Map.addLayer(image, vis_params, &quot;Landsat-8&quot;)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>image.get(&#39;CLOUD_COVER&#39;).getInfo()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">image</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;CLOUD_COVER&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -745,7 +801,7 @@ Map.addLayer(image, vis_params, &quot;Landsat-8&quot;)
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>region = ee.Geometry.Point([4.5, 52.37]).buffer(10000)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">region</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point</span><span class="p">([</span><span class="mf">4.5</span><span class="p">,</span> <span class="mf">52.37</span><span class="p">])</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -755,7 +811,7 @@ Map.addLayer(image, vis_params, &quot;Landsat-8&quot;)
 <p>Within that same line, we also use the <code class="docutils literal notranslate"><span class="pre">.clip()</span></code> function in which we define that we specifically only want to see the same area as the Landsat-8 image we already selected.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>CLC = ee.Image(&#39;COPERNICUS/CORINE/V20/100m/2012&#39;).select(&#39;landcover&#39;).clip(image.geometry())
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CLC</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;COPERNICUS/CORINE/V20/100m/2012&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;landcover&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">geometry</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -763,14 +819,14 @@ Map.addLayer(image, vis_params, &quot;Landsat-8&quot;)
 <p>And let’s view it on a map again!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Map.addLayer(CLC, {}, &#39;CLC&#39;)
-Map
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">CLC</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;CLC&#39;</span><span class="p">)</span>
+<span class="n">Map</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "e8bafbc93ce2401f819735d458b1fcc9", "version_major": 2, "version_minor": 0}
+{"model_id": "729ea0f1551741749a5d7327f7426052", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <p>Now we are going to make the training dataset.</p>
@@ -784,15 +840,15 @@ Map
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>points = CLC.sample(
-    **{
-        &#39;region&#39;: image.geometry(),
-        &#39;scale&#39;: 100,
-        &#39;numPixels&#39;: 5000,
-        &#39;seed&#39;: 1,
-        &#39;geometries&#39;: True,  # Set this to False to ignore geometries
-    }
-)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">points</span> <span class="o">=</span> <span class="n">CLC</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span>
+    <span class="o">**</span><span class="p">{</span>
+        <span class="s1">&#39;region&#39;</span><span class="p">:</span> <span class="n">image</span><span class="o">.</span><span class="n">geometry</span><span class="p">(),</span>
+        <span class="s1">&#39;scale&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="s1">&#39;numPixels&#39;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
+        <span class="s1">&#39;seed&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s1">&#39;geometries&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># Set this to False to ignore geometries</span>
+    <span class="p">}</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -800,12 +856,12 @@ Map
 <p>Let’s check how many points we got for our sample set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(points.size().getInfo())
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">getInfo</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4961
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4952
 </pre></div>
 </div>
 </div>
@@ -813,12 +869,12 @@ Map
 <p>And what is the information within each of the points:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(points.first().getInfo())
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">getInfo</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;type&#39;: &#39;Feature&#39;, &#39;geometry&#39;: {&#39;type&#39;: &#39;Point&#39;, &#39;coordinates&#39;: [4.626244711173917, 50.89856956194049]}, &#39;id&#39;: &#39;0&#39;, &#39;properties&#39;: {&#39;landcover&#39;: 112}}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;type&#39;: &#39;Feature&#39;, &#39;geometry&#39;: {&#39;type&#39;: &#39;Point&#39;, &#39;coordinates&#39;: [6.262549916271497, 51.256151849693374]}, &#39;id&#39;: &#39;0&#39;, &#39;properties&#39;: {&#39;landcover&#39;: 211}}
 </pre></div>
 </div>
 </div>
@@ -830,16 +886,16 @@ Map
 <p>We will use reflectance from the optical, NIR, and SWIR bands (B2 - B7).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Use these bands for prediction.
-bands = [&#39;B1&#39;, &#39;B2&#39;, &#39;B3&#39;, &#39;B4&#39;, &#39;B5&#39;, &#39;B6&#39;, &#39;B7&#39;]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use these bands for prediction.</span>
+<span class="n">bands</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;B2&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B5&#39;</span><span class="p">,</span> <span class="s1">&#39;B6&#39;</span><span class="p">,</span> <span class="s1">&#39;B7&#39;</span><span class="p">]</span>
 
-# This property of the table stores the land cover labels.
-label = &#39;landcover&#39;
+<span class="c1"># This property of the table stores the land cover labels.</span>
+<span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;landcover&#39;</span>
 
-# Overlay the points on the imagery to get training.
-training = image.select(bands).sampleRegions(
-    **{&#39;collection&#39;: points, &#39;properties&#39;: [label], &#39;scale&#39;: 10}
-)
+<span class="c1"># Overlay the points on the imagery to get training.</span>
+<span class="n">training</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">bands</span><span class="p">)</span><span class="o">.</span><span class="n">sampleRegions</span><span class="p">(</span>
+    <span class="o">**</span><span class="p">{</span><span class="s1">&#39;collection&#39;</span><span class="p">:</span> <span class="n">points</span><span class="p">,</span> <span class="s1">&#39;properties&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">label</span><span class="p">],</span> <span class="s1">&#39;scale&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -847,9 +903,9 @@ training = image.select(bands).sampleRegions(
 <p>A very important part of training a machine learning algorithm is that you ensure that there is some part of your training data left to validate your results. Here we split approximately  80% of the features into a training set and 20% into a validation set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sample = points.randomColumn();
-trainingSample = sample.filter(&#39;random &lt;= 0.8&#39;);
-validationSample = sample.filter(&#39;random &gt; 0.8&#39;);
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="n">points</span><span class="o">.</span><span class="n">randomColumn</span><span class="p">();</span>
+<span class="n">trainingSample</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;random &lt;= 0.8&#39;</span><span class="p">);</span>
+<span class="n">validationSample</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;random &gt; 0.8&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -857,10 +913,10 @@ validationSample = sample.filter(&#39;random &gt; 0.8&#39;);
 <p>And finally we extract the pixels from the LandSat-8 imagery a well to finalize our training data</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Overlay the points on the imagery to get training.
-training = image.select(bands).sampleRegions(
-    **{&#39;collection&#39;: trainingSample, &#39;properties&#39;: [label], &#39;scale&#39;: 10}
-)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Overlay the points on the imagery to get training.</span>
+<span class="n">training</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">bands</span><span class="p">)</span><span class="o">.</span><span class="n">sampleRegions</span><span class="p">(</span>
+    <span class="o">**</span><span class="p">{</span><span class="s1">&#39;collection&#39;</span><span class="p">:</span> <span class="n">trainingSample</span><span class="p">,</span> <span class="s1">&#39;properties&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">label</span><span class="p">],</span> <span class="s1">&#39;scale&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -868,11 +924,501 @@ training = image.select(bands).sampleRegions(
 </section>
 <section id="classify-and-visualise-the-landsat-8-using-corine-land-cover">
 <h2>5. Classify and visualise the Landsat-8 using Corine Land Cover<a class="headerlink" href="#classify-and-visualise-the-landsat-8-using-corine-land-cover" title="Permalink to this headline">#</a></h2>
-<hr><p>Next, we use a CART classifier to find the best method to use the spectral values to separate the labels. The classifiers known as Classification and Regression Trees (CART) partition the spectral data space successive binary splits arranged in a tree form.</p>
-<p>Graphically, classification trees identify lines that successively split the data space to separate the training points into their classes.</p>
+<hr><p>We are going to try various algorithms to see how they perform when we want to classify our LandSat image into land-use categories.</p>
+<section id="random-forests">
+<h3>Random Forests<a class="headerlink" href="#random-forests" title="Permalink to this headline">#</a></h3>
+<hr class="docutils" />
+<p>Let’s first use Random Forests to classify our satellite image. The inputs are specified in the <a class="reference external" href="https://developers.google.com/earth-engine/apidocs/ee-classifier-smilerandomforest">documentation</a> of the Google Earth Engine. As you can see from the documentation, the most important input is to specify the amount of trees we are going to use. We will start with <strong>1</strong> and let’s have a look how are model performs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>trained = ee.Classifier.smileCart().train(training, label, bands)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trained_RF</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Classifier</span><span class="o">.</span><span class="n">smileRandomForest</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">bands</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Accuracy represents the number of correctly classified data instances over the total number of data instances. We can calculate this by estimating a <em>confusion Matrix</em> and using the <code class="docutils literal notranslate"><span class="pre">accuracy()</span></code> function. The accuracy value ranges between 0 and 1. A value of 1 indicates that the model has fitted everything correctly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trainAccuracy</span> <span class="o">=</span> <span class="n">trained_RF</span><span class="o">.</span><span class="n">confusionMatrix</span><span class="p">()</span>
+<span class="n">trainAccuracy</span><span class="o">.</span><span class="n">accuracy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><style>:root {
+  --font-color-primary: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --font-color-secondary: var(--jp-content-font-color2, rgba(0, 0, 0, 0.6));
+  --font-color-accent: rgba(123, 31, 162, 1);
+  --border-color: var(--jp-border-color2, #e0e0e0);
+  --background-color: var(--jp-layout-color0, white);
+  --background-color-row-even: var(--jp-layout-color1, white);
+  --background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --font-color-primary: rgba(255, 255, 255, 1);
+  --font-color-secondary: rgba(255, 255, 255, 0.6);
+  --font-color-accent: rgb(173, 132, 190);
+  --border-color: #2e2e2e;
+  --background-color: #111111;
+  --background-color-row-even: #111111;
+  --background-color-row-odd: #313131;
+}
+
+.ee {
+  padding: 1em;
+  line-height: 1.5em;
+  min-width: 300px;
+  max-width: 1200px;
+  overflow-y: scroll;
+  max-height: 600px;
+  border: 1px solid var(--border-color);
+  font-family: monospace;
+}
+
+.ee li {
+  list-style-type: none;
+}
+
+.ee ul {
+  padding-left: 1.5em !important;
+  margin: 0;
+}
+
+.ee > ul {
+  padding-left: 0 !important;
+}
+
+.ee-open,
+.ee-shut {
+  color: var(--font-color-secondary);
+  cursor: pointer;
+  margin: 0;
+}
+
+.ee-open:hover,
+.ee-shut:hover {
+  color: var(--font-color-primary);
+}
+
+.ee-k {
+  color: var(--font-color-accent);
+  margin-right: 6px;
+}
+
+.ee-v {
+  color: var(--font-color-primary);
+}
+
+.ee-toggle {
+  display: none;
+}
+
+.ee-shut + ul {
+  display: none;
+}
+
+.ee-open + ul {
+  display: block;
+}
+
+.ee-shut::before {
+  display: inline-block;
+  content: "▼";
+  margin-right: 6px;
+  transform: rotate(-90deg);
+  transition: transform 0.2s;
+}
+
+.ee-open::before {
+  transform: rotate(0deg);
+  display: inline-block;
+  content: "▼";
+  margin-right: 6px;
+  transition: transform 0.2s;
+}
+</style><div class='ee'><ul><li><span class='ee-v'>0.6792929292929293</span></li></ul></div><script>function toggleHeader() {
+    const parent = this.parentElement;
+    parent.className = parent.className === "ee-open" ? "ee-shut" : "ee-open";
+}
+
+for (let c of document.getElementsByClassName("ee-toggle")) {
+    c.onclick = toggleHeader;
+}</script></div></div></div>
+</div>
+<p>This is not very high. Let’s use 10 trees and see how the results compare.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trained_RF</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Classifier</span><span class="o">.</span><span class="n">smileRandomForest</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">bands</span><span class="p">)</span>
+<span class="n">trainAccuracy</span> <span class="o">=</span> <span class="n">trained_RF</span><span class="o">.</span><span class="n">confusionMatrix</span><span class="p">()</span>
+<span class="n">trainAccuracy</span><span class="o">.</span><span class="n">accuracy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><style>:root {
+  --font-color-primary: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --font-color-secondary: var(--jp-content-font-color2, rgba(0, 0, 0, 0.6));
+  --font-color-accent: rgba(123, 31, 162, 1);
+  --border-color: var(--jp-border-color2, #e0e0e0);
+  --background-color: var(--jp-layout-color0, white);
+  --background-color-row-even: var(--jp-layout-color1, white);
+  --background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --font-color-primary: rgba(255, 255, 255, 1);
+  --font-color-secondary: rgba(255, 255, 255, 0.6);
+  --font-color-accent: rgb(173, 132, 190);
+  --border-color: #2e2e2e;
+  --background-color: #111111;
+  --background-color-row-even: #111111;
+  --background-color-row-odd: #313131;
+}
+
+.ee {
+  padding: 1em;
+  line-height: 1.5em;
+  min-width: 300px;
+  max-width: 1200px;
+  overflow-y: scroll;
+  max-height: 600px;
+  border: 1px solid var(--border-color);
+  font-family: monospace;
+}
+
+.ee li {
+  list-style-type: none;
+}
+
+.ee ul {
+  padding-left: 1.5em !important;
+  margin: 0;
+}
+
+.ee > ul {
+  padding-left: 0 !important;
+}
+
+.ee-open,
+.ee-shut {
+  color: var(--font-color-secondary);
+  cursor: pointer;
+  margin: 0;
+}
+
+.ee-open:hover,
+.ee-shut:hover {
+  color: var(--font-color-primary);
+}
+
+.ee-k {
+  color: var(--font-color-accent);
+  margin-right: 6px;
+}
+
+.ee-v {
+  color: var(--font-color-primary);
+}
+
+.ee-toggle {
+  display: none;
+}
+
+.ee-shut + ul {
+  display: none;
+}
+
+.ee-open + ul {
+  display: block;
+}
+
+.ee-shut::before {
+  display: inline-block;
+  content: "▼";
+  margin-right: 6px;
+  transform: rotate(-90deg);
+  transition: transform 0.2s;
+}
+
+.ee-open::before {
+  transform: rotate(0deg);
+  display: inline-block;
+  content: "▼";
+  margin-right: 6px;
+  transition: transform 0.2s;
+}
+</style><div class='ee'><ul><li><span class='ee-v'>0.9333333333333333</span></li></ul></div><script>function toggleHeader() {
+    const parent = this.parentElement;
+    parent.className = parent.className === "ee-open" ? "ee-shut" : "ee-open";
+}
+
+for (let c of document.getElementsByClassName("ee-toggle")) {
+    c.onclick = toggleHeader;
+}</script></div></div></div>
+</div>
+<p>This is more like it! What if we increase this towards 100:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trained_RF</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Classifier</span><span class="o">.</span><span class="n">smileRandomForest</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">bands</span><span class="p">)</span>
+<span class="n">trainAccuracy</span> <span class="o">=</span> <span class="n">trained_RF</span><span class="o">.</span><span class="n">confusionMatrix</span><span class="p">()</span>
+<span class="n">trainAccuracy</span><span class="o">.</span><span class="n">accuracy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><style>:root {
+  --font-color-primary: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --font-color-secondary: var(--jp-content-font-color2, rgba(0, 0, 0, 0.6));
+  --font-color-accent: rgba(123, 31, 162, 1);
+  --border-color: var(--jp-border-color2, #e0e0e0);
+  --background-color: var(--jp-layout-color0, white);
+  --background-color-row-even: var(--jp-layout-color1, white);
+  --background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --font-color-primary: rgba(255, 255, 255, 1);
+  --font-color-secondary: rgba(255, 255, 255, 0.6);
+  --font-color-accent: rgb(173, 132, 190);
+  --border-color: #2e2e2e;
+  --background-color: #111111;
+  --background-color-row-even: #111111;
+  --background-color-row-odd: #313131;
+}
+
+.ee {
+  padding: 1em;
+  line-height: 1.5em;
+  min-width: 300px;
+  max-width: 1200px;
+  overflow-y: scroll;
+  max-height: 600px;
+  border: 1px solid var(--border-color);
+  font-family: monospace;
+}
+
+.ee li {
+  list-style-type: none;
+}
+
+.ee ul {
+  padding-left: 1.5em !important;
+  margin: 0;
+}
+
+.ee > ul {
+  padding-left: 0 !important;
+}
+
+.ee-open,
+.ee-shut {
+  color: var(--font-color-secondary);
+  cursor: pointer;
+  margin: 0;
+}
+
+.ee-open:hover,
+.ee-shut:hover {
+  color: var(--font-color-primary);
+}
+
+.ee-k {
+  color: var(--font-color-accent);
+  margin-right: 6px;
+}
+
+.ee-v {
+  color: var(--font-color-primary);
+}
+
+.ee-toggle {
+  display: none;
+}
+
+.ee-shut + ul {
+  display: none;
+}
+
+.ee-open + ul {
+  display: block;
+}
+
+.ee-shut::before {
+  display: inline-block;
+  content: "▼";
+  margin-right: 6px;
+  transform: rotate(-90deg);
+  transition: transform 0.2s;
+}
+
+.ee-open::before {
+  transform: rotate(0deg);
+  display: inline-block;
+  content: "▼";
+  margin-right: 6px;
+  transition: transform 0.2s;
+}
+</style><div class='ee'><ul><li><span class='ee-v'>0.9957070707070707</span></li></ul></div><script>function toggleHeader() {
+    const parent = this.parentElement;
+    parent.className = parent.className === "ee-open" ? "ee-shut" : "ee-open";
+}
+
+for (let c of document.getElementsByClassName("ee-toggle")) {
+    c.onclick = toggleHeader;
+}</script></div></div></div>
+</div>
+<p>Almost everything is now classified correctly. can we reach 100% if we would use double the amount of trees?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trained_RF</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Classifier</span><span class="o">.</span><span class="n">smileRandomForest</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">bands</span><span class="p">)</span>
+<span class="n">trainAccuracy</span> <span class="o">=</span> <span class="n">trained_RF</span><span class="o">.</span><span class="n">confusionMatrix</span><span class="p">()</span>
+<span class="n">trainAccuracy</span><span class="o">.</span><span class="n">accuracy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><style>:root {
+  --font-color-primary: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --font-color-secondary: var(--jp-content-font-color2, rgba(0, 0, 0, 0.6));
+  --font-color-accent: rgba(123, 31, 162, 1);
+  --border-color: var(--jp-border-color2, #e0e0e0);
+  --background-color: var(--jp-layout-color0, white);
+  --background-color-row-even: var(--jp-layout-color1, white);
+  --background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --font-color-primary: rgba(255, 255, 255, 1);
+  --font-color-secondary: rgba(255, 255, 255, 0.6);
+  --font-color-accent: rgb(173, 132, 190);
+  --border-color: #2e2e2e;
+  --background-color: #111111;
+  --background-color-row-even: #111111;
+  --background-color-row-odd: #313131;
+}
+
+.ee {
+  padding: 1em;
+  line-height: 1.5em;
+  min-width: 300px;
+  max-width: 1200px;
+  overflow-y: scroll;
+  max-height: 600px;
+  border: 1px solid var(--border-color);
+  font-family: monospace;
+}
+
+.ee li {
+  list-style-type: none;
+}
+
+.ee ul {
+  padding-left: 1.5em !important;
+  margin: 0;
+}
+
+.ee > ul {
+  padding-left: 0 !important;
+}
+
+.ee-open,
+.ee-shut {
+  color: var(--font-color-secondary);
+  cursor: pointer;
+  margin: 0;
+}
+
+.ee-open:hover,
+.ee-shut:hover {
+  color: var(--font-color-primary);
+}
+
+.ee-k {
+  color: var(--font-color-accent);
+  margin-right: 6px;
+}
+
+.ee-v {
+  color: var(--font-color-primary);
+}
+
+.ee-toggle {
+  display: none;
+}
+
+.ee-shut + ul {
+  display: none;
+}
+
+.ee-open + ul {
+  display: block;
+}
+
+.ee-shut::before {
+  display: inline-block;
+  content: "▼";
+  margin-right: 6px;
+  transform: rotate(-90deg);
+  transition: transform 0.2s;
+}
+
+.ee-open::before {
+  transform: rotate(0deg);
+  display: inline-block;
+  content: "▼";
+  margin-right: 6px;
+  transition: transform 0.2s;
+}
+</style><div class='ee'><ul><li><span class='ee-v'>0.998989898989899</span></li></ul></div><script>function toggleHeader() {
+    const parent = this.parentElement;
+    parent.className = parent.className === "ee-open" ? "ee-shut" : "ee-open";
+}
+
+for (let c of document.getElementsByClassName("ee-toggle")) {
+    c.onclick = toggleHeader;
+}</script></div></div></div>
+</div>
+<p>As you noticed, it also took notable longer to get the results. And we didnt gain too much either. It would be interesting to plot these results and see how the results converge:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trees</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">]</span>
+<span class="n">collect_accuracies</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">tree</span> <span class="ow">in</span> <span class="n">trees</span><span class="p">:</span>
+    <span class="n">collect_accuracies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Classifier</span><span class="o">.</span><span class="n">smileRandomForest</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">bands</span><span class="p">)</span><span class="o">.</span><span class="n">confusionMatrix</span><span class="p">()</span><span class="o">.</span><span class="n">accuracy</span><span class="p">()</span><span class="o">.</span><span class="n">getInfo</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trees</span><span class="p">,</span><span class="n">collect_accuracies</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1cbb7411c60&gt;]
+</pre></div>
+</div>
+<img alt="../_images/tutorial1_50_11.png" src="../_images/tutorial1_50_11.png" />
+</div>
+</div>
+</section>
+<section id="cart-classifier">
+<h3>CART Classifier<a class="headerlink" href="#cart-classifier" title="Permalink to this headline">#</a></h3>
+<hr class="docutils" />
+<p>Next, we use a CART classifier to find the best method to use the spectral values to separate the labels. The classifiers known as Classification and Regression Trees (CART) partition the spectral data space successive binary splits arranged in a tree form. Graphically, classification trees identify lines that successively split the data space to separate the training points into their classes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trained_CART</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Classifier</span><span class="o">.</span><span class="n">smileCart</span><span class="p">()</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">bands</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -880,8 +1426,8 @@ training = image.select(bands).sampleRegions(
 <p>Get a confusion matrix and overall accuracy for the training sample.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>trainAccuracy = trained.confusionMatrix()
-trainAccuracy.accuracy()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trainAccuracy</span> <span class="o">=</span> <span class="n">trained_CART</span><span class="o">.</span><span class="n">confusionMatrix</span><span class="p">()</span>
+<span class="n">trainAccuracy</span><span class="o">.</span><span class="n">accuracy</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -992,16 +1538,172 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 <p>Get a confusion matrix and overall accuracy for the validation sample.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>validationSample = validationSample.classify(trained)
-validationAccuracy = validationSample.errorMatrix(label, &#39;classification&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validationSample</span> <span class="o">=</span> <span class="n">validationSample</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="n">trained_RF</span><span class="p">)</span>
+<span class="n">validationAccuracy</span> <span class="o">=</span> <span class="n">validationSample</span><span class="o">.</span><span class="n">errorMatrix</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="s1">&#39;classification&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Classify the image with the same bands used for training.
-result = image.select(bands).classify(trained)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">validationAccuracy</span><span class="o">.</span><span class="n">accuracy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre>&lt;ee.ee_number.Number object at 0x000001CBB7387310&gt;</pre></div></div>
+</div>
+</section>
+<section id="naive-bayes">
+<h3>Naive Bayes<a class="headerlink" href="#naive-bayes" title="Permalink to this headline">#</a></h3>
+<hr class="docutils" />
+<p>Now let’s try to use the <strong>Naive Bayes</strong> classifier. This is classification approach that adopts the principle of class conditional independence from the Bayes Theorem. This means that the presence of one feature does not impact the presence of another in the probability of a given outcome, and each predictor has an equal effect on that result.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trained_NaiveBayes</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Classifier</span><span class="o">.</span><span class="n">smileNaiveBayes</span><span class="p">()</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">bands</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trainAccuracy</span> <span class="o">=</span> <span class="n">trained_NaiveBayes</span><span class="o">.</span><span class="n">confusionMatrix</span><span class="p">()</span>
+<span class="n">trainAccuracy</span><span class="o">.</span><span class="n">accuracy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><style>:root {
+  --font-color-primary: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --font-color-secondary: var(--jp-content-font-color2, rgba(0, 0, 0, 0.6));
+  --font-color-accent: rgba(123, 31, 162, 1);
+  --border-color: var(--jp-border-color2, #e0e0e0);
+  --background-color: var(--jp-layout-color0, white);
+  --background-color-row-even: var(--jp-layout-color1, white);
+  --background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --font-color-primary: rgba(255, 255, 255, 1);
+  --font-color-secondary: rgba(255, 255, 255, 0.6);
+  --font-color-accent: rgb(173, 132, 190);
+  --border-color: #2e2e2e;
+  --background-color: #111111;
+  --background-color-row-even: #111111;
+  --background-color-row-odd: #313131;
+}
+
+.ee {
+  padding: 1em;
+  line-height: 1.5em;
+  min-width: 300px;
+  max-width: 1200px;
+  overflow-y: scroll;
+  max-height: 600px;
+  border: 1px solid var(--border-color);
+  font-family: monospace;
+}
+
+.ee li {
+  list-style-type: none;
+}
+
+.ee ul {
+  padding-left: 1.5em !important;
+  margin: 0;
+}
+
+.ee > ul {
+  padding-left: 0 !important;
+}
+
+.ee-open,
+.ee-shut {
+  color: var(--font-color-secondary);
+  cursor: pointer;
+  margin: 0;
+}
+
+.ee-open:hover,
+.ee-shut:hover {
+  color: var(--font-color-primary);
+}
+
+.ee-k {
+  color: var(--font-color-accent);
+  margin-right: 6px;
+}
+
+.ee-v {
+  color: var(--font-color-primary);
+}
+
+.ee-toggle {
+  display: none;
+}
+
+.ee-shut + ul {
+  display: none;
+}
+
+.ee-open + ul {
+  display: block;
+}
+
+.ee-shut::before {
+  display: inline-block;
+  content: "▼";
+  margin-right: 6px;
+  transform: rotate(-90deg);
+  transition: transform 0.2s;
+}
+
+.ee-open::before {
+  transform: rotate(0deg);
+  display: inline-block;
+  content: "▼";
+  margin-right: 6px;
+  transition: transform 0.2s;
+}
+</style><div class='ee'><ul><li><span class='ee-v'>0.17146464646464646</span></li></ul></div><script>function toggleHeader() {
+    const parent = this.parentElement;
+    parent.className = parent.className === "ee-open" ? "ee-shut" : "ee-open";
+}
+
+for (let c of document.getElementsByClassName("ee-toggle")) {
+    c.onclick = toggleHeader;
+}</script></div></div></div>
+</div>
+</section>
+<section id="support-vector-machine">
+<h3>Support Vector Machine<a class="headerlink" href="#support-vector-machine" title="Permalink to this headline">#</a></h3>
+<hr class="docutils" />
+<p>And Finally, we will use a <strong>Support Vector Machine</strong>. This is a popular supervised learning model developed by Vladimir Vapnik, used for both data classification and regression. That said, it is typically leveraged for classification problems, constructing a hyperplane where the distance between two classes of data points is at its maximum. This hyperplane is known as the decision boundary, separating the classes of data points (e.g., oranges vs. apples) on either side of the plane.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trained_SVM</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Classifier</span><span class="o">.</span><span class="n">libsvm</span><span class="p">()</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">bands</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trainAccuracy</span> <span class="o">=</span> <span class="n">trained_SVM</span><span class="o">.</span><span class="n">confusionMatrix</span><span class="p">()</span>
+<span class="n">trainAccuracy</span><span class="o">.</span><span class="n">accuracy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="classify-and-visualize-output">
+<h3>Classify and visualize output<a class="headerlink" href="#classify-and-visualize-output" title="Permalink to this headline">#</a></h3>
+<hr class="docutils" />
+<p>Now let’s classify the image with the same bands used for training, using the Random Forest model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CLC_Classified</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">bands</span><span class="p">)</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="n">trained_RF</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1009,79 +1711,24 @@ result = image.select(bands).classify(trained)
 <p>Let’s look at the results on a map.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Map.addLayer(result.randomVisualizer(), {}, &#39;classified&#39;)
-Map
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">CLC_Classified</span><span class="o">.</span><span class="n">randomVisualizer</span><span class="p">(),</span> <span class="p">{},</span> <span class="s1">&#39;classified&#39;</span><span class="p">)</span>
+<span class="n">Map</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "e8bafbc93ce2401f819735d458b1fcc9", "version_major": 2, "version_minor": 0}
+{"model_id": "729ea0f1551741749a5d7327f7426052", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <p>To render a categorical map, we can set two image properties: <code class="docutils literal notranslate"><span class="pre">landcover_class_values</span></code> and <code class="docutils literal notranslate"><span class="pre">landcover_class_palette</span></code>. We can use the same style as the CLC so that it is easy to compare the two maps.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class_values = CLC.get(&#39;landcover_class_values&#39;).getInfo()
-class_palette = CLC.get(&#39;landcover_class_palette&#39;).getInfo()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">class_values</span> <span class="o">=</span> <span class="n">CLC</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;landcover_class_values&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
+<span class="n">class_palette</span> <span class="o">=</span> <span class="n">CLC</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;landcover_class_palette&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
 
-landcover = result.set(&#39;classification_class_values&#39;, class_values)
-landcover = landcover.set(&#39;classification_class_palette&#39;, class_palette)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>class_palette
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;E6004D&#39;,
- &#39;FF0000&#39;,
- &#39;CC4DF2&#39;,
- &#39;CC0000&#39;,
- &#39;E6CCCC&#39;,
- &#39;E6CCE6&#39;,
- &#39;A600CC&#39;,
- &#39;A64DCC&#39;,
- &#39;FF4DFF&#39;,
- &#39;FFA6FF&#39;,
- &#39;FFE6FF&#39;,
- &#39;FFFFA8&#39;,
- &#39;FFFF00&#39;,
- &#39;E6E600&#39;,
- &#39;E68000&#39;,
- &#39;F2A64D&#39;,
- &#39;E6A600&#39;,
- &#39;E6E64D&#39;,
- &#39;FFE6A6&#39;,
- &#39;FFE64D&#39;,
- &#39;E6CC4D&#39;,
- &#39;F2CCA6&#39;,
- &#39;80FF00&#39;,
- &#39;00A600&#39;,
- &#39;4DFF00&#39;,
- &#39;CCF24D&#39;,
- &#39;A6FF80&#39;,
- &#39;A6E64D&#39;,
- &#39;A6F200&#39;,
- &#39;E6E6E6&#39;,
- &#39;CCCCCC&#39;,
- &#39;CCFFCC&#39;,
- &#39;000000&#39;,
- &#39;A6E6CC&#39;,
- &#39;A6A6FF&#39;,
- &#39;4D4DFF&#39;,
- &#39;CCCCFF&#39;,
- &#39;E6E6FF&#39;,
- &#39;A6A6E6&#39;,
- &#39;00CCF2&#39;,
- &#39;80F2E6&#39;,
- &#39;00FFA6&#39;,
- &#39;A6FFE6&#39;,
- &#39;E6F2FF&#39;]
+<span class="n">landcover</span> <span class="o">=</span> <span class="n">CLC_Classified</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;classification_class_values&#39;</span><span class="p">,</span> <span class="n">class_values</span><span class="p">)</span>
+<span class="n">landcover</span> <span class="o">=</span> <span class="n">landcover</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;classification_class_palette&#39;</span><span class="p">,</span> <span class="n">class_palette</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1089,17 +1736,18 @@ landcover = landcover.set(&#39;classification_class_palette&#39;, class_palette)
 <p>Now we can plot the results again but use the Corine Land Cover legend and colorscheme</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>Map.addLayer(landcover, {}, &#39;Land cover&#39;)
-Map.add_legend(builtin_legend=&#39;COPERNICUS/CORINE/V20/100m&#39;)
-Map
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">landcover</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;Land cover&#39;</span><span class="p">)</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">add_legend</span><span class="p">(</span><span class="n">builtin_legend</span><span class="o">=</span><span class="s1">&#39;COPERNICUS/CORINE/V20/100m&#39;</span><span class="p">)</span>
+<span class="n">Map</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "e8bafbc93ce2401f819735d458b1fcc9", "version_major": 2, "version_minor": 0}
+{"model_id": "729ea0f1551741749a5d7327f7426052", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
+</section>
 </section>
 <section id="classify-the-landsat-8-using-esa-worldcover">
 <h2>6. Classify the Landsat-8 using ESA WorldCover<a class="headerlink" href="#classify-the-landsat-8-using-esa-worldcover" title="Permalink to this headline">#</a></h2>
@@ -1107,33 +1755,33 @@ Map
 <p>Let’s start again with exploring the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>ESA = ee.Image(&#39;ESA/WorldCover/v100/2020&#39;).clip(image.geometry())
-Map.addLayer(ESA, {}, &#39;ESA&#39;)
-Map
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ESA</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;ESA/WorldCover/v100/2020&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">geometry</span><span class="p">())</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">ESA</span><span class="p">,</span> <span class="p">{},</span> <span class="s1">&#39;ESA&#39;</span><span class="p">)</span>
+<span class="n">Map</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "e8bafbc93ce2401f819735d458b1fcc9", "version_major": 2, "version_minor": 0}
+{"model_id": "729ea0f1551741749a5d7327f7426052", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 <p>And now we generate the training set again:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>classValues = [10, 20, 30, 40, 50, 60, 70, 80, 90, 95, 100]
-remapValues = ee.List.sequence(0, 10)
-label = &#39;lc&#39;
-lc = ESA.remap(classValues, remapValues).rename(label).toByte()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classValues</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="n">remapValues</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">List</span><span class="o">.</span><span class="n">sequence</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;lc&#39;</span>
+<span class="n">lc</span> <span class="o">=</span> <span class="n">ESA</span><span class="o">.</span><span class="n">remap</span><span class="p">(</span><span class="n">classValues</span><span class="p">,</span> <span class="n">remapValues</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">label</span><span class="p">)</span><span class="o">.</span><span class="n">toByte</span><span class="p">()</span>
 
-sample = image.addBands(lc).stratifiedSample(
-    **{
-  &#39;numPoints&#39;: 5000,
-  &#39;classBand&#39;: label,
-  &#39;region&#39;: image.geometry(),
-  &#39;scale&#39;: 100,
-  &#39;geometries&#39;: True
-})
+<span class="n">sample</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">addBands</span><span class="p">(</span><span class="n">lc</span><span class="p">)</span><span class="o">.</span><span class="n">stratifiedSample</span><span class="p">(</span>
+    <span class="o">**</span><span class="p">{</span>
+  <span class="s1">&#39;numPoints&#39;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
+  <span class="s1">&#39;classBand&#39;</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span>
+  <span class="s1">&#39;region&#39;</span><span class="p">:</span> <span class="n">image</span><span class="o">.</span><span class="n">geometry</span><span class="p">(),</span>
+  <span class="s1">&#39;scale&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+  <span class="s1">&#39;geometries&#39;</span><span class="p">:</span> <span class="kc">True</span>
+<span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -1141,29 +1789,141 @@ sample = image.addBands(lc).stratifiedSample(
 <p>And again, we split the data into training and validation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sample = sample.randomColumn();
-trainingSample = sample.filter(&#39;random &lt;= 0.8&#39;);
-validationSample = sample.filter(&#39;random &gt; 0.8&#39;);
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">randomColumn</span><span class="p">();</span>
+<span class="n">trainingSample</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;random &lt;= 0.8&#39;</span><span class="p">);</span>
+<span class="n">validationSample</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;random &gt; 0.8&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As the <strong>CART</strong> classifier performed best, we will re-use this one to train the algorithm through using the ESA WorldCover data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trainedClassifier</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Classifier</span><span class="o">.</span><span class="n">smileCart</span><span class="p">()</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
+    <span class="o">**</span><span class="p">{</span>
+  <span class="s1">&#39;features&#39;</span><span class="p">:</span> <span class="n">trainingSample</span><span class="p">,</span>
+  <span class="s1">&#39;classProperty&#39;</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span>
+  <span class="s1">&#39;inputProperties&#39;</span><span class="p">:</span> <span class="n">image</span><span class="o">.</span><span class="n">bandNames</span><span class="p">()</span>
+<span class="p">});</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>trainedClassifier = ee.Classifier.smileCart().train(
-    **{
-  &#39;features&#39;: trainingSample,
-  &#39;classProperty&#39;: label,
-  &#39;inputProperties&#39;: image.bandNames()
-});
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trainAccuracy</span> <span class="o">=</span> <span class="n">trainedClassifier</span><span class="o">.</span><span class="n">confusionMatrix</span><span class="p">()</span>
+<span class="n">trainAccuracy</span><span class="o">.</span><span class="n">accuracy</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><style>:root {
+  --font-color-primary: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --font-color-secondary: var(--jp-content-font-color2, rgba(0, 0, 0, 0.6));
+  --font-color-accent: rgba(123, 31, 162, 1);
+  --border-color: var(--jp-border-color2, #e0e0e0);
+  --background-color: var(--jp-layout-color0, white);
+  --background-color-row-even: var(--jp-layout-color1, white);
+  --background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --font-color-primary: rgba(255, 255, 255, 1);
+  --font-color-secondary: rgba(255, 255, 255, 0.6);
+  --font-color-accent: rgb(173, 132, 190);
+  --border-color: #2e2e2e;
+  --background-color: #111111;
+  --background-color-row-even: #111111;
+  --background-color-row-odd: #313131;
+}
+
+.ee {
+  padding: 1em;
+  line-height: 1.5em;
+  min-width: 300px;
+  max-width: 1200px;
+  overflow-y: scroll;
+  max-height: 600px;
+  border: 1px solid var(--border-color);
+  font-family: monospace;
+}
+
+.ee li {
+  list-style-type: none;
+}
+
+.ee ul {
+  padding-left: 1.5em !important;
+  margin: 0;
+}
+
+.ee > ul {
+  padding-left: 0 !important;
+}
+
+.ee-open,
+.ee-shut {
+  color: var(--font-color-secondary);
+  cursor: pointer;
+  margin: 0;
+}
+
+.ee-open:hover,
+.ee-shut:hover {
+  color: var(--font-color-primary);
+}
+
+.ee-k {
+  color: var(--font-color-accent);
+  margin-right: 6px;
+}
+
+.ee-v {
+  color: var(--font-color-primary);
+}
+
+.ee-toggle {
+  display: none;
+}
+
+.ee-shut + ul {
+  display: none;
+}
+
+.ee-open + ul {
+  display: block;
+}
+
+.ee-shut::before {
+  display: inline-block;
+  content: "▼";
+  margin-right: 6px;
+  transform: rotate(-90deg);
+  transition: transform 0.2s;
+}
+
+.ee-open::before {
+  transform: rotate(0deg);
+  display: inline-block;
+  content: "▼";
+  margin-right: 6px;
+  transition: transform 0.2s;
+}
+</style><div class='ee'><ul><li><span class='ee-v'>0.9999645503208195</span></li></ul></div><script>function toggleHeader() {
+    const parent = this.parentElement;
+    parent.className = parent.className === "ee-open" ? "ee-shut" : "ee-open";
+}
+
+for (let c of document.getElementsByClassName("ee-toggle")) {
+    c.onclick = toggleHeader;
+}</script></div></div></div>
 </div>
 <p>Resulting in our newly classified map</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>imgClassified = image.classify(trainedClassifier)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ESAWorldCover_classified</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="n">trainedClassifier</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1171,22 +1931,22 @@ validationSample = sample.filter(&#39;random &gt; 0.8&#39;);
 <p>And let’s visualize this!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>classVis = {
-  &#39;min&#39;: 0,
-  &#39;max&#39;: 10,
-  &#39;palette&#39;: [&#39;006400&#39; ,&#39;ffbb22&#39;, &#39;ffff4c&#39;, &#39;f096ff&#39;, &#39;fa0000&#39;, &#39;b4b4b4&#39;,
-            &#39;f0f0f0&#39;, &#39;0064c8&#39;, &#39;0096a0&#39;, &#39;00cf75&#39;, &#39;fae6a0&#39;]
-};
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classVis</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;006400&#39;</span> <span class="p">,</span><span class="s1">&#39;ffbb22&#39;</span><span class="p">,</span> <span class="s1">&#39;ffff4c&#39;</span><span class="p">,</span> <span class="s1">&#39;f096ff&#39;</span><span class="p">,</span> <span class="s1">&#39;fa0000&#39;</span><span class="p">,</span> <span class="s1">&#39;b4b4b4&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;f0f0f0&#39;</span><span class="p">,</span> <span class="s1">&#39;0064c8&#39;</span><span class="p">,</span> <span class="s1">&#39;0096a0&#39;</span><span class="p">,</span> <span class="s1">&#39;00cf75&#39;</span><span class="p">,</span> <span class="s1">&#39;fae6a0&#39;</span><span class="p">]</span>
+<span class="p">};</span>
 
-#Map.addLayer(lc, classVis, &#39;lc&#39;);
-Map.addLayer(imgClassified, classVis, &#39;Classified&#39;);
-Map
+<span class="c1">#Map.addLayer(lc, classVis, &#39;lc&#39;);</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">ESAWorldCover_classified</span><span class="p">,</span> <span class="n">classVis</span><span class="p">,</span> <span class="s1">&#39;Classified&#39;</span><span class="p">);</span>
+<span class="n">Map</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id": "935f07795d9b4af5b535d99c830bbc51", "version_major": 2, "version_minor": 0}
+{"model_id": "729ea0f1551741749a5d7327f7426052", "version_major": 2, "version_minor": 0}
 </script></div>
 </div>
 </section>
@@ -1196,35 +1956,230 @@ Map
 <p>To do so, you can either zoom in on the same area you used last week to learn OpenStreetMap, or specify a different area when it is outside the bounds of our land cover map.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>place_name = &quot;Steenwijk, The Netherlands&quot;
-area = ox.geocode_to_gdf(place_name)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">place_name</span> <span class="o">=</span> <span class="s2">&quot;Gelderland, The Netherlands&quot;</span>
+<span class="n">area</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">geocode_to_gdf</span><span class="p">(</span><span class="n">place_name</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>focus_region = ee.Geometry.Rectangle([area.bounds.minx.values[0], 
-                       area.bounds.miny.values[0],
-                       area.bounds.maxx.values[0],
-                       area.bounds.maxy.values[0]])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">focus_region</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Rectangle</span><span class="p">([</span><span class="n">area</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">minx</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> 
+                       <span class="n">area</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">miny</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                       <span class="n">area</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">maxx</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                       <span class="n">area</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">maxy</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>geemap.ee_export_image(
-    imgClassified, filename=&#39;test.tif&#39;, scale=100, file_per_band=False
-)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_image</span><span class="p">(</span>
+    <span class="n">CLC_Classified</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;CLC_Classified.tif&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">file_per_band</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Generating URL ...
-Downloading data from https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/thumbnails/61125d244fa9848000fe816f56b1c0c7-9ae980350a89b2a0008f681a7dd90a12:getPixels
+Downloading data from https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/thumbnails/d3fda6cafae8edf3b2c181ab397c1ce2-ae06268e48fa5cf39d83ae8ef5bc7e5c:getPixels
 Please wait ...
-Data downloaded to C:\projects\BigData_AED\week5\test.tif
+An error occurred while downloading.
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TimeoutError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="nn">File ~\.conda\envs\py310\lib\site-packages\urllib3\connectionpool.py:449,</span> in <span class="ni">HTTPConnectionPool._make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">445</span>         <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">446</span>             <span class="c1"># Remove the TypeError from the exception chain in</span>
+<span class="g g-Whitespace">    </span><span class="mi">447</span>             <span class="c1"># Python 3 (including for exceptions like SystemExit).</span>
+<span class="g g-Whitespace">    </span><span class="mi">448</span>             <span class="c1"># Otherwise it looks like a bug in the code.</span>
+<span class="ne">--&gt; </span><span class="mi">449</span>             <span class="n">six</span><span class="o">.</span><span class="n">raise_from</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">450</span> <span class="k">except</span> <span class="p">(</span><span class="n">SocketTimeout</span><span class="p">,</span> <span class="n">BaseSSLError</span><span class="p">,</span> <span class="n">SocketError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+<span class="nn">File &lt;string&gt;:3,</span> in <span class="ni">raise_from</span><span class="nt">(value, from_value)</span>
+
+<span class="nn">File ~\.conda\envs\py310\lib\site-packages\urllib3\connectionpool.py:444,</span> in <span class="ni">HTTPConnectionPool._make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">443</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">444</span>     <span class="n">httplib_response</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">445</span> <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">446</span>     <span class="c1"># Remove the TypeError from the exception chain in</span>
+<span class="g g-Whitespace">    </span><span class="mi">447</span>     <span class="c1"># Python 3 (including for exceptions like SystemExit).</span>
+<span class="g g-Whitespace">    </span><span class="mi">448</span>     <span class="c1"># Otherwise it looks like a bug in the code.</span>
+
+<span class="nn">File ~\.conda\envs\py310\lib\http\client.py:1374,</span> in <span class="ni">HTTPConnection.getresponse</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1373</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1374</span>     <span class="n">response</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1375</span> <span class="k">except</span> <span class="ne">ConnectionError</span><span class="p">:</span>
+
+<span class="nn">File ~\.conda\envs\py310\lib\http\client.py:318,</span> in <span class="ni">HTTPResponse.begin</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">317</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">318</span>     <span class="n">version</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">reason</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_status</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">319</span>     <span class="k">if</span> <span class="n">status</span> <span class="o">!=</span> <span class="n">CONTINUE</span><span class="p">:</span>
+
+<span class="nn">File ~\.conda\envs\py310\lib\http\client.py:279,</span> in <span class="ni">HTTPResponse._read_status</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">278</span> <span class="k">def</span> <span class="nf">_read_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">279</span>     <span class="n">line</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fp</span><span class="o">.</span><span class="n">readline</span><span class="p">(</span><span class="n">_MAXLINE</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;iso-8859-1&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">280</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">_MAXLINE</span><span class="p">:</span>
+
+<span class="nn">File ~\.conda\envs\py310\lib\socket.py:705,</span> in <span class="ni">SocketIO.readinto</span><span class="nt">(self, b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">704</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">705</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sock</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">706</span> <span class="k">except</span> <span class="n">timeout</span><span class="p">:</span>
+
+<span class="nn">File ~\.conda\envs\py310\lib\ssl.py:1274,</span> in <span class="ni">SSLSocket.recv_into</span><span class="nt">(self, buffer, nbytes, flags)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1271</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1272</span>           <span class="s2">&quot;non-zero flags not allowed in calls to recv_into() on </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+<span class="g g-Whitespace">   </span><span class="mi">1273</span>           <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1274</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">nbytes</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1275</span> <span class="k">else</span><span class="p">:</span>
+
+<span class="nn">File ~\.conda\envs\py310\lib\ssl.py:1130,</span> in <span class="ni">SSLSocket.read</span><span class="nt">(self, len, buffer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1129</span> <span class="k">if</span> <span class="n">buffer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1130</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">len</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1131</span> <span class="k">else</span><span class="p">:</span>
+
+<span class="ne">TimeoutError</span>: The read operation timed out
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">ReadTimeoutError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
+<span class="nn">File ~\.conda\envs\py310\lib\site-packages\requests\adapters.py:489,</span> in <span class="ni">HTTPAdapter.send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">488</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">chunked</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">489</span>     <span class="n">resp</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">490</span>         <span class="n">method</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">491</span>         <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">492</span>         <span class="n">body</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">493</span>         <span class="n">headers</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">494</span>         <span class="n">redirect</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">495</span>         <span class="n">assert_same_host</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">496</span>         <span class="n">preload_content</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">497</span>         <span class="n">decode_content</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">498</span>         <span class="n">retries</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">max_retries</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">499</span>         <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">500</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">502</span> <span class="c1"># Send the request.</span>
+<span class="g g-Whitespace">    </span><span class="mi">503</span> <span class="k">else</span><span class="p">:</span>
+
+<span class="nn">File ~\.conda\envs\py310\lib\site-packages\urllib3\connectionpool.py:787,</span> in <span class="ni">HTTPConnectionPool.urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">785</span>     <span class="n">e</span> <span class="o">=</span> <span class="n">ProtocolError</span><span class="p">(</span><span class="s2">&quot;Connection aborted.&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">787</span> <span class="n">retries</span> <span class="o">=</span> <span class="n">retries</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">788</span>     <span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="n">e</span><span class="p">,</span> <span class="n">_pool</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">_stacktrace</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">789</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">790</span> <span class="n">retries</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
+
+<span class="nn">File ~\.conda\envs\py310\lib\site-packages\urllib3\util\retry.py:550,</span> in <span class="ni">Retry.increment</span><span class="nt">(self, method, url, response, error, _pool, _stacktrace)</span>
+<span class="g g-Whitespace">    </span><span class="mi">549</span> <span class="k">if</span> <span class="n">read</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_method_retryable</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">550</span>     <span class="k">raise</span> <span class="n">six</span><span class="o">.</span><span class="n">reraise</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">error</span><span class="p">),</span> <span class="n">error</span><span class="p">,</span> <span class="n">_stacktrace</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">551</span> <span class="k">elif</span> <span class="n">read</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File ~\.conda\envs\py310\lib\site-packages\urllib3\packages\six.py:770,</span> in <span class="ni">reraise</span><span class="nt">(tp, value, tb)</span>
+<span class="g g-Whitespace">    </span><span class="mi">769</span>         <span class="k">raise</span> <span class="n">value</span><span class="o">.</span><span class="n">with_traceback</span><span class="p">(</span><span class="n">tb</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">770</span>     <span class="k">raise</span> <span class="n">value</span>
+<span class="g g-Whitespace">    </span><span class="mi">771</span> <span class="k">finally</span><span class="p">:</span>
+
+<span class="nn">File ~\.conda\envs\py310\lib\site-packages\urllib3\connectionpool.py:703,</span> in <span class="ni">HTTPConnectionPool.urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">702</span> <span class="c1"># Make the request on the httplib connection object.</span>
+<span class="ne">--&gt; </span><span class="mi">703</span> <span class="n">httplib_response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_request</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">704</span>     <span class="n">conn</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">705</span>     <span class="n">method</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">706</span>     <span class="n">url</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">707</span>     <span class="n">timeout</span><span class="o">=</span><span class="n">timeout_obj</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">708</span>     <span class="n">body</span><span class="o">=</span><span class="n">body</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">709</span>     <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">710</span>     <span class="n">chunked</span><span class="o">=</span><span class="n">chunked</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">711</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">713</span> <span class="c1"># If we&#39;re going to release the connection in ``finally:``, then</span>
+<span class="g g-Whitespace">    </span><span class="mi">714</span> <span class="c1"># the response doesn&#39;t need to know about the connection. Otherwise</span>
+<span class="g g-Whitespace">    </span><span class="mi">715</span> <span class="c1"># it will also try to release it and we&#39;ll have a double-release</span>
+<span class="g g-Whitespace">    </span><span class="mi">716</span> <span class="c1"># mess.</span>
+
+<span class="nn">File ~\.conda\envs\py310\lib\site-packages\urllib3\connectionpool.py:451,</span> in <span class="ni">HTTPConnectionPool._make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">450</span> <span class="k">except</span> <span class="p">(</span><span class="n">SocketTimeout</span><span class="p">,</span> <span class="n">BaseSSLError</span><span class="p">,</span> <span class="n">SocketError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">451</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_raise_timeout</span><span class="p">(</span><span class="n">err</span><span class="o">=</span><span class="n">e</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout_value</span><span class="o">=</span><span class="n">read_timeout</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">452</span>     <span class="k">raise</span>
+
+<span class="nn">File ~\.conda\envs\py310\lib\site-packages\urllib3\connectionpool.py:340,</span> in <span class="ni">HTTPConnectionPool._raise_timeout</span><span class="nt">(self, err, url, timeout_value)</span>
+<span class="g g-Whitespace">    </span><span class="mi">339</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">SocketTimeout</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">340</span>     <span class="k">raise</span> <span class="n">ReadTimeoutError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">341</span>         <span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="s2">&quot;Read timed out. (read timeout=</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">timeout_value</span>
+<span class="g g-Whitespace">    </span><span class="mi">342</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">344</span> <span class="c1"># See the above comment about EAGAIN in Python 3. In Python 2 we have</span>
+<span class="g g-Whitespace">    </span><span class="mi">345</span> <span class="c1"># to specifically catch it and throw the timeout error</span>
+
+<span class="ne">ReadTimeoutError</span>: HTTPSConnectionPool(host=&#39;earthengine.googleapis.com&#39;, port=443): Read timed out. (read timeout=300)
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">ReadTimeout</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="nn">File ~\.conda\envs\py310\lib\site-packages\geemap\common.py:2296,</span> in <span class="ni">ee_export_image</span><span class="nt">(ee_object, filename, scale, crs, crs_transform, region, dimensions, file_per_band, format, unmask_value, timeout, proxies)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2295</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloading data from </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="se">\n</span><span class="s2">Please wait ...&quot;</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">2296</span> <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span> <span class="n">proxies</span><span class="o">=</span><span class="n">proxies</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2298</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+
+<span class="nn">File ~\.conda\envs\py310\lib\site-packages\requests\api.py:73,</span> in <span class="ni">get</span><span class="nt">(url, params, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span><span class="w"> </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Sends a GET request.</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span><span class="sd"> :param url: URL for the new :class:`Request` object.</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span><span class="sd"> :rtype: requests.Response</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">73</span> <span class="k">return</span> <span class="n">request</span><span class="p">(</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~\.conda\envs\py310\lib\site-packages\requests\api.py:59,</span> in <span class="ni">request</span><span class="nt">(method, url, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span> <span class="k">with</span> <span class="n">sessions</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">59</span>     <span class="k">return</span> <span class="n">session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~\.conda\envs\py310\lib\site-packages\requests\sessions.py:587,</span> in <span class="ni">Session.request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
+<span class="g g-Whitespace">    </span><span class="mi">586</span> <span class="n">send_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">587</span> <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">prep</span><span class="p">,</span> <span class="o">**</span><span class="n">send_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">589</span> <span class="k">return</span> <span class="n">resp</span>
+
+<span class="nn">File ~\.conda\envs\py310\lib\site-packages\requests\sessions.py:701,</span> in <span class="ni">Session.send</span><span class="nt">(self, request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">700</span> <span class="c1"># Send the request</span>
+<span class="ne">--&gt; </span><span class="mi">701</span> <span class="n">r</span> <span class="o">=</span> <span class="n">adapter</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">703</span> <span class="c1"># Total elapsed time of the request (approximately)</span>
+
+<span class="nn">File ~\.conda\envs\py310\lib\site-packages\requests\adapters.py:578,</span> in <span class="ni">HTTPAdapter.send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">577</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">ReadTimeoutError</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">578</span>     <span class="k">raise</span> <span class="n">ReadTimeout</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">579</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">_InvalidHeader</span><span class="p">):</span>
+
+<span class="ne">ReadTimeout</span>: HTTPSConnectionPool(host=&#39;earthengine.googleapis.com&#39;, port=443): Read timed out. (read timeout=300)
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">UnboundLocalError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">Input In [56],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_image</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">CLC_Classified</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;CLC_Classified.tif&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">file_per_band</span><span class="o">=</span><span class="kc">False</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="p">)</span>
+
+<span class="nn">File ~\.conda\envs\py310\lib\site-packages\geemap\common.py:2308,</span> in <span class="ni">ee_export_image</span><span class="nt">(ee_object, filename, scale, crs, crs_transform, region, dimensions, file_per_band, format, unmask_value, timeout, proxies)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2306</span> <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2307</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;An error occurred while downloading.&quot;</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">2308</span>     <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;error&quot;</span><span class="p">][</span><span class="s2">&quot;message&quot;</span><span class="p">])</span>
+<span class="g g-Whitespace">   </span><span class="mi">2309</span>     <span class="k">return</span>
+<span class="g g-Whitespace">   </span><span class="mi">2311</span> <span class="k">try</span><span class="p">:</span>
+
+<span class="ne">UnboundLocalError</span>: local variable &#39;r&#39; referenced before assignment
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_image</span><span class="p">(</span>
+    <span class="n">ESAWorldCover_classified</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;ESAWorldCover_classified.tif&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">file_per_band</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Generating URL ...
+Downloading data from https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/thumbnails/b5cfc9c1e2f33a1eacd6c65506401968-02a4a4903f21f7ed4fc82f0d625a48b7:getPixels
+Please wait ...
+Data downloaded to C:\projects\BigData_AED\week5\ESAWorldCover_classified.tif
 </pre></div>
 </div>
 </div>

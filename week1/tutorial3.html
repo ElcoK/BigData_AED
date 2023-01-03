@@ -805,8 +805,8 @@ title="Print to PDF"
 <hr><p>Last chapter we looked at how we can create dataframes. Let’s now look at some helpful ways we can view our dataframe.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
-import pandas as pd
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 </div>
 </div>
@@ -816,8 +816,8 @@ import pandas as pd
 <p>The <code class="docutils literal notranslate"><span class="pre">.head()</span></code> and <code class="docutils literal notranslate"><span class="pre">.tail()</span></code> methods allow you to view the top/bottom <em>n</em> (default 5) rows of a dataframe. Let’s load in the cycling data set from last chapter and try them out:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df = pd.read_csv(&#39;cycling_data.csv&#39;)
-df.head()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;cycling_data.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -901,7 +901,7 @@ df.head()
 <p>The default return value is 5 rows, but we can pass in any number we like. For example, let’s take a look at the top 10 rows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.head(10)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1030,7 +1030,7 @@ df.head()
 <p>Or the bottom 5 rows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.tail()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1123,7 +1123,7 @@ df.head()
 <p><code class="docutils literal notranslate"><span class="pre">.shape</span></code> is just like the ndarray attribute we’ve seen previously. It gives the shape (rows, cols) of your dataframe:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.shape
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -1136,7 +1136,7 @@ df.head()
 <p><code class="docutils literal notranslate"><span class="pre">.info()</span></code> prints information about the dataframe itself, such as dtypes, memory usages, non-null values, etc:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.info()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1161,7 +1161,7 @@ memory usage: 1.7+ KB
 <p><code class="docutils literal notranslate"><span class="pre">.describe()</span></code> provides summary statistics of the values within a dataframe:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.describe()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1236,7 +1236,7 @@ memory usage: 1.7+ KB
 <p>By default, <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> only print summaries of numeric features. We can force it to give summaries on all features using the argument <code class="docutils literal notranslate"><span class="pre">include='all'</span></code> (although they may not make sense!):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.describe(include=&#39;all&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1377,7 +1377,7 @@ memory usage: 1.7+ KB
 <p>Displaying your dataframes effectively can be an important part of your workflow. If a dataframe has more than 60 rows, Pandas will only display the first 5 and last 5 rows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.DataFrame(np.random.rand(100))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1456,7 +1456,7 @@ memory usage: 1.7+ KB
 <p>For dataframes of less than 60 rows, Pandas will print the whole dataframe:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -1792,8 +1792,8 @@ memory usage: 1.7+ KB
 <p>I find the 60 row threshold to be a little too much, I prefer something more like 20. You can change the setting using <code class="docutils literal notranslate"><span class="pre">pd.set_option(&quot;display.max_rows&quot;,</span> <span class="pre">20)</span></code> so that anything with more than 20 rows will be summarised by the first and last 5 rows as before:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.set_option(&quot;display.max_rows&quot;, 20)
-df
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;display.max_rows&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -1933,10 +1933,10 @@ df
 <p>One display option I will point out is that Pandas allows you to style your tables, for example by highlighting negative values, or adding conditional colour maps to your dataframe. Below I’ll style values based on their value ranging from negative (purple) to postive (yellow) but you can see the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/style.html#Styling">styling documentation</a> for more examples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>test = pd.DataFrame(np.random.randn(5, 5),
-                    index = [f&quot;row_{_}&quot; for _ in range(5)],
-                    columns = [f&quot;feature_{_}&quot; for _ in range(5)])
-test.style.background_gradient(cmap=&#39;plasma&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+                    <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;row_</span><span class="si">{</span><span class="n">_</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)],</span>
+                    <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;feature_</span><span class="si">{</span><span class="n">_</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)])</span>
+<span class="n">test</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">background_gradient</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2043,7 +2043,7 @@ test.style.background_gradient(cmap=&#39;plasma&#39;)
 <p>Basically, it depends on the operation you are trying to perform, your dataframe’s structure and the memory layout of the underlying array. But don’t worry, let me tell you all you need to know. Firstly, the most common warning you’ll encounter in Pandas is the <code class="docutils literal notranslate"><span class="pre">SettingWithCopy</span></code>, Pandas raises it as a warning that you might not be doing what you think you’re doing. Let’s see an example. You may recall there is one outlier <code class="docutils literal notranslate"><span class="pre">Time</span></code> in our dataframe:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[df[&#39;Time&#39;] &gt; 4000]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">4000</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -2091,7 +2091,7 @@ test.style.background_gradient(cmap=&#39;plasma&#39;)
 <p>Imagine we wanted to change this to <code class="docutils literal notranslate"><span class="pre">2000</span></code>. You’d probably do the following:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[df[&#39;Time&#39;] &gt; 4000][&#39;Time&#39;] = 2000
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">4000</span><span class="p">][</span><span class="s1">&#39;Time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2000</span>
 </pre></div>
 </div>
 </div>
@@ -2109,7 +2109,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <p>Ah, there’s that warning. Did our dataframe get changed?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[df[&#39;Time&#39;] &gt; 4000]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">4000</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -2157,8 +2157,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <p>No it didn’t, even though you probably thought it did. What happened above is that <code class="docutils literal notranslate"><span class="pre">df[df['Time']</span> <span class="pre">&gt;</span> <span class="pre">4000]</span></code> was executed first and returned a copy of the dataframe, we can confirm by using <code class="docutils literal notranslate"><span class="pre">id()</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(f&quot;The id of the original dataframe is: {id(df)}&quot;)
-print(f&quot; The id of the indexed dataframe is: {id(df[df[&#39;Time&#39;] &gt; 4000])}&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The id of the original dataframe is: </span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; The id of the indexed dataframe is: </span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">4000</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2172,7 +2172,7 @@ print(f&quot; The id of the indexed dataframe is: {id(df[df[&#39;Time&#39;] &gt;
 <p>We then tried to set a value on this new object by appending <code class="docutils literal notranslate"><span class="pre">['Time']</span> <span class="pre">=</span> <span class="pre">2000</span></code>. Pandas is warning us that we are doing that operation on a copy of the original dataframe, which is probably not what we want. To fix this, you need to index in a single go, using <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> for example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.loc[df[&#39;Time&#39;] &gt; 4000, &#39;Time&#39;] = 2000
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">4000</span><span class="p">,</span> <span class="s1">&#39;Time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2000</span>
 </pre></div>
 </div>
 </div>
@@ -2180,7 +2180,7 @@ print(f&quot; The id of the indexed dataframe is: {id(df[df[&#39;Time&#39;] &gt;
 <p>No error this time! And let’s confirm the change:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[df[&#39;Time&#39;] &gt; 4000]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">4000</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -2219,7 +2219,7 @@ print(f&quot; The id of the indexed dataframe is: {id(df[df[&#39;Time&#39;] &gt;
 <p>The second thing you need to know is that if you’re ever in doubt about whether something is a view or a copy, you can just use the <code class="docutils literal notranslate"><span class="pre">.copy()</span></code> method to force a copy of a dataframe. Just like this:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df2 = df[df[&#39;Time&#39;] &gt; 4000].copy()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">4000</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2238,7 +2238,7 @@ print(f&quot; The id of the indexed dataframe is: {id(df[df[&#39;Time&#39;] &gt;
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -2377,9 +2377,9 @@ print(f&quot; The id of the indexed dataframe is: {id(df[df[&#39;Time&#39;] &gt;
 <p>Let’s give it a go:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.rename(columns={&quot;Date&quot;: &quot;Datetime&quot;,
-                   &quot;Comments&quot;: &quot;Notes&quot;})
-df
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Date&quot;</span><span class="p">:</span> <span class="s2">&quot;Datetime&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;Comments&quot;</span><span class="p">:</span> <span class="s2">&quot;Notes&quot;</span><span class="p">})</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -2529,9 +2529,9 @@ The Pandas team recommends <strong>Method 2 (re-assign)</strong>, for a <a class
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df = df.rename(columns={&quot;Date&quot;: &quot;Datetime&quot;,
-                        &quot;Comments&quot;: &quot;Notes&quot;})
-df
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Date&quot;</span><span class="p">:</span> <span class="s2">&quot;Datetime&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;Comments&quot;</span><span class="p">:</span> <span class="s2">&quot;Notes&quot;</span><span class="p">})</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -2670,8 +2670,8 @@ df
 <p>If you wish to change all of the columns of a dataframe, you can do so by setting the <code class="docutils literal notranslate"><span class="pre">.columns</span></code> attribute:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.columns = [f&quot;Column {_}&quot; for _ in range(1, 7)]
-df
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Column </span><span class="si">{</span><span class="n">_</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)]</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -2819,7 +2819,7 @@ df
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -2958,9 +2958,9 @@ df
 <p>Below I will set the index as <code class="docutils literal notranslate"><span class="pre">Column</span> <span class="pre">1</span></code> and rename the index to “New Index”:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df = df.set_index(&quot;Column 1&quot;)
-df.index.name = &quot;New Index&quot;
-df
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Column 1&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;New Index&quot;</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -3095,8 +3095,8 @@ df
 <p>I can send the index back to a column and have a default integer index using <code class="docutils literal notranslate"><span class="pre">.reset_index()</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df = df.reset_index()
-df
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -3235,7 +3235,7 @@ df
 <p>Like with column names, we can also modify the index directly, but I can’t remember ever doing this, usually I’ll use <code class="docutils literal notranslate"><span class="pre">.set_index()</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.index
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">index</span>
 </pre></div>
 </div>
 </div>
@@ -3247,8 +3247,8 @@ df
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.index = range(100, 133, 1)
-df
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">133</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -3395,8 +3395,8 @@ df
 <p>Let’s re-read in a fresh copy of the cycling dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df = pd.read_csv(&#39;data/cycling_data.csv&#39;)
-df
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/cycling_data.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -3535,9 +3535,9 @@ df
 <p>We can add a new column to a dataframe by simply using <code class="docutils literal notranslate"><span class="pre">[]</span></code> with a new column name and value(s):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[&#39;Rider&#39;] = &#39;Tom Beuzen&#39;
-df[&#39;Avg Speed&#39;] = df[&#39;Distance&#39;] * 1000 / df[&#39;Time&#39;]  # avg. speed in m/s
-df
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Rider&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Tom Beuzen&#39;</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Avg Speed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Distance&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Time&#39;</span><span class="p">]</span>  <span class="c1"># avg. speed in m/s</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -3699,8 +3699,8 @@ df
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df = df.drop(columns=[&#39;Rider&#39;, &#39;Avg Speed&#39;])
-df
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Rider&#39;</span><span class="p">,</span> <span class="s1">&#39;Avg Speed&#39;</span><span class="p">])</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -3846,7 +3846,7 @@ df
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -3985,12 +3985,12 @@ df
 <p>Let’s add a new row to the bottom of this dataframe:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>another_row = pd.DataFrame([[&quot;12 Oct 2019, 00:10:57&quot;, &quot;Morning Ride&quot;, &quot;Ride&quot;,
-                             2331, 12.67, &quot;Washed and oiled bike last night&quot;]],
-                           columns = df.columns,
-                           index = [33])
-df = df.append(another_row)
-df
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">another_row</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="s2">&quot;12 Oct 2019, 00:10:57&quot;</span><span class="p">,</span> <span class="s2">&quot;Morning Ride&quot;</span><span class="p">,</span> <span class="s2">&quot;Ride&quot;</span><span class="p">,</span>
+                             <span class="mi">2331</span><span class="p">,</span> <span class="mf">12.67</span><span class="p">,</span> <span class="s2">&quot;Washed and oiled bike last night&quot;</span><span class="p">]],</span>
+                           <span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+                           <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">33</span><span class="p">])</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">another_row</span><span class="p">)</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -4129,7 +4129,7 @@ df
 <p>We can drop all rows above index 30 using <code class="docutils literal notranslate"><span class="pre">.drop()</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.drop(index=range(30, 34))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">34</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -4291,11 +4291,11 @@ df
 <p>The below data shows how many courses different instructors taught across different years. If the question you want to answer is something like: “Does the number of courses taught vary depending on year?” then the below would probably not be considered tidy because there are multiple observations of courses taught in a year per row (i.e., there is data for 2018, 2019 and 2020 in a single row):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df = pd.DataFrame({&quot;Name&quot;: [&quot;Tom&quot;, &quot;Mike&quot;, &quot;Tiffany&quot;, &quot;Varada&quot;, &quot;Joel&quot;],
-                   &quot;2018&quot;: [1, 3, 4, 5, 3],
-                   &quot;2019&quot;: [2, 4, 3, 2, 1],
-                   &quot;2020&quot;: [5, 2, 4, 4, 3]})
-df
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Tom&quot;</span><span class="p">,</span> <span class="s2">&quot;Mike&quot;</span><span class="p">,</span> <span class="s2">&quot;Tiffany&quot;</span><span class="p">,</span> <span class="s2">&quot;Varada&quot;</span><span class="p">,</span> <span class="s2">&quot;Joel&quot;</span><span class="p">],</span>
+                   <span class="s2">&quot;2018&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+                   <span class="s2">&quot;2019&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                   <span class="s2">&quot;2020&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">]})</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -4367,10 +4367,10 @@ df
 <p>Let’s make it tidy with <code class="docutils literal notranslate"><span class="pre">.melt()</span></code>. <code class="docutils literal notranslate"><span class="pre">.melt()</span></code> takes a few arguments, most important is the <code class="docutils literal notranslate"><span class="pre">id_vars</span></code> which indicated which column should be the “identifier”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_melt = df.melt(id_vars=&quot;Name&quot;,
-                  var_name=&quot;Year&quot;,
-                  value_name=&quot;Courses&quot;)
-df_melt
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_melt</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span>
+                  <span class="n">var_name</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span>
+                  <span class="n">value_name</span><span class="o">=</span><span class="s2">&quot;Courses&quot;</span><span class="p">)</span>
+<span class="n">df_melt</span>
 </pre></div>
 </div>
 </div>
@@ -4496,10 +4496,10 @@ df_melt
 <p>The <code class="docutils literal notranslate"><span class="pre">value_vars</span></code> argument allows us to select which specific variables we want to “melt” (if you don’t specify <code class="docutils literal notranslate"><span class="pre">value_vars</span></code>, all non-identifier columns will be used). For example, below I’m omitting the <code class="docutils literal notranslate"><span class="pre">2018</span></code> column:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.melt(id_vars=&quot;Name&quot;,
-        value_vars=[&quot;2019&quot;, &quot;2020&quot;],
-        var_name=&quot;Year&quot;,
-        value_name=&quot;Courses&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span>
+        <span class="n">value_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;2019&quot;</span><span class="p">,</span> <span class="s2">&quot;2020&quot;</span><span class="p">],</span>
+        <span class="n">var_name</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span>
+        <span class="n">value_name</span><span class="o">=</span><span class="s2">&quot;Courses&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -4595,10 +4595,10 @@ df_melt
 <p>Sometimes, you want to make long data wide, which we can do with <code class="docutils literal notranslate"><span class="pre">.pivot()</span></code>. When using <code class="docutils literal notranslate"><span class="pre">.pivot()</span></code> we need to specify the <code class="docutils literal notranslate"><span class="pre">index</span></code> to pivot on, and the <code class="docutils literal notranslate"><span class="pre">columns</span></code> that will be used to make the new columns of the wider dataframe:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_pivot = df_melt.pivot(index=&quot;Name&quot;,
-                         columns=&quot;Year&quot;,
-                         values=&quot;Courses&quot;)
-df_pivot
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pivot</span> <span class="o">=</span> <span class="n">df_melt</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span>
+                         <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span>
+                         <span class="n">values</span><span class="o">=</span><span class="s2">&quot;Courses&quot;</span><span class="p">)</span>
+<span class="n">df_pivot</span>
 </pre></div>
 </div>
 </div>
@@ -4670,9 +4670,9 @@ df_pivot
 <p>You’ll notice that Pandas set our specified <code class="docutils literal notranslate"><span class="pre">index</span></code> as the index of the new dataframe and preserved the label of the columns. We can easily remove these names and reset the index to make our dataframe look like it originally did:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df_pivot = df_pivot.reset_index()
-df_pivot.columns.name = None
-df_pivot
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_pivot</span> <span class="o">=</span> <span class="n">df_pivot</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">df_pivot</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">df_pivot</span>
 </pre></div>
 </div>
 </div>
@@ -4749,12 +4749,12 @@ df_pivot
 <p>In these cases you’ll have to use <code class="docutils literal notranslate"><span class="pre">.pivot_table()</span></code>. I won’t focus on it too much here because I’d rather you learn about <code class="docutils literal notranslate"><span class="pre">pivot()</span></code> first.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df = pd.DataFrame({&quot;Name&quot;: [&quot;Tom&quot;, &quot;Tom&quot;, &quot;Mike&quot;, &quot;Mike&quot;],
-                   &quot;Department&quot;: [&quot;CS&quot;, &quot;STATS&quot;, &quot;CS&quot;, &quot;STATS&quot;],
-                   &quot;2018&quot;: [1, 2, 3, 1],
-                   &quot;2019&quot;: [2, 3, 4, 2],
-                   &quot;2020&quot;: [5, 1, 2, 2]}).melt(id_vars=[&quot;Name&quot;, &quot;Department&quot;], var_name=&quot;Year&quot;, value_name=&quot;Courses&quot;)
-df
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Tom&quot;</span><span class="p">,</span> <span class="s2">&quot;Tom&quot;</span><span class="p">,</span> <span class="s2">&quot;Mike&quot;</span><span class="p">,</span> <span class="s2">&quot;Mike&quot;</span><span class="p">],</span>
+                   <span class="s2">&quot;Department&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;CS&quot;</span><span class="p">,</span> <span class="s2">&quot;STATS&quot;</span><span class="p">,</span> <span class="s2">&quot;CS&quot;</span><span class="p">,</span> <span class="s2">&quot;STATS&quot;</span><span class="p">],</span>
+                   <span class="s2">&quot;2018&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                   <span class="s2">&quot;2019&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+                   <span class="s2">&quot;2020&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]})</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="s2">&quot;Department&quot;</span><span class="p">],</span> <span class="n">var_name</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s2">&quot;Courses&quot;</span><span class="p">)</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -4875,9 +4875,9 @@ df
 <p>In the above case, we have duplicates in <code class="docutils literal notranslate"><span class="pre">Name</span></code>, so <code class="docutils literal notranslate"><span class="pre">pivot()</span></code> won’t work. It will throw us a <code class="docutils literal notranslate"><span class="pre">ValueError:</span> <span class="pre">Index</span> <span class="pre">contains</span> <span class="pre">duplicate</span> <span class="pre">entries,</span> <span class="pre">cannot</span> <span class="pre">reshape</span></code>:</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.pivot(index=&quot;Name&quot;,
-         columns=&quot;Year&quot;,
-         values=&quot;Courses&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span>
+         <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span>
+         <span class="n">values</span><span class="o">=</span><span class="s2">&quot;Courses&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -4988,7 +4988,7 @@ df
 <p>In such a case, we’d use <code class="docutils literal notranslate"><span class="pre">.pivot_table()</span></code>. It will apply an aggregation function to our duplicates, in this case, we’ll <code class="docutils literal notranslate"><span class="pre">sum()</span></code> them up:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.pivot_table(index=&quot;Name&quot;, columns=&#39;Year&#39;, values=&#39;Courses&#39;, aggfunc=&#39;sum&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Courses&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -5042,7 +5042,7 @@ df
 <p>If we wanted to keep the numbers per department, we could specify both <code class="docutils literal notranslate"><span class="pre">Name</span></code> and <code class="docutils literal notranslate"><span class="pre">Department</span></code> as multiple indexes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.pivot_table(index=[&quot;Name&quot;, &quot;Department&quot;], columns=&#39;Year&#39;, values=&#39;Courses&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="s2">&quot;Department&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Courses&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -5128,17 +5128,17 @@ df
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df1 = pd.DataFrame({&#39;A&#39;: [1, 3, 5],
-                    &#39;B&#39;: [2, 4, 6]})
-df2 = pd.DataFrame({&#39;A&#39;: [7, 9, 11],
-                    &#39;B&#39;: [8, 10, 12]})
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+                    <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]})</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span>
+                    <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">]})</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df1
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span>
 </pre></div>
 </div>
 </div>
@@ -5187,7 +5187,7 @@ df2 = pd.DataFrame({&#39;A&#39;: [7, 9, 11],
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span>
 </pre></div>
 </div>
 </div>
@@ -5236,7 +5236,7 @@ df2 = pd.DataFrame({&#39;A&#39;: [7, 9, 11],
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.concat((df1, df2), axis=0)  # axis=0 specifies a vertical stick, i.e., on the columns
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># axis=0 specifies a vertical stick, i.e., on the columns</span>
 </pre></div>
 </div>
 </div>
@@ -5301,7 +5301,7 @@ df2 = pd.DataFrame({&#39;A&#39;: [7, 9, 11],
 <p>Notice that the indexes were simply joined together? This may or may not be what you want. To reset the index, you can specify the argument <code class="docutils literal notranslate"><span class="pre">ignore_index=True</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.concat((df1, df2), axis=0, ignore_index=True)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -5366,7 +5366,7 @@ df2 = pd.DataFrame({&#39;A&#39;: [7, 9, 11],
 <p>Use <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> to stick together horizontally:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.concat((df1, df2), axis=1, ignore_index=True)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -5424,7 +5424,7 @@ df2 = pd.DataFrame({&#39;A&#39;: [7, 9, 11],
 <p>You are not limited to just two dataframes, you can concatenate as many as you want:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.concat((df1, df2, df1, df2), axis=0, ignore_index=True)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -5529,12 +5529,12 @@ df2 = pd.DataFrame({&#39;A&#39;: [7, 9, 11],
 <p>See this great <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/getting_started/comparison/comparison_with_sql.html#compare-with-sql-join">cheat sheet</a> and <a class="reference external" href="https://github.com/gadenbuie/tidyexplain">these great animations</a> for more insights.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df1 = pd.DataFrame({&quot;name&quot;: [&#39;Magneto&#39;, &#39;Storm&#39;, &#39;Mystique&#39;, &#39;Batman&#39;, &#39;Joker&#39;, &#39;Catwoman&#39;, &#39;Hellboy&#39;],
-                    &#39;alignment&#39;: [&#39;bad&#39;, &#39;good&#39;, &#39;bad&#39;, &#39;good&#39;, &#39;bad&#39;, &#39;bad&#39;, &#39;good&#39;],
-                    &#39;gender&#39;: [&#39;male&#39;, &#39;female&#39;, &#39;female&#39;, &#39;male&#39;, &#39;male&#39;, &#39;female&#39;, &#39;male&#39;],
-                    &#39;publisher&#39;: [&#39;Marvel&#39;, &#39;Marvel&#39;, &#39;Marvel&#39;, &#39;DC&#39;, &#39;DC&#39;, &#39;DC&#39;, &#39;Dark Horse Comics&#39;]})
-df2 = pd.DataFrame({&#39;publisher&#39;: [&#39;DC&#39;, &#39;Marvel&#39;, &#39;Image&#39;],
-                    &#39;year_founded&#39;: [1934, 1939, 1992]})
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Magneto&#39;</span><span class="p">,</span> <span class="s1">&#39;Storm&#39;</span><span class="p">,</span> <span class="s1">&#39;Mystique&#39;</span><span class="p">,</span> <span class="s1">&#39;Batman&#39;</span><span class="p">,</span> <span class="s1">&#39;Joker&#39;</span><span class="p">,</span> <span class="s1">&#39;Catwoman&#39;</span><span class="p">,</span> <span class="s1">&#39;Hellboy&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;alignment&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;bad&#39;</span><span class="p">,</span> <span class="s1">&#39;good&#39;</span><span class="p">,</span> <span class="s1">&#39;bad&#39;</span><span class="p">,</span> <span class="s1">&#39;good&#39;</span><span class="p">,</span> <span class="s1">&#39;bad&#39;</span><span class="p">,</span> <span class="s1">&#39;bad&#39;</span><span class="p">,</span> <span class="s1">&#39;good&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;gender&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;male&#39;</span><span class="p">,</span> <span class="s1">&#39;female&#39;</span><span class="p">,</span> <span class="s1">&#39;female&#39;</span><span class="p">,</span> <span class="s1">&#39;male&#39;</span><span class="p">,</span> <span class="s1">&#39;male&#39;</span><span class="p">,</span> <span class="s1">&#39;female&#39;</span><span class="p">,</span> <span class="s1">&#39;male&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;publisher&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Marvel&#39;</span><span class="p">,</span> <span class="s1">&#39;Marvel&#39;</span><span class="p">,</span> <span class="s1">&#39;Marvel&#39;</span><span class="p">,</span> <span class="s1">&#39;DC&#39;</span><span class="p">,</span> <span class="s1">&#39;DC&#39;</span><span class="p">,</span> <span class="s1">&#39;DC&#39;</span><span class="p">,</span> <span class="s1">&#39;Dark Horse Comics&#39;</span><span class="p">]})</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;publisher&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;DC&#39;</span><span class="p">,</span> <span class="s1">&#39;Marvel&#39;</span><span class="p">,</span> <span class="s1">&#39;Image&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;year_founded&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1934</span><span class="p">,</span> <span class="mi">1939</span><span class="p">,</span> <span class="mi">1992</span><span class="p">]})</span>
 </pre></div>
 </div>
 </div>
@@ -5543,7 +5543,7 @@ df2 = pd.DataFrame({&#39;publisher&#39;: [&#39;DC&#39;, &#39;Marvel&#39;, &#39;I
 <p>An “inner” join will return all rows of <code class="docutils literal notranslate"><span class="pre">df1</span></code> where matching values for “publisher” are found in <code class="docutils literal notranslate"><span class="pre">df2</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.merge(df1, df2, how=&quot;inner&quot;, on=&quot;publisher&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;publisher&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -5630,7 +5630,7 @@ df2 = pd.DataFrame({&#39;publisher&#39;: [&#39;DC&#39;, &#39;Marvel&#39;, &#39;I
 <p>An “outer” join will return all rows of <code class="docutils literal notranslate"><span class="pre">df1</span></code> and <code class="docutils literal notranslate"><span class="pre">df2</span></code>, placing NaNs where information is unavailable:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.merge(df1, df2, how=&quot;outer&quot;, on=&quot;publisher&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;publisher&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -5733,7 +5733,7 @@ df2 = pd.DataFrame({&#39;publisher&#39;: [&#39;DC&#39;, &#39;Marvel&#39;, &#39;I
 <p>Return all rows from <code class="docutils literal notranslate"><span class="pre">df1</span></code> and all columns of <code class="docutils literal notranslate"><span class="pre">df1</span></code> and <code class="docutils literal notranslate"><span class="pre">df2</span></code>, populated where matches occur:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.merge(df1, df2, how=&quot;left&quot;, on=&quot;publisher&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;publisher&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -5827,7 +5827,7 @@ df2 = pd.DataFrame({&#39;publisher&#39;: [&#39;DC&#39;, &#39;Marvel&#39;, &#39;I
 <img alt="../_images/left_join.png" class="bg-primary mb-1" src="../_images/left_join.png" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.merge(df1, df2, how=&quot;right&quot;, on=&quot;publisher&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;publisher&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -5921,7 +5921,7 @@ df2 = pd.DataFrame({&#39;publisher&#39;: [&#39;DC&#39;, &#39;Marvel&#39;, &#39;I
 <p>There are many ways to specify the <code class="docutils literal notranslate"><span class="pre">key</span></code> to join dataframes on, you can join on index values, different, column names, etc. Another helpful argument is the <code class="docutils literal notranslate"><span class="pre">indicator</span></code> argument which will add a column to the result telling you where matches were found in the dataframes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>pd.merge(df1, df2, how=&quot;outer&quot;, on=&quot;publisher&quot;, indicator=True)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;publisher&quot;</span><span class="p">,</span> <span class="n">indicator</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -6045,8 +6045,8 @@ df2 = pd.DataFrame({&#39;publisher&#39;: [&#39;DC&#39;, &#39;Marvel&#39;, &#39;I
 <p>For example, say you want to use a numpy function on a column in your dataframe:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df = pd.read_csv(&#39;data/cycling_data.csv&#39;)
-df[[&#39;Time&#39;, &#39;Distance&#39;]].apply(np.sin)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/cycling_data.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span> <span class="s1">&#39;Distance&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -6137,10 +6137,10 @@ df[[&#39;Time&#39;, &#39;Distance&#39;]].apply(np.sin)
 <p>Or you may want to apply your own custom function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def seconds_to_hours(x):
-    return x / 3600
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">seconds_to_hours</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">3600</span>
 
-df[[&#39;Time&#39;]].apply(seconds_to_hours)
+<span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Time&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">seconds_to_hours</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -6219,7 +6219,7 @@ df[[&#39;Time&#39;]].apply(seconds_to_hours)
 <p>This may have been better as a lambda function…</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[[&#39;Time&#39;]].apply(lambda x: x / 3600)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Time&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">3600</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -6298,13 +6298,13 @@ df[[&#39;Time&#39;]].apply(seconds_to_hours)
 <p>You can even use functions that require additional arguments. Just specify the arguments in <code class="docutils literal notranslate"><span class="pre">.apply()</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def convert_seconds(x, to=&quot;hours&quot;):
-    if to == &quot;hours&quot;:
-        return x / 3600
-    elif to == &quot;minutes&quot;:
-        return x / 60
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">convert_seconds</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;hours&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">to</span> <span class="o">==</span> <span class="s2">&quot;hours&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">3600</span>
+    <span class="k">elif</span> <span class="n">to</span> <span class="o">==</span> <span class="s2">&quot;minutes&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">60</span>
 
-df[[&#39;Time&#39;]].apply(convert_seconds, to=&quot;minutes&quot;)
+<span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Time&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">convert_seconds</span><span class="p">,</span> <span class="n">to</span><span class="o">=</span><span class="s2">&quot;minutes&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -6383,7 +6383,7 @@ df[[&#39;Time&#39;]].apply(convert_seconds, to=&quot;minutes&quot;)
 <p>Some functions only accept/return a scalar:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>int(3.141)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="mf">3.141</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -6395,7 +6395,7 @@ df[[&#39;Time&#39;]].apply(convert_seconds, to=&quot;minutes&quot;)
 </div>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>float([3.141, 10.345])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span><span class="p">([</span><span class="mf">3.141</span><span class="p">,</span> <span class="mf">10.345</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -6418,7 +6418,7 @@ df[[&#39;Time&#39;]].apply(convert_seconds, to=&quot;minutes&quot;)
 <p>For these, we need <code class="docutils literal notranslate"><span class="pre">.applymap()</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[[&#39;Time&#39;]].applymap(int)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Time&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">applymap</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -6497,9 +6497,9 @@ df[[&#39;Time&#39;]].apply(convert_seconds, to=&quot;minutes&quot;)
 <p>However, there are often “vectorized” versions of common functions like this already available, which are much faster. In the case above, we can use <code class="docutils literal notranslate"><span class="pre">.astype()</span></code> to change the dtype of a whole column quickly:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>time_applymap = %timeit  -q -o -r 3 df[[&#39;Time&#39;]].applymap(float)
-time_builtin = %timeit  -q -o -r 3 df[[&#39;Time&#39;]].astype(float)
-print(f&quot;&#39;astype&#39; is {time_applymap.average / time_builtin.average:.2f} faster than &#39;applymap&#39;!&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_applymap</span> <span class="o">=</span> <span class="o">%</span><span class="k">timeit</span>  -q -o -r 3 df[[&#39;Time&#39;]].applymap(float)
+<span class="n">time_builtin</span> <span class="o">=</span> <span class="o">%</span><span class="k">timeit</span>  -q -o -r 3 df[[&#39;Time&#39;]].astype(float)
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;astype&#39; is </span><span class="si">{</span><span class="n">time_applymap</span><span class="o">.</span><span class="n">average</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">time_builtin</span><span class="o">.</span><span class="n">average</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> faster than &#39;applymap&#39;!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -6515,8 +6515,8 @@ print(f&quot;&#39;astype&#39; is {time_applymap.average / time_builtin.average:.
 <p>Often we are interested in examining specific groups in our data. <code class="docutils literal notranslate"><span class="pre">df.groupby()</span></code> allows us to group our data based on a variable(s).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df = pd.read_csv(&#39;data/cycling_data.csv&#39;)
-df
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/cycling_data.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -6655,8 +6655,8 @@ df
 <p>Let’s group this dataframe on the column <code class="docutils literal notranslate"><span class="pre">Name</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dfg = df.groupby(by=&#39;Name&#39;)
-dfg
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfg</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Name&#39;</span><span class="p">)</span>
+<span class="n">dfg</span>
 </pre></div>
 </div>
 </div>
@@ -6671,7 +6671,7 @@ dfg
 <p>The groupby object is really just a dictionary of index-mappings, which we could look at if we wanted to:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dfg.groups
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfg</span><span class="o">.</span><span class="n">groups</span>
 </pre></div>
 </div>
 </div>
@@ -6684,7 +6684,7 @@ dfg
 <p>We can also access a group using the <code class="docutils literal notranslate"><span class="pre">.get_group()</span></code> method:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dfg.get_group(&#39;Afternoon Ride&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfg</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s1">&#39;Afternoon Ride&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -6877,7 +6877,7 @@ dfg
 <img alt="../_images/groupby_2.png" class="bg-primary mb-1" src="../_images/groupby_2.png" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dfg.mean()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfg</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -6927,7 +6927,7 @@ dfg
 <p>We can apply multiple functions using <code class="docutils literal notranslate"><span class="pre">.aggregate()</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dfg.aggregate([&#39;mean&#39;, &#39;sum&#39;, &#39;count&#39;])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfg</span><span class="o">.</span><span class="n">aggregate</span><span class="p">([</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -7002,11 +7002,11 @@ dfg
 <p>And even apply different functions to different columns:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def num_range(x):
-    return x.max() - x.min()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">num_range</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
 
-dfg.aggregate({&quot;Time&quot;: [&#39;max&#39;, &#39;min&#39;, &#39;mean&#39;, num_range], 
-               &quot;Distance&quot;: [&#39;sum&#39;]})
+<span class="n">dfg</span><span class="o">.</span><span class="n">aggregate</span><span class="p">({</span><span class="s2">&quot;Time&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">num_range</span><span class="p">],</span> 
+               <span class="s2">&quot;Distance&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;sum&#39;</span><span class="p">]})</span>
 </pre></div>
 </div>
 </div>
@@ -7077,7 +7077,7 @@ dfg.aggregate({&quot;Time&quot;: [&#39;max&#39;, &#39;min&#39;, &#39;mean&#39;, 
 <p>By the way, you can use aggregate for non-grouped dataframes too. This is pretty much what <code class="docutils literal notranslate"><span class="pre">df.describe</span></code> does under-the-hood:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.agg([&#39;mean&#39;, &#39;min&#39;, &#39;count&#39;, num_range])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">num_range</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -7155,7 +7155,7 @@ dfg.aggregate({&quot;Time&quot;: [&#39;max&#39;, &#39;min&#39;, &#39;mean&#39;, 
 <p>Missing values are typically denoted with <code class="docutils literal notranslate"><span class="pre">NaN</span></code>. We can use <code class="docutils literal notranslate"><span class="pre">df.isnull()</span></code> to find missing values in a dataframe. It returns a boolean for each element in the dataframe:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.isnull()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -7294,7 +7294,7 @@ dfg.aggregate({&quot;Time&quot;: [&#39;max&#39;, &#39;min&#39;, &#39;mean&#39;, 
 <p>But it’s usually more helpful to get this information by row or by column using the <code class="docutils literal notranslate"><span class="pre">.any()</span></code> or <code class="docutils literal notranslate"><span class="pre">.info()</span></code> method:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.info()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -7318,7 +7318,7 @@ memory usage: 1.7+ KB
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df[df.isnull().any(axis=1)]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -7375,7 +7375,7 @@ memory usage: 1.7+ KB
 <p>When you have missing values, we usually either drop them or impute them.You can drop missing values with <code class="docutils literal notranslate"><span class="pre">df.dropna()</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.dropna()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -7514,12 +7514,12 @@ memory usage: 1.7+ KB
 <p>Or you can impute (“fill”) them using <code class="docutils literal notranslate"><span class="pre">.fillna()</span></code>. This method has various options for filling, you can use a fixed value, the mean of the column, the previous non-nan value, etc:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df = pd.DataFrame([[np.nan, 2, np.nan, 0],
-                   [3, 4, np.nan, 1],
-                   [np.nan, np.nan, np.nan, 5],
-                   [np.nan, 3, np.nan, 4]],
-                  columns=list(&#39;ABCD&#39;))
-df
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                   <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                   <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+                   <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span>
+                  <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;ABCD&#39;</span><span class="p">))</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -7583,7 +7583,7 @@ df
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.fillna(0)  # fill with 0
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># fill with 0</span>
 </pre></div>
 </div>
 </div>
@@ -7647,7 +7647,7 @@ df
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.fillna(df.mean())  # fill with the mean
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>  <span class="c1"># fill with the mean</span>
 </pre></div>
 </div>
 </div>
@@ -7711,7 +7711,7 @@ df
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.fillna(method=&#39;bfill&#39;)  # backward (upwards) fill from non-nan values
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;bfill&#39;</span><span class="p">)</span>  <span class="c1"># backward (upwards) fill from non-nan values</span>
 </pre></div>
 </div>
 </div>
@@ -7775,7 +7775,7 @@ df
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.fillna(method=&#39;ffill&#39;)  # forward (downward) fill from non-nan values
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;ffill&#39;</span><span class="p">)</span>  <span class="c1"># forward (downward) fill from non-nan values</span>
 </pre></div>
 </div>
 </div>

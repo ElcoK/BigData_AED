@@ -650,10 +650,10 @@ title="Print to PDF"
 <p><em>We will first need to install these packages in the cell below. Uncomment them to make sure we can pip install them</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#!pip install osmnx
-#!pip install geopandas
-#!pip install geocube
-#!pip install contextily
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install osmnx</span>
+<span class="c1">#!pip install geopandas</span>
+<span class="c1">#!pip install geocube</span>
+<span class="c1">#!pip install contextily</span>
 </pre></div>
 </div>
 </div>
@@ -661,21 +661,21 @@ title="Print to PDF"
 <p>And we will import these packages in the cell below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import osmnx as ox
-import numpy as np
-import networkx as nx
-import contextily as cx
-import matplotlib
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">osmnx</span> <span class="k">as</span> <span class="nn">ox</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">contextily</span> <span class="k">as</span> <span class="nn">cx</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
 
-import geopandas as gpd
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
 
-from matplotlib.colors import LinearSegmentedColormap,ListedColormap
-from matplotlib.patches import Patch
-import matplotlib.pyplot as plt
-from IPython.display import IFrame
-from geocube.api.core import make_geocube
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LinearSegmentedColormap</span><span class="p">,</span><span class="n">ListedColormap</span>
+<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Patch</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
+<span class="kn">from</span> <span class="nn">geocube.api.core</span> <span class="kn">import</span> <span class="n">make_geocube</span>
 
-%matplotlib inline
+<span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
 </div>
 </div>
@@ -687,8 +687,8 @@ from geocube.api.core import make_geocube
 <p>In some cases, the function does not recognize the location. You could either try a different phrasing or try a different location. Many parts of the Netherlands should work.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>place_name = &quot;Zoeterwoude, The Netherlands&quot;
-area = ox.geocode_to_gdf(place_name)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">place_name</span> <span class="o">=</span> <span class="s2">&quot;Zoeterwoude, The Netherlands&quot;</span>
+<span class="n">area</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">geocode_to_gdf</span><span class="p">(</span><span class="n">place_name</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -696,16 +696,16 @@ area = ox.geocode_to_gdf(place_name)
 <p>Now let us visualize the bounding box of the area. As you will notice, we also estimate the size of the area. If the area size is above 50km2, or when you have many elements within your area (for example the amsterdam city centre), extracting the data from OpenStreetMap may take a little while.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>area_to_check = area.to_crs(epsg=3857)
-ax = area_to_check.plot(figsize=(10, 10), color=&quot;none&quot;, edgecolor=&quot;k&quot;, linewidth=4)
-ax.set_xticks([])
-ax.set_yticks([])
-ax.set_axis_off()
-cx.add_basemap(ax, zoom=14)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">area_to_check</span> <span class="o">=</span> <span class="n">area</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">3857</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">area_to_check</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+<span class="n">cx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 
-size = int(area_to_check.area/1e6)
+<span class="n">size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">area_to_check</span><span class="o">.</span><span class="n">area</span><span class="o">/</span><span class="mf">1e6</span><span class="p">)</span>
 
-ax.set_title(&quot;{}. Total area: {} km2&quot;.format(place_name,size),fontweight=&#39;bold&#39;)
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">. Total area: </span><span class="si">{}</span><span class="s2"> km2&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">place_name</span><span class="p">,</span><span class="n">size</span><span class="p">),</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -720,8 +720,8 @@ ax.set_title(&quot;{}. Total area: {} km2&quot;.format(place_name,size),fontweig
 <p>As you will see in the cell below, we use the tags <em>“landuse”</em> and <em>“natural”</em>. We need to use the <em>“natural”</em> tag to ensure we also obtain water bodies and other natural elements.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tags = {&#39;landuse&#39;: True, &#39;natural&#39;: True}   
-landuse = ox.geometries_from_place(place_name, tags)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tags</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;landuse&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;natural&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>   
+<span class="n">landuse</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">geometries_from_place</span><span class="p">(</span><span class="n">place_name</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -729,7 +729,7 @@ landuse = ox.geometries_from_place(place_name, tags)
 <p>To ensure we really only get the area that we want, we use geopandas’s <code class="docutils literal notranslate"><span class="pre">clip</span></code> function to only keep the area we want. This function does exactly the same as the <code class="docutils literal notranslate"><span class="pre">clip</span></code> function in QGIS.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>landuse = landuse.clip(area)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">landuse</span> <span class="o">=</span> <span class="n">landuse</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">area</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -738,11 +738,11 @@ landuse = ox.geometries_from_place(place_name, tags)
 <p>To overcome this issue, we need to add the missing information to the landuse column, as done below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>landuse.loc[landuse.natural==&#39;water&#39;,&#39;landuse&#39;] = &#39;water&#39;
-landuse.loc[landuse.natural==&#39;beach&#39;,&#39;landuse&#39;] = &#39;beach&#39;
-landuse.loc[landuse.natural==&#39;grassland&#39;,&#39;landuse&#39;] = &#39;grass&#39;
-landuse.loc[landuse.natural==&#39;wetland&#39;,&#39;landuse&#39;] = &#39;wetlands&#39;
-landuse = landuse.dropna(subset=[&#39;landuse&#39;])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">landuse</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">landuse</span><span class="o">.</span><span class="n">natural</span><span class="o">==</span><span class="s1">&#39;water&#39;</span><span class="p">,</span><span class="s1">&#39;landuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;water&#39;</span>
+<span class="n">landuse</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">landuse</span><span class="o">.</span><span class="n">natural</span><span class="o">==</span><span class="s1">&#39;beach&#39;</span><span class="p">,</span><span class="s1">&#39;landuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;beach&#39;</span>
+<span class="n">landuse</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">landuse</span><span class="o">.</span><span class="n">natural</span><span class="o">==</span><span class="s1">&#39;grassland&#39;</span><span class="p">,</span><span class="s1">&#39;landuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;grass&#39;</span>
+<span class="n">landuse</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">landuse</span><span class="o">.</span><span class="n">natural</span><span class="o">==</span><span class="s1">&#39;wetland&#39;</span><span class="p">,</span><span class="s1">&#39;landuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;wetlands&#39;</span>
+<span class="n">landuse</span> <span class="o">=</span> <span class="n">landuse</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;landuse&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -751,21 +751,21 @@ landuse = landuse.dropna(subset=[&#39;landuse&#39;])
 <p>As you will see below, we can create a dictionary with color codes that will color each land-use class based on the color code provided in this dictionary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>color_dict = {  &quot;grass&quot;:&#39;#c3eead&#39;,               &quot;railway&quot;: &quot;#000000&quot;,
-                &quot;forest&quot;:&#39;#1c7426&#39;,              &quot;orchard&quot;:&#39;#fe6729&#39;,
-                &quot;residential&quot;:&#39;#f13013&#39;,         &quot;industrial&quot;:&#39;#0f045c&#39;,
-                &quot;retail&quot;:&#39;#b71456&#39;,              &quot;education&quot;:&#39;#d61181&#39;,              
-                &quot;commercial&quot;:&#39;#981cb8&#39;,          &quot;farmland&quot;:&#39;#fcfcb9&#39;,
-                &quot;cemetery&quot;:&#39;#c39797&#39;,            &quot;construction&quot;:&#39;#c0c0c0&#39;,
-                &quot;meadow&quot;:&#39;#c3eead&#39;,              &quot;farmyard&quot;:&#39;#fcfcb9&#39;,
-                &quot;plant_nursery&quot;:&#39;#eaffe2&#39;,       &quot;scrub&quot;:&#39;#98574d&#39;,
-                &quot;allotments&quot;:&#39;#fbffe2&#39;,          &quot;reservoir&quot;:&#39;#8af4f2&#39;,
-                &quot;static_caravan&quot;:&#39;#ff3a55&#39;,      &quot;wetlands&quot;: &quot;#c9f5e5&quot;,
-                &quot;water&quot;: &quot;#c9e5f5&quot;,              &quot;beach&quot;: &quot;#ffeead&quot;,
-                &quot;landfill&quot; : &quot;#B08C4D&quot;,          &quot;recreation_ground&quot; : &quot;#c3eead&quot;,
-                &quot;brownfield&quot; : &quot;#B08C4D&quot;,        &quot;village_green&quot; : &quot;#f13013&quot; ,
-                &quot;military&quot;: &quot;#52514E&quot;,            &quot;garden&quot; : &#39;#c3eead&#39;
-             } 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">color_dict</span> <span class="o">=</span> <span class="p">{</span>  <span class="s2">&quot;grass&quot;</span><span class="p">:</span><span class="s1">&#39;#c3eead&#39;</span><span class="p">,</span>               <span class="s2">&quot;railway&quot;</span><span class="p">:</span> <span class="s2">&quot;#000000&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;forest&quot;</span><span class="p">:</span><span class="s1">&#39;#1c7426&#39;</span><span class="p">,</span>              <span class="s2">&quot;orchard&quot;</span><span class="p">:</span><span class="s1">&#39;#fe6729&#39;</span><span class="p">,</span>
+                <span class="s2">&quot;residential&quot;</span><span class="p">:</span><span class="s1">&#39;#f13013&#39;</span><span class="p">,</span>         <span class="s2">&quot;industrial&quot;</span><span class="p">:</span><span class="s1">&#39;#0f045c&#39;</span><span class="p">,</span>
+                <span class="s2">&quot;retail&quot;</span><span class="p">:</span><span class="s1">&#39;#b71456&#39;</span><span class="p">,</span>              <span class="s2">&quot;education&quot;</span><span class="p">:</span><span class="s1">&#39;#d61181&#39;</span><span class="p">,</span>              
+                <span class="s2">&quot;commercial&quot;</span><span class="p">:</span><span class="s1">&#39;#981cb8&#39;</span><span class="p">,</span>          <span class="s2">&quot;farmland&quot;</span><span class="p">:</span><span class="s1">&#39;#fcfcb9&#39;</span><span class="p">,</span>
+                <span class="s2">&quot;cemetery&quot;</span><span class="p">:</span><span class="s1">&#39;#c39797&#39;</span><span class="p">,</span>            <span class="s2">&quot;construction&quot;</span><span class="p">:</span><span class="s1">&#39;#c0c0c0&#39;</span><span class="p">,</span>
+                <span class="s2">&quot;meadow&quot;</span><span class="p">:</span><span class="s1">&#39;#c3eead&#39;</span><span class="p">,</span>              <span class="s2">&quot;farmyard&quot;</span><span class="p">:</span><span class="s1">&#39;#fcfcb9&#39;</span><span class="p">,</span>
+                <span class="s2">&quot;plant_nursery&quot;</span><span class="p">:</span><span class="s1">&#39;#eaffe2&#39;</span><span class="p">,</span>       <span class="s2">&quot;scrub&quot;</span><span class="p">:</span><span class="s1">&#39;#98574d&#39;</span><span class="p">,</span>
+                <span class="s2">&quot;allotments&quot;</span><span class="p">:</span><span class="s1">&#39;#fbffe2&#39;</span><span class="p">,</span>          <span class="s2">&quot;reservoir&quot;</span><span class="p">:</span><span class="s1">&#39;#8af4f2&#39;</span><span class="p">,</span>
+                <span class="s2">&quot;static_caravan&quot;</span><span class="p">:</span><span class="s1">&#39;#ff3a55&#39;</span><span class="p">,</span>      <span class="s2">&quot;wetlands&quot;</span><span class="p">:</span> <span class="s2">&quot;#c9f5e5&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;water&quot;</span><span class="p">:</span> <span class="s2">&quot;#c9e5f5&quot;</span><span class="p">,</span>              <span class="s2">&quot;beach&quot;</span><span class="p">:</span> <span class="s2">&quot;#ffeead&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;landfill&quot;</span> <span class="p">:</span> <span class="s2">&quot;#B08C4D&quot;</span><span class="p">,</span>          <span class="s2">&quot;recreation_ground&quot;</span> <span class="p">:</span> <span class="s2">&quot;#c3eead&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;brownfield&quot;</span> <span class="p">:</span> <span class="s2">&quot;#B08C4D&quot;</span><span class="p">,</span>        <span class="s2">&quot;village_green&quot;</span> <span class="p">:</span> <span class="s2">&quot;#f13013&quot;</span> <span class="p">,</span>
+                <span class="s2">&quot;military&quot;</span><span class="p">:</span> <span class="s2">&quot;#52514E&quot;</span><span class="p">,</span>            <span class="s2">&quot;garden&quot;</span> <span class="p">:</span> <span class="s1">&#39;#c3eead&#39;</span>
+             <span class="p">}</span> 
 </pre></div>
 </div>
 </div>
@@ -774,7 +774,7 @@ landuse = landuse.dropna(subset=[&#39;landuse&#39;])
 <p>Let’s first create an overview of the unique land-use categories within our data through using the <code class="docutils literal notranslate"><span class="pre">.unique()</span></code> function within our dataframe:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>landuse.landuse.unique()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">landuse</span><span class="o">.</span><span class="n">landuse</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -790,7 +790,7 @@ landuse = landuse.dropna(subset=[&#39;landuse&#39;])
 <p>Ofcourse we can visually compare the array above with our color_dict, but it is much quicker to use <code class="docutils literal notranslate"><span class="pre">Sets</span></code> to check if there is anything missing:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>set(landuse.landuse.unique())-set(color_dict)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">(</span><span class="n">landuse</span><span class="o">.</span><span class="n">landuse</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span><span class="o">-</span><span class="nb">set</span><span class="p">(</span><span class="n">color_dict</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -808,12 +808,12 @@ landuse = landuse.dropna(subset=[&#39;landuse&#39;])
 <p>Our next step is to make sure that we can connect our color codes to our dataframe with land-use categories.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>color_dict = {key: color_dict[key]
-             for key in color_dict if key not in  list(set(color_dict)-set(landuse.landuse.unique()))}
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">color_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">color_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+             <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">color_dict</span> <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span>  <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">color_dict</span><span class="p">)</span><span class="o">-</span><span class="nb">set</span><span class="p">(</span><span class="n">landuse</span><span class="o">.</span><span class="n">landuse</span><span class="o">.</span><span class="n">unique</span><span class="p">()))}</span>
 
-map_dict = dict(zip(color_dict.keys(),[x for x in range(len(color_dict))]))
+<span class="n">map_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">color_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">(),[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">color_dict</span><span class="p">))]))</span>
 
-landuse[&#39;col_landuse&#39;] = landuse.landuse.apply(lambda x: color_dict[x])
+<span class="n">landuse</span><span class="p">[</span><span class="s1">&#39;col_landuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">landuse</span><span class="o">.</span><span class="n">landuse</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">color_dict</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -822,30 +822,30 @@ landuse[&#39;col_landuse&#39;] = landuse.landuse.apply(lambda x: color_dict[x])
 <p>As you will see in the cell below, we first state that we want to create a figure with a specific figure size. You can change the dimensions to your liking.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax = plt.subplots(1, 1,figsize=(12,10))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
 
-# add color scheme
-color_scheme_map = list(color_dict.values())
-cmap = LinearSegmentedColormap.from_list(name=&#39;landuse&#39;,
-                                     colors=color_scheme_map)  
+<span class="c1"># add color scheme</span>
+<span class="n">color_scheme_map</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">color_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;landuse&#39;</span><span class="p">,</span>
+                                     <span class="n">colors</span><span class="o">=</span><span class="n">color_scheme_map</span><span class="p">)</span>  
 
-# and plot the land-use map.
-landuse.plot(color=landuse[&#39;col_landuse&#39;],ax=ax,linewidth=0)
+<span class="c1"># and plot the land-use map.</span>
+<span class="n">landuse</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">landuse</span><span class="p">[</span><span class="s1">&#39;col_landuse&#39;</span><span class="p">],</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-# remove the ax labels
-ax.set_xticks([])
-ax.set_yticks([])
-ax.set_axis_off()
+<span class="c1"># remove the ax labels</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
 
-# add a legend:
-legend_elements = []
-for iter_,item in enumerate(color_dict):
-    legend_elements.append(Patch(facecolor=color_scheme_map[iter_],label=item))        
+<span class="c1"># add a legend:</span>
+<span class="n">legend_elements</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">iter_</span><span class="p">,</span><span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">color_dict</span><span class="p">):</span>
+    <span class="n">legend_elements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Patch</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="n">color_scheme_map</span><span class="p">[</span><span class="n">iter_</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="n">item</span><span class="p">))</span>        
 
-ax.legend(handles=legend_elements,edgecolor=&#39;black&#39;,facecolor=&#39;#fefdfd&#39;,prop={&#39;size&#39;:12},loc=(1.02,0.2)) 
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">legend_elements</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;#fefdfd&#39;</span><span class="p">,</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">},</span><span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="mf">1.02</span><span class="p">,</span><span class="mf">0.2</span><span class="p">))</span> 
 
-# add a title
-ax.set_title(place_name,fontweight=&#39;bold&#39;)
+<span class="c1"># add a title</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">place_name</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -865,8 +865,8 @@ ax.set_title(place_name,fontweight=&#39;bold&#39;)
 <p>The first thing we will need to do is to define all the unique land-use classes and store them in a dictionary:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>categorical_enums = {&#39;landuse&#39;: landuse.landuse.drop_duplicates().values.tolist()
-}
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">categorical_enums</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;landuse&#39;</span><span class="p">:</span> <span class="n">landuse</span><span class="o">.</span><span class="n">landuse</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -882,12 +882,12 @@ ax.set_title(place_name,fontweight=&#39;bold&#39;)
 <p>Play around with the different resolutions to find the level of detail. The higher the resolution (i.e., the more zeros behind the comma), the longer it will take to rasterize.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>landuse_grid = make_geocube(
-    vector_data=landuse,
-    output_crs=&quot;epsg:4326&quot;,
-    resolution=(-0.0001, 0.0001),
-    categorical_enums=categorical_enums
-)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">landuse_grid</span> <span class="o">=</span> <span class="n">make_geocube</span><span class="p">(</span>
+    <span class="n">vector_data</span><span class="o">=</span><span class="n">landuse</span><span class="p">,</span>
+    <span class="n">output_crs</span><span class="o">=</span><span class="s2">&quot;epsg:4326&quot;</span><span class="p">,</span>
+    <span class="n">resolution</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">),</span>
+    <span class="n">categorical_enums</span><span class="o">=</span><span class="n">categorical_enums</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -895,7 +895,7 @@ ax.set_title(place_name,fontweight=&#39;bold&#39;)
 <p>Let’s explore what this function has given us:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>landuse_grid[&quot;landuse&quot;]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">landuse_grid</span><span class="p">[</span><span class="s2">&quot;landuse&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1285,16 +1285,16 @@ Attributes:
 <p>Now let’s plot the data to see the result!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax = plt.subplots(1, 1,figsize=(14,10))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
 
-landuse_grid[&quot;landuse&quot;].plot(ax=ax,vmin=0,vmax=15,levels=15,cmap=&#39;tab20&#39;)
+<span class="n">landuse_grid</span><span class="p">[</span><span class="s2">&quot;landuse&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span><span class="n">levels</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;tab20&#39;</span><span class="p">)</span>
 
-# remove the ax labels
-ax.set_xticks([])
-ax.set_yticks([])
-ax.set_axis_off()
+<span class="c1"># remove the ax labels</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
 
-ax.set_title(&#39;Rasterized land-use map for {}&#39;.format(place_name),fontweight=&#39;bold&#39;)
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Rasterized land-use map for </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">place_name</span><span class="p">),</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1311,14 +1311,14 @@ ax.set_title(&#39;Rasterized land-use map for {}&#39;.format(place_name),fontwei
 <p>We will start with creating a dictionary that allows us to couple a number to each category:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>value_dict = dict(zip(landuse.landuse.unique(),np.arange(0,len(landuse.landuse.unique()),1)))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">value_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">landuse</span><span class="o">.</span><span class="n">landuse</span><span class="o">.</span><span class="n">unique</span><span class="p">(),</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">landuse</span><span class="o">.</span><span class="n">landuse</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span><span class="mi">1</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>value_dict[&#39;nodata&#39;] = -1
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">value_dict</span><span class="p">[</span><span class="s1">&#39;nodata&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 </pre></div>
 </div>
 </div>
@@ -1326,7 +1326,7 @@ ax.set_title(&#39;Rasterized land-use map for {}&#39;.format(place_name),fontwei
 <p>And we now use this dictionary to add a new column to the dataframe with the values:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>landuse[&#39;landuse_value&#39;] = landuse.landuse.apply(lambda x: value_dict[x])
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">landuse</span><span class="p">[</span><span class="s1">&#39;landuse_value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">landuse</span><span class="o">.</span><span class="n">landuse</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">value_dict</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1334,13 +1334,13 @@ ax.set_title(&#39;Rasterized land-use map for {}&#39;.format(place_name),fontwei
 <p>Now let us use the <code class="docutils literal notranslate"><span class="pre">make_geocube()</span></code> function again to rasterize.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>landuse_valued = make_geocube(
-    vector_data=landuse,
-    output_crs=&quot;epsg:4326&quot;,
-    resolution=(-0.0001, 0.0001),
-    categorical_enums={&#39;landuse_value&#39;: landuse.landuse_value.drop_duplicates().values.tolist()
-}
-)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">landuse_valued</span> <span class="o">=</span> <span class="n">make_geocube</span><span class="p">(</span>
+    <span class="n">vector_data</span><span class="o">=</span><span class="n">landuse</span><span class="p">,</span>
+    <span class="n">output_crs</span><span class="o">=</span><span class="s2">&quot;epsg:4326&quot;</span><span class="p">,</span>
+    <span class="n">resolution</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">),</span>
+    <span class="n">categorical_enums</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;landuse_value&#39;</span><span class="p">:</span> <span class="n">landuse</span><span class="o">.</span><span class="n">landuse_value</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="p">}</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1348,8 +1348,8 @@ ax.set_title(&#39;Rasterized land-use map for {}&#39;.format(place_name),fontwei
 <p>And let’s use the original <code class="docutils literal notranslate"><span class="pre">color_dict</span></code> dictionary to find the right hex codes for each of the land-use categories</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>unique_classes = landuse.landuse.drop_duplicates().values.tolist()
-colormap_raster = [color_dict[lu_class] for lu_class in unique_classes] 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unique_classes</span> <span class="o">=</span> <span class="n">landuse</span><span class="o">.</span><span class="n">landuse</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">colormap_raster</span> <span class="o">=</span> <span class="p">[</span><span class="n">color_dict</span><span class="p">[</span><span class="n">lu_class</span><span class="p">]</span> <span class="k">for</span> <span class="n">lu_class</span> <span class="ow">in</span> <span class="n">unique_classes</span><span class="p">]</span> 
 </pre></div>
 </div>
 </div>
@@ -1357,16 +1357,16 @@ colormap_raster = [color_dict[lu_class] for lu_class in unique_classes]
 <p>To plot the new result:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax = plt.subplots(1, 1,figsize=(14,10))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
 
-landuse_valued[&quot;landuse_value&quot;].plot(ax=ax,vmin=0,vmax=19,levels=len(unique_classes),colors=colormap_raster)
+<span class="n">landuse_valued</span><span class="p">[</span><span class="s2">&quot;landuse_value&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">19</span><span class="p">,</span><span class="n">levels</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">unique_classes</span><span class="p">),</span><span class="n">colors</span><span class="o">=</span><span class="n">colormap_raster</span><span class="p">)</span>
 
-# remove the ax labels
-ax.set_xticks([])
-ax.set_yticks([])
-ax.set_axis_off()
+<span class="c1"># remove the ax labels</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
 
-ax.set_title(&#39;Rasterized land-use map for {}&#39;.format(place_name),fontweight=&#39;bold&#39;)
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Rasterized land-use map for </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">place_name</span><span class="p">),</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1380,25 +1380,25 @@ ax.set_title(&#39;Rasterized land-use map for {}&#39;.format(place_name),fontwei
 <p>But to be honest, this legend is still not entirely what we are looking for. So let’s do some Python magic to get a legend like we desire when plotting a land-use map</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>unique_classes = landuse.landuse.drop_duplicates().values.tolist()
-colormap_raster = [color_dict[lu_class] for lu_class in unique_classes] 
-color_dict_raster = dict(zip(np.arange(-1,len(landuse.landuse.unique())+1,1),[&#39;#ffffff&#39;]+colormap_raster))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unique_classes</span> <span class="o">=</span> <span class="n">landuse</span><span class="o">.</span><span class="n">landuse</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">colormap_raster</span> <span class="o">=</span> <span class="p">[</span><span class="n">color_dict</span><span class="p">[</span><span class="n">lu_class</span><span class="p">]</span> <span class="k">for</span> <span class="n">lu_class</span> <span class="ow">in</span> <span class="n">unique_classes</span><span class="p">]</span> 
+<span class="n">color_dict_raster</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">landuse</span><span class="o">.</span><span class="n">landuse</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),[</span><span class="s1">&#39;#ffffff&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">colormap_raster</span><span class="p">))</span>
 
-# We create a colormar from our list of colors
-cm = ListedColormap([color_dict_raster[x] for x in color_dict_raster.keys()])
+<span class="c1"># We create a colormar from our list of colors</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">([</span><span class="n">color_dict_raster</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">color_dict_raster</span><span class="o">.</span><span class="n">keys</span><span class="p">()])</span>
 
-# Let&#39;s also define the description of each category : 1 (blue) is Sea; 2 (red) is burnt, etc... Order should be respected here ! Or using another dict maybe could help.
-labels = np.array([&#39;nodata&#39;] + unique_classes)
-len_lab = len(labels)
+<span class="c1"># Let&#39;s also define the description of each category : 1 (blue) is Sea; 2 (red) is burnt, etc... Order should be respected here ! Or using another dict maybe could help.</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;nodata&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">unique_classes</span><span class="p">)</span>
+<span class="n">len_lab</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
 
-# prepare normalizer
-## Prepare bins for the normalizer
-norm_bins = np.sort([*color_dict_raster.keys()]) + 0.5
-norm_bins = np.insert(norm_bins, 0, np.min(norm_bins) - 1.0)
+<span class="c1"># prepare normalizer</span>
+<span class="c1">## Prepare bins for the normalizer</span>
+<span class="n">norm_bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">([</span><span class="o">*</span><span class="n">color_dict_raster</span><span class="o">.</span><span class="n">keys</span><span class="p">()])</span> <span class="o">+</span> <span class="mf">0.5</span>
+<span class="n">norm_bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">norm_bins</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">norm_bins</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span>
 
-## Make normalizer and formatter
-norm = matplotlib.colors.BoundaryNorm(norm_bins, len_lab, clip=True)
-fmt = matplotlib.ticker.FuncFormatter(lambda x, pos: labels[norm(x)])
+<span class="c1">## Make normalizer and formatter</span>
+<span class="n">norm</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">BoundaryNorm</span><span class="p">(</span><span class="n">norm_bins</span><span class="p">,</span> <span class="n">len_lab</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fmt</span> <span class="o">=</span> <span class="n">matplotlib</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span> <span class="n">labels</span><span class="p">[</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
@@ -1406,23 +1406,23 @@ fmt = matplotlib.ticker.FuncFormatter(lambda x, pos: labels[norm(x)])
 <p>Let’s plot the map again!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax = plt.subplots(1, 1,figsize=(14,10))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
 
-ax = landuse_valued[&quot;landuse_value&quot;].plot(levels=len(unique_classes), cmap=cm, norm=norm)
+<span class="n">ax</span> <span class="o">=</span> <span class="n">landuse_valued</span><span class="p">[</span><span class="s2">&quot;landuse_value&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">levels</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">unique_classes</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>
 
-# remove the ax labels
-diff = norm_bins[1:] - norm_bins[:-1]
-tickz = norm_bins[:-1] + diff / 2
-cb = fig.colorbar(ax, format=fmt, ticks=tickz)
+<span class="c1"># remove the ax labels</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">norm_bins</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">norm_bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">tickz</span> <span class="o">=</span> <span class="n">norm_bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">diff</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="n">cb</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">fmt</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">tickz</span><span class="p">)</span>
 
-fig.axes[0].set_title(&#39;Rasterized land-use map for {}&#39;.format(place_name),fontweight=&#39;bold&#39;)
+<span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Rasterized land-use map for </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">place_name</span><span class="p">),</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
 
-fig.axes[0].set_xticks([])
-fig.axes[0].set_yticks([])
-fig.axes[0].set_axis_off()
+<span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
 
-# for some weird reason we get two colorbars, so we remove one:
-fig.delaxes(fig.axes[1])
+<span class="c1"># for some weird reason we get two colorbars, so we remove one:</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">delaxes</span><span class="p">(</span><span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1436,8 +1436,8 @@ fig.delaxes(fig.axes[1])
 <hr><p>There is a lot more data to extract from OpenStreetMap besides land-use information. Let’s extract some building data. To do so, we use the <em>“building”</em> tag.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tags = {&quot;building&quot;: True}
-buildings = ox.geometries_from_place(place_name, tags)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tags</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;building&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+<span class="n">buildings</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">geometries_from_place</span><span class="p">(</span><span class="n">place_name</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1445,7 +1445,7 @@ buildings = ox.geometries_from_place(place_name, tags)
 <p>Now let’s see what information is actually extracted:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>buildings.head()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">buildings</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1648,7 +1648,7 @@ buildings = ox.geometries_from_place(place_name, tags)
 <p>Let’s check what information is collected for the different buildings:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>buildings.columns
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">buildings</span><span class="o">.</span><span class="n">columns</span>
 </pre></div>
 </div>
 </div>
@@ -1676,7 +1676,7 @@ buildings = ox.geometries_from_place(place_name, tags)
 <p>First, it would be interesting to get an idea how many buildings are build in each year through using the <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code> function. Normally, that functions ranks the values in descending order (high to low). We are more interested in how this has developed over time. So we use the <code class="docutils literal notranslate"><span class="pre">sort_index()</span></code> function to sort the values by year.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>building_year = buildings.start_date.value_counts().sort_index()
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">building_year</span> <span class="o">=</span> <span class="n">buildings</span><span class="o">.</span><span class="n">start_date</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1684,11 +1684,11 @@ buildings = ox.geometries_from_place(place_name, tags)
 <p>There is not better way to further explore this years than through plotting it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig,ax = plt.subplots(1,1,figsize=(5,18))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">18</span><span class="p">))</span>
 
-building_year.plot(kind=&#39;barh&#39;,ax=ax)
+<span class="n">building_year</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;barh&#39;</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
 
-ax.tick_params(axis=&#39;y&#39;, which=&#39;major&#39;, labelsize=7)
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1700,7 +1700,7 @@ ax.tick_params(axis=&#39;y&#39;, which=&#39;major&#39;, labelsize=7)
 <p>Let’s see for how many buildings this is the case:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>buildings.building.value_counts().index
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">buildings</span><span class="o">.</span><span class="n">building</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span>
 </pre></div>
 </div>
 </div>
@@ -1718,42 +1718,42 @@ ax.tick_params(axis=&#39;y&#39;, which=&#39;major&#39;, labelsize=7)
 <p>Now let’s visualize the buildings again. We need to create a similar color dictionary as we did for the land-use categories. Now its up to you to make it!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>color_dict = { &#39;yes&#39; : &quot;#f1134b&quot;, 
-              &#39;house&#39;:&#39;#f13013&#39;, 
-              &#39;industrial&#39;:&#39;#0f045c&#39;,
-              &#39;apartments&#39;:&#39;#781809&#39;, 
-              &#39;shed&#39; : &quot;#F89789&quot;, 
-              &#39;garage&#39;: &quot;#F89789&quot;, 
-              &#39;retail&#39;:&#39;#b71456&#39;,
-               &#39;construction&#39;:&#39;#c0c0c0&#39;, 
-              &#39;commercial&#39;:&#39;#CB8DDB&#39;, 
-              &#39;office&#39;: &quot;#20b1bd&quot;, 
-              &#39;parking&#39; : &quot;#000000&quot;,
-              &#39;houseboat&#39;: &quot;#F35942&quot;,
-              &#39;greenhouse&#39;: &#39;#eaffe2&#39;, 
-              &#39;static_caravan&#39;: &#39;#ff3a55&#39;,
-              &#39;barn&#39;:&#39;#fcfcb9&#39;, 
-              &#39;roof&#39;:&#39;#fcfcb9&#39;, 
-              &#39;farm_auxiliary&#39;:&#39;#fcfcb9&#39;,
-              &#39;pavilion&#39;:&#39;#CB8DDB&#39;, 
-              &#39;warehouse&#39;:&#39;#CB8DDB&#39;, 
-              &#39;farm&#39;:&#39;#fcfcb9&#39;, 
-              &#39;bungalow&#39;:&#39;#f13013&#39;, 
-              &#39;church&#39; : &quot;#513857&quot;, 
-              &#39;paviljon&#39;:&#39;#CB8DDB&#39;,
-              &#39;service&#39;:&#39;#CB8DDB&#39; }
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">color_dict</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;yes&#39;</span> <span class="p">:</span> <span class="s2">&quot;#f1134b&quot;</span><span class="p">,</span> 
+              <span class="s1">&#39;house&#39;</span><span class="p">:</span><span class="s1">&#39;#f13013&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;industrial&#39;</span><span class="p">:</span><span class="s1">&#39;#0f045c&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;apartments&#39;</span><span class="p">:</span><span class="s1">&#39;#781809&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;shed&#39;</span> <span class="p">:</span> <span class="s2">&quot;#F89789&quot;</span><span class="p">,</span> 
+              <span class="s1">&#39;garage&#39;</span><span class="p">:</span> <span class="s2">&quot;#F89789&quot;</span><span class="p">,</span> 
+              <span class="s1">&#39;retail&#39;</span><span class="p">:</span><span class="s1">&#39;#b71456&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;construction&#39;</span><span class="p">:</span><span class="s1">&#39;#c0c0c0&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;commercial&#39;</span><span class="p">:</span><span class="s1">&#39;#CB8DDB&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;office&#39;</span><span class="p">:</span> <span class="s2">&quot;#20b1bd&quot;</span><span class="p">,</span> 
+              <span class="s1">&#39;parking&#39;</span> <span class="p">:</span> <span class="s2">&quot;#000000&quot;</span><span class="p">,</span>
+              <span class="s1">&#39;houseboat&#39;</span><span class="p">:</span> <span class="s2">&quot;#F35942&quot;</span><span class="p">,</span>
+              <span class="s1">&#39;greenhouse&#39;</span><span class="p">:</span> <span class="s1">&#39;#eaffe2&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;static_caravan&#39;</span><span class="p">:</span> <span class="s1">&#39;#ff3a55&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;barn&#39;</span><span class="p">:</span><span class="s1">&#39;#fcfcb9&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;roof&#39;</span><span class="p">:</span><span class="s1">&#39;#fcfcb9&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;farm_auxiliary&#39;</span><span class="p">:</span><span class="s1">&#39;#fcfcb9&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;pavilion&#39;</span><span class="p">:</span><span class="s1">&#39;#CB8DDB&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;warehouse&#39;</span><span class="p">:</span><span class="s1">&#39;#CB8DDB&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;farm&#39;</span><span class="p">:</span><span class="s1">&#39;#fcfcb9&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;bungalow&#39;</span><span class="p">:</span><span class="s1">&#39;#f13013&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;church&#39;</span> <span class="p">:</span> <span class="s2">&quot;#513857&quot;</span><span class="p">,</span> 
+              <span class="s1">&#39;paviljon&#39;</span><span class="p">:</span><span class="s1">&#39;#CB8DDB&#39;</span><span class="p">,</span>
+              <span class="s1">&#39;service&#39;</span><span class="p">:</span><span class="s1">&#39;#CB8DDB&#39;</span> <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Remove multiple keys from dictionary
-color_dict = {key: color_dict[key]
-             for key in color_dict if key not in  list(set(color_dict)-set(buildings.building.unique()))}
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remove multiple keys from dictionary</span>
+<span class="n">color_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">color_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+             <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">color_dict</span> <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span>  <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">color_dict</span><span class="p">)</span><span class="o">-</span><span class="nb">set</span><span class="p">(</span><span class="n">buildings</span><span class="o">.</span><span class="n">building</span><span class="o">.</span><span class="n">unique</span><span class="p">()))}</span>
 
-map_dict = dict(zip(color_dict.keys(),[x for x in range(len(color_dict))]))
-buildings[&#39;col_landuse&#39;] =buildings.building.apply(lambda x: color_dict[x])
+<span class="n">map_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">color_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">(),[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">color_dict</span><span class="p">))]))</span>
+<span class="n">buildings</span><span class="p">[</span><span class="s1">&#39;col_landuse&#39;</span><span class="p">]</span> <span class="o">=</span><span class="n">buildings</span><span class="o">.</span><span class="n">building</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">color_dict</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1761,30 +1761,30 @@ buildings[&#39;col_landuse&#39;] =buildings.building.apply(lambda x: color_dict[
 <p>And plot the figure in the same manner!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax = plt.subplots(1, 1,figsize=(12,10))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
 
-# add color scheme
-color_scheme_map = list(color_dict.values())
-cmap = LinearSegmentedColormap.from_list(name=&#39;landuse&#39;,
-                                     colors=color_scheme_map)  
+<span class="c1"># add color scheme</span>
+<span class="n">color_scheme_map</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">color_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;landuse&#39;</span><span class="p">,</span>
+                                     <span class="n">colors</span><span class="o">=</span><span class="n">color_scheme_map</span><span class="p">)</span>  
 
-# and plot the land-use map.
-buildings.plot(color=buildings[&#39;col_landuse&#39;],ax=ax,linewidth=0)
+<span class="c1"># and plot the land-use map.</span>
+<span class="n">buildings</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">buildings</span><span class="p">[</span><span class="s1">&#39;col_landuse&#39;</span><span class="p">],</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-# remove the ax labels
-ax.set_xticks([])
-ax.set_yticks([])
-ax.set_axis_off()
+<span class="c1"># remove the ax labels</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
 
-# add a legend:
-legend_elements = []
-for iter_,item in enumerate(color_dict):
-    legend_elements.append(Patch(facecolor=color_scheme_map[iter_],label=item))        
+<span class="c1"># add a legend:</span>
+<span class="n">legend_elements</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">iter_</span><span class="p">,</span><span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">color_dict</span><span class="p">):</span>
+    <span class="n">legend_elements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Patch</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="n">color_scheme_map</span><span class="p">[</span><span class="n">iter_</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="n">item</span><span class="p">))</span>        
 
-ax.legend(handles=legend_elements,edgecolor=&#39;black&#39;,facecolor=&#39;#fefdfd&#39;,prop={&#39;size&#39;:12},loc=(1.02,0.2)) 
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">legend_elements</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;#fefdfd&#39;</span><span class="p">,</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">},</span><span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="mf">1.02</span><span class="p">,</span><span class="mf">0.2</span><span class="p">))</span> 
 
-# add a title
-ax.set_title(place_name,fontweight=&#39;bold&#39;)
+<span class="c1"># add a title</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">place_name</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1803,7 +1803,7 @@ ax.set_title(place_name,fontweight=&#39;bold&#39;)
 <p>The <code class="docutils literal notranslate"><span class="pre">graph_from_place()</span></code> function returns a <code class="docutils literal notranslate"><span class="pre">NetworkX</span></code> Graph element. You can read more about these graph elements in the introduction page of <a class="reference external" href="https://networkx.org/documentation/stable/reference/introduction.html">NetworkX</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>G = ox.graph_from_place(place_name, network_type=&quot;drive&quot;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">graph_from_place</span><span class="p">(</span><span class="n">place_name</span><span class="p">,</span> <span class="n">network_type</span><span class="o">=</span><span class="s2">&quot;drive&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1811,7 +1811,7 @@ ax.set_title(place_name,fontweight=&#39;bold&#39;)
 <p>Unfortunately, it is  bit difficult to easily view all the roads within such a Graph element. To be able to explore the data, we are going to convert it to a <code class="docutils literal notranslate"><span class="pre">Geopandas</span> <span class="pre">GeoDataFrame</span></code>, using the <code class="docutils literal notranslate"><span class="pre">to_pandas_edgelist()</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>roads = gpd.GeoDataFrame(nx.to_pandas_edgelist(G))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roads</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">to_pandas_edgelist</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1825,7 +1825,7 @@ ax.set_title(place_name,fontweight=&#39;bold&#39;)
 <p>In some cases, roads are classified with more than one category. If that is the case, they are captured within a <code class="docutils literal notranslate"><span class="pre">list</span></code>. To overcome this issue, we specify that we want the entire <code class="docutils literal notranslate"><span class="pre">highway</span></code> column as a <code class="docutils literal notranslate"><span class="pre">string</span></code> dtype.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>roads.highway = roads.highway.astype(&#39;str&#39;)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roads</span><span class="o">.</span><span class="n">highway</span> <span class="o">=</span> <span class="n">roads</span><span class="o">.</span><span class="n">highway</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;str&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1833,16 +1833,16 @@ ax.set_title(place_name,fontweight=&#39;bold&#39;)
 <p>Now we can create a plot to see how the road network is configured.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig, ax = plt.subplots(1, 1,figsize=(12,10))
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
 
 
-roads.plot(column=&#39;highway&#39;,legend=True,ax=ax,legend_kwds={&#39;loc&#39;: &#39;lower right&#39;});
+<span class="n">roads</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;highway&#39;</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span><span class="n">legend_kwds</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;loc&#39;</span><span class="p">:</span> <span class="s1">&#39;lower right&#39;</span><span class="p">});</span>
 
 
-# remove the ax labels
-ax.set_xticks([])
-ax.set_yticks([])
-ax.set_axis_off()
+<span class="c1"># remove the ax labels</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1853,8 +1853,8 @@ ax.set_axis_off()
 <p>It would also be interesting to explore the network a little but more interactively. <strong>OSMnx</strong> has a function called <code class="docutils literal notranslate"><span class="pre">plot_graph_folium()</span></code>, which allow us to use the <a class="reference external" href="https://python-visualization.github.io/folium/quickstart.html#Getting-Started">folium</a> package to plot data interactively on a map.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>m1 = ox.plot_graph_folium(G, popup_attribute=&quot;highway&quot;, weight=2, color=&quot;#8b0000&quot;)
-m1
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m1</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">plot_graph_folium</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">popup_attribute</span><span class="o">=</span><span class="s2">&quot;highway&quot;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#8b0000&quot;</span><span class="p">)</span>
+<span class="n">m1</span>
 </pre></div>
 </div>
 </div>
@@ -17706,9 +17706,9 @@ m1
 <p>Let’s first select two random start and end points from the graph and compute the shortest route between them through using the <code class="docutils literal notranslate"><span class="pre">shortest_path()</span></code> function of the <code class="docutils literal notranslate"><span class="pre">NetworkX</span></code> package.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>origin_node = ox.nearest_nodes(G,area[&#39;bbox_west&#39;].values[0], area[&#39;bbox_north&#39;].values[0])
-destination_node = ox.nearest_nodes(G,area[&#39;bbox_east&#39;].values[0], area[&#39;bbox_south&#39;].values[0])
-route = nx.shortest_path(G, origin_node, destination_node)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">origin_node</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">nearest_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">area</span><span class="p">[</span><span class="s1">&#39;bbox_west&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">area</span><span class="p">[</span><span class="s1">&#39;bbox_north&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">destination_node</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">nearest_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">area</span><span class="p">[</span><span class="s1">&#39;bbox_east&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">area</span><span class="p">[</span><span class="s1">&#39;bbox_south&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">route</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">shortest_path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">origin_node</span><span class="p">,</span> <span class="n">destination_node</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -17716,8 +17716,8 @@ route = nx.shortest_path(G, origin_node, destination_node)
 <p>We can plot the route with folium. Like above, you can pass keyword args along to folium PolyLine to style the lines.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>m2 = ox.plot_route_folium(G, route, weight=10)
-m2
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m2</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">plot_route_folium</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">m2</span>
 </pre></div>
 </div>
 </div>
@@ -17897,8 +17897,8 @@ m2
 <p>Plot the route with folium on top of the previously created map</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>m3 = ox.plot_route_folium(G, route, route_map=m1, popup_attribute=&quot;name&quot;, weight=7)
-m3
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m3</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">plot_route_folium</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span> <span class="n">route_map</span><span class="o">=</span><span class="n">m1</span><span class="p">,</span> <span class="n">popup_attribute</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">m3</span>
 </pre></div>
 </div>
 </div>
