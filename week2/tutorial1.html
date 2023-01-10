@@ -507,6 +507,11 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#important-before-we-start">
+   Important before we start
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#learning-objectives">
    Learning Objectives
   </a>
@@ -514,6 +519,16 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introducing-the-packages">
    1.Introducing the packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-and-exploring-the-data">
+   2. Reading and exploring the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-new-variables">
+   2. Creating new variables
   </a>
  </li>
 </ul>
@@ -536,6 +551,11 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#important-before-we-start">
+   Important before we start
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#learning-objectives">
    Learning Objectives
   </a>
@@ -543,6 +563,16 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introducing-the-packages">
    1.Introducing the packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-and-exploring-the-data">
+   2. Reading and exploring the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-new-variables">
+   2. Creating new variables
   </a>
  </li>
 </ul>
@@ -557,8 +587,11 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="tutorial-1-data-exploration-and-regression-analysis">
 <h1>Tutorial 1: Data Exploration and regression analysis<a class="headerlink" href="#tutorial-1-data-exploration-and-regression-analysis" title="Permalink to this headline">#</a></h1>
-<p>You can also create content with Jupyter Notebooks. This means that you can include
-code blocks and their outputs in your book.</p>
+<section id="important-before-we-start">
+<h2>Important before we start<a class="headerlink" href="#important-before-we-start" title="Permalink to this headline">#</a></h2>
+<hr class="docutils" />
+<p>Make sure that you save this file before you continue, else you will lose everything. To do so, go to <strong>Bestand/File</strong> and click on <strong>Een kopie opslaan in Drive/Save a Copy on Drive</strong>!</p>
+<p>Now, rename the file into Week4_Tutorial1.ipynb. You can do so by clicking on the name in the top of this screen.</p>
 <h2>Tutorial Outline<span class="tocSkip"></span></h2>
 <hr>
 <div class="toc"><ul class="toc-item">
@@ -568,7 +601,8 @@ code blocks and their outputs in your book.</p>
 <li><span><a href="#4.-" data-toc-modified-id="4.-Extracting-buildings-5">4. </a></span></li>
 <li><span><a href="#5.-" data-toc-modified-id="5.-Analyze-buildings-6">5. </a></span></li>
 <li><span><a href="#6.-" data-toc-modified-id="4.-Extracting-roads-5">6. </a></span></li>
-<li><span><a href="#7.-" data-toc-modified-id="5.-Plot-routes-6">7. </a></span></li></ul></div><section id="learning-objectives">
+<li><span><a href="#7.-" data-toc-modified-id="5.-Plot-routes-6">7. </a></span></li></ul></div></section>
+<section id="learning-objectives">
 <h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
 <hr><ul class="simple">
 <li><p>.</p></li>
@@ -585,40 +619,1412 @@ code blocks and their outputs in your book.</p>
 <p><em>We will first need to install these packages in the cell below. Uncomment them to make sure we can pip install them</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span><span class="p">,</span> <span class="n">cycler</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>seaborn
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fixing random state for reproducibility</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">19680801</span><span class="p">)</span>
-
-<span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="n">ii</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span>
-<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.prop_cycle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycler</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)))</span>
-
-
-<span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="kn">import</span> <span class="n">Line2D</span>
-<span class="n">custom_lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">0.</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
-                <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">.5</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
-                <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">1.</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)]</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">lines</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">custom_lines</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Cold&#39;</span><span class="p">,</span> <span class="s1">&#39;Medium&#39;</span><span class="p">,</span> <span class="s1">&#39;Hot&#39;</span><span class="p">]);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">,{</span><span class="s1">&#39;axes.grid&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>There is a lot more that you can do with outputs (such as including interactive outputs)
-with your book. For more information about this, see <a class="reference external" href="https://jupyterbook.org">the Jupyter Book documentation</a></p>
+</section>
+<section id="reading-and-exploring-the-data">
+<h2>2. Reading and exploring the data<a class="headerlink" href="#reading-and-exploring-the-data" title="Permalink to this headline">#</a></h2>
+<hr><p><em>Brief explanation of the data</em></p>
+<p>First read the data using the pandas package</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;https://github.com/ElcoK/BigData_AED/raw/main/week2/usatestdatanan.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And let’s take a look at the dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>YEAR</th>
+      <th>SAMPLE</th>
+      <th>SERIAL</th>
+      <th>CBSERIAL</th>
+      <th>HHWT</th>
+      <th>CLUSTER</th>
+      <th>REGION</th>
+      <th>STATEFIP</th>
+      <th>COUNTYFIP</th>
+      <th>DENSITY</th>
+      <th>...</th>
+      <th>EDUCD</th>
+      <th>DEGFIELD</th>
+      <th>DEGFIELDD</th>
+      <th>EMPSTAT</th>
+      <th>EMPSTATD</th>
+      <th>LABFORCE</th>
+      <th>OCC</th>
+      <th>IND</th>
+      <th>INCTOT</th>
+      <th>POVERTY</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2019</td>
+      <td>201901</td>
+      <td>3</td>
+      <td>2.019010e+12</td>
+      <td>199.80</td>
+      <td>2.019000e+12</td>
+      <td>32</td>
+      <td>1</td>
+      <td>15</td>
+      <td>364.8</td>
+      <td>...</td>
+      <td>71</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1.0</td>
+      <td>10</td>
+      <td>2</td>
+      <td>5240.0</td>
+      <td>9160.0</td>
+      <td>1400.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2019</td>
+      <td>201901</td>
+      <td>13</td>
+      <td>2.019010e+12</td>
+      <td>639.36</td>
+      <td>2.019000e+12</td>
+      <td>32</td>
+      <td>1</td>
+      <td>0</td>
+      <td>129.3</td>
+      <td>...</td>
+      <td>65</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>3.0</td>
+      <td>30</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2019</td>
+      <td>201901</td>
+      <td>23</td>
+      <td>2.019010e+12</td>
+      <td>869.13</td>
+      <td>2.019000e+12</td>
+      <td>32</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2090.1</td>
+      <td>...</td>
+      <td>71</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1.0</td>
+      <td>10</td>
+      <td>2</td>
+      <td>2350.0</td>
+      <td>7870.0</td>
+      <td>970.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2019</td>
+      <td>201901</td>
+      <td>33</td>
+      <td>2.019010e+12</td>
+      <td>119.88</td>
+      <td>2.019000e+12</td>
+      <td>32</td>
+      <td>1</td>
+      <td>0</td>
+      <td>217.6</td>
+      <td>...</td>
+      <td>63</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>3.0</td>
+      <td>30</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>11100.0</td>
+      <td>84.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2019</td>
+      <td>201901</td>
+      <td>43</td>
+      <td>2.019010e+12</td>
+      <td>769.23</td>
+      <td>2.019000e+12</td>
+      <td>32</td>
+      <td>1</td>
+      <td>97</td>
+      <td>2341.6</td>
+      <td>...</td>
+      <td>63</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>3.0</td>
+      <td>30</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 50 columns</p>
+</div></div></div>
+</div>
+<p>Data description
+Beschrijf de variabelen
+Gooi er nog een paar uit die je toch niet gebruikt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(323958, 50)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># What information does the function shape give you? </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Answer</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>YEAR</th>
+      <th>SAMPLE</th>
+      <th>SERIAL</th>
+      <th>CBSERIAL</th>
+      <th>HHWT</th>
+      <th>CLUSTER</th>
+      <th>REGION</th>
+      <th>STATEFIP</th>
+      <th>COUNTYFIP</th>
+      <th>DENSITY</th>
+      <th>...</th>
+      <th>EDUCD</th>
+      <th>DEGFIELD</th>
+      <th>DEGFIELDD</th>
+      <th>EMPSTAT</th>
+      <th>EMPSTATD</th>
+      <th>LABFORCE</th>
+      <th>OCC</th>
+      <th>IND</th>
+      <th>INCTOT</th>
+      <th>POVERTY</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>323958.0</td>
+      <td>323958.0</td>
+      <td>3.239580e+05</td>
+      <td>3.239580e+05</td>
+      <td>323958.000000</td>
+      <td>3.239580e+05</td>
+      <td>323958.000000</td>
+      <td>323958.000000</td>
+      <td>323958.00000</td>
+      <td>323958.000000</td>
+      <td>...</td>
+      <td>323958.000000</td>
+      <td>83072.000000</td>
+      <td>323958.000000</td>
+      <td>267842.000000</td>
+      <td>323958.000000</td>
+      <td>323958.00000</td>
+      <td>192319.000000</td>
+      <td>192319.000000</td>
+      <td>2.717820e+05</td>
+      <td>311123.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>2019.0</td>
+      <td>201901.0</td>
+      <td>7.128353e+05</td>
+      <td>2.019000e+12</td>
+      <td>961.079180</td>
+      <td>2.019006e+12</td>
+      <td>28.392168</td>
+      <td>27.756752</td>
+      <td>50.53811</td>
+      <td>3793.671817</td>
+      <td>...</td>
+      <td>65.140781</td>
+      <td>43.343100</td>
+      <td>1112.922416</td>
+      <td>1.829202</td>
+      <td>15.155792</td>
+      <td>1.32110</td>
+      <td>4175.474675</td>
+      <td>6411.859390</td>
+      <td>4.543959e+04</td>
+      <td>333.003998</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>4.158698e+05</td>
+      <td>2.111030e+06</td>
+      <td>837.978331</td>
+      <td>4.787806e+06</td>
+      <td>10.288047</td>
+      <td>16.110784</td>
+      <td>87.96127</td>
+      <td>9076.073757</td>
+      <td>...</td>
+      <td>32.342895</td>
+      <td>17.180462</td>
+      <td>2085.227473</td>
+      <td>0.972552</td>
+      <td>11.219777</td>
+      <td>0.75129</td>
+      <td>2702.839018</td>
+      <td>2630.050819</td>
+      <td>6.800730e+04</td>
+      <td>162.682171</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>2019.0</td>
+      <td>201901.0</td>
+      <td>3.000000e+00</td>
+      <td>2.019000e+12</td>
+      <td>9.990000</td>
+      <td>2.019000e+12</td>
+      <td>11.000000</td>
+      <td>1.000000</td>
+      <td>0.00000</td>
+      <td>2.600000</td>
+      <td>...</td>
+      <td>1.000000</td>
+      <td>11.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.00000</td>
+      <td>10.000000</td>
+      <td>170.000000</td>
+      <td>-9.500000e+03</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>2019.0</td>
+      <td>201901.0</td>
+      <td>3.479875e+05</td>
+      <td>2.019000e+12</td>
+      <td>479.520000</td>
+      <td>2.019000e+12</td>
+      <td>21.000000</td>
+      <td>12.000000</td>
+      <td>0.00000</td>
+      <td>285.200000</td>
+      <td>...</td>
+      <td>50.000000</td>
+      <td>24.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>10.000000</td>
+      <td>1.00000</td>
+      <td>2145.000000</td>
+      <td>4971.000000</td>
+      <td>9.200000e+03</td>
+      <td>193.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>2019.0</td>
+      <td>201901.0</td>
+      <td>7.104470e+05</td>
+      <td>2.019000e+12</td>
+      <td>729.270000</td>
+      <td>2.019010e+12</td>
+      <td>31.000000</td>
+      <td>27.000000</td>
+      <td>17.00000</td>
+      <td>1329.900000</td>
+      <td>...</td>
+      <td>64.000000</td>
+      <td>50.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>10.000000</td>
+      <td>1.00000</td>
+      <td>4120.000000</td>
+      <td>7390.000000</td>
+      <td>2.740000e+04</td>
+      <td>360.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>2019.0</td>
+      <td>201901.0</td>
+      <td>1.078740e+06</td>
+      <td>2.019000e+12</td>
+      <td>1148.850000</td>
+      <td>2.019010e+12</td>
+      <td>33.000000</td>
+      <td>42.000000</td>
+      <td>71.00000</td>
+      <td>3912.900000</td>
+      <td>...</td>
+      <td>101.000000</td>
+      <td>61.000000</td>
+      <td>1501.000000</td>
+      <td>3.000000</td>
+      <td>30.000000</td>
+      <td>2.00000</td>
+      <td>5740.000000</td>
+      <td>8191.000000</td>
+      <td>5.700000e+04</td>
+      <td>501.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>2019.0</td>
+      <td>201901.0</td>
+      <td>1.428034e+06</td>
+      <td>2.019010e+12</td>
+      <td>15144.840000</td>
+      <td>2.019010e+12</td>
+      <td>42.000000</td>
+      <td>56.000000</td>
+      <td>810.00000</td>
+      <td>122270.700000</td>
+      <td>...</td>
+      <td>116.000000</td>
+      <td>64.000000</td>
+      <td>6403.000000</td>
+      <td>3.000000</td>
+      <td>30.000000</td>
+      <td>2.00000</td>
+      <td>9920.000000</td>
+      <td>9920.000000</td>
+      <td>1.544500e+06</td>
+      <td>501.000000</td>
+    </tr>
+  </tbody>
+</table>
+<p>8 rows × 50 columns</p>
+</div></div></div>
+</div>
+<p>Let’s find out the data types of the data and if there are non-null counts.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 323958 entries, 0 to 323957
+Data columns (total 50 columns):
+ #   Column     Non-Null Count   Dtype  
+---  ------     --------------   -----  
+ 0   YEAR       323958 non-null  int64  
+ 1   SAMPLE     323958 non-null  int64  
+ 2   SERIAL     323958 non-null  int64  
+ 3   CBSERIAL   323958 non-null  float64
+ 4   HHWT       323958 non-null  float64
+ 5   CLUSTER    323958 non-null  float64
+ 6   REGION     323958 non-null  int64  
+ 7   STATEFIP   323958 non-null  int64  
+ 8   COUNTYFIP  323958 non-null  int64  
+ 9   DENSITY    323958 non-null  float64
+ 10  METRO      323958 non-null  int64  
+ 11  STRATA     323958 non-null  int64  
+ 12  GQ         323958 non-null  int64  
+ 13  FARM       323958 non-null  int64  
+ 14  OWNERSHP   308813 non-null  float64
+ 15  OWNERSHPD  308813 non-null  float64
+ 16  MORTGAGE   226643 non-null  float64
+ 17  MORTGAG2   147006 non-null  float64
+ 18  PROPINSR   226643 non-null  float64
+ 19  RENT       77317 non-null   float64
+ 20  COSTELEC   308813 non-null  float64
+ 21  COSTGAS    308813 non-null  float64
+ 22  COSTFUEL   308813 non-null  float64
+ 23  HHINCOME   308813 non-null  float64
+ 24  ROOMS      308813 non-null  float64
+ 25  BUILTYR2   308813 non-null  float64
+ 26  UNITSSTR   308813 non-null  float64
+ 27  BEDROOMS   308813 non-null  float64
+ 28  FUELHEAT   308813 non-null  float64
+ 29  VEHICLES   308813 non-null  float64
+ 30  PERNUM     323958 non-null  int64  
+ 31  PERWT      323958 non-null  float64
+ 32  RELATE     323958 non-null  int64  
+ 33  RELATED    323958 non-null  int64  
+ 34  SEX        323958 non-null  int64  
+ 35  AGE        323958 non-null  int64  
+ 36  MARST      323958 non-null  int64  
+ 37  RACE       323958 non-null  int64  
+ 38  RACED      323958 non-null  int64  
+ 39  EDUC       323958 non-null  int64  
+ 40  EDUCD      323958 non-null  int64  
+ 41  DEGFIELD   83072 non-null   float64
+ 42  DEGFIELDD  323958 non-null  int64  
+ 43  EMPSTAT    267842 non-null  float64
+ 44  EMPSTATD   323958 non-null  int64  
+ 45  LABFORCE   323958 non-null  int64  
+ 46  OCC        192319 non-null  float64
+ 47  IND        192319 non-null  float64
+ 48  INCTOT     271782 non-null  float64
+ 49  POVERTY    311123 non-null  float64
+dtypes: float64(27), int64(23)
+memory usage: 123.6 MB
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another way to check if there are missing values by using the following line of code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RENT         246641
+DEGFIELD     240886
+MORTGAG2     176952
+IND          131639
+OCC          131639
+PROPINSR      97315
+MORTGAGE      97315
+EMPSTAT       56116
+INCTOT        52176
+BUILTYR2      15145
+COSTFUEL      15145
+OWNERSHPD     15145
+OWNERSHP      15145
+UNITSSTR      15145
+HHINCOME      15145
+ROOMS         15145
+COSTGAS       15145
+BEDROOMS      15145
+FUELHEAT      15145
+VEHICLES      15145
+COSTELEC      15145
+POVERTY       12835
+FARM              0
+GQ                0
+SERIAL            0
+CBSERIAL          0
+HHWT              0
+LABFORCE          0
+EMPSTATD          0
+CLUSTER           0
+DEGFIELDD         0
+REGION            0
+EDUCD             0
+EDUC              0
+RACED             0
+RACE              0
+MARST             0
+AGE               0
+SEX               0
+RELATED           0
+RELATE            0
+PERWT             0
+PERNUM            0
+STATEFIP          0
+COUNTYFIP         0
+DENSITY           0
+METRO             0
+SAMPLE            0
+STRATA            0
+YEAR              0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Possible question? Can you describe what the line of code above is doing? Hint: Every dot (.) indicates a new function.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we are going to take a look at some specific variables. We want to see how variables are distributed and how they are related to each other, and specifically how they are related to energy costs. We can do this in several ways.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Here we see the different values in the variable OWNERSHIP and how many times each value occurs. </span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;OWNERSHP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.0     59602
+5.0     54206
+7.0     44995
+8.0     36478
+4.0     35941
+9.0     21301
+3.0     15166
+NaN     15145
+10.0    15020
+11.0     7118
+12.0     4676
+2.0      4274
+1.0      3098
+13.0     2428
+14.0     1432
+16.0     1285
+17.0      687
+18.0      528
+15.0      510
+19.0       35
+20.0       33
+Name: ROOMS, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;HHINCOME&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NaN         15145
+100000.0     2290
+60000.0      2285
+0.0          2173
+50000.0      2167
+            ...  
+127720.0        1
+145450.0        1
+72410.0         1
+349050.0        1
+5070.0          1
+Name: HHINCOME, Length: 12286, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Try a variable that you are interested in. </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0    226643
+2.0     82170
+NaN     15145
+Name: OWNERSHP, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>The function value_counts is especially useful when the number of values in a variable is limited. For example, for income, which contains a lot of different values, value_counts is not so useful and a plot of the distribution would be more insightful. We can use the seaborn package to easily plot the distribution of the income.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;HHINCOME&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x1b937e3d930&gt;
+</pre></div>
+</div>
+<img alt="../_images/tutorial1_29_1.png" src="../_images/tutorial1_29_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Less bins</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;HHINCOME&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x1b937e7e470&gt;
+</pre></div>
+</div>
+<img alt="../_images/tutorial1_30_1.png" src="../_images/tutorial1_30_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># With kernel density</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;HHINCOME&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x1b938aafeb0&gt;
+</pre></div>
+</div>
+<img alt="../_images/tutorial1_31_1.png" src="../_images/tutorial1_31_1.png" />
+</div>
+</div>
+<p>Now we are going to take a look at energy costs. The total costs of energy are given by electricity costs, gas costs and fuel costs. Before summing the three variables to obtain the total energy costs, we take a look at the three individual variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;COSTELEC&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x1b93a9e5390&gt;
+</pre></div>
+</div>
+<img alt="../_images/tutorial1_33_1.png" src="../_images/tutorial1_33_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># There appears to be a Strange value around 10000. Find out this value and search on ipums usa what it means. </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Answer. </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We should replace this value around 10000. Fill in the dots.   </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;COSTELEC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;COSTELEC&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">9997</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">#data[&#39;COSTELEC&#39;] = data[&#39;COSTELEC&#39;].replace(..., 0)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Do the same for COSTFUEL and COSTGAS. The value to replace is the same as for COSTELEC. </span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;COSTFUEL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;COSTFUEL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">9997</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;COSTGAS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;COSTGAS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">9997</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># There is another high value for COSTGAS, 9992, that indicates that no gas is used. Hence, we replace this value by 0.  </span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;COSTGAS&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;COSTGAS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">9992</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## The total cost of energy is given by the sum of electricity, gas and fuel costs. </span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;COSTELEC&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;COSTGAS&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;COSTFUEL&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Next we want to see how variables are related to each other. We can for example do this with a correlation matrix. You can add a few variables you are interested in yourself. </span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s2">&quot;COSTENERGY&quot;</span><span class="p">,</span> <span class="s2">&quot;ROOMS&quot;</span><span class="p">,</span> <span class="s2">&quot;RENT&quot;</span><span class="p">,</span> <span class="s2">&quot;INCTOT&quot;</span><span class="p">,</span> <span class="s2">&quot;HHINCOME&quot;</span><span class="p">,</span> <span class="s2">&quot;BUILTYR2&quot;</span><span class="p">,</span> <span class="s2">&quot;VEHICLES&quot;</span><span class="p">,</span> <span class="s2">&quot;BEDROOMS&quot;</span><span class="p">,</span> <span class="s2">&quot;FARM&quot;</span><span class="p">,</span> <span class="s2">&quot;OWNERSHP&quot;</span><span class="p">,</span> <span class="s2">&quot;MORTGAGE&quot;</span><span class="p">,</span> <span class="s2">&quot;AGE&quot;</span><span class="p">,</span> <span class="s2">&quot;SEX&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span>
+                           <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span> <span class="o">=</span> <span class="s2">&quot;.2f&quot;</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;summer&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
+</pre></div>
+</div>
+<img alt="../_images/tutorial1_42_1.png" src="../_images/tutorial1_42_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Which variable is most correlated to COSTENERGY? </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Answer</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The dataset consists of households and individuals. Energy costs are a household variable, i.e. all members of the household have the same energy costs. Age and sex are individual variables, so the relationship between age or sex with energy costs is likely to be low. Think of a family with children, where a 3-year old daughter has the same energy costs as the 40-year old father. But maybe we can use these two variables, AGE and SEX in another way to make them useful. We can for example create a variable with number of children in a household, or number of women, age of the oldest person in the household etc.
+To create these variables, we need to know which individuals belong to the same household and luckily this is exactly what the column SERIAL indicates.</p>
+</section>
+<section id="creating-new-variables">
+<h2>2. Creating new variables<a class="headerlink" href="#creating-new-variables" title="Permalink to this headline">#</a></h2>
+<hr><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Before we go into the variables SEX and AGE, we obtain the household size based on the variable SERIAL.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">serialcount</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">serialcount</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          index  SERIAL
+0        163320      20
+1        625037      20
+2       1310431      18
+3        759363      18
+4        411531      18
+...         ...     ...
+142942   979822       1
+142943   979832       1
+142944   979842       1
+142945   979852       1
+142946        3       1
+
+[142947 rows x 2 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Explain the function value_counts. </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## The names of the dataframe serialcount are a bit confusing, because index corresponds to the SERIAL number and the column SERIAL corresponds to the household size, so we rename the columns. </span>
+<span class="n">serialcount</span> <span class="o">=</span> <span class="n">serialcount</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">:</span><span class="s1">&#39;HHSIZE&#39;</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">:</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Then we add the column household size to our data using the function merge. </span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">serialcount</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Can you explain what this function does? Also explain the option &#39;on&#39; and &#39;how&#39;. </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Answer. </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2    165323
+1    158635
+Name: SEX, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next we will use the variable SEX to create a new variable. It is possible that women use more energy than men, or the other way around, so the number of women (or men) could be a useful variable for predicting energy costs. To obtain the household size, we simply counted the number of occurances of each serial number, but to obtain the number of women per household, we also need the column SEX. The variable SEX has two values, 1 represents a male and 2 represents a female.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## We use the function value_count to obtain the number of women and men per serial number (household). </span>
+<span class="n">gendercount</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="s1">&#39;SEX&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">gendercount</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         SERIAL  SEX   0
+0        625037    2  13
+1       1310431    2  13
+2        163320    2  12
+3        542360    2  12
+4        777814    2  11
+...         ...  ...  ..
+227109   563059    2   1
+227110   563069    1   1
+227111   563069    2   1
+227112   563079    1   1
+227113  1428034    2   1
+
+[227114 rows x 3 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following line of code produces the same results, can you explain what the code does? Hint: The line of code contains 3 functions, signalled by the . in front.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="n">gendercount</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span><span class="s1">&#39;SEX&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span><span class="s1">&#39;SEX&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Answer</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the next steps you are going to write code that merges a new variable called ‘NR_OF_WOMEN’ (number of women) to the dataframe. The following hints guide you through the steps.
+Hint 0: 3 lines of code is sufficient. Hint 1 is given for the first line of code, Hint 2 for the second line, and Hint 3a, 3b, 3c for the third line of code.
+Hint 1: You want to create a variable/column with number of women using the dataframe gendercount. The only thing you have to do is keep the number of the women in the dataframe gendercount, i.e. use SEX == 2. Save this dataframe as a new dataframe named womencount, hence your first line of code starts with womencount = .<br />
+Hint 2: Change the variable name of 0 to NR_OF_WOMEN in the dataframe womencount. 0 is not a string (so it’s not ‘0’).<br />
+Hint 3a: In the third line of code you merge the dataframe womencount women to the dataframe data.
+Hint 3b: See the line of code where we merged serialcount to data.
+Hint 3c: Think about the column SEX. It has no meaning anymore, since you only kept the women. Hence, you can either drop it from the dataframe or not include it in the merge. If you choose to drop SEX from womencount, this would be your third line of code and the merge would be the fourth line of code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Answer</span>
+<span class="n">gendercountwomen</span> <span class="o">=</span> <span class="n">gendercount</span><span class="p">[</span><span class="n">gendercount</span><span class="p">[</span><span class="s1">&#39;SEX&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">gendercountwomen</span> <span class="o">=</span> <span class="n">gendercountwomen</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;NR_OF_WOMEN&#39;</span><span class="p">})</span>
+<span class="n">data</span>  <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">gendercountwomen</span><span class="p">[[</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="s1">&#39;NR_OF_WOMEN&#39;</span><span class="p">]],</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># When you succesfully merged the number of women the dataframe, what do you do with the nan values? Fill in the dots.  </span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;NR_OF_WOMEN&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;NR_OF_WOMEN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># data[&#39;NR_OF_WOMEN&#39;] = data[&#39;NR_OF_WOMEN&#39;].replace(np.nan, ...) </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Nonlinearities</span>
+<span class="c1"># We are going to create two new variables based on age. First we want to create a variable with the age of the oldest person. </span>
+<span class="n">oldest</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We want to change the name of the column AGE to OLDEST, because we already have a column AGE in the dataframe data. Then we merge it to the dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">oldest</span> <span class="o">=</span> <span class="n">oldest</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;AGE&#39;</span><span class="p">:</span><span class="s1">&#39;OLDEST&#39;</span><span class="p">})</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">oldest</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Now create a variable yourself with the age of the youngest person, named YOUNGEST, and add it to the dataframe data. </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Answer. </span>
+<span class="n">youngest</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">youngest</span> <span class="o">=</span> <span class="n">youngest</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;AGE&#39;</span><span class="p">:</span><span class="s1">&#39;YOUNGEST&#39;</span><span class="p">})</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">youngest</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Let&#39;s check if the correlation of the oldest and youngest person with energy costs is higher than the correlation of age with energy costs. </span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s2">&quot;COSTENERGY&quot;</span><span class="p">,</span><span class="s2">&quot;YOUNGEST&quot;</span><span class="p">,</span> <span class="s2">&quot;OLDEST&quot;</span><span class="p">,</span> <span class="s2">&quot;AGE&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span>
+                           <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span> <span class="o">=</span> <span class="s2">&quot;.2f&quot;</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;summer&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: &gt;
+</pre></div>
+</div>
+<img alt="../_images/tutorial1_69_1.png" src="../_images/tutorial1_69_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## A possible explanation for the low correlation could be that the relationship between age and energy costs is not linear. Let&#39;s see the average energy costs over the age of the oldest person in the household in a barplot. </span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;OLDEST&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;COSTENERGY&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="n">errorbar</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">])</span> <span class="c1">#position of xticks. </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([&lt;matplotlib.axis.XTick at 0x14b4dc0fac0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b4dc0fa90&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b4dc0f6d0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b4ff8b4c0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b4ff8aef0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b4ffd0670&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b4ffd1120&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b4ffd1bd0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b4ffd26b0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b4ffd0d60&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b4ffd30d0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b4ffd3b80&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b4fff0670&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b4ffd3f70&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b4ffd0100&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b4fff1990&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b4fff2440&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b4fff2ef0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b4ffd2a70&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b4fff37f0&gt;],
+ [Text(0, 0, &#39;0&#39;),
+  Text(5, 0, &#39;5&#39;),
+  Text(10, 0, &#39;10&#39;),
+  Text(15, 0, &#39;15&#39;),
+  Text(20, 0, &#39;20&#39;),
+  Text(25, 0, &#39;25&#39;),
+  Text(30, 0, &#39;30&#39;),
+  Text(35, 0, &#39;35&#39;),
+  Text(40, 0, &#39;40&#39;),
+  Text(45, 0, &#39;45&#39;),
+  Text(50, 0, &#39;50&#39;),
+  Text(55, 0, &#39;55&#39;),
+  Text(60, 0, &#39;60&#39;),
+  Text(65, 0, &#39;65&#39;),
+  Text(70, 0, &#39;70&#39;),
+  Text(75, 0, &#39;75&#39;),
+  Text(80, 0, &#39;80&#39;),
+  Text(85, 0, &#39;85&#39;),
+  Text(90, 0, &#39;90&#39;),
+  Text(95, 0, &#39;95&#39;)])
+</pre></div>
+</div>
+<img alt="../_images/tutorial1_70_1.png" src="../_images/tutorial1_70_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## The differences are subtle and especially households with a person over 75 years old seem to use more energy than households with younger people. We can include confidence levels in the barplot to see if the differences in energy costs over age are significant.</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;OLDEST&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;COSTENERGY&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="n">errorbar</span> <span class="o">=</span> <span class="s1">&#39;ci&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">])</span> <span class="c1">#position of xticks. </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([&lt;matplotlib.axis.XTick at 0x14b50168e80&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50168e50&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50168a90&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b5033c790&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b5033d240&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b5033d750&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b5033e200&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b5033ecb0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b5033f760&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b5033fd60&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b5033da80&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50358be0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50359690&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b5035a140&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b5033f010&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b5035aa40&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b5035b4f0&gt;],
+ [Text(15, 0, &#39;15&#39;),
+  Text(20, 0, &#39;20&#39;),
+  Text(25, 0, &#39;25&#39;),
+  Text(30, 0, &#39;30&#39;),
+  Text(35, 0, &#39;35&#39;),
+  Text(40, 0, &#39;40&#39;),
+  Text(45, 0, &#39;45&#39;),
+  Text(50, 0, &#39;50&#39;),
+  Text(55, 0, &#39;55&#39;),
+  Text(60, 0, &#39;60&#39;),
+  Text(65, 0, &#39;65&#39;),
+  Text(70, 0, &#39;70&#39;),
+  Text(75, 0, &#39;75&#39;),
+  Text(80, 0, &#39;80&#39;),
+  Text(85, 0, &#39;85&#39;),
+  Text(90, 0, &#39;90&#39;),
+  Text(95, 0, &#39;95&#39;)])
+</pre></div>
+</div>
+<img alt="../_images/tutorial1_71_2.png" src="../_images/tutorial1_71_2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## However, the confidence levels we added are not entirely correct, because energy costs and age of the oldest person are both household variables (They don&#39;t differ over the individuals per household). So when a household contains multiple members, we are double counting the energy costs and the age of the oldest person. So we are going to create a new dataframe where we are only going to keep one household member per serial number.</span>
+<span class="n">datauniqueserial</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Let&#39;s see the new barplot. </span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;OLDEST&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;COSTENERGY&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">datauniqueserial</span><span class="p">,</span> <span class="n">errorbar</span> <span class="o">=</span> <span class="s1">&#39;ci&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">])</span> <span class="c1">#position of xticks. </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\numpy\lib\nanfunctions.py:1559: RuntimeWarning: All-NaN slice encountered
+  r, k = function_base._ureduce(a,
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+C:\Users\mtn308\.conda\envs\paper3geocube\lib\site-packages\seaborn\algorithms.py:98: RuntimeWarning: Mean of empty slice
+  boot_dist.append(f(*sample, **func_kwargs))
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([&lt;matplotlib.axis.XTick at 0x14b504aeef0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b504aeec0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b504aeb00&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b4dbdee00&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b4dbdf040&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b500fbfd0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b500c1ff0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50091f60&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50093700&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b500fb9d0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b500756f0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50077d30&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b500a95a0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50075240&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b500907c0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b500abac0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b5058f280&gt;],
+ [Text(15, 0, &#39;15&#39;),
+  Text(20, 0, &#39;20&#39;),
+  Text(25, 0, &#39;25&#39;),
+  Text(30, 0, &#39;30&#39;),
+  Text(35, 0, &#39;35&#39;),
+  Text(40, 0, &#39;40&#39;),
+  Text(45, 0, &#39;45&#39;),
+  Text(50, 0, &#39;50&#39;),
+  Text(55, 0, &#39;55&#39;),
+  Text(60, 0, &#39;60&#39;),
+  Text(65, 0, &#39;65&#39;),
+  Text(70, 0, &#39;70&#39;),
+  Text(75, 0, &#39;75&#39;),
+  Text(80, 0, &#39;80&#39;),
+  Text(85, 0, &#39;85&#39;),
+  Text(90, 0, &#39;90&#39;),
+  Text(95, 0, &#39;95&#39;)])
+</pre></div>
+</div>
+<img alt="../_images/tutorial1_73_2.png" src="../_images/tutorial1_73_2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Can you explain why the confidence levels have become larger?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Let&#39;s see the barplot for age of the youngest person in the household.  </span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;YOUNGEST&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;COSTENERGY&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">datauniqueserial</span><span class="p">,</span> <span class="n">errorbar</span> <span class="o">=</span> <span class="s1">&#39;ci&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">])</span> <span class="c1">#position of xticks. </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([&lt;matplotlib.axis.XTick at 0x14b50988dc0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50988d90&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b509889d0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50b60700&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50b611b0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50b61c60&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50b62710&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50b620b0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50b631c0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50b63c70&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50b7c760&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50b7d210&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50b61510&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50b7d8d0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50b7e380&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50b7ee30&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50b7f8e0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50b7e6e0&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50b98220&gt;,
+  &lt;matplotlib.axis.XTick at 0x14b50b98cd0&gt;],
+ [Text(0, 0, &#39;0&#39;),
+  Text(5, 0, &#39;5&#39;),
+  Text(10, 0, &#39;10&#39;),
+  Text(15, 0, &#39;15&#39;),
+  Text(20, 0, &#39;20&#39;),
+  Text(25, 0, &#39;25&#39;),
+  Text(30, 0, &#39;30&#39;),
+  Text(35, 0, &#39;35&#39;),
+  Text(40, 0, &#39;40&#39;),
+  Text(45, 0, &#39;45&#39;),
+  Text(50, 0, &#39;50&#39;),
+  Text(55, 0, &#39;55&#39;),
+  Text(60, 0, &#39;60&#39;),
+  Text(65, 0, &#39;65&#39;),
+  Text(70, 0, &#39;70&#39;),
+  Text(75, 0, &#39;75&#39;),
+  Text(80, 0, &#39;80&#39;),
+  Text(85, 0, &#39;85&#39;),
+  Text(90, 0, &#39;90&#39;),
+  Text(95, 0, &#39;95&#39;)])
+</pre></div>
+</div>
+<img alt="../_images/tutorial1_75_1.png" src="../_images/tutorial1_75_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Age groups? </span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
