@@ -38,9 +38,9 @@ The basic concept of machine learning in data science involves using statistical
 
 See these interactive examples from R2D3:
 
-[R2D3 Introduction to Machine Learning: Part 1](http://www.r2d3.us/visual-intro-to-machine-learning-part-1) 
+__[R2D3 Introduction to Machine Learning: Part 1](http://www.r2d3.us/visual-intro-to-machine-learning-part-1)__ 
 
-[R2D3 Introduction to Machine Learning: Part 1](http://www.r2d3.us/visual-intro-to-machine-learning-part-2) 
+__[R2D3 Introduction to Machine Learning: Part 2](http://www.r2d3.us/visual-intro-to-machine-learning-part-2)__ 
 
 In general, a supervised machine learning algorithm consists of roughly three components:
 
