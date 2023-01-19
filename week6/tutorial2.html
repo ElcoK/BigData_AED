@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Tutorial 2: Social media &amp; land aesthetics &#8212; Big Data for Sustainability Sciences</title>
+    <title>Tutorial 2: Social media &amp; valuation of landscapes &#8212; Big Data for Sustainability Sciences</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lecture: A guide to visualisation" href="../week7/lecture.html" />
-    <link rel="prev" title="Tutorial 1: Twitter &amp; NLP" href="tutorial1.html" />
+    <link rel="prev" title="Week 6" href="tutorial1.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -263,12 +263,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="tutorial1.html">
-   Tutorial 1: Twitter &amp; NLP
+   Week 6
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Tutorial 2: Social media &amp; land aesthetics
+   Tutorial 2: Social media &amp; valuation of landscapes
   </a>
  </li>
 </ul>
@@ -507,6 +507,11 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#important-before-we-start">
+   Important before we start
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#learning-objectives">
    Learning Objectives
   </a>
@@ -514,6 +519,38 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introducing-the-packages">
    1.Introducing the packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extract-data-from-flickr">
+   2. Extract data from Flickr
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prepare-data-extraction">
+     Prepare data extraction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-extraction">
+     Data extraction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#explore-the-data">
+   3. Explore the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clustering-of-data">
+   4. Clustering of data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#do-people-prefer-certain-land-uses">
+   5. Do people prefer certain land uses?
   </a>
  </li>
 </ul>
@@ -525,7 +562,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Tutorial 2: Social media & land aesthetics</h1>
+                <h1>Tutorial 2: Social media & valuation of landscapes</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -536,6 +573,11 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#important-before-we-start">
+   Important before we start
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#learning-objectives">
    Learning Objectives
   </a>
@@ -543,6 +585,38 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introducing-the-packages">
    1.Introducing the packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extract-data-from-flickr">
+   2. Extract data from Flickr
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prepare-data-extraction">
+     Prepare data extraction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-extraction">
+     Data extraction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#explore-the-data">
+   3. Explore the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clustering-of-data">
+   4. Clustering of data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#do-people-prefer-certain-land-uses">
+   5. Do people prefer certain land uses?
   </a>
  </li>
 </ul>
@@ -555,69 +629,552 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-2-social-media-land-aesthetics">
-<h1>Tutorial 2: Social media &amp; land aesthetics<a class="headerlink" href="#tutorial-2-social-media-land-aesthetics" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-2-social-media-valuation-of-landscapes">
+<h1>Tutorial 2: Social media &amp; valuation of landscapes<a class="headerlink" href="#tutorial-2-social-media-valuation-of-landscapes" title="Permalink to this headline">#</a></h1>
+<p>Within this tutorial, we will work with the Flickr photo database to better understand how people value specific land use types. We will learn how to extract information from Flickr, how you can explore and visualize this, and how to use it for some basic analysis.</p>
+<section id="important-before-we-start">
+<h2>Important before we start<a class="headerlink" href="#important-before-we-start" title="Permalink to this headline">#</a></h2>
+<hr class="docutils" />
+<p>Make sure that you save this file before you continue, else you will lose everything. To do so, go to <strong>Bestand/File</strong> and click on <strong>Een kopie opslaan in Drive/Save a Copy on Drive</strong>!</p>
+<p>Now, rename the file into Week4_Tutorial1.ipynb. You can do so by clicking on the name in the top of this screen.</p>
+</section>
 <section id="learning-objectives">
 <h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
 <hr><ul class="simple">
-<li><p>.</p></li>
-<li><p>.</p></li>
-<li><p>.</p></li>
-<li><p>.</p></li>
-<li><p>.</p></li>
-<li><p>.</p></li>
+<li><p>To understand how we can use public data to better understand people’s preferences for leisure.</p></li>
+<li><p>To know how to extract data from Flickr using an API.</p></li>
+<li><p>To know how to clean and prepare raw data for analysis.</p></li>
+<li><p>To know how to cluster geospatial information.</p></li>
+<li><p>To visualize clusters and point data in a meaningful way.</p></li>
+<li><p>To know how to combine different spatial datasets to gain additional insights.</p></li>
 </ul>
 <h2>Tutorial Outline<span class="tocSkip"></span></h2>
 <hr>
 <div class="toc"><ul class="toc-item">
 <li><span><a href="#1.-Introducing the packages" data-toc-modified-id="1.-Introducing-the-packages-2">1. Introducing the packages</a></span></li>
-<li><span><a href="#2.-" data-toc-modified-id="2.-Extracting-landuse-information-3">2. </a></span></li>
-<li><span><a href="#3.-" data-toc-modified-id="3.-Visualize-Rasterize-4">3. </a></span></li>
-<li><span><a href="#4.-" data-toc-modified-id="4.-Extracting-buildings-5">4. </a></span></li>
-<li><span><a href="#5.-" data-toc-modified-id="5.-Analyze-buildings-6">5. </a></span></li>
-<li><span><a href="#6.-" data-toc-modified-id="4.-Extracting-roads-5">6. </a></span></li>
-<li><span><a href="#7.-" data-toc-modified-id="5.-Plot-routes-6">7. </a></span></li></ul></div></section>
+<li><span><a href="#2.-Extract data from Flickr" data-toc-modified-id="2.-Extracting-flickr-data-3">2. Extract data from Flickr</a></span></li>
+<li><span><a href="#3.-Explore the data" data-toc-modified-id="3.-Explore-Data-4">3. Explore the data</a></span></li>
+<li><span><a href="#4.-Clustering of data" data-toc-modified-id="4.-Cluster-data-5">4. Clustering of data</a></span></li>
+<li><span><a href="#5.-Do people prefer certain land uses?" data-toc-modified-id="5.-Analyze-buildings-6">5. Do people prefer certain land uses? </a></span></li></ul></div></section>
 <section id="introducing-the-packages">
 <h2>1.Introducing the packages<a class="headerlink" href="#introducing-the-packages" title="Permalink to this headline">#</a></h2>
 <hr><p>Within this tutorial, we are going to make use of the following packages:</p>
+<p><a class="reference external" href="https://osmnx.readthedocs.io/"><strong>OSMnx</strong></a> is a Python package that lets you download geospatial data from OpenStreetMap and model, project, visualize, and analyze real-world street networks and any other geospatial geometries. You can download and model walkable, drivable, or bikeable urban networks with a single line of Python code then easily analyze and visualize them. You can just as easily download and work with other infrastructure types, amenities/points of interest, building footprints, elevation data, street bearings/orientations, and speed/travel time.</p>
+<p><a class="reference external" href="https://stuvel.eu/flickrapi-doc/index.html"><strong>flickrapi</strong></a> is a Python interface to the Flickr API. It includes support for authorized and non-authorized access, uploading and replacing photos, and all Flickr API functions.</p>
 <p><em>We will first need to install these packages in the cell below. Uncomment them to make sure we can pip install them</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span><span class="p">,</span> <span class="n">cycler</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install flickrapi</span>
+<span class="c1">#!pip install osmnx</span>
+<span class="c1">#!pip install geopandas</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we will import these packages in the cell below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">flickrapi</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pygeos</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">contextily</span> <span class="k">as</span> <span class="nn">cx</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">osmnx</span> <span class="k">as</span> <span class="nn">ox</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="extract-data-from-flickr">
+<h2>2. Extract data from Flickr<a class="headerlink" href="#extract-data-from-flickr" title="Permalink to this headline">#</a></h2>
+<hr><p>To extract data from Flicker, we will use their <strong>API</strong>. This is an acronym for application programming interface. It is a software intermediary that allows two applications to talk to each other. APIs are an accessible way to extract and share data within and across organizations. APIs are all around us. Every time you use a rideshare app, send a mobile payment, or change the thermostat temperature from your phone, you’re using an API.</p>
+<p>However, before we can access this <strong>API</strong>, we need to take a few steps. Most importantly, we need to register ourselves on the <a class="reference external" href="https://www.flickr.com/">Flickr</a> portal. To do so, we need to register, as explained in the video clip below:</p>
+<img src="https://github.com/ElcoK/BigData_AED/blob/main/_static/images/Flickr_registration.gif?raw=1" class="bg-primary mb-1">
+<br>
+<p>Now, the next step is to access the API. You can now login on the website of <a class="reference external" href="https://www.flickr.com/">Flickr</a>, and go to the <strong>API</strong> part of the <a class="reference external" href="https://www.flickr.com/services/apps/create/apply/">website</a>.</p>
+<p>Now click on <code class="docutils literal notranslate"><span class="pre">APPLY</span> <span class="pre">FOR</span> <span class="pre">A</span> <span class="pre">NON-COMMERCIAL</span> <span class="pre">KEY</span></code> and just fill in some information about the course. The name of the App can be something random and related to our big data course, and you just need to fill in two lines of text to describe what you want to do. As soon as you click <code class="docutils literal notranslate"><span class="pre">SUBMIT</span></code>, you will see a generated <strong>api_key</strong> and an <strong>api_secret</strong>. Fill those in below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">api_key</span> <span class="o">=</span> <span class="s1">&#39;d65f682f6f7e8a02a3db8cfbe3c29b15&#39;</span>
+<span class="n">api_secret</span><span class="o">=</span><span class="s1">&#39;09f3aa61233e2e11&#39;</span>
+
+<span class="n">flickr</span> <span class="o">=</span> <span class="n">flickrapi</span><span class="o">.</span><span class="n">FlickrAPI</span><span class="p">(</span><span class="n">api_key</span><span class="p">,</span> <span class="n">api_secret</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="prepare-data-extraction">
+<h3>Prepare data extraction<a class="headerlink" href="#prepare-data-extraction" title="Permalink to this headline">#</a></h3>
+<p>Before we get started with the extraction of data, we need to specify again an area of interest we want to focus on. In the cell below, you will now read “Ameland, The Netherlands”. Change this to any random or municipality in the Netherlands that (1) you can think of and (2) will work.</p>
+<p>In some cases, the function does not recognize the location. You could either try a different phrasing or try a different location. Many parts of the Netherlands should work. It is also fine to use an area outside of the Netherlands. I would make sure to not make it too large, as it will take a long time to extract the photos.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">place_name</span> <span class="o">=</span> <span class="s2">&quot;Ameland, The Netherlands&quot;</span>
+<span class="n">area</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">geocode_to_gdf</span><span class="p">(</span><span class="n">place_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let us visualize the bounding box of the area, similar to some of our previous tutorials.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">area_to_check</span> <span class="o">=</span> <span class="n">area</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">3857</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">area_to_check</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+<span class="n">cx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">area_to_check</span><span class="o">.</span><span class="n">area</span><span class="o">/</span><span class="mf">1e6</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">. Total area: </span><span class="si">{}</span><span class="s2"> km2&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">place_name</span><span class="p">,</span><span class="n">size</span><span class="p">),</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Ameland, The Netherlands. Total area: 161 km2&#39;)
+</pre></div>
+</div>
+<img alt="../_images/tutorial2_16_1.png" src="../_images/tutorial2_16_1.png" />
+</div>
+</div>
+</section>
+<section id="data-extraction">
+<h3>Data extraction<a class="headerlink" href="#data-extraction" title="Permalink to this headline">#</a></h3>
+<p>To extract the metadata of the photos from Flickr, we are going to use the <code class="docutils literal notranslate"><span class="pre">.walk()</span></code> function. This function will return a list of photos matching some criteria. It allows you to search photos based on location, date, tag and so on.</p>
+<p>In our case, we are state that we want to find all photos, no matter how they are tagged. This is defined through <code class="docutils literal notranslate"><span class="pre">tag_mode=all</span></code>. Moreover, as you will see, we also specify that we want some extra information. More specifically, we ask for the <code class="docutils literal notranslate"><span class="pre">geo(location)</span></code>, <code class="docutils literal notranslate"><span class="pre">tags</span></code>, <code class="docutils literal notranslate"><span class="pre">date_taken</span></code> and the <code class="docutils literal notranslate"><span class="pre">url_m</span></code> of a photo.</p>
+<p>We use a bounding box <code class="docutils literal notranslate"><span class="pre">bbox</span></code> to make sure we only select photos from our region of interest. The input requires our bounding box to me in a string format. So let’s do that first.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bbox_string</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">area</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And now we can extract all the photos. We collect all of them in a list, through the <code class="docutils literal notranslate"><span class="pre">.append()</span></code> function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collect_pictures</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">photo</span> <span class="ow">in</span> <span class="n">flickr</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">tag_mode</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span>
+                         <span class="c1">#tags=&#39;nature&#39;,</span>
+                         <span class="n">bbox</span><span class="o">=</span><span class="n">bbox_string</span><span class="p">,</span><span class="n">extras</span><span class="o">=</span><span class="s1">&#39;geo,tags,date_taken,url_m&#39;</span><span class="p">):</span>
+    
+    <span class="n">get_attributes</span> <span class="o">=</span> <span class="n">photo</span><span class="o">.</span><span class="n">attrib</span>
+    <span class="n">collect_pictures</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">get_attributes</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">],</span>
+                             <span class="n">get_attributes</span><span class="p">[</span><span class="s1">&#39;datetaken&#39;</span><span class="p">],</span>
+                             <span class="n">get_attributes</span><span class="p">[</span><span class="s1">&#39;tags&#39;</span><span class="p">],</span>
+                             <span class="n">get_attributes</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">],</span>
+                             <span class="n">get_attributes</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="explore-the-data">
+<h2>3. Explore the data<a class="headerlink" href="#explore-the-data" title="Permalink to this headline">#</a></h2>
+<hr>
+Now we have extracted the data and, let's explore (and clean) this data a bit more. The convenient thing of having everything stored in a list, is that we can easily turn this into a pandas DataFrame.<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">collect_pictures</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;datetaken&#39;</span><span class="p">,</span><span class="s1">&#39;tags&#39;</span><span class="p">,</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span><span class="s1">&#39;longitude&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s explore the data a little bit:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>datetaken</th>
+      <th>tags</th>
+      <th>latitude</th>
+      <th>longitude</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>52637307998</td>
+      <td>2022-08-08 14:59:24</td>
+      <td>ameland meer europa wasser watt fortbewegungsm...</td>
+      <td>53.442808</td>
+      <td>5.737283</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>52633905369</td>
+      <td>2022-08-13 17:20:14</td>
+      <td>img4088 13082022 nederland netherlands ameland...</td>
+      <td>53.441900</td>
+      <td>5.613400</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>52631247150</td>
+      <td>2023-01-11 14:23:22</td>
+      <td>isle island eiland waddeneiland ameland friesl...</td>
+      <td>53.448148</td>
+      <td>5.630857</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>52624908216</td>
+      <td>2022-08-08 11:40:26</td>
+      <td>jahreszeiten leuchtturm aussicht ameland fries...</td>
+      <td>53.454041</td>
+      <td>5.638633</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>52622686386</td>
+      <td>2023-01-12 05:04:38</td>
+      <td>eglise nederland kerk foto hccity oud church old</td>
+      <td>53.440180</td>
+      <td>5.634881</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>And let’s see if everything is stored in a format in which we can work with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id           object
+datetaken    object
+tags         object
+latitude     object
+longitude    object
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>We would expect floating values for the <strong>latitude</strong> and <strong>longitude</strong>, and a <em>datetime</em> object for the <strong>datetaken</strong>. Let’s have a look how these are stored:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">longitude</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;5.737283&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Aha! Strings. It will be difficult to convert strings into proper geometries, so let’s convert these columns to floating values, and convert them to <strong>points</strong> using <code class="docutils literal notranslate"><span class="pre">pygeos.points()</span></code>. As you will see, we use a <a class="reference external" href="https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions">list comprehension</a> to do so. The input for <code class="docutils literal notranslate"><span class="pre">pygeos.points()</span></code> is a list or numpy array, in which each element contains a <em>longitude</em> and a <em>latitude</em>. To make sure we have that, we create this <code class="docutils literal notranslate"><span class="pre">list</span></code> using the <a class="reference external" href="https://docs.python.org/3.3/library/functions.html#zip">zip</a> function in Python.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">pygeos</span><span class="o">.</span><span class="n">points</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]))]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s convert the <strong>datetaken</strong> column into a <em>datetime</em> type, so we can extract specific years or days.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;datetaken&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">datetaken</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">datetaken</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we are dealing with spatial data, it would be nice to plot this information on a map. To do so, we convert our <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> into a <code class="docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code>. Moreover, we have to specify the coordinate reference system. Given that we have a global dataset, it makes most sense to use <strong>epsg:4326</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+<span class="n">gdf</span><span class="o">.</span><span class="n">crs</span> <span class="o">=</span> <span class="s1">&#39;epsg:4326&#39;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fixing random state for reproducibility</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">19680801</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf_to_plot</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">3857</span><span class="p">)</span>
 
-<span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="n">ii</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span>
-<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.prop_cycle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycler</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">gdf_to_plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span><span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+<span class="n">cx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 
-
-<span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="kn">import</span> <span class="n">Line2D</span>
-<span class="n">custom_lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">0.</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
-                <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">.5</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
-                <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">1.</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)]</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">lines</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">custom_lines</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Cold&#39;</span><span class="p">,</span> <span class="s1">&#39;Medium&#39;</span><span class="p">,</span> <span class="s1">&#39;Hot&#39;</span><span class="p">]);</span>
+<span class="c1">#ax.set_title(&quot;{}. Total area: {} km2&quot;.format(place_name,size),fontweight=&#39;bold&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/tutorial2_36_0.png" src="../_images/tutorial2_36_0.png" />
+</div>
+</div>
+<p>Let’s have a look how all these photos are tagged. And whether we can actually do something with this information.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;tags&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       ameland meer europa wasser watt fortbewegungsm...
+1       img4088 13082022 nederland netherlands ameland...
+2       isle island eiland waddeneiland ameland friesl...
+3       jahreszeiten leuchtturm aussicht ameland fries...
+4        eglise nederland kerk foto hccity oud church old
+                              ...                        
+6995    aussicht ameland friesland europa meer wasser ...
+6996    himmel jahreszeiten sonnenuntergang pflanzen a...
+6997    leuchtturm ameland farbe europa jahreszeiten n...
+6998    europa ameland friesland jahreszeiten wattenme...
+6999    jahreszeiten leuchtturm aussicht ameland fries...
+Name: tags, Length: 7000, dtype: object
 </pre></div>
 </div>
 </div>
 </div>
-<p>There is a lot more that you can do with outputs (such as including interactive outputs)
-with your book. For more information about this, see <a class="reference external" href="https://jupyterbook.org">the Jupyter Book documentation</a></p>
+<p>This looks like a mess. It seems we have some work to do to be able to use some of this. Lets get an overview of all the tags and get an idea how often certain tags are used.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">find_all_tags</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">gdf</span><span class="o">.</span><span class="n">tags</span><span class="p">:</span>
+    <span class="n">find_all_tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+    
+<span class="n">all_tags</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">find_all_tags</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sublist</span><span class="p">]</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">all_tags</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>So we see that quite a lot of the tags don’t really say much about the area or why people might visit the area. Let’s give it a go by just trying to see how many pictures are tagged in something linked to nature. Add more words if you believe you can identify more in the previous overview.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_nature_tags</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="n">matches</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;seehund&quot;</span><span class="p">,</span> <span class="s2">&quot;zeehond&quot;</span><span class="p">,</span><span class="s2">&quot;natuur&quot;</span><span class="p">,</span><span class="s2">&quot;nature&quot;</span><span class="p">,</span><span class="s2">&quot;natur&quot;</span><span class="p">,</span><span class="s2">&quot;landschaft&quot;</span><span class="p">,</span><span class="s2">&quot;strand&quot;</span><span class="p">,</span><span class="s2">&quot;beach&quot;</span><span class="p">,</span><span class="s2">&quot;zee&quot;</span><span class="p">,</span><span class="s2">&quot;sea&quot;</span><span class="p">,</span><span class="s2">&quot;meer&quot;</span><span class="p">,</span><span class="s2">&quot;animal&quot;</span><span class="p">,</span><span class="s2">&quot;bird&quot;</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">x</span> <span class="ow">in</span> <span class="n">row</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">matches</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;yes&#39;</span>
+    
+<span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;nature&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">find_nature_tags</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s count them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">nature</span><span class="o">==</span><span class="s1">&#39;yes&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3686
+</pre></div>
+</div>
+</div>
+</div>
+<p>And let’s only plot those points on a map</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf_to_plot</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">3857</span><span class="p">)</span>
+<span class="n">gdf_to_plot</span> <span class="o">=</span> <span class="n">gdf_to_plot</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">gdf_to_plot</span><span class="o">.</span><span class="n">nature</span> <span class="o">==</span> <span class="s1">&#39;yes&#39;</span><span class="p">]</span>
+<span class="n">gdf_to_plot</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">gdf_to_plot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span><span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1">#ax.set_xticks([])</span>
+<span class="c1">#ax.set_yticks([])</span>
+<span class="c1">#ax.set_axis_off()</span>
+<span class="n">cx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c1">#ax.set_title(&quot;{}. Total area: {} km2&quot;.format(place_name,size),fontweight=&#39;bold&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/tutorial2_46_0.png" src="../_images/tutorial2_46_0.png" />
+</div>
+</div>
 </section>
+<section id="clustering-of-data">
+<h2>4. Clustering of data<a class="headerlink" href="#clustering-of-data" title="Permalink to this headline">#</a></h2>
+<hr><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_grid</span><span class="p">(</span><span class="n">bbox</span><span class="p">,</span><span class="n">height</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a vector-based grid</span>
+<span class="sd">    Args:</span>
+<span class="sd">        bbox ([type]): [description]</span>
+<span class="sd">        height ([type]): [description]</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        [type]: [description]</span>
+<span class="sd">    &quot;&quot;&quot;</span>    
+
+    <span class="c1"># set xmin,ymin,xmax,and ymax of the grid</span>
+    <span class="n">xmin</span><span class="p">,</span> <span class="n">ymin</span> <span class="o">=</span> <span class="n">pygeos</span><span class="o">.</span><span class="n">total_bounds</span><span class="p">(</span><span class="n">bbox</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span><span class="n">pygeos</span><span class="o">.</span><span class="n">total_bounds</span><span class="p">(</span><span class="n">bbox</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">xmax</span><span class="p">,</span> <span class="n">ymax</span> <span class="o">=</span> <span class="n">pygeos</span><span class="o">.</span><span class="n">total_bounds</span><span class="p">(</span><span class="n">bbox</span><span class="p">)[</span><span class="mi">2</span><span class="p">],</span><span class="n">pygeos</span><span class="o">.</span><span class="n">total_bounds</span><span class="p">(</span><span class="n">bbox</span><span class="p">)[</span><span class="mi">3</span><span class="p">]</span>
+    
+    <span class="c1">#estimate total rows and columns</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="n">ymax</span><span class="o">-</span><span class="n">ymin</span><span class="p">)</span> <span class="o">/</span> <span class="n">height</span><span class="p">))</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">((</span><span class="n">xmax</span><span class="o">-</span><span class="n">xmin</span><span class="p">)</span> <span class="o">/</span> <span class="n">height</span><span class="p">))</span>
+
+    <span class="c1"># set corner points</span>
+    <span class="n">x_left_origin</span> <span class="o">=</span> <span class="n">xmin</span>
+    <span class="n">x_right_origin</span> <span class="o">=</span> <span class="n">xmin</span> <span class="o">+</span> <span class="n">height</span>
+    <span class="n">y_top_origin</span> <span class="o">=</span> <span class="n">ymax</span>
+    <span class="n">y_bottom_origin</span> <span class="o">=</span> <span class="n">ymax</span> <span class="o">-</span> <span class="n">height</span>
+
+    <span class="c1"># create actual grid</span>
+    <span class="n">res_geoms</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">countcols</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cols</span><span class="p">):</span>
+        <span class="n">y_top</span> <span class="o">=</span> <span class="n">y_top_origin</span>
+        <span class="n">y_bottom</span> <span class="o">=</span> <span class="n">y_bottom_origin</span>
+        <span class="k">for</span> <span class="n">countrows</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+            <span class="n">res_geoms</span><span class="o">.</span><span class="n">append</span><span class="p">((</span>
+                <span class="p">((</span><span class="n">x_left_origin</span><span class="p">,</span> <span class="n">y_top</span><span class="p">),</span> <span class="p">(</span><span class="n">x_right_origin</span><span class="p">,</span> <span class="n">y_top</span><span class="p">),</span>
+                <span class="p">(</span><span class="n">x_right_origin</span><span class="p">,</span> <span class="n">y_bottom</span><span class="p">),</span> <span class="p">(</span><span class="n">x_left_origin</span><span class="p">,</span> <span class="n">y_bottom</span><span class="p">)</span>
+                <span class="p">)))</span>
+            <span class="n">y_top</span> <span class="o">=</span> <span class="n">y_top</span> <span class="o">-</span> <span class="n">height</span>
+            <span class="n">y_bottom</span> <span class="o">=</span> <span class="n">y_bottom</span> <span class="o">-</span> <span class="n">height</span>
+        <span class="n">x_left_origin</span> <span class="o">=</span> <span class="n">x_left_origin</span> <span class="o">+</span> <span class="n">height</span>
+        <span class="n">x_right_origin</span> <span class="o">=</span> <span class="n">x_right_origin</span> <span class="o">+</span> <span class="n">height</span>
+
+    <span class="k">return</span> <span class="n">pygeos</span><span class="o">.</span><span class="n">polygons</span><span class="p">(</span><span class="n">res_geoms</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coords</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">gdf_to_plot</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">gdf_to_plot</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">values</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coords</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[7065159.4585024 ,  624880.82961896],
+       [7067428.83008726,  627689.75433015],
+       [7068624.80559391,  641492.14667412],
+       ...,
+       [7068373.51800243,  641579.64379388],
+       [7063911.8701792 ,  626161.89431901],
+       [7068358.3736919 ,  641587.99275569]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">epsilon</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1">#/ kms_per_radian</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">DBSCAN</span><span class="p">(</span><span class="n">eps</span><span class="o">=</span><span class="n">epsilon</span><span class="p">,</span> <span class="n">min_samples</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;ball_tree&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">((</span><span class="n">coords</span><span class="p">))</span> <span class="c1">#, metric=&#39;haversine&#39;</span>
+<span class="n">cluster_labels</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">labels_</span>
+<span class="n">num_clusters</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">cluster_labels</span><span class="p">))</span>
+<span class="n">clusters</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">coords</span><span class="p">[</span><span class="n">cluster_labels</span> <span class="o">==</span> <span class="n">n</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_clusters</span><span class="p">)])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of clusters: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num_clusters</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of clusters: 21
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clusters</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     [[7065159.4585024, 624880.8296189619], [706391...
+1     [[7067428.830087262, 627689.7543301485], [7067...
+2     [[7068624.8055939125, 641492.1466741158], [706...
+3     [[7063553.290208715, 635422.7853970849], [7063...
+4     [[7069519.895295769, 657189.7533488383], [7069...
+5     [[7068079.050478185, 657638.7048552077], [7068...
+6     [[7067514.0773409745, 637096.2513021801], [706...
+7     [[7065329.157618469, 638671.422096905], [70653...
+8     [[7068686.132939823, 643270.0302615751], [7068...
+9     [[7064523.866620934, 642772.0981792568], [7066...
+10    [[7064016.887284922, 636542.1028770113], [7064...
+11    [[7069787.301186925, 659442.5258840219], [7069...
+12    [[7068727.641351335, 651355.2761973813], [7068...
+13    [[7068490.934131044, 632913.0874771505], [7068...
+14    [[7068635.837002284, 629300.2134034549], [7069...
+15    [[7061926.523372786, 632269.4381813838], [7062...
+16    [[7069529.618988529, 652888.7021830587], [7069...
+17    [[7068698.660230339, 636067.1026097963], [7068...
+18    [[7062935.763387056, 656321.1273621785], [7062...
+19    [[7068955.941494319, 647013.1481394989], [7068...
+20                                                   []
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cluster_gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">clusters</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="n">pygeos</span><span class="o">.</span><span class="n">convex_hull</span><span class="p">(</span><span class="n">pygeos</span><span class="o">.</span><span class="n">multipoints</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)))),</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">])</span>
+<span class="n">cluster_gdf</span><span class="p">[</span><span class="s1">&#39;cluster_size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">clusters</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">cluster_gdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;cluster_size&#39;</span><span class="p">,</span><span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../_images/tutorial2_54_1.png" src="../_images/tutorial2_54_1.png" />
+</div>
+</div>
+</section>
+<section id="do-people-prefer-certain-land-uses">
+<h2>5. Do people prefer certain land uses?<a class="headerlink" href="#do-people-prefer-certain-land-uses" title="Permalink to this headline">#</a></h2>
+<hr></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -651,7 +1208,7 @@ with your book. For more information about this, see <a class="reference externa
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Tutorial 1: Twitter &amp; NLP</p>
+            <p class="prev-next-title">Week 6</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../week7/lecture.html" title="next page">

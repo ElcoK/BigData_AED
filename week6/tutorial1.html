@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Tutorial 1: Twitter &amp; NLP &#8212; Big Data for Sustainability Sciences</title>
+    <title>Week 6 &#8212; Big Data for Sustainability Sciences</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Tutorial 2: Social media &amp; land aesthetics" href="tutorial2.html" />
+    <link rel="next" title="Tutorial 2: Social media &amp; valuation of landscapes" href="tutorial2.html" />
     <link rel="prev" title="Lecture: Social Media and Natural Language Processing (NLP)" href="lecture.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -263,12 +263,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Tutorial 1: Twitter &amp; NLP
+   Week 6
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="tutorial2.html">
-   Tutorial 2: Social media &amp; land aesthetics
+   Tutorial 2: Social media &amp; valuation of landscapes
   </a>
  </li>
 </ul>
@@ -506,15 +506,76 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning Objectives
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Week 6
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introducing-the-packages">
-   1.Introducing the packages
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tutorial-1-social-media-and-natural-language-processing">
+   Tutorial 1: Social Media and Natural Language Processing
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#important-before-we-start">
+     Important before we start
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#learning-objectives">
+     Learning Objectives
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#introducing-the-packages">
+     1.Introducing the packages
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#social-media">
+     2. Social Media
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#authenticate-with-tweepy">
+       Authenticate with Tweepy
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#getting-user-information">
+       Getting User Information
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#natural-language-processing-nlp">
+     3. Natural Language Processing (NLP)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-retrieval-and-post-processing">
+     4. Data retrieval and post-processing
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#application-natural-hazards">
+     5. Application: Natural Hazards
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#earthquakes">
+       Earthquakes
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#flooding">
+       Flooding
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -525,7 +586,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Tutorial 1: Twitter & NLP</h1>
+                <h1>Week 6</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -535,15 +596,76 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning Objectives
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Week 6
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introducing-the-packages">
-   1.Introducing the packages
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tutorial-1-social-media-and-natural-language-processing">
+   Tutorial 1: Social Media and Natural Language Processing
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#important-before-we-start">
+     Important before we start
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#learning-objectives">
+     Learning Objectives
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#introducing-the-packages">
+     1.Introducing the packages
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#social-media">
+     2. Social Media
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#authenticate-with-tweepy">
+       Authenticate with Tweepy
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#getting-user-information">
+       Getting User Information
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#natural-language-processing-nlp">
+     3. Natural Language Processing (NLP)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-retrieval-and-post-processing">
+     4. Data retrieval and post-processing
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#application-natural-hazards">
+     5. Application: Natural Hazards
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#earthquakes">
+       Earthquakes
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#flooding">
+       Flooding
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -555,68 +677,1511 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-1-twitter-nlp">
-<h1>Tutorial 1: Twitter &amp; NLP<a class="headerlink" href="#tutorial-1-twitter-nlp" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="week-6">
+<h1>Week 6<a class="headerlink" href="#week-6" title="Permalink to this headline">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="tutorial-1-social-media-and-natural-language-processing">
+<h1>Tutorial 1: Social Media and Natural Language Processing<a class="headerlink" href="#tutorial-1-social-media-and-natural-language-processing" title="Permalink to this headline">#</a></h1>
+<p>Natural processes such as thunderstorms, wildfires, earthquakes, and floods may lead to significant losses in terms of property and human life. Gathering information about the damages in time is crucial and may help in mitigating the loss, and faster recovery (<a class="reference external" href="https://link.springer.com/article/10.1007/s11042-019-07942-1">Said et al, 2019</a>).</p>
+<p>Social media are one of the most important sources of not only real-time information but records since their existence. They have been crawled over the years to collect and analyze disaster-related multimedia content (<a class="reference external" href="https://link.springer.com/article/10.1007/s11042-019-07942-1">Said et al, 2019</a>). There are different applications where we can use social media data to analyze natural disasters.</p>
+<p>Through this tutorial, we will learn how we can use Twitter data to analyze natural hazards. We will do so by applying the concept of natural language processing.</p>
+<p>This tutorial is heavily based upon the work of <a class="reference external" href="https://www.jcchouinard.com/tweepy-basic-functions/">others</a>.</p>
+<section id="important-before-we-start">
+<h2>Important before we start<a class="headerlink" href="#important-before-we-start" title="Permalink to this headline">#</a></h2>
+<hr class="docutils" />
+<p>Make sure that you save this file before you continue, else you will lose everything. To do so, go to <strong>Bestand/File</strong> and click on <strong>Een kopie opslaan in Drive/Save a Copy on Drive</strong>!</p>
+<p>Now, rename the file into Week5_Tutorial1.ipynb. You can do so by clicking on the name in the top of this screen.</p>
+<p>We will also use the file ‘tweets.jsonl’, so make sure to save it in the same folder than the notebook.</p>
+<p>By using this notebook and associated files, you agree to the Twitter Developer Agreement and Policy, which can be found <a class="reference external" href="https://developer.twitter.com/en/developer-terms/agreement-and-policy">here</a>.</p>
+</section>
 <section id="learning-objectives">
 <h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
 <hr><ul class="simple">
-<li><p>.</p></li>
-<li><p>.</p></li>
-<li><p>.</p></li>
-<li><p>.</p></li>
-<li><p>.</p></li>
-<li><p>.</p></li>
+<li><p>Learn about the importance and application of social media data</p></li>
+<li><p>Access social media (Twitter) through the API</p></li>
+<li><p>Retrieve Twitter data</p></li>
+<li><p>Filter and clean the retrieved data</p></li>
+<li><p>Visualize the data in different plots such as <code class="docutils literal notranslate"><span class="pre">bar</span></code>, <code class="docutils literal notranslate"><span class="pre">scatter</span></code>, and <code class="docutils literal notranslate"><span class="pre">spatial</span></code>.</p></li>
 </ul>
-<h2>Tutorial Outline<span class="tocSkip"></span></h2>
+<h2>Tutorial outline<span class="tocSkip"></span></h2>
 <hr>
-<div class="toc"><ul class="toc-item">
-<li><span><a href="#1.-Introducing the packages" data-toc-modified-id="1.-Introducing-the-packages-2">1. Introducing the packages</a></span></li>
-<li><span><a href="#2.-" data-toc-modified-id="2.-Extracting-landuse-information-3">2. </a></span></li>
-<li><span><a href="#3.-" data-toc-modified-id="3.-Visualize-Rasterize-4">3. </a></span></li>
-<li><span><a href="#4.-" data-toc-modified-id="4.-Extracting-buildings-5">4. </a></span></li>
-<li><span><a href="#5.-" data-toc-modified-id="5.-Analyze-buildings-6">5. </a></span></li>
-<li><span><a href="#6.-" data-toc-modified-id="4.-Extracting-roads-5">6. </a></span></li>
-<li><span><a href="#7.-" data-toc-modified-id="5.-Plot-routes-6">7. </a></span></li></ul></div></section>
+<div class="toc"><ul class="toc-item"><li><span><a href="#1.-Introduction" data-toc-modified-id="1.-Introduction-1">1. Introduction to the packages</a></span></li><li><span><a href="#2.-Basic-Python-Data-Types" data-toc-modified-id="2.-Basic-Python-Data-Types-2">2. Social Media </a></span></li><li><span><a href="#3.-Lists-and-Tuples" data-toc-modified-id="3.-Lists-and-Tuples-3">3. Natural Language Processing (NLP)</a></span></li><li><span><a href="#4.-String-Methods" data-toc-modified-id="4.-String-Methods-4">4. Data retrieval and post-processing </a></span></li><li><span><a href="#5.-Dictionaries" data-toc-modified-id="5.-Dictionaries-5">5. Applications: detecting natural hazards</a></span></li></section>
 <section id="introducing-the-packages">
 <h2>1.Introducing the packages<a class="headerlink" href="#introducing-the-packages" title="Permalink to this headline">#</a></h2>
 <hr><p>Within this tutorial, we are going to make use of the following packages:</p>
+<p><a class="reference external" href="https://geopandas.org/"><strong>GeoPandas</strong></a> is a Python packagee that extends the datatypes used by pandas to allow spatial operations on geometric types.</p>
+<p><a class="reference external" href="https://docs.python.org/3/library/json.html"><strong>JSON</strong></a> is a lightweight data interchange format inspired by JavaScript object literal syntax.</p>
+<p><a class="reference external" href="https://matplotlib.org/"><strong>Matplotlib</strong></a> is a comprehensive Python package for creating static, animated, and interactive visualizations in Python. Matplotlib makes easy things easy and hard things possible.</p>
+<p><a class="reference external" href="https://numpy.org/doc/stable/"><strong>NumPy</strong></a> is a Python library that provides a multidimensional array object, various derived objects, and an assortment of routines for fast operations on arrays.</p>
+<p><a class="reference external" href="https://pandas.pydata.org/docs/"><strong>Pandas</strong></a> is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python programming language.</p>
+<p><a class="reference external" href="https://www.tweepy.org/"><strong>tweepy</strong></a> is an easy-to-use Python library for accessing the Twitter API.</p>
 <p><em>We will first need to install these packages in the cell below. Uncomment them to make sure we can pip install them</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span><span class="p">,</span> <span class="n">cycler</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>geopandas
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>matplotlib
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>numpy
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pandas
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>tweepy
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Collecting geopandas
+  Downloading geopandas-0.12.2-py3-none-any.whl (1.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.1/1.1 MB</span> <span class=" -Color -Color-Red">11.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: packaging in /usr/local/lib/python3.8/dist-packages (from geopandas) (21.3)
+Requirement already satisfied: pandas&gt;=1.0.0 in /usr/local/lib/python3.8/dist-packages (from geopandas) (1.3.5)
+Collecting pyproj&gt;=2.6.1.post1
+  Downloading pyproj-3.4.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (7.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">7.8/7.8 MB</span> <span class=" -Color -Color-Red">60.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting fiona&gt;=1.8
+  Downloading Fiona-1.8.22-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">16.6/16.6 MB</span> <span class=" -Color -Color-Red">48.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: shapely&gt;=1.7 in /usr/local/lib/python3.8/dist-packages (from geopandas) (2.0.0)
+Requirement already satisfied: certifi in /usr/local/lib/python3.8/dist-packages (from fiona&gt;=1.8-&gt;geopandas) (2022.12.7)
+Collecting click-plugins&gt;=1.0
+  Downloading click_plugins-1.1.1-py2.py3-none-any.whl (7.5 kB)
+Requirement already satisfied: setuptools in /usr/local/lib/python3.8/dist-packages (from fiona&gt;=1.8-&gt;geopandas) (57.4.0)
+Requirement already satisfied: six&gt;=1.7 in /usr/local/lib/python3.8/dist-packages (from fiona&gt;=1.8-&gt;geopandas) (1.15.0)
+Collecting munch
+  Downloading munch-2.5.0-py2.py3-none-any.whl (10 kB)
+Requirement already satisfied: click&gt;=4.0 in /usr/local/lib/python3.8/dist-packages (from fiona&gt;=1.8-&gt;geopandas) (7.1.2)
+Requirement already satisfied: attrs&gt;=17 in /usr/local/lib/python3.8/dist-packages (from fiona&gt;=1.8-&gt;geopandas) (22.2.0)
+Collecting cligj&gt;=0.5
+  Downloading cligj-0.7.2-py3-none-any.whl (7.1 kB)
+Requirement already satisfied: pytz&gt;=2017.3 in /usr/local/lib/python3.8/dist-packages (from pandas&gt;=1.0.0-&gt;geopandas) (2022.7)
+Requirement already satisfied: numpy&gt;=1.17.3 in /usr/local/lib/python3.8/dist-packages (from pandas&gt;=1.0.0-&gt;geopandas) (1.21.6)
+Requirement already satisfied: python-dateutil&gt;=2.7.3 in /usr/local/lib/python3.8/dist-packages (from pandas&gt;=1.0.0-&gt;geopandas) (2.8.2)
+Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /usr/local/lib/python3.8/dist-packages (from packaging-&gt;geopandas) (3.0.9)
+Installing collected packages: pyproj, munch, cligj, click-plugins, fiona, geopandas
+Successfully installed click-plugins-1.1.1 cligj-0.7.2 fiona-1.8.22 geopandas-0.12.2 munch-2.5.0 pyproj-3.4.1
+Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Requirement already satisfied: matplotlib in /usr/local/lib/python3.8/dist-packages (3.2.2)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.1 in /usr/local/lib/python3.8/dist-packages (from matplotlib) (3.0.9)
+Requirement already satisfied: cycler&gt;=0.10 in /usr/local/lib/python3.8/dist-packages (from matplotlib) (0.11.0)
+Requirement already satisfied: numpy&gt;=1.11 in /usr/local/lib/python3.8/dist-packages (from matplotlib) (1.21.6)
+Requirement already satisfied: python-dateutil&gt;=2.1 in /usr/local/lib/python3.8/dist-packages (from matplotlib) (2.8.2)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /usr/local/lib/python3.8/dist-packages (from matplotlib) (1.4.4)
+Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.8/dist-packages (from python-dateutil&gt;=2.1-&gt;matplotlib) (1.15.0)
+Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Requirement already satisfied: numpy in /usr/local/lib/python3.8/dist-packages (1.21.6)
+Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Requirement already satisfied: pandas in /usr/local/lib/python3.8/dist-packages (1.3.5)
+Requirement already satisfied: numpy&gt;=1.17.3 in /usr/local/lib/python3.8/dist-packages (from pandas) (1.21.6)
+Requirement already satisfied: pytz&gt;=2017.3 in /usr/local/lib/python3.8/dist-packages (from pandas) (2022.7)
+Requirement already satisfied: python-dateutil&gt;=2.7.3 in /usr/local/lib/python3.8/dist-packages (from pandas) (2.8.2)
+Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.8/dist-packages (from python-dateutil&gt;=2.7.3-&gt;pandas) (1.15.0)
+Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Requirement already satisfied: tweepy in /usr/local/lib/python3.8/dist-packages (3.10.0)
+Requirement already satisfied: six&gt;=1.10.0 in /usr/local/lib/python3.8/dist-packages (from tweepy) (1.15.0)
+Requirement already satisfied: requests-oauthlib&gt;=0.7.0 in /usr/local/lib/python3.8/dist-packages (from tweepy) (1.3.1)
+Requirement already satisfied: requests[socks]&gt;=2.11.1 in /usr/local/lib/python3.8/dist-packages (from tweepy) (2.25.1)
+Requirement already satisfied: oauthlib&gt;=3.0.0 in /usr/local/lib/python3.8/dist-packages (from requests-oauthlib&gt;=0.7.0-&gt;tweepy) (3.2.2)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/local/lib/python3.8/dist-packages (from requests[socks]&gt;=2.11.1-&gt;tweepy) (2.10)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.8/dist-packages (from requests[socks]&gt;=2.11.1-&gt;tweepy) (2022.12.7)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.8/dist-packages (from requests[socks]&gt;=2.11.1-&gt;tweepy) (1.24.3)
+Requirement already satisfied: chardet&lt;5,&gt;=3.0.2 in /usr/local/lib/python3.8/dist-packages (from requests[socks]&gt;=2.11.1-&gt;tweepy) (4.0.0)
+Requirement already satisfied: PySocks!=1.5.7,&gt;=1.5.6 in /usr/local/lib/python3.8/dist-packages (from requests[socks]&gt;=2.11.1-&gt;tweepy) (1.7.1)
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you may or may not have seen while installing, there was a warning that we need to restart our runtime. To do so, click on <strong>Runtime</strong> in the topbar menu and click on <strong>Runtime opnieuw starten</strong>/<strong>Restart runtime</strong>.</p>
+<p>Now we will import these packages in the cell below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pylab</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">date</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">tweepy</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1</span> <span class="kn">import</span> <span class="n">make_axes_locatable</span> 
+
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="social-media">
+<h2>2. Social Media<a class="headerlink" href="#social-media" title="Permalink to this headline">#</a></h2>
+<hr><p>Social media are interactive technologies that facilitate the creation and sharing of information, ideas, interests, and other forms of expression through virtual communities and networks.</p>
+<p>Therefore, social media can be used as a source of real-time information for natural disaster detection. Moreover, the database can be used to post-analyze natural disasters for a better estimation of the extent and the damages the hazard had caused.</p>
+<p>Some of the most popular social media websites, with more than 100 million registered users, include Facebook (and its associated Facebook Messenger), TikTok, WeChat, ShareChat, Instagram, QZone, Weibo, Twitter, Tumblr, Baidu Tieba, and LinkedIn.</p>
+<p>Twitter has been proven to be a useful data source for many research communities (Ekta et al, 2017, Graff et al, 2022), from social science to computer science, it can advance research objectives on topics as diverse as the global conversations happening on Twitter. It is one of the most popular online social networking sites with around 450 million monthly <a class="reference external" href="https://www.demandsage.com/twitter-statistics/">active users</a> as of 2022. An important characteristic of Twitter is its real-time nature.</p>
+<p>Twitter offers tools and programs that help people when emergencies and natural disasters strike, allowing channels of communication and humanitarian response, among other <a class="reference external" href="https://about.twitter.com/en/who-we-are/twitter-for-good">areas of focus</a> such as environmental conservation and sustainability.</p>
+<p>The <a class="reference external" href="https://developer.twitter.com/en">Twitter API</a> enables programmatic access to Twitter in unique and advanced ways. Twitter’s Developer Platform enables you to harness the power of Twitter’s open, global, real-time, and historical platform within your own applications. The platform provides tools, resources, data, and API products for you to integrate, and expand Twitter’s impact through research, solutions, and more.</p>
+<p>To be able to use Twitter’s Developer Platform we need first a general account, and second to ask for an upgrade to a developer account.</p>
+<p>Here we show you how to gain access:</p>
+<ul class="simple">
+<li><p>How to sign up on Twitter</p></li>
+<li><p>How to upgrade to a developer account</p></li>
+<li><p>How to get access to Twitter API</p></li>
+<li><p>How to be able to create a project</p></li>
+</ul>
+<p>Note that you can also apply for premium access. For this tutorial, it is not necessary, but if you are interested you can have a look at the <a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api/premium/search-api/api-reference/premium-search#SearchRequests">Developer Platform</a> to learn about it.</p>
+<p><span style="color:red">GIFF</span></p>
+<p>General account &amp; Developer account</p>
+<p>Access to the API</p>
+<p>Developer account: https://www.jcchouinard.com/apply-for-a-twitter-developer-account/
+API &amp; some examples: https://www.jcchouinard.com/twitter-api/</p>
+<p>Now we are ready to start exploring <code class="docutils literal notranslate"><span class="pre">Tweepy</span></code>!</p>
+<section id="authenticate-with-tweepy">
+<h3>Authenticate with Tweepy<a class="headerlink" href="#authenticate-with-tweepy" title="Permalink to this headline">#</a></h3>
+<p>In order to gain access to Twitter information we first need to authenticate to the Twitter API.</p>
+<p>Replace <strong><code class="docutils literal notranslate"><span class="pre">Your_info</span></code></strong> with your Twitter credentials that you have obtained in the previous section.</p>
+<p><span style="color:red">Maria’s API key is used to check if collab works, please do not include them in the final version</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># API keyws that yous saved earlier</span>
+<span class="c1"># api_key = &quot;Your_info&quot;</span>
+<span class="c1"># api_secrets = &quot;Your_info&quot;</span>
+<span class="c1"># access_token = &quot;Your_info&quot;</span>
+<span class="c1"># access_secret = &quot;Your_info&quot;</span>
+
+<span class="c1">## Maria&#39;s API keys </span>
+<span class="c1"># api_key = &quot;SbjfdyjQgzVKPxfzZEQJtqn5Q&quot;</span>
+<span class="c1"># api_secrets = &quot;hb1iOFl2hupClPzXn2cI632efGgg4epyA4FDWFZW0eIsyoxtVh&quot;</span>
+<span class="c1"># access_token = &quot;3996035119-3G6XL2EuVYWShNbi6Lkd516Jb1jb20wpSJDxRPQ&quot;</span>
+<span class="c1"># access_secret = &quot;ZrbKPyzJdCxHhBnGBLBHrN38TKBFlp3jNpR1o3iYSJqeV&quot;</span>
+
+<span class="c1">## MariaVU&#39;s API keys </span>
+<span class="n">api_key</span> <span class="o">=</span> <span class="s2">&quot;U1n0B3dExRG8LbtevZU11N3WQ&quot;</span>
+<span class="n">api_secrets</span> <span class="o">=</span> <span class="s2">&quot;R01L7iKrhZk7KlN3KvJ8GDwLIxlMLbUoLAAyoCKP7V7SC3fnaa&quot;</span>
+<span class="n">access_token</span> <span class="o">=</span> <span class="s2">&quot;1616031947117023232-obhF49nZEqpFLuI30KGinZnLdF3F1X&quot;</span>
+<span class="n">access_secret</span> <span class="o">=</span> <span class="s2">&quot;sY7qI7qbSWN62JXbj4t4kdQTctlSWfMmkWL7qxkmYDADG&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we’re going to use <code class="docutils literal notranslate"><span class="pre">tweepy</span></code> to authenticate to Twitter.</p>
+<p>The code includes a verification step to make sure we are successfully authenticated.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authenticate to Twitter</span>
+<span class="n">auth</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">OAuthHandler</span><span class="p">(</span><span class="n">api_key</span><span class="p">,</span><span class="n">api_secrets</span><span class="p">)</span>
+<span class="n">auth</span><span class="o">.</span><span class="n">set_access_token</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span><span class="n">access_secret</span><span class="p">)</span>
+ 
+<span class="n">api</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">API</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
+ 
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">api</span><span class="o">.</span><span class="n">verify_credentials</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Successful Authentication&#39;</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Failed authentication&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successful Authentication
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="getting-user-information">
+<h3>Getting User Information<a class="headerlink" href="#getting-user-information" title="Permalink to this headline">#</a></h3>
+<p>Now that we have successfully authenticated we can make Twitter API requests such as getting the information of a user, for example, we can show the followers of a user or list the user’s latest post.</p>
+<p>So let’s try it!</p>
+<p>The first step is to call the API to get the user that you want to get information from.</p>
+<p>The get_user() method can take a Twitter screen_name or the user_id as a parameter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">get_user</span><span class="p">(</span><span class="n">screen_name</span><span class="o">=</span><span class="s1">&#39;VU_IVM&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can look at the data that you can extract for a given user using:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user</span><span class="o">.</span><span class="n">_json</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;id&#39;: 928934147057508352,
+ &#39;id_str&#39;: &#39;928934147057508352&#39;,
+ &#39;name&#39;: &#39;IVM - VU Amsterdam&#39;,
+ &#39;screen_name&#39;: &#39;VU_IVM&#39;,
+ &#39;location&#39;: &#39;Amsterdam, The Netherlands&#39;,
+ &#39;profile_location&#39;: {&#39;id&#39;: &#39;99cdab25eddd6bce&#39;,
+  &#39;url&#39;: &#39;https://api.twitter.com/1.1/geo/id/99cdab25eddd6bce.json&#39;,
+  &#39;place_type&#39;: &#39;unknown&#39;,
+  &#39;name&#39;: &#39;Amsterdam, The Netherlands&#39;,
+  &#39;full_name&#39;: &#39;Amsterdam, The Netherlands&#39;,
+  &#39;country_code&#39;: &#39;&#39;,
+  &#39;country&#39;: &#39;&#39;,
+  &#39;contained_within&#39;: [],
+  &#39;bounding_box&#39;: None,
+  &#39;attributes&#39;: {}},
+ &#39;description&#39;: &#39;Leading in Sustainability Science: Institute for Environmental Studies in @VU_Science at @VUamsterdam.&#39;,
+ &#39;url&#39;: &#39;https://t.co/lST7ZMEt4r&#39;,
+ &#39;entities&#39;: {&#39;url&#39;: {&#39;urls&#39;: [{&#39;url&#39;: &#39;https://t.co/lST7ZMEt4r&#39;,
+     &#39;expanded_url&#39;: &#39;http://www.ivm.vu.nl&#39;,
+     &#39;display_url&#39;: &#39;ivm.vu.nl&#39;,
+     &#39;indices&#39;: [0, 23]}]},
+  &#39;description&#39;: {&#39;urls&#39;: []}},
+ &#39;protected&#39;: False,
+ &#39;followers_count&#39;: 1851,
+ &#39;friends_count&#39;: 552,
+ &#39;listed_count&#39;: 17,
+ &#39;created_at&#39;: &#39;Fri Nov 10 10:35:34 +0000 2017&#39;,
+ &#39;favourites_count&#39;: 738,
+ &#39;utc_offset&#39;: None,
+ &#39;time_zone&#39;: None,
+ &#39;geo_enabled&#39;: True,
+ &#39;verified&#39;: False,
+ &#39;statuses_count&#39;: 1550,
+ &#39;lang&#39;: None,
+ &#39;status&#39;: {&#39;created_at&#39;: &#39;Wed Jan 18 09:17:01 +0000 2023&#39;,
+  &#39;id&#39;: 1615639387542376448,
+  &#39;id_str&#39;: &#39;1615639387542376448&#39;,
+  &#39;text&#39;: &#39;RT @Marleen_Ruiter: Day 1 of the @Compound_Event #Damocles workshop on the interactions between scientists and practitioners. Introductory…&#39;,
+  &#39;truncated&#39;: False,
+  &#39;entities&#39;: {&#39;hashtags&#39;: [{&#39;text&#39;: &#39;Damocles&#39;, &#39;indices&#39;: [49, 58]}],
+   &#39;symbols&#39;: [],
+   &#39;user_mentions&#39;: [{&#39;screen_name&#39;: &#39;Marleen_Ruiter&#39;,
+     &#39;name&#39;: &#39;Dr. Marleen de Ruiter&#39;,
+     &#39;id&#39;: 424688895,
+     &#39;id_str&#39;: &#39;424688895&#39;,
+     &#39;indices&#39;: [3, 18]},
+    {&#39;screen_name&#39;: &#39;Compound_Event&#39;,
+     &#39;name&#39;: &#39;CompoundEvents.org&#39;,
+     &#39;id&#39;: 980878422070255616,
+     &#39;id_str&#39;: &#39;980878422070255616&#39;,
+     &#39;indices&#39;: [33, 48]}],
+   &#39;urls&#39;: []},
+  &#39;source&#39;: &#39;&lt;a href=&quot;https://mobile.twitter.com&quot; rel=&quot;nofollow&quot;&gt;Twitter Web App&lt;/a&gt;&#39;,
+  &#39;in_reply_to_status_id&#39;: None,
+  &#39;in_reply_to_status_id_str&#39;: None,
+  &#39;in_reply_to_user_id&#39;: None,
+  &#39;in_reply_to_user_id_str&#39;: None,
+  &#39;in_reply_to_screen_name&#39;: None,
+  &#39;geo&#39;: None,
+  &#39;coordinates&#39;: None,
+  &#39;place&#39;: None,
+  &#39;contributors&#39;: None,
+  &#39;retweeted_status&#39;: {&#39;created_at&#39;: &#39;Tue Jan 17 09:51:48 +0000 2023&#39;,
+   &#39;id&#39;: 1615285753638010881,
+   &#39;id_str&#39;: &#39;1615285753638010881&#39;,
+   &#39;text&#39;: &#39;Day 1 of the @Compound_Event #Damocles workshop on the interactions between scientists and practitioners. Introduct… https://t.co/oLIs2MFrk7&#39;,
+   &#39;truncated&#39;: True,
+   &#39;entities&#39;: {&#39;hashtags&#39;: [{&#39;text&#39;: &#39;Damocles&#39;, &#39;indices&#39;: [29, 38]}],
+    &#39;symbols&#39;: [],
+    &#39;user_mentions&#39;: [{&#39;screen_name&#39;: &#39;Compound_Event&#39;,
+      &#39;name&#39;: &#39;CompoundEvents.org&#39;,
+      &#39;id&#39;: 980878422070255616,
+      &#39;id_str&#39;: &#39;980878422070255616&#39;,
+      &#39;indices&#39;: [13, 28]}],
+    &#39;urls&#39;: [{&#39;url&#39;: &#39;https://t.co/oLIs2MFrk7&#39;,
+      &#39;expanded_url&#39;: &#39;https://twitter.com/i/web/status/1615285753638010881&#39;,
+      &#39;display_url&#39;: &#39;twitter.com/i/web/status/1…&#39;,
+      &#39;indices&#39;: [117, 140]}]},
+   &#39;source&#39;: &#39;&lt;a href=&quot;http://twitter.com/download/iphone&quot; rel=&quot;nofollow&quot;&gt;Twitter for iPhone&lt;/a&gt;&#39;,
+   &#39;in_reply_to_status_id&#39;: None,
+   &#39;in_reply_to_status_id_str&#39;: None,
+   &#39;in_reply_to_user_id&#39;: None,
+   &#39;in_reply_to_user_id_str&#39;: None,
+   &#39;in_reply_to_screen_name&#39;: None,
+   &#39;geo&#39;: None,
+   &#39;coordinates&#39;: None,
+   &#39;place&#39;: None,
+   &#39;contributors&#39;: None,
+   &#39;is_quote_status&#39;: False,
+   &#39;retweet_count&#39;: 2,
+   &#39;favorite_count&#39;: 53,
+   &#39;favorited&#39;: False,
+   &#39;retweeted&#39;: False,
+   &#39;possibly_sensitive&#39;: False,
+   &#39;lang&#39;: &#39;en&#39;},
+  &#39;is_quote_status&#39;: False,
+  &#39;retweet_count&#39;: 2,
+  &#39;favorite_count&#39;: 0,
+  &#39;favorited&#39;: False,
+  &#39;retweeted&#39;: False,
+  &#39;lang&#39;: &#39;en&#39;},
+ &#39;contributors_enabled&#39;: False,
+ &#39;is_translator&#39;: False,
+ &#39;is_translation_enabled&#39;: False,
+ &#39;profile_background_color&#39;: &#39;000000&#39;,
+ &#39;profile_background_image_url&#39;: &#39;http://abs.twimg.com/images/themes/theme1/bg.png&#39;,
+ &#39;profile_background_image_url_https&#39;: &#39;https://abs.twimg.com/images/themes/theme1/bg.png&#39;,
+ &#39;profile_background_tile&#39;: False,
+ &#39;profile_image_url&#39;: &#39;http://pbs.twimg.com/profile_images/928935732139450368/skIdOrFk_normal.jpg&#39;,
+ &#39;profile_image_url_https&#39;: &#39;https://pbs.twimg.com/profile_images/928935732139450368/skIdOrFk_normal.jpg&#39;,
+ &#39;profile_banner_url&#39;: &#39;https://pbs.twimg.com/profile_banners/928934147057508352/1510324389&#39;,
+ &#39;profile_link_color&#39;: &#39;7BB742&#39;,
+ &#39;profile_sidebar_border_color&#39;: &#39;000000&#39;,
+ &#39;profile_sidebar_fill_color&#39;: &#39;000000&#39;,
+ &#39;profile_text_color&#39;: &#39;000000&#39;,
+ &#39;profile_use_background_image&#39;: False,
+ &#39;has_extended_profile&#39;: True,
+ &#39;default_profile&#39;: False,
+ &#39;default_profile_image&#39;: False,
+ &#39;following&#39;: False,
+ &#39;follow_request_sent&#39;: False,
+ &#39;notifications&#39;: False,
+ &#39;translator_type&#39;: &#39;none&#39;,
+ &#39;withheld_in_countries&#39;: []}
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also look at a specific field of the data (e.g. name, location, etc.).</p>
+<p>Here are some examples:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.name: </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.screen_name: </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.location: </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">location</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.description: </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">description</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.followers_count: </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">followers_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.listed_count: </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">listed_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.statuses_count: </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">statuses_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user urls: </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">entities</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">][</span><span class="s1">&#39;urls&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;expanded_url&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>user.name: IVM - VU Amsterdam
+user.screen_name: VU_IVM
+user.location: Amsterdam, The Netherlands
+user.description: Leading in Sustainability Science: Institute for Environmental Studies in @VU_Science at @VUamsterdam.
+user.followers_count: 1851
+user.listed_count: 17
+user.statuses_count: 1550
+user urls: http://www.ivm.vu.nl
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s see the latest 5 tweets the IVM has posted.</p>
+<p>The user_timeline() method uses the user_id as a parameter, and we can indicate how many tweets we want using the count parameter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user_id</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">id_str</span>
+<span class="n">Latest_tweets</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">user_timeline</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="n">user_id</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Have you tried to see what the data looks like?</p>
+<p>You can do it by Uncomment the following line:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Latest_tweets[0]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you can see, data contains many parameters and its format is not that convenient for analyzing it.</p>
+<p>Later we will learn how to create a DataFrame and process the data. For now, some important parameters we can extract from the tweet data are the description, location, text, hashtags, among others.</p>
+<p>Here are some examples:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;username: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;description: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">description</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;text: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;date_time: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">created_at</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;location: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">location</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;coordinates: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">coordinates</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;following: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">friends_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;followers: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">followers_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;totaltweets: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">statuses_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;retweetcount: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">retweet_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;hashtags: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">entities</span><span class="p">[</span><span class="s1">&#39;hashtags&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>username: VU_IVM
+description: Leading in Sustainability Science: Institute for Environmental Studies in @VU_Science at @VUamsterdam.
+text: RT @Marleen_Ruiter: Day 1 of the @Compound_Event #Damocles workshop on the interactions between scientists and practitioners. Introductory…
+date_time: 2023-01-18 09:17:01
+location: Amsterdam, The Netherlands
+coordinates: None
+following: 552
+followers: 1851
+totaltweets: 1550
+retweetcount: 2
+hashtags: [{&#39;text&#39;: &#39;Damocles&#39;, &#39;indices&#39;: [49, 58]}]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ve now learned how to make Twitter API requests to get some information from a specific user. We will continue exploring <code class="docutils literal notranslate"><span class="pre">tweepy</span></code> in the following sections.</p>
+<p>Please note that we can also make changes to our own account such as updating our profile and interacting with other users. If you’re enthusiastic about it, you can find more information <a class="reference external" href="https://www.jcchouinard.com/tweepy-basic-functions/">here</a> .</p>
+</section>
+</section>
+<section id="natural-language-processing-nlp">
+<h2>3. Natural Language Processing (NLP)<a class="headerlink" href="#natural-language-processing-nlp" title="Permalink to this headline">#</a></h2>
+<hr><p>As mentioned in <a class="reference external" href="https://elcok.github.io/BigData_AED/week6/lecture.html">Lecture</a>, Natural language processing (NLP) is an area of computer science and artificial intelligence concerned with the interaction between computers and humans in natural language. The ultimate goal of NLP is to help computers understand language as well as we do.
+There are two ways of understanding natural language: Syntactic and Semantic analysis. Whereas Syntactic analysis (also referred to as syntax analysis or parsing) is the process of analyzing natural language with the rules of formal grammar, Semantic analysis is the process of understanding the meaning and interpretation of words, signs, and sentence structure.</p>
+<p>There are different techniques for understanding text such as Parsing, Stemming, Text Segmentation, Named Entity Recognition, Relationship Extraction, and Sentiment Analysis (see <a class="reference external" href="https://elcok.github.io/BigData_AED/week6/lecture.html">Lecture</a>).</p>
+<p>We can start here by analyzing a user’s tweets by simply looking into the words he/she uses the most.</p>
+<p>Barack Obama (<a class="reference external" href="https://twitter.com/BarackObama">&#64;BarackObama</a>) has the Twitter account with the most followers according to <a class="reference external" href="https://www.tweetbinder.com/blog/top-twitter-accounts/">this website</a>. So let’s explore the words he uses the most.</p>
+<p>First, we will retrieve his last 200 tweets:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">get_user</span><span class="p">(</span><span class="n">screen_name</span><span class="o">=</span><span class="s1">&#39;BarackObama&#39;</span><span class="p">)</span>
+<span class="n">user_id</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">id_str</span>
+
+<span class="n">Latest_tweets</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">user_timeline</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="n">user_id</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the previous section, we learned how to access get the text of each tweet by using .text so let’s go further first with only one tweet.</p>
+<p>What type of data does it contain?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before analyzing &#64;BarackObama tweets, we need to split the string text into each word to be able to count them.</p>
+<p>The following function is ready to use, the input is the string and the output is a dictionary that contains each word and how the count for each word.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">word_count</span><span class="p">(</span><span class="nb">str</span><span class="p">):</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">counts</span><span class="p">:</span>
+            <span class="n">counts</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">counts</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">counts</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s make sure the function is working, you can play around with different sentences.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence</span> <span class="o">=</span> <span class="s1">&#39;Big Data Analysis is really fun!&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word_count</span><span class="p">(</span><span class="n">sentence</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Big&#39;: 1, &#39;Data&#39;: 1, &#39;Analysis&#39;: 1, &#39;is&#39;: 1, &#39;really&#39;: 1, &#39;fun!&#39;: 1}
+</pre></div>
+</div>
+</div>
+</div>
+<p>We are ready now to analyze the data.</p>
+<p>We will first merge the texts of all the retrieved tweets, and subsequently, we will use the word_count function to count the words.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">concat_text</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Latest_tweets</span><span class="p">)):</span>
+    <span class="n">concat_text</span> <span class="o">=</span> <span class="n">concat_text</span> <span class="o">+</span><span class="s2">&quot; &quot;</span><span class="o">+</span> <span class="n">Latest_tweets</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="n">concat_text</span>
+<span class="n">words</span> <span class="o">=</span> <span class="n">word_count</span><span class="p">(</span><span class="n">concat_text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s see how many words &#64;BarackObama has used.</p>
+<p>You can also see what the data looks like by Uncomment the line.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span><span class="si">}</span><span class="s1"> has used </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span><span class="si">}</span><span class="s1"> different words&#39;</span><span class="p">)</span>
+<span class="c1"># print(words)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BarackObama has used 1591 different words
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can visualize the data in a plot bar using the following lines.</p>
+<p>Note that a filter is added to only visualize the words that have been used more than 5 times. You can change the count_filter to explore the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count_filter</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">h</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="nb">list</span><span class="p">(</span><span class="n">words</span><span class="o">.</span><span class="n">items</span><span class="p">())[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">count_filter</span><span class="p">:</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">words</span><span class="o">.</span><span class="n">items</span><span class="p">())[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">h</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">words</span><span class="o">.</span><span class="n">items</span><span class="p">())[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">70</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The most used words by </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span><span class="si">}</span><span class="s1"> in the last 200 tweets</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/tutorial1_47_0.png" src="../_images/tutorial1_47_0.png" />
+</div>
+</div>
+<p>Have you noticed that many words are prepositions?</p>
+<p>If we desire to determine more relevant words to know more about the context of the tweets we need to further filter the data.</p>
+<p>There are NLP packages that allow not only clustering analysis but also semantic analysis. So we can also evaluate whether the tweets have a positive or negative connotation. If you are interested you can have a look at <a class="reference external" href="https://www.nltk.org/api/nltk.tag.api.html"><code class="docutils literal notranslate"><span class="pre">NLTK</span></code></a>.</p>
+<p>Here we will apply our own word filter that includes prepositions and other words that will help to have a nicer plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word_filter</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;aboard&#39;</span><span class="p">,</span> <span class="s1">&#39;about&#39;</span><span class="p">,</span> <span class="s1">&#39;above&#39;</span><span class="p">,</span> <span class="s1">&#39;across&#39;</span><span class="p">,</span> <span class="s1">&#39;after&#39;</span><span class="p">,</span> <span class="s1">&#39;against&#39;</span><span class="p">,</span> <span class="s1">&#39;along&#39;</span><span class="p">,</span> <span class="s1">&#39;amid&#39;</span><span class="p">,</span> <span class="s1">&#39;among&#39;</span><span class="p">,</span> <span class="s1">&#39;around&#39;</span><span class="p">,</span> <span class="s1">&#39;as&#39;</span><span class="p">,</span> <span class="s1">&#39;at&#39;</span><span class="p">,</span> <span class="s1">&#39;before&#39;</span><span class="p">,</span> <span class="s1">&#39;behind&#39;</span><span class="p">,</span> <span class="s1">&#39;below&#39;</span><span class="p">,</span> <span class="s1">&#39;beneath&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;beside&#39;</span><span class="p">,</span> <span class="s1">&#39;between&#39;</span><span class="p">,</span> <span class="s1">&#39;beyond&#39;</span><span class="p">,</span> <span class="s1">&#39;but&#39;</span><span class="p">,</span> <span class="s1">&#39;by&#39;</span><span class="p">,</span> <span class="s1">&#39;concerning&#39;</span><span class="p">,</span> <span class="s1">&#39;considering&#39;</span><span class="p">,</span> <span class="s1">&#39;despite&#39;</span><span class="p">,</span> <span class="s1">&#39;down&#39;</span><span class="p">,</span> <span class="s1">&#39;during&#39;</span><span class="p">,</span> <span class="s1">&#39;except&#39;</span><span class="p">,</span> <span class="s1">&#39;following&#39;</span><span class="p">,</span> <span class="s1">&#39;for&#39;</span><span class="p">,</span> <span class="s1">&#39;from&#39;</span><span class="p">,</span> <span class="s1">&#39;in&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;inside&#39;</span><span class="p">,</span> <span class="s1">&#39;into&#39;</span><span class="p">,</span> <span class="s1">&#39;like&#39;</span><span class="p">,</span> <span class="s1">&#39;minus&#39;</span><span class="p">,</span> <span class="s1">&#39;near&#39;</span><span class="p">,</span> <span class="s1">&#39;next&#39;</span><span class="p">,</span> <span class="s1">&#39;of&#39;</span><span class="p">,</span> <span class="s1">&#39;off&#39;</span><span class="p">,</span> <span class="s1">&#39;on&#39;</span><span class="p">,</span> <span class="s1">&#39;onto&#39;</span><span class="p">,</span> <span class="s1">&#39;opposite&#39;</span><span class="p">,</span> <span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="s1">&#39;outside&#39;</span><span class="p">,</span> <span class="s1">&#39;over&#39;</span><span class="p">,</span> <span class="s1">&#39;past&#39;</span><span class="p">,</span> <span class="s1">&#39;per&#39;</span><span class="p">,</span> <span class="s1">&#39;plus&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;regarding&#39;</span><span class="p">,</span> <span class="s1">&#39;round&#39;</span><span class="p">,</span> <span class="s1">&#39;save&#39;</span><span class="p">,</span> <span class="s1">&#39;since&#39;</span><span class="p">,</span> <span class="s1">&#39;than&#39;</span><span class="p">,</span> <span class="s1">&#39;through&#39;</span><span class="p">,</span> <span class="s1">&#39;till&#39;</span><span class="p">,</span> <span class="s1">&#39;to&#39;</span><span class="p">,</span> <span class="s1">&#39;toward&#39;</span><span class="p">,</span> <span class="s1">&#39;under&#39;</span><span class="p">,</span> <span class="s1">&#39;underneath&#39;</span><span class="p">,</span> <span class="s1">&#39;unlike&#39;</span><span class="p">,</span> <span class="s1">&#39;until&#39;</span><span class="p">,</span> <span class="s1">&#39;up&#39;</span><span class="p">,</span> <span class="s1">&#39;upon&#39;</span><span class="p">,</span> <span class="s1">&#39;versus&#39;</span><span class="p">,</span> 
+        <span class="s1">&#39;via&#39;</span><span class="p">,</span> <span class="s1">&#39;with&#39;</span><span class="p">,</span> <span class="s1">&#39;within&#39;</span><span class="p">,</span> <span class="s1">&#39;without&#39;</span><span class="p">,</span> <span class="s1">&#39;and&#39;</span><span class="p">,</span> <span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;this&#39;</span><span class="p">,</span> <span class="s1">&#39;rt&#39;</span><span class="p">,</span> <span class="s1">&#39;can&#39;</span><span class="p">,</span> <span class="s1">&#39;have&#39;</span><span class="p">,</span> <span class="s1">&#39;if&#39;</span><span class="p">,</span> <span class="s1">&#39;you&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;some&#39;</span><span class="p">,</span> <span class="s1">&#39;was&#39;</span><span class="p">,</span> <span class="s1">&#39;we&#39;</span><span class="p">,</span> <span class="s1">&#39;our&#39;</span><span class="p">,</span> <span class="s1">&#39;be&#39;</span><span class="p">,</span> <span class="s1">&#39;who&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;this&#39;</span><span class="p">,</span> <span class="s1">&#39;rt&#39;</span><span class="p">,</span> <span class="s1">&#39;can&#39;</span><span class="p">,</span> <span class="s1">&#39;have&#39;</span><span class="p">,</span> <span class="s1">&#39;if&#39;</span><span class="p">,</span> <span class="s1">&#39;you&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="s1">&#39;some&#39;</span><span class="p">,</span> <span class="s1">&#39;was&#39;</span><span class="p">,</span> <span class="s1">&#39;we&#39;</span><span class="p">,</span> <span class="s1">&#39;our&#39;</span><span class="p">,</span> <span class="s1">&#39;be&#39;</span><span class="p">,</span> <span class="s1">&#39;who&#39;</span><span class="p">,</span> <span class="s1">&#39;is&#39;</span><span class="p">,</span> <span class="s1">&#39;my&#39;</span><span class="p">,</span> <span class="s1">&#39;–&#39;</span><span class="p">,</span> <span class="s1">&#39;are&#39;</span><span class="p">,</span> <span class="s1">&#39;know&#39;</span><span class="p">,</span><span class="s1">&#39;that&#39;</span><span class="p">,</span> <span class="s1">&#39;will&#39;</span><span class="p">,</span> <span class="s1">&#39;get&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;make&#39;</span><span class="p">,</span> <span class="s1">&#39;your&#39;</span><span class="p">,</span> <span class="s1">&#39;more&#39;</span><span class="p">,</span> <span class="s1">&#39;so&#39;</span><span class="p">,</span> <span class="s1">&#39;don’t&#39;</span><span class="p">,</span> <span class="s1">&#39;it’s&#39;</span><span class="p">,</span> <span class="s1">&#39;i’m&#39;</span><span class="p">,</span> <span class="s1">&#39;an&#39;</span><span class="p">,</span> <span class="s1">&#39;their&#39;</span><span class="p">,</span> <span class="s1">&#39;it&#39;</span><span class="p">,</span> <span class="s1">&#39;us&#39;</span><span class="p">,</span> <span class="s1">&#39;his&#39;</span><span class="p">,</span> <span class="s1">&#39;not&#39;</span><span class="p">,</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;what&#39;</span><span class="p">,</span> <span class="s1">&#39;when&#39;</span><span class="p">,</span> <span class="s1">&#39;first&#39;</span><span class="p">,</span> <span class="s1">&#39;sure&#39;</span><span class="p">,</span> <span class="s1">&#39;do&#39;</span><span class="p">,</span> <span class="s1">&#39;new&#39;</span><span class="p">,</span> <span class="s1">&#39;last&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="s1">&#39;many&#39;</span><span class="p">,</span> <span class="s1">&#39;just&#39;</span><span class="p">,</span> <span class="s1">&#39;been&#39;</span><span class="p">,</span> <span class="s1">&#39;want&#39;</span><span class="p">,</span> <span class="s1">&#39;only&#39;</span><span class="p">,</span> <span class="s1">&#39;years&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;today&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">]</span>
+
+<span class="n">count_filter</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">h</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="nb">filter</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="nb">list</span><span class="p">(</span><span class="n">words</span><span class="o">.</span><span class="n">items</span><span class="p">())[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">count_filter</span><span class="p">:</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">words</span><span class="o">.</span><span class="n">items</span><span class="p">())[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">word_filter</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">w</span> <span class="o">==</span> <span class="n">p</span><span class="p">:</span>
+                <span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">c</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">words</span><span class="o">.</span><span class="n">items</span><span class="p">())[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">h</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">words</span><span class="o">.</span><span class="n">items</span><span class="p">())[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">70</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The most used words by </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span><span class="si">}</span><span class="s1"> in the last 200 tweets</span><span class="se">\n</span><span class="s1">Using a word filter&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/tutorial1_49_0.png" src="../_images/tutorial1_49_0.png" />
+</div>
+</div>
+</section>
+<section id="data-retrieval-and-post-processing">
+<h2>4. Data retrieval and post-processing<a class="headerlink" href="#data-retrieval-and-post-processing" title="Permalink to this headline">#</a></h2>
+<hr><p>We’ve learned how to retrieve the tweets of a specific user.
+Now it is time to retrieve them by using keywords that can be content in the text such as hashtags.
+That will allow us to analyze what is happening at a specific time and/or location.</p>
+<p>We’ll start using the tweepy Cursor method to look for the latest 10 tweets that contain the word “Earthquake”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tweets</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">Cursor</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">search</span><span class="p">,</span> <span class="s1">&#39;Earthquake&#39;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">tweet_mode</span><span class="o">=</span><span class="s1">&#39;extended&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">list_tweets</span> <span class="o">=</span> <span class="p">[</span><span class="n">tweet</span> <span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">tweets</span><span class="p">]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">list_tweets</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can see how the data looks like by Uncomment the following line:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># list_tweets</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you may have noticed, it is difficult to read the tweets, and therefore, in order to do an analysis we first need to process the data.</p>
+<p>We know how to extract specific fields from the data, it would be handy to create then a DataFrame with the information we need.</p>
+<p>The following function uses the list of tweets to create a DataFrame, extract the information of each tweet, and finally add it to the DataFrame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">DataFrame_tweets</span><span class="p">(</span><span class="n">list_tweets</span><span class="p">):</span>
+        <span class="c1"># Creating DataFrame using pandas</span>
+        <span class="n">db</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;description&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;date_time&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;location&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;following&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;followers&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;totaltweets&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;retweetcount&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;text&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;hashtags&#39;</span><span class="p">])</span>
+
+        <span class="c1"># we will iterate over each tweet in the</span>
+        <span class="c1"># list for extracting information about each tweet</span>
+        <span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">list_tweets</span><span class="p">:</span>
+                <span class="n">username</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span>
+                <span class="n">description</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">description</span>
+                <span class="n">date_time</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">created_at</span>
+                <span class="n">location</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">location</span>
+                <span class="n">following</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">friends_count</span>
+                <span class="n">followers</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">followers_count</span>
+                <span class="n">totaltweets</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">statuses_count</span>
+                <span class="n">retweetcount</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweet_count</span>
+                <span class="n">hashtags</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">entities</span><span class="p">[</span><span class="s1">&#39;hashtags&#39;</span><span class="p">]</span>
+
+        <span class="c1"># Retweets can be distinguished by</span>
+        <span class="c1"># a retweeted_status attribute,</span>
+        <span class="c1"># in case it is an invalid reference,</span>
+        <span class="c1"># except block will be executed</span>
+                <span class="k">try</span><span class="p">:</span>
+                        <span class="n">text</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweeted_status</span><span class="o">.</span><span class="n">full_text</span>
+                <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                        <span class="n">text</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">full_text</span>
+                <span class="n">hashtext</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">hashtags</span><span class="p">)):</span>
+                        <span class="n">hashtext</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hashtags</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+                
+                                
+                <span class="c1"># Here we are appending all the</span>
+                <span class="c1"># extracted information in the DataFrame</span>
+                <span class="n">ith_tweet</span> <span class="o">=</span> <span class="p">[</span><span class="n">username</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">date_time</span><span class="p">,</span>
+                        <span class="n">location</span><span class="p">,</span> <span class="n">following</span><span class="p">,</span> 
+                        <span class="n">followers</span><span class="p">,</span> <span class="n">totaltweets</span><span class="p">,</span>
+                        <span class="n">retweetcount</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">hashtext</span><span class="p">]</span>
+                <span class="n">db</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">db</span><span class="p">)]</span> <span class="o">=</span> <span class="n">ith_tweet</span>
+        <span class="k">return</span> <span class="n">db</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s see what our DataFrame looks like:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">db</span> <span class="o">=</span> <span class="n">DataFrame_tweets</span><span class="p">(</span><span class="n">list_tweets</span><span class="p">)</span>
+<span class="n">db</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-33746ebf-e9ab-4ad8-bd1b-5381b12e1a56">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>username</th>
+      <th>description</th>
+      <th>date_time</th>
+      <th>location</th>
+      <th>following</th>
+      <th>followers</th>
+      <th>totaltweets</th>
+      <th>retweetcount</th>
+      <th>text</th>
+      <th>hashtags</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>iamfatimayh</td>
+      <td>𝗔𝗻𝗴𝗲𝗹 𝗲𝗻𝗲𝗿𝗴𝘆</td>
+      <td>2023-01-19 12:41:13</td>
+      <td>Your heart</td>
+      <td>613</td>
+      <td>1889</td>
+      <td>3922</td>
+      <td>2</td>
+      <td>#Pakistan #Earthquake\n\nReports of an #Earthq...</td>
+      <td>[Pakistan, Earthquake, EarthquakePH, Islamabad...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>FahadHaneefMal2</td>
+      <td>Entrepreneur</td>
+      <td>2023-01-19 12:40:45</td>
+      <td>Islamabad, Pakistan</td>
+      <td>627</td>
+      <td>394</td>
+      <td>22126</td>
+      <td>72</td>
+      <td>Just IN:— Massive earthquake jolts Islamabad &amp;...</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AadurshQureshi</td>
+      <td>#IKTiger</td>
+      <td>2023-01-19 12:40:41</td>
+      <td>Punjab</td>
+      <td>2824</td>
+      <td>710</td>
+      <td>94260</td>
+      <td>7</td>
+      <td>#Earthquake tremors jolt Peshawar, parts of KP...</td>
+      <td>[Earthquake, ARYNews]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Usman520919202</td>
+      <td></td>
+      <td>2023-01-19 12:40:35</td>
+      <td>Pakistan</td>
+      <td>267</td>
+      <td>2</td>
+      <td>119</td>
+      <td>17</td>
+      <td>Earthquake in Pakistan 🇵🇰!! \nMay allah safe e...</td>
+      <td>[earthquake, earthquake]</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>SaimKhan123678</td>
+      <td>Imranist— Proud Pakistani — Masters in Politic...</td>
+      <td>2023-01-19 12:40:32</td>
+      <td>Attock, Pakistan</td>
+      <td>1278</td>
+      <td>388</td>
+      <td>25403</td>
+      <td>72</td>
+      <td>Just IN:— Massive earthquake jolts Islamabad &amp;...</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>AhmadAwan874</td>
+      <td>?COMPLICATED?</td>
+      <td>2023-01-19 12:31:50</td>
+      <td>Rawalpindi, Pakistan</td>
+      <td>512</td>
+      <td>53</td>
+      <td>804</td>
+      <td>3</td>
+      <td>May Allah Taala keep everyone safe here and li...</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>laibakhokhar09</td>
+      <td></td>
+      <td>2023-01-19 12:31:46</td>
+      <td></td>
+      <td>278</td>
+      <td>65</td>
+      <td>7609</td>
+      <td>72</td>
+      <td>Just IN:— Massive earthquake jolts Islamabad &amp;...</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>ShameTheDevil</td>
+      <td>'During times of universal deceit, telling the...</td>
+      <td>2023-01-19 12:31:45</td>
+      <td>Kent, England</td>
+      <td>1491</td>
+      <td>1049</td>
+      <td>73923</td>
+      <td>7</td>
+      <td>Dear Mogg\nAm going full throttle Ukraine: tan...</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>Asaysaymen</td>
+      <td>Perpetually tired formerly funny and mostly an...</td>
+      <td>2023-01-19 12:31:41</td>
+      <td>Up-stairs</td>
+      <td>194</td>
+      <td>1114</td>
+      <td>28695</td>
+      <td>1</td>
+      <td>itna numb hogaya hoon ke earthquake bhe nahein...</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>sweetFaha</td>
+      <td>اِنَّ مَعَ الْعُسْرِ يُسْرًا ؞ بے شک ہر مشکل ک...</td>
+      <td>2023-01-19 12:31:23</td>
+      <td></td>
+      <td>11494</td>
+      <td>17743</td>
+      <td>170104</td>
+      <td>10</td>
+      <td>#Earthquake \nMay Allah blessed on us Ameen \n...</td>
+      <td>[Earthquake]</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 10 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-33746ebf-e9ab-4ad8-bd1b-5381b12e1a56')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-33746ebf-e9ab-4ad8-bd1b-5381b12e1a56 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-33746ebf-e9ab-4ad8-bd1b-5381b12e1a56');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div></div>
+</div>
+<p>Please take a minute to look at the information about the location.</p>
+<p>As you may notice, not all the users share the location, and some of the users that do share it, do not necessarily use a real location.</p>
+<p>We can also obtain the geographical location by coordinates, let’s try and find out if there is more information.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">DataFrame_tweets_coordinates</span><span class="p">(</span><span class="n">list_tweets</span><span class="p">):</span>
+        <span class="c1"># Creating DataFrame using pandas</span>
+        <span class="n">db</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;description&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;date_time&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;location&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;Coordinates&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;following&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;followers&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;totaltweets&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;retweetcount&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;text&#39;</span><span class="p">,</span>
+                                <span class="s1">&#39;hashtags&#39;</span><span class="p">])</span>
+
+        <span class="c1"># we will iterate over each tweet in the</span>
+        <span class="c1"># list for extracting information about each tweet</span>
+        <span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">list_tweets</span><span class="p">:</span>
+                <span class="n">username</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span>
+                <span class="n">description</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">description</span>
+                <span class="n">date_time</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">created_at</span>
+                <span class="n">location</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">location</span>
+                <span class="n">coordinates</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">coordinates</span>
+                <span class="n">following</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">friends_count</span>
+                <span class="n">followers</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">followers_count</span>
+                <span class="n">totaltweets</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">statuses_count</span>
+                <span class="n">retweetcount</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweet_count</span>
+                <span class="n">hashtags</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">entities</span><span class="p">[</span><span class="s1">&#39;hashtags&#39;</span><span class="p">]</span>
+
+        <span class="c1"># Retweets can be distinguished by</span>
+        <span class="c1"># a retweeted_status attribute,</span>
+        <span class="c1"># in case it is an invalid reference,</span>
+        <span class="c1"># except block will be executed</span>
+                <span class="k">try</span><span class="p">:</span>
+                        <span class="n">text</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweeted_status</span><span class="o">.</span><span class="n">full_text</span>
+                <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                        <span class="n">text</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">full_text</span>
+                <span class="n">hashtext</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">hashtags</span><span class="p">)):</span>
+                        <span class="n">hashtext</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hashtags</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+                
+                                
+                <span class="c1"># Here we are appending all the</span>
+                <span class="c1"># extracted information in the DataFrame</span>
+                <span class="n">ith_tweet</span> <span class="o">=</span> <span class="p">[</span><span class="n">username</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">date_time</span><span class="p">,</span>
+                        <span class="n">location</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">,</span> <span class="n">following</span><span class="p">,</span>
+                        <span class="n">followers</span><span class="p">,</span> <span class="n">totaltweets</span><span class="p">,</span>
+                        <span class="n">retweetcount</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">hashtext</span><span class="p">]</span>
+                <span class="n">db</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">db</span><span class="p">)]</span> <span class="o">=</span> <span class="n">ith_tweet</span>
+        <span class="k">return</span> <span class="n">db</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fixing random state for reproducibility</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">19680801</span><span class="p">)</span>
-
-<span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="n">ii</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span>
-<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.prop_cycle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycler</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)))</span>
-
-
-<span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="kn">import</span> <span class="n">Line2D</span>
-<span class="n">custom_lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">0.</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
-                <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">.5</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
-                <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">1.</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)]</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">lines</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">custom_lines</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Cold&#39;</span><span class="p">,</span> <span class="s1">&#39;Medium&#39;</span><span class="p">,</span> <span class="s1">&#39;Hot&#39;</span><span class="p">]);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">db</span> <span class="o">=</span> <span class="n">DataFrame_tweets_coordinates</span><span class="p">(</span><span class="n">list_tweets</span><span class="p">)</span>
+<span class="c1"># db</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>There is a lot more that you can do with outputs (such as including interactive outputs)
-with your book. For more information about this, see <a class="reference external" href="https://jupyterbook.org">the Jupyter Book documentation</a></p>
+<p>Let’s count the tweets that contain the geographical location:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">db</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">db</span><span class="o">.</span><span class="n">Coordinates</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s1"> tweets contain the coordinates out of the 100 retrieved tweets&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 tweets contain the coordinates out of the 100 retrieved tweets
+</pre></div>
+</div>
+</div>
+</div>
+<p>Unfortunately not all (or none) of the users share the real location nor allow the geolocation for the coordinates.</p>
+<p>Therefore, when we want to analyze a certain region we can’t use all the tweets and we need to further filter the information.</p>
+<p>The following function will filter the tweets and only save the tweets that contain coordinates:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scrape</span><span class="p">(</span><span class="n">words</span><span class="p">,</span> <span class="n">numtweet</span><span class="p">):</span>
+ 
+        <span class="c1"># Creating DataFrame using pandas</span>
+        <span class="n">db</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;description&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;date_time&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;location&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;Coordinates&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;X&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;Y&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;following&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;followers&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;totaltweets&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;retweetcount&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;text&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;hashtags&#39;</span><span class="p">])</span>
+ 
+        <span class="c1"># We are using .Cursor() to search</span>
+        <span class="c1"># through twitter for the required tweets.</span>
+        <span class="c1"># The number of tweets can be</span>
+        <span class="c1"># restricted using .items(number of tweets)</span>
+        <span class="n">tweets</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">Cursor</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">search</span><span class="p">,</span>
+                               <span class="n">words</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
+                               <span class="n">tweet_mode</span><span class="o">=</span><span class="s1">&#39;extended&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">(</span><span class="n">numtweet</span><span class="p">)</span>
+ 
+ 
+        <span class="c1"># .Cursor() returns an iterable object. Each item in</span>
+        <span class="c1"># the iterator has various attributes that you can </span>
+        <span class="c1"># access to get information about each tweet</span>
+        <span class="n">list_tweets</span> <span class="o">=</span> <span class="p">[</span><span class="n">tweet</span> <span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">tweets</span><span class="p">]</span>
+ 
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+ 
+        <span class="c1"># we will iterate over each tweet in the</span>
+        <span class="c1"># list for extracting information about each tweet</span>
+        <span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">list_tweets</span><span class="p">:</span>
+                <span class="n">username</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span>
+                <span class="n">description</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">description</span>
+                <span class="n">date_time</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">created_at</span>
+                <span class="n">location</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">location</span>
+                <span class="n">coordinates</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">coordinates</span>
+                <span class="n">x</span><span class="o">=</span><span class="mi">0</span>
+                <span class="n">y</span><span class="o">=</span><span class="mi">0</span>
+                <span class="n">following</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">friends_count</span>
+                <span class="n">followers</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">followers_count</span>
+                <span class="n">totaltweets</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">statuses_count</span>
+                <span class="n">retweetcount</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweet_count</span>
+                <span class="n">hashtags</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">entities</span><span class="p">[</span><span class="s1">&#39;hashtags&#39;</span><span class="p">]</span>
+ 
+                <span class="c1"># Retweets can be distinguished by</span>
+                <span class="c1"># a retweeted_status attribute,</span>
+                <span class="c1"># in case it is an invalid reference,</span>
+                <span class="c1"># except block will be executed</span>
+                <span class="k">try</span><span class="p">:</span>
+                        <span class="n">text</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweeted_status</span><span class="o">.</span><span class="n">full_text</span>
+                <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                        <span class="n">text</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">full_text</span>
+                <span class="n">hashtext</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">hashtags</span><span class="p">)):</span>
+                        <span class="n">hashtext</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hashtags</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+                
+                <span class="c1"># Only considering the tweets with </span>
+                <span class="c1"># coordinates</span>
+                <span class="k">if</span> <span class="n">coordinates</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span> 
+                        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>         
+                        <span class="c1"># Here we are appending all the</span>
+                        <span class="c1"># extracted information in the DataFrame</span>
+                        <span class="n">ith_tweet</span> <span class="o">=</span> <span class="p">[</span><span class="n">username</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">date_time</span><span class="p">,</span>
+                                <span class="n">location</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>  <span class="n">following</span><span class="p">,</span>
+                                <span class="n">followers</span><span class="p">,</span> <span class="n">totaltweets</span><span class="p">,</span>
+                                <span class="n">retweetcount</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">hashtext</span><span class="p">]</span>
+                        <span class="n">db</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">db</span><span class="p">)]</span> <span class="o">=</span> <span class="n">ith_tweet</span>
+                        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+
+        <span class="c1"># Coordinates post-processing </span>
+        <span class="c1"># X &amp; Y coordinates</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">db</span><span class="p">)):</span>
+                <span class="n">db</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Coordinates</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;coordinates&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">db</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Coordinates</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;coordinates&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">db</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">db</span> <span class="o">=</span> <span class="n">scrape</span><span class="p">(</span><span class="s1">&#39;Earthquake&#39;</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="c1"># db</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-25-3ed517c72264&gt;:79: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  db[&#39;X&#39;][i] = db.Coordinates.loc[i][&#39;coordinates&#39;][0]
+&lt;ipython-input-25-3ed517c72264&gt;:80: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  db[&#39;Y&#39;][i] = db.Coordinates.loc[i][&#39;coordinates&#39;][1]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="application-natural-hazards">
+<h2>5. Application: Natural Hazards<a class="headerlink" href="#application-natural-hazards" title="Permalink to this headline">#</a></h2>
+<hr><section id="earthquakes">
+<h3>Earthquakes<a class="headerlink" href="#earthquakes" title="Permalink to this headline">#</a></h3>
+<p>In our previous section, we started filtering the tweets by keywords and location.</p>
+<p>We’ll continue with the earthquake example.</p>
+<p>Did you notice there is a user that uses the <a class="reference external" href="https://www.usgs.gov/programs/earthquake-hazards/earthquakes">USGS</a> as a source of its tweets?</p>
+<p>That’s right, it is ‘everyEarthquake’.</p>
+<p>So this time we’ll retrieve the tweets by a user using the following function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">user</span><span class="p">(</span><span class="n">uID</span><span class="p">,</span> <span class="n">numtweet</span><span class="p">):</span>  
+        <span class="c1"># Creating DataFrame using pandas</span>
+        <span class="n">db</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;description&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;date_time&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;location&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;Coordinates&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;following&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;followers&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;totaltweets&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;retweetcount&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;text&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;hashtags&#39;</span><span class="p">])</span>
+ 
+        <span class="c1"># Retrieving tweets by user</span>
+        <span class="n">list_tweets</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">user_timeline</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;everyEarthquake&#39;</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="n">numtweet</span><span class="p">)</span>
+        
+        
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="c1"># we will iterate over each tweet in the</span>
+        <span class="c1"># list for extracting information about each tweet</span>
+        <span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">list_tweets</span><span class="p">:</span>
+                <span class="n">username</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span>
+                <span class="n">description</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">description</span>
+                <span class="n">date_time</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">created_at</span>
+                <span class="n">location</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">location</span>
+                <span class="n">coordinates</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">coordinates</span>
+                <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+                <span class="n">following</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">friends_count</span>
+                <span class="n">followers</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">followers_count</span>
+                <span class="n">totaltweets</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">statuses_count</span>
+                <span class="n">retweetcount</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweet_count</span>
+                <span class="n">hashtags</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">entities</span><span class="p">[</span><span class="s1">&#39;hashtags&#39;</span><span class="p">]</span>
+ 
+                <span class="c1"># Retweets can be distinguished by</span>
+                <span class="c1"># a retweeted_status attribute,</span>
+                <span class="c1"># in case it is an invalid reference,</span>
+                <span class="c1"># except block will be executed</span>
+                <span class="k">try</span><span class="p">:</span>
+                        <span class="n">text</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweeted_status</span><span class="o">.</span><span class="n">full_text</span>
+                <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                        <span class="n">text</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">text</span>
+                <span class="n">hashtext</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">hashtags</span><span class="p">)):</span>
+                        <span class="n">hashtext</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hashtags</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+                
+                <span class="c1"># Only considering the tweets with </span>
+                <span class="c1"># coordinates</span>
+                <span class="k">if</span> <span class="n">coordinates</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span> 
+                        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                         
+                        <span class="c1"># Here we are appending all the</span>
+                        <span class="c1"># extracted information in the DataFrame</span>
+                        <span class="n">ith_tweet</span> <span class="o">=</span> <span class="p">[</span><span class="n">username</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">date_time</span><span class="p">,</span>
+                                <span class="n">location</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">following</span><span class="p">,</span>
+                                <span class="n">followers</span><span class="p">,</span> <span class="n">totaltweets</span><span class="p">,</span>
+                                <span class="n">retweetcount</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">hashtext</span><span class="p">]</span>
+                        <span class="n">db</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">db</span><span class="p">)]</span> <span class="o">=</span> <span class="n">ith_tweet</span>
+                        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+
+        <span class="c1"># Coordinates post-processing </span>
+        <span class="c1"># X &amp; Y coordinates</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">db</span><span class="p">)):</span>
+                <span class="n">db</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Coordinates</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;coordinates&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">db</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Coordinates</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;coordinates&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">db</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s retrieve the last 100 posts made by &#64;everyEarthquake:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">db</span> <span class="o">=</span> <span class="n">user</span><span class="p">(</span><span class="s1">&#39;everyEarthquake&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="c1"># db</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-27-5d71efa55f22&gt;:66: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  db[&#39;X&#39;][i] = db.Coordinates.loc[i][&#39;coordinates&#39;][0]
+&lt;ipython-input-27-5d71efa55f22&gt;:67: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  db[&#39;Y&#39;][i] = db.Coordinates.loc[i][&#39;coordinates&#39;][1]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use GeoPandas to plot the location of the last 100 earthquakes.</p>
+<p>First, we will convert our DataFrame to a GeoDataFrame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dbg</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">geometry</span><span class="o">=</span><span class="n">gpd</span><span class="o">.</span><span class="n">points_from_xy</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">db</span><span class="o">.</span><span class="n">Y</span><span class="p">))</span>
+<span class="c1"># dbg</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s see what our data looks like:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">world</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">gpd</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;naturalearth_lowres&#39;</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;16&#39;</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Some earthquakes reported on Twitter&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>
+
+<span class="n">world</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.3</span><span class="p">)</span>
+<span class="n">dbg</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f857301b6d0&gt;
+</pre></div>
+</div>
+<img alt="../_images/tutorial1_78_1.png" src="../_images/tutorial1_78_1.png" />
+</div>
+</div>
+<p>Have you noticed that the text contains information about the magnitude of earthquakes?</p>
+<p>We can also indicate the magnitude in our plot.</p>
+<p>We need to process the information to extract the values from the text:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dbg</span><span class="p">[</span><span class="s1">&#39;magnitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">db</span><span class="p">)):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">dbg</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">text_split</span><span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="n">Mag</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">text_split</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+    <span class="n">dbg</span><span class="p">[</span><span class="s1">&#39;magnitude&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">Mag</span>
+    
+<span class="c1"># dbg </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-31-aca58feae393&gt;:6: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  dbg[&#39;magnitude&#39;][i] = Mag
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s see what the plot looks like:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot size of the circle</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">dbg</span><span class="o">.</span><span class="n">magnitude</span>
+
+<span class="c1">#Plot color of the circle</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Some earthquakes reported on Twitter&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>
+
+<span class="n">world</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.3</span><span class="p">)</span>
+
+<span class="n">divider</span> <span class="o">=</span> <span class="n">make_axes_locatable</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">cax</span> <span class="o">=</span> <span class="n">divider</span><span class="o">.</span><span class="n">append_axes</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;2%&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">dbg</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;magnitude&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="n">z</span><span class="o">*</span><span class="mi">30</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span> <span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlOrRd&#39;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">legend_kwds</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Magnitude&quot;</span><span class="p">,</span> <span class="s1">&#39;orientation&#39;</span><span class="p">:</span> <span class="s2">&quot;vertical&quot;</span><span class="p">},</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f8572c8f400&gt;
+</pre></div>
+</div>
+<img alt="../_images/tutorial1_82_1.png" src="../_images/tutorial1_82_1.png" />
+</div>
+</div>
+<p>We can have a look at the map from the <a class="reference external" href="https://earthquake.usgs.gov/earthquakes/map/?extent=-68.0733,-194.23828&amp;extent=77.15716,199.51172&amp;listOnlyShown=true">USGS website</a>.</p>
+<p>Do you see differences?</p>
+<p>As we have mentioned, users do not always share the location or the coordinates.</p>
+<p>However, there are other applications where we can still use the tweets without the location.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Can you think of examples of other applications?</p>
+</div>
+</section>
+<section id="flooding">
+<h3>Flooding<a class="headerlink" href="#flooding" title="Permalink to this headline">#</a></h3>
+<p>Here we have an example of floods. This time we will use a database that has been already downloaded.
+The database contains tweets about floods located in Texas from 30/07/2014 to 15/11/2022</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>We’re going to use the file ‘tweets.jsonl’, make sure to save it in the same folder than the notebook.</p>
+</div>
+<p>We can read the data using the following code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>gdown<span class="w"> </span>11QfCIMHOjcgNvWMFsZTk5btXgYiRCXRq
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;tweets.jsonl&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">tweets</span> <span class="o">=</span> <span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">tweets</span><span class="p">:</span>
+    <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading...
+From: https://drive.google.com/uc?id=11QfCIMHOjcgNvWMFsZTk5btXgYiRCXRq
+To: /content/tweets.jsonl
+100% 103M/103M [00:00&lt;00:00, 191MB/s] 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s see what the data looks like:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">tweets</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2014-07-30T00:08:09 - duuuuuuude it&#39;s actually flooding in a state that hardly ever rains http://t.co/u5xnisheby
+2014-07-30T00:15:19 - @direalsavage lol lol.. doubt unno waa ketch it..road flood out plus when it rains a usually storm
+2014-07-30T00:54:21 - when if rains if fucking pours then floods then hurricanes.
+2014-07-30T00:58:17 - &amp;amp; like a flood his mercy rains; unending love, amazing grace ❤️
+2014-07-30T01:00:40 - when it rains it pours then floods then hurricanes.
+2014-07-30T01:13:38 - flash flood statement for el paso until 20:15:00
+2014-07-30T01:36:42 - noah, rains, floods!! shit getting real bro
+2014-07-30T01:45:15 - el mejor.
+
+stevie ray vaughan - texas flood (long version!): http://t.co/yvsjloshfh
+2014-07-30T01:55:39 - flash flood statement for el paso until 20:15:00
+2014-07-30T02:01:10 - texas flood has a show on 07/31/2014 at 08:30 pm @ tolbert&#39;s in grapevine, tx http://t.co/w51uruxoi1 #concert
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also plot this data as a bar plot to identify the days when more tweets have been posted.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">START_DATE</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="mi">2014</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">END_DATE</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_tweets</span><span class="p">(</span><span class="n">tweets</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+    <span class="n">dates</span> <span class="o">=</span> <span class="p">[</span><span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">tweets</span><span class="p">]</span>
+    <span class="n">dates</span> <span class="o">=</span> <span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="k">for</span> <span class="n">date</span> <span class="ow">in</span> <span class="n">dates</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="n">START_DATE</span><span class="p">,</span> <span class="n">END_DATE</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="p">(</span><span class="n">END_DATE</span> <span class="o">-</span> <span class="n">START_DATE</span><span class="p">)</span><span class="o">.</span><span class="n">days</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span> 
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_tweets</span><span class="p">(</span><span class="n">tweets</span><span class="p">,</span> <span class="s1">&#39;Flood histogram&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/tutorial1_92_0.png" src="../_images/tutorial1_92_0.png" />
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Potential question about seasonality (‘summer floods’)</p>
+<p>Potential question about the ‘big’peak on 2017 -&gt; Hurricane Harvey</p>
+</div>
+<p>In Natural Language Process (NLP), semantic analysis is the process of understanding the meaning and interpretation of words.</p>
+<p>This time we can use keywords to filter the tweets, identifying negative or positive meanings.</p>
+<p>We’re starting with negative words such as ‘cry’ and ‘warning’:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">negative_keywords</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cry&#39;</span><span class="p">,</span> <span class="s1">&#39;warning&#39;</span><span class="p">]</span>
+<span class="n">filtered_tweets</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">tweets</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="n">keyword</span> <span class="ow">in</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="n">negative_keywords</span><span class="p">):</span>
+        <span class="n">filtered_tweets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tweets</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">filtered_tweets</span><span class="p">))</span>
+<span class="n">plot_tweets</span><span class="p">(</span><span class="n">filtered_tweets</span><span class="p">,</span> <span class="s1">&#39;Flood histogram </span><span class="se">\n</span><span class="s1">Negative keywords&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>670057
+668681
+</pre></div>
+</div>
+<img alt="../_images/tutorial1_95_1.png" src="../_images/tutorial1_95_1.png" />
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Potential question:</p>
+<p>Can you think about other negative keywords?</p>
+</div>
+<p>Now let’s try positive keywords such as ‘emergency’ and ‘rescue’:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">positive_keywords</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;emergency&#39;</span><span class="p">,</span> <span class="s1">&#39;rescue&#39;</span><span class="p">]</span>
+<span class="n">filtered_tweets</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">tweets</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">keyword</span> <span class="ow">in</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="n">positive_keywords</span><span class="p">):</span>
+        <span class="n">filtered_tweets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tweets</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">filtered_tweets</span><span class="p">))</span>
+<span class="n">plot_tweets</span><span class="p">(</span><span class="n">filtered_tweets</span><span class="p">,</span> <span class="s1">&#39;Flood histogram </span><span class="se">\n</span><span class="s1">Positive keywords&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>670057
+36418
+</pre></div>
+</div>
+<img alt="../_images/tutorial1_98_1.png" src="../_images/tutorial1_98_1.png" />
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Potential question:</p>
+<p>Can you think of other positive keywords?</p>
+</div>
+</section>
 </section>
 </section>
 
@@ -657,7 +2222,7 @@ with your book. For more information about this, see <a class="reference externa
     <a class='right-next' id="next-link" href="tutorial2.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tutorial 2: Social media &amp; land aesthetics</p>
+        <p class="prev-next-title">Tutorial 2: Social media &amp; valuation of landscapes</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
