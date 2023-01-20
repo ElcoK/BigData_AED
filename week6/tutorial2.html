@@ -1029,7 +1029,9 @@ Name: tags, Length: 7000, dtype: object
 </section>
 <section id="clustering-of-data">
 <h2>4. Clustering of data<a class="headerlink" href="#clustering-of-data" title="Permalink to this headline">#</a></h2>
-<hr><div class="cell docutils container">
+<hr><p>As it is pretty difficult to see any patterns on the maps above, let’s try to cluster some of this information and see if this helps us to better understand why people choose to visit certain locations in the area.</p>
+<p>The most simple way would be to collect all points within a grid. The <code class="docutils literal notranslate"><span class="pre">create_grid()</span></code> function below will help us to create a evenly-distributed grid within any given area. So let’s use that!</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_grid</span><span class="p">(</span><span class="n">bbox</span><span class="p">,</span><span class="n">height</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a vector-based grid</span>
@@ -1168,7 +1170,7 @@ dtype: object
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
-<img alt="../_images/tutorial2_54_1.png" src="../_images/tutorial2_54_1.png" />
+<img alt="../_images/tutorial2_56_1.png" src="../_images/tutorial2_56_1.png" />
 </div>
 </div>
 </section>
