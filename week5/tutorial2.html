@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Tutorial 2: Drought detection &#8212; Big Data for Sustainability Sciences</title>
+    <title>Tutorial 2: Drought Detection &#8212; Big Data for Sustainability Sciences</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -180,7 +180,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../week2/tutorial2.html">
-   Tutorial 2: Random Forests
+   Tutorial 2: Random Forest Regression
   </a>
  </li>
 </ul>
@@ -246,7 +246,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Tutorial 2: Drought detection
+   Tutorial 2: Drought Detection
   </a>
  </li>
 </ul>
@@ -263,12 +263,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../week6/tutorial1.html">
-   Tutorial 1: Social Media and Natural Language Processing
+   Week 6
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../week6/tutorial2.html">
-   Tutorial 2: Social media &amp; valuation of landscapes
+   Tutorial 2: Social Media &amp; Valuation of Landscapes
   </a>
  </li>
 </ul>
@@ -507,14 +507,72 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#important-before-we-start">
+   Important before we start
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#learning-objectives">
    Learning Objectives
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introducing-the-packages">
-   1.Introducing the packages
+   1. Introducing the packages
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#connect-to-google-drive">
+     Connect to google drive
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exploring-the-required-datasets">
+   2. Exploring the required datasets
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculating-the-mask-of-the-region-of-interest">
+     Calculating the mask of the region of interest
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-the-created-mask">
+     Plotting the created mask
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extracting-gridded-and-timeseries-data-of-the-area-of-interest">
+   3. Extracting gridded and timeseries data of the area of interest
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculating-meteorological-drought-conditions-using-standardized-drought-indicators">
+   4. Calculating meteorological drought conditions using standardized drought indicators
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#defining-the-functions-for-calculating-the-standardized-precipitation-index-spi">
+     Defining the functions for calculating the Standardized Precipitation Index (SPI)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#spi-calculation-for-each-month-over-the-historic-time-period">
+       SPI calculation for each month over the historic time-period
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualization-of-spi">
+     Visualization of SPI
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -525,7 +583,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Tutorial 2: Drought detection</h1>
+                <h1>Tutorial 2: Drought Detection</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -536,14 +594,72 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#important-before-we-start">
+   Important before we start
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#learning-objectives">
    Learning Objectives
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introducing-the-packages">
-   1.Introducing the packages
+   1. Introducing the packages
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#connect-to-google-drive">
+     Connect to google drive
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exploring-the-required-datasets">
+   2. Exploring the required datasets
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculating-the-mask-of-the-region-of-interest">
+     Calculating the mask of the region of interest
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-the-created-mask">
+     Plotting the created mask
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extracting-gridded-and-timeseries-data-of-the-area-of-interest">
+   3. Extracting gridded and timeseries data of the area of interest
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculating-meteorological-drought-conditions-using-standardized-drought-indicators">
+   4. Calculating meteorological drought conditions using standardized drought indicators
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#defining-the-functions-for-calculating-the-standardized-precipitation-index-spi">
+     Defining the functions for calculating the Standardized Precipitation Index (SPI)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#spi-calculation-for-each-month-over-the-historic-time-period">
+       SPI calculation for each month over the historic time-period
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualization-of-spi">
+     Visualization of SPI
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -556,67 +672,485 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="tutorial-2-drought-detection">
-<h1>Tutorial 2: Drought detection<a class="headerlink" href="#tutorial-2-drought-detection" title="Permalink to this headline">#</a></h1>
+<h1>Tutorial 2: Drought Detection<a class="headerlink" href="#tutorial-2-drought-detection" title="Permalink to this headline">#</a></h1>
+<p>In this tutorial, we will learn how to detect drought in different regions around the world and monitor whether there is a drought or not using standardized drought indices. We will explore how to visual the drought spatial maps and timeseries. In this practical, you will learn to apply standardized method to calculate drought hazard for your chosen case study area, under historic period.</p>
+<p>We will use the Multi-Source Weighted-Ensemble Precipitation (MSWEP) data to analyse droughts in the different regions. MSWEP is a global precipitation product with a daily 0.1° resolution available from 1979 to near real-time.</p>
+<section id="important-before-we-start">
+<h2>Important before we start<a class="headerlink" href="#important-before-we-start" title="Permalink to this headline">#</a></h2>
+<hr>
+Make sure that you save this file before you continue, else you will lose everything. To do so, go to Bestand/File and click on Een kopie opslaan in Drive/Save a Copy on Drive!
+<p>Now, rename the file into Week5_Tutorial2.ipynb. You can do so by clicking on the name in the top of this screen.</p>
+</section>
+<section id="learning-objectives">
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
+<hr><ul class="simple">
+<li><p>Learn to apply a standardized method to represent meteorological drought hazard for a specific location;</p></li>
+<li><p>Understand and interpret large-scale raster data;</p></li>
+<li><p>Learn to visualize and interpret the results from drought hazard calculation methods.</p></li>
+</ul>
 <h2>Tutorial Outline<span class="tocSkip"></span></h2>
 <hr>
 <div class="toc"><ul class="toc-item">
 <li><span><a href="#1.-Introducing the packages" data-toc-modified-id="1.-Introducing-the-packages-2">1. Introducing the packages</a></span></li>
-<li><span><a href="#2.-" data-toc-modified-id="2.-Extracting-landuse-information-3">2. </a></span></li>
-<li><span><a href="#3.-" data-toc-modified-id="3.-Visualize-Rasterize-4">3. </a></span></li>
-<li><span><a href="#4.-" data-toc-modified-id="4.-Extracting-buildings-5">4. </a></span></li>
-<li><span><a href="#5.-" data-toc-modified-id="5.-Analyze-buildings-6">5. </a></span></li>
-<li><span><a href="#6.-" data-toc-modified-id="4.-Extracting-roads-5">6. </a></span></li>
-<li><span><a href="#7.-" data-toc-modified-id="5.-Plot-routes-6">7. </a></span></li></ul></div><section id="learning-objectives">
-<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
-<hr><ul class="simple">
-<li><p>.</p></li>
-<li><p>.</p></li>
-<li><p>.</p></li>
-<li><p>.</p></li>
-<li><p>.</p></li>
-<li><p>.</p></li>
-</ul>
-</section>
+<li><span><a href="#2.-Exploring the required datasets" data-toc-modified-id="2.-Exploring-datasets-3">2. Exploring the required datasets</a></span></li>
+<li><span><a href="#3.-Extracting gridded and timeseries data of the area of interest" data-toc-modified-id="3.-Extracting-data-area-interest-4">3. Extracting gridded and timeseries data of the area of interest</a></span></li>
+<li><span><a href="#4.-Calculating meteorological drought conditions using standardized drought indicators" data-toc-modified-id="4.-Calculating-drought-conditions">4.-Calculating meteorological drought conditions using standardized drought indicators</a></span></li>
+</ul></div></section>
 <section id="introducing-the-packages">
-<h2>1.Introducing the packages<a class="headerlink" href="#introducing-the-packages" title="Permalink to this headline">#</a></h2>
+<h2>1. Introducing the packages<a class="headerlink" href="#introducing-the-packages" title="Permalink to this headline">#</a></h2>
 <hr><p>Within this tutorial, we are going to make use of the following packages:</p>
-<p><em>We will first need to install these packages in the cell below. Uncomment them to make sure we can pip install them</em></p>
+<p><a class="reference external" href="https://regionmask.readthedocs.io/en/stable/"><strong>Regionmask</strong></a> is a python package that can be used to create masks of geographic regions for arbitrary longitude and latitude grids.</p>
+<p><a class="reference external" href="https://scipy.org/"><strong>SciPy</strong></a>is a python package that provides algorithms for optimization, integration, interpolation, eigenvalue problems, algebraic equations, differential equations, statistics and many other classes of problems.</p>
+<p><a class="reference external" href="https://docs.python.org/3/library/statistics.html"><strong>Statistics</strong></a> is a python module that provides functions for calculating mathematical statistics of numeric (Real-valued) data.</p>
+<p><a class="reference external" href="https://docs.python.org/3/library/os.html"><strong>OS</strong></a> is a python module that provides a portable way of using operating system dependent functionality i.e. manipulating paths</p>
+<p><a class="reference external" href="https://geopandas.org/"><strong>GeoPandas</strong></a> is a Python packagee that extends the datatypes used by pandas to allow spatial operations on geometric types. It opens shapefiles</p>
+<p><a class="reference external" href="https://matplotlib.org/"><strong>Matplotlib</strong></a> is a comprehensive Python package for creating static, animated, and interactive visualizations in Python. Matplotlib makes easy things easy and hard things possible.</p>
+<p><a class="reference external" href="https://docs.xarray.dev/"><strong>xarray</strong></a> is a Python package that allows for easy and efficient use of multi-dimensional arrays.</p>
+<p><em>We will first need to install these packages in the cell below. Uncomment them to make sure we can conda or pip install them</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span><span class="p">,</span> <span class="n">cycler</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#installing the python packages required</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>regionmask
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>statistics
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>os-sys
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>xarray
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>geopandas
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before running any Python script (in an offline or online modus) it is necessary to import a number of Python packages that can help you with performing the calculations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import working modules</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">import</span> <span class="nn">regionmask</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">percentileofscore</span>
+<span class="kn">from</span> <span class="nn">statistics</span> <span class="kn">import</span> <span class="n">NormalDist</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<section id="connect-to-google-drive">
+<h3>Connect to google drive<a class="headerlink" href="#connect-to-google-drive" title="Permalink to this headline">#</a></h3>
+<hr><p>To be able to read the data from Google Drive, we need to <em>mount</em> our Drive to this notebook.</p>
+<p>As you can see in the cell below, make sure that in your <strong>My Drive</strong> folder, where you created <strong>BigData</strong> folder and within that folder, you have created a <strong>Week5_Data</strong> folder in which you can store the files that are required to run this analysis.</p>
+<p>Please go the URL when its prompted in the box underneath the following cell, and copy the authorization code in that box.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive/&#39;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/content/drive/Shared drives/Big Data for Sustainability Science/Lecture weeks/Week 5&quot;</span><span class="p">)</span>
+
+<span class="n">data_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;/content/drive/Shared drives/Big Data for Sustainability Science/Lecture weeks/Week 5/&#39;</span><span class="p">,</span><span class="s1">&#39;Tutorial&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fixing random state for reproducibility</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">19680801</span><span class="p">)</span>
-
-<span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="n">ii</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span>
-<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.prop_cycle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycler</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)))</span>
-
-
-<span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="kn">import</span> <span class="n">Line2D</span>
-<span class="n">custom_lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">0.</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
-                <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">.5</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
-                <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">1.</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)]</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">lines</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">custom_lines</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Cold&#39;</span><span class="p">,</span> <span class="s1">&#39;Medium&#39;</span><span class="p">,</span> <span class="s1">&#39;Hot&#39;</span><span class="p">]);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls<span class="w"> </span><span class="s2">&quot;/content/drive/Shared drives&quot;</span><span class="w"> </span>#<span class="w"> </span>prints<span class="w"> </span>the<span class="w"> </span>files<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>drive
 </pre></div>
 </div>
 </div>
 </div>
-<p>There is a lot more that you can do with outputs (such as including interactive outputs)
-with your book. For more information about this, see <a class="reference external" href="https://jupyterbook.org">the Jupyter Book documentation</a></p>
+</section>
+</section>
+<section id="exploring-the-required-datasets">
+<h2>2. Exploring the required datasets<a class="headerlink" href="#exploring-the-required-datasets" title="Permalink to this headline">#</a></h2>
+<hr><p>In the next code cell, we will specify our working directory using <code class="docutils literal notranslate"><span class="pre">os.chdir()</span></code>. This directory should contain all the datasets to be used during the tutorial.</p>
+<p>To know the current working directory of the file, <code class="docutils literal notranslate"><span class="pre">os.getcwd()</span></code> method can be used. After changing the path, one can verify the path of current working directory using this method. We will use <code class="docutils literal notranslate"><span class="pre">os.path.join()</span></code> to set the specific path to each of the data folders within the working directory. It enables us to join the main directory path with the data folder path.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># change the current directory</span>
+<span class="c1"># to specified directory</span>
+
+<span class="c1">#os.chdir(r&quot;C:\Users\roo290\OneDrive - Vrije Universiteit Amsterdam\Courses\Big_data_course&quot;)</span>
+<span class="c1">#workingfolder = os.getcwd()</span>
+
+<span class="c1"># Name input file</span>
+<span class="n">weather_file</span>  <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span><span class="s1">&#39;MSWEP_Monthly_prec/*.nc&#39;</span><span class="p">)</span>
+
+<span class="n">world_admin_boundaries</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span><span class="s1">&#39;world-administrative-boundaries/world-administrative-boundaries.shp&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Precipitation data:&quot;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">weather_file</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s2">&quot;Administrative boundaries shapefile:&quot;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">world_admin_boundaries</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have set the paths to the datasets, let us load the administrative boundaries shapefile using geopandas <code class="docutils literal notranslate"><span class="pre">gpd.read_file</span> <span class="pre">()</span></code> and in the process set the coordinate system to <strong>EPSG:4326</strong> (the standard global coordinate reference system). We will use the same coordinate system throughtout the tutorial.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#loading the shapefile and the precipitation dataset</span>
+<span class="c1"># Read file using gpd.read_file()</span>
+
+<span class="n">data_Adminunits</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">world_admin_boundaries</span><span class="p">,</span><span class="n">crs</span><span class="o">=</span><span class="s2">&quot;epsg:4326&quot;</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">data_Adminunits</span><span class="p">)</span> <span class="c1">#represents the countries around the world and their geographical locations</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">data_Adminunits</span></code> is a <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code> containing all polygons illustrating the national boundaries for the 256 countries in the world</p>
+<p>Let’s have a look at the administrative boundaries we just loaded using <code class="docutils literal notranslate"><span class="pre">pd.DataFrame.plot()</span></code></p>
+<p><em><strong>Question 1: In the code block below, we are plotting the Administrative boundaries, the <code class="docutils literal notranslate"><span class="pre">plot()</span></code> function in <code class="docutils literal notranslate"><span class="pre">pd.DataFrame.plot()</span></code> can take many parameters. Include the the linewidth, figure size, the y and x labels, color (indicate none), edgecolor. Don’t forget to add the figure title. What does each of these parameters do?</strong></em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plotting the administrative units</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">data_Adminunits</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#add the alpha, linewidth, figsize, ploygon colors and edgecolor</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;World Administrative Regions&quot;</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have loaded the administrative shapefile. Now we can load the gridded precipitation dataset using the <code class="docutils literal notranslate"><span class="pre">xarray</span></code> package through the <code class="docutils literal notranslate"><span class="pre">open_mfdataset()</span></code> function. This function allows us to open multiple files as a single dataset.</p>
+<p>In a folder I have hundreds of MSWEP reanalysis data downloaded from the <a class="reference external" href="http://www.gloh2o.org/mswep/">here</a>. Each of these files contains a single data of the global reanalysis, about 8.2 MB. The parameter chunks is very important, it defines how big are the “pieces” of data moved from the disk to the memory. With this value the entire computation on a workstation with 2 GB takes a couple of minutes. I want to load all the precipitation files from the year 1980-2021.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Loading the gridded daily precipitation dataset</span>
+<span class="c1">#Read netcdf files</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">weather_file</span><span class="p">,</span><span class="n">chunks</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;time&quot;</span><span class="p">:</span><span class="mi">10</span><span class="p">})</span>    
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you can see this xarray Dataset contains a single variable <code class="docutils literal notranslate"><span class="pre">(precipitation)</span></code> which is stored as a dask.array. This is the result of loading files with open_mfdataset. More information and examples of the interaction between dask and xarray can be found in their documentations(<a class="reference external" href="https://examples.dask.org/xarray.html">here</a> and <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/dask.html">here</a>)</p>
+<p>Now we are ready for a bit of regionmask magic. The module can create a gridded mask with the function <code class="docutils literal notranslate"><span class="pre">regionmask.Regions()</span></code> documented <a class="reference external" href="https://regionmask.readthedocs.io/en/stable/">here</a>. With this function we have created an object able to mask gridded data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#calculate the mask for the region of interest</span>
+
+<span class="c1">#go to https://boundingbox.klokantech.com/ to obtain bounding box lat and lon for the selected area of study</span>
+
+<span class="n">sheds_mask_poly</span> <span class="o">=</span> <span class="n">regionmask</span><span class="o">.</span><span class="n">Regions</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;sheds_mask&#39;</span><span class="p">,</span> <span class="n">numbers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">256</span><span class="p">)),</span> <span class="n">names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_Adminunits</span><span class="o">.</span><span class="n">name</span><span class="p">),</span>
+                                     <span class="n">abbrevs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_Adminunits</span><span class="o">.</span><span class="n">color_code</span><span class="p">),</span> <span class="n">outlines</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_Adminunits</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">256</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sheds_mask_poly</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="calculating-the-mask-of-the-region-of-interest">
+<h3>Calculating the mask of the region of interest<a class="headerlink" href="#calculating-the-mask-of-the-region-of-interest" title="Permalink to this headline">#</a></h3>
+<p>Now we are ready to apply the mask on the gridded dataset <strong>data</strong>. We select only the first timestep to speed up the process. For the same reason it is better to further “zoom” into the Western European countries. We specify the name of the coordinates (the defaults are lat and lon). You can play around with the coordinates. Use this bounding box ([here]https://boundingbox.klokantech.com/) to obtain the correct coordinates.</p>
+<p><strong>Action</strong> Enter the bounding box coordinates in the next code box</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">sheds_mask_poly</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">lon</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">35</span><span class="p">),</span> <span class="n">lat</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">71</span><span class="p">,</span> <span class="mi">35</span><span class="p">)),</span><span class="n">lon_name</span> <span class="o">=</span> <span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="n">lat_name</span> <span class="o">=</span> <span class="s1">&#39;lat&#39;</span><span class="p">)</span> <span class="c1"># change the lat and lon slice to the bounding box of the selected region</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plotting-the-created-mask">
+<h3>Plotting the created mask<a class="headerlink" href="#plotting-the-created-mask" title="Permalink to this headline">#</a></h3>
+<p>The computation takes a couple of minutes but then the mask can be saved (for example as a NetCDF) for a later use. Let’s plot the mask we just created. You can see that the bounding box we used zooms into the European area.</p>
+<p><strong>Action</strong> Please submit the mask figure outlining the zoomed area of the western European countries and fill in the plot parameters in the code box below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plotting the created mask</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span>
+<span class="n">mask</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">)</span>
+<span class="n">data_Adminunits</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">facecolor</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="extracting-gridded-and-timeseries-data-of-the-area-of-interest">
+<h2>3. Extracting gridded and timeseries data of the area of interest<a class="headerlink" href="#extracting-gridded-and-timeseries-data-of-the-area-of-interest" title="Permalink to this headline">#</a></h2>
+<hr><p>We can now for each country we would like to aggregate the grid cells in the national borders to timeseries but before that we will work with gridded data first. The procedure is rather simple, we will focus on a single region and it is easy to extend it for multiple regions.</p>
+<p>As first step, we will save the latitude and longitude vectors because we will use it later. Then, we select the mask points where the value is equal to target value (the region code). In the numpy array <code class="docutils literal notranslate"><span class="pre">sel_mask</span></code> all the values are nan except for the selected ones.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Extracting the precipitation data for the selected region</span>
+<span class="n">region_name</span> <span class="o">=</span> <span class="s1">&#39;Switzerland&#39;</span>    <span class="c1">#change to selected country within the bounding region</span>
+
+<span class="n">lat</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">lat</span><span class="o">.</span><span class="n">values</span>          <span class="c1"># the lat and lon values contained in the mask of the regions</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">lon</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">ID_REGION</span> <span class="o">=</span> <span class="n">data_Adminunits</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">data_Adminunits</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">region_name</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">#getting the index position of the selected country</span>
+   
+<span class="n">sel_mask</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask</span> <span class="o">==</span> <span class="n">ID_REGION</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sel_mask</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em><strong>Question 2: Which country did you select as a case study region and why? Make sure to include the spatial and time series plots of the selected case study region</strong></em></p>
+<p>To speed-up the process we want to crop the xarray Dataset selecting the smallest box containing the entire mask. To do this, we store in <strong>id_lon</strong> and <strong>id_lat</strong> the coordinate points where the mask has at least a non-nan value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">id_lon</span> <span class="o">=</span> <span class="n">lon</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">sel_mask</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))]</span>
+<span class="n">id_lat</span> <span class="o">=</span> <span class="n">lat</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">sel_mask</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em><strong>Question 3 : Describe what the fuction <code class="docutils literal notranslate"><span class="pre">np.where()</span></code>does? Are there other fuctions that can replace it?</strong></em></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">data</span></code> dataset is reduced selecting only the target year and the coordinates containing the target region. Then the dataset is load from the dask array using compute and then filtered using the mask. This procedure speeds up the computation and reduces the memory use for large dataset, apparently the <code class="docutils literal notranslate"><span class="pre">where()</span></code> function is not really dask friendly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">monthly_prec</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">lat</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">id_lat</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">id_lat</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">lon</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">id_lon</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">id_lon</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask</span> <span class="o">==</span> <span class="n">ID_REGION</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">monthly_prec</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s plot the gridded precipitation data for the target region contained in <code class="docutils literal notranslate"><span class="pre">monthly_prec</span></code></p>
+<p><strong>Action</strong>  Inspect the code, change the label and title names and run the code to make the plot. Fill in the plot parameters in the code box below</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plotting the target region gridded precipitation data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span>
+<span class="n">monthly_prec</span><span class="o">.</span><span class="n">precipitation</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">)</span>
+<span class="n">data_Adminunits</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">facecolor</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">monthly_prec_timeseries</span><span class="o">=</span><span class="n">monthly_prec</span><span class="o">.</span><span class="n">precipitation</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;lon&#39;</span><span class="p">,</span><span class="s1">&#39;lat&#39;</span><span class="p">))</span>
+<span class="n">df_prec_timeseries</span><span class="o">=</span><span class="n">monthly_prec_timeseries</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Action</strong>  Inspect the code, change the label and title names and run the code to make the plot. Fill in the plot parameters in the code box below</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plotting the precipitation timeseries of the selected study region</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_prec_timeseries</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">df_prec_timeseries</span><span class="p">,</span><span class="s2">&quot;-o&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Precipitation[mm/day]&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Months-Years&#39;</span><span class="p">)</span><span class="c1">#change</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Netherlands monthly precipitation over the study period&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span><span class="c1">#change </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em><strong>Question 4 : Briefly explain what you see in both the precipitation timeseries plot  and the precipitation spatial plot above.</strong></em></p>
+</section>
+<section id="calculating-meteorological-drought-conditions-using-standardized-drought-indicators">
+<h2>4. Calculating meteorological drought conditions using standardized drought indicators<a class="headerlink" href="#calculating-meteorological-drought-conditions-using-standardized-drought-indicators" title="Permalink to this headline">#</a></h2>
+<hr><p>The required datasets are now loaded correctly into Python. From this point on we will start with the actual drought analysis. We will calculate meteorological droughts (Standardized Precipitation Index (SPI)) for your chosen accumulation period (i.e. between 1 - 12 months). Drought conditions are being calculated for each month (using all January’s, February’s, etc).</p>
+<p>Let’s revisit python functions (introduced in the Numpy and Pandas exercise),they are defined with the <code class="docutils literal notranslate"><span class="pre">def</span></code> keyword, then the function identifier (name) followed by parentheses and a colon as shown in the next cells.</p>
+<p>Before starting with the SPI calculation we need to prepare the accumulated time-series first.Using the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> package through the <code class="docutils literal notranslate"><span class="pre">cumsum()</span></code> function we calculate the cummulative precipitation per grid cell in a moving sum window along the time axis.</p>
+<section id="defining-the-functions-for-calculating-the-standardized-precipitation-index-spi">
+<h3>Defining the functions for calculating the Standardized Precipitation Index (SPI)<a class="headerlink" href="#defining-the-functions-for-calculating-the-standardized-precipitation-index-spi" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cumulative_values</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">w</span><span class="p">):</span> 
+    <span class="k">def</span> <span class="nf">mov_sum</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">w</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;defining the time period and a function that calculates </span>
+<span class="sd">        the accumulation periods for monthly precipitation per cell where</span>
+<span class="sd">        y is gridded precipitation data and w is the accumulation value in months&#39;&#39;&#39;</span>
+        <span class="n">cumul</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span> <span class="nb">float</span><span class="p">)</span>
+        <span class="n">cumul</span><span class="p">[</span><span class="n">w</span><span class="p">:]</span> <span class="o">=</span> <span class="n">cumul</span><span class="p">[</span><span class="n">w</span><span class="p">:]</span><span class="o">-</span> <span class="n">cumul</span><span class="p">[:</span><span class="o">-</span><span class="n">w</span><span class="p">]</span>
+        <span class="n">cumul</span><span class="p">[:</span><span class="n">w</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="o">==-</span><span class="mi">9999</span><span class="p">)</span>
+        <span class="n">cumul_dataseries</span> <span class="o">=</span> <span class="n">cumul</span>
+    
+        <span class="k">return</span> <span class="n">cumul_dataseries</span>
+
+    <span class="n">cumul_dataset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+    <span class="n">rows_p3</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">cols_p3</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">time_p3</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">rows_p3</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">cols_p3</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">time_p3</span><span class="p">):</span>
+                <span class="n">cumul_data</span> <span class="o">=</span> <span class="n">mov_sum</span><span class="p">(</span><span class="n">y</span><span class="p">[:,</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">],</span><span class="n">w</span><span class="p">)</span>
+                <span class="n">cumul_dataset</span><span class="p">[:,</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">]</span><span class="o">=</span><span class="n">cumul_data</span>
+    <span class="k">return</span> <span class="n">cumul_dataset</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s create a function to group the monthly gridded precipitation data into different months i.e. Januarys. Februarys etc. This will enable us to calculate SPI per month over the historic period.</p>
+<p>To group the precipitation data we create an empty dataframe using pandas through <code class="docutils literal notranslate"><span class="pre">DataFrame()</span></code> and a list of dates for the historic time period through <code class="docutils literal notranslate"><span class="pre">date_range()</span></code>. The grouping of precipitation data is done using <code class="docutils literal notranslate"><span class="pre">DatetimeIndex().month()</span></code> and each group is stored in a dictionary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">grouping_prec_months</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">w</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;groups the precipitation data into all the months based on the dates</span>
+<span class="sd">    where y is the gridded precipitation data and w is the accumulation value&#39;&#39;&#39;</span>
+
+    <span class="n">month_dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span> <span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;2002-01-01&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;2022-06-01&#39;</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="s1">&#39;M&#39;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="n">month_dates</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span> <span class="n">DatetimeIndex</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">month</span> 
+    <span class="n">monthly_data</span> <span class="o">=</span> <span class="n">cumulative_values</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">w</span><span class="p">)</span> <span class="c1">#calls the cumulative value function to calculate the accumulation periods of the data</span>
+    <span class="n">Month_data_dict</span><span class="o">=</span> <span class="p">{}</span> <span class="c1"># initializes an empty dictionary</span>
+    <span class="c1"># #grouping the months</span>
+    <span class="n">Month_data_dict</span><span class="p">[</span><span class="s1">&#39;Jan&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">monthly_data</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">month</span><span class="o">==</span><span class="mi">1</span><span class="p">,:,:]</span>
+    <span class="n">Month_data_dict</span><span class="p">[</span><span class="s1">&#39;Feb&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">monthly_data</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">month</span><span class="o">==</span><span class="mi">2</span><span class="p">,:,:]</span>
+    <span class="n">Month_data_dict</span><span class="p">[</span><span class="s1">&#39;Mar&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">monthly_data</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">month</span><span class="o">==</span><span class="mi">3</span><span class="p">,:,:]</span>
+    <span class="n">Month_data_dict</span><span class="p">[</span><span class="s1">&#39;Apr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">monthly_data</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">month</span><span class="o">==</span><span class="mi">4</span><span class="p">,:,:]</span>
+    <span class="n">Month_data_dict</span><span class="p">[</span><span class="s1">&#39;May&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">monthly_data</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">month</span><span class="o">==</span><span class="mi">5</span><span class="p">,:,:]</span>
+    <span class="n">Month_data_dict</span><span class="p">[</span><span class="s1">&#39;Jun&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">monthly_data</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">month</span><span class="o">==</span><span class="mi">6</span><span class="p">,:,:]</span>
+    <span class="n">Month_data_dict</span><span class="p">[</span><span class="s1">&#39;Jul&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">monthly_data</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">month</span><span class="o">==</span><span class="mi">7</span><span class="p">,:,:]</span>
+    <span class="n">Month_data_dict</span><span class="p">[</span><span class="s1">&#39;Aug&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">monthly_data</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">month</span><span class="o">==</span><span class="mi">8</span><span class="p">,:,:]</span>
+    <span class="n">Month_data_dict</span><span class="p">[</span><span class="s1">&#39;Sep&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">monthly_data</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">month</span><span class="o">==</span><span class="mi">9</span><span class="p">,:,:]</span>
+    <span class="n">Month_data_dict</span><span class="p">[</span><span class="s1">&#39;Oct&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">monthly_data</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">month</span><span class="o">==</span><span class="mi">10</span><span class="p">,:,:]</span>
+    <span class="n">Month_data_dict</span><span class="p">[</span><span class="s1">&#39;Nov&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">monthly_data</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">month</span><span class="o">==</span><span class="mi">11</span><span class="p">,:,:]</span>
+    <span class="n">Month_data_dict</span><span class="p">[</span><span class="s1">&#39;Dec&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">monthly_data</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">month</span><span class="o">==</span><span class="mi">12</span><span class="p">,:,:]</span>    
+
+    <span class="k">return</span> <span class="n">Month_data_dict</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>After grouping into months, we create a function using <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> through <code class="docutils literal notranslate"><span class="pre">percentilescore()</span></code> documented <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.percentileofscore.html">here</a>. This allows us to compute the percentile rank of each monthly value relative to a list of values.</p>
+<p><em><strong>Question 5 : What other fuctions in can be used instead of the <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> <code class="docutils literal notranslate"><span class="pre">percentilescore()</span></code>?Describe these other fuctions</strong></em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">percentiles</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">w</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;computes the percentile rank of each monthly value relative to the entire 20 years of values. y is the gridded </span>
+<span class="sd">    precipitation data and w is the accumulation value in months&#39;&#39;&#39;</span>
+    <span class="n">mnths</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Jan&#39;</span><span class="p">,</span> <span class="s1">&#39;Feb&#39;</span><span class="p">,</span><span class="s1">&#39;Mar&#39;</span><span class="p">,</span><span class="s1">&#39;Apr&#39;</span><span class="p">,</span><span class="s1">&#39;May&#39;</span><span class="p">,</span><span class="s1">&#39;Jun&#39;</span><span class="p">,</span><span class="s1">&#39;Jul&#39;</span><span class="p">,</span><span class="s1">&#39;Aug&#39;</span><span class="p">,</span><span class="s1">&#39;Sep&#39;</span><span class="p">,</span><span class="s1">&#39;Oct&#39;</span><span class="p">,</span><span class="s1">&#39;Nov&#39;</span><span class="p">,</span><span class="s1">&#39;Dec&#39;</span><span class="p">]</span>
+    <span class="n">perc_dictionary</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1">#creates an empty dictionary</span>
+    <span class="n">Month_data_dict</span> <span class="o">=</span> <span class="n">grouping_prec_months</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">w</span><span class="p">)</span> <span class="c1"># calls the grouping by months function from previous cell</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">mnths</span><span class="p">:</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Month_data_dict</span><span class="p">[</span><span class="n">m</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="n">Month_data_dict</span><span class="p">[</span><span class="n">m</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">cols</span> <span class="o">=</span> <span class="n">Month_data_dict</span><span class="p">[</span><span class="n">m</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="n">Month_data_dict</span><span class="p">[</span><span class="n">m</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">rows</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">cols</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">time</span><span class="p">):</span>                
+                    <span class="n">result</span> <span class="o">=</span><span class="n">percentileofscore</span><span class="p">(</span><span class="n">Month_data_dict</span><span class="p">[</span><span class="n">m</span><span class="p">][:,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">],</span><span class="n">Month_data_dict</span><span class="p">[</span><span class="n">m</span><span class="p">][</span><span class="n">z</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">],</span> <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;mean&#39;</span><span class="p">)</span><span class="o">/</span><span class="mi">100</span>                
+                    <span class="n">output</span><span class="p">[</span><span class="n">z</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span><span class="n">result</span>
+        <span class="n">perc_dictionary</span><span class="p">[</span><span class="n">m</span><span class="p">]</span> <span class="o">=</span> <span class="n">output</span>
+    <span class="k">return</span> <span class="n">perc_dictionary</span><span class="p">,</span> <span class="n">Month_data_dict</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="spi-calculation-for-each-month-over-the-historic-time-period">
+<h4>SPI calculation for each month over the historic time-period<a class="headerlink" href="#spi-calculation-for-each-month-over-the-historic-time-period" title="Permalink to this headline">#</a></h4>
+<p>SPI is used to characterize meteorological drought on a range of timescales. On short timescales, the SPI is closely related to soil moisture, while at longer timescales, the SPI can be related to groundwater and reservoir storage. The SPI can be compared across regions with markedly different climates. It quantifies observed precipitation as a standardized departure from a selected probability distribution function that models raw precipitation data. The raw precipitation data are typically fitted to a gamma or Pearson Type III distribution, and then transformed to a normal distribution so the mean of SPI is zero. For this exercise, we will not fit the raw precipitation through a distribution to save time and also because we are working with historic data.</p>
+<p>We will now calculate SPI for all months throughout the year (m = 1:12).By normalizing the precipitation percentiles data afterwards drought conditions become comparable between different locations and for different months. The procedure will result in time series which values vary from ~ -3 (extremely dry) to ~ +3 (extremely wet compared to the long-term mean average conditions), providing information on meteorological drought conditions. The frequency, average duration, and severity of drought events are subsequently estimated by looking at the ‘clustered nature’ of individual drought months.</p>
+<p>Further information on SPI can be found <a class="reference external" href="https://climatedataguide.ucar.edu/climate-data/standardized-precipitation-index-spi">here</a>.</p>
+<p>Take a careful look how we do this by inspecting the code-boxes and run the code in the code-boxes below to eventually plot the SPI values for all months. Where needed, change the names of titles and axes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">standardized_index</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">a</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;function to calculate SPI using percentile ranking and normalizing the rank using normal distribution&#39;&#39;&#39;</span>
+    <span class="n">month_dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span> <span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;2002-01-01&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;2022-06-01&#39;</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="s1">&#39;M&#39;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="n">month_dates</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span> <span class="n">DatetimeIndex</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">month</span>
+    <span class="n">perc_dictionary</span><span class="p">,</span> <span class="n">Month_data_dict</span> <span class="o">=</span> <span class="n">percentiles</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">w</span><span class="p">)</span>
+    <span class="n">index_grouped</span> <span class="o">=</span> <span class="p">{}</span> 
+    <span class="n">mnths</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Jan&#39;</span><span class="p">,</span><span class="s1">&#39;Feb&#39;</span><span class="p">,</span><span class="s1">&#39;Mar&#39;</span><span class="p">,</span><span class="s1">&#39;Apr&#39;</span><span class="p">,</span><span class="s1">&#39;May&#39;</span><span class="p">,</span><span class="s1">&#39;Jun&#39;</span><span class="p">,</span><span class="s1">&#39;Jul&#39;</span><span class="p">,</span><span class="s1">&#39;Aug&#39;</span><span class="p">,</span><span class="s1">&#39;Sep&#39;</span><span class="p">,</span><span class="s1">&#39;Oct&#39;</span><span class="p">,</span><span class="s1">&#39;Nov&#39;</span><span class="p">,</span><span class="s1">&#39;Dec&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">mon</span> <span class="ow">in</span> <span class="n">mnths</span><span class="p">:</span>
+        <span class="n">output_sp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">perc_dictionary</span><span class="p">[</span><span class="n">mon</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+        <span class="n">rows_p</span> <span class="o">=</span> <span class="n">perc_dictionary</span><span class="p">[</span><span class="n">mon</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">cols_p</span> <span class="o">=</span> <span class="n">perc_dictionary</span><span class="p">[</span><span class="n">mon</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="n">time_p</span> <span class="o">=</span> <span class="n">perc_dictionary</span><span class="p">[</span><span class="n">mon</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">rows_p</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">cols_p</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">time_p</span><span class="p">):</span>
+                    <span class="n">zeros</span> <span class="o">=</span> <span class="nb">len</span><span class="p">([</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">Month_data_dict</span><span class="p">[</span><span class="n">mon</span><span class="p">][:,</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">]</span> <span class="k">if</span> <span class="n">p</span><span class="o">==</span><span class="mi">0</span><span class="p">])</span>
+                    <span class="n">count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">([</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">Month_data_dict</span><span class="p">[</span><span class="n">mon</span><span class="p">][:,</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">]])</span>
+                    <span class="n">value_0</span> <span class="o">=</span> <span class="n">NormalDist</span><span class="p">()</span><span class="o">.</span><span class="n">inv_cdf</span><span class="p">((</span><span class="n">zeros</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">count</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span><span class="c1">#calculating distr for zeros using stagge formula</span>
+                    <span class="c1">#normalizing the data </span>
+                    <span class="k">if</span> <span class="n">Month_data_dict</span><span class="p">[</span><span class="n">mon</span><span class="p">][</span><span class="n">t</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+                        <span class="n">norm_dist</span> <span class="o">=</span> <span class="n">value_0</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">norm_dist</span><span class="o">=</span> <span class="n">NormalDist</span><span class="p">()</span><span class="o">.</span><span class="n">inv_cdf</span><span class="p">(</span><span class="n">perc_dictionary</span><span class="p">[</span><span class="n">mon</span><span class="p">][</span><span class="n">t</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">])</span>
+                    <span class="n">output_sp</span><span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span><span class="n">norm_dist</span>
+        <span class="n">index_grouped</span><span class="p">[</span><span class="n">mon</span><span class="p">]</span> <span class="o">=</span> <span class="n">output_sp</span>
+        
+        <span class="c1">#merging and converting the numpy arrays into a single xarray dataset with coordinates by applying the merge function</span>
+        <span class="c1">#and appending the data to an empty list</span>
+    <span class="n">data_arrays</span><span class="o">=</span><span class="p">[]</span>
+    
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">index_grouped</span><span class="p">):</span>
+        <span class="n">da</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">index_grouped</span><span class="p">[</span><span class="n">key</span><span class="p">],</span><span class="n">coords</span><span class="o">=</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">month</span><span class="o">==</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">lat</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">lon</span><span class="o">.</span><span class="n">values</span><span class="p">],</span><span class="n">dims</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">,</span><span class="s2">&quot;latitude[degrees_north]&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude[degrees_east]&quot;</span><span class="p">],</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;spi_values&#39;</span><span class="p">)</span>
+        <span class="n">data_arrays</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">da</span><span class="p">)</span>    
+    <span class="n">index</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">data_arrays</span><span class="p">)</span>  
+    
+    <span class="k">return</span> <span class="n">index</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<p><em><strong>Question 6: What does the xarray <code class="docutils literal notranslate"><span class="pre">merge()</span></code> and python list <code class="docutils literal notranslate"><span class="pre">append()</span></code> methods do and return? Describe</strong></em></p>
+<p>SPI can be calculated for a range of timesteps (1,3,6,12 months and so on). Select the accumulation period/ lag time/timestep to use with your group (i.e. between 1-12 months). The use of different timescales allows the effect of precipitation deficits on various water resources (groundwater, soil moisture, reservoir storage and streamflow) to be assessed.</p>
+<p><strong>Action</strong>: Insert lag time in the code-box below and run it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#SPI considering zeros using Stagge et al. and gamma distribution</span>
+
+<span class="n">spi_1</span> <span class="o">=</span> <span class="n">standardized_index</span><span class="p">(</span><span class="n">monthly_prec</span><span class="o">.</span><span class="n">precipitation</span><span class="p">[:]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">monthly_prec</span><span class="p">)</span>   <span class="c1">#choose the accumulation value to determine which SPI you calculate</span>
+<span class="n">spi_1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we convert the gridded data for the SPI to a timeseries and plot the spi values for the entire historic period both spatially and as a timeseries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Timeseries plot</span>
+<span class="c1">#converting the gridded data to timeseries</span>
+<span class="n">indice_timeseries</span><span class="o">=</span><span class="n">spi_1</span><span class="o">.</span><span class="n">spi_values</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;latitude[degrees_north]&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude[degrees_east]&quot;</span><span class="p">))</span>
+<span class="n">df_indice_timeseries</span> <span class="o">=</span><span class="n">indice_timeseries</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_indice_timeseries</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="visualization-of-spi">
+<h3>Visualization of SPI<a class="headerlink" href="#visualization-of-spi" title="Permalink to this headline">#</a></h3>
+<p><em><strong>Question 7:  Select a year with extreme drought occurence within the selected study region and plot the spi values. Include the plots in Canvas</strong></em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#spatial plotting for spi_values</span>
+
+<span class="n">spi_1</span><span class="p">[</span><span class="s1">&#39;spi_values&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;2020&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">col_wrap</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">vmin</span> <span class="o">=-</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span> <span class="c1">#change the year</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em><strong>Question 7: Explain the drought spatial plots plotted above. How was the drought in each of the months within the regions of the selected country?</strong></em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plotting the spi_1 spatially and in a timeseries</span>
+<span class="c1"># Plot the calculated SPI-1 values over time </span>
+<span class="c1">#Below zero means there is a drought and above wet periods</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_indice_timeseries</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">df_indice_timeseries</span><span class="p">,</span><span class="s2">&quot;-o&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span> <span class="c1"># all the values below zero indicate drought conditions. Can be changed to indicate drought threshold</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;SPI-1 values&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Months-Years&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Monthly SPI-1 over the study period&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em><strong>Question 8: Explain the drought pattern in the spi values timeseries above for the selected case study region</strong></em></p>
+<p><em><strong>Question 9: Now that we have calculated SPI-1 above, change the accumulation number from 1 and calculate SPI-6 and SPI-12. What differences do you see in the drought characteristics and what does each represent. Include the plots in canvas</strong></em></p>
+<p>This is the end of this tutorial. Hope you enjoyed it!</p>
+</section>
 </section>
 </section>
 

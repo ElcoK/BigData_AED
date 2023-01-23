@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Tutorial 1: Social Media and Natural Language Processing &#8212; Big Data for Sustainability Sciences</title>
+    <title>Week 6 &#8212; Big Data for Sustainability Sciences</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Tutorial 2: Social media &amp; valuation of landscapes" href="tutorial2.html" />
+    <link rel="next" title="Tutorial 2: Social Media &amp; Valuation of Landscapes" href="tutorial2.html" />
     <link rel="prev" title="Lecture: Social Media and Natural Language Processing (NLP)" href="lecture.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -180,7 +180,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../week2/tutorial2.html">
-   Tutorial 2: Random Forests
+   Tutorial 2: Random Forest Regression
   </a>
  </li>
 </ul>
@@ -246,7 +246,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../week5/tutorial2.html">
-   Tutorial 2: Drought detection
+   Tutorial 2: Drought Detection
   </a>
  </li>
 </ul>
@@ -263,12 +263,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Tutorial 1: Social Media and Natural Language Processing
+   Week 6
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="tutorial2.html">
-   Tutorial 2: Social media &amp; valuation of landscapes
+   Tutorial 2: Social Media &amp; Valuation of Landscapes
   </a>
  </li>
 </ul>
@@ -506,62 +506,74 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#important-before-we-start">
-   Important before we start
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Week 6
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning Objectives
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tutorial-1-social-media-and-natural-language-processing">
+   Tutorial 1: Social Media and Natural Language Processing
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introducing-the-packages">
-   1.Introducing the packages
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#social-media">
-   2. Social Media
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#authenticate-with-tweepy">
-     Authenticate with Tweepy
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#important-before-we-start">
+     Important before we start
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#getting-user-information">
-     Getting User Information
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#learning-objectives">
+     Learning Objectives
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#natural-language-processing-nlp">
-   3. Natural Language Processing (NLP)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-retrieval-and-post-processing">
-   4. Data retrieval and post-processing
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#application-natural-hazards">
-   5. Application: Natural Hazards
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#earthquakes">
-     Earthquakes
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#introducing-the-packages">
+     1.Introducing the packages
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#flooding">
-     Flooding
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#social-media">
+     2. Social Media
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#authenticate-with-tweepy">
+       Authenticate with Tweepy
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#getting-user-information">
+       Getting User Information
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#natural-language-processing-nlp">
+     3. Natural Language Processing (NLP)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-retrieval-and-post-processing">
+     4. Data retrieval and post-processing
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#application-natural-hazards">
+     5. Application: Natural Hazards
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#earthquakes">
+       Earthquakes
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#flooding">
+       Flooding
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -574,7 +586,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Tutorial 1: Social Media and Natural Language Processing</h1>
+                <h1>Week 6</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -584,62 +596,74 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#important-before-we-start">
-   Important before we start
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Week 6
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning Objectives
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tutorial-1-social-media-and-natural-language-processing">
+   Tutorial 1: Social Media and Natural Language Processing
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introducing-the-packages">
-   1.Introducing the packages
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#social-media">
-   2. Social Media
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#authenticate-with-tweepy">
-     Authenticate with Tweepy
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#important-before-we-start">
+     Important before we start
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#getting-user-information">
-     Getting User Information
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#learning-objectives">
+     Learning Objectives
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#natural-language-processing-nlp">
-   3. Natural Language Processing (NLP)
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-retrieval-and-post-processing">
-   4. Data retrieval and post-processing
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#application-natural-hazards">
-   5. Application: Natural Hazards
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#earthquakes">
-     Earthquakes
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#introducing-the-packages">
+     1.Introducing the packages
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#flooding">
-     Flooding
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#social-media">
+     2. Social Media
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#authenticate-with-tweepy">
+       Authenticate with Tweepy
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#getting-user-information">
+       Getting User Information
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#natural-language-processing-nlp">
+     3. Natural Language Processing (NLP)
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-retrieval-and-post-processing">
+     4. Data retrieval and post-processing
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#application-natural-hazards">
+     5. Application: Natural Hazards
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#earthquakes">
+       Earthquakes
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#flooding">
+       Flooding
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -653,7 +677,10 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-1-social-media-and-natural-language-processing">
+  <section class="tex2jax_ignore mathjax_ignore" id="week-6">
+<h1>Week 6<a class="headerlink" href="#week-6" title="Permalink to this headline">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="tutorial-1-social-media-and-natural-language-processing">
 <h1>Tutorial 1: Social Media and Natural Language Processing<a class="headerlink" href="#tutorial-1-social-media-and-natural-language-processing" title="Permalink to this headline">#</a></h1>
 <p>Natural processes such as thunderstorms, wildfires, earthquakes, and floods may lead to significant losses in terms of property and human life. Gathering information about the damages in time is crucial and may help in mitigating the loss, and faster recovery (<a class="reference external" href="https://link.springer.com/article/10.1007/s11042-019-07942-1">Said et al, 2019</a>).</p>
 <p>Social media are one of the most important sources of not only real-time information but records since their existence. They have been crawled over the years to collect and analyze disaster-related multimedia content (<a class="reference external" href="https://link.springer.com/article/10.1007/s11042-019-07942-1">Said et al, 2019</a>). There are different applications where we can use social media data to analyze natural disasters.</p>
@@ -663,8 +690,7 @@ title="Print to PDF"
 <h2>Important before we start<a class="headerlink" href="#important-before-we-start" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p>Make sure that you save this file before you continue, else you will lose everything. To do so, go to <strong>Bestand/File</strong> and click on <strong>Een kopie opslaan in Drive/Save a Copy on Drive</strong>!</p>
-<p>Now, rename the file into Week5_Tutorial1.ipynb. You can do so by clicking on the name in the top of this screen.</p>
-<p>We will also use the file ‘tweets.jsonl’, so make sure to save it in the same folder than the notebook.</p>
+<p>Now, rename the file into Week6_Tutorial1.ipynb. You can do so by clicking on the name in the top of this screen.</p>
 <p>By using this notebook and associated files, you agree to the Twitter Developer Agreement and Policy, which can be found <a class="reference external" href="https://developer.twitter.com/en/developer-terms/agreement-and-policy">here</a>.</p>
 </section>
 <section id="learning-objectives">
@@ -691,72 +717,11 @@ title="Print to PDF"
 <p><em>We will first need to install these packages in the cell below. Uncomment them to make sure we can pip install them</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>geopandas
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>matplotlib
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>numpy
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pandas
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>tweepy
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Collecting geopandas
-  Downloading geopandas-0.12.2-py3-none-any.whl (1.1 MB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.1/1.1 MB</span> <span class=" -Color -Color-Red">11.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: packaging in /usr/local/lib/python3.8/dist-packages (from geopandas) (21.3)
-Requirement already satisfied: pandas&gt;=1.0.0 in /usr/local/lib/python3.8/dist-packages (from geopandas) (1.3.5)
-Collecting pyproj&gt;=2.6.1.post1
-  Downloading pyproj-3.4.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (7.8 MB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">7.8/7.8 MB</span> <span class=" -Color -Color-Red">60.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hCollecting fiona&gt;=1.8
-  Downloading Fiona-1.8.22-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.6 MB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">16.6/16.6 MB</span> <span class=" -Color -Color-Red">48.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
-?25hRequirement already satisfied: shapely&gt;=1.7 in /usr/local/lib/python3.8/dist-packages (from geopandas) (2.0.0)
-Requirement already satisfied: certifi in /usr/local/lib/python3.8/dist-packages (from fiona&gt;=1.8-&gt;geopandas) (2022.12.7)
-Collecting click-plugins&gt;=1.0
-  Downloading click_plugins-1.1.1-py2.py3-none-any.whl (7.5 kB)
-Requirement already satisfied: setuptools in /usr/local/lib/python3.8/dist-packages (from fiona&gt;=1.8-&gt;geopandas) (57.4.0)
-Requirement already satisfied: six&gt;=1.7 in /usr/local/lib/python3.8/dist-packages (from fiona&gt;=1.8-&gt;geopandas) (1.15.0)
-Collecting munch
-  Downloading munch-2.5.0-py2.py3-none-any.whl (10 kB)
-Requirement already satisfied: click&gt;=4.0 in /usr/local/lib/python3.8/dist-packages (from fiona&gt;=1.8-&gt;geopandas) (7.1.2)
-Requirement already satisfied: attrs&gt;=17 in /usr/local/lib/python3.8/dist-packages (from fiona&gt;=1.8-&gt;geopandas) (22.2.0)
-Collecting cligj&gt;=0.5
-  Downloading cligj-0.7.2-py3-none-any.whl (7.1 kB)
-Requirement already satisfied: pytz&gt;=2017.3 in /usr/local/lib/python3.8/dist-packages (from pandas&gt;=1.0.0-&gt;geopandas) (2022.7)
-Requirement already satisfied: numpy&gt;=1.17.3 in /usr/local/lib/python3.8/dist-packages (from pandas&gt;=1.0.0-&gt;geopandas) (1.21.6)
-Requirement already satisfied: python-dateutil&gt;=2.7.3 in /usr/local/lib/python3.8/dist-packages (from pandas&gt;=1.0.0-&gt;geopandas) (2.8.2)
-Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /usr/local/lib/python3.8/dist-packages (from packaging-&gt;geopandas) (3.0.9)
-Installing collected packages: pyproj, munch, cligj, click-plugins, fiona, geopandas
-Successfully installed click-plugins-1.1.1 cligj-0.7.2 fiona-1.8.22 geopandas-0.12.2 munch-2.5.0 pyproj-3.4.1
-Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Requirement already satisfied: matplotlib in /usr/local/lib/python3.8/dist-packages (3.2.2)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.1 in /usr/local/lib/python3.8/dist-packages (from matplotlib) (3.0.9)
-Requirement already satisfied: cycler&gt;=0.10 in /usr/local/lib/python3.8/dist-packages (from matplotlib) (0.11.0)
-Requirement already satisfied: numpy&gt;=1.11 in /usr/local/lib/python3.8/dist-packages (from matplotlib) (1.21.6)
-Requirement already satisfied: python-dateutil&gt;=2.1 in /usr/local/lib/python3.8/dist-packages (from matplotlib) (2.8.2)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in /usr/local/lib/python3.8/dist-packages (from matplotlib) (1.4.4)
-Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.8/dist-packages (from python-dateutil&gt;=2.1-&gt;matplotlib) (1.15.0)
-Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Requirement already satisfied: numpy in /usr/local/lib/python3.8/dist-packages (1.21.6)
-Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Requirement already satisfied: pandas in /usr/local/lib/python3.8/dist-packages (1.3.5)
-Requirement already satisfied: numpy&gt;=1.17.3 in /usr/local/lib/python3.8/dist-packages (from pandas) (1.21.6)
-Requirement already satisfied: pytz&gt;=2017.3 in /usr/local/lib/python3.8/dist-packages (from pandas) (2022.7)
-Requirement already satisfied: python-dateutil&gt;=2.7.3 in /usr/local/lib/python3.8/dist-packages (from pandas) (2.8.2)
-Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.8/dist-packages (from python-dateutil&gt;=2.7.3-&gt;pandas) (1.15.0)
-Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
-Requirement already satisfied: tweepy in /usr/local/lib/python3.8/dist-packages (3.10.0)
-Requirement already satisfied: six&gt;=1.10.0 in /usr/local/lib/python3.8/dist-packages (from tweepy) (1.15.0)
-Requirement already satisfied: requests-oauthlib&gt;=0.7.0 in /usr/local/lib/python3.8/dist-packages (from tweepy) (1.3.1)
-Requirement already satisfied: requests[socks]&gt;=2.11.1 in /usr/local/lib/python3.8/dist-packages (from tweepy) (2.25.1)
-Requirement already satisfied: oauthlib&gt;=3.0.0 in /usr/local/lib/python3.8/dist-packages (from requests-oauthlib&gt;=0.7.0-&gt;tweepy) (3.2.2)
-Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/local/lib/python3.8/dist-packages (from requests[socks]&gt;=2.11.1-&gt;tweepy) (2.10)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.8/dist-packages (from requests[socks]&gt;=2.11.1-&gt;tweepy) (2022.12.7)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.8/dist-packages (from requests[socks]&gt;=2.11.1-&gt;tweepy) (1.24.3)
-Requirement already satisfied: chardet&lt;5,&gt;=3.0.2 in /usr/local/lib/python3.8/dist-packages (from requests[socks]&gt;=2.11.1-&gt;tweepy) (4.0.0)
-Requirement already satisfied: PySocks!=1.5.7,&gt;=1.5.6 in /usr/local/lib/python3.8/dist-packages (from requests[socks]&gt;=2.11.1-&gt;tweepy) (1.7.1)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install geopandas</span>
+<span class="c1">#!pip install matplotlib</span>
+<span class="c1">#!pip install numpy</span>
+<span class="c1">#!pip install pandas</span>
+<span class="c1">#!pip install tweepy</span>
 </pre></div>
 </div>
 </div>
@@ -792,24 +757,40 @@ Requirement already satisfied: PySocks!=1.5.7,&gt;=1.5.6 in /usr/local/lib/pytho
 <p>The <a class="reference external" href="https://developer.twitter.com/en">Twitter API</a> enables programmatic access to Twitter in unique and advanced ways. Twitter’s Developer Platform enables you to harness the power of Twitter’s open, global, real-time, and historical platform within your own applications. The platform provides tools, resources, data, and API products for you to integrate, and expand Twitter’s impact through research, solutions, and more.</p>
 <p>To be able to use Twitter’s Developer Platform we need first a general account, and second to ask for an upgrade to a developer account.</p>
 <p>Here we show you how to gain access:</p>
-<ul class="simple">
+<ol class="simple">
 <li><p>How to sign up on Twitter</p></li>
-<li><p>How to upgrade to a developer account</p></li>
-<li><p>How to get access to Twitter API</p></li>
-<li><p>How to be able to create a project</p></li>
-</ul>
+</ol>
+<img src="https://github.com/ElcoK/BigData_AED/blob/main/_static/images/twitter_registration.gif?raw=1" class="bg-primary mb-1">
+<br>
+<ol class="simple">
+<li><p>How to get access to <a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api/getting-started/getting-access-to-the-twitter-api">Twitter API</a></p></li>
+</ol>
+<img src="https://github.com/ElcoK/BigData_AED/blob/main/_static/images/twtter_api.gif?raw=1" class="bg-primary mb-1">
+<br>
+<p>Do not forget to copy and save in a safe place your <code class="docutils literal notranslate"><span class="pre">API</span> <span class="pre">key</span></code> and <code class="docutils literal notranslate"><span class="pre">API</span> <span class="pre">key</span> <span class="pre">Secret</span></code>, we will need them later.</p>
+<img src="https://github.com/ElcoK/BigData_AED/blob/main/_static/images/API_Keys.PNG?raw=1" class="bg-primary mb-1">
+<br>
+<ol class="simple">
+<li><p>How to get the tokens from the <a class="reference external" href="https://developer.twitter.com/en/portal/dashboard">Dashboard</a></p></li>
+</ol>
+<img src="https://github.com/ElcoK/BigData_AED/blob/main/_static/images/twitter_token.gif?raw=1" class="bg-primary mb-1">
+<br>
+<p>Do not forget to copy and save in a safe place your <code class="docutils literal notranslate"><span class="pre">Access</span> <span class="pre">Token</span></code> and <code class="docutils literal notranslate"><span class="pre">Access</span> <span class="pre">Token</span> <span class="pre">Secret</span></code>, we will need them later.</p>
+<img src="https://github.com/ElcoK/BigData_AED/blob/main/_static/images/Token.PNG?raw=1" class="bg-primary mb-1">
+<br>
+<ol class="simple">
+<li><p>How to upgrade to an elevated access from the <a class="reference external" href="https://developer.twitter.com/en/portal/dashboard">Dashboard</a></p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">Please</span> <span class="pre">note</span> <span class="pre">that</span> <span class="pre">for</span> <span class="pre">this</span> <span class="pre">you</span> <span class="pre">will</span> <span class="pre">need</span> <span class="pre">to</span> <span class="pre">verify</span> <span class="pre">your</span> <span class="pre">account,</span> <span class="pre">adding</span> <span class="pre">also</span> <span class="pre">your</span> <span class="pre">phone</span> <span class="pre">number</span></code></p>
+<img src="https://github.com/ElcoK/BigData_AED/blob/main/_static/images/twitter_elevated.gif?raw=1" class="bg-primary mb-1">
+<br>
 <p>Note that you can also apply for premium access. For this tutorial, it is not necessary, but if you are interested you can have a look at the <a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api/premium/search-api/api-reference/premium-search#SearchRequests">Developer Platform</a> to learn about it.</p>
-<p><span style="color:red">GIFF</span></p>
-<p>General account &amp; Developer account</p>
-<p>Access to the API</p>
-<p>Developer account: https://www.jcchouinard.com/apply-for-a-twitter-developer-account/
-API &amp; some examples: https://www.jcchouinard.com/twitter-api/</p>
 <p>Now we are ready to start exploring <code class="docutils literal notranslate"><span class="pre">Tweepy</span></code>!</p>
 <section id="authenticate-with-tweepy">
 <h3>Authenticate with Tweepy<a class="headerlink" href="#authenticate-with-tweepy" title="Permalink to this headline">#</a></h3>
 <p>In order to gain access to Twitter information we first need to authenticate to the Twitter API.</p>
 <p>Replace <strong><code class="docutils literal notranslate"><span class="pre">Your_info</span></code></strong> with your Twitter credentials that you have obtained in the previous section.</p>
-<p><span style="color:red">Maria’s API key is used to check if collab works, please do not include them in the final version</span></p>
+<p><span style="color:red">Maria’s API key is used to check if colab works, please do not include them in the final version</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># API keyws that yous saved earlier</span>
@@ -819,16 +800,10 @@ API &amp; some examples: https://www.jcchouinard.com/twitter-api/</p>
 <span class="c1"># access_secret = &quot;Your_info&quot;</span>
 
 <span class="c1">## Maria&#39;s API keys </span>
-<span class="c1"># api_key = &quot;SbjfdyjQgzVKPxfzZEQJtqn5Q&quot;</span>
-<span class="c1"># api_secrets = &quot;hb1iOFl2hupClPzXn2cI632efGgg4epyA4FDWFZW0eIsyoxtVh&quot;</span>
-<span class="c1"># access_token = &quot;3996035119-3G6XL2EuVYWShNbi6Lkd516Jb1jb20wpSJDxRPQ&quot;</span>
-<span class="c1"># access_secret = &quot;ZrbKPyzJdCxHhBnGBLBHrN38TKBFlp3jNpR1o3iYSJqeV&quot;</span>
-
-<span class="c1">## MariaVU&#39;s API keys </span>
-<span class="n">api_key</span> <span class="o">=</span> <span class="s2">&quot;U1n0B3dExRG8LbtevZU11N3WQ&quot;</span>
-<span class="n">api_secrets</span> <span class="o">=</span> <span class="s2">&quot;R01L7iKrhZk7KlN3KvJ8GDwLIxlMLbUoLAAyoCKP7V7SC3fnaa&quot;</span>
-<span class="n">access_token</span> <span class="o">=</span> <span class="s2">&quot;1616031947117023232-obhF49nZEqpFLuI30KGinZnLdF3F1X&quot;</span>
-<span class="n">access_secret</span> <span class="o">=</span> <span class="s2">&quot;sY7qI7qbSWN62JXbj4t4kdQTctlSWfMmkWL7qxkmYDADG&quot;</span>
+<span class="n">api_key</span> <span class="o">=</span> <span class="s2">&quot;SbjfdyjQgzVKPxfzZEQJtqn5Q&quot;</span>
+<span class="n">api_secrets</span> <span class="o">=</span> <span class="s2">&quot;hb1iOFl2hupClPzXn2cI632efGgg4epyA4FDWFZW0eIsyoxtVh&quot;</span>
+<span class="n">access_token</span> <span class="o">=</span> <span class="s2">&quot;3996035119-3G6XL2EuVYWShNbi6Lkd516Jb1jb20wpSJDxRPQ&quot;</span>
+<span class="n">access_secret</span> <span class="o">=</span> <span class="s2">&quot;ZrbKPyzJdCxHhBnGBLBHrN38TKBFlp3jNpR1o3iYSJqeV&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -902,7 +877,7 @@ API &amp; some examples: https://www.jcchouinard.com/twitter-api/</p>
      &#39;indices&#39;: [0, 23]}]},
   &#39;description&#39;: {&#39;urls&#39;: []}},
  &#39;protected&#39;: False,
- &#39;followers_count&#39;: 1851,
+ &#39;followers_count&#39;: 1854,
  &#39;friends_count&#39;: 552,
  &#39;listed_count&#39;: 17,
  &#39;created_at&#39;: &#39;Fri Nov 10 10:35:34 +0000 2017&#39;,
@@ -969,7 +944,7 @@ API &amp; some examples: https://www.jcchouinard.com/twitter-api/</p>
    &#39;contributors&#39;: None,
    &#39;is_quote_status&#39;: False,
    &#39;retweet_count&#39;: 2,
-   &#39;favorite_count&#39;: 53,
+   &#39;favorite_count&#39;: 55,
    &#39;favorited&#39;: False,
    &#39;retweeted&#39;: False,
    &#39;possibly_sensitive&#39;: False,
@@ -998,7 +973,7 @@ API &amp; some examples: https://www.jcchouinard.com/twitter-api/</p>
  &#39;has_extended_profile&#39;: True,
  &#39;default_profile&#39;: False,
  &#39;default_profile_image&#39;: False,
- &#39;following&#39;: False,
+ &#39;following&#39;: True,
  &#39;follow_request_sent&#39;: False,
  &#39;notifications&#39;: False,
  &#39;translator_type&#39;: &#39;none&#39;,
@@ -1027,7 +1002,7 @@ API &amp; some examples: https://www.jcchouinard.com/twitter-api/</p>
 user.screen_name: VU_IVM
 user.location: Amsterdam, The Netherlands
 user.description: Leading in Sustainability Science: Institute for Environmental Studies in @VU_Science at @VUamsterdam.
-user.followers_count: 1851
+user.followers_count: 1854
 user.listed_count: 17
 user.statuses_count: 1550
 user urls: http://www.ivm.vu.nl
@@ -1077,17 +1052,22 @@ user urls: http://www.ivm.vu.nl
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>username: VU_IVM
 description: Leading in Sustainability Science: Institute for Environmental Studies in @VU_Science at @VUamsterdam.
 text: RT @Marleen_Ruiter: Day 1 of the @Compound_Event #Damocles workshop on the interactions between scientists and practitioners. Introductory…
-date_time: 2023-01-18 09:17:01
+date_time: 2023-01-18 09:17:01+00:00
 location: Amsterdam, The Netherlands
 coordinates: None
 following: 552
-followers: 1851
+followers: 1854
 totaltweets: 1550
 retweetcount: 2
 hashtags: [{&#39;text&#39;: &#39;Damocles&#39;, &#39;indices&#39;: [49, 58]}]
 </pre></div>
 </div>
 </div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>How many followers does &#64;VU_IVM have?
+When was the last time &#64;VU_IVM tweeted/retweeted?</p>
 </div>
 <p>We’ve now learned how to make Twitter API requests to get some information from a specific user. We will continue exploring <code class="docutils literal notranslate"><span class="pre">tweepy</span></code> in the following sections.</p>
 <p>Please note that we can also make changes to our own account such as updating our profile and interacting with other users. If you’re enthusiastic about it, you can find more information <a class="reference external" href="https://www.jcchouinard.com/tweepy-basic-functions/">here</a> .</p>
@@ -1184,6 +1164,10 @@ There are two ways of understanding natural language: Syntactic and Semantic ana
 </div>
 </div>
 </div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>How many different words does &#64;BarackObama use?</p>
+</div>
 <p>We can visualize the data in a plot bar using the following lines.</p>
 <p>Note that a filter is added to only visualize the words that have been used more than 5 times. You can change the count_filter to explore the data.</p>
 <div class="cell docutils container">
@@ -1210,7 +1194,7 @@ There are two ways of understanding natural language: Syntactic and Semantic ana
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/tutorial1_47_0.png" src="../_images/tutorial1_47_0.png" />
+<img alt="../_images/tutorial1_48_0.png" src="../_images/tutorial1_48_0.png" />
 </div>
 </div>
 <p>Have you noticed that many words are prepositions?</p>
@@ -1256,8 +1240,13 @@ There are two ways of understanding natural language: Syntactic and Semantic ana
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/tutorial1_49_0.png" src="../_images/tutorial1_49_0.png" />
+<img alt="../_images/tutorial1_50_0.png" src="../_images/tutorial1_50_0.png" />
 </div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Upload the filtered figure of the most used words by &#64;BarackObama in the last 200 tweets.
+Which is the word that he uses the most? What is the context/tone of his words?</p>
 </div>
 </section>
 <section id="data-retrieval-and-post-processing">
@@ -1266,9 +1255,11 @@ There are two ways of understanding natural language: Syntactic and Semantic ana
 Now it is time to retrieve them by using keywords that can be content in the text such as hashtags.
 That will allow us to analyze what is happening at a specific time and/or location.</p>
 <p>We’ll start using the tweepy Cursor method to look for the latest 10 tweets that contain the word “Earthquake”</p>
+<p><span style="color:red">Colab uses api.search NOT api.search_tweets</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tweets</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">Cursor</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">search</span><span class="p">,</span> <span class="s1">&#39;Earthquake&#39;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">tweet_mode</span><span class="o">=</span><span class="s1">&#39;extended&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Colab uses api.search NOT api.search_tweets</span>
+<span class="n">tweets</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">Cursor</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">search_tweets</span><span class="p">,</span> <span class="s1">&#39;Earthquake&#39;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">tweet_mode</span><span class="o">=</span><span class="s1">&#39;extended&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">list_tweets</span> <span class="o">=</span> <span class="p">[</span><span class="n">tweet</span> <span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">tweets</span><span class="p">]</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">list_tweets</span><span class="p">)</span>
 </pre></div>
@@ -1353,10 +1344,7 @@ That will allow us to analyze what is happening at a specific time and/or locati
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">
-  <div id="df-33746ebf-e9ab-4ad8-bd1b-5381b12e1a56">
-    <div class="colab-df-container">
-      <div>
+<div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -1389,68 +1377,68 @@ That will allow us to analyze what is happening at a specific time and/or locati
   <tbody>
     <tr>
       <th>0</th>
-      <td>iamfatimayh</td>
-      <td>𝗔𝗻𝗴𝗲𝗹 𝗲𝗻𝗲𝗿𝗴𝘆</td>
-      <td>2023-01-19 12:41:13</td>
-      <td>Your heart</td>
-      <td>613</td>
-      <td>1889</td>
-      <td>3922</td>
-      <td>2</td>
-      <td>#Pakistan #Earthquake\n\nReports of an #Earthq...</td>
-      <td>[Pakistan, Earthquake, EarthquakePH, Islamabad...</td>
+      <td>CulxureMag</td>
+      <td>Follow us for your informative arts &amp; culture ...</td>
+      <td>2023-01-20 10:26:20+00:00</td>
+      <td>Bulawayo, Zimbabwe</td>
+      <td>14235</td>
+      <td>24849</td>
+      <td>44749</td>
+      <td>0</td>
+      <td>Rest Easy Queen of Mbira Music Mbuya Stella Ch...</td>
+      <td>[CulxureMag]</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>FahadHaneefMal2</td>
-      <td>Entrepreneur</td>
-      <td>2023-01-19 12:40:45</td>
-      <td>Islamabad, Pakistan</td>
-      <td>627</td>
-      <td>394</td>
-      <td>22126</td>
-      <td>72</td>
-      <td>Just IN:— Massive earthquake jolts Islamabad &amp;...</td>
+      <td>special_em0308</td>
+      <td>プロアスリート羽生結弦選手のファンです⛸️🍀✨全日本2021落ちです❣️\n\nI am a...</td>
+      <td>2023-01-20 10:26:20+00:00</td>
+      <td>日本 東京</td>
+      <td>457</td>
+      <td>559</td>
+      <td>303455</td>
+      <td>48</td>
+      <td>A commercial for notte stellata✨\n\nYuzu: “Han...</td>
       <td>[]</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>AadurshQureshi</td>
-      <td>#IKTiger</td>
-      <td>2023-01-19 12:40:41</td>
-      <td>Punjab</td>
-      <td>2824</td>
-      <td>710</td>
-      <td>94260</td>
-      <td>7</td>
-      <td>#Earthquake tremors jolt Peshawar, parts of KP...</td>
-      <td>[Earthquake, ARYNews]</td>
+      <td>gooden_rd</td>
+      <td>Independent, USMC 0811, Gulf War Vet, Adjectiv...</td>
+      <td>2023-01-20 10:25:20+00:00</td>
+      <td></td>
+      <td>465</td>
+      <td>246</td>
+      <td>860</td>
+      <td>0</td>
+      <td>@Edwin07011 Was there a earthquake or a hurric...</td>
+      <td>[]</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Usman520919202</td>
+      <td>imakarenko26</td>
+      <td>@CreativeScty\nVolunteer, global international...</td>
+      <td>2023-01-20 10:24:49+00:00</td>
       <td></td>
-      <td>2023-01-19 12:40:35</td>
-      <td>Pakistan</td>
-      <td>267</td>
-      <td>2</td>
-      <td>119</td>
-      <td>17</td>
-      <td>Earthquake in Pakistan 🇵🇰!! \nMay allah safe e...</td>
-      <td>[earthquake, earthquake]</td>
+      <td>2603</td>
+      <td>1195</td>
+      <td>2786</td>
+      <td>0</td>
+      <td>@_GlobalCrisis_ @SunWeatherMan @LizaKhromova I...</td>
+      <td>[Suspicious0bservers, ClimateCrisis, earthquak...</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>SaimKhan123678</td>
-      <td>Imranist— Proud Pakistani — Masters in Politic...</td>
-      <td>2023-01-19 12:40:32</td>
-      <td>Attock, Pakistan</td>
-      <td>1278</td>
-      <td>388</td>
-      <td>25403</td>
-      <td>72</td>
-      <td>Just IN:— Massive earthquake jolts Islamabad &amp;...</td>
-      <td>[]</td>
+      <td>notebook_pod</td>
+      <td>Arts Culture Tourism stories from Tokyo, news ...</td>
+      <td>2023-01-20 10:24:37+00:00</td>
+      <td>Tokyo</td>
+      <td>8</td>
+      <td>2</td>
+      <td>19</td>
+      <td>0</td>
+      <td>This year also marks the 100th anniversary of ...</td>
+      <td>[関東大地震]</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1467,149 +1455,73 @@ That will allow us to analyze what is happening at a specific time and/or locati
     </tr>
     <tr>
       <th>95</th>
-      <td>AhmadAwan874</td>
-      <td>?COMPLICATED?</td>
-      <td>2023-01-19 12:31:50</td>
-      <td>Rawalpindi, Pakistan</td>
-      <td>512</td>
-      <td>53</td>
-      <td>804</td>
-      <td>3</td>
-      <td>May Allah Taala keep everyone safe here and li...</td>
+      <td>vicxz_xo</td>
+      <td>📸vicxz_xo</td>
+      <td>2023-01-20 09:44:21+00:00</td>
+      <td>Ldn/Birms</td>
+      <td>875</td>
+      <td>1464</td>
+      <td>32118</td>
+      <td>44</td>
+      <td>i just need tanyel to make casa amor, south af...</td>
       <td>[]</td>
     </tr>
     <tr>
       <th>96</th>
-      <td>laibakhokhar09</td>
-      <td></td>
-      <td>2023-01-19 12:31:46</td>
-      <td></td>
-      <td>278</td>
-      <td>65</td>
-      <td>7609</td>
-      <td>72</td>
-      <td>Just IN:— Massive earthquake jolts Islamabad &amp;...</td>
+      <td>ippatsu_sendai</td>
+      <td>COVID-19｜東京電力福島第一原発事故｜改憲阻止｜地震・津波情報、火山噴火情報、気象情報...</td>
+      <td>2023-01-20 09:44:10+00:00</td>
+      <td>Sendai City Japan</td>
+      <td>52</td>
+      <td>368</td>
+      <td>547043</td>
+      <td>0</td>
+      <td>M 5.0 - near the east coast of Honshu, Japan｜U...</td>
       <td>[]</td>
     </tr>
     <tr>
       <th>97</th>
-      <td>ShameTheDevil</td>
-      <td>'During times of universal deceit, telling the...</td>
-      <td>2023-01-19 12:31:45</td>
-      <td>Kent, England</td>
-      <td>1491</td>
-      <td>1049</td>
-      <td>73923</td>
-      <td>7</td>
-      <td>Dear Mogg\nAm going full throttle Ukraine: tan...</td>
-      <td>[]</td>
+      <td>everyEarthquake</td>
+      <td>Tweeting every earthquake occurrence reported ...</td>
+      <td>2023-01-20 09:44:03+00:00</td>
+      <td>Earth</td>
+      <td>1</td>
+      <td>28912</td>
+      <td>781764</td>
+      <td>0</td>
+      <td>USGS reports a M1.3 earthquake, Alaska Peninsu...</td>
+      <td>[earthquake]</td>
     </tr>
     <tr>
       <th>98</th>
-      <td>Asaysaymen</td>
-      <td>Perpetually tired formerly funny and mostly an...</td>
-      <td>2023-01-19 12:31:41</td>
-      <td>Up-stairs</td>
-      <td>194</td>
-      <td>1114</td>
-      <td>28695</td>
-      <td>1</td>
-      <td>itna numb hogaya hoon ke earthquake bhe nahein...</td>
+      <td>YourAnonRiots</td>
+      <td>In the name of all #digital warriors, we warri...</td>
+      <td>2023-01-20 09:43:59+00:00</td>
+      <td>Digital Activist</td>
+      <td>2302</td>
+      <td>155785</td>
+      <td>727661</td>
+      <td>22</td>
+      <td>Public anger is growing in Japan after a Tokyo...</td>
       <td>[]</td>
     </tr>
     <tr>
       <th>99</th>
-      <td>sweetFaha</td>
-      <td>اِنَّ مَعَ الْعُسْرِ يُسْرًا ؞ بے شک ہر مشکل ک...</td>
-      <td>2023-01-19 12:31:23</td>
-      <td></td>
-      <td>11494</td>
-      <td>17743</td>
-      <td>170104</td>
-      <td>10</td>
-      <td>#Earthquake \nMay Allah blessed on us Ameen \n...</td>
-      <td>[Earthquake]</td>
+      <td>NemeremTTS</td>
+      <td>Reading,inspiring and Ministering</td>
+      <td>2023-01-20 09:43:56+00:00</td>
+      <td>Federal Capital Territory, Nig</td>
+      <td>1903</td>
+      <td>2170</td>
+      <td>77083</td>
+      <td>9</td>
+      <td>I hear HE @PeterObi is from Niger State. Becau...</td>
+      <td>[PeterObiInNiger, earthquake]</td>
     </tr>
   </tbody>
 </table>
 <p>100 rows × 10 columns</p>
-</div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-33746ebf-e9ab-4ad8-bd1b-5381b12e1a56')"
-              title="Convert this dataframe to an interactive table."
-              style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M0 0h24v24H0V0z" fill="none"/>
-    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
-  </svg>
-      </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      flex-wrap:wrap;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-      <script>
-        const buttonEl =
-          document.querySelector('#df-33746ebf-e9ab-4ad8-bd1b-5381b12e1a56 button.colab-df-convert');
-        buttonEl.style.display =
-          google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-        async function convertToInteractive(key) {
-          const element = document.querySelector('#df-33746ebf-e9ab-4ad8-bd1b-5381b12e1a56');
-          const dataTable =
-            await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                     [key], {});
-          if (!dataTable) return;
-
-          const docLinkHtml = 'Like what you see? Visit the ' +
-            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-            + ' to learn more about interactive tables.';
-          element.innerHTML = '';
-          dataTable['output_type'] = 'display_data';
-          await google.colab.output.renderOutput(dataTable, element);
-          const docLink = document.createElement('div');
-          docLink.innerHTML = docLinkHtml;
-          element.appendChild(docLink);
-        }
-      </script>
-    </div>
-  </div>
-</div></div>
+</div></div></div>
 </div>
 <p>Please take a minute to look at the information about the location.</p>
 <p>As you may notice, not all the users share the location, and some of the users that do share it, do not necessarily use a real location.</p>
@@ -1690,14 +1602,20 @@ That will allow us to analyze what is happening at a specific time and/or locati
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 tweets contain the coordinates out of the 100 retrieved tweets
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8 tweets contain the coordinates out of the 100 retrieved tweets
 </pre></div>
 </div>
 </div>
 </div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>How many tweets contain the coordinates?
+Mention at least one advantage and one disadvantage of not sharing the coordinates.</p>
+</div>
 <p>Unfortunately not all (or none) of the users share the real location nor allow the geolocation for the coordinates.</p>
 <p>Therefore, when we want to analyze a certain region we can’t use all the tweets and we need to further filter the information.</p>
 <p>The following function will filter the tweets and only save the tweets that contain coordinates:</p>
+<p><span style="color:red">Colab uses api.search NOT api.search_tweets</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scrape</span><span class="p">(</span><span class="n">words</span><span class="p">,</span> <span class="n">numtweet</span><span class="p">):</span>
@@ -1721,7 +1639,8 @@ That will allow us to analyze what is happening at a specific time and/or locati
         <span class="c1"># through twitter for the required tweets.</span>
         <span class="c1"># The number of tweets can be</span>
         <span class="c1"># restricted using .items(number of tweets)</span>
-        <span class="n">tweets</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">Cursor</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">search</span><span class="p">,</span>
+ <span class="c1"># Colab uses api.search NOT api.search_tweets       </span>
+        <span class="n">tweets</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">Cursor</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">search_tweets</span><span class="p">,</span>
                                <span class="n">words</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
                                <span class="n">tweet_mode</span><span class="o">=</span><span class="s1">&#39;extended&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">(</span><span class="n">numtweet</span><span class="p">)</span>
  
@@ -1793,12 +1712,12 @@ That will allow us to analyze what is happening at a specific time and/or locati
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-25-3ed517c72264&gt;:79: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\mfo212\AppData\Local\Temp\ipykernel_21428\1345555878.py:80: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
   db[&#39;X&#39;][i] = db.Coordinates.loc[i][&#39;coordinates&#39;][0]
-&lt;ipython-input-25-3ed517c72264&gt;:80: SettingWithCopyWarning: 
+C:\Users\mfo212\AppData\Local\Temp\ipykernel_21428\1345555878.py:81: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
@@ -1900,12 +1819,13 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-27-5d71efa55f22&gt;:66: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Unexpected parameter: id
+C:\Users\mfo212\AppData\Local\Temp\ipykernel_21428\4129788975.py:66: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
   db[&#39;X&#39;][i] = db.Coordinates.loc[i][&#39;coordinates&#39;][0]
-&lt;ipython-input-27-5d71efa55f22&gt;:67: SettingWithCopyWarning: 
+C:\Users\mfo212\AppData\Local\Temp\ipykernel_21428\4129788975.py:67: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
@@ -1940,10 +1860,10 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f857301b6d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: title={&#39;center&#39;: &#39;Some earthquakes reported on Twitter&#39;}&gt;
 </pre></div>
 </div>
-<img alt="../_images/tutorial1_78_1.png" src="../_images/tutorial1_78_1.png" />
+<img alt="../_images/tutorial1_82_1.png" src="../_images/tutorial1_82_1.png" />
 </div>
 </div>
 <p>Have you noticed that the text contains information about the magnitude of earthquakes?</p>
@@ -1963,11 +1883,42 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-31-aca58feae393&gt;:6: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\mfo212\AppData\Local\Temp\ipykernel_21428\2269660147.py:6: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
   dbg[&#39;magnitude&#39;][i] = Mag
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Where and when happen the earthquake with the highest magnitude? Which is its magnitude?</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dbg</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dbg</span><span class="p">[</span><span class="s1">&#39;magnitude&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>username                                          everyEarthquake
+description     Tweeting every earthquake occurrence reported ...
+date_time                               2023-01-20 09:55:03+00:00
+location                                                    Earth
+Coordinates     {&#39;type&#39;: &#39;Point&#39;, &#39;coordinates&#39;: [-104.1683558...
+X                                                     -104.168356
+Y                                                       31.564361
+following                                                       1
+followers                                                   28912
+totaltweets                                                781765
+retweetcount                                                    0
+text            USGS reports a M2 earthquake, 45 km NW of Toya...
+hashtags                                             [earthquake]
+geometry                         POINT (-104.1683558 31.56436094)
+magnitude                                                     2.0
+Name: 5, dtype: object
 </pre></div>
 </div>
 </div>
@@ -1992,14 +1943,17 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f8572c8f400&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot: title={&#39;center&#39;: &#39;Some earthquakes reported on Twitter&#39;}&gt;
 </pre></div>
 </div>
-<img alt="../_images/tutorial1_82_1.png" src="../_images/tutorial1_82_1.png" />
+<img alt="../_images/tutorial1_88_1.png" src="../_images/tutorial1_88_1.png" />
 </div>
 </div>
 <p>We can have a look at the map from the <a class="reference external" href="https://earthquake.usgs.gov/earthquakes/map/?extent=-68.0733,-194.23828&amp;extent=77.15716,199.51172&amp;listOnlyShown=true">USGS website</a>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p>Do you see differences?</p>
+</div>
 <p>As we have mentioned, users do not always share the location or the coordinates.</p>
 <p>However, there are other applications where we can still use the tweets without the location.</p>
 <div class="admonition tip">
@@ -2016,22 +1970,16 @@ The database contains tweets about floods located in Texas from 30/07/2014 to 15
 <p>We’re going to use the file ‘tweets.jsonl’, make sure to save it in the same folder than the notebook.</p>
 </div>
 <p>We can read the data using the following code:</p>
+<p><span style="color:red">Needed for Colab: # !gdown 11QfCIMHOjcgNvWMFsZTk5btXgYiRCXRq</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>gdown<span class="w"> </span>11QfCIMHOjcgNvWMFsZTk5btXgYiRCXRq
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Needed for Colab:</span>
+<span class="c1"># !gdown 11QfCIMHOjcgNvWMFsZTk5btXgYiRCXRq</span>
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;tweets.jsonl&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">tweets</span> <span class="o">=</span> <span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">tweets</span><span class="p">:</span>
     <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading...
-From: https://drive.google.com/uc?id=11QfCIMHOjcgNvWMFsZTk5btXgYiRCXRq
-To: /content/tweets.jsonl
-100% 103M/103M [00:00&lt;00:00, 191MB/s] 
 </pre></div>
 </div>
 </div>
@@ -2088,13 +2036,13 @@ stevie ray vaughan - texas flood (long version!): http://t.co/yvsjloshfh
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/tutorial1_92_0.png" src="../_images/tutorial1_92_0.png" />
+<img alt="../_images/tutorial1_99_0.png" src="../_images/tutorial1_99_0.png" />
 </div>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Potential question about seasonality (‘summer floods’)</p>
-<p>Potential question about the ‘big’peak on 2017 -&gt; Hurricane Harvey</p>
+<p>When does the high peak usually happen each year? What could be a potential explanation for the pattern?</p>
+<p>When does the bigger peak occur? What was the cause of it?</p>
 </div>
 <p>In Natural Language Process (NLP), semantic analysis is the process of understanding the meaning and interpretation of words.</p>
 <p>This time we can use keywords to filter the tweets, identifying negative or positive meanings.</p>
@@ -2118,7 +2066,7 @@ stevie ray vaughan - texas flood (long version!): http://t.co/yvsjloshfh
 668681
 </pre></div>
 </div>
-<img alt="../_images/tutorial1_95_1.png" src="../_images/tutorial1_95_1.png" />
+<img alt="../_images/tutorial1_102_1.png" src="../_images/tutorial1_102_1.png" />
 </div>
 </div>
 <div class="admonition tip">
@@ -2146,7 +2094,7 @@ stevie ray vaughan - texas flood (long version!): http://t.co/yvsjloshfh
 36418
 </pre></div>
 </div>
-<img alt="../_images/tutorial1_98_1.png" src="../_images/tutorial1_98_1.png" />
+<img alt="../_images/tutorial1_105_1.png" src="../_images/tutorial1_105_1.png" />
 </div>
 </div>
 <div class="admonition tip">
@@ -2195,7 +2143,7 @@ stevie ray vaughan - texas flood (long version!): http://t.co/yvsjloshfh
     <a class='right-next' id="next-link" href="tutorial2.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tutorial 2: Social media &amp; valuation of landscapes</p>
+        <p class="prev-next-title">Tutorial 2: Social Media &amp; Valuation of Landscapes</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
