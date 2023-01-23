@@ -263,7 +263,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../week6/tutorial1.html">
-   Week 6
+   Tutorial 1: Social Media and Natural Language Processing
   </a>
  </li>
  <li class="toctree-l1">
@@ -518,37 +518,42 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introducing-the-packages">
-   1.Introducing the packages
+   1. Introducing the packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importing-the-data">
+   2. Importing the data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dealing-with-missing-values">
-   2.Dealing with missing values
+   3. Dealing with missing values
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#training-the-random-forest-model">
-   3.Training the random forest model
+   4. Training the random forest model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#prediction-with-the-random-forest-model">
-   4.Prediction with the random forest model
+   5. Prediction with the random forest model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#evaluate-performance">
-   5.Evaluate performance
+   6. Evaluate performance
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#parameter-tuning">
-   6.Parameter tuning
+   7. Parameter tuning
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#feature-importance">
-   7. Feature importance
+   8. Feature importance
   </a>
  </li>
 </ul>
@@ -582,37 +587,42 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introducing-the-packages">
-   1.Introducing the packages
+   1. Introducing the packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importing-the-data">
+   2. Importing the data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dealing-with-missing-values">
-   2.Dealing with missing values
+   3. Dealing with missing values
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#training-the-random-forest-model">
-   3.Training the random forest model
+   4. Training the random forest model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#prediction-with-the-random-forest-model">
-   4.Prediction with the random forest model
+   5. Prediction with the random forest model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#evaluate-performance">
-   5.Evaluate performance
+   6. Evaluate performance
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#parameter-tuning">
-   6.Parameter tuning
+   7. Parameter tuning
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#feature-importance">
-   7. Feature importance
+   8. Feature importance
   </a>
  </li>
 </ul>
@@ -638,25 +648,38 @@ code blocks and their outputs in your book.</p>
 <hr>
 <div class="toc"><ul class="toc-item">
 <li><span><a href="#1.-Introducing the packages" data-toc-modified-id="1.-Introducing-the-packages-2">1. Introducing the packages</a></span></li>
-<li><span><a href="#2.-" data-toc-modified-id="2.-Dealing-with-missing-values-3">2. Dealing with missing values</a></span></li>
-<li><span><a href="#3.-" data-toc-modified-id="3.-Training-the-random-forest-model-4">3. Training the random forest model </a></span></li>
-<li><span><a href="#4.-" data-toc-modified-id="4.-Prediction-with-the-random-forest-model-5">4. Prediction with the random forest model</a></span></li>
-<li><span><a href="#5.-" data-toc-modified-id="5.-Evaluate-performance-6">5. Evaluate performance</a></span></li>
-<li><span><a href="#6.-" data-toc-modified-id="4.-Parameter-tuning-5">6. Parameter tuning</a></span></li>
-<li><span><a href="#7.-" data-toc-modified-id="5.-Feature-importance-6">7. Feature importance</a></span></li></ul></div></section>
+<li><span><a href="#2.-" data-toc-modified-id="2.-Dealing-with-missing-values-3">2. Importing the data</a></span></li>
+<li><span><a href="#3.-" data-toc-modified-id="2.-Dealing-with-missing-values-3">4. Dealing with missing values</a></span></li>
+<li><span><a href="#4.-" data-toc-modified-id="3.-Training-the-random-forest-model-4">5. Training the random forest model </a></span></li>
+<li><span><a href="#5.-" data-toc-modified-id="4.-Prediction-with-the-random-forest-model-5">6. Prediction with the random forest model</a></span></li>
+<li><span><a href="#6.-" data-toc-modified-id="5.-Evaluate-performance-6">7. Evaluate performance</a></span></li>
+<li><span><a href="#7.-" data-toc-modified-id="4.-Parameter-tuning-5">8. Parameter tuning</a></span></li>
+<li><span><a href="#8.-" data-toc-modified-id="5.-Feature-importance-6">9. Feature importance</a></span></li></ul></div></section>
 <section id="learning-objectives">
 <h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
 <hr><ul class="simple">
-<li><p>.Learn how to estimate a random forest model</p></li>
-<li><p>.Deal with missing values in the model</p></li>
-<li><p>.Evaluate performance of the random forest model</p></li>
-<li><p>.Tuning the hyperparameters</p></li>
+<li><p>Learn how to estimate a random forest model.</p></li>
+<li><p>Deal with missing values in the model.</p></li>
+<li><p>Evaluate performance of the random forest model.</p></li>
+<li><p>Tuning the hyperparameters.</p></li>
 </ul>
 </section>
 <section id="introducing-the-packages">
-<h2>1.Introducing the packages<a class="headerlink" href="#introducing-the-packages" title="Permalink to this headline">#</a></h2>
+<h2>1. Introducing the packages<a class="headerlink" href="#introducing-the-packages" title="Permalink to this headline">#</a></h2>
 <hr><p>Within this tutorial, we are going to make use of the following packages:</p>
+<p><a class="reference external" href="https://scikit-learn.org/stable/index.html"><strong>sklearn</strong></a> is an open source machine learning library that supports supervised and unsupervised learning. It also provides various tools for model fitting, data preprocessing, model selection, model evaluation, and many other utilities.</p>
+<p><a class="reference external" href="https://seaborn.pydata.org/index.html"><strong>seaborn</strong></a> is a Python data visualization library based on matplotlib. It provides a high-level interface for drawing attractive and informative statistical graphics.</p>
+<p><a class="reference external" href="https://numpy.org/doc/stable/"><strong>NumPy</strong></a> is a Python library that provides a multidimensional array object, various derived objects, and an assortment of routines for fast operations on arrays.</p>
+<p><a class="reference external" href="https://pandas.pydata.org/docs/"><strong>Pandas</strong></a> is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python programming language.</p>
 <p><em>We will first need to install these packages in the cell below. Uncomment them to make sure we can pip install them</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>seaborn
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we will import these packages in the cell below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
@@ -674,7 +697,10 @@ code blocks and their outputs in your book.</p>
 </div>
 </div>
 </div>
-<p>Read the data. It is the data we produced in the previous tutorial.</p>
+</section>
+<section id="importing-the-data">
+<h2>2. Importing the data<a class="headerlink" href="#importing-the-data" title="Permalink to this headline">#</a></h2>
+<hr><p>Let’s start again with reading the data. It is the dataset that we produced in the previous <a class="reference external" href="https://elcok.github.io/BigData_AED/week2/tutorial1.html">Tutorial</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;C:\Users\mtn308\Documents\Bigdatacourse\usadataforweek2tut2.csv&quot;</span><span class="p">)</span>
@@ -682,7 +708,7 @@ code blocks and their outputs in your book.</p>
 </div>
 </div>
 </div>
-<p>Take a look at the dataset</p>
+<p>And let’s have a look at the data once more:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -697,12 +723,22 @@ code blocks and their outputs in your book.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">data1</span> <span class="o">=</span> <span class="n">data1</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;data1&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 <p>QUESTION: Why do we only want to have one person per household in our random forest model?
 ANSWER</p>
 </section>
 <section id="dealing-with-missing-values">
-<h2>2.Dealing with missing values<a class="headerlink" href="#dealing-with-missing-values" title="Permalink to this headline">#</a></h2>
+<h2>3. Dealing with missing values<a class="headerlink" href="#dealing-with-missing-values" title="Permalink to this headline">#</a></h2>
 <hr>
 <p>In the following lines of code we try to estimate a random forest model, but we run into an error because we have missing values in the dataset.</p>
 <p>We don’t estimate the random forest model on the entire dataset, but we split the dataset in a training and testing sample, because we want to train the model on the training dataset and to test model performance on the test dataset.</p>
@@ -785,7 +821,7 @@ ANSWER</p>
 </div>
 </section>
 <section id="training-the-random-forest-model">
-<h2>3.Training the random forest model<a class="headerlink" href="#training-the-random-forest-model" title="Permalink to this headline">#</a></h2>
+<h2>4. Training the random forest model<a class="headerlink" href="#training-the-random-forest-model" title="Permalink to this headline">#</a></h2>
 <hr><p>Now we can actually estimate the random forest model. Note that we use training and estimation of the random forest model interchangebly. In machine learning, we usually talk about training a model, while in statistics/econometrics, we would say estimating a model, but both words mean essentially the same.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -824,7 +860,7 @@ ANSWER</p>
 <p>QUESTION: Interpret what you see in the decision tree. Hint: Explain the terms squared_error, samples and value in the tree.</p>
 </section>
 <section id="prediction-with-the-random-forest-model">
-<h2>4.Prediction with the random forest model<a class="headerlink" href="#prediction-with-the-random-forest-model" title="Permalink to this headline">#</a></h2>
+<h2>5. Prediction with the random forest model<a class="headerlink" href="#prediction-with-the-random-forest-model" title="Permalink to this headline">#</a></h2>
 <hr><p>In the next line of code, we use the trained random forest model to predict the dependent variable of the testing dataset. We use the function predict of the random forest regressor.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -835,7 +871,7 @@ ANSWER</p>
 </div>
 </section>
 <section id="evaluate-performance">
-<h2>5.Evaluate performance<a class="headerlink" href="#evaluate-performance" title="Permalink to this headline">#</a></h2>
+<h2>6. Evaluate performance<a class="headerlink" href="#evaluate-performance" title="Permalink to this headline">#</a></h2>
 <hr><p>Using the predicted dependent variable, we can evaluate the performance of the model. We first do this visually by plotting the dependent variable of the testing dataset together with the predicted values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -877,7 +913,7 @@ ANSWER</p>
 </div>
 </section>
 <section id="parameter-tuning">
-<h2>6.Parameter tuning<a class="headerlink" href="#parameter-tuning" title="Permalink to this headline">#</a></h2>
+<h2>7. Parameter tuning<a class="headerlink" href="#parameter-tuning" title="Permalink to this headline">#</a></h2>
 <hr><p>The R2 score is pretty low, so we want to try other hyperparameters. We will change the depth and the number of trees in the forest. In the code below, we run a for loop that tries 3 different n_estimators and 3 different depths, so we estimate 9 different random forest models. We save the mse and r2 of each model in a list, i.e. list_mse and list_r2.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -912,7 +948,7 @@ If yes, you can copy the code from the previous cell and change the numbers over
 </div>
 </section>
 <section id="feature-importance">
-<h2>7. Feature importance<a class="headerlink" href="#feature-importance" title="Permalink to this headline">#</a></h2>
+<h2>8. Feature importance<a class="headerlink" href="#feature-importance" title="Permalink to this headline">#</a></h2>
 <hr><p>Next we want to see which variables have the most predictive value for ENERGYCOSTS. We can check the importance of each feature in the random forest model by calling rf.feature_importances_. We make a horizontal barplot to see the importance of each feature. You can fill in the hyperparameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -926,8 +962,6 @@ If yes, you can copy the code from the previous cell and change the numbers over
 </div>
 </div>
 <p>QUESTION: According to the plot, which variables, also called features, are most important in the random forest? Should we leave out variables from the model. Hint: Not all variables in the model are meaningful, are they?</p>
-<p>There is a lot more that you can do with outputs (such as including interactive outputs)
-with your book. For more information about this, see <a class="reference external" href="https://jupyterbook.org">the Jupyter Book documentation</a></p>
 </section>
 </section>
 

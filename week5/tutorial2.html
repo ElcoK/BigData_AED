@@ -263,7 +263,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../week6/tutorial1.html">
-   Week 6
+   Tutorial 1: Social Media and Natural Language Processing
   </a>
  </li>
  <li class="toctree-l1">
@@ -712,9 +712,225 @@ Make sure that you save this file before you continue, else you will lose everyt
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#installing the python packages required</span>
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>regionmask
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>statistics
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>os-sys
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>xarray
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>geopandas
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Collecting regionmask
+  Downloading regionmask-0.9.0-py3-none-any.whl (59 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">59.3/59.3 KB</span> <span class=" -Color -Color-Red">1.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting geopandas&gt;=0.7
+  Downloading geopandas-0.12.2-py3-none-any.whl (1.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.1/1.1 MB</span> <span class=" -Color -Color-Red">17.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: setuptools&gt;=40.4 in /usr/local/lib/python3.8/dist-packages (from regionmask) (57.4.0)
+Collecting rasterio&gt;=1.1
+  Downloading rasterio-1.3.4-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (20.9 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">20.9/20.9 MB</span> <span class=" -Color -Color-Red">21.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: packaging&gt;=20.0 in /usr/local/lib/python3.8/dist-packages (from regionmask) (21.3)
+Requirement already satisfied: numpy&gt;=1.17 in /usr/local/lib/python3.8/dist-packages (from regionmask) (1.21.6)
+Requirement already satisfied: pooch&gt;=1.2 in /usr/local/lib/python3.8/dist-packages (from regionmask) (1.6.0)
+Requirement already satisfied: xarray&gt;=0.15 in /usr/local/lib/python3.8/dist-packages (from regionmask) (2022.12.0)
+Requirement already satisfied: shapely&gt;=1.7 in /usr/local/lib/python3.8/dist-packages (from regionmask) (2.0.0)
+Collecting fiona&gt;=1.8
+  Downloading Fiona-1.8.22-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">16.6/16.6 MB</span> <span class=" -Color -Color-Red">9.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting pyproj&gt;=2.6.1.post1
+  Downloading pyproj-3.4.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (7.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">7.8/7.8 MB</span> <span class=" -Color -Color-Red">36.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: pandas&gt;=1.0.0 in /usr/local/lib/python3.8/dist-packages (from geopandas&gt;=0.7-&gt;regionmask) (1.3.5)
+Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /usr/local/lib/python3.8/dist-packages (from packaging&gt;=20.0-&gt;regionmask) (3.0.9)
+Requirement already satisfied: requests&gt;=2.19.0 in /usr/local/lib/python3.8/dist-packages (from pooch&gt;=1.2-&gt;regionmask) (2.25.1)
+Requirement already satisfied: appdirs&gt;=1.3.0 in /usr/local/lib/python3.8/dist-packages (from pooch&gt;=1.2-&gt;regionmask) (1.4.4)
+Collecting affine
+  Downloading affine-2.4.0-py3-none-any.whl (15 kB)
+Collecting click-plugins
+  Downloading click_plugins-1.1.1-py2.py3-none-any.whl (7.5 kB)
+Collecting cligj&gt;=0.5
+  Downloading cligj-0.7.2-py3-none-any.whl (7.1 kB)
+Collecting snuggs&gt;=1.4.1
+  Downloading snuggs-1.4.7-py3-none-any.whl (5.4 kB)
+Requirement already satisfied: click&gt;=4.0 in /usr/local/lib/python3.8/dist-packages (from rasterio&gt;=1.1-&gt;regionmask) (7.1.2)
+Requirement already satisfied: attrs in /usr/local/lib/python3.8/dist-packages (from rasterio&gt;=1.1-&gt;regionmask) (22.2.0)
+Requirement already satisfied: certifi in /usr/local/lib/python3.8/dist-packages (from rasterio&gt;=1.1-&gt;regionmask) (2022.12.7)
+Requirement already satisfied: six&gt;=1.7 in /usr/local/lib/python3.8/dist-packages (from fiona&gt;=1.8-&gt;geopandas&gt;=0.7-&gt;regionmask) (1.15.0)
+Collecting munch
+  Downloading munch-2.5.0-py2.py3-none-any.whl (10 kB)
+Requirement already satisfied: pytz&gt;=2017.3 in /usr/local/lib/python3.8/dist-packages (from pandas&gt;=1.0.0-&gt;geopandas&gt;=0.7-&gt;regionmask) (2022.7)
+Requirement already satisfied: python-dateutil&gt;=2.7.3 in /usr/local/lib/python3.8/dist-packages (from pandas&gt;=1.0.0-&gt;geopandas&gt;=0.7-&gt;regionmask) (2.8.2)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /usr/local/lib/python3.8/dist-packages (from requests&gt;=2.19.0-&gt;pooch&gt;=1.2-&gt;regionmask) (1.24.3)
+Requirement already satisfied: chardet&lt;5,&gt;=3.0.2 in /usr/local/lib/python3.8/dist-packages (from requests&gt;=2.19.0-&gt;pooch&gt;=1.2-&gt;regionmask) (4.0.0)
+Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/local/lib/python3.8/dist-packages (from requests&gt;=2.19.0-&gt;pooch&gt;=1.2-&gt;regionmask) (2.10)
+Installing collected packages: snuggs, pyproj, munch, cligj, click-plugins, affine, rasterio, fiona, geopandas, regionmask
+Successfully installed affine-2.4.0 click-plugins-1.1.1 cligj-0.7.2 fiona-1.8.22 geopandas-0.12.2 munch-2.5.0 pyproj-3.4.1 rasterio-1.3.4 regionmask-0.9.0 snuggs-1.4.7
+Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Collecting statistics
+  Downloading statistics-1.0.3.5.tar.gz (8.3 kB)
+  Preparing metadata (setup.py) ... ?25l?25hdone
+Requirement already satisfied: docutils&gt;=0.3 in /usr/local/lib/python3.8/dist-packages (from statistics) (0.16)
+Building wheels for collected packages: statistics
+  Building wheel for statistics (setup.py) ... ?25l?25hdone
+  Created wheel for statistics: filename=statistics-1.0.3.5-py3-none-any.whl size=7453 sha256=0bd9a51174e8cc44bb053a5b4db6e32435da539400ddac3d9be16daf6be7d076
+  Stored in directory: /root/.cache/pip/wheels/36/4b/c7/6af97584669b756c0d60c5ff05d5fb1f533a4e4d96e5ee92b9
+Successfully built statistics
+Installing collected packages: statistics
+Successfully installed statistics-1.0.3.5
+Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Collecting os-sys
+  Downloading os_sys-2.1.4-py3-none-any.whl (15.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">15.6/15.6 MB</span> <span class=" -Color -Color-Red">57.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: six in /usr/local/lib/python3.8/dist-packages (from os-sys) (1.15.0)
+Collecting PyInstaller
+  Downloading pyinstaller-5.7.0-py3-none-manylinux2014_x86_64.whl (649 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">649.9/649.9 KB</span> <span class=" -Color -Color-Red">57.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting os-sys-php
+  Downloading os_sys_php-2019.10.13-py3-none-any.whl (38.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">38.6/38.6 MB</span> <span class=" -Color -Color-Red">13.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: tqdm in /usr/local/lib/python3.8/dist-packages (from os-sys) (4.64.1)
+Collecting cefpython3
+  Downloading cefpython3-66.0-py2.py3-none-manylinux1_x86_64.whl (79.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">79.6/79.6 MB</span> <span class=" -Color -Color-Red">11.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: psutil in /usr/local/lib/python3.8/dist-packages (from os-sys) (5.4.8)
+Collecting auto-py-to-exe
+  Downloading auto_py_to_exe-2.27.0-py2.py3-none-any.whl (102 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">102.5/102.5 KB</span> <span class=" -Color -Color-Red">11.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting mysql-connector
+  Downloading mysql-connector-2.2.9.tar.gz (11.9 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">11.9/11.9 MB</span> <span class=" -Color -Color-Red">84.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h  Preparing metadata (setup.py) ... ?25l?25hdone
+Collecting selenium
+  Downloading selenium-4.8.0-py3-none-any.whl (6.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">6.3/6.3 MB</span> <span class=" -Color -Color-Red">78.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting python-dateutil&lt;2.8,&gt;=2.7
+  Downloading python_dateutil-2.7.5-py2.py3-none-any.whl (225 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">225.7/225.7 KB</span> <span class=" -Color -Color-Red">24.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting extract-zip
+  Downloading extract_zip-1.0.0-py3-none-any.whl (2.6 kB)
+Requirement already satisfied: matplotlib in /usr/local/lib/python3.8/dist-packages (from os-sys) (3.2.2)
+Requirement already satisfied: pytest in /usr/local/lib/python3.8/dist-packages (from os-sys) (3.6.4)
+Collecting pypiwin32
+  Downloading pypiwin32-223-py3-none-any.whl (1.7 kB)
+Requirement already satisfied: numpy in /usr/local/lib/python3.8/dist-packages (from os-sys) (1.21.6)
+Requirement already satisfied: nltk&lt;4.0,&gt;=3.2 in /usr/local/lib/python3.8/dist-packages (from os-sys) (3.7)
+Requirement already satisfied: tornado in /usr/local/lib/python3.8/dist-packages (from os-sys) (6.0.4)
+Collecting pythonGui
+  Downloading pythonGUI-0.0.2-py3-none-any.whl (23 kB)
+Collecting mathparse&lt;0.2,&gt;=0.1
+  Downloading mathparse-0.1.2-py3-none-any.whl (7.2 kB)
+Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.8/dist-packages (from os-sys) (4.6.3)
+Collecting pygubu
+  Downloading pygubu-0.29-py3-none-any.whl (113 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">114.0/114.0 KB</span> <span class=" -Color -Color-Red">13.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: requests in /usr/local/lib/python3.8/dist-packages (from os-sys) (2.25.1)
+Collecting pyvalid
+  Downloading pyvalid-1.0.4-py3-none-any.whl (11 kB)
+Requirement already satisfied: Send2Trash in /usr/local/lib/python3.8/dist-packages (from os-sys) (1.8.0)
+Collecting wifi
+  Downloading wifi-0.3.8.tar.gz (11 kB)
+  Preparing metadata (setup.py) ... ?25l?25hdone
+Collecting wmi
+  Downloading WMI-1.5.1-py2.py3-none-any.whl (28 kB)
+Collecting jupyter
+  Downloading jupyter-1.0.0-py2.py3-none-any.whl (2.7 kB)
+Collecting tuspy
+  Downloading tuspy-1.0.0.tar.gz (11 kB)
+  Preparing metadata (setup.py) ... ?25l?25hdone
+Collecting Django
+  Downloading Django-4.1.5-py3-none-any.whl (8.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">8.1/8.1 MB</span> <span class=" -Color -Color-Red">69.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting netifaces
+  Downloading netifaces-0.11.0-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.whl (33 kB)
+Collecting pynput
+  Downloading pynput-1.7.6-py2.py3-none-any.whl (89 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">89.2/89.2 KB</span> <span class=" -Color -Color-Red">9.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: sqlparse in /usr/local/lib/python3.8/dist-packages (from os-sys) (0.4.3)
+Collecting requests-download
+  Downloading requests_download-0.1.2-py2.py3-none-any.whl (5.5 kB)
+Collecting sqlalchemy&lt;1.4,&gt;=1.3
+  Downloading SQLAlchemy-1.3.24-cp38-cp38-manylinux2010_x86_64.whl (1.3 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">1.3/1.3 MB</span> <span class=" -Color -Color-Red">34.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting spacy==2.2.0
+  Downloading spacy-2.2.0.tar.gz (5.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">5.8/5.8 MB</span> <span class=" -Color -Color-Red">88.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h  Installing build dependencies ... ?25l?25hdone
+  Getting requirements to build wheel ... ?25l?25hdone
+  Installing backend dependencies ... ?25l?25hdone
+  Preparing metadata (pyproject.toml) ... ?25l?25hdone
+Collecting os-sys
+  Downloading os_sys-2.1.3-py3-none-any.whl (15.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">15.5/15.5 MB</span> <span class=" -Color -Color-Red">17.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h  Downloading os_sys-2.1.2-py3-none-any.whl (15.4 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">15.4/15.4 MB</span> <span class=" -Color -Color-Red">73.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h  Downloading os_sys-2.1.1-py3-none-any.whl (15.4 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">15.4/15.4 MB</span> <span class=" -Color -Color-Red">61.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h  Downloading os_sys-2.1.0-py3-none-any.whl (15.9 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">15.9/15.9 MB</span> <span class=" -Color -Color-Red">60.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h  Downloading os_sys-2.0.9-py3-none-any.whl (15.4 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">15.4/15.4 MB</span> <span class=" -Color -Color-Red">65.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h  Downloading os_sys-2.0.8-py3-none-any.whl (15.4 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">15.4/15.4 MB</span> <span class=" -Color -Color-Red">62.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h  Downloading os_sys-2.0.7-py3-none-any.whl (14.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">14.2/14.2 MB</span> <span class=" -Color -Color-Red">17.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h  Downloading os_sys-2.0.6-py3-none-any.whl (14.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">14.2/14.2 MB</span> <span class=" -Color -Color-Red">66.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h  Downloading os_sys-2.0.5-py3-none-any.whl (12.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">12.2/12.2 MB</span> <span class=" -Color -Color-Red">66.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: spacy in /usr/local/lib/python3.8/dist-packages (from os-sys) (3.4.4)
+  Downloading os_sys-2.0.4-py3-none-any.whl (50.9 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">50.9/50.9 MB</span> <span class=" -Color -Color-Red">16.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting spacy&lt;2.2,&gt;=2.1
+  Downloading spacy-2.1.9.tar.gz (30.7 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">30.7/30.7 MB</span> <span class=" -Color -Color-Red">41.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h  Installing build dependencies ... ?25l?25hdone
+  Getting requirements to build wheel ... ?25l?25hdone
+  Preparing metadata (pyproject.toml) ... ?25l?25hdone
+Collecting webview
+  Downloading webview-0.1.5.tar.gz (18 kB)
+  <span class=" -Color -Color-Bold -Color-Bold-Red">error</span>: <span class=" -Color -Color-Bold">subprocess-exited-with-error</span>
+  
+  <span class=" -Color -Color-Red">×</span> <span class=" -Color -Color-Green">python setup.py egg_info</span> did not run successfully.
+  <span class=" -Color -Color-Red">│</span> exit code: <span class=" -Color -Color-Bold -Color-Bold-Cyan">1</span>
+  <span class=" -Color -Color-Red">╰─&gt;</span> See above for output.
+  
+  <span class=" -Color -Color-Bold -Color-Bold-Magenta">note</span>: This error originates from a subprocess, and is likely not a problem with pip.
+  Preparing metadata (setup.py) ... ?25l?25herror
+<span class=" -Color -Color-Bold -Color-Bold-Red">error</span>: <span class=" -Color -Color-Bold">metadata-generation-failed</span>
+
+<span class=" -Color -Color-Red">×</span> Encountered error while generating package metadata.
+<span class=" -Color -Color-Red">╰─&gt;</span> See above for output.
+
+<span class=" -Color -Color-Bold -Color-Bold-Magenta">note</span>: This is an issue with the package mentioned above, not pip.
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">hint</span>: See above for details.
+Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Requirement already satisfied: xarray in /usr/local/lib/python3.8/dist-packages (2022.12.0)
+Requirement already satisfied: numpy&gt;=1.20 in /usr/local/lib/python3.8/dist-packages (from xarray) (1.21.6)
+Requirement already satisfied: pandas&gt;=1.3 in /usr/local/lib/python3.8/dist-packages (from xarray) (1.3.5)
+Requirement already satisfied: packaging&gt;=21.3 in /usr/local/lib/python3.8/dist-packages (from xarray) (21.3)
+Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /usr/local/lib/python3.8/dist-packages (from packaging&gt;=21.3-&gt;xarray) (3.0.9)
+Requirement already satisfied: pytz&gt;=2017.3 in /usr/local/lib/python3.8/dist-packages (from pandas&gt;=1.3-&gt;xarray) (2022.7)
+Requirement already satisfied: python-dateutil&gt;=2.7.3 in /usr/local/lib/python3.8/dist-packages (from pandas&gt;=1.3-&gt;xarray) (2.8.2)
+Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.8/dist-packages (from python-dateutil&gt;=2.7.3-&gt;pandas&gt;=1.3-&gt;xarray) (1.15.0)
+Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
+Requirement already satisfied: geopandas in /usr/local/lib/python3.8/dist-packages (0.12.2)
+Requirement already satisfied: shapely&gt;=1.7 in /usr/local/lib/python3.8/dist-packages (from geopandas) (2.0.0)
+Requirement already satisfied: pandas&gt;=1.0.0 in /usr/local/lib/python3.8/dist-packages (from geopandas) (1.3.5)
+Requirement already satisfied: fiona&gt;=1.8 in /usr/local/lib/python3.8/dist-packages (from geopandas) (1.8.22)
+Requirement already satisfied: pyproj&gt;=2.6.1.post1 in /usr/local/lib/python3.8/dist-packages (from geopandas) (3.4.1)
+Requirement already satisfied: packaging in /usr/local/lib/python3.8/dist-packages (from geopandas) (21.3)
+Requirement already satisfied: munch in /usr/local/lib/python3.8/dist-packages (from fiona&gt;=1.8-&gt;geopandas) (2.5.0)
+Requirement already satisfied: attrs&gt;=17 in /usr/local/lib/python3.8/dist-packages (from fiona&gt;=1.8-&gt;geopandas) (22.2.0)
+Requirement already satisfied: six&gt;=1.7 in /usr/local/lib/python3.8/dist-packages (from fiona&gt;=1.8-&gt;geopandas) (1.15.0)
+Requirement already satisfied: setuptools in /usr/local/lib/python3.8/dist-packages (from fiona&gt;=1.8-&gt;geopandas) (57.4.0)
+Requirement already satisfied: cligj&gt;=0.5 in /usr/local/lib/python3.8/dist-packages (from fiona&gt;=1.8-&gt;geopandas) (0.7.2)
+Requirement already satisfied: click&gt;=4.0 in /usr/local/lib/python3.8/dist-packages (from fiona&gt;=1.8-&gt;geopandas) (7.1.2)
+Requirement already satisfied: certifi in /usr/local/lib/python3.8/dist-packages (from fiona&gt;=1.8-&gt;geopandas) (2022.12.7)
+Requirement already satisfied: click-plugins&gt;=1.0 in /usr/local/lib/python3.8/dist-packages (from fiona&gt;=1.8-&gt;geopandas) (1.1.1)
+Requirement already satisfied: numpy&gt;=1.17.3 in /usr/local/lib/python3.8/dist-packages (from pandas&gt;=1.0.0-&gt;geopandas) (1.21.6)
+Requirement already satisfied: python-dateutil&gt;=2.7.3 in /usr/local/lib/python3.8/dist-packages (from pandas&gt;=1.0.0-&gt;geopandas) (2.8.2)
+Requirement already satisfied: pytz&gt;=2017.3 in /usr/local/lib/python3.8/dist-packages (from pandas&gt;=1.0.0-&gt;geopandas) (2022.7)
+Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /usr/local/lib/python3.8/dist-packages (from packaging-&gt;geopandas) (3.0.9)
 </pre></div>
 </div>
 </div>
@@ -729,6 +945,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
 <span class="kn">import</span> <span class="nn">regionmask</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">percentileofscore</span>
@@ -748,19 +965,16 @@ Make sure that you save this file before you continue, else you will lose everyt
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
-<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive/&#39;</span><span class="p">)</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/gdrive/&#39;</span><span class="p">,</span> <span class="n">force_remount</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/content/drive/Shared drives/Big Data for Sustainability Science/Lecture weeks/Week 5&quot;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/content/gdrive/My Drive/BigData/Week5_Data&quot;</span><span class="p">)</span>
 
-<span class="n">data_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;/content/drive/Shared drives/Big Data for Sustainability Science/Lecture weeks/Week 5/&#39;</span><span class="p">,</span><span class="s1">&#39;Tutorial&#39;</span><span class="p">)</span>
+<span class="n">data_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;/content/gdrive/My Drive/BigData&#39;</span><span class="p">,</span><span class="s1">&#39;Week5_Data&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls<span class="w"> </span><span class="s2">&quot;/content/drive/Shared drives&quot;</span><span class="w"> </span>#<span class="w"> </span>prints<span class="w"> </span>the<span class="w"> </span>files<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>drive
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mounted at /content/gdrive/
 </pre></div>
 </div>
 </div>
@@ -787,6 +1001,14 @@ Make sure that you save this file before you continue, else you will lose everyt
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Precipitation data: 
+ /content/gdrive/My Drive/BigData/Week5_Data/MSWEP_Monthly_prec/*.nc 
+ Administrative boundaries shapefile: 
+ /content/gdrive/My Drive/BigData/Week5_Data/world-administrative-boundaries/world-administrative-boundaries.shp
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now that we have set the paths to the datasets, let us load the administrative boundaries shapefile using geopandas <code class="docutils literal notranslate"><span class="pre">gpd.read_file</span> <span class="pre">()</span></code> and in the process set the coordinate system to <strong>EPSG:4326</strong> (the standard global coordinate reference system). We will use the same coordinate system throughtout the tutorial.</p>
 <div class="cell docutils container">
@@ -795,21 +1017,199 @@ Make sure that you save this file before you continue, else you will lose everyt
 <span class="c1"># Read file using gpd.read_file()</span>
 
 <span class="n">data_Adminunits</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">world_admin_boundaries</span><span class="p">,</span><span class="n">crs</span><span class="o">=</span><span class="s2">&quot;epsg:4326&quot;</span><span class="p">)</span> 
-<span class="nb">print</span><span class="p">(</span><span class="n">data_Adminunits</span><span class="p">)</span> <span class="c1">#represents the countries around the world and their geographical locations</span>
+<span class="n">data_Adminunits</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> <span class="c1">#represents the countries around the world and their geographical locations</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-309b8df6-9901-425b-8b37-8ee7299c7546">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>iso3</th>
+      <th>status</th>
+      <th>color_code</th>
+      <th>name</th>
+      <th>continent</th>
+      <th>region</th>
+      <th>iso_3166_1_</th>
+      <th>french_shor</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>None</td>
+      <td>Adm. by EGY</td>
+      <td>EGY</td>
+      <td>Ma'tan al-Sarra</td>
+      <td>Africa</td>
+      <td>Northern Africa</td>
+      <td>None</td>
+      <td>Ma'tan al-Sarra</td>
+      <td>POLYGON ((33.25104 21.99977, 34.15064 21.99603...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>CHE</td>
+      <td>Member State</td>
+      <td>CHE</td>
+      <td>Switzerland</td>
+      <td>Europe</td>
+      <td>Western Europe</td>
+      <td>CH</td>
+      <td>Suisse</td>
+      <td>POLYGON ((9.56672 47.54045, 9.55980 47.50209, ...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>None</td>
+      <td>UK Territory</td>
+      <td>GBR</td>
+      <td>Jersey</td>
+      <td>Europe</td>
+      <td>Northern Europe</td>
+      <td>None</td>
+      <td>Jersey</td>
+      <td>POLYGON ((-2.01500 49.21417, -2.02111 49.17721...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>AUT</td>
+      <td>Member State</td>
+      <td>AUT</td>
+      <td>Austria</td>
+      <td>Europe</td>
+      <td>Western Europe</td>
+      <td>AT</td>
+      <td>Autriche</td>
+      <td>POLYGON ((16.94618 48.61907, 16.94333 48.57333...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>PRT</td>
+      <td>Member State</td>
+      <td>PRT</td>
+      <td>Portugal</td>
+      <td>Europe</td>
+      <td>Southern Europe</td>
+      <td>PT</td>
+      <td>Portugal</td>
+      <td>POLYGON ((-7.43185 37.25319, -7.41903 37.18055...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-309b8df6-9901-425b-8b37-8ee7299c7546')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-309b8df6-9901-425b-8b37-8ee7299c7546 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-309b8df6-9901-425b-8b37-8ee7299c7546');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">data_Adminunits</span></code> is a <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code> containing all polygons illustrating the national boundaries for the 256 countries in the world</p>
 <p>Let’s have a look at the administrative boundaries we just loaded using <code class="docutils literal notranslate"><span class="pre">pd.DataFrame.plot()</span></code></p>
 <p><em><strong>Question 1: In the code block below, we are plotting the Administrative boundaries, the <code class="docutils literal notranslate"><span class="pre">plot()</span></code> function in <code class="docutils literal notranslate"><span class="pre">pd.DataFrame.plot()</span></code> can take many parameters. Include the the linewidth, figure size, the y and x labels, color (indicate none), edgecolor. Don’t forget to add the figure title. What does each of these parameters do?</strong></em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plotting the administrative units</span>
-<span class="n">ax</span><span class="o">=</span><span class="n">data_Adminunits</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#add the alpha, linewidth, figsize, ploygon colors and edgecolor</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">=</span><span class="n">data_Adminunits</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#add the alpha, linewidth, figsize, ploygon colors and edgecolor</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;World Administrative Regions&quot;</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;World Administrative Regions&#39;)
+</pre></div>
+</div>
+<img alt="../_images/tutorial2_18_1.png" src="../_images/tutorial2_18_1.png" />
 </div>
 </div>
 <p>We have loaded the administrative shapefile. Now we can load the gridded precipitation dataset using the <code class="docutils literal notranslate"><span class="pre">xarray</span></code> package through the <code class="docutils literal notranslate"><span class="pre">open_mfdataset()</span></code> function. This function allows us to open multiple files as a single dataset.</p>
@@ -820,10 +1220,534 @@ Make sure that you save this file before you continue, else you will lose everyt
 <span class="c1">#Read netcdf files</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">weather_file</span><span class="p">,</span><span class="n">chunks</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;time&quot;</span><span class="p">:</span><span class="mi">10</span><span class="p">})</span>    
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">data</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+Dimensions:        (lon: 3600, lat: 1800, time: 245)
+Coordinates:
+  * lon            (lon) float32 -179.9 -179.8 -179.8 ... 179.8 179.9 179.9
+  * lat            (lat) float32 89.95 89.85 89.75 ... -89.75 -89.85 -89.95
+  * time           (time) datetime64[ns] 2002-01-01 ... 2022-05-01T01:30:00
+Data variables:
+    precipitation  (time, lat, lon) float32 dask.array&lt;chunksize=(1, 1800, 3600), meta=np.ndarray&gt;
+Attributes:
+    history:  Created on 2021-02-04 03:18</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-a13c461e-a2b9-41d0-a93c-67de65fc3a76' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-a13c461e-a2b9-41d0-a93c-67de65fc3a76' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>lon</span>: 3600</li><li><span class='xr-has-index'>lat</span>: 1800</li><li><span class='xr-has-index'>time</span>: 245</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-f4acd2cf-e48a-4604-bfc6-e2b478fb6eee' class='xr-section-summary-in' type='checkbox'  checked><label for='section-f4acd2cf-e48a-4604-bfc6-e2b478fb6eee' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>-179.9 -179.8 ... 179.9 179.9</div><input id='attrs-89c7b479-8416-4517-a8f5-5bc5fc4ec1b7' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-89c7b479-8416-4517-a8f5-5bc5fc4ec1b7' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d17cedb6-b2d3-48a8-bada-c27d16c60a54' class='xr-var-data-in' type='checkbox'><label for='data-d17cedb6-b2d3-48a8-bada-c27d16c60a54' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>long_name :</span></dt><dd>longitude</dd></dl></div><div class='xr-var-data'><pre>array([-179.95   , -179.84999, -179.75   , ...,  179.75002,  179.85002,
+        179.95   ], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>89.95 89.85 89.75 ... -89.85 -89.95</div><input id='attrs-6444f7f4-5459-40da-ba53-8dc7f76ec59a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6444f7f4-5459-40da-ba53-8dc7f76ec59a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e36653fa-6bc3-4664-9aaa-1984a1baa773' class='xr-var-data-in' type='checkbox'><label for='data-e36653fa-6bc3-4664-9aaa-1984a1baa773' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>long_name :</span></dt><dd>latitude</dd></dl></div><div class='xr-var-data'><pre>array([ 89.95    ,  89.85    ,  89.75    , ..., -89.75    , -89.850006,
+       -89.95001 ], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2002-01-01 ... 2022-05-01T01:30:00</div><input id='attrs-7ff3161d-a999-4e83-a275-d9c83102623f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7ff3161d-a999-4e83-a275-d9c83102623f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-82fb72b7-3c9c-4cbf-bd40-d9b46243e578' class='xr-var-data-in' type='checkbox'><label for='data-82fb72b7-3c9c-4cbf-bd40-d9b46243e578' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2002-01-01T00:00:00.000000000&#x27;, &#x27;2002-02-01T00:00:00.000000000&#x27;,
+       &#x27;2002-03-01T00:00:00.000000000&#x27;, ..., &#x27;2022-03-01T01:30:00.000000000&#x27;,
+       &#x27;2022-04-01T01:30:00.000000000&#x27;, &#x27;2022-05-01T01:30:00.000000000&#x27;],
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-78069075-0384-489b-b21f-b0d187d5c746' class='xr-section-summary-in' type='checkbox'  checked><label for='section-78069075-0384-489b-b21f-b0d187d5c746' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>precipitation</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 1800, 3600), meta=np.ndarray&gt;</div><input id='attrs-bf2aa722-21dd-4d02-8a30-6244f926d6da' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-bf2aa722-21dd-4d02-8a30-6244f926d6da' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c8d37598-3cd6-4048-8fff-3e7e33fce6a9' class='xr-var-data-in' type='checkbox'><label for='data-c8d37598-3cd6-4048-8fff-3e7e33fce6a9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>mm month-1</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table>
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 5.91 GiB </td>
+                        <td> 24.72 MiB </td>
+                    </tr>
+
+                    <tr>
+                        <th> Shape </th>
+                        <td> (245, 1800, 3600) </td>
+                        <td> (1, 1800, 3600) </td>
+                    </tr>
+                    <tr>
+                        <th> Count </th>
+                        <td> 735 Tasks </td>
+                        <td> 245 Chunks </td>
+                    </tr>
+                    <tr>
+                    <th> Type </th>
+                    <td> float32 </td>
+                    <td> numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="201" height="131" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="31" y2="21" style="stroke-width:2" />
+  <line x1="10" y1="60" x2="31" y2="81" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="10" y2="60" style="stroke-width:2" />
+  <line x1="11" y1="1" x2="11" y2="61" />
+  <line x1="12" y1="2" x2="12" y2="62" />
+  <line x1="13" y1="3" x2="13" y2="63" />
+  <line x1="14" y1="4" x2="14" y2="64" />
+  <line x1="15" y1="5" x2="15" y2="65" />
+  <line x1="16" y1="6" x2="16" y2="66" />
+  <line x1="17" y1="7" x2="17" y2="67" />
+  <line x1="18" y1="8" x2="18" y2="68" />
+  <line x1="20" y1="10" x2="20" y2="70" />
+  <line x1="21" y1="11" x2="21" y2="71" />
+  <line x1="22" y1="12" x2="22" y2="72" />
+  <line x1="23" y1="13" x2="23" y2="73" />
+  <line x1="24" y1="14" x2="24" y2="74" />
+  <line x1="25" y1="15" x2="25" y2="75" />
+  <line x1="26" y1="16" x2="26" y2="76" />
+  <line x1="27" y1="17" x2="27" y2="77" />
+  <line x1="29" y1="19" x2="29" y2="79" />
+  <line x1="30" y1="20" x2="30" y2="80" />
+  <line x1="31" y1="21" x2="31" y2="81" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 31.394862184392338,21.394862184392338 31.394862184392338,81.39486218439234 10.0,60.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="130" y2="0" style="stroke-width:2" />
+  <line x1="11" y1="1" x2="131" y2="1" />
+  <line x1="12" y1="2" x2="132" y2="2" />
+  <line x1="13" y1="3" x2="133" y2="3" />
+  <line x1="14" y1="4" x2="134" y2="4" />
+  <line x1="15" y1="5" x2="135" y2="5" />
+  <line x1="16" y1="6" x2="136" y2="6" />
+  <line x1="17" y1="7" x2="137" y2="7" />
+  <line x1="18" y1="8" x2="138" y2="8" />
+  <line x1="20" y1="10" x2="140" y2="10" />
+  <line x1="21" y1="11" x2="141" y2="11" />
+  <line x1="22" y1="12" x2="142" y2="12" />
+  <line x1="23" y1="13" x2="143" y2="13" />
+  <line x1="24" y1="14" x2="144" y2="14" />
+  <line x1="25" y1="15" x2="145" y2="15" />
+  <line x1="26" y1="16" x2="146" y2="16" />
+  <line x1="27" y1="17" x2="147" y2="17" />
+  <line x1="29" y1="19" x2="149" y2="19" />
+  <line x1="30" y1="20" x2="150" y2="20" />
+  <line x1="31" y1="21" x2="151" y2="21" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="31" y2="21" style="stroke-width:2" />
+  <line x1="130" y1="0" x2="151" y2="21" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 130.0,0.0 151.39486218439234,21.394862184392338 31.394862184392338,21.394862184392338" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="31" y1="21" x2="151" y2="21" style="stroke-width:2" />
+  <line x1="31" y1="81" x2="151" y2="81" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="31" y1="21" x2="31" y2="81" style="stroke-width:2" />
+  <line x1="151" y1="21" x2="151" y2="81" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="31.394862184392338,21.394862184392338 151.39486218439234,21.394862184392338 151.39486218439234,81.39486218439234 31.394862184392338,81.39486218439234" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="91.394862" y="101.394862" font-size="1.0rem" font-weight="100" text-anchor="middle" >3600</text>
+  <text x="171.394862" y="51.394862" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,171.394862,51.394862)">1800</text>
+  <text x="10.697431" y="90.697431" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,10.697431,90.697431)">245</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-6893bfb3-4062-48c4-acdf-a414201eb6d0' class='xr-section-summary-in' type='checkbox'  ><label for='section-6893bfb3-4062-48c4-acdf-a414201eb6d0' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-6ef4af1b-e566-495a-9296-b9d0860f1550' class='xr-index-data-in' type='checkbox'/><label for='index-6ef4af1b-e566-495a-9296-b9d0860f1550' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([ -179.9499969482422, -179.84999084472656,             -179.75,
+              -179.64999389648438,  -179.5500030517578,  -179.4499969482422,
+              -179.34999084472656,             -179.25, -179.14999389648438,
+               -179.0500030517578,
+              ...
+                179.0500030517578,  179.15000915527344,  179.25001525878906,
+                179.3500213623047,   179.4499969482422,   179.5500030517578,
+               179.65000915527344,  179.75001525878906,   179.8500213623047,
+                179.9499969482422],
+             dtype=&#x27;float64&#x27;, name=&#x27;lon&#x27;, length=3600))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-f63a4446-a7b3-400a-915f-844ef51dab76' class='xr-index-data-in' type='checkbox'/><label for='index-f63a4446-a7b3-400a-915f-844ef51dab76' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([ 89.94999694824219,   89.8499984741211,              89.75,
+               89.64999389648438,  89.54999542236328,  89.44999694824219,
+                89.3499984741211,              89.25,  89.14999389648438,
+               89.04999542236328,
+              ...
+              -89.05000305175781, -89.15000915527344,             -89.25,
+              -89.35000610351562, -89.45001220703125, -89.55000305175781,
+              -89.65000915527344,             -89.75, -89.85000610351562,
+              -89.95001220703125],
+             dtype=&#x27;float64&#x27;, name=&#x27;lat&#x27;, length=1800))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-2e1730d3-4344-46e0-adbe-b4df735dd402' class='xr-index-data-in' type='checkbox'/><label for='index-2e1730d3-4344-46e0-adbe-b4df735dd402' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2002-01-01 00:00:00&#x27;, &#x27;2002-02-01 00:00:00&#x27;,
+               &#x27;2002-03-01 00:00:00&#x27;, &#x27;2002-04-01 00:00:00&#x27;,
+               &#x27;2002-05-01 00:00:00&#x27;, &#x27;2002-06-01 00:00:00&#x27;,
+               &#x27;2002-07-01 00:00:00&#x27;, &#x27;2002-08-01 00:00:00&#x27;,
+               &#x27;2002-09-01 00:00:00&#x27;, &#x27;2002-10-01 00:00:00&#x27;,
+               ...
+               &#x27;2021-08-01 01:30:00&#x27;, &#x27;2021-09-01 01:30:00&#x27;,
+               &#x27;2021-10-01 01:30:00&#x27;, &#x27;2021-11-01 01:30:00&#x27;,
+               &#x27;2021-12-01 01:30:00&#x27;, &#x27;2022-01-01 01:30:00&#x27;,
+               &#x27;2022-02-01 01:30:00&#x27;, &#x27;2022-03-01 01:30:00&#x27;,
+               &#x27;2022-04-01 01:30:00&#x27;, &#x27;2022-05-01 01:30:00&#x27;],
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, length=245, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-5b6aa887-fce5-477c-956f-9c980abb64be' class='xr-section-summary-in' type='checkbox'  checked><label for='section-5b6aa887-fce5-477c-956f-9c980abb64be' class='xr-section-summary' >Attributes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>history :</span></dt><dd>Created on 2021-02-04 03:18</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>As you can see this xarray Dataset contains a single variable <code class="docutils literal notranslate"><span class="pre">(precipitation)</span></code> which is stored as a dask.array. This is the result of loading files with open_mfdataset. More information and examples of the interaction between dask and xarray can be found in their documentations(<a class="reference external" href="https://examples.dask.org/xarray.html">here</a> and <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/dask.html">here</a>)</p>
 <p>Now we are ready for a bit of regionmask magic. The module can create a gridded mask with the function <code class="docutils literal notranslate"><span class="pre">regionmask.Regions()</span></code> documented <a class="reference external" href="https://regionmask.readthedocs.io/en/stable/">here</a>. With this function we have created an object able to mask gridded data.</p>
@@ -835,7 +1759,29 @@ Make sure that you save this file before you continue, else you will lose everyt
 
 <span class="n">sheds_mask_poly</span> <span class="o">=</span> <span class="n">regionmask</span><span class="o">.</span><span class="n">Regions</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;sheds_mask&#39;</span><span class="p">,</span> <span class="n">numbers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">256</span><span class="p">)),</span> <span class="n">names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_Adminunits</span><span class="o">.</span><span class="n">name</span><span class="p">),</span>
                                      <span class="n">abbrevs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_Adminunits</span><span class="o">.</span><span class="n">color_code</span><span class="p">),</span> <span class="n">outlines</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_Adminunits</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">256</span><span class="p">)))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sheds_mask_poly</span><span class="p">)</span>
+<span class="n">sheds_mask_poly</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;regionmask.Regions&gt;
+Name:     sheds_mask
+overlap:  False
+
+Regions:
+  0  EGY Ma&#39;tan al-Sarra
+  1  CHE     Switzerland
+  2  GBR          Jersey
+  3  AUT         Austria
+  4  PRT        Portugal
+ ..  ...             ...
+251 None           Abyei
+252  GTM       Guatemala
+253  KGZ      Kyrgyzstan
+254  SUR        Suriname
+255  POL          Poland
+
+[256 regions]
 </pre></div>
 </div>
 </div>
@@ -847,10 +1793,411 @@ Make sure that you save this file before you continue, else you will lose everyt
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">sheds_mask_poly</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">lon</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">35</span><span class="p">),</span> <span class="n">lat</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">71</span><span class="p">,</span> <span class="mi">35</span><span class="p">)),</span><span class="n">lon_name</span> <span class="o">=</span> <span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="n">lat_name</span> <span class="o">=</span> <span class="s1">&#39;lat&#39;</span><span class="p">)</span> <span class="c1"># change the lat and lon slice to the bounding box of the selected region</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+<span class="n">mask</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;mask&#x27; (lat: 360, lon: 450)&gt;
+array([[nan, nan, nan, ..., nan, nan, nan],
+       [nan, nan, nan, ..., nan, nan, nan],
+       [nan, nan, nan, ..., nan, nan, nan],
+       ...,
+       [nan, nan, nan, ..., nan, nan, nan],
+       [nan, nan, nan, ..., nan, nan, nan],
+       [nan, nan, nan, ..., nan, nan, nan]])
+Coordinates:
+  * lat      (lat) float32 70.95 70.85 70.75 70.65 ... 35.35 35.25 35.15 35.05
+    time     datetime64[ns] 2002-01-01
+  * lon      (lon) float32 -9.95 -9.85 -9.75 -9.65 ... 34.65 34.75 34.85 34.95</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'mask'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>lat</span>: 360</li><li><span class='xr-has-index'>lon</span>: 450</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-681cd2ba-d69a-4d34-9b38-a2385bbb97a3' class='xr-array-in' type='checkbox' checked><label for='section-681cd2ba-d69a-4d34-9b38-a2385bbb97a3' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>nan nan nan nan nan nan nan nan ... nan nan nan nan nan nan nan nan</span></div><div class='xr-array-data'><pre>array([[nan, nan, nan, ..., nan, nan, nan],
+       [nan, nan, nan, ..., nan, nan, nan],
+       [nan, nan, nan, ..., nan, nan, nan],
+       ...,
+       [nan, nan, nan, ..., nan, nan, nan],
+       [nan, nan, nan, ..., nan, nan, nan],
+       [nan, nan, nan, ..., nan, nan, nan]])</pre></div></div></li><li class='xr-section-item'><input id='section-c9497740-a420-4e66-ae93-ce3a135ff558' class='xr-section-summary-in' type='checkbox'  checked><label for='section-c9497740-a420-4e66-ae93-ce3a135ff558' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>70.95 70.85 70.75 ... 35.15 35.05</div><input id='attrs-d9ed8f36-716d-4281-a174-58f130a7a29d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d9ed8f36-716d-4281-a174-58f130a7a29d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ea3aa450-6aeb-43a2-b776-b13b87be1760' class='xr-var-data-in' type='checkbox'><label for='data-ea3aa450-6aeb-43a2-b776-b13b87be1760' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>long_name :</span></dt><dd>latitude</dd></dl></div><div class='xr-var-data'><pre>array([70.95, 70.85, 70.75, ..., 35.25, 35.15, 35.05], dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>time</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2002-01-01</div><input id='attrs-771d3572-f5a4-4db2-9af1-0d9a6b66f24b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-771d3572-f5a4-4db2-9af1-0d9a6b66f24b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-998fd098-de56-4809-8519-b19eb9104702' class='xr-var-data-in' type='checkbox'><label for='data-998fd098-de56-4809-8519-b19eb9104702' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array(&#x27;2002-01-01T00:00:00.000000000&#x27;, dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>-9.95 -9.85 -9.75 ... 34.85 34.95</div><input id='attrs-4fda6fe8-61fd-4f11-81f2-3ec6911104cd' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4fda6fe8-61fd-4f11-81f2-3ec6911104cd' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-464ceee5-0f4c-4205-8b4f-c1ddd2a8d9e8' class='xr-var-data-in' type='checkbox'><label for='data-464ceee5-0f4c-4205-8b4f-c1ddd2a8d9e8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>long_name :</span></dt><dd>longitude</dd></dl></div><div class='xr-var-data'><pre>array([-9.95    , -9.849994, -9.750003, ..., 34.749996, 34.850002, 34.95001 ],
+      dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-0be7c660-7ef5-4f6e-bc68-d6dcf3e36156' class='xr-section-summary-in' type='checkbox'  ><label for='section-0be7c660-7ef5-4f6e-bc68-d6dcf3e36156' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-836d74b7-de67-4a44-bd22-8215381305c3' class='xr-index-data-in' type='checkbox'/><label for='index-836d74b7-de67-4a44-bd22-8215381305c3' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([ 70.94999694824219,   70.8499984741211,              70.75,
+               70.64999389648438,  70.54999542236328,  70.44999694824219,
+                70.3499984741211,              70.25,  70.14999389648438,
+               70.04999542236328,
+              ...
+               35.95000076293945, 35.849998474121094,              35.75,
+              35.650001525878906,  35.54999923706055,  35.45000076293945,
+              35.349998474121094,              35.25, 35.150001525878906,
+               35.04999923706055],
+             dtype=&#x27;float64&#x27;, name=&#x27;lat&#x27;, length=360))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-1f5b6e68-6fff-4f7a-82f0-62cea390a1b4' class='xr-index-data-in' type='checkbox'/><label for='index-1f5b6e68-6fff-4f7a-82f0-62cea390a1b4' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([-9.949999809265137, -9.849993705749512,  -9.75000286102295,
+              -9.649996757507324,   -9.5499906539917, -9.449999809265137,
+              -9.349993705749512,  -9.25000286102295, -9.149996757507324,
+                -9.0499906539917,
+              ...
+               34.04999923706055,  34.15000534057617, 34.249996185302734,
+               34.35000228881836, 34.450008392333984,  34.54999923706055,
+               34.65000534057617, 34.749996185302734,  34.85000228881836,
+              34.950008392333984],
+             dtype=&#x27;float64&#x27;, name=&#x27;lon&#x27;, length=450))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-f6752d47-1103-4abc-894f-5d2a9a7ce728' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-f6752d47-1103-4abc-894f-5d2a9a7ce728' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
 </section>
 <section id="plotting-the-created-mask">
@@ -867,6 +2214,12 @@ Make sure that you save this file before you continue, else you will lose everyt
 <span class="n">data_Adminunits</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">facecolor</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f49a446d5e0&gt;
+</pre></div>
+</div>
+<img alt="../_images/tutorial2_29_1.png" src="../_images/tutorial2_29_1.png" />
 </div>
 </div>
 </section>
@@ -886,7 +2239,18 @@ Make sure that you save this file before you continue, else you will lose everyt
 <span class="n">ID_REGION</span> <span class="o">=</span> <span class="n">data_Adminunits</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">data_Adminunits</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">region_name</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1">#getting the index position of the selected country</span>
    
 <span class="n">sel_mask</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask</span> <span class="o">==</span> <span class="n">ID_REGION</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">sel_mask</span><span class="p">)</span>
+<span class="n">sel_mask</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[nan, nan, nan, ..., nan, nan, nan],
+       [nan, nan, nan, ..., nan, nan, nan],
+       [nan, nan, nan, ..., nan, nan, nan],
+       ...,
+       [nan, nan, nan, ..., nan, nan, nan],
+       [nan, nan, nan, ..., nan, nan, nan],
+       [nan, nan, nan, ..., nan, nan, nan]])
 </pre></div>
 </div>
 </div>
@@ -906,7 +2270,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">monthly_prec</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">lat</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">id_lat</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">id_lat</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">lon</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">id_lon</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">id_lon</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span><span class="o">.</span><span class="n">compute</span><span class="p">()</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask</span> <span class="o">==</span> <span class="n">ID_REGION</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">monthly_prec</span><span class="p">)</span>
+<span class="n">monthly_prec</span>
 </pre></div>
 </div>
 </div>
@@ -922,6 +2286,12 @@ Make sure that you save this file before you continue, else you will lose everyt
 <span class="n">data_Adminunits</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">facecolor</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f49a4339820&gt;
+</pre></div>
+</div>
+<img alt="../_images/tutorial2_40_1.png" src="../_images/tutorial2_40_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -944,6 +2314,9 @@ Make sure that you save this file before you continue, else you will lose everyt
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/tutorial2_43_0.png" src="../_images/tutorial2_43_0.png" />
 </div>
 </div>
 <p><em><strong>Question 4 : Briefly explain what you see in both the precipitation timeseries plot  and the precipitation spatial plot above.</strong></em></p>
@@ -1103,6 +2476,460 @@ Make sure that you save this file before you continue, else you will lose everyt
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+Dimensions:                  (time: 245, latitude[degrees_north]: 20,
+                              longitude[degrees_east]: 45)
+Coordinates:
+  * time                     (time) datetime64[ns] 2002-01-31 ... 2022-05-31
+  * latitude[degrees_north]  (latitude[degrees_north]) float32 47.75 ... 45.85
+  * longitude[degrees_east]  (longitude[degrees_east]) float32 6.05 ... 10.45
+Data variables:
+    spi_values               (time, latitude[degrees_north], longitude[degrees_east]) float64 ...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-e59e21d7-b20c-492e-945f-45f5265730ae' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-e59e21d7-b20c-492e-945f-45f5265730ae' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 245</li><li><span class='xr-has-index'>latitude[degrees_north]</span>: 20</li><li><span class='xr-has-index'>longitude[degrees_east]</span>: 45</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-04ba5a67-fd50-484b-b74b-5f661c08d5fa' class='xr-section-summary-in' type='checkbox'  checked><label for='section-04ba5a67-fd50-484b-b74b-5f661c08d5fa' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2002-01-31 ... 2022-05-31</div><input id='attrs-75b7296c-3769-46d3-bb1b-ebd723796554' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-75b7296c-3769-46d3-bb1b-ebd723796554' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-15a28a8e-5c1e-411b-9f5d-83b88579bfd8' class='xr-var-data-in' type='checkbox'><label for='data-15a28a8e-5c1e-411b-9f5d-83b88579bfd8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;2002-01-31T00:00:00.000000000&#x27;, &#x27;2002-02-28T00:00:00.000000000&#x27;,
+       &#x27;2002-03-31T00:00:00.000000000&#x27;, ..., &#x27;2022-03-31T00:00:00.000000000&#x27;,
+       &#x27;2022-04-30T00:00:00.000000000&#x27;, &#x27;2022-05-31T00:00:00.000000000&#x27;],
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude[degrees_north]</span></div><div class='xr-var-dims'>(latitude[degrees_north])</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>47.75 47.65 47.55 ... 45.95 45.85</div><input id='attrs-1ecf7d5b-3032-4b61-9330-b2bec653f7e3' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-1ecf7d5b-3032-4b61-9330-b2bec653f7e3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ecda1486-6a5f-4db6-9139-a2d1a3413b91' class='xr-var-data-in' type='checkbox'><label for='data-ecda1486-6a5f-4db6-9139-a2d1a3413b91' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([47.75, 47.65, 47.55, 47.45, 47.35, 47.25, 47.15, 47.05, 46.95, 46.85,
+       46.75, 46.65, 46.55, 46.45, 46.35, 46.25, 46.15, 46.05, 45.95, 45.85],
+      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude[degrees_east]</span></div><div class='xr-var-dims'>(longitude[degrees_east])</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>6.05 6.15 6.25 ... 10.35 10.45</div><input id='attrs-ce7c0d5c-0ad1-40df-b768-e08880563a44' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-ce7c0d5c-0ad1-40df-b768-e08880563a44' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-07d4ef54-a0d7-4b2f-af34-87b15e8a16d1' class='xr-var-data-in' type='checkbox'><label for='data-07d4ef54-a0d7-4b2f-af34-87b15e8a16d1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 6.05    ,  6.150006,  6.249997,  6.350003,  6.450009,  6.55    ,
+        6.650006,  6.749997,  6.850003,  6.950009,  7.05    ,  7.150006,
+        7.249997,  7.350003,  7.450009,  7.55    ,  7.650006,  7.749997,
+        7.850003,  7.950009,  8.05    ,  8.150006,  8.249997,  8.350003,
+        8.450009,  8.55    ,  8.650006,  8.749997,  8.850003,  8.950009,
+        9.05    ,  9.150006,  9.249997,  9.350003,  9.450009,  9.55    ,
+        9.650006,  9.749997,  9.850003,  9.950009, 10.05    , 10.150006,
+       10.249997, 10.350003, 10.450009], dtype=float32)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-9afc5706-99e2-4996-ba61-51d0b37ae538' class='xr-section-summary-in' type='checkbox'  checked><label for='section-9afc5706-99e2-4996-ba61-51d0b37ae538' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>spi_values</span></div><div class='xr-var-dims'>(time, latitude[degrees_north], longitude[degrees_east])</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0 0.0 0.0 0.0 ... nan nan nan nan</div><input id='attrs-31d0f413-1eaa-48e8-b102-b64b6935027d' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-31d0f413-1eaa-48e8-b102-b64b6935027d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-62ecfdc3-8fdf-4a48-9825-db0813940263' class='xr-var-data-in' type='checkbox'><label for='data-62ecfdc3-8fdf-4a48-9825-db0813940263' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([[[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+        [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+        [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+        ...,
+        [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+        [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+        [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+       [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+        [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+        [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+        ...,
+        [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+        [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+        [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+       [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+        [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+        [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+        ...,
+...
+        ...,
+        [nan, nan, nan, ..., nan, nan, nan],
+        [nan, nan, nan, ..., nan, nan, nan],
+        [nan, nan, nan, ..., nan, nan, nan]],
+
+       [[nan, nan, nan, ..., nan, nan, nan],
+        [nan, nan, nan, ..., nan, nan, nan],
+        [nan, nan, nan, ..., nan, nan, nan],
+        ...,
+        [nan, nan, nan, ..., nan, nan, nan],
+        [nan, nan, nan, ..., nan, nan, nan],
+        [nan, nan, nan, ..., nan, nan, nan]],
+
+       [[nan, nan, nan, ..., nan, nan, nan],
+        [nan, nan, nan, ..., nan, nan, nan],
+        [nan, nan, nan, ..., nan, nan, nan],
+        ...,
+        [nan, nan, nan, ..., nan, nan, nan],
+        [nan, nan, nan, ..., nan, nan, nan],
+        [nan, nan, nan, ..., nan, nan, nan]]])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-703c0211-2e4b-40d3-b75b-6add9cb98907' class='xr-section-summary-in' type='checkbox'  ><label for='section-703c0211-2e4b-40d3-b75b-6add9cb98907' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-37c71b49-c7da-43f8-abc9-f6dee2bd0f88' class='xr-index-data-in' type='checkbox'/><label for='index-37c71b49-c7da-43f8-abc9-f6dee2bd0f88' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2002-01-31&#x27;, &#x27;2002-02-28&#x27;, &#x27;2002-03-31&#x27;, &#x27;2002-04-30&#x27;,
+               &#x27;2002-05-31&#x27;, &#x27;2002-06-30&#x27;, &#x27;2002-07-31&#x27;, &#x27;2002-08-31&#x27;,
+               &#x27;2002-09-30&#x27;, &#x27;2002-10-31&#x27;,
+               ...
+               &#x27;2021-08-31&#x27;, &#x27;2021-09-30&#x27;, &#x27;2021-10-31&#x27;, &#x27;2021-11-30&#x27;,
+               &#x27;2021-12-31&#x27;, &#x27;2022-01-31&#x27;, &#x27;2022-02-28&#x27;, &#x27;2022-03-31&#x27;,
+               &#x27;2022-04-30&#x27;, &#x27;2022-05-31&#x27;],
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, length=245, freq=&#x27;M&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>latitude[degrees_north]</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-c24eb58b-6348-4cf8-8c68-94828de089c7' class='xr-index-data-in' type='checkbox'/><label for='index-c24eb58b-6348-4cf8-8c68-94828de089c7' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([             47.75, 47.650001525878906,  47.54999923706055,
+               47.45000076293945, 47.349998474121094,              47.25,
+              47.150001525878906,  47.04999923706055,  46.95000076293945,
+              46.849998474121094,              46.75, 46.650001525878906,
+               46.54999923706055,  46.45000076293945, 46.349998474121094,
+                           46.25, 46.150001525878906,  46.04999923706055,
+               45.95000076293945, 45.849998474121094],
+             dtype=&#x27;float64&#x27;, name=&#x27;latitude[degrees_north]&#x27;))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>longitude[degrees_east]</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-49479579-8d76-4cfa-8604-522ab2f44615' class='xr-index-data-in' type='checkbox'/><label for='index-49479579-8d76-4cfa-8604-522ab2f44615' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([ 6.050000190734863,  6.150006294250488,  6.249997138977051,
+               6.350003242492676,  6.450009346008301,  6.550000190734863,
+               6.650006294250488,  6.749997138977051,  6.850003242492676,
+               6.950009346008301,  7.050000190734863,  7.150006294250488,
+               7.249997138977051,  7.350003242492676,  7.450009346008301,
+               7.550000190734863,  7.650006294250488,  7.749997138977051,
+               7.850003242492676,  7.950009346008301,  8.050000190734863,
+               8.150006294250488,   8.24999713897705,  8.350003242492676,
+                 8.4500093460083,  8.550000190734863,  8.650006294250488,
+                8.74999713897705,  8.850003242492676,    8.9500093460083,
+               9.050000190734863,  9.150006294250488,   9.24999713897705,
+               9.350003242492676,    9.4500093460083,  9.550000190734863,
+               9.650006294250488,   9.74999713897705,  9.850003242492676,
+                 9.9500093460083, 10.050000190734863, 10.150006294250488,
+               10.24999713897705, 10.350003242492676,   10.4500093460083],
+             dtype=&#x27;float64&#x27;, name=&#x27;longitude[degrees_east]&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-cb48d1a5-c9ac-4a55-a191-1d0ffeb678d8' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-cb48d1a5-c9ac-4a55-a191-1d0ffeb678d8' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
 </div>
 <p>Now we convert the gridded data for the SPI to a timeseries and plot the spi values for the entire historic period both spatially and as a timeseries.</p>
 <div class="cell docutils container">
@@ -1112,6 +2939,25 @@ Make sure that you save this file before you continue, else you will lose everyt
 <span class="n">indice_timeseries</span><span class="o">=</span><span class="n">spi_1</span><span class="o">.</span><span class="n">spi_values</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;latitude[degrees_north]&quot;</span><span class="p">,</span> <span class="s2">&quot;longitude[degrees_east]&quot;</span><span class="p">))</span>
 <span class="n">df_indice_timeseries</span> <span class="o">=</span><span class="n">indice_timeseries</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df_indice_timeseries</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            spi_values
+time                  
+2002-01-31    0.000000
+2002-02-28    0.000000
+2002-03-31    0.000000
+2002-04-30    0.000000
+2002-05-31    0.000000
+...                ...
+2022-01-31   -0.525364
+2022-02-28    0.780063
+2022-03-31   -1.547168
+2022-04-30    0.288842
+2022-05-31   -0.597245
+
+[245 rows x 1 columns]
 </pre></div>
 </div>
 </div>
@@ -1128,6 +2974,12 @@ Make sure that you save this file before you continue, else you will lose everyt
 <span class="n">spi_1</span><span class="p">[</span><span class="s1">&#39;spi_values&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;2020&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">col_wrap</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">vmin</span> <span class="o">=-</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span> <span class="c1">#change the year</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.plot.facetgrid.FacetGrid at 0x7f49a9bd7970&gt;
+</pre></div>
+</div>
+<img alt="../_images/tutorial2_64_1.png" src="../_images/tutorial2_64_1.png" />
 </div>
 </div>
 <p><em><strong>Question 7: Explain the drought spatial plots plotted above. How was the drought in each of the months within the regions of the selected country?</strong></em></p>
@@ -1146,10 +2998,12 @@ Make sure that you save this file before you continue, else you will lose everyt
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../_images/tutorial2_66_0.png" src="../_images/tutorial2_66_0.png" />
+</div>
 </div>
 <p><em><strong>Question 8: Explain the drought pattern in the spi values timeseries above for the selected case study region</strong></em></p>
 <p><em><strong>Question 9: Now that we have calculated SPI-1 above, change the accumulation number from 1 and calculate SPI-6 and SPI-12. What differences do you see in the drought characteristics and what does each represent. Include the plots in canvas</strong></em></p>
-<p>This is the end of this tutorial. Hope you enjoyed it!</p>
 </section>
 </section>
 </section>
