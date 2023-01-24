@@ -1,0 +1,53 @@
+Variable_name;Short_description;Household_or_person
+YEAR;Census year;H
+SAMPLE;IPUMS sample identifier;H
+SERIAL;Household serial number;H
+HHWT;Household weight;H
+REGION;Census region and division;H
+STATEFIP;State (FIPS code);H
+COUNTYFIP;County (FIPS code);H
+DENSITY;Population-weighted density of PUMA;H
+METRO;Metropolitan status;H
+FARM;Farm status;H
+OWNERSHP (general);Ownership of dwelling (tenure) [general version];H
+OWNERSHPD (detailed);Ownership of dwelling (tenure) [detailed version];H
+MORTGAGE;Mortgage status;H
+MORTGAG2;Second mortgage status;H
+ACREHOUS;House acreage;H
+TAXINCL;Mortgage payment includes property taxes;H
+INSINCL;Mortgage payment includes property insurance;H
+PROPINSR;Annual property insurance cost;H
+RENT;Monthly contract rent;H
+COSTELEC;Annual electricity cost;H
+COSTGAS;Annual gas cost;H
+COSTWATR;Annual water cost;H
+COSTFUEL;Annual home heating fuel cost;H
+HHINCOME;Total household income;H
+FOODSTMP;Food stamp recipiency;H
+KITCHEN;Kitchen or cooking facilities;H
+ROOMS;Number of rooms;H
+BUILTYR2;Age of structure per decade;H
+UNITSSTR;Units in structure;H
+BEDROOMS;Number of bedrooms;H
+FUELHEAT;Home heating fuel;H
+VEHICLES;Vehicles available;H
+PERWT;Person weight;P
+RELATE (general);Relationship to household head [general version];P
+RELATED (detailed);Relationship to household head [detailed version];P
+SEX;Sex;P
+AGE;Age;P
+MARST;Marital status;P
+RACE (general);Race [general version];P
+RACED (detailed);Race [detailed version];P
+EDUC (general);Educational attainment [general version];P
+EDUCD (detailed);Educational attainment [detailed version];P
+DEGFIELD (general);Field of degree [general version];P
+EMPSTAT (general);Employment status [general version];P
+EMPSTATD (detailed);Employment status [detailed version];P
+LABFORCE;Labor force status;P
+OCC;Occupation;P
+IND;Industry;P
+INCTOT;Total personal income;P
+FTOTINC;Total family income;P
+INCWAGE;Wage and salary income;P
+POVERTY;Poverty status;P
