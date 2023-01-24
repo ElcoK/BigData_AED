@@ -666,7 +666,9 @@ title="Print to PDF"
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+
 <span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">,{</span><span class="s1">&#39;axes.grid&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">mode</span><span class="o">.</span><span class="n">chained_assignment</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 </div>
@@ -677,7 +679,7 @@ title="Print to PDF"
 <hr><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Read the data using the pandas package</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;usadataforweek2tut1.csv&quot;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;https://github.com/ElcoK/BigData_AED/raw/main/week2/usadataforweek2tut1.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -685,8 +687,65 @@ title="Print to PDF"
 <p>There are hundreds of variables included in the IPUMS USA database. In the next line of code we read in a file with a short description of the variables that we selected for this tutorial. The dataset contains socio-demographic variables such as age, gender, education, but also economic variables, such as income, mortgage payments, etc. There are also variables about energy cost, like electricity cost, gas costs and fuel costs, and in these tutorial we are going to work towards two machine learning models that can predict energy costs per household.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datadescription</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;shortdescription_ipumsusa_variables.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;unicode_escape&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">datadescription</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datadescription</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;https://github.com/ElcoK/BigData_AED/raw/main/week2/shortdescription_ipumsusa_variables.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;;&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;unicode_escape&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">datadescription</span><span class="p">[[</span><span class="s1">&#39;Variable_name&#39;</span><span class="p">,</span><span class="s1">&#39;Short_description&#39;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           Variable_name                                  Short_description
+0                   YEAR                                        Census year
+1                 SAMPLE                            IPUMS sample identifier
+2                 SERIAL                            Household serial number
+3                   HHWT                                   Household weight
+4                 REGION                         Census region and division
+5               STATEFIP                                  State (FIPS code)
+6              COUNTYFIP                                 County (FIPS code)
+7                DENSITY                Population-weighted density of PUMA
+8                  METRO                                Metropolitan status
+9                   FARM                                        Farm status
+10    OWNERSHP (general)   Ownership of dwelling (tenure) [general version]
+11  OWNERSHPD (detailed)  Ownership of dwelling (tenure) [detailed version]
+12              MORTGAGE                                    Mortgage status
+13              MORTGAG2                             Second mortgage status
+14              ACREHOUS                                      House acreage
+15               TAXINCL           Mortgage payment includes property taxes
+16               INSINCL       Mortgage payment includes property insurance
+17              PROPINSR                     Annual property insurance cost
+18                  RENT                              Monthly contract rent
+19              COSTELEC                            Annual electricity cost
+20               COSTGAS                                    Annual gas cost
+21              COSTWATR                                  Annual water cost
+22              COSTFUEL                      Annual home heating fuel cost
+23              HHINCOME                             Total household income
+24              FOODSTMP                              Food stamp recipiency
+25               KITCHEN                      Kitchen or cooking facilities
+26                 ROOMS                                    Number of rooms
+27              BUILTYR2                        Age of structure per decade
+28              UNITSSTR                                 Units in structure
+29              BEDROOMS                                 Number of bedrooms
+30              FUELHEAT                                  Home heating fuel
+31              VEHICLES                                 Vehicles available
+32                 PERWT                                      Person weight
+33      RELATE (general)   Relationship to household head [general version]
+34    RELATED (detailed)  Relationship to household head [detailed version]
+35                   SEX                                                Sex
+36                   AGE                                                Age
+37                 MARST                                     Marital status
+38        RACE (general)                             Race [general version]
+39      RACED (detailed)                            Race [detailed version]
+40        EDUC (general)           Educational attainment [general version]
+41      EDUCD (detailed)          Educational attainment [detailed version]
+42    DEGFIELD (general)                  Field of degree [general version]
+43     EMPSTAT (general)                Employment status [general version]
+44   EMPSTATD (detailed)               Employment status [detailed version]
+45              LABFORCE                                 Labor force status
+46                   OCC                                         Occupation
+47                   IND                                           Industry
+48                INCTOT                              Total personal income
+49               FTOTINC                                Total family income
+50               INCWAGE                             Wage and salary income
+51               POVERTY                                     Poverty status
 </pre></div>
 </div>
 </div>
@@ -1294,53 +1353,61 @@ Name: HHINCOME, Length: 12286, dtype: int64
 <p>The function <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code> is especially useful when the number of values in a variable is limited. For example, for income, which contains a lot of different values, value_counts is not so useful and a plot of the distribution would be more insightful. We can use the <strong>seaborn</strong> package to easily plot the distribution of the income.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;HHINCOME&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;HHINCOME&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x17c8c33fa30&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x213dd826560&gt;
 </pre></div>
 </div>
+<img alt="../_images/tutorial1_29_1.png" src="../_images/tutorial1_29_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Less bins</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="c1"># Less bins</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;HHINCOME&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x17c8a79c3d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x213dd7f2a40&gt;
 </pre></div>
 </div>
+<img alt="../_images/tutorial1_30_1.png" src="../_images/tutorial1_30_1.png" />
 </div>
 </div>
 <p>And we can also include the kernel density, by setting the <code class="docutils literal notranslate"><span class="pre">kde</span></code> parameter to <strong>True</strong>. Kernel Density Estimation (KDE) is a technique that let’s you create a smooth curve given a set of data. This can be useful if you want to visualize just the “shape” of some data, as a kind of continuous replacement for the discrete histogram.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;HHINCOME&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;HHINCOME&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x17c8dc9ca30&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x21380a3c040&gt;
 </pre></div>
 </div>
+<img alt="../_images/tutorial1_32_1.png" src="../_images/tutorial1_32_1.png" />
 </div>
 </div>
 <p>Now we are going to take a look at energy costs. The total costs of energy are given by electricity costs, gas costs and fuel costs. Before summing the three variables to obtain the total energy costs, we take a look at the three individual variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;COSTELEC&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;COSTELEC&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x17c8a79c0d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x213dd87bd30&gt;
 </pre></div>
 </div>
+<img alt="../_images/tutorial1_34_1.png" src="../_images/tutorial1_34_1.png" />
 </div>
 </div>
 <p>There appears to be a strange value around 10000. Find out about this value with a line of code. You can find on the IPUMS USA <a class="reference external" href="https://usa.ipums.org/usa/">website</a> what the value indicates.</p>
@@ -1386,7 +1453,9 @@ Name: HHINCOME, Length: 12286, dtype: int64
 As you can see, there are several options in the seaborn (imported as sns) heatmap. We have annot = True which makes sure that we include the numbers in the heatmap (try switching it off), fmt = .2f specifies that we want to have 2 decimals, with cmap we can specify the color palette and with center = 0, we scale the colors in such a way that a correlation of 0 corresponds to white color.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s2">&quot;COSTENERGY&quot;</span><span class="p">,</span> <span class="s2">&quot;ROOMS&quot;</span><span class="p">,</span> <span class="s2">&quot;RENT&quot;</span><span class="p">,</span> <span class="s2">&quot;INCTOT&quot;</span><span class="p">,</span> <span class="s2">&quot;HHINCOME&quot;</span><span class="p">,</span> <span class="s2">&quot;BUILTYR2&quot;</span><span class="p">,</span> <span class="s2">&quot;VEHICLES&quot;</span><span class="p">,</span> <span class="s2">&quot;BEDROOMS&quot;</span><span class="p">,</span> <span class="s2">&quot;FARM&quot;</span><span class="p">,</span> <span class="s2">&quot;OWNERSHP&quot;</span><span class="p">,</span> <span class="s2">&quot;MORTGAGE&quot;</span><span class="p">,</span> <span class="s2">&quot;AGE&quot;</span><span class="p">,</span> <span class="s2">&quot;SEX&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s2">&quot;COSTENERGY&quot;</span><span class="p">,</span> <span class="s2">&quot;ROOMS&quot;</span><span class="p">,</span> <span class="s2">&quot;RENT&quot;</span><span class="p">,</span> <span class="s2">&quot;INCTOT&quot;</span><span class="p">,</span> <span class="s2">&quot;HHINCOME&quot;</span><span class="p">,</span> <span class="s2">&quot;BUILTYR2&quot;</span><span class="p">,</span> <span class="s2">&quot;VEHICLES&quot;</span><span class="p">,</span> <span class="s2">&quot;BEDROOMS&quot;</span><span class="p">,</span> <span class="s2">&quot;FARM&quot;</span><span class="p">,</span> <span class="s2">&quot;OWNERSHP&quot;</span><span class="p">,</span> <span class="s2">&quot;MORTGAGE&quot;</span><span class="p">,</span> <span class="s2">&quot;AGE&quot;</span><span class="p">,</span> <span class="s2">&quot;SEX&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span>
                            <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span> <span class="o">=</span> <span class="s2">&quot;.2f&quot;</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;RdBu&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1395,6 +1464,7 @@ As you can see, there are several options in the seaborn (imported as sns) heatm
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
+<img alt="../_images/tutorial1_45_1.png" src="../_images/tutorial1_45_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1558,7 +1628,7 @@ As you can see, there are several options in the seaborn (imported as sns) heatm
 </div>
 </div>
 </div>
-<p>QUESTION: Now create a variable yourself with the age of the youngest person, named YOUNGEST, and add it to the dataframe data.</p>
+<p>Now create a variable yourself with the age of the youngest person, named YOUNGEST, and add it to the dataframe data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Answer. </span>
@@ -1572,7 +1642,8 @@ As you can see, there are several options in the seaborn (imported as sns) heatm
 <p>Let’s check if the correlation of the oldest and youngest person with energy costs is higher than the correlation of age with energy costs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s2">&quot;COSTENERGY&quot;</span><span class="p">,</span><span class="s2">&quot;YOUNGEST&quot;</span><span class="p">,</span> <span class="s2">&quot;OLDEST&quot;</span><span class="p">,</span> <span class="s2">&quot;AGE&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s2">&quot;COSTENERGY&quot;</span><span class="p">,</span><span class="s2">&quot;YOUNGEST&quot;</span><span class="p">,</span> <span class="s2">&quot;OLDEST&quot;</span><span class="p">,</span> <span class="s2">&quot;AGE&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span>
                            <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span> <span class="o">=</span> <span class="s2">&quot;.2f&quot;</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;RdBu&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1581,33 +1652,42 @@ As you can see, there are several options in the seaborn (imported as sns) heatm
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
+<img alt="../_images/tutorial1_72_1.png" src="../_images/tutorial1_72_1.png" />
 </div>
 </div>
 <p>A possible explanation for the low correlation could be that the relationship between age and energy costs is not linear. Let’s see the average energy costs over the age of the oldest person in the household in a barplot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;OLDEST&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;COSTENERGY&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="n">errorbar</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">])</span> <span class="c1">#position of xticks. </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;OLDEST&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;COSTENERGY&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">])</span> <span class="c1">#position of xticks.</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Oldest vs Cost of Energy&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Oldest vs Cost of Energy&#39;)
+</pre></div>
 </div>
-<p>In the graph we see that especially households where the oldest member is young, energy costs are relatively low. Then energy costs increase until the age of 45-50 (maybe these are families with children) and then slowly decrease. We can add confidence intervals to the barplot with errorbar = ‘ci’ to see if the differences in energy costs over age of the oldest household member are significantly different.</p>
+<img alt="../_images/tutorial1_74_1.png" src="../_images/tutorial1_74_1.png" />
+</div>
+</div>
+<p>In the graph we see that especially households where the oldest member is young, energy costs are relatively low. Then energy costs increase until the age of 45-50 (maybe these are families with children) and then slowly decrease. Next we take a look at the barplot for age of the youngest person in the household.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;OLDEST&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;COSTENERGY&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="n">errorbar</span> <span class="o">=</span> <span class="s1">&#39;ci&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">])</span> <span class="c1">#position of xticks. </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;YOUNGEST&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;COSTENERGY&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">])</span> <span class="c1">#position of xticks.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Youngest vs Cost of Energy&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</div>
-<p>Next we take a look at the barplot for age of the youngest person in the household.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;YOUNGEST&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;COSTENERGY&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="n">errorbar</span> <span class="o">=</span> <span class="s1">&#39;ci&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">])</span> <span class="c1">#position of xticks.</span>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Youngest vs Cost of Energy&#39;)
 </pre></div>
 </div>
+<img alt="../_images/tutorial1_76_1.png" src="../_images/tutorial1_76_1.png" />
 </div>
 </div>
 </section>
@@ -1616,7 +1696,7 @@ As you can see, there are several options in the seaborn (imported as sns) heatm
 <hr><p>In the last part we are going to estimate a first model to predict energy costs of households. We will use a simple Ordinary Least Squares regression model. To  make life a bit easier, download the dataset for the OLS regression in the following line of code (it includes the new variables you created and it deals with missing values). We use the package statsmodels to estimate the OLS regression. We could also use the sklearn library, but the statsmodels package has the advantage that it includes standard errors of the coefficient estimates. This means that we can say something about the significance of the explanantory variables and the causality between the explanatory variables and the dependent variable, something which is not possible with a machine learning model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataOLS</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;usadataforOLS.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;unicode_escape&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataOLS</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;https://github.com/ElcoK/BigData_AED/raw/main/week2/usadataforOLS.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;unicode_escape&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1635,12 +1715,63 @@ As you can see, there are several options in the seaborn (imported as sns) heatm
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\eks510\AppData\Local\Temp\ipykernel_23776\3343477838.py:2: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  X[&#39;Constant&#39;] = 1
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">regressionOLS</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
 <span class="n">resultsOLS</span> <span class="o">=</span> <span class="n">regressionOLS</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">resultsOLS</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:             COSTENERGY   R-squared:                       0.210
+Model:                            OLS   Adj. R-squared:                  0.210
+Method:                 Least Squares   F-statistic:                     3082.
+Date:                Tue, 24 Jan 2023   Prob (F-statistic):               0.00
+Time:                        20:58:13   Log-Likelihood:            -1.1118e+06
+No. Observations:              127802   AIC:                         2.224e+06
+Df Residuals:                  127790   BIC:                         2.224e+06
+Df Model:                          11                                         
+Covariance Type:            nonrobust                                         
+===============================================================================
+                  coef    std err          t      P&gt;|t|      [0.025      0.975]
+-------------------------------------------------------------------------------
+ROOMS         149.7421      1.965     76.210      0.000     145.891     153.593
+HHINCOME        0.0012   4.22e-05     28.150      0.000       0.001       0.001
+BUILTYR2      -24.7857      0.928    -26.703      0.000     -26.605     -22.966
+VEHICLES      123.2165      4.410     27.943      0.000     114.574     131.859
+FARM          572.6529     36.486     15.695      0.000     501.140     644.166
+OWNERSHP     -381.2822     15.748    -24.211      0.000    -412.149    -350.416
+MORTGAGE       22.5403      5.165      4.364      0.000      12.417      32.664
+YOUNGEST       -4.5913      0.365    -12.580      0.000      -5.307      -3.876
+OLDEST          7.8285      0.419     18.664      0.000       7.006       8.651
+HHSIZE        124.7149      6.198     20.123      0.000     112.568     136.862
+NR_OF_WOMEN    -2.5217      7.149     -0.353      0.724     -16.533      11.490
+Constant      592.6989     54.697     10.836      0.000     485.493     699.905
+==============================================================================
+Omnibus:                    48218.600   Durbin-Watson:                   1.938
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):           263811.352
+Skew:                           1.739   Prob(JB):                         0.00
+Kurtosis:                       9.119   Cond. No.                     2.17e+06
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 2.17e+06. This might indicate that there are
+strong multicollinearity or other numerical problems.
 </pre></div>
 </div>
 </div>
