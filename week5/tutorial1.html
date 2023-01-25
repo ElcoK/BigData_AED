@@ -774,7 +774,8 @@ Make sure that you save this file before you continue, else you will lose everyt
 <section id="extracting-and-exploring-the-landsat-8-data">
 <h2>2.Extracting and exploring the Landsat-8 data<a class="headerlink" href="#extracting-and-exploring-the-landsat-8-data" title="Permalink to this headline">#</a></h2>
 <hr><p>Unfortunately it is not as simple as just running the  code below. As soon as you run it, you will notice that you need to authorize ourselves to be able to use the Google Earth Engine.</p>
-<p>To do so, we will first have to register ourselves. on the website of the <a class="reference external" href="https://earthengine.google.com/">Google Earth Engine</a>. In the video below we will show you how to do that:</p>
+<p>To do so, we will first have to register ourselves. on the website of the <a class="reference external" href="https://earthengine.google.com/">Google Earth Engine</a>.</p>
+<p>You can choose any location in Europe, but the code below will show the coordinates we have selected for the Netherlands. Feel free to change them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Map</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span><span class="n">center</span><span class="o">=</span><span class="p">[</span><span class="mf">52.37</span><span class="p">,</span><span class="mf">4.5</span><span class="p">],</span><span class="n">zoom</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>

@@ -537,13 +537,6 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#introduction-to-numpy">
    2. Introduction to NumPy
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#connect-to-google-drive">
-     Connect to google drive
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#numpy-arrays">
@@ -817,13 +810,6 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#introduction-to-numpy">
    2. Introduction to NumPy
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#connect-to-google-drive">
-     Connect to google drive
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#numpy-arrays">
@@ -1127,38 +1113,11 @@ Make sure that you save this file before you continue, else you will lose everyt
 </section>
 <section id="introduction-to-numpy">
 <h2>2. Introduction to NumPy<a class="headerlink" href="#introduction-to-numpy" title="Permalink to this headline">#</a></h2>
-<hr><p>NumPy can be installed using <code class="docutils literal notranslate"><span class="pre">pip</span></code> (in google colab pandas and numpy packages are already installed, hence, we will skip this part):</p>
+<hr><p>NumPy can be installed using <code class="docutils literal notranslate"><span class="pre">pip</span></code> (in Google Colab pandas and numpy packages are already installed, hence, we will skip this part):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install numpy
 
 </pre></div>
 </div>
-<section id="connect-to-google-drive">
-<h3>Connect to google drive<a class="headerlink" href="#connect-to-google-drive" title="Permalink to this headline">#</a></h3>
-<hr>
-<p>To be able to read the data from Google Drive, we need to <em>mount</em> our Drive to this notebook.</p>
-<p>As you can see in the cell below, make sure that in your <strong>My Drive</strong> folder, where you created <strong>BigData</strong> folder and within that folder, you have created a <strong>Week1_Data</strong> folder in which you can store the files that are required to run this analysis.</p>
-<p>Please go the URL when its prompted in the box underneath the following cell, and copy the authorization code in that box.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># installing the OS package </span>
-<span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
-<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive/&#39;</span><span class="p">)</span>
-
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/content/drive/Shared drives/Big Data for Sustainability Science/Lecture weeks/Week 1&quot;</span><span class="p">)</span>
-
-<span class="n">data_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;/content/drive/Shared drives/Big Data for Sustainability Science/Lecture weeks/Week 1/&#39;</span><span class="p">,</span><span class="s1">&#39;Tutorial&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Drive already mounted at /content/drive/; to attempt to forcibly remount, call drive.mount(&quot;/content/drive/&quot;, force_remount=True).
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 </section>
 <section id="numpy-arrays">
 <h2>3. NumPy Arrays<a class="headerlink" href="#numpy-arrays" title="Permalink to this headline">#</a></h2>
@@ -2678,7 +2637,6 @@ Dimensions: 2
 </div>
 </div>
 </div>
-<p><img alt="" src="docs/banner.png" /></p>
 </section>
 </section>
 <section id="introduction-to-pandas">

@@ -739,6 +739,20 @@ Make sure that you save this file before you continue, else you will lose everyt
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 10&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">sys</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="ne">---&gt; </span><span class="mi">10</span> <span class="kn">import</span> <span class="nn">regionmask</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">percentileofscore</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">statistics</span> <span class="kn">import</span> <span class="n">NormalDist</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;regionmask&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <section id="connect-to-google-drive">
 <h3>Connect to google drive<a class="headerlink" href="#connect-to-google-drive" title="Permalink to this headline">#</a></h3>
@@ -794,189 +808,14 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </div>
 <p>Now that we have set the paths to the datasets, let us load the administrative boundaries shapefile using geopandas <code class="docutils literal notranslate"><span class="pre">gpd.read_file</span> <span class="pre">()</span></code> and in the process set the coordinate system to <strong>EPSG:4326</strong> (the standard global coordinate reference system). We will use the same coordinate system throughtout the tutorial.</p>
+<p>Let’s start with loading the shapefile of the world boundaries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#loading the shapefile and the precipitation dataset</span>
-<span class="c1"># Read file using gpd.read_file()</span>
-
-<span class="n">data_Adminunits</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">world_admin_boundaries</span><span class="p">,</span><span class="n">crs</span><span class="o">=</span><span class="s2">&quot;epsg:4326&quot;</span><span class="p">)</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_Adminunits</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">world_admin_boundaries</span><span class="p">,</span><span class="n">crs</span><span class="o">=</span><span class="s2">&quot;epsg:4326&quot;</span><span class="p">)</span> 
 <span class="n">data_Adminunits</span><span class="o">.</span><span class="n">head</span><span class="p">()</span> <span class="c1">#represents the countries around the world and their geographical locations</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-  <div id="df-309b8df6-9901-425b-8b37-8ee7299c7546">
-    <div class="colab-df-container">
-      <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>iso3</th>
-      <th>status</th>
-      <th>color_code</th>
-      <th>name</th>
-      <th>continent</th>
-      <th>region</th>
-      <th>iso_3166_1_</th>
-      <th>french_shor</th>
-      <th>geometry</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>None</td>
-      <td>Adm. by EGY</td>
-      <td>EGY</td>
-      <td>Ma'tan al-Sarra</td>
-      <td>Africa</td>
-      <td>Northern Africa</td>
-      <td>None</td>
-      <td>Ma'tan al-Sarra</td>
-      <td>POLYGON ((33.25104 21.99977, 34.15064 21.99603...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>CHE</td>
-      <td>Member State</td>
-      <td>CHE</td>
-      <td>Switzerland</td>
-      <td>Europe</td>
-      <td>Western Europe</td>
-      <td>CH</td>
-      <td>Suisse</td>
-      <td>POLYGON ((9.56672 47.54045, 9.55980 47.50209, ...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>None</td>
-      <td>UK Territory</td>
-      <td>GBR</td>
-      <td>Jersey</td>
-      <td>Europe</td>
-      <td>Northern Europe</td>
-      <td>None</td>
-      <td>Jersey</td>
-      <td>POLYGON ((-2.01500 49.21417, -2.02111 49.17721...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>AUT</td>
-      <td>Member State</td>
-      <td>AUT</td>
-      <td>Austria</td>
-      <td>Europe</td>
-      <td>Western Europe</td>
-      <td>AT</td>
-      <td>Autriche</td>
-      <td>POLYGON ((16.94618 48.61907, 16.94333 48.57333...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>PRT</td>
-      <td>Member State</td>
-      <td>PRT</td>
-      <td>Portugal</td>
-      <td>Europe</td>
-      <td>Southern Europe</td>
-      <td>PT</td>
-      <td>Portugal</td>
-      <td>POLYGON ((-7.43185 37.25319, -7.41903 37.18055...</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-309b8df6-9901-425b-8b37-8ee7299c7546')"
-              title="Convert this dataframe to an interactive table."
-              style="display:none;">
-
-  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
-       width="24px">
-    <path d="M0 0h24v24H0V0z" fill="none"/>
-    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
-  </svg>
-      </button>
-
-  <style>
-    .colab-df-container {
-      display:flex;
-      flex-wrap:wrap;
-      gap: 12px;
-    }
-
-    .colab-df-convert {
-      background-color: #E8F0FE;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      fill: #1967D2;
-      height: 32px;
-      padding: 0 0 0 0;
-      width: 32px;
-    }
-
-    .colab-df-convert:hover {
-      background-color: #E2EBFA;
-      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
-      fill: #174EA6;
-    }
-
-    [theme=dark] .colab-df-convert {
-      background-color: #3B4455;
-      fill: #D2E3FC;
-    }
-
-    [theme=dark] .colab-df-convert:hover {
-      background-color: #434B5C;
-      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
-      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
-      fill: #FFFFFF;
-    }
-  </style>
-
-      <script>
-        const buttonEl =
-          document.querySelector('#df-309b8df6-9901-425b-8b37-8ee7299c7546 button.colab-df-convert');
-        buttonEl.style.display =
-          google.colab.kernel.accessAllowed ? 'block' : 'none';
-
-        async function convertToInteractive(key) {
-          const element = document.querySelector('#df-309b8df6-9901-425b-8b37-8ee7299c7546');
-          const dataTable =
-            await google.colab.kernel.invokeFunction('convertToInteractive',
-                                                     [key], {});
-          if (!dataTable) return;
-
-          const docLinkHtml = 'Like what you see? Visit the ' +
-            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
-            + ' to learn more about interactive tables.';
-          element.innerHTML = '';
-          dataTable['output_type'] = 'display_data';
-          await google.colab.output.renderOutput(dataTable, element);
-          const docLink = document.createElement('div');
-          docLink.innerHTML = docLinkHtml;
-          element.appendChild(docLink);
-        }
-      </script>
-    </div>
-  </div>
-</div></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">data_Adminunits</span></code> is a <code class="docutils literal notranslate"><span class="pre">GeoDataFrame</span></code> containing all polygons illustrating the national boundaries for the 256 countries in the world</p>
 <p>Let’s have a look at the administrative boundaries we just loaded using <code class="docutils literal notranslate"><span class="pre">pd.DataFrame.plot()</span></code></p>
@@ -997,12 +836,10 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 <p>We have loaded the administrative shapefile. Now we can load the gridded precipitation dataset using the <code class="docutils literal notranslate"><span class="pre">xarray</span></code> package through the <code class="docutils literal notranslate"><span class="pre">open_mfdataset()</span></code> function. This function allows us to open multiple files as a single dataset.</p>
 <p>In a folder I have hundreds of MSWEP reanalysis data downloaded from the <a class="reference external" href="http://www.gloh2o.org/mswep/">here</a>. Each of these files contains a single data of the global reanalysis, about 8.2 MB. The parameter chunks is very important, it defines how big are the “pieces” of data moved from the disk to the memory. With this value the entire computation on a workstation with 2 GB takes a couple of minutes. I want to load all the precipitation files from the year 1980-2021.</p>
+<p>Now let’s load the gridded daily precipitation dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Loading the gridded daily precipitation dataset</span>
-<span class="c1">#Read netcdf files</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">weather_file</span><span class="p">,</span><span class="n">chunks</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;time&quot;</span><span class="p">:</span><span class="mi">10</span><span class="p">})</span>    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">weather_file</span><span class="p">,</span><span class="n">chunks</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;time&quot;</span><span class="p">:</span><span class="mi">10</span><span class="p">})</span>    
 <span class="n">data</span>
 </pre></div>
 </div>
@@ -1533,14 +1370,10 @@ Attributes:
               dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, length=245, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-5b6aa887-fce5-477c-956f-9c980abb64be' class='xr-section-summary-in' type='checkbox'  checked><label for='section-5b6aa887-fce5-477c-956f-9c980abb64be' class='xr-section-summary' >Attributes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>history :</span></dt><dd>Created on 2021-02-04 03:18</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <p>As you can see this xarray Dataset contains a single variable <code class="docutils literal notranslate"><span class="pre">(precipitation)</span></code> which is stored as a dask.array. This is the result of loading files with open_mfdataset. More information and examples of the interaction between dask and xarray can be found in their documentations(<a class="reference external" href="https://examples.dask.org/xarray.html">here</a> and <a class="reference external" href="https://docs.xarray.dev/en/stable/user-guide/dask.html">here</a>)</p>
-<p>Now we are ready for a bit of regionmask magic. The module can create a gridded mask with the function <code class="docutils literal notranslate"><span class="pre">regionmask.Regions()</span></code> documented <a class="reference external" href="https://regionmask.readthedocs.io/en/stable/">here</a>. With this function we have created an object able to mask gridded data.</p>
+<p>Now we are ready for a bit of <strong>regionmask</strong> magic. The module can create a gridded mask with the function <code class="docutils literal notranslate"><span class="pre">regionmask.Regions()</span></code> documented <a class="reference external" href="https://regionmask.readthedocs.io/en/stable/">here</a>. With this function we have created an object able to mask gridded data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#calculate the mask for the region of interest</span>
-
-<span class="c1">#go to https://boundingbox.klokantech.com/ to obtain bounding box lat and lon for the selected area of study</span>
-
-<span class="n">sheds_mask_poly</span> <span class="o">=</span> <span class="n">regionmask</span><span class="o">.</span><span class="n">Regions</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;sheds_mask&#39;</span><span class="p">,</span> <span class="n">numbers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">256</span><span class="p">)),</span> <span class="n">names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_Adminunits</span><span class="o">.</span><span class="n">name</span><span class="p">),</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sheds_mask_poly</span> <span class="o">=</span> <span class="n">regionmask</span><span class="o">.</span><span class="n">Regions</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;sheds_mask&#39;</span><span class="p">,</span> <span class="n">numbers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">256</span><span class="p">)),</span> <span class="n">names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_Adminunits</span><span class="o">.</span><span class="n">name</span><span class="p">),</span>
                                      <span class="n">abbrevs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_Adminunits</span><span class="o">.</span><span class="n">color_code</span><span class="p">),</span> <span class="n">outlines</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_Adminunits</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">256</span><span class="p">)))</span>
 <span class="n">sheds_mask_poly</span>
 </pre></div>
@@ -1571,8 +1404,7 @@ Regions:
 </div>
 <section id="calculating-the-mask-of-the-region-of-interest">
 <h3>Calculating the mask of the region of interest<a class="headerlink" href="#calculating-the-mask-of-the-region-of-interest" title="Permalink to this headline">#</a></h3>
-<p>Now we are ready to apply the mask on the gridded dataset <strong>data</strong>. We select only the first timestep to speed up the process. For the same reason it is better to further “zoom” into the Western European countries. We specify the name of the coordinates (the defaults are lat and lon). You can play around with the coordinates. Use this bounding box ([here]https://boundingbox.klokantech.com/) to obtain the correct coordinates.</p>
-<p><strong>Action</strong> Enter the bounding box coordinates in the next code box</p>
+<p>Now we are ready to apply the mask on the gridded dataset <strong>data</strong>. We select only the first timestep to speed up the process. For the same reason it is better to further “zoom” into the Western European countries. We specify the name of the coordinates (the defaults are lat and lon). You can play around with the coordinates. Use this bounding box <a class="reference external" href="https://boundingbox.klokantech.com/">here</a> to obtain the correct coordinates. Once you have created a bounding box, you can select the ‘CSV’ tab and copy paste the coordinates in the cell below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">sheds_mask_poly</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">lon</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">35</span><span class="p">),</span> <span class="n">lat</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">71</span><span class="p">,</span> <span class="mi">35</span><span class="p">)),</span><span class="n">lon_name</span> <span class="o">=</span> <span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="n">lat_name</span> <span class="o">=</span> <span class="s1">&#39;lat&#39;</span><span class="p">)</span> <span class="c1"># change the lat and lon slice to the bounding box of the selected region</span>
@@ -2062,19 +1894,12 @@ Coordinates:
 <p><strong>Action</strong>  Inspect the code, change the label and title names and run the code to make the plot. Fill in the plot parameters in the code box below</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plotting the target region gridded precipitation data</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span>
 <span class="n">monthly_prec</span><span class="o">.</span><span class="n">precipitation</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">)</span>
 <span class="n">data_Adminunits</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">facecolor</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f49a4339820&gt;
-</pre></div>
-</div>
-<img alt="../_images/tutorial2_40_1.png" src="../_images/tutorial2_40_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2088,8 +1913,7 @@ Coordinates:
 <p><strong>Action</strong>  Inspect the code, change the label and title names and run the code to make the plot. Fill in the plot parameters in the code box below</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plotting the precipitation timeseries of the selected study region</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_prec_timeseries</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">df_prec_timeseries</span><span class="p">,</span><span class="s2">&quot;-o&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Precipitation[mm/day]&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Months-Years&#39;</span><span class="p">)</span><span class="c1">#change</span>
@@ -2749,29 +2573,20 @@ time
 </section>
 <section id="visualization-of-spi">
 <h3>Visualization of SPI<a class="headerlink" href="#visualization-of-spi" title="Permalink to this headline">#</a></h3>
+<p>Now let’s visualize the SPI. Within <strong>xarray</strong>’s <code class="docutils literal notranslate"><span class="pre">.plot()</span></code> function, we can nicely select that we want to create a multi-plot figure, using the <code class="docutils literal notranslate"><span class="pre">col</span></code> and <code class="docutils literal notranslate"><span class="pre">col_wrap</span></code> arguments.</p>
 <p><em><strong>Question 7:  Select a year with extreme drought occurence within the selected study region and plot the spi values. Include the plots in Canvas</strong></em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#spatial plotting for spi_values</span>
-
-<span class="n">spi_1</span><span class="p">[</span><span class="s1">&#39;spi_values&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;2020&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">col_wrap</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">vmin</span> <span class="o">=-</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span> <span class="c1">#change the year</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spi_1</span><span class="p">[</span><span class="s1">&#39;spi_values&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;2020&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">col_wrap</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">vmin</span> <span class="o">=-</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span> <span class="c1">#change the year</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;xarray.plot.facetgrid.FacetGrid at 0x7f49a9bd7970&gt;
-</pre></div>
-</div>
-<img alt="../_images/tutorial2_64_1.png" src="../_images/tutorial2_64_1.png" />
 </div>
 </div>
 <p><em><strong>Question 7: Explain the drought spatial plots plotted above. How was the drought in each of the months within the regions of the selected country?</strong></em></p>
+<p>It would also be interesting to plot the spi_1 in a timeseries. In the cell below, we plot the calculated SPI-1 values over time. A value below zero means there is a drought and above zero indicates wet periods.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#plotting the spi_1 spatially and in a timeseries</span>
-<span class="c1"># Plot the calculated SPI-1 values over time </span>
-<span class="c1">#Below zero means there is a drought and above wet periods</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_indice_timeseries</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">df_indice_timeseries</span><span class="p">,</span><span class="s2">&quot;-o&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span> <span class="c1"># all the values below zero indicate drought conditions. Can be changed to indicate drought threshold</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;SPI-1 values&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
@@ -2782,7 +2597,7 @@ time
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/tutorial2_66_0.png" src="../_images/tutorial2_66_0.png" />
+<img alt="../_images/tutorial2_67_0.png" src="../_images/tutorial2_67_0.png" />
 </div>
 </div>
 <p><em><strong>Question 8: Explain the drought pattern in the spi values timeseries above for the selected case study region</strong></em></p>
