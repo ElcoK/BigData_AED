@@ -34,8 +34,8 @@ parts:
   - caption: Week 5
     chapters:
     - file: week5/lecture
-#    - file: week5/tutorial1
-#    - file: week5/tutorial2
+    - file: week5/tutorial1
+    - file: week5/tutorial2
   - caption: Week 6
     chapters:
     - file: week6/lecture
