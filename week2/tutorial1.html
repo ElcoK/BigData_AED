@@ -283,11 +283,6 @@ const thebe_selector_output = ".output, .cell_output"
    Lecture: A guide to visualisation
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week7/tutorial1.html">
-   Tutorial: Visualizing your results
-  </a>
- </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -868,18 +863,11 @@ As you can see, there are several options in the seaborn (imported as sns) heatm
 </div>
 </div>
 </div>
-<p>The names of the dataframe <em>serialcount</em> are a bit confusing, because the <strong>index</strong> column corresponds to the <strong>SERIAL</strong> number and the column <strong>SERIAL</strong> corresponds to the <em>household size</em>, so let’s rename the <strong>SERIAL</strong> column to <strong>HHSIZE</strong> and the <strong>index</strong> column to <strong>SERIAL</strong>.</p>
+<p>The names of the dataframe <em>serialcount</em> are a bit confusing, because the <strong>index</strong> column corresponds to the <strong>SERIAL</strong> number and the column <strong>SERIAL</strong> corresponds to the <em>household size</em>, so let’s rename the <strong>SERIAL</strong> column to <strong>HHSIZE</strong> and the <strong>index</strong> column to <strong>SERIAL</strong>. Do this yourself in the cell below.</p>
+<p>Then we add the column <strong>HHSIZE</strong> (household) size to our data using the <code class="docutils literal notranslate"><span class="pre">.merge()</span></code> function. Within the <code class="docutils literal notranslate"><span class="pre">merge()</span></code> function, you have to define on which column you want to merge them, through the <code class="docutils literal notranslate"><span class="pre">on</span></code> argument. Merge on the <strong>SERIAL</strong> column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">serialcount</span> <span class="o">=</span> <span class="n">serialcount</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">:</span><span class="s1">&#39;HHSIZE&#39;</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">:</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">})</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Then we add the column <strong>HHSIZE</strong> (household) size to our data using the <code class="docutils literal notranslate"><span class="pre">.merge()</span></code> function. Within the <code class="docutils literal notranslate"><span class="pre">merge()</span></code> function, you have to define on which column you want to merge them, through the <code class="docutils literal notranslate"><span class="pre">on</span></code> argument.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">serialcount</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">serialcount</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="n">XXXX</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
@@ -906,11 +894,7 @@ As you can see, there are several options in the seaborn (imported as sns) heatm
 </div>
 </div>
 <div class="alert alert-block alert-success">
-    <b>Question 7:</b> There are different ways to obtain the same result. Please describe the two lines of code below and explain how they take a different approach, but yet achieve the same outcome.
-<br>
-<p><i>data[[‘SERIAL’, ‘SEX’]].value_counts(dropna = False).reset_index() <br>
-data[[‘SERIAL’,’SEX’]].groupby([‘SERIAL’,’SEX’]).size().reset_index()</i>
-<br></p>
+    <b>Question 7:</b> There are different ways to obtain the same result. Please describe the two lines of code above and explain how they take a different approach, but yet achieve the same outcome.
 </div><p>In the next steps you are going to write code that merges a new variable called <strong>‘NR_OF_WOMEN’</strong> (number of women) to the existing dataframe. The following hints guide you through the steps.</p>
 <p><em>Three lines of code is sufficient. Hint 1 is given for the first line of code, Hint 2 for the second line, and Hint 3a, 3b, 3c for the third line of code.</em></p>
 <ul class="simple">
@@ -922,9 +906,9 @@ data[[‘SERIAL’,’SEX’]].groupby([‘SERIAL’,’SEX’]).size().reset_in
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">womencount</span> <span class="o">=</span> <span class="n">gendercount</span><span class="p">[</span><span class="n">gendercount</span><span class="p">[</span><span class="s1">&#39;SEX&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">]</span>
-<span class="n">womencount</span> <span class="o">=</span> <span class="n">womencount</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;NR_OF_WOMEN&#39;</span><span class="p">})</span>
-<span class="n">data</span>  <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">womencount</span><span class="p">[[</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="s1">&#39;NR_OF_WOMEN&#39;</span><span class="p">]],</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">womencount</span> <span class="o">=</span> 
+<span class="n">womencount</span> <span class="o">=</span> 
+<span class="n">data</span>  <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
 </pre></div>
 </div>
 </div>
@@ -932,7 +916,7 @@ data[[‘SERIAL’,’SEX’]].groupby([‘SERIAL’,’SEX’]).size().reset_in
 <p>When you succesfully merged the number of women the dataframe, what do you do with the nan values? Fill in the dots.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;NR_OF_WOMEN&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;NR_OF_WOMEN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># data[&#39;NR_OF_WOMEN&#39;] = data[&#39;NR_OF_WOMEN&#39;].replace(np.nan, ...) </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;NR_OF_WOMEN&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;NR_OF_WOMEN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="o">...</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
@@ -959,13 +943,12 @@ data[[‘SERIAL’,’SEX’]].groupby([‘SERIAL’,’SEX’]).size().reset_in
 </div>
 </div>
 </div>
-<p>Now create a variable yourself with the age of the youngest person, named YOUNGEST, and add it to the dataframe data.</p>
+<p>Now create a variable yourself with the age of the youngest person, named YOUNGEST, and add it to the dataframe data. Follow the same approach as how you added the <strong>NR_OF_WOMEN</strong> column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Answer. </span>
-<span class="n">youngest</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="n">youngest</span> <span class="o">=</span> <span class="n">youngest</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;AGE&#39;</span><span class="p">:</span><span class="s1">&#39;YOUNGEST&#39;</span><span class="p">})</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">youngest</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">youngest</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+<span class="n">youngest</span> <span class="o">=</span> 
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
 </pre></div>
 </div>
 </div>

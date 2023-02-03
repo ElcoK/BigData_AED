@@ -283,11 +283,6 @@ const thebe_selector_output = ".output, .cell_output"
    Lecture: A guide to visualisation
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week7/tutorial1.html">
-   Tutorial: Visualizing your results
-  </a>
- </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -761,20 +756,13 @@ title="Print to PDF"
 <h3>Authenticate with Tweepy<a class="headerlink" href="#authenticate-with-tweepy" title="Permalink to this headline">#</a></h3>
 <p>In order to gain access to Twitter information we first need to authenticate to the Twitter API.</p>
 <p>Replace <strong><code class="docutils literal notranslate"><span class="pre">Your_info</span></code></strong> with your Twitter credentials that you have obtained in the previous section.</p>
-<p><span style="color:red">Maria’s API key is used to check if colab works, please do not include them in the final version</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># API keyws that yous saved earlier</span>
-<span class="c1"># api_key = &quot;Your_info&quot;</span>
-<span class="c1"># api_secrets = &quot;Your_info&quot;</span>
-<span class="c1"># access_token = &quot;Your_info&quot;</span>
-<span class="c1"># access_secret = &quot;Your_info&quot;</span>
-
-<span class="c1">## Maria&#39;s API keys </span>
-<span class="n">api_key</span> <span class="o">=</span> <span class="s2">&quot;SbjfdyjQgzVKPxfzZEQJtqn5Q&quot;</span>
-<span class="n">api_secrets</span> <span class="o">=</span> <span class="s2">&quot;hb1iOFl2hupClPzXn2cI632efGgg4epyA4FDWFZW0eIsyoxtVh&quot;</span>
-<span class="n">access_token</span> <span class="o">=</span> <span class="s2">&quot;3996035119-3G6XL2EuVYWShNbi6Lkd516Jb1jb20wpSJDxRPQ&quot;</span>
-<span class="n">access_secret</span> <span class="o">=</span> <span class="s2">&quot;ZrbKPyzJdCxHhBnGBLBHrN38TKBFlp3jNpR1o3iYSJqeV&quot;</span>
+<span class="n">api_key</span> <span class="o">=</span> <span class="s2">&quot;Your_info&quot;</span>
+<span class="n">api_secrets</span> <span class="o">=</span> <span class="s2">&quot;Your_info&quot;</span>
+<span class="n">access_token</span> <span class="o">=</span> <span class="s2">&quot;Your_info&quot;</span>
+<span class="n">access_secret</span> <span class="o">=</span> <span class="s2">&quot;Your_info&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -1303,7 +1291,13 @@ Mention at least one advantage and one disadvantage of not sharing the coordinat
 </div>
 </div>
 </div>
-<p>db</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">db</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="application-natural-hazards">
 <h2>5. Application: Natural Hazards<a class="headerlink" href="#application-natural-hazards" title="Permalink to this headline">#</a></h2>
@@ -1456,13 +1450,15 @@ Mention at least one advantage and one disadvantage of not sharing the coordinat
 <span class="c1">#Plot color of the circle</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Some earthquakes reported on Twitter&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span> <span class="c1"># set title</span>
 
 <span class="n">world</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.3</span><span class="p">)</span>
 
 <span class="n">divider</span> <span class="o">=</span> <span class="n">make_axes_locatable</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
 <span class="n">cax</span> <span class="o">=</span> <span class="n">divider</span><span class="o">.</span><span class="n">append_axes</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;2%&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
-<span class="n">dbg</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;magnitude&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="n">z</span><span class="o">*</span><span class="mi">30</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span> <span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlOrRd&#39;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">legend_kwds</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Magnitude&quot;</span><span class="p">,</span> <span class="s1">&#39;orientation&#39;</span><span class="p">:</span> <span class="s2">&quot;vertical&quot;</span><span class="p">},</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax</span><span class="p">)</span> 
+<span class="n">dbg</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;magnitude&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="n">z</span><span class="o">*</span><span class="mi">30</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span> <span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlOrRd&#39;</span><span class="p">,</span>
+         <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+         <span class="n">legend_kwds</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Magnitude&quot;</span><span class="p">,</span> <span class="s1">&#39;orientation&#39;</span><span class="p">:</span> <span class="s2">&quot;vertical&quot;</span><span class="p">},</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
@@ -1485,16 +1481,19 @@ Mention at least one advantage and one disadvantage of not sharing the coordinat
 The database contains tweets about floods located in Texas from 30/07/2014 to 15/11/2022</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>We’re going to use the file ‘tweets.jsonl’, make sure to save it in the same folder than the notebook.</p>
+<p>We’re going to use the file ‘tweets.jsonl’, we will download it through the !gdown function below.</p>
 </div>
 <p>We can read the data using the following code:</p>
-<p><span style="color:red">Needed for Colab: # !gdown 11QfCIMHOjcgNvWMFsZTk5btXgYiRCXRq</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Needed for Colab:</span>
-<span class="c1"># !gdown 11QfCIMHOjcgNvWMFsZTk5btXgYiRCXRq</span>
-
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;tweets.jsonl&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>gdown<span class="w"> </span>11QfCIMHOjcgNvWMFsZTk5btXgYiRCXRq
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;tweets.jsonl&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">tweets</span> <span class="o">=</span> <span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">tweets</span><span class="p">:</span>
     <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>

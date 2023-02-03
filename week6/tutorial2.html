@@ -283,11 +283,6 @@ const thebe_selector_output = ".output, .cell_output"
    Lecture: A guide to visualisation
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week7/tutorial1.html">
-   Tutorial: Visualizing your results
-  </a>
- </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -728,8 +723,8 @@ title="Print to PDF"
 <p>Now click on <code class="docutils literal notranslate"><span class="pre">APPLY</span> <span class="pre">FOR</span> <span class="pre">A</span> <span class="pre">NON-COMMERCIAL</span> <span class="pre">KEY</span></code> and just fill in some information about the course. The name of the App can be something random and related to our big data course, and you just need to fill in two lines of text to describe what you want to do. As soon as you click <code class="docutils literal notranslate"><span class="pre">SUBMIT</span></code>, you will see a generated <strong>api_key</strong> and an <strong>api_secret</strong>. Fill those in below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">api_key</span> <span class="o">=</span> <span class="s1">&#39;d65f682f6f7e8a02a3db8cfbe3c29b15&#39;</span>
-<span class="n">api_secret</span><span class="o">=</span><span class="s1">&#39;09f3aa61233e2e11&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">api_key</span> <span class="o">=</span> <span class="s1">&#39;Your Info&#39;</span>
+<span class="n">api_secret</span><span class="o">=</span><span class="s1">&#39;Your Info&#39;</span>
 
 <span class="n">flickr</span> <span class="o">=</span> <span class="n">flickrapi</span><span class="o">.</span><span class="n">FlickrAPI</span><span class="p">(</span><span class="n">api_key</span><span class="p">,</span> <span class="n">api_secret</span><span class="p">,</span> <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
@@ -756,8 +751,7 @@ title="Print to PDF"
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
-<span class="n">cx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-
+<span class="n">cx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span> <span class="c1">#depending on the size of your area, you may need to change the zoom level if you run into an error.</span>
 <span class="n">size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">area_to_check</span><span class="o">.</span><span class="n">area</span><span class="o">/</span><span class="mf">1e6</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">. Total area: </span><span class="si">{}</span><span class="s2"> km2&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">place_name</span><span class="p">,</span><span class="n">size</span><span class="p">),</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
@@ -821,7 +815,7 @@ Now we have extracted the data and, let's explore (and clean) this data a bit mo
 <p>Now let’s explore the data a little bit:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">XXX</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -848,17 +842,17 @@ Now we have extracted the data and, let's explore (and clean) this data a bit mo
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]</span><span class="o">.</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">pygeos</span><span class="o">.</span><span class="n">points</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;latitude&#39;</span><span class="p">]))]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Now let’s convert the <strong>datetaken</strong> column into a <em>datetime</em> type, so we can extract specific years or days.</p>
+<p>Now let’s convert the <strong>datetaken</strong> column into a <em>datetime</em> type, so we can extract specific years or days. To do so, we will make use of the <code class="docutils literal notranslate"><span class="pre">lambda</span></code> and <code class="docutils literal notranslate"><span class="pre">apply</span></code> functions, and use the <code class="docutils literal notranslate"><span class="pre">fromisoformat()</span></code> function from within the <strong>datetime</strong> package.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;datetaken&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">datetaken</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromisoformat</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;datetaken&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">datetaken</span><span class="o">.</span><span class="n">XXXX</span><span class="p">(</span><span class="n">XXXX</span> <span class="n">x</span> <span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">XXXX</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">datetaken</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">datetaken</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%b&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;month_year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;datetaken&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">)</span>
@@ -891,9 +885,9 @@ Now we have extracted the data and, let's explore (and clean) this data a bit mo
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
-<span class="n">cx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">cx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span> <span class="c1">#depending on the size of your area, you may need to change the zoom level if you run into an error.</span>
 
-<span class="c1">#ax.set_title(&quot;{}. Total area: {} km2&quot;.format(place_name,size),fontweight=&#39;bold&#39;)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -966,9 +960,9 @@ Now we have extracted the data and, let's explore (and clean) this data a bit mo
 <span class="c1">#ax.set_xticks([])</span>
 <span class="c1">#ax.set_yticks([])</span>
 <span class="c1">#ax.set_axis_off()</span>
-<span class="n">cx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">cx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span> <span class="c1">#depending on the size of your area, you may need to change the zoom level if you run into an error.</span>
 
-<span class="c1">#ax.set_title(&quot;{}. Total area: {} km2&quot;.format(place_name,size),fontweight=&#39;bold&#39;)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -984,15 +978,15 @@ Now we have extracted the data and, let's explore (and clean) this data a bit mo
 <p>And have a look at one of the users with the most pictures</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf_to_plot</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">gdf_to_plot</span><span class="o">.</span><span class="n">owner</span> <span class="o">==</span> <span class="s1">&#39;57755771@N05&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf_to_plot</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">gdf_to_plot</span><span class="o">.</span><span class="n">owner</span> <span class="o">==</span> <span class="s1">&#39;XXXXX&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Ok, so it seems that we have several users that dominate the amount of uploads. If we want to say something about the preference of locations to visit, we might have to compensate for this.</p>
+<p>Ok, so it seems that we have several users that dominate the amount of uploads. If we want to say something about the preference of locations to visit, we might have to compensate for this. To do so, we can make use of the groupby function. Which columns would you like to use to make sure you still keep enough unique entries? And which groupby functions will you choose to group on? First, last, mean?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf_unique</span> <span class="o">=</span> <span class="n">gdf_to_plot</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;owner&#39;</span><span class="p">,</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span><span class="s1">&#39;nature&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf_unique</span> <span class="o">=</span> <span class="n">gdf_to_plot</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;XXX&#39;</span><span class="p">,</span><span class="s1">&#39;XXX&#39;</span><span class="p">,</span><span class="s1">&#39;XXX&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">XXXX</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1059,13 +1053,15 @@ Now we have extracted the data and, let's explore (and clean) this data a bit mo
 </div>
 </div>
 </div>
+<p>And apply this within our area. We need to specify the height of each cell (the cellsize). Choose a size that doesnt make the grid too large, but also provides enough cells within the area to see some spatial variation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">create_grid</span><span class="p">(</span><span class="n">pygeos</span><span class="o">.</span><span class="n">from_shapely</span><span class="p">(</span><span class="n">area</span><span class="o">.</span><span class="n">geometry</span><span class="p">),</span><span class="mf">0.005</span><span class="p">),</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">create_grid</span><span class="p">(</span><span class="n">pygeos</span><span class="o">.</span><span class="n">from_shapely</span><span class="p">(</span><span class="n">area</span><span class="o">.</span><span class="n">geometry</span><span class="p">),</span><span class="n">XXXX</span><span class="p">),</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Let’s look how this grid looks like.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
@@ -1073,6 +1069,7 @@ Now we have extracted the data and, let's explore (and clean) this data a bit mo
 </div>
 </div>
 </div>
+<p>Now let’s make sure we georeference the data and convert it to <strong>EPSG:3857</strong> (the same as the Flickr data).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
@@ -1082,6 +1079,8 @@ Now we have extracted the data and, let's explore (and clean) this data a bit mo
 </div>
 </div>
 </div>
+<p>To very efficiently find overlap between two geospatial databases, we make use of spatial queries. You can read more about the function we are using <a class="reference external" href="https://pygeos.readthedocs.io/en/latest/strtree.html">here</a> and about R-tree (the approach for very efficienet spatial queries) <a class="reference external" href="https://en.wikipedia.org/wiki/R-tree">here</a>.</p>
+<p>We start with building the tree from our photos. We want to quickly see how many are within each grid cell.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tree</span> <span class="o">=</span> <span class="n">pygeos</span><span class="o">.</span><span class="n">STRtree</span><span class="p">(</span><span class="n">pygeos</span><span class="o">.</span><span class="n">from_shapely</span><span class="p">(</span><span class="n">gdf_unique</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">gdf_unique</span><span class="o">.</span><span class="n">nature</span><span class="o">==</span><span class="s1">&#39;yes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">geometry</span><span class="p">))</span>
@@ -1089,6 +1088,7 @@ Now we have extracted the data and, let's explore (and clean) this data a bit mo
 </div>
 </div>
 </div>
+<p>And now we can use the apply function to look for each of our grid how many photos are taken within each grid cell.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span><span class="p">[</span><span class="s1">&#39;nature&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">pygeos</span><span class="o">.</span><span class="n">from_shapely</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">predicate</span><span class="o">=</span><span class="s1">&#39;contains_properly&#39;</span><span class="p">)))</span>
@@ -1096,6 +1096,7 @@ Now we have extracted the data and, let's explore (and clean) this data a bit mo
 </div>
 </div>
 </div>
+<p>And now we can plot it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">grid</span><span class="o">.</span><span class="n">nature</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
@@ -1105,9 +1106,9 @@ Now we have extracted the data and, let's explore (and clean) this data a bit mo
 <span class="c1">#ax.set_xticks([])</span>
 <span class="c1">#ax.set_yticks([])</span>
 <span class="c1">#ax.set_axis_off()</span>
-<span class="n">cx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">cx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span> <span class="c1">#depending on the size of your area, you may need to change the zoom level if you run into an error.</span>
 
-<span class="c1">#ax.set_title(&quot;{}. Total area: {} km2&quot;.format(place_name,size),fontweight=&#39;bold&#39;)</span>
+<span class="c1">#ax.set_title(&quot;&quot;)</span>
 </pre></div>
 </div>
 </div>
@@ -1162,7 +1163,9 @@ Now we have extracted the data and, let's explore (and clean) this data a bit mo
 <span class="c1">#ax.set_xticks([])</span>
 <span class="c1">#ax.set_yticks([])</span>
 <span class="c1">#ax.set_axis_off()</span>
-<span class="n">cx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">cx</span><span class="o">.</span><span class="n">add_basemap</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span> <span class="c1">#depending on the size of your area, you may need to change the zoom level if you run into an error.</span>
+
+<span class="c1">#ax.set_title(&quot;&quot;)</span>
 </pre></div>
 </div>
 </div>
@@ -1206,16 +1209,13 @@ Now we have extracted the data and, let's explore (and clean) this data a bit mo
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">landuse</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">landuse</span><span class="o">.</span><span class="n">natural</span><span class="o">==</span><span class="s1">&#39;water&#39;</span><span class="p">,</span><span class="s1">&#39;landuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;water&#39;</span>
 <span class="n">landuse</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">landuse</span><span class="o">.</span><span class="n">natural</span><span class="o">==</span><span class="s1">&#39;beach&#39;</span><span class="p">,</span><span class="s1">&#39;landuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;beach&#39;</span>
-<span class="n">landuse</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">landuse</span><span class="o">.</span><span class="n">natural</span><span class="o">==</span><span class="s1">&#39;grassland&#39;</span><span class="p">,</span><span class="s1">&#39;landuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;grass&#39;</span>
 <span class="n">landuse</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">landuse</span><span class="o">.</span><span class="n">natural</span><span class="o">==</span><span class="s1">&#39;wetland&#39;</span><span class="p">,</span><span class="s1">&#39;landuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;wetlands&#39;</span>
-<span class="n">landuse</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">landuse</span><span class="o">.</span><span class="n">natural</span><span class="o">==</span><span class="s1">&#39;coastline&#39;</span><span class="p">,</span><span class="s1">&#39;landuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;coastline&#39;</span>
-<span class="n">landuse</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">landuse</span><span class="o">.</span><span class="n">natural</span><span class="o">==</span><span class="s1">&#39;shoal&#39;</span><span class="p">,</span><span class="s1">&#39;landuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;shoal&#39;</span>
-<span class="n">landuse</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">landuse</span><span class="o">.</span><span class="n">natural</span><span class="o">==</span><span class="s1">&#39;scrub&#39;</span><span class="p">,</span><span class="s1">&#39;landuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;scrub&#39;</span>
-<span class="n">landuse</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">landuse</span><span class="o">.</span><span class="n">natural</span><span class="o">==</span><span class="s1">&#39;sand&#39;</span><span class="p">,</span><span class="s1">&#39;landuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;sand&#39;</span>
-<span class="n">landuse</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">landuse</span><span class="o">.</span><span class="n">natural</span><span class="o">==</span><span class="s1">&#39;tree&#39;</span><span class="p">,</span><span class="s1">&#39;landuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;tree&#39;</span>
-<span class="n">landuse</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">landuse</span><span class="o">.</span><span class="n">natural</span><span class="o">==</span><span class="s1">&#39;heath&#39;</span><span class="p">,</span><span class="s1">&#39;landuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;heath&#39;</span>
-<span class="n">landuse</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">landuse</span><span class="o">.</span><span class="n">natural</span><span class="o">==</span><span class="s1">&#39;wood&#39;</span><span class="p">,</span><span class="s1">&#39;landuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;wood&#39;</span>
-<span class="n">landuse</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">landuse</span><span class="o">.</span><span class="n">natural</span><span class="o">==</span><span class="s1">&#39;peak&#39;</span><span class="p">,</span><span class="s1">&#39;landuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;peak&#39;</span>
+<span class="o">...</span>
+<span class="o">...</span>
+<span class="o">...</span>
+<span class="o">...</span>
+<span class="n">landuse</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">landuse</span><span class="o">.</span><span class="n">natural</span><span class="o">==</span><span class="s1">&#39;grassland&#39;</span><span class="p">,</span><span class="s1">&#39;landuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;grass&#39;</span>
+
 
 <span class="n">landuse</span> <span class="o">=</span> <span class="n">landuse</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;landuse&#39;</span><span class="p">])</span>
 </pre></div>

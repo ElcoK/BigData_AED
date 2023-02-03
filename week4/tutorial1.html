@@ -283,11 +283,6 @@ const thebe_selector_output = ".output, .cell_output"
    Lecture: A guide to visualisation
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week7/tutorial1.html">
-   Tutorial: Visualizing your results
-  </a>
- </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -700,7 +695,7 @@ title="Print to PDF"
 </section>
 <section id="extract-and-visualize-land-use-information-from-openstreetmap">
 <h2>2. Extract and visualize land-use information from OpenStreetMap<a class="headerlink" href="#extract-and-visualize-land-use-information-from-openstreetmap" title="Permalink to this headline">#</a></h2>
-<hr><p>The first step is to define which area you want to focus on. In the cell below, you will now read “Steenwijk, The Netherlands”. Change this to any random or municipality in the Netherlands that (1) you can think of and (2) will work.</p>
+<hr><p>The first step is to define which area you want to focus on. In the cell below, you will now read “Zoeterwoude, The Netherlands”. Change this to any area or municipality in the Netherlands that (1) you can think of and (2) will work.</p>
 <p>In some cases, the function does not recognize the location. You could either try a different phrasing or try a different location. Many parts of the Netherlands should work.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -726,6 +721,12 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Zoeterwoude, The Netherlands. Total area: 51 km2&#39;)
+</pre></div>
+</div>
+<img alt="../_images/tutorial1_13_1.png" src="../_images/tutorial1_13_1.png" />
+</div>
 </div>
 <div class="alert alert-block alert-success">
 <b>Question 1:</b> To make sure we understand which area you focus on, please submit the figure that outlines your area.
@@ -748,21 +749,29 @@ title="Print to PDF"
 </div>
 </div>
 <p>When we want to visualize or analyse the data, we want all information in a single column. However, at the moment, all information that was tagged as <em>“natural”</em>, has no information stored in the <em>“landuse”</em> tags. It is, however, very convenient if we can just use a single column for further exploration of the data.</p>
-<p>To overcome this issue, we need to add the missing information to the landuse column, as done below.</p>
-<div class="alert alert-block alert-success">
-<b>Question 2:</b> Please provide in the answer box in Canvas the code that you used to make sure that all land uses are now registered within the landuse column.
-</div><div class="cell docutils container">
+<p>To overcome this issue, we need to add the missing information to the landuse column, as done below. Let’s first have a look which categories we have in the <strong>natural</strong> column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">landuse</span><span class="o">.</span><span class="n">natural</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And now we can add them to the <strong>landuse</strong> column. We made a start, but its up to you to fill in the rest.</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">landuse</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">landuse</span><span class="o">.</span><span class="n">natural</span><span class="o">==</span><span class="s1">&#39;water&#39;</span><span class="p">,</span><span class="s1">&#39;landuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;water&#39;</span>
-<span class="n">landuse</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">landuse</span><span class="o">.</span><span class="n">natural</span><span class="o">==</span><span class="s1">&#39;beach&#39;</span><span class="p">,</span><span class="s1">&#39;landuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;beach&#39;</span>
-<span class="n">landuse</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">landuse</span><span class="o">.</span><span class="n">natural</span><span class="o">==</span><span class="s1">&#39;grassland&#39;</span><span class="p">,</span><span class="s1">&#39;landuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;grass&#39;</span>
 <span class="n">landuse</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">landuse</span><span class="o">.</span><span class="n">natural</span><span class="o">==</span><span class="s1">&#39;wetland&#39;</span><span class="p">,</span><span class="s1">&#39;landuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;wetlands&#39;</span>
+
+
 <span class="n">landuse</span> <span class="o">=</span> <span class="n">landuse</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;landuse&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Our next step is to prepare the visualisation of a map. What better way to explore land-use information than plotting it on a map?</p>
+<div class="alert alert-block alert-success">
+<b>Question 2:</b> Please provide in the answer box in Canvas the code that you used to make sure that all land uses are now registered within the landuse column.
+</div><p>Our next step is to prepare the visualisation of a map. What better way to explore land-use information than plotting it on a map?</p>
 <p>As you will see below, we can create a dictionary with color codes that will color each land-use class based on the color code provided in this dictionary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -808,7 +817,7 @@ title="Print to PDF"
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>You can find easily find hexcodes online to find the right colour for each land-use category. Just google hexcodes!</p>
+<p>You can easily find hexcodes online to find the right colour for each land-use category. Just google hexcodes!</p>
 </div>
 <p>Our next step is to make sure that we can connect our color codes to our dataframe with land-use categories.</p>
 <div class="cell docutils container">
@@ -884,9 +893,9 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">landuse_grid</span> <span class="o">=</span> <span class="n">make_geocube</span><span class="p">(</span>
-    <span class="n">vector_data</span><span class="o">=</span><span class="n">landuse</span><span class="p">,</span>
+    <span class="n">vector_data</span><span class="o">=</span><span class="n">XXXX</span><span class="p">,</span>
     <span class="n">output_crs</span><span class="o">=</span><span class="s2">&quot;epsg:4326&quot;</span><span class="p">,</span>
-    <span class="n">resolution</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">),</span>
+    <span class="n">resolution</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">XXXX</span><span class="p">,</span> <span class="n">XXXX</span><span class="p">),</span>
     <span class="n">categorical_enums</span><span class="o">=</span><span class="n">categorical_enums</span>
 <span class="p">)</span>
 </pre></div>
@@ -921,7 +930,9 @@ title="Print to PDF"
 <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Rasterized land-use map for </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">place_name</span><span class="p">),</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="c1">#add a title</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -956,9 +967,9 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">landuse_valued</span> <span class="o">=</span> <span class="n">make_geocube</span><span class="p">(</span>
-    <span class="n">vector_data</span><span class="o">=</span><span class="n">landuse</span><span class="p">,</span>
-    <span class="n">output_crs</span><span class="o">=</span><span class="s2">&quot;epsg:4326&quot;</span><span class="p">,</span>
-    <span class="n">resolution</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">),</span>
+    <span class="n">vector_data</span><span class="o">=</span><span class="n">XXXX</span><span class="p">,</span>
+    <span class="n">output_crs</span><span class="o">=</span><span class="n">XXXX</span><span class="p">,</span>
+    <span class="n">resolution</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">XXXX</span><span class="p">,</span> <span class="n">XXXX</span><span class="p">),</span>
     <span class="n">categorical_enums</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;landuse_value&#39;</span><span class="p">:</span> <span class="n">landuse</span><span class="o">.</span><span class="n">landuse_value</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
 <span class="p">}</span>
 <span class="p">)</span>
@@ -987,7 +998,8 @@ title="Print to PDF"
 <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Rasterized land-use map for </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">place_name</span><span class="p">),</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="c1"># add title</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1002,7 +1014,7 @@ title="Print to PDF"
 <span class="c1"># We create a colormar from our list of colors</span>
 <span class="n">cm</span> <span class="o">=</span> <span class="n">ListedColormap</span><span class="p">([</span><span class="n">color_dict_raster</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">color_dict_raster</span><span class="o">.</span><span class="n">keys</span><span class="p">()])</span>
 
-<span class="c1"># Let&#39;s also define the description of each category : 1 (blue) is Sea; 2 (red) is burnt, etc... Order should be respected here ! Or using another dict maybe could help.</span>
+<span class="c1"># Let&#39;s also define the description of each category. Order should be respected here!</span>
 <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;nodata&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">unique_classes</span><span class="p">)</span>
 <span class="n">len_lab</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
 
@@ -1030,7 +1042,8 @@ title="Print to PDF"
 <span class="n">tickz</span> <span class="o">=</span> <span class="n">norm_bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">diff</span> <span class="o">/</span> <span class="mi">2</span>
 <span class="n">cb</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">fmt</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">tickz</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Rasterized land-use map for </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">place_name</span><span class="p">),</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="c1"># set title again</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
@@ -1080,15 +1093,15 @@ title="Print to PDF"
 <h2>5. Analyze and visualize building stock<a class="headerlink" href="#analyze-and-visualize-building-stock" title="Permalink to this headline">#</a></h2>
 <hr><p>One interesting column is called <code class="docutils literal notranslate"><span class="pre">start_date</span></code>. This shows the building year per building.</p>
 <p>Let’s explore this year of building a bit more.</p>
-<p>First, it would be interesting to get an idea how many buildings are build in each year through using the <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code> function. Normally, that functions ranks the values in descending order (high to low). We are more interested in how this has developed over time. So we use the <code class="docutils literal notranslate"><span class="pre">sort_index()</span></code> function to sort the values by year.</p>
+<p>First, it would be interesting to get an idea how many buildings are build in each year through using the <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code> function. Normally, that functions ranks the values in descending order (high to low). We are more interested in how this has developed over time. So we use the <code class="docutils literal notranslate"><span class="pre">sort_index()</span></code> function to sort the values by year. Add these two functions in the cell below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">building_year</span> <span class="o">=</span> <span class="n">buildings</span><span class="o">.</span><span class="n">start_date</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">building_year</span> <span class="o">=</span> <span class="n">buildings</span><span class="o">.</span><span class="n">start_date</span><span class="o">.</span> <span class="n">XXXX</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>There is not better way to further explore this years than through plotting it.</p>
+<p>There is not better way to further explore this years than through plotting it. Don’t forget to add things such as a x label, y label and title. Have a look at some of the matplotlib <a class="reference external" href="https://matplotlib.org/stable/tutorials/introductory/quick_start.html">tutorials</a>. Note that you need to look at the code that also uses subplots and where they use the <code class="docutils literal notranslate"><span class="pre">ax</span></code> option.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">18</span><span class="p">))</span>
@@ -1276,8 +1289,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>*** Question 11: Please add two routes on a map and upload the resulting figure here. ***</p>
-</section>
+<div class="alert alert-block alert-success">
+<b>Question 11:</b>  Please add two more routes on a map and upload the resulting figure here.
+</div></section>
 </section>
 
     <script type="text/x-thebe-config">

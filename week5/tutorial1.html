@@ -283,11 +283,6 @@ const thebe_selector_output = ".output, .cell_output"
    Lecture: A guide to visualisation
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week7/tutorial1.html">
-   Tutorial: Visualizing your results
-  </a>
- </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -792,7 +787,6 @@ Make sure that you save this file before you continue, else you will lose everyt
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">point</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point</span><span class="p">([</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">51.37</span><span class="p">])</span>
-<span class="c1"># point = ee.Geometry.Point([-87.7719, 41.8799])</span>
 
 <span class="n">image</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LC08/C01/T1_SR&#39;</span><span class="p">)</span>
@@ -879,8 +873,8 @@ Make sure that you save this file before you continue, else you will lose everyt
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">points</span> <span class="o">=</span> <span class="n">CLC</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span>
     <span class="o">**</span><span class="p">{</span>
         <span class="s1">&#39;region&#39;</span><span class="p">:</span> <span class="n">image</span><span class="o">.</span><span class="n">geometry</span><span class="p">(),</span>
-        <span class="s1">&#39;scale&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
-        <span class="s1">&#39;numPixels&#39;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span>
+        <span class="s1">&#39;scale&#39;</span><span class="p">:</span> <span class="n">XXX</span><span class="p">,</span> <span class="c1">#check what the resolution of corine land cover is</span>
+        <span class="s1">&#39;numPixels&#39;</span><span class="p">:</span> <span class="n">XXX</span><span class="p">,</span> 
         <span class="s1">&#39;seed&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
         <span class="s1">&#39;geometries&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>  <span class="c1"># Set this to False to ignore geometries</span>
     <span class="p">}</span>
@@ -991,7 +985,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 <p>This is not very high. Let’s use 10 trees and see how the results compare.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trained_RF</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Classifier</span><span class="o">.</span><span class="n">smileRandomForest</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">bands</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trained_RF</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Classifier</span><span class="o">.</span><span class="n">smileRandomForest</span><span class="p">(</span><span class="n">XXX</span><span class="p">)</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">bands</span><span class="p">)</span>
 <span class="n">trainAccuracy</span> <span class="o">=</span> <span class="n">trained_RF</span><span class="o">.</span><span class="n">confusionMatrix</span><span class="p">()</span>
 <span class="n">trainAccuracy</span><span class="o">.</span><span class="n">accuracy</span><span class="p">()</span>
 </pre></div>
@@ -1001,7 +995,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 <p>This is more like it! What if we increase this towards 100:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trained_RF</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Classifier</span><span class="o">.</span><span class="n">smileRandomForest</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">bands</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trained_RF</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Classifier</span><span class="o">.</span><span class="n">smileRandomForest</span><span class="p">(</span><span class="n">XXXX</span><span class="p">)</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">bands</span><span class="p">)</span>
 <span class="n">trainAccuracy</span> <span class="o">=</span> <span class="n">trained_RF</span><span class="o">.</span><span class="n">confusionMatrix</span><span class="p">()</span>
 <span class="n">trainAccuracy</span><span class="o">.</span><span class="n">accuracy</span><span class="p">()</span>
 </pre></div>
@@ -1011,17 +1005,17 @@ Make sure that you save this file before you continue, else you will lose everyt
 <p>Almost everything is now classified correctly. can we reach 100% if we would use double the amount of trees?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trained_RF</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Classifier</span><span class="o">.</span><span class="n">smileRandomForest</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">bands</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trained_RF</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Classifier</span><span class="o">.</span><span class="n">smileRandomForest</span><span class="p">(</span><span class="n">XXXX</span><span class="p">)</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">bands</span><span class="p">)</span>
 <span class="n">trainAccuracy</span> <span class="o">=</span> <span class="n">trained_RF</span><span class="o">.</span><span class="n">confusionMatrix</span><span class="p">()</span>
 <span class="n">trainAccuracy</span><span class="o">.</span><span class="n">accuracy</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>As you noticed, it also took notable longer to get the results. And we didnt gain too much either. It would be interesting to plot these results and see how the results converge:</p>
+<p>As you noticed, it also took notable longer to get the results. And we didnt gain too much either. It would be interesting to plot these results and see how the results converge. Let’s collect all the accuracies for different amount of trees:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trees</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trees</span> <span class="o">=</span> <span class="p">[</span><span class="n">XX</span><span class="p">,</span><span class="n">XX</span><span class="p">,</span><span class="n">XX</span><span class="p">,</span><span class="n">XX</span><span class="p">,</span><span class="n">XX</span><span class="p">,</span><span class="n">XX</span><span class="p">,</span><span class="n">XXX</span><span class="p">]</span>
 <span class="n">collect_accuracies</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">tree</span> <span class="ow">in</span> <span class="n">trees</span><span class="p">:</span>
     <span class="n">collect_accuracies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Classifier</span><span class="o">.</span><span class="n">smileRandomForest</span><span class="p">(</span><span class="n">tree</span><span class="p">)</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">bands</span><span class="p">)</span><span class="o">.</span><span class="n">confusionMatrix</span><span class="p">()</span><span class="o">.</span><span class="n">accuracy</span><span class="p">()</span><span class="o">.</span><span class="n">getInfo</span><span class="p">())</span>
