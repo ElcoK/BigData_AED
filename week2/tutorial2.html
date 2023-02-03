@@ -239,16 +239,6 @@ const thebe_selector_output = ".output, .cell_output"
    Lecture: Earth Observation &amp; Google Earth Engine
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week5/tutorial1.html">
-   Tutorial 1: Land-cover classification
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week5/tutorial2.html">
-   Tutorial 2: Drought Detection
-  </a>
- </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -716,173 +706,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>YEAR</th>
-      <th>SAMPLE</th>
-      <th>SERIAL</th>
-      <th>HHWT</th>
-      <th>REGION</th>
-      <th>STATEFIP</th>
-      <th>COUNTYFIP</th>
-      <th>DENSITY</th>
-      <th>METRO</th>
-      <th>STRATA</th>
-      <th>...</th>
-      <th>LABFORCE</th>
-      <th>OCC</th>
-      <th>IND</th>
-      <th>INCTOT</th>
-      <th>POVERTY</th>
-      <th>COSTENERGY</th>
-      <th>HHSIZE</th>
-      <th>NR_OF_WOMEN</th>
-      <th>OLDEST</th>
-      <th>YOUNGEST</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2019</td>
-      <td>201901</td>
-      <td>3</td>
-      <td>199.80</td>
-      <td>32</td>
-      <td>1</td>
-      <td>15</td>
-      <td>364.8</td>
-      <td>4</td>
-      <td>110001</td>
-      <td>...</td>
-      <td>2</td>
-      <td>5240.0</td>
-      <td>9160.0</td>
-      <td>1400.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1</td>
-      <td>0.0</td>
-      <td>19</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2019</td>
-      <td>201901</td>
-      <td>13</td>
-      <td>639.36</td>
-      <td>32</td>
-      <td>1</td>
-      <td>0</td>
-      <td>129.3</td>
-      <td>0</td>
-      <td>240001</td>
-      <td>...</td>
-      <td>1</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1</td>
-      <td>1.0</td>
-      <td>19</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2019</td>
-      <td>201901</td>
-      <td>23</td>
-      <td>869.13</td>
-      <td>32</td>
-      <td>1</td>
-      <td>0</td>
-      <td>2090.1</td>
-      <td>4</td>
-      <td>200001</td>
-      <td>...</td>
-      <td>2</td>
-      <td>2350.0</td>
-      <td>7870.0</td>
-      <td>970.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1</td>
-      <td>1.0</td>
-      <td>19</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2019</td>
-      <td>201901</td>
-      <td>33</td>
-      <td>119.88</td>
-      <td>32</td>
-      <td>1</td>
-      <td>0</td>
-      <td>217.6</td>
-      <td>0</td>
-      <td>50001</td>
-      <td>...</td>
-      <td>1</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>11100.0</td>
-      <td>84.0</td>
-      <td>NaN</td>
-      <td>1</td>
-      <td>0.0</td>
-      <td>61</td>
-      <td>61</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2019</td>
-      <td>201901</td>
-      <td>43</td>
-      <td>769.23</td>
-      <td>32</td>
-      <td>1</td>
-      <td>97</td>
-      <td>2341.6</td>
-      <td>4</td>
-      <td>270101</td>
-      <td>...</td>
-      <td>1</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1</td>
-      <td>1.0</td>
-      <td>67</td>
-      <td>67</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 53 columns</p>
-</div></div></div>
 </div>
 <p>In the following line of code we drop duplicates based on the variable SERIAL. Remember that persons from the same household have the same SERIAL number.</p>
 <div class="cell docutils container">
@@ -892,7 +715,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</section>
+<div class="alert alert-block alert-success">
+<b>Question 1:</b> Why do we only want to have one person per household in our random forest model?
+</div></section>
 <section id="dealing-with-missing-values">
 <h2>3. Dealing with missing values<a class="headerlink" href="#dealing-with-missing-values" title="Permalink to this headline">#</a></h2>
 <hr>
@@ -926,151 +751,13 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">Input In [45],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="n">max_features</span> <span class="o">=</span> <span class="s1">&#39;sqrt&#39;</span><span class="p">,</span> <span class="n">max_depth</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-
-<span class="nn">File ~\.conda\envs\py310\lib\site-packages\sklearn\ensemble\_forest.py:331,</span> in <span class="ni">BaseForest.fit</span><span class="nt">(self, X, y, sample_weight)</span>
-<span class="g g-Whitespace">    </span><span class="mi">329</span> <span class="k">if</span> <span class="n">issparse</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">330</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;sparse multilabel-indicator for y is not supported.&quot;</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">331</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_data</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">332</span>     <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">multi_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">accept_sparse</span><span class="o">=</span><span class="s2">&quot;csc&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">DTYPE</span>
-<span class="g g-Whitespace">    </span><span class="mi">333</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">334</span> <span class="k">if</span> <span class="n">sample_weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">335</span>     <span class="n">sample_weight</span> <span class="o">=</span> <span class="n">_check_sample_weight</span><span class="p">(</span><span class="n">sample_weight</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
-
-<span class="nn">File ~\.conda\envs\py310\lib\site-packages\sklearn\base.py:596,</span> in <span class="ni">BaseEstimator._validate_data</span><span class="nt">(self, X, y, reset, validate_separately, **check_params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">594</span>         <span class="n">y</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">input_name</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">check_y_params</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">595</span>     <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">596</span>         <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">check_X_y</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">check_params</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">597</span>     <span class="n">out</span> <span class="o">=</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
-<span class="g g-Whitespace">    </span><span class="mi">599</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">no_val_X</span> <span class="ow">and</span> <span class="n">check_params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;ensure_2d&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">):</span>
-
-<span class="nn">File ~\.conda\envs\py310\lib\site-packages\sklearn\utils\validation.py:1074,</span> in <span class="ni">check_X_y</span><span class="nt">(X, y, accept_sparse, accept_large_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, multi_output, ensure_min_samples, ensure_min_features, y_numeric, estimator)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1069</span>         <span class="n">estimator_name</span> <span class="o">=</span> <span class="n">_check_estimator_name</span><span class="p">(</span><span class="n">estimator</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1070</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1071</span>         <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">estimator_name</span><span class="si">}</span><span class="s2"> requires y to be passed, but the target y is None&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1072</span>     <span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1074</span> <span class="n">X</span> <span class="o">=</span> <span class="n">check_array</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1075</span>     <span class="n">X</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1076</span>     <span class="n">accept_sparse</span><span class="o">=</span><span class="n">accept_sparse</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1077</span>     <span class="n">accept_large_sparse</span><span class="o">=</span><span class="n">accept_large_sparse</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1078</span>     <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1079</span>     <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1080</span>     <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1081</span>     <span class="n">force_all_finite</span><span class="o">=</span><span class="n">force_all_finite</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1082</span>     <span class="n">ensure_2d</span><span class="o">=</span><span class="n">ensure_2d</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1083</span>     <span class="n">allow_nd</span><span class="o">=</span><span class="n">allow_nd</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1084</span>     <span class="n">ensure_min_samples</span><span class="o">=</span><span class="n">ensure_min_samples</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1085</span>     <span class="n">ensure_min_features</span><span class="o">=</span><span class="n">ensure_min_features</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1086</span>     <span class="n">estimator</span><span class="o">=</span><span class="n">estimator</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1087</span>     <span class="n">input_name</span><span class="o">=</span><span class="s2">&quot;X&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1088</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1090</span> <span class="n">y</span> <span class="o">=</span> <span class="n">_check_y</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">multi_output</span><span class="o">=</span><span class="n">multi_output</span><span class="p">,</span> <span class="n">y_numeric</span><span class="o">=</span><span class="n">y_numeric</span><span class="p">,</span> <span class="n">estimator</span><span class="o">=</span><span class="n">estimator</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1092</span> <span class="n">check_consistent_length</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-
-<span class="nn">File ~\.conda\envs\py310\lib\site-packages\sklearn\utils\validation.py:899,</span> in <span class="ni">check_array</span><span class="nt">(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, estimator, input_name)</span>
-<span class="g g-Whitespace">    </span><span class="mi">893</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">894</span>             <span class="s2">&quot;Found array with dim </span><span class="si">%d</span><span class="s2">. </span><span class="si">%s</span><span class="s2"> expected &lt;= 2.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">895</span>             <span class="o">%</span> <span class="p">(</span><span class="n">array</span><span class="o">.</span><span class="n">ndim</span><span class="p">,</span> <span class="n">estimator_name</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">896</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">898</span>     <span class="k">if</span> <span class="n">force_all_finite</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">899</span>         <span class="n">_assert_all_finite</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">900</span>             <span class="n">array</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">901</span>             <span class="n">input_name</span><span class="o">=</span><span class="n">input_name</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">902</span>             <span class="n">estimator_name</span><span class="o">=</span><span class="n">estimator_name</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">903</span>             <span class="n">allow_nan</span><span class="o">=</span><span class="n">force_all_finite</span> <span class="o">==</span> <span class="s2">&quot;allow-nan&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">904</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">906</span> <span class="k">if</span> <span class="n">ensure_min_samples</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">907</span>     <span class="n">n_samples</span> <span class="o">=</span> <span class="n">_num_samples</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
-
-<span class="nn">File ~\.conda\envs\py310\lib\site-packages\sklearn\utils\validation.py:146,</span> in <span class="ni">_assert_all_finite</span><span class="nt">(X, allow_nan, msg_dtype, estimator_name, input_name)</span>
-<span class="g g-Whitespace">    </span><span class="mi">124</span>         <span class="k">if</span> <span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">125</span>             <span class="ow">not</span> <span class="n">allow_nan</span>
-<span class="g g-Whitespace">    </span><span class="mi">126</span>             <span class="ow">and</span> <span class="n">estimator_name</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">130</span>             <span class="c1"># Improve the error message on how to handle missing values in</span>
-<span class="g g-Whitespace">    </span><span class="mi">131</span>             <span class="c1"># scikit-learn.</span>
-<span class="g g-Whitespace">    </span><span class="mi">132</span>             <span class="n">msg_err</span> <span class="o">+=</span> <span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">133</span>                 <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">estimator_name</span><span class="si">}</span><span class="s2"> does not accept missing values&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">134</span>                 <span class="s2">&quot; encoded as NaN natively. For supervised learning, you might want&quot;</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">144</span>                 <span class="s2">&quot;#estimators-that-handle-nan-values&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">145</span>             <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">146</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg_err</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">148</span> <span class="c1"># for object dtype data, we only check for NaNs (GH-13254)</span>
-<span class="g g-Whitespace">    </span><span class="mi">149</span> <span class="k">elif</span> <span class="n">X</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="s2">&quot;object&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">allow_nan</span><span class="p">:</span>
-
-<span class="ne">ValueError</span>: Input X contains NaN.
-<span class="n">RandomForestRegressor</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">accept</span> <span class="n">missing</span> <span class="n">values</span> <span class="n">encoded</span> <span class="k">as</span> <span class="n">NaN</span> <span class="n">natively</span><span class="o">.</span> <span class="n">For</span> <span class="n">supervised</span> <span class="n">learning</span><span class="p">,</span> <span class="n">you</span> <span class="n">might</span> <span class="n">want</span> <span class="n">to</span> <span class="n">consider</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">ensemble</span><span class="o">.</span><span class="n">HistGradientBoostingClassifier</span> <span class="ow">and</span> <span class="n">Regressor</span> <span class="n">which</span> <span class="n">accept</span> <span class="n">missing</span> <span class="n">values</span> <span class="n">encoded</span> <span class="k">as</span> <span class="n">NaNs</span> <span class="n">natively</span><span class="o">.</span> <span class="n">Alternatively</span><span class="p">,</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">possible</span> <span class="n">to</span> <span class="n">preprocess</span> <span class="n">the</span> <span class="n">data</span><span class="p">,</span> <span class="k">for</span> <span class="n">instance</span> <span class="n">by</span> <span class="n">using</span> <span class="n">an</span> <span class="n">imputer</span> <span class="n">transformer</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">pipeline</span> <span class="ow">or</span> <span class="n">drop</span> <span class="n">samples</span> <span class="k">with</span> <span class="n">missing</span> <span class="n">values</span><span class="o">.</span> <span class="n">See</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">scikit</span><span class="o">-</span><span class="n">learn</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">stable</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">impute</span><span class="o">.</span><span class="n">html</span> <span class="n">You</span> <span class="n">can</span> <span class="n">find</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">estimators</span> <span class="n">that</span> <span class="n">handle</span> <span class="n">NaN</span> <span class="n">values</span> <span class="n">at</span> <span class="n">the</span> <span class="n">following</span> <span class="n">page</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">scikit</span><span class="o">-</span><span class="n">learn</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">stable</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">impute</span><span class="o">.</span><span class="n">html</span><span class="c1">#estimators-that-handle-nan-values</span>
-</pre></div>
 </div>
-</div>
-</div>
-<p>The random forest model didn’t run because there are missing values in the data. There are several options to deal with missing data. We could for example replace all the missing values by 0 or by the mean of that variable. First, let’s check again which variables have missing values.</p>
+<div class="alert alert-block alert-success">
+<b>Question 2:</b> Explain in your own words the options in the RandomForestRegressor and how these options will affect the results. Also explain two other options in RandomForestRegressor that are not included in the line of code we have used to run the model.
+</div><p>The random forest model didn’t run because there are missing values in the data. There are several options to deal with missing data. We could for example replace all the missing values by 0 or by the mean of that variable. First, let’s check again which variables have missing values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_in</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RENT           246641
-DEGFIELD       240886
-MORTGAG2       176952
-IND            131639
-OCC            131639
-MORTGAGE        97315
-PROPINSR        97315
-EMPSTAT         56116
-INCTOT          52176
-BEDROOMS        15145
-UNITSSTR        15145
-COSTELEC        15145
-BUILTYR2        15145
-ROOMS           15145
-HHINCOME        15145
-COSTFUEL        15145
-VEHICLES        15145
-COSTGAS         15145
-FUELHEAT        15145
-OWNERSHPD       15145
-OWNERSHP        15145
-COSTENERGY      15145
-POVERTY         12835
-MARST               0
-EMPSTATD            0
-LABFORCE            0
-HHSIZE              0
-NR_OF_WOMEN         0
-DEGFIELDD           0
-OLDEST              0
-EDUCD               0
-EDUC                0
-RACED               0
-RACE                0
-YEAR                0
-AGE                 0
-SEX                 0
-SERIAL              0
-HHWT                0
-REGION              0
-STATEFIP            0
-COUNTYFIP           0
-DENSITY             0
-METRO               0
-STRATA              0
-GQ                  0
-FARM                0
-SAMPLE              0
-PERNUM              0
-PERWT               0
-RELATE              0
-RELATED             0
-YOUNGEST            0
-dtype: int64
 </pre></div>
 </div>
 </div>
@@ -1091,67 +778,11 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RENT           231496
-DEGFIELD       226834
-MORTGAG2       161807
-IND            123550
-OCC            123550
-PROPINSR        82170
-MORTGAGE        82170
-EMPSTAT         55897
-INCTOT          52017
-POVERTY           478
-MARST               0
-AGE                 0
-SEX                 0
-RACE                0
-RACED               0
-EDUC                0
-EDUCD               0
-RELATED             0
-YEAR                0
-PERWT               0
-DEGFIELDD           0
-EMPSTATD            0
-LABFORCE            0
-COSTENERGY          0
-HHSIZE              0
-NR_OF_WOMEN         0
-OLDEST              0
-RELATE              0
-FUELHEAT            0
-PERNUM              0
-VEHICLES            0
-SERIAL              0
-HHWT                0
-REGION              0
-STATEFIP            0
-COUNTYFIP           0
-DENSITY             0
-METRO               0
-STRATA              0
-GQ                  0
-FARM                0
-OWNERSHP            0
-OWNERSHPD           0
-COSTELEC            0
-COSTGAS             0
-COSTFUEL            0
-HHINCOME            0
-ROOMS               0
-BUILTYR2            0
-UNITSSTR            0
-BEDROOMS            0
-SAMPLE              0
-YOUNGEST            0
-dtype: int64
-</pre></div>
-</div>
-</div>
 </div>
 <p>Indeed for 15145 households there was a lot of data missing and we can savely remove these households from the dataset, because 1) these instances are not very meaningful and 2) we could perfectly predict them if we keep them in the dataset using the missing values of <strong>VEHICLES</strong>, <strong>ROOMS</strong>, <strong>HHINCOME</strong>, etc.</p>
 <p>Now we have a handful variables left with missing values. Replace the missing values in all variables with code. You can check the code of the <a class="reference external" href="https://elcok.github.io/BigData_AED/week2/tutorial1.html">previous tutorial</a> on how to do this.</p>
+<div class="alert alert-block alert-success">
+<b>Question 3:</b> Explain what you would do with the remaining missing values in our data? There is not necessarily a right or wrong answer, but ofcourse your choices matter for the results. </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datanan</span><span class="p">[</span><span class="s1">&#39;RENT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datanan</span><span class="p">[</span><span class="s1">&#39;RENT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> 
@@ -1212,11 +843,10 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/tutorial2_39_0.png" src="../_images/tutorial2_39_0.png" />
 </div>
-</div>
-</section>
+<div class="alert alert-block alert-success">
+<b>Question 4:</b> Upload your decision tree. </div><div class="alert alert-block alert-success">
+<b>Question 5:</b> Interpret what you see in the decision tree. Hint: Explain the terms squared_error, samples and value in the tree.  </div></section>
 <section id="prediction-with-the-random-forest-model">
 <h2>5. Prediction with the random forest model<a class="headerlink" href="#prediction-with-the-random-forest-model" title="Permalink to this headline">#</a></h2>
 <hr><p>In the next line of code, we use the trained random forest model to predict the dependent variable of the testing dataset. We use the function predict of the random forest regressor.</p>
@@ -1243,23 +873,13 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;ENERGYCOST&#39;)
-</pre></div>
 </div>
-<img alt="../_images/tutorial2_45_1.png" src="../_images/tutorial2_45_1.png" />
-</div>
-</div>
-<p>Next we check performance in terms of a numeric criterion. We can for example check the mean squared error or the R2.</p>
+<div class="alert alert-block alert-success">
+<b>Question 6:</b> Interpret the plot you have created to evaluate the performance of your model. </div><p>Next we check performance in terms of a numeric criterion. We can for example check the mean squared error or the R2.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">mse</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2366352.4887752356
 </pre></div>
 </div>
 </div>
@@ -1271,17 +891,12 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1726122480574218
-</pre></div>
 </div>
-</div>
-</div>
-</section>
+<div class="alert alert-block alert-success">
+<b>Question 7:</b> What are the values you receive for the <i>mean squared error</i> and the <i>r-squared</i>? Also explain the two terms. </div></section>
 <section id="parameter-tuning">
 <h2>7. Parameter tuning<a class="headerlink" href="#parameter-tuning" title="Permalink to this headline">#</a></h2>
 <hr><p>The R2 score is pretty low, so we want to try other hyperparameters. We will change the depth and the number of trees in the forest. In the code below, we run a for loop that tries 3 different n_estimators and 3 different depths, so we estimate 9 different random forest models. We save the mse and r2 of each model in a list, i.e. list_mse and list_r2.</p>
-<p>Interpret the results. Which model performs best. Think about how the for loop works. You could use print(n_est) and print(dep) in the for loop to make life easier.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_mse</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1301,17 +916,10 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2306369.604970091, 2251849.1411220697, 2215207.4379811557, 2311113.0344546493, 2258470.2591721355, 2217150.9686766216, 2308364.8554299786, 2258233.3271820215, 2218638.678794538]
-[0.1935850759104092, 0.21264798569754262, 0.2254596426814096, 0.19192655061616692, 0.2103329324648665, 0.22478009324801762, 0.19288744282303139, 0.21041577499470665, 0.224259920054952]
-</pre></div>
 </div>
-</div>
-</div>
-<p>Also try another parameter space? Also think about the time the model needs to run.
-The higher the number of trees and the depth, the longer it takes to train the model.
-If yes, you can copy the code from the previous cell and change the numbers over which the for loop iterates, i.e. the numbers in [20,50,100] and [4,5,6].</p>
-</section>
+<div class="alert alert-block alert-success">
+<b>Question 8:</b> Interpret the results. Which model performs best. Think about how the for loop works. You could use print(n_est) and print(dep) in the for loop to make life easier. </div><div class="alert alert-block alert-success">
+<b>Question 9:</b> Try another parameter space. Also think about the time the model needs to run. The higher the number of trees and the depth, the longer it takes to train the model. You can copy the code from the previous cell and change the numbers over which the for loop iterates, i.e. the numbers in [20,50,100] and [4,5,6].  </div></section>
 <section id="feature-importance">
 <h2>8. Feature importance<a class="headerlink" href="#feature-importance" title="Permalink to this headline">#</a></h2>
 <hr><p>Next we want to see which variables have the most predictive value for <strong>ENERGYCOSTS</strong>. We can check the importance of each feature in the random forest model by calling rf.feature_importances_. We make a horizontal barplot to see the importance of each feature. You can fill in the hyperparameters.</p>
@@ -1325,11 +933,10 @@ If yes, you can copy the code from the previous cell and change the numbers over
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/tutorial2_56_0.png" src="../_images/tutorial2_56_0.png" />
 </div>
-</div>
-</section>
+<div class="alert alert-block alert-success">
+<b>Question 10:</b> Upload the figure of the feature importance. </div><div class="alert alert-block alert-success">
+<b>Question 11:</b> According to the plot, which variables, also called features, are most important in the random forest? Should we leave out variables from the model. Hint: Not all variables in the model are meaningful, are they?  </div></section>
 </section>
 
     <script type="text/x-thebe-config">

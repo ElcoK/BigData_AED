@@ -239,16 +239,6 @@ const thebe_selector_output = ".output, .cell_output"
    Lecture: Earth Observation &amp; Google Earth Engine
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week5/tutorial1.html">
-   Tutorial 1: Land-cover classification
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week5/tutorial2.html">
-   Tutorial 2: Drought Detection
-  </a>
- </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -692,63 +682,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           Variable_name                                  Short_description
-0                   YEAR                                        Census year
-1                 SAMPLE                            IPUMS sample identifier
-2                 SERIAL                            Household serial number
-3                   HHWT                                   Household weight
-4                 REGION                         Census region and division
-5               STATEFIP                                  State (FIPS code)
-6              COUNTYFIP                                 County (FIPS code)
-7                DENSITY                Population-weighted density of PUMA
-8                  METRO                                Metropolitan status
-9                   FARM                                        Farm status
-10    OWNERSHP (general)   Ownership of dwelling (tenure) [general version]
-11  OWNERSHPD (detailed)  Ownership of dwelling (tenure) [detailed version]
-12              MORTGAGE                                    Mortgage status
-13              MORTGAG2                             Second mortgage status
-14              ACREHOUS                                      House acreage
-15               TAXINCL           Mortgage payment includes property taxes
-16               INSINCL       Mortgage payment includes property insurance
-17              PROPINSR                     Annual property insurance cost
-18                  RENT                              Monthly contract rent
-19              COSTELEC                            Annual electricity cost
-20               COSTGAS                                    Annual gas cost
-21              COSTWATR                                  Annual water cost
-22              COSTFUEL                      Annual home heating fuel cost
-23              HHINCOME                             Total household income
-24              FOODSTMP                              Food stamp recipiency
-25               KITCHEN                      Kitchen or cooking facilities
-26                 ROOMS                                    Number of rooms
-27              BUILTYR2                        Age of structure per decade
-28              UNITSSTR                                 Units in structure
-29              BEDROOMS                                 Number of bedrooms
-30              FUELHEAT                                  Home heating fuel
-31              VEHICLES                                 Vehicles available
-32                 PERWT                                      Person weight
-33      RELATE (general)   Relationship to household head [general version]
-34    RELATED (detailed)  Relationship to household head [detailed version]
-35                   SEX                                                Sex
-36                   AGE                                                Age
-37                 MARST                                     Marital status
-38        RACE (general)                             Race [general version]
-39      RACED (detailed)                            Race [detailed version]
-40        EDUC (general)           Educational attainment [general version]
-41      EDUCD (detailed)          Educational attainment [detailed version]
-42    DEGFIELD (general)                  Field of degree [general version]
-43     EMPSTAT (general)                Employment status [general version]
-44   EMPSTATD (detailed)               Employment status [detailed version]
-45              LABFORCE                                 Labor force status
-46                   OCC                                         Occupation
-47                   IND                                           Industry
-48                INCTOT                              Total personal income
-49               FTOTINC                                Total family income
-50               INCWAGE                             Wage and salary income
-51               POVERTY                                     Poverty status
-</pre></div>
-</div>
-</div>
 </div>
 <p>Now let’s take a look at the dataset. A useful start is to explore the first rows through the <code class="docutils literal notranslate"><span class="pre">head()</span></code> function with Pandas.</p>
 <div class="cell docutils container">
@@ -757,183 +690,11 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Unnamed: 0</th>
-      <th>YEAR</th>
-      <th>SAMPLE</th>
-      <th>SERIAL</th>
-      <th>HHWT</th>
-      <th>REGION</th>
-      <th>STATEFIP</th>
-      <th>COUNTYFIP</th>
-      <th>DENSITY</th>
-      <th>METRO</th>
-      <th>...</th>
-      <th>EDUC</th>
-      <th>EDUCD</th>
-      <th>DEGFIELD</th>
-      <th>EMPSTAT</th>
-      <th>EMPSTATD</th>
-      <th>LABFORCE</th>
-      <th>OCC</th>
-      <th>IND</th>
-      <th>INCTOT</th>
-      <th>POVERTY</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0</td>
-      <td>2019</td>
-      <td>201901</td>
-      <td>3</td>
-      <td>199.80</td>
-      <td>32</td>
-      <td>1</td>
-      <td>15</td>
-      <td>364.8</td>
-      <td>4</td>
-      <td>...</td>
-      <td>7</td>
-      <td>71</td>
-      <td>NaN</td>
-      <td>1.0</td>
-      <td>10</td>
-      <td>2</td>
-      <td>5240.0</td>
-      <td>9160.0</td>
-      <td>1400.0</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>2019</td>
-      <td>201901</td>
-      <td>13</td>
-      <td>639.36</td>
-      <td>32</td>
-      <td>1</td>
-      <td>0</td>
-      <td>129.3</td>
-      <td>0</td>
-      <td>...</td>
-      <td>6</td>
-      <td>65</td>
-      <td>NaN</td>
-      <td>3.0</td>
-      <td>30</td>
-      <td>1</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2</td>
-      <td>2019</td>
-      <td>201901</td>
-      <td>23</td>
-      <td>869.13</td>
-      <td>32</td>
-      <td>1</td>
-      <td>0</td>
-      <td>2090.1</td>
-      <td>4</td>
-      <td>...</td>
-      <td>7</td>
-      <td>71</td>
-      <td>NaN</td>
-      <td>1.0</td>
-      <td>10</td>
-      <td>2</td>
-      <td>2350.0</td>
-      <td>7870.0</td>
-      <td>970.0</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>3</td>
-      <td>2019</td>
-      <td>201901</td>
-      <td>33</td>
-      <td>119.88</td>
-      <td>32</td>
-      <td>1</td>
-      <td>0</td>
-      <td>217.6</td>
-      <td>0</td>
-      <td>...</td>
-      <td>6</td>
-      <td>63</td>
-      <td>NaN</td>
-      <td>3.0</td>
-      <td>30</td>
-      <td>1</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>11100.0</td>
-      <td>84.0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>4</td>
-      <td>2019</td>
-      <td>201901</td>
-      <td>43</td>
-      <td>769.23</td>
-      <td>32</td>
-      <td>1</td>
-      <td>97</td>
-      <td>2341.6</td>
-      <td>4</td>
-      <td>...</td>
-      <td>6</td>
-      <td>63</td>
-      <td>NaN</td>
-      <td>3.0</td>
-      <td>30</td>
-      <td>1</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 45 columns</p>
-</div></div></div>
 </div>
 <p>And let’s have a look at the total size of this dataset. To do so, we can use the <code class="docutils literal notranslate"><span class="pre">shape()</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(323958, 45)
 </pre></div>
 </div>
 </div>
@@ -945,306 +706,13 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Unnamed: 0</th>
-      <th>YEAR</th>
-      <th>SAMPLE</th>
-      <th>SERIAL</th>
-      <th>HHWT</th>
-      <th>REGION</th>
-      <th>STATEFIP</th>
-      <th>COUNTYFIP</th>
-      <th>DENSITY</th>
-      <th>METRO</th>
-      <th>...</th>
-      <th>EDUC</th>
-      <th>EDUCD</th>
-      <th>DEGFIELD</th>
-      <th>EMPSTAT</th>
-      <th>EMPSTATD</th>
-      <th>LABFORCE</th>
-      <th>OCC</th>
-      <th>IND</th>
-      <th>INCTOT</th>
-      <th>POVERTY</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>323958.000000</td>
-      <td>323958.0</td>
-      <td>323958.0</td>
-      <td>3.239580e+05</td>
-      <td>323958.000000</td>
-      <td>323958.000000</td>
-      <td>323958.000000</td>
-      <td>323958.00000</td>
-      <td>323958.000000</td>
-      <td>323958.000000</td>
-      <td>...</td>
-      <td>323958.000000</td>
-      <td>323958.000000</td>
-      <td>83072.000000</td>
-      <td>267842.000000</td>
-      <td>323958.000000</td>
-      <td>323958.00000</td>
-      <td>192319.000000</td>
-      <td>192319.000000</td>
-      <td>2.717820e+05</td>
-      <td>311123.000000</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>161978.500000</td>
-      <td>2019.0</td>
-      <td>201901.0</td>
-      <td>7.128353e+05</td>
-      <td>961.079180</td>
-      <td>28.392168</td>
-      <td>27.756752</td>
-      <td>50.53811</td>
-      <td>3793.671817</td>
-      <td>2.579449</td>
-      <td>...</td>
-      <td>6.270686</td>
-      <td>65.140781</td>
-      <td>43.343100</td>
-      <td>1.829202</td>
-      <td>15.155792</td>
-      <td>1.32110</td>
-      <td>4175.474675</td>
-      <td>6411.859390</td>
-      <td>4.543959e+04</td>
-      <td>333.003998</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>93518.763591</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>4.158698e+05</td>
-      <td>837.978331</td>
-      <td>10.288047</td>
-      <td>16.110784</td>
-      <td>87.96127</td>
-      <td>9076.073757</td>
-      <td>1.418085</td>
-      <td>...</td>
-      <td>3.250351</td>
-      <td>32.342895</td>
-      <td>17.180462</td>
-      <td>0.972552</td>
-      <td>11.219777</td>
-      <td>0.75129</td>
-      <td>2702.839018</td>
-      <td>2630.050819</td>
-      <td>6.800730e+04</td>
-      <td>162.682171</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>0.000000</td>
-      <td>2019.0</td>
-      <td>201901.0</td>
-      <td>3.000000e+00</td>
-      <td>9.990000</td>
-      <td>11.000000</td>
-      <td>1.000000</td>
-      <td>0.00000</td>
-      <td>2.600000</td>
-      <td>0.000000</td>
-      <td>...</td>
-      <td>0.000000</td>
-      <td>1.000000</td>
-      <td>11.000000</td>
-      <td>1.000000</td>
-      <td>0.000000</td>
-      <td>0.00000</td>
-      <td>10.000000</td>
-      <td>170.000000</td>
-      <td>-9.500000e+03</td>
-      <td>1.000000</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>80989.250000</td>
-      <td>2019.0</td>
-      <td>201901.0</td>
-      <td>3.479875e+05</td>
-      <td>479.520000</td>
-      <td>21.000000</td>
-      <td>12.000000</td>
-      <td>0.00000</td>
-      <td>285.200000</td>
-      <td>2.000000</td>
-      <td>...</td>
-      <td>5.000000</td>
-      <td>50.000000</td>
-      <td>24.000000</td>
-      <td>1.000000</td>
-      <td>10.000000</td>
-      <td>1.00000</td>
-      <td>2145.000000</td>
-      <td>4971.000000</td>
-      <td>9.200000e+03</td>
-      <td>193.000000</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>161978.500000</td>
-      <td>2019.0</td>
-      <td>201901.0</td>
-      <td>7.104470e+05</td>
-      <td>729.270000</td>
-      <td>31.000000</td>
-      <td>27.000000</td>
-      <td>17.00000</td>
-      <td>1329.900000</td>
-      <td>3.000000</td>
-      <td>...</td>
-      <td>6.000000</td>
-      <td>64.000000</td>
-      <td>50.000000</td>
-      <td>1.000000</td>
-      <td>10.000000</td>
-      <td>1.00000</td>
-      <td>4120.000000</td>
-      <td>7390.000000</td>
-      <td>2.740000e+04</td>
-      <td>360.000000</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>242967.750000</td>
-      <td>2019.0</td>
-      <td>201901.0</td>
-      <td>1.078740e+06</td>
-      <td>1148.850000</td>
-      <td>33.000000</td>
-      <td>42.000000</td>
-      <td>71.00000</td>
-      <td>3912.900000</td>
-      <td>4.000000</td>
-      <td>...</td>
-      <td>10.000000</td>
-      <td>101.000000</td>
-      <td>61.000000</td>
-      <td>3.000000</td>
-      <td>30.000000</td>
-      <td>2.00000</td>
-      <td>5740.000000</td>
-      <td>8191.000000</td>
-      <td>5.700000e+04</td>
-      <td>501.000000</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>323957.000000</td>
-      <td>2019.0</td>
-      <td>201901.0</td>
-      <td>1.428034e+06</td>
-      <td>15144.840000</td>
-      <td>42.000000</td>
-      <td>56.000000</td>
-      <td>810.00000</td>
-      <td>122270.700000</td>
-      <td>4.000000</td>
-      <td>...</td>
-      <td>11.000000</td>
-      <td>116.000000</td>
-      <td>64.000000</td>
-      <td>3.000000</td>
-      <td>30.000000</td>
-      <td>2.00000</td>
-      <td>9920.000000</td>
-      <td>9920.000000</td>
-      <td>1.544500e+06</td>
-      <td>501.000000</td>
-    </tr>
-  </tbody>
-</table>
-<p>8 rows × 45 columns</p>
-</div></div></div>
 </div>
-<p>Let’s find out the data types of the data and if there are non-null counts.</p>
+<div class="alert alert-block alert-success">
+<b>Question 1:</b> What information do the functions .shape() and .describe() give you about the data? 
+</div><p>Let’s find out the data types of the data and if there are non-null counts.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 323958 entries, 0 to 323957
-Data columns (total 45 columns):
- #   Column      Non-Null Count   Dtype  
----  ------      --------------   -----  
- 0   Unnamed: 0  323958 non-null  int64  
- 1   YEAR        323958 non-null  int64  
- 2   SAMPLE      323958 non-null  int64  
- 3   SERIAL      323958 non-null  int64  
- 4   HHWT        323958 non-null  float64
- 5   REGION      323958 non-null  int64  
- 6   STATEFIP    323958 non-null  int64  
- 7   COUNTYFIP   323958 non-null  int64  
- 8   DENSITY     323958 non-null  float64
- 9   METRO       323958 non-null  int64  
- 10  FARM        323958 non-null  int64  
- 11  OWNERSHP    308813 non-null  float64
- 12  OWNERSHPD   308813 non-null  float64
- 13  MORTGAGE    226643 non-null  float64
- 14  MORTGAG2    147006 non-null  float64
- 15  PROPINSR    226643 non-null  float64
- 16  RENT        77317 non-null   float64
- 17  COSTELEC    308813 non-null  float64
- 18  COSTGAS     308813 non-null  float64
- 19  COSTFUEL    308813 non-null  float64
- 20  HHINCOME    308813 non-null  float64
- 21  ROOMS       308813 non-null  float64
- 22  BUILTYR2    308813 non-null  float64
- 23  UNITSSTR    308813 non-null  float64
- 24  BEDROOMS    308813 non-null  float64
- 25  FUELHEAT    308813 non-null  float64
- 26  VEHICLES    308813 non-null  float64
- 27  PERWT       323958 non-null  float64
- 28  RELATE      323958 non-null  int64  
- 29  RELATED     323958 non-null  int64  
- 30  SEX         323958 non-null  int64  
- 31  AGE         323958 non-null  int64  
- 32  MARST       323958 non-null  int64  
- 33  RACE        323958 non-null  int64  
- 34  RACED       323958 non-null  int64  
- 35  EDUC        323958 non-null  int64  
- 36  EDUCD       323958 non-null  int64  
- 37  DEGFIELD    83072 non-null   float64
- 38  EMPSTAT     267842 non-null  float64
- 39  EMPSTATD    323958 non-null  int64  
- 40  LABFORCE    323958 non-null  int64  
- 41  OCC         192319 non-null  float64
- 42  IND         192319 non-null  float64
- 43  INCTOT      271782 non-null  float64
- 44  POVERTY     311123 non-null  float64
-dtypes: float64(25), int64(20)
-memory usage: 111.2 MB
 </pre></div>
 </div>
 </div>
@@ -1256,58 +724,17 @@ memory usage: 111.2 MB
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RENT          246641
-DEGFIELD      240886
-MORTGAG2      176952
-IND           131639
-OCC           131639
-MORTGAGE       97315
-PROPINSR       97315
-EMPSTAT        56116
-INCTOT         52176
-BUILTYR2       15145
-COSTFUEL       15145
-COSTGAS        15145
-COSTELEC       15145
-UNITSSTR       15145
-OWNERSHPD      15145
-OWNERSHP       15145
-ROOMS          15145
-BEDROOMS       15145
-FUELHEAT       15145
-VEHICLES       15145
-HHINCOME       15145
-POVERTY        12835
-YEAR               0
-RACED              0
-SAMPLE             0
-SERIAL             0
-HHWT               0
-LABFORCE           0
-EMPSTATD           0
-REGION             0
-STATEFIP           0
-EDUCD              0
-EDUC               0
-RACE               0
-FARM               0
-MARST              0
-AGE                0
-SEX                0
-RELATED            0
-RELATE             0
-PERWT              0
-COUNTYFIP          0
-DENSITY            0
-METRO              0
-Unnamed: 0         0
-dtype: int64
-</pre></div>
 </div>
-</div>
-</div>
-</section>
+<div class="alert alert-block alert-success">
+<b>Question 2:</b> <br>
+<p>Please describe what the following line of Python code does:
+<br>
+<b>data.isnull().sum().sort_values(ascending = False)</b>
+<br>
+Hint: Every dot (.) indicates a new function.
+<br>
+Also describe what you see in the data. What does the output mean? Do you notice any surprises?</p>
+</div></section>
 <section id="exploratory-data-analysis">
 <h2>3. Exploratory data analysis<a class="headerlink" href="#exploratory-data-analysis" title="Permalink to this headline">#</a></h2>
 <hr><p>Now we are going to take a look at some specific variables. We want to see how variables are distributed and how they are related to each other, and specifically how they are related to energy costs. We can do this in several ways.</p>
@@ -1318,34 +745,10 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0    226643
-2.0     82170
-NaN     15145
-Name: OWNERSHP, dtype: int64
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;HHINCOME&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NaN         15145
-100000.0     2290
-60000.0      2285
-0.0          2173
-50000.0      2167
-            ...  
-127720.0        1
-145450.0        1
-72410.0         1
-349050.0        1
-5070.0          1
-Name: HHINCOME, Length: 12286, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -1358,12 +761,6 @@ Name: HHINCOME, Length: 12286, dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x213dd826560&gt;
-</pre></div>
-</div>
-<img alt="../_images/tutorial1_29_1.png" src="../_images/tutorial1_29_1.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1372,12 +769,6 @@ Name: HHINCOME, Length: 12286, dtype: int64
 <span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;HHINCOME&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">kde</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x213dd7f2a40&gt;
-</pre></div>
-</div>
-<img alt="../_images/tutorial1_30_1.png" src="../_images/tutorial1_30_1.png" />
 </div>
 </div>
 <p>And we can also include the kernel density, by setting the <code class="docutils literal notranslate"><span class="pre">kde</span></code> parameter to <strong>True</strong>. Kernel Density Estimation (KDE) is a technique that let’s you create a smooth curve given a set of data. This can be useful if you want to visualize just the “shape” of some data, as a kind of continuous replacement for the discrete histogram.</p>
@@ -1388,14 +779,10 @@ Name: HHINCOME, Length: 12286, dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x21380a3c040&gt;
-</pre></div>
 </div>
-<img alt="../_images/tutorial1_32_1.png" src="../_images/tutorial1_32_1.png" />
-</div>
-</div>
-<p>Now we are going to take a look at energy costs. The total costs of energy are given by electricity costs, gas costs and fuel costs. Before summing the three variables to obtain the total energy costs, we take a look at the three individual variables.</p>
+<div class="alert alert-block alert-success">
+<b>Question 3:</b> We just showed how to explore the OWNERSHP and HHINCOME variables. Choose a different variable and describe it. What are the units, and does it make sense to use value_counts() to understand this variable or would you rather use something different?
+</div><p>Now we are going to take a look at energy costs. The total costs of energy are given by electricity costs, gas costs and fuel costs. Before summing the three variables to obtain the total energy costs, we take a look at the three individual variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -1403,22 +790,11 @@ Name: HHINCOME, Length: 12286, dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x213dd87bd30&gt;
-</pre></div>
 </div>
-<img alt="../_images/tutorial1_34_1.png" src="../_images/tutorial1_34_1.png" />
-</div>
-</div>
-<p>There appears to be a strange value around 10000. Find out about this value with a line of code. You can find on the IPUMS USA <a class="reference external" href="https://usa.ipums.org/usa/">website</a> what the value indicates.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Answer. </span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Anyhow, we should replace this value around 10000. Fill in the dots in the line of code below. The number you fill in is going to be replaced by 0.</p>
+<p>There appears to be a strange value around 10000. You can find on the IPUMS USA <a class="reference external" href="https://usa.ipums.org/usa/">website</a> what the value indicates.</p>
+<div class="alert alert-block alert-success">
+<b>Question 4:</b> Describe what is happening around 10,000. Did you write some code you to better understand what is going on? If so, please provide the code.
+</div><p>Anyhow, we should replace this value around 10000. Fill in the dots in the line of code below. The number you fill in is going to be replaced by 0.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;COSTELEC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;COSTELEC&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="mi">9997</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">#data[&#39;COSTELEC&#39;] = data[&#39;COSTELEC&#39;].replace(..., 0)</span>
@@ -1460,21 +836,10 @@ As you can see, there are several options in the seaborn (imported as sns) heatm
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
-</pre></div>
 </div>
-<img alt="../_images/tutorial1_45_1.png" src="../_images/tutorial1_45_1.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Answer</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
+<div class="alert alert-block alert-success">
+    <b>Question 5:</b> Which variable is most correlated to <b>COSTENERGY</b> and which variable the least?  
+</div></section>
 <section id="creating-new-variables">
 <h2>4. Creating new variables<a class="headerlink" href="#creating-new-variables" title="Permalink to this headline">#</a></h2>
 <hr><p>The dataset consists of households and individuals. Energy costs are a household variable, i.e. all members of the household have the same energy costs. Age and sex are individual variables, so the relationship between age or sex with energy costs is likely to be low. Think of a family with children, where a 3-year old daughter has the same energy costs as the 40-year old father. But maybe we can use these two variables, AGE and SEX in another way to make them useful. We can for example create a variable with number of children in a household, or number of women, age of the oldest person in the household etc. To create these variables, we need to know which individuals belong to the same household and luckily this is exactly what the column SERIAL indicates.</p>
@@ -1489,24 +854,6 @@ As you can see, there are several options in the seaborn (imported as sns) heatm
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">serialcount</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          index  SERIAL
-0        163320      20
-1        625037      20
-2       1310431      18
-3        759363      18
-4        411531      18
-...         ...     ...
-142942   979822       1
-142943   979832       1
-142944   979842       1
-142945   979852       1
-142946        3       1
-
-[142947 rows x 2 columns]
 </pre></div>
 </div>
 </div>
@@ -1527,30 +874,14 @@ As you can see, there are several options in the seaborn (imported as sns) heatm
 </div>
 </div>
 </div>
-<p>Next we will use the variable SEX to create a new variable. It is possible that women use more energy than men, or the other way around, so the number of women (or men) could be a useful variable for predicting energy costs. To obtain the household size, we simply counted the number of occurances of each serial number, but to obtain the number of women per household, we also need the column SEX. The variable SEX has two values, 1 represents a male and 2 represents a female.</p>
+<div class="alert alert-block alert-success">
+    <b>Question 6:</b> Please explain what the .merge() function does. Also explain the option 'on' and 'how'. 
+</div><p>Next we will use the variable SEX to create a new variable. It is possible that women use more energy than men, or the other way around, so the number of women (or men) could be a useful variable for predicting energy costs. To obtain the household size, we simply counted the number of occurances of each serial number, but to obtain the number of women per household, we also need the column SEX. The variable SEX has two values, 1 represents a male and 2 represents a female.</p>
 <p>We use the function <code class="docutils literal notranslate"><span class="pre">value_count()</span></code> to obtain the number of women and men per serial number (household).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gendercount</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="s1">&#39;SEX&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">gendercount</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         SERIAL  SEX   0
-0        625037    2  13
-1       1310431    2  13
-2        163320    2  12
-3        542360    2  12
-4        777814    2  11
-...         ...  ...  ..
-227109   563059    2   1
-227110   563069    1   1
-227111   563069    2   1
-227112   563079    1   1
-227113  1428034    2   1
-
-[227114 rows x 3 columns]
 </pre></div>
 </div>
 </div>
@@ -1563,26 +894,14 @@ As you can see, there are several options in the seaborn (imported as sns) heatm
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         SERIAL  SEX  0
-0             3    1  1
-1            13    2  1
-2            23    2  1
-3            33    1  1
-4            43    2  1
-...         ...  ... ..
-227109  1428004    2  1
-227110  1428014    1  1
-227111  1428024    2  2
-227112  1428034    1  1
-227113  1428034    2  1
-
-[227114 rows x 3 columns]
-</pre></div>
 </div>
-</div>
-</div>
-<p>In the next steps you are going to write code that merges a new variable called <strong>‘NR_OF_WOMEN’</strong> (number of women) to the existing dataframe. The following hints guide you through the steps.</p>
+<div class="alert alert-block alert-success">
+    <b>Question 7:</b> There are different ways to obtain the same result. Please describe the two lines of code below and explain how they take a different approach, but yet achieve the same outcome.
+<br>
+<p><i>data[[‘SERIAL’, ‘SEX’]].value_counts(dropna = False).reset_index() <br>
+data[[‘SERIAL’,’SEX’]].groupby([‘SERIAL’,’SEX’]).size().reset_index()</i>
+<br></p>
+</div><p>In the next steps you are going to write code that merges a new variable called <strong>‘NR_OF_WOMEN’</strong> (number of women) to the existing dataframe. The following hints guide you through the steps.</p>
 <p><em>Three lines of code is sufficient. Hint 1 is given for the first line of code, Hint 2 for the second line, and Hint 3a, 3b, 3c for the third line of code.</em></p>
 <ul class="simple">
 <li><p><strong>Hint 1</strong>: You want to create a variable/column with number of women using the dataframe gendercount. The only thing you have to do is keep the number of the women in the dataframe gendercount, i.e. use SEX == 2. Store this dataframe as a new dataframe named womencount, hence your first line of code starts with womencount = .</p></li>
@@ -1608,7 +927,9 @@ As you can see, there are several options in the seaborn (imported as sns) heatm
 </div>
 </div>
 </div>
-</section>
+<div class="alert alert-block alert-success">
+    <b>Question 8:</b> Please provide the three lines of code you have written to succesfully create and merge the new variable <b>NR_OF_WOMEN</b>. Also describe how you solved/filled the NaN values.
+</div></section>
 <section id="nonlinear-relationships">
 <h2>5. Nonlinear relationships<a class="headerlink" href="#nonlinear-relationships" title="Permalink to this headline">#</a></h2>
 <hr><p>We are going to create two new variables based on age. First we want to create a variable with the age of the oldest person.</p>
@@ -1639,7 +960,9 @@ As you can see, there are several options in the seaborn (imported as sns) heatm
 </div>
 </div>
 </div>
-<p>Let’s check if the correlation of the oldest and youngest person with energy costs is higher than the correlation of age with energy costs.</p>
+<div class="alert alert-block alert-success">
+    <b>Question 9:</b> Please provide the three lines of code you have written to succesfully create and merge the new variable <b>YOUNGEST</b>. 
+</div><p>Let’s check if the correlation of the oldest and youngest person with energy costs is higher than the correlation of age with energy costs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -1647,12 +970,6 @@ As you can see, there are several options in the seaborn (imported as sns) heatm
                            <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span> <span class="o">=</span> <span class="s2">&quot;.2f&quot;</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;RdBu&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
-</pre></div>
-</div>
-<img alt="../_images/tutorial1_72_1.png" src="../_images/tutorial1_72_1.png" />
 </div>
 </div>
 <p>A possible explanation for the low correlation could be that the relationship between age and energy costs is not linear. Let’s see the average energy costs over the age of the oldest person in the household in a barplot.</p>
@@ -1667,12 +984,6 @@ As you can see, there are several options in the seaborn (imported as sns) heatm
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Oldest vs Cost of Energy&#39;)
-</pre></div>
-</div>
-<img alt="../_images/tutorial1_74_1.png" src="../_images/tutorial1_74_1.png" />
-</div>
 </div>
 <p>In the graph we see that especially households where the oldest member is young, energy costs are relatively low. Then energy costs increase until the age of 45-50 (maybe these are families with children) and then slowly decrease. Next we take a look at the barplot for age of the youngest person in the household.</p>
 <div class="cell docutils container">
@@ -1683,14 +994,10 @@ As you can see, there are several options in the seaborn (imported as sns) heatm
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Youngest vs Cost of Energy&#39;)
-</pre></div>
 </div>
-<img alt="../_images/tutorial1_76_1.png" src="../_images/tutorial1_76_1.png" />
-</div>
-</div>
-</section>
+<div class="alert alert-block alert-success">
+    <b>Question 10:</b> Interpret the barplot with the age of the youngest household member. And can you think of other variables you want to create? 
+</div></section>
 <section id="regression-analysis">
 <h2>6. Regression analysis<a class="headerlink" href="#regression-analysis" title="Permalink to this headline">#</a></h2>
 <hr><p>In the last part we are going to estimate a first model to predict energy costs of households. We will use a simple Ordinary Least Squares regression model. To  make life a bit easier, download the dataset for the OLS regression in the following line of code (it includes the new variables you created and it deals with missing values). We use the package statsmodels to estimate the OLS regression. We could also use the sklearn library, but the statsmodels package has the advantage that it includes standard errors of the coefficient estimates. This means that we can say something about the significance of the explanantory variables and the causality between the explanatory variables and the dependent variable, something which is not possible with a machine learning model.</p>
@@ -1715,16 +1022,6 @@ As you can see, there are several options in the seaborn (imported as sns) heatm
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\eks510\AppData\Local\Temp\ipykernel_23776\3343477838.py:2: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  X[&#39;Constant&#39;] = 1
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1734,49 +1031,10 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:             COSTENERGY   R-squared:                       0.210
-Model:                            OLS   Adj. R-squared:                  0.210
-Method:                 Least Squares   F-statistic:                     3082.
-Date:                Tue, 24 Jan 2023   Prob (F-statistic):               0.00
-Time:                        20:58:13   Log-Likelihood:            -1.1118e+06
-No. Observations:              127802   AIC:                         2.224e+06
-Df Residuals:                  127790   BIC:                         2.224e+06
-Df Model:                          11                                         
-Covariance Type:            nonrobust                                         
-===============================================================================
-                  coef    std err          t      P&gt;|t|      [0.025      0.975]
--------------------------------------------------------------------------------
-ROOMS         149.7421      1.965     76.210      0.000     145.891     153.593
-HHINCOME        0.0012   4.22e-05     28.150      0.000       0.001       0.001
-BUILTYR2      -24.7857      0.928    -26.703      0.000     -26.605     -22.966
-VEHICLES      123.2165      4.410     27.943      0.000     114.574     131.859
-FARM          572.6529     36.486     15.695      0.000     501.140     644.166
-OWNERSHP     -381.2822     15.748    -24.211      0.000    -412.149    -350.416
-MORTGAGE       22.5403      5.165      4.364      0.000      12.417      32.664
-YOUNGEST       -4.5913      0.365    -12.580      0.000      -5.307      -3.876
-OLDEST          7.8285      0.419     18.664      0.000       7.006       8.651
-HHSIZE        124.7149      6.198     20.123      0.000     112.568     136.862
-NR_OF_WOMEN    -2.5217      7.149     -0.353      0.724     -16.533      11.490
-Constant      592.6989     54.697     10.836      0.000     485.493     699.905
-==============================================================================
-Omnibus:                    48218.600   Durbin-Watson:                   1.938
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):           263811.352
-Skew:                           1.739   Prob(JB):                         0.00
-Kurtosis:                       9.119   Cond. No.                     2.17e+06
-==============================================================================
-
-Notes:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The condition number is large, 2.17e+06. This might indicate that there are
-strong multicollinearity or other numerical problems.
-</pre></div>
 </div>
-</div>
-</div>
-<p>Interpret the results of the OLS regression. Make another correlation heatmap to support your explanation.</p>
+<div class="alert alert-block alert-success">
+    <b>Question 11:</b> Interpret the results of the OLS regression. You can discuss the following questions in your answer. 1) Do you think that the coefficient estimates are plausible? You don't need to explain all coefficient estimates, but highlight a few. 2) Would you include other variables in the regression? Or do you want to exclude variables? Explain which ones. Make another correlation heatmap to support your explanation. 
+</div><p>Interpret the results of the OLS regression. Make another correlation heatmap to support your explanation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># code for correlation heatmap. </span>
@@ -1784,7 +1042,9 @@ strong multicollinearity or other numerical problems.
 </div>
 </div>
 </div>
-</section>
+<div class="alert alert-block alert-success">
+    <b>Question 12:</b> Upload the correlation matrix you have created to answer the previous question.
+</div></section>
 </section>
 
     <script type="text/x-thebe-config">

@@ -239,16 +239,6 @@ const thebe_selector_output = ".output, .cell_output"
    Lecture: Earth Observation &amp; Google Earth Engine
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week5/tutorial1.html">
-   Tutorial 1: Land-cover classification
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week5/tutorial2.html">
-   Tutorial 2: Drought Detection
-  </a>
- </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -660,7 +650,7 @@ title="Print to PDF"
 <h2>Important before we start<a class="headerlink" href="#important-before-we-start" title="Permalink to this headline">#</a></h2>
 <hr class="docutils" />
 <p>Make sure that you save this file before you continue, else you will lose everything. To do so, go to <strong>Bestand/File</strong> and click on <strong>Een kopie opslaan in Drive/Save a Copy on Drive</strong>!</p>
-<p>Now, rename the file into Week4_Tutorial1.ipynb. You can do so by clicking on the name in the top of this screen.</p>
+<p>Now, rename the file into Week6_Tutorial2.ipynb. You can do so by clicking on the name in the top of this screen.</p>
 </section>
 <section id="learning-objectives">
 <h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
@@ -764,14 +754,10 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Ameland, The Netherlands. Total area: 161 km2&#39;)
-</pre></div>
 </div>
-<img alt="../_images/tutorial2_16_1.png" src="../_images/tutorial2_16_1.png" />
-</div>
-</div>
-</section>
+<div class="alert alert-block alert-success">
+<b>Question 1:</b> Provide the plot of your chosen area.
+</div></section>
 <section id="data-extraction">
 <h3>Data extraction<a class="headerlink" href="#data-extraction" title="Permalink to this headline">#</a></h3>
 <p>To extract the metadata of the photos from Flickr, we are going to use the <code class="docutils literal notranslate"><span class="pre">.walk()</span></code> function. This function will return a list of photos matching some criteria. It allows you to search photos based on location, date, tag and so on.</p>
@@ -809,11 +795,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6700
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
@@ -834,233 +815,11 @@ Now we have extracted the data and, let's explore (and clean) this data a bit mo
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>owner</th>
-      <th>datetaken</th>
-      <th>tags</th>
-      <th>latitude</th>
-      <th>longitude</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>52638191622</td>
-      <td>57755771@N05</td>
-      <td>2022-08-07 20:02:38</td>
-      <td>ameland meer europa vogel wasser tier natur sa...</td>
-      <td>53.460438</td>
-      <td>5.762622</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>51209516215</td>
-      <td>26849514@N06</td>
-      <td>2021-05-05 19:53:46</td>
-      <td>20210505195346 ameland netherlands birdhide bl...</td>
-      <td>53.439741</td>
-      <td>5.778419</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>52637307998</td>
-      <td>57755771@N05</td>
-      <td>2022-08-08 14:59:24</td>
-      <td>ameland meer europa wasser watt fortbewegungsm...</td>
-      <td>53.442808</td>
-      <td>5.737283</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>52633905369</td>
-      <td>72056743@N00</td>
-      <td>2022-08-13 17:20:14</td>
-      <td>img4088 13082022 nederland netherlands ameland...</td>
-      <td>53.441900</td>
-      <td>5.613400</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>52631247150</td>
-      <td>191127752@N07</td>
-      <td>2023-01-11 14:23:22</td>
-      <td>isle island eiland waddeneiland ameland friesl...</td>
-      <td>53.448148</td>
-      <td>5.630857</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>52624908216</td>
-      <td>57755771@N05</td>
-      <td>2022-08-08 11:40:26</td>
-      <td>jahreszeiten leuchtturm aussicht ameland fries...</td>
-      <td>53.454041</td>
-      <td>5.638633</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>52622686386</td>
-      <td>189183033@N07</td>
-      <td>2023-01-12 05:04:38</td>
-      <td>eglise nederland kerk foto hccity oud church old</td>
-      <td>53.440180</td>
-      <td>5.634881</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>52619820990</td>
-      <td>57755771@N05</td>
-      <td>2022-08-07 20:16:50</td>
-      <td>krabbe sandstrand ameland friesland europa lan...</td>
-      <td>53.460438</td>
-      <td>5.762622</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>52615964065</td>
-      <td>21241590@N06</td>
-      <td>2023-01-08 14:54:34</td>
-      <td></td>
-      <td>53.433102</td>
-      <td>5.774516</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>52615790289</td>
-      <td>21241590@N06</td>
-      <td>2023-01-08 14:54:02</td>
-      <td></td>
-      <td>53.433074</td>
-      <td>5.774433</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>52615527071</td>
-      <td>21241590@N06</td>
-      <td>2023-01-08 13:25:10</td>
-      <td></td>
-      <td>53.432938</td>
-      <td>5.773597</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>52615787459</td>
-      <td>21241590@N06</td>
-      <td>2023-01-08 12:24:42</td>
-      <td></td>
-      <td>53.444950</td>
-      <td>5.772197</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>52616018198</td>
-      <td>21241590@N06</td>
-      <td>2023-01-08 10:15:01</td>
-      <td></td>
-      <td>53.460636</td>
-      <td>5.779672</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>52613321123</td>
-      <td>21241590@N06</td>
-      <td>2023-01-07 13:06:00</td>
-      <td></td>
-      <td>53.447686</td>
-      <td>5.865030</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>52612327127</td>
-      <td>21241590@N06</td>
-      <td>2023-01-07 12:13:46</td>
-      <td></td>
-      <td>53.438130</td>
-      <td>5.776969</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>52612626518</td>
-      <td>21241590@N06</td>
-      <td>2023-01-06 14:53:17</td>
-      <td></td>
-      <td>53.441086</td>
-      <td>5.638022</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>52612140566</td>
-      <td>21241590@N06</td>
-      <td>2023-01-06 14:01:12</td>
-      <td></td>
-      <td>53.449250</td>
-      <td>5.625780</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>52612560985</td>
-      <td>21241590@N06</td>
-      <td>2023-01-06 13:49:04</td>
-      <td></td>
-      <td>53.449466</td>
-      <td>5.624938</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>52611634642</td>
-      <td>21241590@N06</td>
-      <td>2023-01-06 12:25:26</td>
-      <td></td>
-      <td>53.435641</td>
-      <td>5.717944</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>52612401979</td>
-      <td>21241590@N06</td>
-      <td>2023-01-06 12:27:33</td>
-      <td></td>
-      <td>53.436122</td>
-      <td>5.717830</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>And let’s see if everything is stored in a format in which we can work with:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>id           object
-owner        object
-datetaken    object
-tags         object
-latitude     object
-longitude    object
-dtype: object
 </pre></div>
 </div>
 </div>
@@ -1072,13 +831,11 @@ dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;5.762622&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>Aha! Strings. It will be difficult to convert strings into proper geometries, so let’s convert these columns to floating values, and convert them to <strong>points</strong> using <code class="docutils literal notranslate"><span class="pre">pygeos.points()</span></code>. As you will see, we use a <a class="reference external" href="https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions">list comprehension</a> to do so. The input for <code class="docutils literal notranslate"><span class="pre">pygeos.points()</span></code> is a list or numpy array, in which each element contains a <em>longitude</em> and a <em>latitude</em>. To make sure we have that, we create this <code class="docutils literal notranslate"><span class="pre">list</span></code> using the <a class="reference external" href="https://docs.python.org/3.3/library/functions.html#zip">zip</a> function in Python.</p>
+<div class="alert alert-block alert-success">
+<b>Question 2:</b> As all the data is stored in strings, its pretty difficult to do something with the information straight away. Please provide the lines of code that you have written to convert the geo-information (lattitude and longitude) into actual coordinates and also provide the lines of code that you have written to convert the dates to a datetime object. Explain the lines of code.
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;longitude&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
@@ -1106,12 +863,6 @@ dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
-</pre></div>
-</div>
-<img alt="../_images/tutorial2_36_1.png" src="../_images/tutorial2_36_1.png" />
-</div>
 </div>
 <p>As we are dealing with spatial data, it would be nice to plot this information on a map. To do so, we convert our <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame</span></code> into a <code class="docutils literal notranslate"><span class="pre">geopandas.GeoDataFrame</span></code>. Moreover, we have to specify the coordinate reference system. Given that we have a global dataset, it makes most sense to use <strong>epsg:4326</strong>.</p>
 <div class="cell docutils container">
@@ -1136,30 +887,15 @@ dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/tutorial2_39_01.png" src="../_images/tutorial2_39_01.png" />
 </div>
-</div>
-<p>Let’s have a look how all these photos are tagged. And whether we can actually do something with this information.</p>
+<div class="alert alert-block alert-success">
+<b>Question 3:</b> Upload the map with locations of all the photos taken in your area.
+</div><div class="alert alert-block alert-success">
+<b>Question 4:</b> Describe the plot of the amount of photos over per year (or per month) and the map. Do you already notice specific patterns. Is there something already that may influence our results later on?
+</div><p>Let’s have a look how all these photos are tagged. And whether we can actually do something with this information.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf</span><span class="p">[</span><span class="s1">&#39;tags&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       ameland meer europa vogel wasser tier natur sa...
-1       20210505195346 ameland netherlands birdhide bl...
-2       ameland meer europa wasser watt fortbewegungsm...
-3       img4088 13082022 nederland netherlands ameland...
-4       isle island eiland waddeneiland ameland friesl...
-                              ...                        
-6695    bohrinse landschaft strand aussicht ameland fr...
-6696    ameland meer europa wasser watt fortbewegungsm...
-6697    aussicht ameland friesland europa meer wasser ...
-6698    himmel jahreszeiten sonnenuntergang pflanzen a...
-6699    leuchtturm ameland farbe europa jahreszeiten n...
-Name: tags, Length: 6700, dtype: object
 </pre></div>
 </div>
 </div>
@@ -1174,61 +910,6 @@ Name: tags, Length: 6700, dtype: object
 <span class="n">all_tags</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">find_all_tags</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sublist</span><span class="p">]</span>
 
 <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">all_tags</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ameland          3903
-netherlands      2041
-beachrugby       2039
-kevinscott       2039
-kevinscottorg    2039
-rugby            1973
-rfc              1922
-rc               1867
-friesland        1345
-nederland        1248
-niederlande      1155
-2017             1122
-itamelân          916
-europa            912
-jahreszeiten      912
-sommer            912
-europe            906
-fryslân           897
-natur             889
-summer            872
-country           808
-nederlân          807
-seasons           807
-lasaison          807
-ilpaese           807
-lestate           807
-lété              807
-lacampagne        807
-lespaysbas        807
-abrf17            760
-sea               680
-abrf18            667
-meer              666
-wasser            662
-ocean             616
-2018              609
-water             561
-gewässer          557
-leseaux           557
-mare              557
-leau              557
-lacqua            557
-lamer             557
-waters            557
-landschaft        419
-nordsee           408
-amsterdamaac      401
-pflanzen          395
-dünengras         394
-landscape         389
-dtype: int64
 </pre></div>
 </div>
 </div>
@@ -1254,15 +935,12 @@ dtype: int64
 </div>
 </div>
 </div>
-<p>Let’s count them.</p>
+<div class="alert alert-block alert-success">
+<b>Question 5:</b> What are the most important tags in your dataset? Also provide the list of tags that you have used to select photos that show nature on the photo. How many pictures did you end up with?
+</div><p>Let’s count them.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">gdf</span><span class="o">.</span><span class="n">nature</span><span class="o">==</span><span class="s1">&#39;yes&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1195
 </pre></div>
 </div>
 </div>
@@ -1284,63 +962,11 @@ dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/tutorial2_49_0.png" src="../_images/tutorial2_49_0.png" />
-</div>
 </div>
 <p>What we also noticed is that some users seems to upload quite a lot of pictures. Let’s have a look at the amount of unique users in this area:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gdf_to_plot</span><span class="o">.</span><span class="n">owner</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>57755771@N05     888
-132646954@N02     53
-88330064@N07      38
-22049393@N02      34
-146166548@N02     33
-20829994@N04      28
-27998473@N02      16
-60057960@N06      14
-105105658@N03      9
-87128103@N00       8
-101219331@N02      6
-23171095@N05       5
-13521837@N00       4
-91358374@N06       4
-66127063@N05       4
-32650254@N03       4
-145258783@N06      3
-117731235@N07      3
-53405320@N00       3
-59924487@N04       3
-9596793@N04        2
-21538273@N07       2
-22858517@N08       2
-21687857@N00       2
-24571671@N08       2
-64056310@N05       2
-132078928@N04      2
-8866365@N08        2
-169760497@N06      2
-12593590@N06       2
-85710548@N07       2
-156227259@N08      1
-44300154@N08       1
-97917374@N04       1
-63991153@N00       1
-137830686@N03      1
-141380219@N03      1
-27494769@N08       1
-150056122@N02      1
-140905559@N06      1
-47409511@N00       1
-72056743@N00       1
-14925782@N06       1
-162033351@N07      1
-Name: owner, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -1352,197 +978,6 @@ Name: owner, dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>id</th>
-      <th>owner</th>
-      <th>datetaken</th>
-      <th>tags</th>
-      <th>latitude</th>
-      <th>longitude</th>
-      <th>geometry</th>
-      <th>year</th>
-      <th>month</th>
-      <th>month_year</th>
-      <th>nature</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>52638191622</td>
-      <td>57755771@N05</td>
-      <td>2022-08-07 20:02:38</td>
-      <td>ameland meer europa vogel wasser tier natur sa...</td>
-      <td>53.460438</td>
-      <td>5.762622</td>
-      <td>POINT (641492.147 7068624.806)</td>
-      <td>2022</td>
-      <td>Aug</td>
-      <td>2022-08</td>
-      <td>yes</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>52637307998</td>
-      <td>57755771@N05</td>
-      <td>2022-08-08 14:59:24</td>
-      <td>ameland meer europa wasser watt fortbewegungsm...</td>
-      <td>53.442808</td>
-      <td>5.737283</td>
-      <td>POINT (638671.422 7065329.158)</td>
-      <td>2022</td>
-      <td>Aug</td>
-      <td>2022-08</td>
-      <td>yes</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>52624908216</td>
-      <td>57755771@N05</td>
-      <td>2022-08-08 11:40:26</td>
-      <td>jahreszeiten leuchtturm aussicht ameland fries...</td>
-      <td>53.454041</td>
-      <td>5.638633</td>
-      <td>POINT (627689.754 7067428.830)</td>
-      <td>2022</td>
-      <td>Aug</td>
-      <td>2022-08</td>
-      <td>yes</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>52619820990</td>
-      <td>57755771@N05</td>
-      <td>2022-08-07 20:16:50</td>
-      <td>krabbe sandstrand ameland friesland europa lan...</td>
-      <td>53.460438</td>
-      <td>5.762622</td>
-      <td>POINT (641492.147 7068624.806)</td>
-      <td>2022</td>
-      <td>Aug</td>
-      <td>2022-08</td>
-      <td>yes</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>52610311021</td>
-      <td>57755771@N05</td>
-      <td>2022-08-09 21:04:53</td>
-      <td>sand ameland meer europa sonne himmel natur ab...</td>
-      <td>53.459013</td>
-      <td>5.763483</td>
-      <td>POINT (641587.993 7068358.374)</td>
-      <td>2022</td>
-      <td>Aug</td>
-      <td>2022-08</td>
-      <td>yes</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>1190</th>
-      <td>52554574049</td>
-      <td>57755771@N05</td>
-      <td>2022-08-08 11:06:06</td>
-      <td>pflanzen ameland friesland europa niederlande ...</td>
-      <td>53.454497</td>
-      <td>5.723133</td>
-      <td>POINT (637096.251 7067514.077)</td>
-      <td>2022</td>
-      <td>Aug</td>
-      <td>2022-08</td>
-      <td>yes</td>
-    </tr>
-    <tr>
-      <th>1191</th>
-      <td>52551866537</td>
-      <td>57755771@N05</td>
-      <td>2022-08-07 20:07:42</td>
-      <td>bohrinse landschaft strand aussicht ameland fr...</td>
-      <td>53.460438</td>
-      <td>5.762622</td>
-      <td>POINT (641492.147 7068624.806)</td>
-      <td>2022</td>
-      <td>Aug</td>
-      <td>2022-08</td>
-      <td>yes</td>
-    </tr>
-    <tr>
-      <th>1192</th>
-      <td>52548953936</td>
-      <td>57755771@N05</td>
-      <td>2022-08-08 15:02:41</td>
-      <td>ameland meer europa wasser watt fortbewegungsm...</td>
-      <td>53.442808</td>
-      <td>5.737283</td>
-      <td>POINT (638671.422 7065329.158)</td>
-      <td>2022</td>
-      <td>Aug</td>
-      <td>2022-08</td>
-      <td>yes</td>
-    </tr>
-    <tr>
-      <th>1193</th>
-      <td>52544288227</td>
-      <td>57755771@N05</td>
-      <td>2022-08-11 11:58:23</td>
-      <td>aussicht ameland friesland europa meer wasser ...</td>
-      <td>53.457505</td>
-      <td>5.903197</td>
-      <td>POINT (657140.884 7068076.433)</td>
-      <td>2022</td>
-      <td>Aug</td>
-      <td>2022-08</td>
-      <td>yes</td>
-    </tr>
-    <tr>
-      <th>1194</th>
-      <td>52541369571</td>
-      <td>57755771@N05</td>
-      <td>2022-08-13 21:07:58</td>
-      <td>himmel jahreszeiten sonnenuntergang pflanzen a...</td>
-      <td>53.459094</td>
-      <td>5.763408</td>
-      <td>POINT (641579.644 7068373.518)</td>
-      <td>2022</td>
-      <td>Aug</td>
-      <td>2022-08</td>
-      <td>yes</td>
-    </tr>
-  </tbody>
-</table>
-<p>888 rows × 11 columns</p>
-</div></div></div>
 </div>
 <p>Ok, so it seems that we have several users that dominate the amount of uploads. If we want to say something about the preference of locations to visit, we might have to compensate for this.</p>
 <div class="cell docutils container">
@@ -1558,197 +993,9 @@ Name: owner, dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>owner</th>
-      <th>latitude</th>
-      <th>nature</th>
-      <th>id</th>
-      <th>datetaken</th>
-      <th>tags</th>
-      <th>longitude</th>
-      <th>geometry</th>
-      <th>year</th>
-      <th>month</th>
-      <th>month_year</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>101219331@N02</td>
-      <td>53.435752</td>
-      <td>yes</td>
-      <td>31974222218</td>
-      <td>2018-11-02 17:37:25</td>
-      <td>ameland nature nederland storm waddenzee</td>
-      <td>5.776600</td>
-      <td>POINT (643048.171 7064010.534)</td>
-      <td>2018</td>
-      <td>Nov</td>
-      <td>2018-11</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>101219331@N02</td>
-      <td>53.440252</td>
-      <td>yes</td>
-      <td>45796060332</td>
-      <td>2018-11-02 11:52:07</td>
-      <td>ameland nature nederland ocean waddenzee</td>
-      <td>5.757375</td>
-      <td>POINT (640908.053 7064851.468)</td>
-      <td>2018</td>
-      <td>Nov</td>
-      <td>2018-11</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>101219331@N02</td>
-      <td>53.446386</td>
-      <td>yes</td>
-      <td>44932422835</td>
-      <td>2018-11-02 14:58:35</td>
-      <td>ameland beach nederland ocean</td>
-      <td>5.614552</td>
-      <td>POINT (625009.070 7065997.897)</td>
-      <td>2018</td>
-      <td>Nov</td>
-      <td>2018-11</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>105105658@N03</td>
-      <td>53.427027</td>
-      <td>yes</td>
-      <td>51805477424</td>
-      <td>2021-09-22 17:33:37</td>
-      <td>ameland ccby nederland thenetherlands wadden r...</td>
-      <td>5.646208</td>
-      <td>POINT (628532.999 7062380.311)</td>
-      <td>2021</td>
-      <td>Sep</td>
-      <td>2021-09</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>105105658@N03</td>
-      <td>53.438311</td>
-      <td>yes</td>
-      <td>51705902258</td>
-      <td>2021-09-21 19:26:01</td>
-      <td>ameland ccby nederland thenetherlands wadden r...</td>
-      <td>5.807461</td>
-      <td>POINT (646483.601 7064488.734)</td>
-      <td>2021</td>
-      <td>Sep</td>
-      <td>2021-09</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>158</th>
-      <td>91358374@N06</td>
-      <td>53.427802</td>
-      <td>yes</td>
-      <td>50123100157</td>
-      <td>2020-06-24 13:26:49</td>
-      <td>ameland bloemenenplanten kanoet vogel hollum f...</td>
-      <td>5.642449</td>
-      <td>POINT (628114.550 7062525.102)</td>
-      <td>2020</td>
-      <td>Jun</td>
-      <td>2020-06</td>
-    </tr>
-    <tr>
-      <th>159</th>
-      <td>91358374@N06</td>
-      <td>53.433522</td>
-      <td>yes</td>
-      <td>50123100137</td>
-      <td>2020-06-24 13:31:20</td>
-      <td>ameland bloemenenplanten kanoet vogel hollum f...</td>
-      <td>5.640602</td>
-      <td>POINT (627908.942 7063593.838)</td>
-      <td>2020</td>
-      <td>Jun</td>
-      <td>2020-06</td>
-    </tr>
-    <tr>
-      <th>160</th>
-      <td>9596793@N04</td>
-      <td>53.436155</td>
-      <td>yes</td>
-      <td>50521546696</td>
-      <td>2020-10-11 14:29:06</td>
-      <td>natuur ameland lucht strand nederland boot wol...</td>
-      <td>5.620444</td>
-      <td>POINT (625664.964 7064085.841)</td>
-      <td>2020</td>
-      <td>Oct</td>
-      <td>2020-10</td>
-    </tr>
-    <tr>
-      <th>161</th>
-      <td>9596793@N04</td>
-      <td>53.443805</td>
-      <td>yes</td>
-      <td>50514099686</td>
-      <td>2020-10-11 13:19:17</td>
-      <td>natuur ameland strand water nederland landscha...</td>
-      <td>5.613911</td>
-      <td>POINT (624937.714 7065515.494)</td>
-      <td>2020</td>
-      <td>Oct</td>
-      <td>2020-10</td>
-    </tr>
-    <tr>
-      <th>162</th>
-      <td>97917374@N04</td>
-      <td>53.459616</td>
-      <td>yes</td>
-      <td>45661262425</td>
-      <td>2016-06-05 13:57:30</td>
-      <td>wulp ameland waddeneilanden wadden numeniusarq...</td>
-      <td>5.819320</td>
-      <td>POINT (647803.739 7068471.115)</td>
-      <td>2016</td>
-      <td>Jun</td>
-      <td>2016-06</td>
-    </tr>
-  </tbody>
-</table>
-<p>163 rows × 11 columns</p>
-</div></div></div>
+</div>
+<div class="alert alert-block alert-success">
+<b>Question 6:</b> Please provide the lines of code that you have written to reduce the potential double-counting of the same user on the same location.
 </div>
 </section>
 <section id="clustering-of-data">
@@ -1815,12 +1062,6 @@ Name: owner, dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
-</pre></div>
-</div>
-<img alt="../_images/tutorial2_62_1.png" src="../_images/tutorial2_62_1.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1860,11 +1101,10 @@ Name: owner, dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/tutorial2_66_0.png" src="../_images/tutorial2_66_0.png" />
 </div>
-</div>
-</section>
+<div class="alert alert-block alert-success">
+<b>Question 7:</b> Describe the results of the "clustering" through using the grid-based approach. Are you already able to identify some areas that seem to be most preferred? Can you identify them by using, for example, Google Maps? Does it surprise you?
+</div></section>
 <section id="dbscan">
 <h3>DBSCAN<a class="headerlink" href="#dbscan" title="Permalink to this headline">#</a></h3>
 <p>The DBSCAN algorithm views clusters as areas of high density separated by areas of low density. Due to this rather generic view, clusters found by DBSCAN can be any shape. The central component to the DBSCAN is the concept of <strong>core samples</strong>, which are samples that are in areas of <em>high density</em>. A cluster is therefore a set of <strong>core samples</strong>, each close to each other (measured by some distance measure) and a set of <em>non-core samples</em> that are close to a <strong>core sample</strong> (but are not themselves core samples). There are two parameters to the algorithm, <code class="docutils literal notranslate"><span class="pre">min_samples</span></code> and <code class="docutils literal notranslate"><span class="pre">eps</span></code>, which define formally what we mean when we say dense. Higher <code class="docutils literal notranslate"><span class="pre">min_samples</span></code> or <code class="docutils literal notranslate"><span class="pre">lower</span> <span class="pre">eps</span></code> indicate higher density necessary to form a cluster.</p>
@@ -1887,11 +1127,6 @@ Name: owner, dtype: int64
 <span class="n">num_clusters</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">cluster_labels</span><span class="p">))</span>
 <span class="n">clusters</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">coords</span><span class="p">[</span><span class="n">cluster_labels</span> <span class="o">==</span> <span class="n">n</span><span class="p">]</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_clusters</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">coords</span><span class="p">[</span><span class="n">cluster_labels</span> <span class="o">==</span> <span class="n">n</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of clusters: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num_clusters</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of clusters: 58
 </pre></div>
 </div>
 </div>
@@ -1921,11 +1156,12 @@ Name: owner, dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/tutorial2_74_0.png" src="../_images/tutorial2_74_0.png" />
 </div>
-</div>
-</section>
+<div class="alert alert-block alert-success">
+<b>Question 8:</b> Upload the map with the results of your DBSCAN clustering.
+</div><div class="alert alert-block alert-success">
+<b>Question 9:</b> Describe the outcome of your DBSCAN clustering approach. Which parameter settings did you use? What did you choose for epsilon and which value did you choose as the minimum number of clusters? How do the results differ/to what extent are they the same as the grid-based approach? 
+</div></section>
 </section>
 <section id="do-people-prefer-certain-land-uses">
 <h2>5. Do people prefer certain land uses?<a class="headerlink" href="#do-people-prefer-certain-land-uses" title="Permalink to this headline">#</a></h2>
@@ -1955,12 +1191,6 @@ Name: owner, dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;wetland&#39;, &#39;coastline&#39;, &#39;beach&#39;, &#39;shoal&#39;, &#39;scrub&#39;, nan, &#39;water&#39;,
-       &#39;sand&#39;, &#39;grassland&#39;, &#39;tree&#39;, &#39;heath&#39;, &#39;wood&#39;, &#39;peak&#39;], dtype=object)
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1982,7 +1212,9 @@ Name: owner, dtype: int64
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="alert alert-block alert-success">
+<b>Question 10:</b> Provide the list of unique natural area classifications within the OpenStreetMap data and provide the lines of code that you have written to make sure that all of them were included in the landuse column.
+</div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">landuse</span><span class="o">.</span><span class="n">crs</span> <span class="o">=</span> <span class="s1">&#39;epsg:4326&#39;</span>
 <span class="n">landuse</span> <span class="o">=</span> <span class="n">landuse</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="s1">&#39;epsg:3857&#39;</span><span class="p">)</span>
@@ -2038,14 +1270,12 @@ Name: owner, dtype: int64
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Land Use&#39;)
-</pre></div>
 </div>
-<img alt="../_images/tutorial2_92_1.png" src="../_images/tutorial2_92_1.png" />
-</div>
-</div>
-</section>
+<div class="alert alert-block alert-success">
+<b>Question 11:</b> Upload the figure with the outcome of the overlay between OpenStreetMap and the Flickr Data. 
+</div><div class="alert alert-block alert-success">
+<b>Question 12:</b> Describe the results of the overlay between OpenStreetMap and Flickr data. Does it surprise you? Is it in line to what you observed from the previous grid-based clustering and the DBSCAN clustering? 
+</div></section>
 </section>
 
     <script type="text/x-thebe-config">
