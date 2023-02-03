@@ -507,6 +507,11 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#important-before-we-start">
+   Important before we start
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#learning-objectives">
    Learning Objectives
   </a>
@@ -659,6 +664,11 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#important-before-we-start">
+   Important before we start
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#learning-objectives">
    Learning Objectives
   </a>
@@ -809,10 +819,15 @@ title="Print to PDF"
 <p>In this first tutorial we will deal with the basics of Python and Jupyter Notebooks.</p>
 <div class="alert alert-block alert-info">
 <b>Note:</b> This tutorial is heavily based upon the work of <a href="https://www.tomasbeuzen.com/python-programming-for-data-science/">others</a>
-</div>
-<div class="alert alert-block alert-danger">
+</div><div class="alert alert-block alert-danger">
 <b>Important:</b> This tutorial is not part of your final grade. You simply have to pass it by answering the questions.
-</div><section id="learning-objectives">
+</div><section id="important-before-we-start">
+<h2>Important before we start<a class="headerlink" href="#important-before-we-start" title="Permalink to this headline">#</a></h2>
+<hr>
+Make sure that you save this file before you continue, else you will lose everything. To do so, go to Bestand/File and click on Een kopie opslaan in Drive/Save a Copy on Drive!
+<p>Now, rename the file into Week1_Tutorial1.ipynb. You can do so by clicking on the name in the top of this screen.</p>
+</section>
+<section id="learning-objectives">
 <h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
 <hr><ul class="simple">
 <li><p>Create, describe and differentiate standard Python datatypes such as <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">string</span></code>, <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">dict</span></code>, <code class="docutils literal notranslate"><span class="pre">tuple</span></code>, etc.</p></li>
@@ -826,7 +841,7 @@ title="Print to PDF"
 </ul>
 <h2>Tutorial outline<span class="tocSkip"></span></h2>
 <hr>
-<div class="toc"><ul class="toc-item"><li><span><a href="#1.-Introduction" data-toc-modified-id="1.-Introduction-1">1. Introduction</a></span></li><li><span><a href="#2.-Basic-Python-Data-Types" data-toc-modified-id="2.-Basic-Python-Data-Types-2">2. Basic Python Data Types</a></span></li><li><span><a href="#3.-Lists-and-Tuples" data-toc-modified-id="3.-Lists-and-Tuples-3">3. Lists and Tuples</a></span></li><li><span><a href="#4.-String-Methods" data-toc-modified-id="4.-String-Methods-4">4. String Methods</a></span></li><li><span><a href="#5.-Dictionaries" data-toc-modified-id="5.-Dictionaries-5">5. Dictionaries</a></span></li><li><span><a href="#6.-Empties" data-toc-modified-id="6.-Empties-6">6. Empties</a></span></li><li><span><a href="#7.-Conditionals" data-toc-modified-id="7.-Conditionals-7">7. Conditionals</a></span></li></ul></div></section>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Introduction" data-toc-modified-id="1.-Introduction-1">1. Introduction</a></span></li><li><span><a href="#Basic-Python-Data-Types" data-toc-modified-id="2.-Basic-Python-Data-Types-2">2. Basic Python Data Types</a></span></li><li><span><a href="#Lists-and-Tuples" data-toc-modified-id="3.-Lists-and-Tuples-3">3. Lists and Tuples</a></span></li><li><span><a href="#String-Methods" data-toc-modified-id="4.-String-Methods-4">4. String Methods</a></span></li><li><span><a href="#Dictionaries" data-toc-modified-id="5.-Dictionaries-5">5. Dictionaries</a></span></li><li><span><a href="#Empties" data-toc-modified-id="6.-Empties-6">6. Empties</a></span></li><li><span><a href="#Conditionals" data-toc-modified-id="7.-Conditionals-7">7. Conditionals</a></span></li></ul></div></section>
 <section id="introduction">
 <h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <hr><p>Within this course, we use Jupyter notebooks to execute all our python code. A Jupyter notebook is a document that can combine live programming code, text, images, and pretty displays of data all in the same place. This combination makes Jupyter notebooks clutch for exploring data as well as for learning and teaching.</p>
@@ -857,11 +872,9 @@ title="Print to PDF"
 <h2>2. Basic Python Data Types<a class="headerlink" href="#basic-python-data-types" title="Permalink to this headline">#</a></h2>
 <hr><p>A <strong>value</strong> is a piece of data that a computer program works with such as a number or text. There are different <strong>types</strong> of values: <code class="docutils literal notranslate"><span class="pre">42</span></code> is an integer and <code class="docutils literal notranslate"><span class="pre">&quot;Hello!&quot;</span></code> is a string. A <strong>variable</strong> is a name that refers to a value. In mathematics and statistics, we usually use variable names like $x$ and $y$. In Python, we can use any word as a variable name as long as it starts with a letter or an underscore. However, it should not be a <a class="reference external" href="https://docs.python.org/3.3/reference/lexical_analysis.html#keywords">reserved word</a> in Python such as <code class="docutils literal notranslate"><span class="pre">for</span></code>, <code class="docutils literal notranslate"><span class="pre">while</span></code>, <code class="docutils literal notranslate"><span class="pre">class</span></code>, <code class="docutils literal notranslate"><span class="pre">lambda</span></code>, etc. as these words encode special functionality in Python that we don’t want to overwrite!</p>
 <p>It can be helpful to think of a variable as a box that holds some information (a single number, a vector, a string, etc). We use the <strong>assignment operator</strong> <code class="docutils literal notranslate"><span class="pre">=</span></code> to assign a value to a variable.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>See the <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html">Python 3 documentation</a> for a summary of the standard built-in Python datatypes.</p>
-</div>
-<section id="common-built-in-python-data-types">
+<div class="alert alert-block alert-warning">
+<b>Tip:</b> See the <a href="https://docs.python.org/3/library/stdtypes.html">Python 3 documentation</a> for a summary of the standard built-in Python datatypes.
+</div><section id="common-built-in-python-data-types">
 <h3>Common built-in Python data types<a class="headerlink" href="#common-built-in-python-data-types" title="Permalink to this headline">#</a></h3>
 <table class="colwidths-auto table">
 <thead>
@@ -1124,10 +1137,6 @@ title="Print to PDF"
 <section id="strings">
 <h3>Strings<a class="headerlink" href="#strings" title="Permalink to this headline">#</a></h3>
 <p>Text is stored as a data type called a <code class="docutils literal notranslate"><span class="pre">string</span></code>. We can think of a string as a sequence of characters.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Actually they are a sequence of Unicode code points. Here’s a <a class="reference external" href="https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/">great blog post</a> on Unicode if you’re interested.</p>
-</div>
 <p>We write strings as characters enclosed with either:</p>
 <ul class="simple">
 <li><p>single quotes, e.g., <code class="docutils literal notranslate"><span class="pre">'Hello'</span></code></p></li>
@@ -1401,22 +1410,6 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ow">not</span> <span class="ow">not</span> <span class="kc">True</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Python also has <a class="reference external" href="https://wiki.python.org/moin/BitwiseOperators">bitwise operators</a> like <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> and <code class="docutils literal notranslate"><span class="pre">|</span></code>. Bitwise operators literally compare the bits of two integers. That’s beyond the scope of this course but I’ve included a code snippet below to show you them in action.</p>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bit representation of the number 5: </span><span class="si">{</span><span class="mi">5</span><span class="si">:</span><span class="s2">0b</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bit representation of the number 4: </span><span class="si">{</span><span class="mi">4</span><span class="si">:</span><span class="s2">0b</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;                                    ↓↓↓&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;                                    </span><span class="si">{</span><span class="mi">5</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">4</span><span class="si">:</span><span class="s2">0b</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;                                     ↓ &quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;                                     </span><span class="si">{</span><span class="mi">5</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">4</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1919,12 +1912,10 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Notes require <strong>no</strong> arguments,
-In the code above, the notation after the colon in my curly braces is for formatting. For example, <code class="docutils literal notranslate"><span class="pre">:.2f</span></code> means, print this variable with 2 decimal places. See format code options <a class="reference external" href="https://docs.python.org/3.4/library/string.html#format-specification-mini-language">here</a>.</p>
-</div>
-</section>
+<div class="alert alert-block alert-warning">
+<b>Note:</b> Notes require **no** arguments. <br>
+In the code above, the notation after the colon in my curly braces is for formatting. For example, `:.2f` means, print this variable with 2 decimal places. See format code options <a href="https://docs.python.org/3.4/library/string.html#format-specification-mini-language">here</a>.
+</div></section>
 </section>
 <section id="dictionaries">
 <h2>5. Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">#</a></h2>
@@ -2183,11 +2174,9 @@ In the code above, the notation after the colon in my curly braces is for format
 <li><p><code class="docutils literal notranslate"><span class="pre">True</span></code> values: all objects return <code class="docutils literal notranslate"><span class="pre">True</span></code> unless they are a <code class="docutils literal notranslate"><span class="pre">bool</span></code> object with value <code class="docutils literal notranslate"><span class="pre">False</span></code> or have <code class="docutils literal notranslate"><span class="pre">len()</span></code> == 0</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">False</span></code> values: <code class="docutils literal notranslate"><span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">False</span></code>, <code class="docutils literal notranslate"><span class="pre">0</span></code>, empty sequences and collections: <code class="docutils literal notranslate"><span class="pre">''</span></code>, <code class="docutils literal notranslate"><span class="pre">()</span></code>, <code class="docutils literal notranslate"><span class="pre">[]</span></code>, <code class="docutils literal notranslate"><span class="pre">{}</span></code>, <code class="docutils literal notranslate"><span class="pre">set()</span></code></p></li>
 </ul>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Read more in the <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#truth-value-testing">docs here</a>.</p>
-</div>
-<div class="cell docutils container">
+<div class="alert alert-block alert-warning">
+<b>Tip:</b> Read more in the <a href="https://docs.python.org/3/library/stdtypes.html#truth-value-testing">docs here</a>.
+</div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
 
