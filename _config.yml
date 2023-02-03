@@ -20,6 +20,11 @@ latex:
 bibtex_bibfiles:
   - references.bib
 
+# print execution errors directly
+sphinx:
+  config:
+    execution_show_tb: True
+
 # Launch button settings
 launch_buttons:
   notebook_interface        : classic  # The interface interactive links will activate ["classic", "jupyterlab"]
