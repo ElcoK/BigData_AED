@@ -45,7 +45,6 @@ parts:
     chapters:
     - file: week7/lecture
     - file: week7/tutorial1
-    - file: week7/tutorial2
   - caption: Week 8
     chapters:
     - file: week8/exam
