@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lecture: Big Data in the public domain" href="../week4/lecture.html" />
-    <link rel="prev" title="Tutorial 3: Artificial neural networks (ANNs)" href="tutorial1.html" />
+    <link rel="prev" title="Tutorial 1: Artificial neural networks (ANNs)" href="tutorial1.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -197,7 +197,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="tutorial1.html">
-   Tutorial 3: Artificial neural networks (ANNs)
+   Tutorial 1: Artificial neural networks (ANNs)
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -508,7 +508,32 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introducing-the-packages">
-   1.Introducing the packages
+   1. Introducing the packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preparing-the-data">
+   2. Preparing the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training-the-models">
+   3. Training the models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-validation-basic-methods">
+   4. Model validation: “basic” methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-validation-complex-methods">
+   5. Model validation: “complex” methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-validation-classification-models">
+   6. Model validation: classification models
   </a>
  </li>
 </ul>
@@ -537,7 +562,32 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introducing-the-packages">
-   1.Introducing the packages
+   1. Introducing the packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preparing-the-data">
+   2. Preparing the data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training-the-models">
+   3. Training the models
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-validation-basic-methods">
+   4. Model validation: “basic” methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-validation-complex-methods">
+   5. Model validation: “complex” methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-validation-classification-models">
+   6. Model validation: classification models
   </a>
  </li>
 </ul>
@@ -552,30 +602,479 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="tutorial-2-model-validation">
 <h1>Tutorial 2: Model Validation<a class="headerlink" href="#tutorial-2-model-validation" title="Permalink to this headline">#</a></h1>
-<p>Will be updated as soon as finished. Cool stuff incoming</p>
+<p>The second tutorial of this week will focus on model validation. We will re-run several of the models we have developed over the past three tutorials and try to understand together how each of these models perform and should be interpreted.</p>
 <h2>Tutorial Outline<span class="tocSkip"></span></h2>
 <hr>
 <div class="toc"><ul class="toc-item">
 <li><span><a href="#1.-Introducing the packages" data-toc-modified-id="1.-Introducing-the-packages-2">1. Introducing the packages</a></span></li>
-<li><span><a href="#2.-" data-toc-modified-id="2.-Extracting-landuse-information-3">2. </a></span></li>
-<li><span><a href="#3.-" data-toc-modified-id="3.-Visualize-Rasterize-4">3. </a></span></li>
-<li><span><a href="#4.-" data-toc-modified-id="4.-Extracting-buildings-5">4. </a></span></li>
-<li><span><a href="#5.-" data-toc-modified-id="5.-Analyze-buildings-6">5. </a></span></li>
-<li><span><a href="#6.-" data-toc-modified-id="4.-Extracting-roads-5">6. </a></span></li>
-<li><span><a href="#7.-" data-toc-modified-id="5.-Plot-routes-6">7. </a></span></li></ul></div><section id="learning-objectives">
+<li><span><a href="#2.-" data-toc-modified-id="2.-Preparing-the-data-3">2. Preparing the data</a></span></li>
+<li><span><a href="#3.-" data-toc-modified-id="3.-Training-the-models-4">3. Training the models </a></span></li>
+<li><span><a href="#4.-" data-toc-modified-id="4.-Model-validation:-basic-methods-5">4. Model validation: "basic" methods</a></span></li>
+<li><span><a href="#5.-" data-toc-modified-id="5.-Model-validation:-complex-methods-6">5. Model validation: "complex" methods</a></span></li>
+<li><span><a href="#6.-" data-toc-modified-id="4.-Model-validation:-classification-models-5">6. Model validation: classification models </a></span></li></ul></div><section id="learning-objectives">
 <h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
 <hr><ul class="simple">
-<li><p>.</p></li>
-<li><p>.</p></li>
-<li><p>.</p></li>
-<li><p>.</p></li>
-<li><p>.</p></li>
-<li><p>.</p></li>
+<li><p>Learn how to conduct model validation.</p></li>
+<li><p>Learn about popular validation methods.</p></li>
+<li><p>Learn how to interpret validation results.</p></li>
 </ul>
 </section>
 <section id="introducing-the-packages">
-<h2>1.Introducing the packages<a class="headerlink" href="#introducing-the-packages" title="Permalink to this headline">#</a></h2>
-<hr></section>
+<h2>1. Introducing the packages<a class="headerlink" href="#introducing-the-packages" title="Permalink to this headline">#</a></h2>
+<hr><p>Within this tutorial, we are going to make use of the following packages:</p>
+<p><a class="reference external" href="https://scikit-learn.org/stable/index.html"><strong>tensorflow</strong></a> is an open-source machine learing library which makes it easy for beginners and experts to create machine learning models.</p>
+<p><a class="reference external" href="https://scikit-learn.org/stable/index.html"><strong>sklearn</strong></a> is an open source machine learning library that supports supervised and unsupervised learning. It also provides various tools for model fitting, data preprocessing, model selection, model evaluation, and many other utilities.</p>
+<p><a class="reference external" href="https://seaborn.pydata.org/index.html"><strong>seaborn</strong></a> is a Python data visualization library based on matplotlib. It provides a high-level interface for drawing attractive and informative statistical graphics.</p>
+<p><a class="reference external" href="https://numpy.org/doc/stable/"><strong>NumPy</strong></a> is a Python library that provides a multidimensional array object, various derived objects, and an assortment of routines for fast operations on arrays.</p>
+<p><a class="reference external" href="https://pandas.pydata.org/docs/"><strong>Pandas</strong></a> is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python programming language.</p>
+<p><a class="reference external" href="https://matplotlib.org/"><strong>Matplotlib</strong></a> is a comprehensive Python package for creating static, animated, and interactive visualizations in Python. Matplotlib makes easy things easy and hard things possible.</p>
+<p>Now we will import these packages in the cell below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">r2_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">plot_tree</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">,{</span><span class="s1">&#39;axes.grid&#39;</span> <span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="preparing-the-data">
+<h2>2. Preparing the data<a class="headerlink" href="#preparing-the-data" title="Permalink to this headline">#</a></h2>
+<hr><p>Read the data. We use the data that we also used to estimate the OLS model in the first tutorial of week 2. It includes the variables you created in the first tutorial of week 2 and it deals with missing values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;https://github.com/ElcoK/BigData_AED/raw/main/week2/usadataforOLS.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;unicode_escape&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Like we did in the last tutorial, we will drop duplicates based on the variable SERIAL. (Remember that persons from the same household have the same SERIAL number.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="n">data1</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And we drop some irrelevant variables:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="n">data1</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">,</span> <span class="s1">&#39;YEAR&#39;</span><span class="p">,</span> <span class="s1">&#39;SAMPLE&#39;</span><span class="p">,</span> <span class="s1">&#39;HHWT&#39;</span><span class="p">,</span> <span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span><span class="s1">&#39;PERWT&#39;</span><span class="p">,</span> <span class="s1">&#39;RELATE&#39;</span><span class="p">,</span> <span class="s1">&#39;RELATED&#39;</span><span class="p">,</span> <span class="s1">&#39;COUNTYFIP&#39;</span><span class="p">,</span><span class="s1">&#39;SEX&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">,</span> <span class="s1">&#39;RACE&#39;</span><span class="p">,</span> <span class="s1">&#39;RACED&#39;</span><span class="p">,</span> <span class="s1">&#39;STATEFIP&#39;</span><span class="p">,</span> <span class="s1">&#39;EDUC&#39;</span><span class="p">,</span> <span class="s1">&#39;EDUCD&#39;</span><span class="p">,</span> <span class="s1">&#39;EMPSTATD&#39;</span><span class="p">,</span> <span class="s1">&#39;OCC&#39;</span><span class="p">,</span> <span class="s1">&#39;IND&#39;</span><span class="p">,</span> <span class="s1">&#39;EMPSTAT&#39;</span><span class="p">,</span> <span class="s1">&#39;LABFORCE&#39;</span><span class="p">,</span> <span class="s1">&#39;DEGFIELD&#39;</span><span class="p">,</span> <span class="s1">&#39;INCTOT&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">As</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">neural</span> <span class="n">network</span> <span class="n">tutorial</span><span class="p">,</span> <span class="n">we</span> <span class="n">transform</span> <span class="n">the</span> <span class="n">column</span> <span class="n">REGION</span> <span class="n">into</span> <span class="n">dummy</span> <span class="n">variables</span><span class="o">.</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">one_hot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">data1</span><span class="p">[</span><span class="s1">&#39;REGION&#39;</span><span class="p">],</span> <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;REGION_&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">one_hot</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="n">data1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">data1</span><span class="p">,</span> <span class="n">one_hot</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> 
+<span class="n">data1</span> <span class="o">=</span> <span class="n">data1</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;REGION&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s check if it has worked out by printing the column names of the dataframe:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before we can perform some model validations, we need to estimate a few models to validate (isn’t that surprising?) We will fit three different models: an <strong>Ordinary Least Squared (OLS) regression</strong> (linear model), a <strong>Random Forests (RF) model</strong>, and an <strong>Artificial Neural Networks (ANN) model</strong>. First we scale all the data using min-max normalization. We can apply min-max normalization to the entire dataframe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="p">(</span><span class="n">data1</span> <span class="o">-</span> <span class="n">data1</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">data1</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">data1</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="training-the-models">
+<h2>3. Training the models<a class="headerlink" href="#training-the-models" title="Permalink to this headline">#</a></h2>
+<hr><p>Now we separate the data into <em>training</em> and <em>testing</em> datasets and start running the models and making some predictions (just like we did in the past). We will select four variables as explanantory variables in the models.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">training_data</span><span class="p">,</span> <span class="n">testing_data</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span> 
+
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">training_data</span><span class="p">[[</span><span class="s1">&#39;DENSITY&#39;</span><span class="p">,</span> <span class="s1">&#39;PROPINSR&#39;</span><span class="p">,</span> <span class="s1">&#39;ROOMS&#39;</span><span class="p">,</span> <span class="s1">&#39;BUILTYR2&#39;</span><span class="p">]]</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">training_data</span><span class="p">[[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">]]</span>
+
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">testing_data</span><span class="p">[[</span><span class="s1">&#39;DENSITY&#39;</span><span class="p">,</span> <span class="s1">&#39;PROPINSR&#39;</span><span class="p">,</span> <span class="s1">&#39;ROOMS&#39;</span><span class="p">,</span> <span class="s1">&#39;BUILTYR2&#39;</span><span class="p">]]</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">testing_data</span><span class="p">[[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>First we estimate a simple linear regression model using the statsmodels library:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">OLSregression</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">x_train</span><span class="p">)</span>
+<span class="n">OLSresults</span> <span class="o">=</span> <span class="n">OLSregression</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">OLSresults</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Then</span> <span class="n">we</span> <span class="n">estimate</span> <span class="n">a</span> <span class="n">Random</span> <span class="n">Forest</span> <span class="n">model</span> <span class="n">using</span> <span class="n">the</span> <span class="n">scikit</span> <span class="n">learn</span> <span class="n">library</span> <span class="p">(</span><span class="n">takes</span> <span class="n">a</span> <span class="n">few</span> <span class="n">seconds</span><span class="p">):</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RFmodel</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">max_features</span> <span class="o">=</span> <span class="s1">&#39;sqrt&#39;</span><span class="p">,</span> <span class="n">max_depth</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we build and compile a neural network model using the tensorflow library:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ANNmodel</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+      <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">input_shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],)),</span>
+      <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+      <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+  <span class="p">])</span>
+
+
+<span class="n">ANNmodel</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+
+<span class="n">ANNmodel</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mean_squared_error&#39;</span><span class="p">,</span>
+              <span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.0000005</span><span class="p">),</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mean_absolute_error&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next we fit the ANN model:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">history</span> <span class="o">=</span> <span class="n">ANNmodel</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">],</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">validation_split</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>(Multiple choice) QUESTION 1</strong>: Based on the learning progress printed above, what do you think of the number of epochs?</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>A. I would decrease the number of epochs to 10
+-&gt; B. The number of epochs is fine
+C. I would increase the number of epochs to 20
+</pre></div>
+</div>
+</section>
+<section id="model-validation-basic-methods">
+<h2>4. Model validation: “basic” methods<a class="headerlink" href="#model-validation-basic-methods" title="Permalink to this headline">#</a></h2>
+<hr><p>Using the three models, we are going to predict ENERGYCOST in the testing dataset. We print out the first 10 values of ENERGYCOST in the test set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">OLS_pred</span> <span class="o">=</span> <span class="n">OLSresults</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+<span class="n">RF_pred</span> <span class="o">=</span> <span class="n">RFmodel</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+<span class="n">ANN_pred</span> <span class="o">=</span> <span class="n">ANNmodel</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+
+<span class="n">test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">y_test</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">],</span> <span class="n">OLS_pred</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">],</span> <span class="n">RF_pred</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">],</span> <span class="n">ANN_pred</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">y_test</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">],</span> <span class="n">OLS_pred</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">],</span> <span class="n">RF_pred</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">],</span> <span class="n">ANN_pred</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">])))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are several metrics that can be used for model validation. For now, we are going to focus on some of the most straightforward of them:</p>
+<ol class="simple">
+<li><p><strong>Root Mean Squared Error (RMSE):</strong> As the name suggests it is the square root of the averaged squared difference between the actual value and the predicted value of the target variable. It returns the average prediction error made by the model, thus the <em>lower</em> the RMSE value is, the better the model performed.</p></li>
+<li><p><strong>Mean Absolute Error (MAE):</strong> This metric gives the absolute difference between the actual values and the values predicted by the model for the target variable. If outliers are not a significant issue, the MAE can be used to evaluate the performance of the model. Again, the <em>lower</em> MAE value is, the better the model performed.</p></li>
+<li><p><strong>R^2^ Error:</strong> You may be already familiar with this metric. It indicates how much percentage of variance in the dependent variable is explained collectively by the independent variables. In other words, it reflects the relationship strength between the target variable and the model on a scale of 0 to 1 (or 0% to 100%). In this case, the <em>higher</em> the R-squared Error value is, the better the model performed.</p></li>
+</ol>
+<div class="alert alert-block alert-success">
+<b>Question 2:</b> Provide an example of another validation method that can be used to evaluate model performance and explain how it works, in your own words. 
+</div><p>We use the scikit learn library to compute the three metrics on the predicted ENERGYCOST.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ols_rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">OLS_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">]))</span>
+<span class="n">rf_rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">RF_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">]))</span>
+<span class="n">ann_rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">ANN_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ols_rmse</span><span class="p">,</span> <span class="n">rf_rmse</span><span class="p">,</span> <span class="n">ann_rmse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ols_mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">OLS_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">])</span>
+<span class="n">rf_mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">RF_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">])</span>
+<span class="n">ann_mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">ANN_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ols_mae</span><span class="p">,</span> <span class="n">rf_mae</span><span class="p">,</span> <span class="n">ann_mae</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ols_r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">],</span> <span class="n">OLS_pred</span><span class="p">)</span>
+<span class="n">rf_r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">],</span> <span class="n">RF_pred</span><span class="p">)</span>
+<span class="n">ann_r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">],</span> <span class="n">ANN_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ols_r2</span><span class="p">,</span> <span class="n">rf_r2</span><span class="p">,</span> <span class="n">ann_r2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success">
+<b>Question 3:</b> (1) Which model performed the better based on the validation metrics discussed above? (2) Search for an additional validation method available in Python and use it to evaluate the models. Add the results you get from the new metric on *Canvas* and identify which model was the most accurate according to that metric.
+</div><p>Now we would like to see if you can create better models than the ones you have used so far in this tutorial. Use a different combination of variables, model settings, etc., and construct at least one new OLS, RF, and ANN model (one of each). (Note that the more complex your model is, and the more data it uses for training, the more time the training will take. Also note that you will be asked to submit a PDF version of your <em>notebook</em> with your new models on <em>Canvas.</em>)</p>
+<p>There is a lot more that you can do with outputs (such as including interactive outputs)
+with your book. For more information about this, see <a class="reference external" href="https://jupyterbook.org">the Jupyter Book documentation</a></p>
+<div class="alert alert-block alert-success">
+<b>Question 4:</b> (1) Which of your new models performed better based on the validation metrics? (2) Did your new models performed better than the ones is this tutorial? (3) Why do you think that was the case?
+</div><p>Note that there are a few advantages, as well as disadvantages, of using methods like the RMSE, MAE, and R^2^ Error to evaluate model performance:</p>
+<p><strong>Advantages:</strong></p>
+<ul class="simple">
+<li><p>Some most basic and simple techniques for model validation;</p></li>
+<li><p>Do not require complex programming steps for implementation (and can be quickly computed).</p></li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul class="simple">
+<li><p>Model predictions (and thus accuracy) are highly dependent on the subset of observations used for <em>training</em> and <em>testing</em>.</p></li>
+<li><p>Not necessarily robust/consistent across different training/testing datasets [e.g., for some reason the model may achieve a good or bad validation score not because the model is necessary good or bad in general, but because it simply happens to be good (“luckly”) or bad (“unlucky”) given a particular set of training/testing datasets].</p></li>
+</ul>
+</section>
+<section id="model-validation-complex-methods">
+<h2>5. Model validation: “complex” methods<a class="headerlink" href="#model-validation-complex-methods" title="Permalink to this headline">#</a></h2>
+<p>Now we will cover a couple of more-complex, and still very popular, validation methods, namely: <strong>Leave One Out Cross-Validation (LOOCV)</strong> and <strong>K-fold Cross-Validation</strong>.</p>
+<p>Let’s start with <strong>LOOCV</strong>.The idea behind this method is not too complicated: the dataset is also randomly split between <em>training</em> and <em>testing</em> sets, but there is now also a validation set. Validation with LOOCV is performed in the following way:</p>
+<ol class="simple">
+<li><p>The model is trained based on N-1 data points in the training dataset;</p></li>
+<li><p>The model is then validated against that one data point that was left out;</p></li>
+<li><p>A prediction error is calculated based on the difference between the predicted point value and its actual value;</p></li>
+<li><p>Steps 1-3 are repetead until the model is <em>trained</em> and <em>validated</em> based on all data points (one at a time);</p></li>
+<li><p>An overall prediction error is computed based on the average of the prediction errors that were computed each time a data point was left out of the training.</p></li>
+<li><p>In steps 1-5 you can try different model settings and model parameters, and the best performing model is tested on the testing dataset.</p></li>
+</ol>
+<p>Let’s see an example of how to implement the LOOCV method. Note that because this procedure can take some time to completed, we will only look at a subset of our data (i.e., the first 1000 rows), and we will only use the OLS (or “linear model”) method (because OLS models can be quickly computed):</p>
+<p>Note that we use the Linear Regression from the scikit-learn library:
+We use the same four explanantory variables as before.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">LeaveOneOut</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="c1"># Select data</span>
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">training_data</span><span class="p">[[</span><span class="s1">&#39;DENSITY&#39;</span><span class="p">,</span> <span class="s1">&#39;PROPINSR&#39;</span><span class="p">,</span> <span class="s1">&#39;ROOMS&#39;</span><span class="p">,</span> <span class="s1">&#39;BUILTYR2&#39;</span><span class="p">]]</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">training_data</span><span class="p">[[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">]]</span>
+
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">testing_data</span><span class="p">[[</span><span class="s1">&#39;DENSITY&#39;</span><span class="p">,</span> <span class="s1">&#39;PROPINSR&#39;</span><span class="p">,</span> <span class="s1">&#39;ROOMS&#39;</span><span class="p">,</span> <span class="s1">&#39;BUILTYR2&#39;</span><span class="p">]]</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">testing_data</span><span class="p">[[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">]]</span>
+
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">x_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">1000</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">1000</span><span class="p">,</span> <span class="p">:]</span>
+
+<span class="c1"># Create a linear regression object</span>
+<span class="n">loocv</span> <span class="o">=</span> <span class="n">LeaveOneOut</span><span class="p">()</span>
+<span class="n">regressor</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+
+<span class="c1"># Train the model using leave-one-out cross-validation</span>
+<span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">val_index</span> <span class="ow">in</span> <span class="n">loocv</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_index</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">val_index</span><span class="p">]</span>
+    <span class="n">Y_train</span><span class="p">,</span> <span class="n">Y_val</span> <span class="o">=</span> <span class="n">Y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_index</span><span class="p">],</span> <span class="n">Y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">val_index</span><span class="p">]</span>
+    <span class="n">regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span>
+    <span class="n">Y_pred</span> <span class="o">=</span> <span class="n">regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+    <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">Y_val</span><span class="p">,</span> <span class="n">Y_pred</span><span class="p">))</span>
+
+<span class="c1"># Print the mean squared error</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean Squared Error: &quot;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">errors</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here are some advantages and disadvantages of using the LOOCV method:</p>
+<p><strong>Advantages:</strong></p>
+<ul class="simple">
+<li><p>High accuracy: LOOCV provides a high level of accuracy in evaluating model performance since each data point is used once as the validation set, effectively reducing the chances of error.</p></li>
+<li><p>Low Bias: LOOCV helps reduce the bias in the model evaluation since each data point gets to be the validation set at least once.</p></li>
+<li><p>Suitable for small sample size: LOOCV is a suitable method for evaluating models when the sample size is small, as it ensures that each data point is used as a validation set.</p></li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul class="simple">
+<li><p>LOOCV is computationally expensive, especially when the sample size is large or models are complex.</p></li>
+<li><p>It can lead to high variance in the evaluation of model performance in the presence of outliers. This is because the validation set consists of only one data point, leading to a high variance in the estimated performance metrics.</p></li>
+</ul>
+<p>In practice, <strong>K-fold Cross-Validation</strong> is more often used than <strong>LOOCV</strong>, because <strong>K-fold Cross-Validation</strong> is computationally much faster than <strong>LOOCV</strong>.  <strong>K-fold Cross-Validation</strong> works by dividing the training dataset into K subsets (or <em>folds</em>) of (almost) equal size. Out of these K folds, one subset at a time is used as a <em>validation</em> set, while the rest are used to <em>train</em> the model. The computational steps are the following:</p>
+<ol class="simple">
+<li><p>The training dataset is randomly splitted into K subsets;</p></li>
+<li><p>K-1 subsets is used to <em>train</em> the model;</p></li>
+<li><p>The trained model is <em>validated</em> against the subset that was left out and an prediction error is calculated;</p></li>
+<li><p>Steps 1-3 are repetead K times, i.e., until the model has been <em>validated</em> against all subsets;</p></li>
+<li><p>An overall prediction error is computed based on the average of the prediction errors that were computed each time a subset was left out of the model training.</p></li>
+<li><p>In steps 1-5 you can try different model settings and model parameters, and the best performing model is tested on the testing dataset.</p></li>
+</ol>
+<p>In the next lines of code we will search for the optimal parameters of a random forest model using K-fold cross validation. Note that this will take 1 or 2 minutes to run. We use GridSearchCV to try different parameter settings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span> <span class="c1">#ignore all warnings in this cell</span>
+
+<span class="n">parametergrid</span> <span class="o">=</span> <span class="p">{</span> 
+    <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+    <span class="s1">&#39;max_features&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;sqrt&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;max_depth&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span>
+    <span class="s1">&#39;random_state&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">18</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1">## Grid Search function</span>
+<span class="n">CV_rf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">RandomForestRegressor</span><span class="p">(),</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">parametergrid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">scoring</span> <span class="o">=</span> <span class="s1">&#39;neg_mean_squared_error&#39;</span><span class="p">)</span>
+<span class="n">CV_rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success">
+<b>Question 5:</b> How many models are estimated with the parameter grid given above?
+</div><p>Below we print the results of the grid search:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">CV_rf</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">[</span><span class="s1">&#39;mean_test_score&#39;</span><span class="p">]))</span> 
+<span class="c1"># we take the absolute value of the mean test score, </span>
+<span class="c1"># because the scoring function is specified as the negative mean squared error. </span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">CV_rf</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">CV_rf</span><span class="o">.</span><span class="n">best_score_</span><span class="p">))</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">CV_rf</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success">
+<b>Question 6:</b> Over how many test scores is the mean test score calculated?
+</div><div class="alert alert-block alert-success">
+<b>Question 7:</b> According to the results of the grid search with cross validation, which model parameters do you want to use in your final model that you test on the testing dataset? Do you think it is a good idea to use another parameter grid in the grid search? Explain. 
+</div><p>Now test the model with the most optimal parameters on the testing dataset:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">best_model</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="n">CV_rf</span><span class="o">.</span><span class="n">best_params_</span><span class="p">[</span><span class="s1">&#39;n_estimators&#39;</span><span class="p">],</span>  
+                                   <span class="n">max_features</span><span class="o">=</span><span class="n">CV_rf</span><span class="o">.</span><span class="n">best_params_</span><span class="p">[</span><span class="s1">&#39;max_features&#39;</span><span class="p">],</span>
+                                   <span class="n">max_depth</span><span class="o">=</span><span class="n">CV_rf</span><span class="o">.</span><span class="n">best_params_</span><span class="p">[</span><span class="s1">&#39;max_depth&#39;</span><span class="p">],</span>
+                                   <span class="n">random_state</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span>
+
+<span class="c1"># Fit the best model on the training data</span>
+<span class="n">best_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Predict on the test data</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Advantages:</strong></p>
+<ul class="simple">
+<li><p>By dividing the data into K folds and training the model on K-1 folds and evaluating it on the remaining fold, K-fold cross-validation provides a better estimate of the model’s performance compared to training the model once on the full training dataset.</p></li>
+<li><p>K-fold cross-validation can be useful in handling imbalanced training/testing samples, as it allows the model to be trained and evaluated on different subsets of training data, reducing the impact of imbalanced samples in the training and evaluation process.</p></li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul class="simple">
+<li><p>It can be computationally expensive, especially when the sample size is large or models are complex (but not as expensive as the LOOCV method).</p></li>
+<li><p>Dependent on a sensible selection of the number of folds.</p></li>
+</ul>
+</section>
+<section id="model-validation-classification-models">
+<h2>6. Model validation: classification models<a class="headerlink" href="#model-validation-classification-models" title="Permalink to this headline">#</a></h2>
+<p>You already learnt that some machine learning models are used for classification. In this final part of the tutorial, we will focus on popular validation metrics that are often used to evaluate the performance of classifiers. First we will create a binary variable that we will predict with a classifier. We will divide the households in two groups: the 50% households that have the highest energy costs are given a 1 and the other 50% of the households are given a 0.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">data1</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">data1</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">())</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The most simple evaluation metric is the accuracy of the classifier, i.e. the number of instances the classifier has correctly predicted divided by the total number of instances. Two other well-known metrics are precision and recall, which are based on the number of true positives, true negatives, false positives and false negatives. True positives are the number of 1’s correctly predicted, true negatives are the number of 0’s correctly predicted, false positives are the number 1’s wrongly predicted (they should be 0) and false negatives are the number of 0’s wrongly predicted (they should be 1).
+The precision is given by the number of true positives / (the number of true positives + the number of false positives). So when the model predicts a 1, how many of the instances are actually 1.
+Recall is given by the number of true positives / (the number of true positives + the number of false negatives). Recall is a measure of how many of the 1’s is the model able to predict.</p>
+<div class="alert alert-block alert-success">
+<b>Question 8:</b> Let's say you have a stupid classifier that predicts all instances 1. What is your precision and recall of this model? 
+</div><p>Now, let’s estimate some models using a <em>training</em> dataset and use the models to classify the households in a <em>testing</em> dataset. This time, let’s use a logistic regression model and an RF model to perform the classification. Let’s start with the logistic regression.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span>
+
+<span class="n">training_data</span><span class="p">,</span> <span class="n">testing_data</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span> 
+
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">training_data</span><span class="p">[[</span><span class="s1">&#39;DENSITY&#39;</span><span class="p">,</span> <span class="s1">&#39;PROPINSR&#39;</span><span class="p">,</span> <span class="s1">&#39;ROOMS&#39;</span><span class="p">,</span> <span class="s1">&#39;BUILTYR2&#39;</span><span class="p">]]</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">training_data</span><span class="p">[[</span><span class="s1">&#39;group&#39;</span><span class="p">]]</span>
+
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">testing_data</span><span class="p">[[</span><span class="s1">&#39;DENSITY&#39;</span><span class="p">,</span> <span class="s1">&#39;PROPINSR&#39;</span><span class="p">,</span> <span class="s1">&#39;ROOMS&#39;</span><span class="p">,</span> <span class="s1">&#39;BUILTYR2&#39;</span><span class="p">]]</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">testing_data</span><span class="p">[[</span><span class="s1">&#39;group&#39;</span><span class="p">]]</span>
+
+<span class="n">regressionLogit</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">resultsLogit</span> <span class="o">=</span> <span class="n">regressionLogit</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">resultsLogit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+
+<span class="c1"># Evaluate the model</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">precision</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">recall</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Logit Accuracy:&quot;</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Logit Precision:&quot;</span><span class="p">,</span> <span class="n">precision</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Logit Recall:&quot;</span><span class="p">,</span> <span class="n">recall</span><span class="p">)</span>
+
+<span class="n">RFclassifier</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>  
+                                   <span class="n">max_features</span><span class="o">=</span><span class="s1">&#39;sqrt&#39;</span><span class="p">,</span>
+                                   <span class="n">max_depth</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+                                   <span class="n">random_state</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span>
+
+<span class="n">resultsRF</span> <span class="o">=</span> <span class="n">RFclassifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">resultsRF</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+
+<span class="c1"># Evaluate the model</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">precision</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">recall</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RF Accuracy:&quot;</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RF Precision:&quot;</span><span class="p">,</span> <span class="n">precision</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RF Recall:&quot;</span><span class="p">,</span> <span class="n">recall</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success">
+<b>Question 9:</b> What do you think of the model performance of the two models? In most cases you want to have a high precision score and a high recall score, but can you think of a classifier problem where you specifically want to have a high recall score and where a high precision score is less important?
+</div><div class="alert alert-block alert-success">
+<b>Question 10:</b> Can you build one Logistic model and one Random Forest classifier that perform better than the two models above? (Use a different combination of variables, model settings, etc.). You will be asked to submit a PDF version of your *notebook* with your new models on *Canvas*, along with your answers.
+</div></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -609,7 +1108,7 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Tutorial 3: Artificial neural networks (ANNs)</p>
+            <p class="prev-next-title">Tutorial 1: Artificial neural networks (ANNs)</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="../week4/lecture.html" title="next page">
