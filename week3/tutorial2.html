@@ -681,13 +681,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">As</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">neural</span> <span class="n">network</span> <span class="n">tutorial</span><span class="p">,</span> <span class="n">we</span> <span class="n">transform</span> <span class="n">the</span> <span class="n">column</span> <span class="n">REGION</span> <span class="n">into</span> <span class="n">dummy</span> <span class="n">variables</span><span class="o">.</span> 
-</pre></div>
-</div>
-</div>
-</div>
+<p>As in the previous tutorial, we transform the column REGION into dummy variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">one_hot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">data1</span><span class="p">[</span><span class="s1">&#39;REGION&#39;</span><span class="p">],</span> <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;REGION_&#39;</span><span class="p">)</span>
@@ -741,13 +735,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Then</span> <span class="n">we</span> <span class="n">estimate</span> <span class="n">a</span> <span class="n">Random</span> <span class="n">Forest</span> <span class="n">model</span> <span class="n">using</span> <span class="n">the</span> <span class="n">scikit</span> <span class="n">learn</span> <span class="n">library</span> <span class="p">(</span><span class="n">takes</span> <span class="n">a</span> <span class="n">few</span> <span class="n">seconds</span><span class="p">):</span> 
-</pre></div>
-</div>
-</div>
-</div>
+<p>Then we estimate a Random Forest model using the scikit learn library (takes a few seconds):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">RFmodel</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">max_features</span> <span class="o">=</span> <span class="s1">&#39;sqrt&#39;</span><span class="p">,</span> <span class="n">max_depth</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -782,13 +770,12 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p><strong>(Multiple choice) QUESTION 1</strong>: Based on the learning progress printed above, what do you think of the number of epochs?</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>A. I would decrease the number of epochs to 10
--&gt; B. The number of epochs is fine
-C. I would increase the number of epochs to 20
-</pre></div>
-</div>
-</section>
+   <div class="alert alert-block alert-success">
+<b>Question 1:</b> Based on the learning progress printed above, what do you think of the number of epochs? <br> 
+        A. I would decrease the number of epochs to 10<br>
+        B. The number of epochs is fine<br>
+        C. I would increase the number of epochs to 20<br>
+</div></section>
 <section id="model-validation-basic-methods">
 <h2>4. Model validation: “basic” methods<a class="headerlink" href="#model-validation-basic-methods" title="Permalink to this headline">#</a></h2>
 <hr><p>Using the three models, we are going to predict ENERGYCOST in the testing dataset. We print out the first 10 values of ENERGYCOST in the test set.</p>
