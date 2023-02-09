@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Tutorial 3: Artificual neural networks (ANNs) &#8212; Big Data for Sustainability Sciences</title>
+    <title>Tutorial 3: Artificial neural networks (ANNs) &#8212; Big Data for Sustainability Sciences</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -197,7 +197,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Tutorial 3: Artificual neural networks (ANNs)
+   Tutorial 3: Artificial neural networks (ANNs)
   </a>
  </li>
  <li class="toctree-l1">
@@ -508,27 +508,32 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introducing-the-packages">
-   1.Introducing the packages
+   1. Introducing the packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importing-the-data">
+   2. Importing the data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#one-hot-encoding">
-   2.One-hot encoding
+   2. One-hot encoding
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#normalizing-the-data">
-   3.Normalizing the data
+   3. Normalizing the data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#building-a-neural-network-model-with-1-variable">
-   4.Building a neural network model with 1 variable
+   4. Building a neural network model with 1 variable
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#training-a-neural-network-model">
-   5.Training a neural network model
+   5. Training a neural network model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -555,7 +560,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Tutorial 3: Artificual neural networks (ANNs)</h1>
+                <h1>Tutorial 3: Artificial neural networks (ANNs)</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -572,27 +577,32 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introducing-the-packages">
-   1.Introducing the packages
+   1. Introducing the packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importing-the-data">
+   2. Importing the data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#one-hot-encoding">
-   2.One-hot encoding
+   2. One-hot encoding
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#normalizing-the-data">
-   3.Normalizing the data
+   3. Normalizing the data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#building-a-neural-network-model-with-1-variable">
-   4.Building a neural network model with 1 variable
+   4. Building a neural network model with 1 variable
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#training-a-neural-network-model">
-   5.Training a neural network model
+   5. Training a neural network model
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -620,21 +630,21 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-3-artificual-neural-networks-anns">
-<h1>Tutorial 3: Artificual neural networks (ANNs)<a class="headerlink" href="#tutorial-3-artificual-neural-networks-anns" title="Permalink to this headline">#</a></h1>
-<p>You can also create content with Jupyter Notebooks. This means that you can include
-code blocks and their outputs in your book.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-3-artificial-neural-networks-anns">
+<h1>Tutorial 3: Artificial neural networks (ANNs)<a class="headerlink" href="#tutorial-3-artificial-neural-networks-anns" title="Permalink to this headline">#</a></h1>
+<p>In this tutorial, we will continue with building machine learing models on top of the census data. In this tutorial, we use the package <strong>Tensorflow</strong> and <strong>Keras</strong>, which has been integrated in <strong>Tensorflow</strong>. <strong>Tensorflow</strong> is a popular software library for deep learning applications, such as neural networks. You can find more information about <strong>Keras</strong> <a class="reference external" href="https://keras.io/">here</a>.</p>
 <h2>Tutorial Outline<span class="tocSkip"></span></h2>
 <hr>
 <div class="toc"><ul class="toc-item">
 <li><span><a href="#1.-Introducing the packages" data-toc-modified-id="1.-Introducing-the-packages-2">1. Introducing the packages</a></span></li>
-<li><span><a href="#2.-" data-toc-modified-id="2.-One-hot-encoding-3">2. One-hot encoding</a></span></li>
-<li><span><a href="#3.-" data-toc-modified-id="3.-Normalizing-the-data-4">3. Normalizing the data </a></span></li>
-<li><span><a href="#4.-" data-toc-modified-id="4.-Building-a-linear-neural-network-model-with-1-variable-5">4. Building a linear neural network model with 1 variable</a></span></li>
-<li><span><a href="#5.-" data-toc-modified-id="5.-Training-a-linear-neural-network-model-with-1-variable-6">5. Training a linear neural network model with 1 variable</a></span></li>
-<li><span><a href="#6.-" data-toc-modified-id="6.-A-non-linear-neural-network-model-with-1-variable-7">6. A non-linear neural network model with 1 variable </a></span></li>
-<li><span><a href="#7.-" data-toc-modified-id="7.-A-non-linear-neural-network-model-with-multiple-variables-8">7. A non-linear neural network model with multiple variables </a></span></li>
-<li><span><a href="#8.-" data-toc-modified-id="8.-Evaluating-the-performance-9">8. Evaluating the performance </a></span></li></ul></div><section id="learning-objectives">
+<li><span><a href="#2.-Importing the data" data-toc-modified-id="1.-Importing-the-data-2">2. Importing the data</a></span></li>
+<li><span><a href="#3.-" data-toc-modified-id="2.-One-hot-encoding-3">3. One-hot encoding</a></span></li>
+<li><span><a href="#4.-" data-toc-modified-id="3.-Normalizing-the-data-4">4. Normalizing the data </a></span></li>
+<li><span><a href="#5.-" data-toc-modified-id="4.-Building-a-linear-neural-network-model-with-1-variable-5">5. Building a linear neural network model with 1 variable</a></span></li>
+<li><span><a href="#6.-" data-toc-modified-id="5.-Training-a-linear-neural-network-model-with-1-variable-6">6. Training a linear neural network model with 1 variable</a></span></li>
+<li><span><a href="#7.-" data-toc-modified-id="6.-A-non-linear-neural-network-model-with-1-variable-7">7. A non-linear neural network model with 1 variable </a></span></li>
+<li><span><a href="#8.-" data-toc-modified-id="7.-A-non-linear-neural-network-model-with-multiple-variables-8">8. A non-linear neural network model with multiple variables </a></span></li>
+<li><span><a href="#9.-" data-toc-modified-id="8.-Evaluating-the-performance-9">9. Evaluating the performance </a></span></li></ul></div><section id="learning-objectives">
 <h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
 <hr><ul class="simple">
 <li><p>Learn how to create dummy variables</p></li>
@@ -647,9 +657,15 @@ code blocks and their outputs in your book.</p>
 </ul>
 </section>
 <section id="introducing-the-packages">
-<h2>1.Introducing the packages<a class="headerlink" href="#introducing-the-packages" title="Permalink to this headline">#</a></h2>
+<h2>1. Introducing the packages<a class="headerlink" href="#introducing-the-packages" title="Permalink to this headline">#</a></h2>
 <hr><p>Within this tutorial, we are going to make use of the following packages:</p>
-<p><em>We will first need to install these packages in the cell below. Uncomment them to make sure we can pip install them</em></p>
+<p><a class="reference external" href="https://scikit-learn.org/stable/index.html"><strong>tensorflow</strong></a> is an open-source machine learing library which makes it easy for beginners and experts to create machine learning models.</p>
+<p><a class="reference external" href="https://scikit-learn.org/stable/index.html"><strong>sklearn</strong></a> is an open source machine learning library that supports supervised and unsupervised learning. It also provides various tools for model fitting, data preprocessing, model selection, model evaluation, and many other utilities.</p>
+<p><a class="reference external" href="https://seaborn.pydata.org/index.html"><strong>seaborn</strong></a> is a Python data visualization library based on matplotlib. It provides a high-level interface for drawing attractive and informative statistical graphics.</p>
+<p><a class="reference external" href="https://numpy.org/doc/stable/"><strong>NumPy</strong></a> is a Python library that provides a multidimensional array object, various derived objects, and an assortment of routines for fast operations on arrays.</p>
+<p><a class="reference external" href="https://pandas.pydata.org/docs/"><strong>Pandas</strong></a> is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python programming language.</p>
+<p><a class="reference external" href="https://matplotlib.org/"><strong>Matplotlib</strong></a> is a comprehensive Python package for creating static, animated, and interactive visualizations in Python. Matplotlib makes easy things easy and hard things possible.</p>
+<p>Now we will import these packages in the cell below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
@@ -665,8 +681,10 @@ code blocks and their outputs in your book.</p>
 </div>
 </div>
 </div>
-<p>In this tutorial, we use the package tensorflow and keras, which has been integrated in tensorflow. Tensorflow is a popular software library for deep learning applications, such as neural networks.</p>
-<p>Read the data. We use the data that we also used to estimate the OLS model. It includes the variables you created in the first tutorial and it deals with missing values.</p>
+</section>
+<section id="importing-the-data">
+<h2>2. Importing the data<a class="headerlink" href="#importing-the-data" title="Permalink to this headline">#</a></h2>
+<hr><p>We use the data same that we also used to estimate the OLS model. It includes the variables you created in the first tutorial and it deals with missing values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;https://github.com/ElcoK/BigData_AED/raw/main/week2/usadataforOLS.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;unicode_escape&#39;</span><span class="p">)</span>
@@ -708,7 +726,7 @@ code blocks and their outputs in your book.</p>
 </div>
 </section>
 <section id="one-hot-encoding">
-<h2>2.One-hot encoding<a class="headerlink" href="#one-hot-encoding" title="Permalink to this headline">#</a></h2>
+<h2>2. One-hot encoding<a class="headerlink" href="#one-hot-encoding" title="Permalink to this headline">#</a></h2>
 <hr><p>We have some categorical variables in our data? Before we can include them in the ANN, we need to first transform them into <em>dummy variables</em>. This is called one-hot encoding. A dummy variable takes the value of either 1 or 0. In our dataset, the variable REGION has nine distinct values (32, 42, 41, 33, 11, 31, 21, 22, and 12), each representing a unique region. That means that to transform the REGION variable into <em>dummies</em>, we actually need to create nine new columns in our dataset, one for each region separatly. For example, if the <em>sample unit</em> in our data (i.e., row), belows to REGION 32, in our new “REGION_32” column, it will have a value of 1, while all other sample units that are from a different region will have a value of 0 in the “REGION_32” column. We can create new dummy variables (columns) in our dataset based on REGION using the function get_dummies from the pandas package. We give the columns of the dummy variables a prefix ‘REGION’ after which follows the region number. Then we merge the the dataframe one_hot to the original dataframe with all the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -731,7 +749,7 @@ If yes, you can do so below. Don't forget to drop the original variable from the
 </div>
 </section>
 <section id="normalizing-the-data">
-<h2>3.Normalizing the data<a class="headerlink" href="#normalizing-the-data" title="Permalink to this headline">#</a></h2>
+<h2>3. Normalizing the data<a class="headerlink" href="#normalizing-the-data" title="Permalink to this headline">#</a></h2>
 <hr><p>In general, ANN models can make better predictions with <em><strong>scaled or normalized</strong></em> variables.
 Neural networks are sensitive to the scale of the input data, and large values can slow down
 or prevent convergence during training. By normalizing the data, we bring all the features
@@ -774,7 +792,7 @@ We calculate the normalized variables ourselves, but we could also add a normali
 </div>
 </section>
 <section id="building-a-neural-network-model-with-1-variable">
-<h2>4.Building a neural network model with 1 variable<a class="headerlink" href="#building-a-neural-network-model-with-1-variable" title="Permalink to this headline">#</a></h2>
+<h2>4. Building a neural network model with 1 variable<a class="headerlink" href="#building-a-neural-network-model-with-1-variable" title="Permalink to this headline">#</a></h2>
 <hr><p>In the next step, we are going to construct a very simple neural network. It will simulate a linear regression model with one explanantory variable. Remember that a linear regression has the following form: y = m + bx, where y is the independent variable, ENERGYCOST, x is the explanantory variable (we use YOUNGEST), m is the intercept, and b is the regression coefficient.
 In the model below, you see that the output layer keras.layers.Dense(units=1, activation=’linear’) has a linear activiation function and 1 unit of output (output would be the ENERGYCOST). Hence we go from 1 unit of input, the age of the YOUNGEST member in the household to 1 unit of output.
 Before the output layer, we add the normalizing layer.</p>
@@ -812,7 +830,7 @@ Before the output layer, we add the normalizing layer.</p>
 </div>
 </section>
 <section id="training-a-neural-network-model">
-<h2>5.Training a neural network model<a class="headerlink" href="#training-a-neural-network-model" title="Permalink to this headline">#</a></h2>
+<h2>5. Training a neural network model<a class="headerlink" href="#training-a-neural-network-model" title="Permalink to this headline">#</a></h2>
 <hr><p>Let’s start training the model using the function fit. In the code below, you can decide on the number of epochs, but we advise to choose a number between 15 and 40 (there is no right or wrong here), because it takes about 4 seconds per epoch to train the model. In each epoch, the neural network goes through all the training data and optimizes the parameters using the Adam optimizer. The more often the model sees the data, the more accurate the parameter estimates become. In each epoch we use 20% of the training data to validate the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -845,7 +863,7 @@ Before the output layer, we add the normalizing layer.</p>
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 3:</b> Upload the figure above to canvas? 
+<b>Question 3:</b> Upload the figure above to canvas.
 </div>
 <div class="alert alert-block alert-success">
 <b>Question 4:</b> Interpret what you see in the figure. Do you think the model has been trained enough? 
