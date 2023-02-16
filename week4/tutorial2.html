@@ -801,12 +801,12 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
-<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive/&#39;</span><span class="p">)</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/gdrive/&#39;</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/content/drive/Shared drives/Big Data for Sustainability Science/Lecture weeks/Week 4&quot;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/content/gdrive/My Drive/BigData/&quot;</span><span class="p">)</span>
 
-<span class="n">data_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;/content/drive/Shared drives/Big Data for Sustainability Science/Lecture weeks/Week 4/&#39;</span><span class="p">,</span><span class="s1">&#39;Tutorial&#39;</span><span class="p">)</span>
+<span class="n">data_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;/content/gdrive/My Drive/BigData/&#39;</span><span class="p">,</span><span class="s1">&#39;Week4_Data&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -865,6 +865,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<p>The download and zip in the cell above sometimes does not work. If that is indeed the case (e.g., when it seems to remain stuck), download the files manually through the link and upload them in the data folder for this week (as explained at the start of this tutorial.)</p>
 </section>
 <section id="set-location-to-explore">
 <h3>Set location to explore<a class="headerlink" href="#set-location-to-explore" title="Permalink to this headline">#</a></h3>
@@ -904,7 +905,7 @@ title="Print to PDF"
 <p>Let’s have a look at the storm we have downloaded!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">windstorm_europe</span><span class="p">[</span><span class="s1">&#39;FX&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">windstorm_europe</span>
 </pre></div>
 </div>
 </div>
@@ -1024,7 +1025,7 @@ title="Print to PDF"
 <p>Slightly annoying, the file you have downloaded is double zipped. Its slightly inconvenient to open this through Python and within Google Drive. So let’s unzip it twice outside of Python and drop the data into this week’s data directory, as specified at the start of this tutorial when we mounted our Google Drive.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CLC_location</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span><span class="s1">&#39;u2018_clc2018_v2020_20u1_raster100m/DATA/U2018_CLC2018_V2020_20u1.tif&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CLC_location</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span><span class="s1">&#39;U2018_CLC2018_V2020_20u1.tif&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1188,50 +1189,107 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>The first thing we are going to do is try to make sure our data will be in the correct resolution (moving from <strong>1km</strong> to <strong>100m</strong>). To do so, we will use the <code class="docutils literal notranslate"><span class="pre">rio.reproject()</span></code> function. You will see that specify the resolution as <strong>100</strong>. Because <strong>EPSG:3035</strong> is a coordinate system in meters, we can simply use meters to define the resolution. We use the <code class="docutils literal notranslate"><span class="pre">rio.clip()</span></code> function to make sure we clip it again to our area of interest. As you will see, we are also renaming our <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> dimensions into <code class="docutils literal notranslate"><span class="pre">lat</span></code> and <code class="docutils literal notranslate"><span class="pre">lon</span></code> to make sure the functions later on, will work.</p>
+<p>The first thing we are going to do is try to make sure our data will be in the correct resolution (moving from <strong>1km</strong> to <strong>100m</strong>). To do so, we will use the <code class="docutils literal notranslate"><span class="pre">rio.reproject()</span></code> function. You will see that specify the resolution as <strong>100</strong>. Because <strong>EPSG:3035</strong> is a coordinate system in meters, we can simply use meters to define the resolution. We use the <code class="docutils literal notranslate"><span class="pre">rio.clip()</span></code> function to make sure we clip it again to our area of interest. The function below (<code class="docutils literal notranslate"><span class="pre">match_rasters</span></code>) will do the hard work for us. Please note all the input variables to understand what’s happening.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">windstorm</span> <span class="o">=</span> <span class="n">windstorm_map</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">reproject</span><span class="p">(</span><span class="s2">&quot;EPSG:3035&quot;</span><span class="p">,</span><span class="n">resolution</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">windstorm</span> <span class="o">=</span> <span class="n">windstorm</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">area</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">area</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
-<span class="n">windstorm</span> <span class="o">=</span> <span class="n">windstorm</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="s1">&#39;lon&#39;</span><span class="p">})</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Let’s have a look at the results below. As you will see the <code class="docutils literal notranslate"><span class="pre">lat</span></code> is only 1269 elements long instead of 1270. That is annoying!</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">windstorm</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Now we need to do a couple of steps to get this working. We first need to make sure our coordinates are actually exactly the same as the coordinates of Corine Land Cover. To do so, we use the <code class="docutils literal notranslate"><span class="pre">assign_coords</span></code> function to make sure we can match them up</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">windstorm</span> <span class="o">=</span> <span class="n">windstorm</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">({</span>
-    <span class="s2">&quot;lat&quot;</span><span class="p">:</span> <span class="n">CLC_region</span><span class="o">.</span><span class="n">lat</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
-    <span class="s2">&quot;lon&quot;</span><span class="p">:</span> <span class="n">CLC_region</span><span class="o">.</span><span class="n">lon</span><span class="p">,</span>
-<span class="p">})</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Now we want to append an additional element to <code class="docutils literal notranslate"><span class="pre">lat</span></code> to make sure it becomes exactly the same dimensions as compared to the Corine Land Cover data. Unfortunately, we cannot simply append an element in <strong>xarray</strong>. We need to concatenate two datasets, just we like we do with <code class="docutils literal notranslate"><span class="pre">pandas.concat()</span></code>. To solve this, we just slice one element of the original file and assign to it the missing <code class="docutils literal notranslate"><span class="pre">lat</span></code> element.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subwindstorm</span> <span class="o">=</span> <span class="n">windstorm</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">subwindstorm</span> <span class="o">=</span> <span class="n">subwindstorm</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">({</span>
-    <span class="s2">&quot;lat&quot;</span><span class="p">:</span> <span class="n">CLC_region</span><span class="o">.</span><span class="n">lat</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-    <span class="s2">&quot;lon&quot;</span><span class="p">:</span> <span class="n">CLC_region</span><span class="o">.</span><span class="n">lon</span><span class="p">,</span>
-<span class="p">})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">match_rasters</span><span class="p">(</span><span class="n">hazard</span><span class="p">,</span><span class="n">landuse</span><span class="p">,</span><span class="n">haz_crs</span><span class="o">=</span><span class="mi">3035</span><span class="p">,</span><span class="n">lu_crs</span><span class="o">=</span><span class="mi">3035</span><span class="p">,</span><span class="n">resolution</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">hazard_col</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;FX&#39;</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Clips, reprojections, and matches the resolutions of two rasters, `hazard` and `landuse`,</span>
+<span class="sd">    to prepare them for further analysis.</span>
 
-<span class="n">windstorm</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">subwindstorm</span><span class="p">,</span><span class="n">windstorm</span><span class="p">],</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;lat&#39;</span><span class="p">)</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    hazard : xarray.DataArray</span>
+<span class="sd">        A 2D or 3D array containing hazard data.</span>
+<span class="sd">    landuse : xarray.DataArray</span>
+<span class="sd">        A 2D array containing land use data.</span>
+<span class="sd">    haz_crs : int, optional</span>
+<span class="sd">        The CRS of `hazard`. Default is EPSG:3035.</span>
+<span class="sd">    lu_crs : int, optional</span>
+<span class="sd">        The CRS of `landuse`. Default is EPSG:3035.</span>
+<span class="sd">    resolution : float, optional</span>
+<span class="sd">        The desired resolution in meters for both `hazard` and `landuse` after reprojection. Default is 100.</span>
+<span class="sd">    hazard_col : list, optional</span>
+<span class="sd">        A list of column names or indices for the hazard variable. Default is [&#39;FX&#39;].</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tuple</span>
+<span class="sd">        A tuple containing two xarray.DataArray objects:</span>
+<span class="sd">            - The land use variable with matching resolution and dimensions to the hazard variable.</span>
+<span class="sd">            - The hazard variable clipped to the extent of the land use variable, with matching resolution and dimensions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="c1"># Set the crs of the hazard variable to haz_crs</span>
+    <span class="n">hazard</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">write_crs</span><span class="p">(</span><span class="n">haz_crs</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Set the x and y dimensions in the hazard variable to &#39;x&#39; and &#39;y&#39; respectively</span>
+    <span class="n">hazard</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">set_spatial_dims</span><span class="p">(</span><span class="n">x_dim</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span><span class="n">y_dim</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Reproject the landuse variable from EPSG:4326 to EPSG:3857</span>
+    <span class="n">landuse</span> <span class="o">=</span> <span class="n">CLC_region</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">reproject</span><span class="p">(</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">,</span><span class="n">resolution</span><span class="o">=</span><span class="n">resolution</span><span class="p">)</span>
+
+    <span class="c1"># Get the minimum longitude and latitude values in the landuse variable</span>
+    <span class="n">min_lon</span> <span class="o">=</span> <span class="n">landuse</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+    <span class="n">min_lat</span> <span class="o">=</span> <span class="n">landuse</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Get the maximum longitude and latitude values in the landuse variable</span>
+    <span class="n">max_lon</span> <span class="o">=</span> <span class="n">landuse</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+    <span class="n">max_lat</span> <span class="o">=</span> <span class="n">landuse</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Create a bounding box using the minimum and maximum latitude and longitude values</span>
+    <span class="n">area</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">GeoDataFrame</span><span class="p">([</span><span class="n">pygeos</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">min_lon</span><span class="p">,</span><span class="n">min_lat</span><span class="p">,</span><span class="n">max_lon</span><span class="p">,</span> <span class="n">max_lat</span><span class="p">)],</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">])</span>
+
+    <span class="c1"># Set the crs of the bounding box to EPSG:3857</span>
+    <span class="n">area</span><span class="o">.</span><span class="n">crs</span> <span class="o">=</span> <span class="s1">&#39;epsg:3857&#39;</span>
+
+    <span class="c1"># Convert the crs of the bounding box to EPSG:4326</span>
+    <span class="n">area</span> <span class="o">=</span> <span class="n">area</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;epsg:</span><span class="si">{</span><span class="n">haz_crs</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Clip the hazard variable to the extent of the bounding box</span>
+    <span class="n">hazard</span> <span class="o">=</span> <span class="n">hazard</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">area</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">area</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+
+    <span class="c1"># Reproject the hazard variable to EPSG:3857 with the desired resolution</span>
+    <span class="n">hazard</span> <span class="o">=</span> <span class="n">hazard</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">reproject</span><span class="p">(</span><span class="s2">&quot;EPSG:3857&quot;</span><span class="p">,</span><span class="n">resolution</span><span class="o">=</span><span class="n">resolution</span><span class="p">)</span>
+
+    <span class="c1"># Clip the hazard variable again to the extent of the bounding box</span>
+    <span class="n">hazard</span> <span class="o">=</span> <span class="n">hazard</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">area</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">area</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+
+    <span class="c1"># If the hazard variable has fewer columns and rows than the landuse variable, reproject the landuse variable to match the hazard variable</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hazard</span><span class="o">.</span><span class="n">x</span><span class="p">)</span><span class="o">&lt;</span><span class="nb">len</span><span class="p">(</span><span class="n">landuse</span><span class="o">.</span><span class="n">x</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hazard</span><span class="o">.</span><span class="n">y</span><span class="p">)</span><span class="o">&lt;</span><span class="nb">len</span><span class="p">(</span><span class="n">landuse</span><span class="o">.</span><span class="n">y</span><span class="p">)):</span>
+        <span class="n">landuse</span><span class="o">=</span> <span class="n">landuse</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">reproject_match</span><span class="p">(</span><span class="n">hazard</span><span class="p">)</span>
+
+    <span class="c1"># If the hazard variable has more columns and rows than the landuse variable, reproject the hazard variable to match the landuse variable</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hazard</span><span class="o">.</span><span class="n">x</span><span class="p">)</span><span class="o">&gt;</span><span class="nb">len</span><span class="p">(</span><span class="n">landuse</span><span class="o">.</span><span class="n">x</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hazard</span><span class="o">.</span><span class="n">y</span><span class="p">)</span><span class="o">&gt;</span><span class="nb">len</span><span class="p">(</span><span class="n">landuse</span><span class="o">.</span><span class="n">y</span><span class="p">)):</span>
+        <span class="n">hazard</span> <span class="o">=</span> <span class="n">hazard</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">reproject_match</span><span class="p">(</span><span class="n">landuse</span><span class="p">)</span>
+
+    <span class="c1"># return the new landuse and hazard map</span>
+    <span class="k">return</span> <span class="n">landuse</span><span class="p">,</span><span class="n">hazard</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Let’s have a look again:</p>
+<p>Now let’s run the <code class="docutils literal notranslate"><span class="pre">match_rasters</span></code> function and let it do its magic.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CLC_region_wind</span><span class="p">,</span> <span class="n">windstorm</span> <span class="o">=</span> <span class="n">match_rasters</span><span class="p">(</span><span class="n">windstorm_europe</span><span class="p">,</span>
+                                           <span class="n">CLC_region</span><span class="p">,</span>
+                                           <span class="n">haz_crs</span><span class="o">=</span><span class="mi">3035</span><span class="p">,</span>
+                                           <span class="n">lu_crs</span><span class="o">=</span><span class="mi">3035</span><span class="p">,</span>
+                                           <span class="n">resolution</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+                                           <span class="n">hazard_col</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;FX&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And let’s have a look if the two rasters are now the same extend:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CLC_region_wind</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">windstorm</span>
@@ -1252,8 +1310,15 @@ title="Print to PDF"
 </div><p>Now its finally time to do our damage assessment! To do so, we need to convert our data to <code class="docutils literal notranslate"><span class="pre">numpy.arrays()</span></code> to do our calculation:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">landuse_map</span> <span class="o">=</span> <span class="n">CLC_region</span><span class="p">[</span><span class="s1">&#39;band_data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
-<span class="n">wind_map</span> <span class="o">=</span> <span class="n">windstorm</span><span class="p">[</span><span class="s1">&#39;FX&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">landuse_map</span> <span class="o">=</span> <span class="n">CLC_region_wind</span><span class="p">[</span><span class="s1">&#39;band_data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">,:,:]</span>
+<span class="n">wind_map</span> <span class="o">=</span> <span class="n">windstorm</span><span class="p">[</span><span class="s1">&#39;FX&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()[</span><span class="mi">0</span><span class="p">,:,:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wind_map</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -1261,7 +1326,7 @@ title="Print to PDF"
 <p>And remember that our windstorm data was stored in <strong>m/s</strong>. Hence, we need to convert it to <strong>km/h</strong>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wind_map_kmh</span> <span class="o">=</span> <span class="n">wind_map</span><span class="o">*</span><span class="n">XXXXX</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wind_map_kmh</span> <span class="o">=</span> <span class="n">wind_map</span><span class="o">*</span><span class="n">XXX</span>
 </pre></div>
 </div>
 </div>
