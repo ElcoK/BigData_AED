@@ -578,11 +578,6 @@ title="Print to PDF"
      Corine Land Cover
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#esa-world-cover">
-     ESA World Cover
-    </a>
-   </li>
   </ul>
  </li>
 </ul>
@@ -679,11 +674,6 @@ title="Print to PDF"
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#corine-land-cover">
      Corine Land Cover
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#esa-world-cover">
-     ESA World Cover
     </a>
    </li>
   </ul>
@@ -1309,7 +1299,8 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </div>
 </div>
-</section>
+<div class="alert alert-block alert-success">
+<b>Question 9:</b> Interpret the results of the classification with ESA WorldCover. How has this model performed compared to using Corine Land Cover?</div></section>
 <section id="analyze-and-assess-your-landsat-8-land-cover-map">
 <h2>7. Analyze and assess your Landsat-8 land cover map<a class="headerlink" href="#analyze-and-assess-your-landsat-8-land-cover-map" title="Permalink to this headline">#</a></h2>
 <hr><p>Now we have two land cover maps generated for most part of the Netherlands, let’s analyze and judge their quality.</p>
@@ -1377,99 +1368,13 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 9:</b> Please upload the comparison figure of the original Corine Land Cover data and the classified map. 
+<b>Question 10:</b> Please upload the comparison figure of the original Corine Land Cover data and the classified map. 
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 10:</b> Describe the results of the Corine Land Cover classification. How do you think the model has performed when you zoom in on a specific area. Do you notice specific land-use classes to be worse than expected? Or better than expected? Please elaborate. 
+<b>Question 11:</b> Describe the results of the Corine Land Cover classification. How do you think the model has performed when you zoom in on a specific area. Do you notice specific land-use classes to be worse than expected? Or better than expected? Please elaborate. 
 </div><div class="alert alert-block alert-success">
-<b>Question 11:</b> Obtain the Corine Land Cover results once more by using a different classification model. How do the results change. Have they become better, or worse? Please elaborate.
+<b>Question 12:</b> Obtain the Corine Land Cover results once more by using a different classification model. How do the results change. Have they become better, or worse? Please elaborate.
 </div></section>
-<section id="esa-world-cover">
-<h3>ESA World Cover<a class="headerlink" href="#esa-world-cover" title="Permalink to this headline">#</a></h3>
-<p>Now let’s do the same for our ESA World Cover. We start with downloading the results again.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_image</span><span class="p">(</span>
-    <span class="n">ESA</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;ESAWorldCover.tif&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">region</span><span class="o">=</span><span class="n">focus_region</span><span class="p">,</span> <span class="n">file_per_band</span><span class="o">=</span><span class="kc">False</span>
-<span class="p">)</span>
-
-<span class="n">geemap</span><span class="o">.</span><span class="n">ee_export_image</span><span class="p">(</span>
-    <span class="n">ESAWorldCover_classified</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;ESAWorldCover_classified.tif&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">region</span><span class="o">=</span><span class="n">focus_region</span><span class="p">,</span> <span class="n">file_per_band</span><span class="o">=</span><span class="kc">False</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Load the data again:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ESA_original</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;ESAWorldCover.tif&#39;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;rasterio&quot;</span><span class="p">)</span>
-<span class="n">ESA_original</span> <span class="o">=</span> <span class="n">ESA_original</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="s1">&#39;lon&#39;</span><span class="p">})</span>
-<span class="n">ESA_original</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">set_spatial_dims</span><span class="p">(</span><span class="n">x_dim</span><span class="o">=</span><span class="s2">&quot;lat&quot;</span><span class="p">,</span><span class="n">y_dim</span><span class="o">=</span><span class="s2">&quot;lon&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">ESA_classified</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;ESAWorldCover_classified.tif&#39;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;rasterio&quot;</span><span class="p">)</span>
-<span class="n">ESA_classified</span> <span class="o">=</span> <span class="n">ESA_classified</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="s1">&#39;lat&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="s1">&#39;lon&#39;</span><span class="p">})</span>
-<span class="n">ESA_classified</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">set_spatial_dims</span><span class="p">(</span><span class="n">x_dim</span><span class="o">=</span><span class="s2">&quot;lat&quot;</span><span class="p">,</span><span class="n">y_dim</span><span class="o">=</span><span class="s2">&quot;lon&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">ESA_classified</span><span class="p">[</span><span class="s1">&#39;band_data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ESA_classified</span><span class="p">[</span><span class="s1">&#39;band_data&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>And now we create the <code class="docutils literal notranslate"><span class="pre">color_dict</span></code> for the ESA WorldCover:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ESA_values</span> <span class="o">=</span> <span class="p">[</span> <span class="mi">10</span><span class="p">,</span>  <span class="mi">20</span><span class="p">,</span>  <span class="mi">30</span><span class="p">,</span>  <span class="mi">40</span><span class="p">,</span>  <span class="mi">50</span><span class="p">,</span>  <span class="mi">60</span><span class="p">,</span>  <span class="mi">70</span><span class="p">,</span>  <span class="mi">80</span><span class="p">,</span>  <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
-<span class="n">ESA_palette</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#006400&#39;</span> <span class="p">,</span><span class="s1">&#39;#ffbb22&#39;</span><span class="p">,</span> <span class="s1">&#39;#ffff4c&#39;</span><span class="p">,</span> <span class="s1">&#39;#f096ff&#39;</span><span class="p">,</span> <span class="s1">&#39;#fa0000&#39;</span><span class="p">,</span> <span class="s1">&#39;#b4b4b4&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;#f0f0f0&#39;</span><span class="p">,</span> <span class="s1">&#39;#0064c8&#39;</span><span class="p">,</span> <span class="s1">&#39;#0096a0&#39;</span><span class="p">,</span> <span class="s1">&#39;#00cf75&#39;</span><span class="p">,</span> <span class="s1">&#39;#fae6a0&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>But our clipped data is looking a litle bit different. Let’s have a look at the values for the original data:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">ESA_original</span><span class="p">[</span><span class="s1">&#39;band_data&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>And our classified data</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">ESA_classified</span><span class="p">[</span><span class="s1">&#39;band_data&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>If we look at the <a class="reference external" href="https://developers.google.com/earth-engine/datasets/catalog/ESA_WorldCover_v100">Land Cover classes</a>, we see that we may not have some of the higher values in the Netherlands. So let’s create a palette with just the land cover classes we have in the Netherlands</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">original_palette</span> <span class="o">=</span> <span class="p">[</span><span class="n">ESA_palette</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> 
-                      <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">ESA_original</span><span class="p">[</span><span class="s1">&#39;band_data&#39;</span><span class="p">])]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classified_palette</span> <span class="o">=</span> <span class="p">[</span><span class="n">ESA_palette</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> 
-                      <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">ESA_classified</span><span class="p">[</span><span class="s1">&#39;band_data&#39;</span><span class="p">])</span> <span class="k">if</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span><span class="o">+</span><span class="p">[</span><span class="s1">&#39;#000000&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>And plot the two maps to compare</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
-
-<span class="n">ESA_original</span><span class="p">[</span><span class="s2">&quot;band_data&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">levels</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">original_palette</span><span class="p">),</span><span class="n">colors</span><span class="o">=</span><span class="n">original_palette</span><span class="p">)</span>
-<span class="n">ESA_classified</span><span class="p">[</span><span class="s2">&quot;band_data&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">levels</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">classified_palette</span><span class="p">),</span><span class="n">colors</span><span class="o">=</span><span class="n">classified_palette</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 </section>
 </section>
 

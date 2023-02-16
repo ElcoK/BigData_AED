@@ -668,6 +668,14 @@ title="Print to PDF"
 <p>Now we will import these packages in the cell below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>tensorflow
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>keras-visualizer
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
 <span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -798,7 +806,7 @@ In the model below, you see that the output layer keras.layers.Dense(units=1, ac
 Before the output layer, we add the normalizing layer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="n">linearmodel</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">linearmodel</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
     <span class="n">linearmodel_normalizer</span><span class="p">,</span>
     <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
 <span class="p">])</span>
@@ -826,7 +834,11 @@ Before the output layer, we add the normalizing layer.</p>
       <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">input_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)),</span>
   <span class="p">])</span>
 
-<span class="n">visualizer</span><span class="p">(</span><span class="n">linearmodelplot</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;png&#39;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">linearmodelplot</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mean_squared_error&#39;</span><span class="p">)</span>
+
+<span class="n">visualizer</span><span class="p">(</span><span class="n">linearmodelplot</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;png&#39;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+<span class="c1"># You find the graph when you click on the folder icon in the top left.</span>
+<span class="c1"># The file is called graph.png. </span>
 </pre></div>
 </div>
 </div>
@@ -848,7 +860,7 @@ Before the output layer, we add the normalizing layer.</p>
 <hr><p>Let’s start training the model using the function fit. In the code below, you can decide on the number of epochs, but we advise to choose a number between 15 and 40 (there is no right or wrong here), because it takes about 4 seconds per epoch to train the model. In each epoch, the neural network goes through all the training data and optimizes the parameters using the Adam optimizer. The more often the model sees the data, the more accurate the parameter estimates become. In each epoch we use 20% of the training data to validate the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nr_epochs</span> <span class="o">=</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nr_epochs</span> <span class="o">=</span> 
 
 <span class="n">history_linearmodel</span> <span class="o">=</span> <span class="n">linearmodel</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
     <span class="n">x_train</span><span class="p">[</span><span class="s1">&#39;YOUNGEST&#39;</span><span class="p">],</span>
@@ -881,7 +893,7 @@ Before the output layer, we add the normalizing layer.</p>
 </div><p>The function get_weights() gives the estimated parameters of the neural network. The first three numbers belong to the normalization layer and the last two numbers are the weights of the output layer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="n">linearmodel</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">linearmodel</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -947,13 +959,7 @@ Before the output layer, we add the normalizing layer.</p>
 <p>From the summary, we can see that in the non-linear model a large amount of parameters has to be estimated, even when we have only one explanantory variable.</p>
 <div class="alert alert-block alert-success">
 <b>Question 6:</b> The more nodes and layers an ANN model has, the more flexible it becomes, often resulting in a better model fit to the training data. That is generally something desirable, as long as the model is not overfitting... Explain with your own words what is the problem with overfitting.
-</div><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Let</span><span class="s1">&#39;s again visualize the model (without normalizing layer). Note that not all nodes are depicted in the graph. </span>
-</pre></div>
-</div>
-</div>
-</div>
+</div><p>Let’s again visualize the model (without normalizing layer). Note that not all nodes are depicted in the graph.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nonlinear_modelplot</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
@@ -963,6 +969,8 @@ Before the output layer, we add the normalizing layer.</p>
   <span class="p">])</span>
 
 <span class="n">visualizer</span><span class="p">(</span><span class="n">nonlinear_modelplot</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;png&#39;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># You find the graph when you click on the folder icon in the top left.</span>
+<span class="c1"># The file is called graph.png. </span>
 </pre></div>
 </div>
 </div>
@@ -1076,13 +1084,7 @@ Before the output layer, we add the normalizing layer.</p>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Visualizing</span> <span class="n">the</span> <span class="n">model</span><span class="p">:</span> 
-</pre></div>
-</div>
-</div>
-</div>
+<p>Visualizing the model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fullmodelplot</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
