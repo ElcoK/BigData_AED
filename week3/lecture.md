@@ -13,7 +13,7 @@ kernelspec:
   name: python3
 ---
 
-# Lecture: Introduction to Artificial Neural Networks
+# Lecture: Introduction to Artificial Neural Networks and model validation
 
 This week we will focus on the basic concepts of machine learning and how we can develop a simply machine learning model.
 
