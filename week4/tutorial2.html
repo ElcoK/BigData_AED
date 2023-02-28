@@ -824,7 +824,7 @@ title="Print to PDF"
 <img src="https://github.com/ElcoK/BigData_AED/blob/main/_static/images/CDS_registration.gif?raw=1" class="bg-primary mb-1">
 <br>
 <p>Now, the next step is to access the API. You can now login on the website of the <a class="reference external" href="https://cds.climate.copernicus.eu/">Copernicus Climate Data Store</a>. After you login, you can click on your name in the top right corner of the webpage (next to the login button). On the personal page that has just opened, you will find your user ID (<strong>uid</strong>) and your personal <strong>API</strong>. You need to add those in the cell below to be able to download the windstorm.</p>
-<p>As you can see in the cell below, we download a specific windstorm that has occured on the seventh of February in 2020. This is storm <a class="reference external" href="https://en.wikipedia.org/wiki/Storm_Ciara">Ciara</a>.</p>
+<p>As you can see in the cell below, we download a specific windstorm that has occured on the 28th of October in 2013. This is storm <a class="reference external" href="https://en.wikipedia.org/wiki/St._Jude_storm">Carmen (also called St Jude)</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uid</span> <span class="o">=</span> <span class="n">XXX</span>
@@ -905,7 +905,7 @@ title="Print to PDF"
 <p>Let’s have a look at the storm we have downloaded!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">windstorm_europe</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">windstorm_europe</span><span class="p">[</span><span class="s1">&#39;FX&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
