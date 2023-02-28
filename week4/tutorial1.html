@@ -902,9 +902,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<div class="alert alert-block alert-success">
-<b>Question 5:</b> In the rasterization process, we use the `.make_geocube()` function. Please elaborate on the following: i)why is it important to specify the right coordinate system? What could happen if you choose the wrong coordinate system? ii) which resolution did you choose and why? iii)Why did the first result did not give us the right output with the correct colors? How did you solve this? 
-</div><p>Let’s explore what this function has given us:</p>
+<p>Let’s explore what this function has given us:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">landuse_grid</span><span class="p">[</span><span class="s2">&quot;landuse&quot;</span><span class="p">]</span>
@@ -937,7 +935,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>As we can see in the figure above, the land-use categories have turned into numbers, instead of land-use categories described by a string value.</p>
+<div class="alert alert-block alert-success">
+<b>Question 5:</b> In the rasterization process, we use the `.make_geocube()` function. Please elaborate on the following: i)why is it important to specify the right coordinate system? What could happen if you choose the wrong coordinate system? ii) which resolution did you choose and why? iii)Why did the first result did not give us the right output with the correct colors? How did you solve this? 
+</div><p>As we can see in the figure above, the land-use categories have turned into numbers, instead of land-use categories described by a string value.</p>
 <p>This is of course a lot harder to interpret. Let’s re-do some parts to make sure we can properly link them back to the original data.</p>
 <p>To do so, we will first need to make sure that we know which values (numbers) are connected to each land-use category. Instead of trying to match, let’s predefine this ourselves!</p>
 <p>We will start with creating a dictionary that allows us to couple a number to each category:</p>
