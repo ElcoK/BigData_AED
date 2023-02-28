@@ -1242,6 +1242,13 @@ title="Print to PDF"
 <h2>7. Plot Routes Using OpenStreetMap and Folium<a class="headerlink" href="#plot-routes-using-openstreetmap-and-folium" title="Permalink to this headline">#</a></h2>
 <hr><p>One of the exiting things we can do with this data is that we can compute and plot routes between two points on a map.</p>
 <p>Let’s first select two random start and end points from the graph and compute the shortest route between them through using the <code class="docutils literal notranslate"><span class="pre">shortest_path()</span></code> function of the <code class="docutils literal notranslate"><span class="pre">NetworkX</span></code> package.</p>
+<p>The function  <code class="docutils literal notranslate"><span class="pre">ox.nearest_nodes()</span></code> looks for the nearest point in your network based on a <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">Y</span></code> coordinate. For example, in the code below, the origin node is based on the northwestern corner of your bounding box, whereas the destination node is based on the coordinates of the southeastern corner of your bounding box.</p>
+<p>So this can also be rewritten as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">origin_node</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">nearest_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="mf">4.65465</span><span class="p">,</span> <span class="mf">56.6778</span><span class="p">)</span> 
+<span class="n">destination_node</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">nearest_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="mf">4.61055</span><span class="p">,</span> <span class="mf">59.5487</span><span class="p">)</span> 
+<span class="n">route</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">shortest_path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">origin_node</span><span class="p">,</span> <span class="n">destination_node</span><span class="p">)</span> 
+</pre></div>
+</div>
 <div class="alert alert-block alert-success">
 <b>Question 10:</b>  The last element of this tutorial is to play around with routing. Please explain in your own words what the .shortest_path() algorithm does. Include the term 'Dijkstra algorithm' in your answer.
 </div><div class="cell docutils container">
@@ -1272,7 +1279,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 11:</b>  Please add two more routes on a map and upload the resulting figure here.
+<b>Question 11:</b>  Please add one more routes on a map and upload the resulting figure here.
 </div></section>
 </section>
 
