@@ -1,48 +1,56 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Tutorial 2: Natural Hazard Risk Assessment &#8212; Big Data for Sustainability Sciences</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=4ec06e9971c5264fbd345897d5258098f11cc577" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=8bf782fb4ee92b3d3646425e50f299c4e1fd152d"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -50,61 +58,564 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'week4/tutorial2';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lecture: Earth Observation &amp; Google Earth Engine" href="../week5/lecture.html" />
     <link rel="prev" title="Tutorial 1: Working with OpenStreetMap" href="tutorial1.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../intro.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
         
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../course_basics/course_intro.html">
+                        Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../course_basics/teachers.html">
+                        Teachers
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../course_basics/schedule.html">
+                        Course schedule
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week1/lecture.html">
+                        Lecture: Course Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week1/tutorial1.html">
+                        Tutorial 1: Introduction to Python
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week1/tutorial2.html">
+                        Tutorial 2: Introduction to NumPy and Pandas
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week1/tutorial3.html">
+                        Tutorial 3: Introduction to Data Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week2/lecture.html">
+                        Lecture: Introduction to Random Forests
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week2/tutorial1.html">
+                        Tutorial 1: Data Exploration and regression analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week2/tutorial2.html">
+                        Tutorial 2: Random Forest Regression
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week3/lecture.html">
+                        Lecture: Introduction to Artificial Neural Networks and model validation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week3/tutorial1.html">
+                        Tutorial 1: Artificial neural networks (ANNs)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week3/tutorial2.html">
+                        Tutorial 2: Model Validation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="lecture.html">
+                        Lecture: Big Data in the public domain
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="tutorial1.html">
+                        Tutorial 1: Working with OpenStreetMap
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Tutorial 2: Natural Hazard Risk Assessment
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week5/lecture.html">
+                        Lecture: Earth Observation & Google Earth Engine
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week5/tutorial1.html">
+                        Tutorial 1: Land-cover classification
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week5/tutorial2.html">
+                        Tutorial 2: Drought Detection
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week6/lecture.html">
+                        Lecture: Social Media and Natural Language Processing (NLP)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week6/tutorial1.html">
+                        Tutorial 1: Social Media & Natural Hazards
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week6/tutorial2.html">
+                        Tutorial 2: Social Media & Valuation of Landscapes
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week7/lecture.html">
+                        Lecture: A guide to visualisation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week8/exam.html">
+                        Exam preparation
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
       
       
-      <img src="../_static/logo.png" class="logo" alt="logo">
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
       
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
       
-      <h1 class="site-logo" id="site-title">Big Data for Sustainability Sciences</h1>
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../course_basics/course_intro.html">
+                        Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../course_basics/teachers.html">
+                        Teachers
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../course_basics/schedule.html">
+                        Course schedule
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week1/lecture.html">
+                        Lecture: Course Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week1/tutorial1.html">
+                        Tutorial 1: Introduction to Python
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week1/tutorial2.html">
+                        Tutorial 2: Introduction to NumPy and Pandas
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week1/tutorial3.html">
+                        Tutorial 3: Introduction to Data Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week2/lecture.html">
+                        Lecture: Introduction to Random Forests
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week2/tutorial1.html">
+                        Tutorial 1: Data Exploration and regression analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week2/tutorial2.html">
+                        Tutorial 2: Random Forest Regression
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week3/lecture.html">
+                        Lecture: Introduction to Artificial Neural Networks and model validation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week3/tutorial1.html">
+                        Tutorial 1: Artificial neural networks (ANNs)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week3/tutorial2.html">
+                        Tutorial 2: Model Validation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="lecture.html">
+                        Lecture: Big Data in the public domain
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="tutorial1.html">
+                        Tutorial 1: Working with OpenStreetMap
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Tutorial 2: Natural Hazard Risk Assessment
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week5/lecture.html">
+                        Lecture: Earth Observation & Google Earth Engine
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week5/tutorial1.html">
+                        Tutorial 1: Land-cover classification
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week5/tutorial2.html">
+                        Tutorial 2: Drought Detection
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week6/lecture.html">
+                        Lecture: Social Media and Natural Language Processing (NLP)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week6/tutorial1.html">
+                        Tutorial 1: Social Media & Natural Hazards
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week6/tutorial2.html">
+                        Tutorial 2: Social Media & Valuation of Landscapes
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week7/lecture.html">
+                        Lecture: A guide to visualisation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week8/exam.html">
+                        Exam preparation
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item">
+  
+
+
+<a class="navbar-brand logo" href="../intro.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    </div>
+    <div class="sidebar-start-items__item">
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -113,611 +624,344 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Course overview
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course overview</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../course_basics/course_intro.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course_basics/teachers.html">
-   Teachers
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course_basics/schedule.html">
-   Course schedule
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../course_basics/course_intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course_basics/teachers.html">Teachers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course_basics/schedule.html">Course schedule</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 1
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week1/lecture.html">
-   Lecture: Course Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week1/tutorial1.html">
-   Tutorial 1: Introduction to Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week1/tutorial2.html">
-   Tutorial 2: Introduction to NumPy and Pandas
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week1/tutorial3.html">
-   Tutorial 3: Introduction to Data Analysis
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/lecture.html">Lecture: Course Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/tutorial1.html">Tutorial 1: Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/tutorial2.html">Tutorial 2: Introduction to NumPy and Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/tutorial3.html">Tutorial 3: Introduction to Data Analysis</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 2
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week2/lecture.html">
-   Lecture: Introduction to Random Forests
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week2/tutorial1.html">
-   Tutorial 1: Data Exploration and regression analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week2/tutorial2.html">
-   Tutorial 2: Random Forest Regression
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/lecture.html">Lecture: Introduction to Random Forests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/tutorial1.html">Tutorial 1: Data Exploration and regression analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/tutorial2.html">Tutorial 2: Random Forest Regression</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 3
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week3/lecture.html">
-   Lecture: Introduction to Artificial Neural Networks and model validation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week3/tutorial1.html">
-   Tutorial 1: Artificial neural networks (ANNs)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week3/tutorial2.html">
-   Tutorial 2: Model Validation
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/lecture.html">Lecture: Introduction to Artificial Neural Networks and model validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/tutorial1.html">Tutorial 1: Artificial neural networks (ANNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/tutorial2.html">Tutorial 2: Model Validation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 4
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="lecture.html">
-   Lecture: Big Data in the public domain
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tutorial1.html">
-   Tutorial 1: Working with OpenStreetMap
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Tutorial 2: Natural Hazard Risk Assessment
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="lecture.html">Lecture: Big Data in the public domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html">Tutorial 1: Working with OpenStreetMap</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tutorial 2: Natural Hazard Risk Assessment</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 5
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week5/lecture.html">
-   Lecture: Earth Observation &amp; Google Earth Engine
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week5/tutorial1.html">
-   Tutorial 1: Land-cover classification
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week5/tutorial2.html">
-   Tutorial 2: Drought Detection
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/lecture.html">Lecture: Earth Observation &amp; Google Earth Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/tutorial1.html">Tutorial 1: Land-cover classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/tutorial2.html">Tutorial 2: Drought Detection</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 6
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week6/lecture.html">
-   Lecture: Social Media and Natural Language Processing (NLP)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week6/tutorial1.html">
-   Tutorial 1: Social Media &amp; Natural Hazards
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week6/tutorial2.html">
-   Tutorial 2: Social Media &amp; Valuation of Landscapes
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/lecture.html">Lecture: Social Media and Natural Language Processing (NLP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/tutorial1.html">Tutorial 1: Social Media &amp; Natural Hazards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/tutorial2.html">Tutorial 2: Social Media &amp; Valuation of Landscapes</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 7
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 7</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week7/lecture.html">
-   Lecture: A guide to visualisation
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week7/lecture.html">Lecture: A guide to visualisation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 8
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 8</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week8/exam.html">
-   Exam preparation
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/exam.html">Exam preparation</a></li>
 </ul>
 
     </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
+</nav>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  </div>
+  
 
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
 
-          
+  
+  <div id="rtd-footer-container"></div>
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
+      </div>
+      <main id="main-content" class="bd-main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
 
 
 
 <div class="col py-1 d-flex header-article-main">
     <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+        <label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" data-toggle="tooltip" data-placement="right" title="Toggle primary sidebar">
+            <span class="fa-solid fa-bars"></span>
+        </label>
     </div>
     <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://colab.research.google.com/github/ElcoK/BigData_AED/blob/main/week4/tutorial2.ipynb"
-   class="headerbtn"
+  <ul class="dropdown-menu">
+      <li><a href="https://colab.research.google.com/github/ElcoK/BigData_AED/blob/main/week4/tutorial2.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
 title="Launch on Colab"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="../_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</a>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
+  class="btn btn-sm"
   data-toggle="tooltip"
 data-placement="bottom"
 title="Fullscreen mode"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<div class="dropdown dropdown-repository-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/ElcoK/BigData_AED"
-   class="headerbtn"
+  <ul class="dropdown-menu">
+      <li><a href="https://github.com/ElcoK/BigData_AED" target="_blank"
+   class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
 title="Source repository"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
-<span class="headerbtn__text-container">repository</span>
+<span class="btn__text-container">repository</span>
 </a>
-
-      </li>
+</a>
       
-      <li>
-        <a href="https://github.com/ElcoK/BigData_AED/issues/new?title=Issue%20on%20page%20%2Fweek4/tutorial2.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
+      <li><a href="https://github.com/ElcoK/BigData_AED/issues/new?title=Issue%20on%20page%20%2Fweek4/tutorial2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
 title="Open an issue"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-lightbulb"></i>
   </span>
-<span class="headerbtn__text-container">open issue</span>
+<span class="btn__text-container">open issue</span>
 </a>
-
-      </li>
+</a>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/week4/tutorial2.ipynb"
-   class="headerbtn"
+  <ul class="dropdown-menu">
+      <li><a href="../_sources/week4/tutorial2.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
 title="Download source file"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-
-      </li>
+</a>
       
       <li>
-        
 <button onclick="printPdf(this)"
-  class="headerbtn"
+  class="btn btn-sm dropdown-item"
   data-toggle="tooltip"
 data-placement="left"
 title="Print to PDF"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</a>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary" data-toggle="tooltip" data-placement="left" title="Toggle secondary sidebar">
+            <span class="fa-solid fa-list"></span>
+        </label>
     </div>
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#important-before-we-start">
-   Important before we start
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning Objectives
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introducing-the-packages">
-   1.Introducing the packages
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#connect-to-google-drive">
-     Connect to google drive
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#downloading-and-accessing-natural-hazard-data">
-   2. Downloading and accessing natural hazard data
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#windstorm-data">
-     Windstorm Data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#flood-data">
-     Flood Data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#set-location-to-explore">
-     Set location to explore
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#explore-the-natural-hazard-data">
-   3. Explore the natural hazard data
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Windstorm Data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     Flood data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#download-and-access-copernicus-land-cover-data">
-   4. Download and access Copernicus Land Cover data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#perform-a-damage-assessment-using-coring-land-cover">
-   5. Perform a damage assessment using Coring Land Cover
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#windstorm-damage">
-     Windstorm Damage
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#flood-damage">
-     Flood Damage
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#perform-a-damage-assessment-of-the-road-network-using-openstreetmap">
-   6. Perform a damage assessment of the road network using OpenStreetMap
-  </a>
- </li>
-</ul>
-
-    </nav>
-</div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Tutorial 2: Natural Hazard Risk Assessment</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#important-before-we-start">
-   Important before we start
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning Objectives
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introducing-the-packages">
-   1.Introducing the packages
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#connect-to-google-drive">
-     Connect to google drive
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#downloading-and-accessing-natural-hazard-data">
-   2. Downloading and accessing natural hazard data
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#windstorm-data">
-     Windstorm Data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#flood-data">
-     Flood Data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#set-location-to-explore">
-     Set location to explore
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#explore-the-natural-hazard-data">
-   3. Explore the natural hazard data
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Windstorm Data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     Flood data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#download-and-access-copernicus-land-cover-data">
-   4. Download and access Copernicus Land Cover data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#perform-a-damage-assessment-using-coring-land-cover">
-   5. Perform a damage assessment using Coring Land Cover
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#windstorm-damage">
-     Windstorm Damage
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#flood-damage">
-     Flood Damage
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#perform-a-damage-assessment-of-the-road-network-using-openstreetmap">
-   6. Perform a damage assessment of the road network using OpenStreetMap
-  </a>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
             </div>
-            <main id="main-content" role="main">
-                
-              <div>
-                
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-2-natural-hazard-risk-assessment">
-<h1>Tutorial 2: Natural Hazard Risk Assessment<a class="headerlink" href="#tutorial-2-natural-hazard-risk-assessment" title="Permalink to this headline">#</a></h1>
+            
+            
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tutorial 2: Natural Hazard Risk Assessment</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#important-before-we-start">
+   Important before we start
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning Objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introducing-the-packages">
+   1.Introducing the packages
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#connect-to-google-drive">
+     Connect to google drive
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#downloading-and-accessing-natural-hazard-data">
+   2. Downloading and accessing natural hazard data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#windstorm-data">
+     Windstorm Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#flood-data">
+     Flood Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#set-location-to-explore">
+     Set location to explore
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#explore-the-natural-hazard-data">
+   3. Explore the natural hazard data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Windstorm Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Flood data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-and-access-copernicus-land-cover-data">
+   4. Download and access Copernicus Land Cover data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#perform-a-damage-assessment-using-coring-land-cover">
+   5. Perform a damage assessment using Coring Land Cover
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#windstorm-damage">
+     Windstorm Damage
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#flood-damage">
+     Flood Damage
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#perform-a-damage-assessment-of-the-road-network-using-openstreetmap">
+   6. Perform a damage assessment of the road network using OpenStreetMap
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+            <article class="bd-article" role="main">
+              
+  <section id="tutorial-2-natural-hazard-risk-assessment">
+<h1>Tutorial 2: Natural Hazard Risk Assessment<a class="headerlink" href="#tutorial-2-natural-hazard-risk-assessment" title="Permalink to this heading">#</a></h1>
 <p>In the second tutorial of this week, we are going to use publicly available hazard data and exposure data to do a risk assessment for an area of choice within Europe. More specifically we will look at damage due to wind storms and flooding.</p>
 <p>We will use both Copernicus Land Cover data and OpenStreetMap to estimate the potential damage of natural hazards to the built environment. We will use Copernicus Land Cover data to estimate the damage to specific land-uses, whereas we will use OpenStreetMap to assess the potential damage to the road system.</p>
 <section id="important-before-we-start">
-<h2>Important before we start<a class="headerlink" href="#important-before-we-start" title="Permalink to this headline">#</a></h2>
+<h2>Important before we start<a class="headerlink" href="#important-before-we-start" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Make sure that you save this file before you continue, else you will lose everything. To do so, go to <strong>Bestand/File</strong> and click on <strong>Een kopie opslaan in Drive/Save a Copy on Drive</strong>!</p>
 <p>Now, rename the file into Week4_Tutorial2.ipynb. You can do so by clicking on the name in the top of this screen.</p>
 </section>
 <section id="learning-objectives">
-<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this heading">#</a></h2>
 <hr><ul class="simple">
 <li><p>To know how to download data from the Copernicus Climate Data Store using the <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> and access it through Python.</p></li>
 <li><p>To be able to open and visualize this hazard data.</p></li>
@@ -737,7 +981,7 @@ title="Print to PDF"
 <li><span><a href="#perform-a-damage-assessment-of-the-road-network-using-openstreetmap" data-toc-modified-id="5.-Damage-OSM-6">6. Perform a damage assessment using OpenStreetMap</a></span></li>    
 </ul></div></section>
 <section id="introducing-the-packages">
-<h2>1.Introducing the packages<a class="headerlink" href="#introducing-the-packages" title="Permalink to this headline">#</a></h2>
+<h2>1.Introducing the packages<a class="headerlink" href="#introducing-the-packages" title="Permalink to this heading">#</a></h2>
 <hr><p>Within this tutorial, we are going to make use of the following packages:</p>
 <p><a class="reference external" href="https://geopandas.org/"><strong>GeoPandas</strong></a> is a Python packagee that extends the datatypes used by pandas to allow spatial operations on geometric types.</p>
 <p><a class="reference external" href="https://osmnx.readthedocs.io/"><strong>OSMnx</strong></a> is a Python package that lets you download geospatial data from OpenStreetMap and model, project, visualize, and analyze real-world street networks and any other geospatial geometries. You can download and model walkable, drivable, or bikeable urban networks with a single line of Python code then easily analyze and visualize them. You can just as easily download and work with other infrastructure types, amenities/points of interest, building footprints, elevation data, street bearings/orientations, and speed/travel time.</p>
@@ -793,7 +1037,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="connect-to-google-drive">
-<h3>Connect to google drive<a class="headerlink" href="#connect-to-google-drive" title="Permalink to this headline">#</a></h3>
+<h3>Connect to google drive<a class="headerlink" href="#connect-to-google-drive" title="Permalink to this heading">#</a></h3>
 <hr class="docutils" />
 <p>To be able to read the data from Google Drive, we need to <em>mount</em> our Drive to this notebook.</p>
 <p>As you can see in the cell below, make sure that in your <strong>My Drive</strong> folder, you have created a <strong>BigData</strong> folder and within that folder, you have created a <strong>Week4_Data</strong> folder in which you can store the files that are required to run this analysis.</p>
@@ -814,11 +1058,11 @@ title="Print to PDF"
 </section>
 </section>
 <section id="downloading-and-accessing-natural-hazard-data">
-<h2>2. Downloading and accessing natural hazard data<a class="headerlink" href="#downloading-and-accessing-natural-hazard-data" title="Permalink to this headline">#</a></h2>
+<h2>2. Downloading and accessing natural hazard data<a class="headerlink" href="#downloading-and-accessing-natural-hazard-data" title="Permalink to this heading">#</a></h2>
 <hr><p>We are going to perform a damage assessment using both windstorm data and flood data for Europe.</p>
 <section id="windstorm-data">
-<h3>Windstorm Data<a class="headerlink" href="#windstorm-data" title="Permalink to this headline">#</a></h3>
-<p>The windstorm data will be downloaded from the <a class="reference external" href="https://cds.climate.copernicus.eu/">Copernicus Climate Data Store</a>. As we have seen during the lecture, and as you can also see by browsing on this website, there is an awful lot of climate data available through this Data Store. As such, it is very valuable to understand how to access and download this information to use within an analysis. To keep things simple, we only download one dataset today: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#%21/dataset/sis-european-wind-storm-indicators?tab=overview">A winter windstorm</a>.</p>
+<h3>Windstorm Data<a class="headerlink" href="#windstorm-data" title="Permalink to this heading">#</a></h3>
+<p>The windstorm data will be downloaded from the <a class="reference external" href="https://cds.climate.copernicus.eu/">Copernicus Climate Data Store</a>. As we have seen during the lecture, and as you can also see by browsing on this website, there is an awful lot of climate data available through this Data Store. As such, it is very valuable to understand how to access and download this information to use within an analysis. To keep things simple, we only download one dataset today: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/sis-european-wind-storm-indicators?tab=overview">A winter windstorm</a>.</p>
 <p>We will do so using an <strong>API</strong>, which is the acronym for application programming interface. It is a software intermediary that allows two applications to talk to each other. APIs are an accessible way to extract and share data within and across organizations. APIs are all around us. Every time you use a rideshare app, send a mobile payment, or change the thermostat temperature from your phone, you’re using an API.</p>
 <p>However, before we can access this <strong>API</strong>, we need to take a few steps. Most importantly, we need to register ourselves on the <a class="reference external" href="https://cds.climate.copernicus.eu/">Copernicus Climate Data Store</a> portal. To do so, we need to register, as explained in the video clip below:</p>
 <img src="https://github.com/ElcoK/BigData_AED/blob/main/_static/images/CDS_registration.gif?raw=1" class="bg-primary mb-1">
@@ -849,7 +1093,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="flood-data">
-<h3>Flood Data<a class="headerlink" href="#flood-data" title="Permalink to this headline">#</a></h3>
+<h3>Flood Data<a class="headerlink" href="#flood-data" title="Permalink to this heading">#</a></h3>
 <p>The flood data we will extract from a repository maintained by the European Commission Joint Research Centre. We will download river flood hazard maps from their <a class="reference external" href="https://data.jrc.ec.europa.eu/dataset/1d128b6c-a4ee-4858-9e34-6210707f3c81">Flood Data Collection</a>.</p>
 <p>Here we do not need to use an API and we also do not need to register ourselves, so we can download any of the files directly. To do so, we use the <code class="docutils literal notranslate"><span class="pre">urllib</span></code> package.</p>
 <div class="cell docutils container">
@@ -868,7 +1112,7 @@ title="Print to PDF"
 <p>The download and zip in the cell above sometimes does not work. If that is indeed the case (e.g., when it seems to remain stuck), download the files manually through the link and upload them in the data folder for this week (as explained at the start of this tutorial.)</p>
 </section>
 <section id="set-location-to-explore">
-<h3>Set location to explore<a class="headerlink" href="#set-location-to-explore" title="Permalink to this headline">#</a></h3>
+<h3>Set location to explore<a class="headerlink" href="#set-location-to-explore" title="Permalink to this heading">#</a></h3>
 <hr class="docutils" />
 <p>Before we continue, we need to specify our location of interest. This should be a province that will have some flooding and relative high wind speeds occuring (else we will find zero damage).</p>
 <p>Specify the region in the cell below by using the <code class="docutils literal notranslate"><span class="pre">geocode_to_gdf()</span></code> function again. I have chosen Gelderland, but feel free to choose a different region. It would be good to double check later on whether there is actually some high wind speeds and flooding in your chosen area.</p>
@@ -883,10 +1127,10 @@ title="Print to PDF"
 </section>
 </section>
 <section id="explore-the-natural-hazard-data">
-<h2>3. Explore the natural hazard data<a class="headerlink" href="#explore-the-natural-hazard-data" title="Permalink to this headline">#</a></h2>
+<h2>3. Explore the natural hazard data<a class="headerlink" href="#explore-the-natural-hazard-data" title="Permalink to this heading">#</a></h2>
 <hr><p>As you can see in the section above, we have downloaded the storm footprint in a zipfile. Let’s open the zipfile and load the dataset using the <code class="docutils literal notranslate"><span class="pre">xarray</span></code> package through the <code class="docutils literal notranslate"><span class="pre">open_dataset()</span></code> function.</p>
 <section id="id1">
-<h3>Windstorm Data<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<h3>Windstorm Data<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <hr class="docutils" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -953,7 +1197,7 @@ title="Print to PDF"
 <b>Question 3:</b> Upload the windstorm map of your chosen area.
 </div></section>
 <section id="id2">
-<h3>Flood data<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<h3>Flood data<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <hr class="docutils" />
 <p>And similarly, we want to open the flood map. But now we do not have to unzip the file anymore and we can directly open it through using <code class="docutils literal notranslate"><span class="pre">xarray</span></code>:</p>
 <div class="cell docutils container">
@@ -990,7 +1234,7 @@ title="Print to PDF"
 <li><p>carefully read the documentation of the <code class="docutils literal notranslate"><span class="pre">.clip_box()</span></code> function of rioxarray. Which information do you need?</p></li>
 <li><p>is the GeoDataFrame of your region (the area GeoDataframe) in the same coordinate system? Perhaps you need to convert it using the <code class="docutils literal notranslate"><span class="pre">.to_crs()</span></code> function.</p></li>
 <li><p>how do you get the bounds from your area GeoDataFrame?</p></li>
-<li><p>The final step of the clip would be to use the <code class="docutils literal notranslate"><span class="pre">.rio.clip()</span></code> function, using the actual area file and the flood map clipped to the bounding box.</p></li>
+<li><p>The final step of the clip would be to use the <code class="docutils literal notranslate"><span class="pre">.rio.clip()</span></code> function, using the actual area file and the flood map clipped to the bounding box. Please not that you should <strong>not</strong> use the envelope here, like we did in the previous clip. Here we really want to use the exact geometry values.</p></li>
 </ul>
 <p>As you will see, we first clip it very efficiently using the bounding box. After that, we do an exact clip.</p>
 <div class="cell docutils container">
@@ -1017,7 +1261,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="download-and-access-copernicus-land-cover-data">
-<h2>4. Download and access Copernicus Land Cover data<a class="headerlink" href="#download-and-access-copernicus-land-cover-data" title="Permalink to this headline">#</a></h2>
+<h2>4. Download and access Copernicus Land Cover data<a class="headerlink" href="#download-and-access-copernicus-land-cover-data" title="Permalink to this heading">#</a></h2>
 <hr><p>Unfortunately, there is no API option to download the <a class="reference external" href="https://land.copernicus.eu/pan-european/corine-land-cover">Corine Land Cover</a> data. We will have to download the data from the website first.</p>
 <p>To do so, we will first have to register ourselves again on the website. Please find in the video clip below how to register yourself on the website of the <a class="reference external" href="https://land.copernicus.eu/">Copernicus Land Monitoring Service</a>:</p>
 <img alt="https://github.com/ElcoK/BigData_AED/blob/main/_static/images/CLMS_registration.gif?raw=1" class="bg-primary mb-1" src="https://github.com/ElcoK/BigData_AED/blob/main/_static/images/CLMS_registration.gif?raw=1" />
@@ -1105,7 +1349,7 @@ title="Print to PDF"
 <b>Question 5:</b> Describe the different land-use classes within your region that you see on the Corine Land Cover map.
 </div></section>
 <section id="perform-a-damage-assessment-using-coring-land-cover">
-<h2>5. Perform a damage assessment using Coring Land Cover<a class="headerlink" href="#perform-a-damage-assessment-using-coring-land-cover" title="Permalink to this headline">#</a></h2>
+<h2>5. Perform a damage assessment using Coring Land Cover<a class="headerlink" href="#perform-a-damage-assessment-using-coring-land-cover" title="Permalink to this heading">#</a></h2>
 <hr><p>To calculate the potential damage to both windstorms and floods, we use stage-damage curves, which relate the intensity of the hazard to the fraction of maximum damage that can be sustained by a certain land use. As you can see on the Corine Land Cover map that we just plotted, there are a lot of land use classes (44), though not all will suffer damage from either the windstorm or the flood event. For each of the land-use classes a curve and a maximum damage number are assigned.</p>
 <p>To Assess the damage for both the flood and windstorm event, we are going to make use of the <a class="reference external" href="https://damagescanner.readthedocs.io/en/latest/">DamageScanner</a>, which is a tool to calculate potential flood damages based on inundation depth and land use using depth-damage curves in the Netherlands. The DamageScanner was originally developed for the ‘Netherlands Later’ project <a class="reference external" href="https://www.rivm.nl/bibliotheek/digitaaldepot/WL_rapport_Overstromingsrisicos_Nederland.pdf">(Klijn et al., 2007)</a>.  The original land-use classes were based on the Land-Use Scanner in order to evaluate the effect of future land-use change on flood damages. We have tailored the input of the DamageScanner to make sure it can estimate the damages using Corine Land Cover.</p>
 <p>Because the simplicity of the model, we can use this for any raster-based hazard map with some level of intensity. Hence, we can use it for both hazards.</p>
@@ -1169,7 +1413,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="windstorm-damage">
-<h3>Windstorm Damage<a class="headerlink" href="#windstorm-damage" title="Permalink to this headline">#</a></h3>
+<h3>Windstorm Damage<a class="headerlink" href="#windstorm-damage" title="Permalink to this heading">#</a></h3>
 <hr class="docutils" />
 <p>To estimate the potential damage of our windstorm, we use the vulnerability curves developed by <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S2212420914000466">Yamin et al. (2014)</a>. Following <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S2212420914000466">Yamin et al. (2014)</a>, we will apply a sigmoidal vulnerability function satisfying two constraints: (i) a minimum threshold for the occurrence of damage with an upper bound of 100% direct damage; (ii) a high power-law function for the slope, describing an increase in damage with increasing wind speeds. Due to the limited amount of vulnerability curves available for windstorm damage, we will use the damage curve that represents low-rise <em>reinforced masonry</em> buildings for all land-use classes that may contain buildings. Obviously, this is a large oversimplification of the real world, but this should be sufficient for this exercise. When doing a proper stand-alone windstorm risk assessment, one should take more effort in collecting the right vulnerability curves for different building types.</p>
 <div class="cell docutils container">
@@ -1348,7 +1592,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="flood-damage">
-<h3>Flood Damage<a class="headerlink" href="#flood-damage" title="Permalink to this headline">#</a></h3>
+<h3>Flood Damage<a class="headerlink" href="#flood-damage" title="Permalink to this heading">#</a></h3>
 <hr class="docutils" />
 <p>To Assess the flood damage, we are again going to make use of the <a class="reference external" href="https://damagescanner.readthedocs.io/en/latest/">DamageScanner</a>. The Corine Land Cover data is widely used in European flood risk assessments. As such, we can simply make use of pre-developed curves. We are using the damage curves as developed by Huizinga et al. (2007). Again, let’s first load the maximum damages and the depth-damage curves:</p>
 <div class="cell docutils container">
@@ -1388,7 +1632,7 @@ title="Print to PDF"
 </div></section>
 </section>
 <section id="perform-a-damage-assessment-of-the-road-network-using-openstreetmap">
-<h2>6. Perform a damage assessment of the road network using OpenStreetMap<a class="headerlink" href="#perform-a-damage-assessment-of-the-road-network-using-openstreetmap" title="Permalink to this headline">#</a></h2>
+<h2>6. Perform a damage assessment of the road network using OpenStreetMap<a class="headerlink" href="#perform-a-damage-assessment-of-the-road-network-using-openstreetmap" title="Permalink to this heading">#</a></h2>
 <hr><p>Generally, wind damage does not cause much damage to roads. There will be clean-up cost of the trees that will fall on the roads, but structural damage is rare. As such, we will only do a flood damage assessment for the road network of our region.</p>
 <p>To do so, we first need to extract the roads again. We will use the <code class="docutils literal notranslate"><span class="pre">graph_from_place()</span></code> function again to do so. However, the area will be to large to extract roads, so we will focus our analysis on the main network.</p>
 <div class="cell docutils container">
@@ -1600,50 +1844,188 @@ title="Print to PDF"
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
-              
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
+            </article>
+            
+
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="tutorial1.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Tutorial 1: Working with OpenStreetMap</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="../week5/lecture.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lecture: Earth Observation &amp; Google Earth Engine</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+  <a class='left-prev' id="prev-link" href="tutorial1.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">Tutorial 1: Working with OpenStreetMap</p>
+      </div>
+  </a>
+  <a class='right-next' id="next-link" href="../week5/lecture.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">Lecture: Earth Observation &amp; Google Earth Engine</p>
+  </div>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
 </div>
             </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
   
-    By Dr Elco Koks & Dr Thales Pupo-West<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
-    
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#important-before-we-start">
+   Important before we start
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning Objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introducing-the-packages">
+   1.Introducing the packages
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#connect-to-google-drive">
+     Connect to google drive
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#downloading-and-accessing-natural-hazard-data">
+   2. Downloading and accessing natural hazard data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#windstorm-data">
+     Windstorm Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#flood-data">
+     Flood Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#set-location-to-explore">
+     Set location to explore
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#explore-the-natural-hazard-data">
+   3. Explore the natural hazard data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Windstorm Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Flood data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-and-access-copernicus-land-cover-data">
+   4. Download and access Copernicus Land Cover data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#perform-a-damage-assessment-using-coring-land-cover">
+   5. Perform a damage assessment using Coring Land Cover
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#windstorm-damage">
+     Windstorm Damage
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#flood-damage">
+     Flood Damage
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#perform-a-damage-assessment-of-the-road-network-using-openstreetmap">
+   6. Perform a damage assessment of the road network using OpenStreetMap
+  </a>
+ </li>
+</ul>
+
+</nav>
 </div>
 
-
-      </div>
-    </div>
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+<div class="bd-footer-content__inner container">
   
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Elco Koks & Dr Thales Pupo-West
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2022.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+Last updated on None.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </div>
+        </footer>
+        
+
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
 
   </body>
 </html>

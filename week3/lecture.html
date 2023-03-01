@@ -1,48 +1,56 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Lecture: Introduction to Artificial Neural Networks and model validation &#8212; Big Data for Sustainability Sciences</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=4ec06e9971c5264fbd345897d5258098f11cc577" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=8bf782fb4ee92b3d3646425e50f299c4e1fd152d"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -50,61 +58,564 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'week3/lecture';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Tutorial 1: Artificial neural networks (ANNs)" href="tutorial1.html" />
     <link rel="prev" title="Tutorial 2: Random Forest Regression" href="../week2/tutorial2.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../intro.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
         
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../course_basics/course_intro.html">
+                        Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../course_basics/teachers.html">
+                        Teachers
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../course_basics/schedule.html">
+                        Course schedule
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week1/lecture.html">
+                        Lecture: Course Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week1/tutorial1.html">
+                        Tutorial 1: Introduction to Python
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week1/tutorial2.html">
+                        Tutorial 2: Introduction to NumPy and Pandas
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week1/tutorial3.html">
+                        Tutorial 3: Introduction to Data Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week2/lecture.html">
+                        Lecture: Introduction to Random Forests
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week2/tutorial1.html">
+                        Tutorial 1: Data Exploration and regression analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week2/tutorial2.html">
+                        Tutorial 2: Random Forest Regression
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Lecture: Introduction to Artificial Neural Networks and model validation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="tutorial1.html">
+                        Tutorial 1: Artificial neural networks (ANNs)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="tutorial2.html">
+                        Tutorial 2: Model Validation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week4/lecture.html">
+                        Lecture: Big Data in the public domain
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week4/tutorial1.html">
+                        Tutorial 1: Working with OpenStreetMap
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week4/tutorial2.html">
+                        Tutorial 2: Natural Hazard Risk Assessment
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week5/lecture.html">
+                        Lecture: Earth Observation & Google Earth Engine
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week5/tutorial1.html">
+                        Tutorial 1: Land-cover classification
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week5/tutorial2.html">
+                        Tutorial 2: Drought Detection
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week6/lecture.html">
+                        Lecture: Social Media and Natural Language Processing (NLP)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week6/tutorial1.html">
+                        Tutorial 1: Social Media & Natural Hazards
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week6/tutorial2.html">
+                        Tutorial 2: Social Media & Valuation of Landscapes
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week7/lecture.html">
+                        Lecture: A guide to visualisation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week8/exam.html">
+                        Exam preparation
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
       
       
-      <img src="../_static/logo.png" class="logo" alt="logo">
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
       
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
       
-      <h1 class="site-logo" id="site-title">Big Data for Sustainability Sciences</h1>
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../course_basics/course_intro.html">
+                        Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../course_basics/teachers.html">
+                        Teachers
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../course_basics/schedule.html">
+                        Course schedule
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week1/lecture.html">
+                        Lecture: Course Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week1/tutorial1.html">
+                        Tutorial 1: Introduction to Python
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week1/tutorial2.html">
+                        Tutorial 2: Introduction to NumPy and Pandas
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week1/tutorial3.html">
+                        Tutorial 3: Introduction to Data Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week2/lecture.html">
+                        Lecture: Introduction to Random Forests
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week2/tutorial1.html">
+                        Tutorial 1: Data Exploration and regression analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week2/tutorial2.html">
+                        Tutorial 2: Random Forest Regression
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Lecture: Introduction to Artificial Neural Networks and model validation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="tutorial1.html">
+                        Tutorial 1: Artificial neural networks (ANNs)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="tutorial2.html">
+                        Tutorial 2: Model Validation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week4/lecture.html">
+                        Lecture: Big Data in the public domain
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week4/tutorial1.html">
+                        Tutorial 1: Working with OpenStreetMap
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week4/tutorial2.html">
+                        Tutorial 2: Natural Hazard Risk Assessment
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week5/lecture.html">
+                        Lecture: Earth Observation & Google Earth Engine
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week5/tutorial1.html">
+                        Tutorial 1: Land-cover classification
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week5/tutorial2.html">
+                        Tutorial 2: Drought Detection
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week6/lecture.html">
+                        Lecture: Social Media and Natural Language Processing (NLP)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week6/tutorial1.html">
+                        Tutorial 1: Social Media & Natural Hazards
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week6/tutorial2.html">
+                        Tutorial 2: Social Media & Valuation of Landscapes
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week7/lecture.html">
+                        Lecture: A guide to visualisation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week8/exam.html">
+                        Exam preparation
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item">
+  
+
+
+<a class="navbar-brand logo" href="../intro.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    </div>
+    <div class="sidebar-start-items__item">
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -113,604 +624,342 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Course overview
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course overview</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../course_basics/course_intro.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course_basics/teachers.html">
-   Teachers
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course_basics/schedule.html">
-   Course schedule
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../course_basics/course_intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course_basics/teachers.html">Teachers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course_basics/schedule.html">Course schedule</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 1
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week1/lecture.html">
-   Lecture: Course Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week1/tutorial1.html">
-   Tutorial 1: Introduction to Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week1/tutorial2.html">
-   Tutorial 2: Introduction to NumPy and Pandas
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week1/tutorial3.html">
-   Tutorial 3: Introduction to Data Analysis
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/lecture.html">Lecture: Course Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/tutorial1.html">Tutorial 1: Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/tutorial2.html">Tutorial 2: Introduction to NumPy and Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week1/tutorial3.html">Tutorial 3: Introduction to Data Analysis</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 2
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week2/lecture.html">
-   Lecture: Introduction to Random Forests
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week2/tutorial1.html">
-   Tutorial 1: Data Exploration and regression analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week2/tutorial2.html">
-   Tutorial 2: Random Forest Regression
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/lecture.html">Lecture: Introduction to Random Forests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/tutorial1.html">Tutorial 1: Data Exploration and regression analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/tutorial2.html">Tutorial 2: Random Forest Regression</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 3
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Lecture: Introduction to Artificial Neural Networks and model validation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tutorial1.html">
-   Tutorial 1: Artificial neural networks (ANNs)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tutorial2.html">
-   Tutorial 2: Model Validation
-  </a>
- </li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture: Introduction to Artificial Neural Networks and model validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html">Tutorial 1: Artificial neural networks (ANNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial2.html">Tutorial 2: Model Validation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 4
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week4/lecture.html">
-   Lecture: Big Data in the public domain
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week4/tutorial1.html">
-   Tutorial 1: Working with OpenStreetMap
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week4/tutorial2.html">
-   Tutorial 2: Natural Hazard Risk Assessment
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/lecture.html">Lecture: Big Data in the public domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/tutorial1.html">Tutorial 1: Working with OpenStreetMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/tutorial2.html">Tutorial 2: Natural Hazard Risk Assessment</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 5
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week5/lecture.html">
-   Lecture: Earth Observation &amp; Google Earth Engine
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week5/tutorial1.html">
-   Tutorial 1: Land-cover classification
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week5/tutorial2.html">
-   Tutorial 2: Drought Detection
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/lecture.html">Lecture: Earth Observation &amp; Google Earth Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/tutorial1.html">Tutorial 1: Land-cover classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/tutorial2.html">Tutorial 2: Drought Detection</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 6
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week6/lecture.html">
-   Lecture: Social Media and Natural Language Processing (NLP)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week6/tutorial1.html">
-   Tutorial 1: Social Media &amp; Natural Hazards
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week6/tutorial2.html">
-   Tutorial 2: Social Media &amp; Valuation of Landscapes
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/lecture.html">Lecture: Social Media and Natural Language Processing (NLP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/tutorial1.html">Tutorial 1: Social Media &amp; Natural Hazards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/tutorial2.html">Tutorial 2: Social Media &amp; Valuation of Landscapes</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 7
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 7</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week7/lecture.html">
-   Lecture: A guide to visualisation
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week7/lecture.html">Lecture: A guide to visualisation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 8
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 8</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week8/exam.html">
-   Exam preparation
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/exam.html">Exam preparation</a></li>
 </ul>
 
     </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
+</nav>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  </div>
+  
 
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
 
-          
+  
+  <div id="rtd-footer-container"></div>
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
+      </div>
+      <main id="main-content" class="bd-main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
 
 
 
 <div class="col py-1 d-flex header-article-main">
     <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+        <label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" data-toggle="tooltip" data-placement="right" title="Toggle primary sidebar">
+            <span class="fa-solid fa-bars"></span>
+        </label>
     </div>
     <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://colab.research.google.com/github/ElcoK/BigData_AED/blob/main/week3/lecture.md"
-   class="headerbtn"
+  <ul class="dropdown-menu">
+      <li><a href="https://colab.research.google.com/github/ElcoK/BigData_AED/blob/main/week3/lecture.md" target="_blank"
+   class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
 title="Launch on Colab"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="../_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</a>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
+  class="btn btn-sm"
   data-toggle="tooltip"
 data-placement="bottom"
 title="Fullscreen mode"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<div class="dropdown dropdown-repository-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/ElcoK/BigData_AED"
-   class="headerbtn"
+  <ul class="dropdown-menu">
+      <li><a href="https://github.com/ElcoK/BigData_AED" target="_blank"
+   class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
 title="Source repository"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
-<span class="headerbtn__text-container">repository</span>
+<span class="btn__text-container">repository</span>
 </a>
-
-      </li>
+</a>
       
-      <li>
-        <a href="https://github.com/ElcoK/BigData_AED/issues/new?title=Issue%20on%20page%20%2Fweek3/lecture.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
+      <li><a href="https://github.com/ElcoK/BigData_AED/issues/new?title=Issue%20on%20page%20%2Fweek3/lecture.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
 title="Open an issue"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-lightbulb"></i>
   </span>
-<span class="headerbtn__text-container">open issue</span>
+<span class="btn__text-container">open issue</span>
 </a>
-
-      </li>
+</a>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/week3/lecture.ipynb"
-   class="headerbtn"
+  <ul class="dropdown-menu">
+      <li><a href="../_sources/week3/lecture.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
 title="Download notebook file"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-code"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-
-      </li>
+</a>
       
-      <li>
-        <a href="../_sources/week3/lecture.md"
-   class="headerbtn"
+      <li><a href="../_sources/week3/lecture.md" target="_blank"
+   class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
 title="Download source file"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="btn__text-container">.md</span>
 </a>
-
-      </li>
+</a>
       
       <li>
-        
 <button onclick="printPdf(this)"
-  class="headerbtn"
+  class="btn btn-sm dropdown-item"
   data-toggle="tooltip"
 data-placement="left"
 title="Print to PDF"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</a>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary" data-toggle="tooltip" data-placement="left" title="Toggle secondary sidebar">
+            <span class="fa-solid fa-list"></span>
+        </label>
     </div>
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#artificial-neural-networks">
-   Artificial neural networks
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#anns-for-classification-and-regression">
-     ANNs for classification and regression
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-are-the-advantages-of-using-anns">
-     What are the advantages of using ANNs?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-are-the-disadvantages-of-using-anns">
-     What are the disadvantages of using ANNs?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#types-of-anns">
-     Types of ANNs
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#anns-and-deep-learning">
-     ANNs and Deep Learning
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#model-validation">
-   Model validation
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#key-concepts-involving-model-validation">
-     Key concepts involving model validation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#overfitting-and-underfitting">
-       <strong>
-        Overfitting and underfitting
-       </strong>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#cross-validation">
-       <strong>
-        Cross-validation
-       </strong>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#performance-metrics">
-       <strong>
-        Performance metrics
-       </strong>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#hyperparameter-tuning">
-       <strong>
-        Hyperparameter tuning
-       </strong>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#bias-variance-tradeoff">
-       <strong>
-        Bias-variance tradeoff
-       </strong>
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
-</div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Lecture: Introduction to Artificial Neural Networks and model validation</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#artificial-neural-networks">
-   Artificial neural networks
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#anns-for-classification-and-regression">
-     ANNs for classification and regression
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-are-the-advantages-of-using-anns">
-     What are the advantages of using ANNs?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-are-the-disadvantages-of-using-anns">
-     What are the disadvantages of using ANNs?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#types-of-anns">
-     Types of ANNs
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#anns-and-deep-learning">
-     ANNs and Deep Learning
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#model-validation">
-   Model validation
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#key-concepts-involving-model-validation">
-     Key concepts involving model validation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#overfitting-and-underfitting">
-       <strong>
-        Overfitting and underfitting
-       </strong>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#cross-validation">
-       <strong>
-        Cross-validation
-       </strong>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#performance-metrics">
-       <strong>
-        Performance metrics
-       </strong>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#hyperparameter-tuning">
-       <strong>
-        Hyperparameter tuning
-       </strong>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#bias-variance-tradeoff">
-       <strong>
-        Bias-variance tradeoff
-       </strong>
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
             </div>
-            <main id="main-content" role="main">
-                
-              <div>
-                
-  <section class="tex2jax_ignore mathjax_ignore" id="lecture-introduction-to-artificial-neural-networks-and-model-validation">
-<h1>Lecture: Introduction to Artificial Neural Networks and model validation<a class="headerlink" href="#lecture-introduction-to-artificial-neural-networks-and-model-validation" title="Permalink to this headline">#</a></h1>
+            
+            
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lecture: Introduction to Artificial Neural Networks and model validation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#artificial-neural-networks">
+   Artificial neural networks
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#anns-for-classification-and-regression">
+     ANNs for classification and regression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-the-advantages-of-using-anns">
+     What are the advantages of using ANNs?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-the-disadvantages-of-using-anns">
+     What are the disadvantages of using ANNs?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#types-of-anns">
+     Types of ANNs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#anns-and-deep-learning">
+     ANNs and Deep Learning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-validation">
+   Model validation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#key-concepts-involving-model-validation">
+     Key concepts involving model validation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#overfitting-and-underfitting">
+       <strong>
+        Overfitting and underfitting
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cross-validation">
+       <strong>
+        Cross-validation
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#performance-metrics">
+       <strong>
+        Performance metrics
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#hyperparameter-tuning">
+       <strong>
+        Hyperparameter tuning
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bias-variance-tradeoff">
+       <strong>
+        Bias-variance tradeoff
+       </strong>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+            <article class="bd-article" role="main">
+              
+  <section id="lecture-introduction-to-artificial-neural-networks-and-model-validation">
+<h1>Lecture: Introduction to Artificial Neural Networks and model validation<a class="headerlink" href="#lecture-introduction-to-artificial-neural-networks-and-model-validation" title="Permalink to this heading">#</a></h1>
 <p>This week we will focus on the basic concepts of machine learning and how we can develop a simply machine learning model.</p>
 <div class="important admonition">
 <p class="admonition-title">Learning objectives week 3</p>
@@ -721,12 +970,12 @@ title="Print to PDF"
 </ul>
 </div>
 <section id="artificial-neural-networks">
-<h2>Artificial neural networks<a class="headerlink" href="#artificial-neural-networks" title="Permalink to this headline">#</a></h2>
+<h2>Artificial neural networks<a class="headerlink" href="#artificial-neural-networks" title="Permalink to this heading">#</a></h2>
 <p>Artificial Neural Networks (ANNs) are computational models inspired by the structure and function of biological neurons. ANNs consist of interconnected processing nodes or “neurons” that are organized into layers, which are used to process information and make predictions.</p>
 <p>In an ANN, information is passed from one layer to another through the connections between the neurons, with each neuron applying mathematical transformations to the input it receives. The weights and biases of the connections between the neurons are adjusted during training to minimize a predefined loss function, which measures the difference between the model’s predictions and the actual values.</p>
 <p>Once trained, an ANN can be used to make predictions by passing input data through the network and computing the output values produced by the final layer. ANNs have been applied in a wide range of fields, including image classification, speech recognition, natural language processing, and financial forecasting, among others.</p>
 <p>Examples ANN models used in sustainability include, among many other applications:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Solar energy forecasting: ANNs are used to predict solar energy production, taking into account various meteorological factors such as temperature, wind, and cloud cover.</p></li>
 <li><p>Building energy consumption prediction: ANNs are used to predict energy consumption in buildings based on factors such as occupancy, temperature, and lighting levels.</p></li>
 <li><p>Water resource management: ANNs are used to optimize water resource management, including predicting water demand and managing irrigation systems.</p></li>
@@ -735,15 +984,15 @@ title="Print to PDF"
 <li><p>Agricultural sustainability: ANNs are used to optimize crop selection, irrigation systems, and pesticide usage for more sustainable agricultural practices.</p></li>
 </ol>
 <section id="anns-for-classification-and-regression">
-<h3>ANNs for classification and regression<a class="headerlink" href="#anns-for-classification-and-regression" title="Permalink to this headline">#</a></h3>
+<h3>ANNs for classification and regression<a class="headerlink" href="#anns-for-classification-and-regression" title="Permalink to this heading">#</a></h3>
 <p>ANNs used for classification are designed to categorize input data into one or more predefined classes. They have an output layer with one or more nodes that use a non-linear activation function, such as the <em>softmax</em> function, to produce a probability distribution over the classes. The final prediction is made based on the class with the highest predicted probability.</p>
 <p>In contrast, ANNs used for regression are designed to predict continuous target values based on input data. They have a single output node with a linear activation function and are trained to minimize the difference between the predicted values and the true target values.</p>
 <p>In summary, neural networks used for classification are designed to categorize input data into discrete classes, while neural networks used for regression are designed to predict continuous target values. The architecture and training process for each type of neural network will vary depending on the problem being solved.</p>
 </section>
 <section id="what-are-the-advantages-of-using-anns">
-<h3>What are the advantages of using ANNs?<a class="headerlink" href="#what-are-the-advantages-of-using-anns" title="Permalink to this headline">#</a></h3>
+<h3>What are the advantages of using ANNs?<a class="headerlink" href="#what-are-the-advantages-of-using-anns" title="Permalink to this heading">#</a></h3>
 <p>ANNs are widely used because they offer several advantages, including:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Flexibility: ANNs can handle a wide range of problems, including both linear and non-linear problems, and can be used for both supervised and unsupervised learning.</p></li>
 <li><p>Scalability: ANNs can handle large amounts of data and can easily be scaled up or down, depending on the complexity of the problem.</p></li>
 <li><p>Non-linear modeling: ANNs are capable of modeling complex, non-linear relationships between inputs and outputs, which makes them well suited for solving problems with intricate relationships.</p></li>
@@ -754,9 +1003,9 @@ title="Print to PDF"
 <p>Overall, these advantages make ANNs a powerful tool for solving a wide range of problems and explain why they are widely used in many fields such as computer vision, natural language processing, and healthcare, among others.</p>
 </section>
 <section id="what-are-the-disadvantages-of-using-anns">
-<h3>What are the disadvantages of using ANNs?<a class="headerlink" href="#what-are-the-disadvantages-of-using-anns" title="Permalink to this headline">#</a></h3>
+<h3>What are the disadvantages of using ANNs?<a class="headerlink" href="#what-are-the-disadvantages-of-using-anns" title="Permalink to this heading">#</a></h3>
 <p>While powerful, ANNs are not perfect. Some disadvantages of using ANNs are:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Complexity: ANNs can be complex and difficult to understand, particularly ANNs with many hidden layers. This can make it challenging to diagnose problems with the model or to interpret (or even trust) its predictions. Such “lack of transparency” can be a concern in applications where the results of the model must be auditable or explainable.</p></li>
 <li><p>Data requirements: ANNs require large amounts of high-quality training data to produce accurate results. If the training data is limited, noisy, or biased, the model may not perform well.</p></li>
 <li><p>Overfitting: ANNs are prone to overfitting, which means they may fit the training data “too well”and perform poorly on testing data. This can be addressed through techniques such as <em>regularization</em> and <em>early stopping</em>, but it requires careful monitoring of the model performance during training.</p></li>
@@ -766,9 +1015,9 @@ title="Print to PDF"
 <p>Overall, while ANN models have many strengths, their complexity and the challenges associated with training and interpreting the models can sometimes make them difficult to use in practice.</p>
 </section>
 <section id="types-of-anns">
-<h3>Types of ANNs<a class="headerlink" href="#types-of-anns" title="Permalink to this headline">#</a></h3>
+<h3>Types of ANNs<a class="headerlink" href="#types-of-anns" title="Permalink to this heading">#</a></h3>
 <p>There are several different types of ANNs, some of the most common are:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><strong>Feedforward Neural Networks:</strong> These are the most basic type of ANNs and consist of an input layer, one or more hidden layers, and an output layer. The information flows only in one direction, from the input layer to the output layer, without looping back.</p></li>
 <li><p><strong>Convolutional Neural Networks (ConvNets or CNNs):</strong> These are specialized ANNs designed for image recognition and processing. ConvNets use convolutional layers to scan an image and extract relevant features, which are then processed by dense layers to make predictions.</p></li>
 <li><p><strong>Recurrent Neural Networks (RNNs):</strong> These are ANNs designed to process sequences of data, such as time series or sequences of words in natural language processing. RNNs use feedback connections to pass information from one step of the sequence to the next.</p></li>
@@ -778,16 +1027,16 @@ title="Print to PDF"
 <p>These are some of the most widely used types of ANNs. However, there are many other specialized variants and hybrid models that have been developed for specific applications.</p>
 </section>
 <section id="anns-and-deep-learning">
-<h3>ANNs and Deep Learning<a class="headerlink" href="#anns-and-deep-learning" title="Permalink to this headline">#</a></h3>
+<h3>ANNs and Deep Learning<a class="headerlink" href="#anns-and-deep-learning" title="Permalink to this heading">#</a></h3>
 <p>Deep learning is a subfield of machine learning that focuses on using ANNs with many layers, known as deep neural networks. The term “deep” refers to the number of layers in the network, which can range from dozens to hundreds or even thousands. Deep learning algorithms have been particularly successful in solving problems in computer vision, natural language processing, and speech recognition.</p>
 <p>In essence, deep learning is a type of machine learning that uses neural networks with many layers, and ANNs are a type of machine learning algorithm that can be used for deep learning.</p>
 </section>
 </section>
 <section id="model-validation">
-<h2>Model validation<a class="headerlink" href="#model-validation" title="Permalink to this headline">#</a></h2>
+<h2>Model validation<a class="headerlink" href="#model-validation" title="Permalink to this heading">#</a></h2>
 <p>Model validation is the process of evaluating a model’s performance on a set of data it has not seen during training. The goal of validation is to assess how well the model can generalize to unseen data and make accurate predictions. It provides an estimate of the model’s performance in real-world scenarios and helps to prevent <em>overfitting</em>, which occurs when a model is too closely fit to the training data and does not generalize well to new data.</p>
 <p>There are several common methods for model validation, including:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><strong>Holdout validation:</strong> the dataset split into two parts: <em>training</em> set and <em>validation</em> (testing) set. The model is trained on the training set and evaluated on the validation set, which is used as an unbiased estimate of the model’s performance on unseen data. This helps to prevent overfitting and choose the best model based on performance on the validation set.</p></li>
 <li><p><strong>K-fold cross-validation:</strong> the training data is divided into K equal parts (or “folds”). The model is then trained on K-1 folds and evaluated on the remaining fold, with this process being repeated K times so that each fold is used for evaluation once. The performance of the model is estimated as the average of its predictions on the K validation folds. This method provides a more robust estimate of the model’s performance compared to a simple holdout validation, as it uses all of the training data for both training and validation. K-fold cross-validation is a widely used validation method in machine learning and is especially useful for larger datasets.</p></li>
 <li><p><strong>Leave-One-Out Cross-Validation (LOOCV):</strong> a single data point is left out as validation data and the model is trained on all the other data points. This process is repeated for each data point, resulting in a model evaluation for each data point. LOOCV is a very thorough validation method, but also computationally expensive and time-consuming, making it less commonly used than other methods.</p></li>
@@ -795,20 +1044,20 @@ title="Print to PDF"
 </ol>
 <p>The choice of validation method depends on the specifics of the <strong>data</strong> and the <strong>model</strong>, but it is important to carefully evaluate the model’s performance on independent data in order to ensure that it is reliable and generalizes well to new data.</p>
 <section id="key-concepts-involving-model-validation">
-<h3>Key concepts involving model validation<a class="headerlink" href="#key-concepts-involving-model-validation" title="Permalink to this headline">#</a></h3>
+<h3>Key concepts involving model validation<a class="headerlink" href="#key-concepts-involving-model-validation" title="Permalink to this heading">#</a></h3>
 <section id="overfitting-and-underfitting">
-<h4><strong>Overfitting and underfitting</strong><a class="headerlink" href="#overfitting-and-underfitting" title="Permalink to this headline">#</a></h4>
+<h4><strong>Overfitting and underfitting</strong><a class="headerlink" href="#overfitting-and-underfitting" title="Permalink to this heading">#</a></h4>
 <p>These are common problems in machine learning where a model performs well on the training data but poorly on new, unseen data. <strong>Overfitting</strong> occurs when a model is too complex and fits the noise in the training data rather than the underlying patterns. This can lead to a model that has a low training error but a high testing error, indicating that it is not generalizing well to new data. Overfitting is often caused by having too many features or a model with too many parameters relative to the size of the training set.</p>
 <p>In contrast, <strong>underfitting</strong> occurs when a model is too simple and does not capture the complexity of the relationship between the features and the target variable. This can lead to a model with a high training error and a high testing error, indicating that it is not fitting the training data well and is not generalizing to new data. Underfitting is often caused by having too few features or a model with too few parameters relative to the size of the training set.</p>
 <p>Both overfitting and underfitting can be addressed by using techniques such as regularization, feature selection, and early stopping, as well as by increasing the size of the training set or using a more complex model with more parameters. The goal is to find a model that has a good balance between fitting the data well and generalizing to new data.</p>
 <p><em>Note: <strong>Regularization</strong> adds a penalty term to the loss function that the model is trying to minimize, which discourages the model from assigning too much importance to any one feature. <strong>Early stopping</strong> involves monitoring the performance of the model on a validation set during the training process and stopping the training when the performance on the validation set stops improving or starts to deteriorate. The idea behind early stopping is to strike a balance between training the model long enough to capture the underlying patterns in the data, but not so long that it starts to fit the noise in the data. <strong>Feature selection</strong> is the process of selecting a subset of the most relevant and informative features from the dataset to use in building a machine learning model. It is a crucial step in the modeling process as it can significantly impact the model’s performance, reduce the risk of overfitting, and increase interpretability.</em></p>
 </section>
 <section id="cross-validation">
-<h4><strong>Cross-validation</strong><a class="headerlink" href="#cross-validation" title="Permalink to this headline">#</a></h4>
+<h4><strong>Cross-validation</strong><a class="headerlink" href="#cross-validation" title="Permalink to this heading">#</a></h4>
 <p>This is a process of dividing the dataset into several parts and training the model on different parts while testing it on the remaining parts, in order to get an estimate of the model’s performance on unseen data.</p>
 </section>
 <section id="performance-metrics">
-<h4><strong>Performance metrics</strong><a class="headerlink" href="#performance-metrics" title="Permalink to this headline">#</a></h4>
+<h4><strong>Performance metrics</strong><a class="headerlink" href="#performance-metrics" title="Permalink to this heading">#</a></h4>
 <p>There are several metrics used to evaluate the performance of a model. In machine learning, accuracy, precision, and recall are three commonly used metrics for evaluating the performance of a <strong>binary classification model</strong>.</p>
 <p>Accuracy is the fraction of correct predictions made by the model out of all predictions, and is a measure of the overall correctness of the model’s predictions. It is defined as:</p>
 <p><em>Accuracy = (True Positives + True Negatives) / (Total Predictions)</em></p>
@@ -819,7 +1068,7 @@ title="Print to PDF"
 <p>It’s important to keep in mind that accuracy, precision, and recall are often in trade-off with each other and the choice of metric to optimize for depends on the problem and the desired outcome. For example, in a disease diagnosis scenario, recall might be more important than precision since it’s more important to not miss a positive case (a sick patient) than to have fewer false positives.</p>
 <p>To get a more comprehensive understanding of a model’s classification performance, it’s common to use metrics such as the F1-Score, which is the harmonic mean of precision and recall, or ROC and AUC metrics.</p>
 <p>Similary, there are also several metrics to evaluate the performance of <strong>regression models</strong>. Some of the most commonly used metrics are:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><em>Mean Absolute Error (MAE):</em> It is the average absolute difference between the actual target values and the predicted values.</p></li>
 <li><p><em>Mean Squared Error (MSE):</em> It is the average of the squared differences between the actual target values and the predicted values.</p></li>
 <li><p><em>Root Mean Squared Error (RMSE):</em> It is the square root of the MSE.</p></li>
@@ -829,12 +1078,12 @@ title="Print to PDF"
 <p>The choice of which performance metric to use depends on the nature of the data and the problem being solved. For example, when the target values have a large range, it may be more appropriate to use the MAPE metric instead of the MAE or RMSE metric. When the target values are restricted to a narrow range, the MSE metric may be more appropriate.</p>
 </section>
 <section id="hyperparameter-tuning">
-<h4><strong>Hyperparameter tuning</strong><a class="headerlink" href="#hyperparameter-tuning" title="Permalink to this headline">#</a></h4>
+<h4><strong>Hyperparameter tuning</strong><a class="headerlink" href="#hyperparameter-tuning" title="Permalink to this heading">#</a></h4>
 <p>This involves selecting the best set of hyperparameters for a model, which can greatly impact its performance. Grid search and random search are common methods used for hyperparameter tuning.</p>
 <p><em>Note: Model <strong>hyperparameters</strong> are parameters that are set before training a machine learning model and cannot be learned from the data during the training process. They are different from model parameters, which are learned from the data and determine the model’s output. Examples of hyperparameters include the learning rate in gradient descent, the number of trees in a random forest, the regularization strength in a linear regression, the number of hidden layers in a neural network, and the number of clusters in a K-Means algorithm. Hyperparameters play a crucial role in determining the model’s performance and must be chosen carefully.</em></p>
 </section>
 <section id="bias-variance-tradeoff">
-<h4><strong>Bias-variance tradeoff</strong><a class="headerlink" href="#bias-variance-tradeoff" title="Permalink to this headline">#</a></h4>
+<h4><strong>Bias-variance tradeoff</strong><a class="headerlink" href="#bias-variance-tradeoff" title="Permalink to this heading">#</a></h4>
 <p>The bias-variance tradeoff is a fundamental concept in machine learning that refers to the trade-off between a model’s ability to fit the training data well (<em>low bias</em>) and its ability to generalize to new, unseen data (<em>low variance</em>). A model with high bias is typically oversimplified, resulting in underfitting of the training data and poor performance on new data. On the other hand, a model with high variance is typically too complex, resulting in overfitting of the training data and poor performance on new data.</p>
 <p>If the model has high bias, one approach that can be taken is to use a more complex model with more parameters, or to add additional features to the model. If the model has high variance, one approach is to use regularization techniques or to remove features from the model.</p>
 <p>The goal in model validation is to find the right balance between model complexity and performance, so that the model has low bias and low variance and generalizes well to new data. This requires a trade-off between fitting the data well and keeping the model simple, which is often referred to as the <strong>bias-variance tradeoff</strong>. By using model validation techniques, it is possible to make informed decisions about the trade-off and to find a model that generalizes well to new data.</p>
@@ -863,50 +1112,181 @@ title="Print to PDF"
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
-              
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
+            </article>
+            
+
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../week2/tutorial2.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Tutorial 2: Random Forest Regression</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="tutorial1.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tutorial 1: Artificial neural networks (ANNs)</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+  <a class='left-prev' id="prev-link" href="../week2/tutorial2.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">Tutorial 2: Random Forest Regression</p>
+      </div>
+  </a>
+  <a class='right-next' id="next-link" href="tutorial1.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">Tutorial 1: Artificial neural networks (ANNs)</p>
+  </div>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
 </div>
             </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
   
-    By Dr Elco Koks & Dr Thales Pupo-West<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
-    
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#artificial-neural-networks">
+   Artificial neural networks
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#anns-for-classification-and-regression">
+     ANNs for classification and regression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-the-advantages-of-using-anns">
+     What are the advantages of using ANNs?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-the-disadvantages-of-using-anns">
+     What are the disadvantages of using ANNs?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#types-of-anns">
+     Types of ANNs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#anns-and-deep-learning">
+     ANNs and Deep Learning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-validation">
+   Model validation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#key-concepts-involving-model-validation">
+     Key concepts involving model validation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#overfitting-and-underfitting">
+       <strong>
+        Overfitting and underfitting
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cross-validation">
+       <strong>
+        Cross-validation
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#performance-metrics">
+       <strong>
+        Performance metrics
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#hyperparameter-tuning">
+       <strong>
+        Hyperparameter tuning
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bias-variance-tradeoff">
+       <strong>
+        Bias-variance tradeoff
+       </strong>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
 </div>
 
-
-      </div>
-    </div>
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+<div class="bd-footer-content__inner container">
   
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Elco Koks & Dr Thales Pupo-West
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2022.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+Last updated on None.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </div>
+        </footer>
+        
+
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
 
   </body>
 </html>

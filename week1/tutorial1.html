@@ -1,48 +1,56 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Tutorial 1: Introduction to Python &#8212; Big Data for Sustainability Sciences</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=4ec06e9971c5264fbd345897d5258098f11cc577" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=8bf782fb4ee92b3d3646425e50f299c4e1fd152d"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -50,61 +58,564 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'week1/tutorial1';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Tutorial 2: Introduction to NumPy and Pandas" href="tutorial2.html" />
     <link rel="prev" title="Lecture: Course Introduction" href="lecture.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../intro.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
         
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../course_basics/course_intro.html">
+                        Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../course_basics/teachers.html">
+                        Teachers
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../course_basics/schedule.html">
+                        Course schedule
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="lecture.html">
+                        Lecture: Course Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Tutorial 1: Introduction to Python
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="tutorial2.html">
+                        Tutorial 2: Introduction to NumPy and Pandas
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="tutorial3.html">
+                        Tutorial 3: Introduction to Data Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week2/lecture.html">
+                        Lecture: Introduction to Random Forests
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week2/tutorial1.html">
+                        Tutorial 1: Data Exploration and regression analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week2/tutorial2.html">
+                        Tutorial 2: Random Forest Regression
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week3/lecture.html">
+                        Lecture: Introduction to Artificial Neural Networks and model validation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week3/tutorial1.html">
+                        Tutorial 1: Artificial neural networks (ANNs)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week3/tutorial2.html">
+                        Tutorial 2: Model Validation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week4/lecture.html">
+                        Lecture: Big Data in the public domain
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week4/tutorial1.html">
+                        Tutorial 1: Working with OpenStreetMap
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week4/tutorial2.html">
+                        Tutorial 2: Natural Hazard Risk Assessment
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week5/lecture.html">
+                        Lecture: Earth Observation & Google Earth Engine
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week5/tutorial1.html">
+                        Tutorial 1: Land-cover classification
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week5/tutorial2.html">
+                        Tutorial 2: Drought Detection
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week6/lecture.html">
+                        Lecture: Social Media and Natural Language Processing (NLP)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week6/tutorial1.html">
+                        Tutorial 1: Social Media & Natural Hazards
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week6/tutorial2.html">
+                        Tutorial 2: Social Media & Valuation of Landscapes
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week7/lecture.html">
+                        Lecture: A guide to visualisation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week8/exam.html">
+                        Exam preparation
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
       
       
-      <img src="../_static/logo.png" class="logo" alt="logo">
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
       
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
       
-      <h1 class="site-logo" id="site-title">Big Data for Sustainability Sciences</h1>
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../course_basics/course_intro.html">
+                        Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../course_basics/teachers.html">
+                        Teachers
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../course_basics/schedule.html">
+                        Course schedule
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="lecture.html">
+                        Lecture: Course Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Tutorial 1: Introduction to Python
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="tutorial2.html">
+                        Tutorial 2: Introduction to NumPy and Pandas
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="tutorial3.html">
+                        Tutorial 3: Introduction to Data Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week2/lecture.html">
+                        Lecture: Introduction to Random Forests
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week2/tutorial1.html">
+                        Tutorial 1: Data Exploration and regression analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week2/tutorial2.html">
+                        Tutorial 2: Random Forest Regression
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week3/lecture.html">
+                        Lecture: Introduction to Artificial Neural Networks and model validation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week3/tutorial1.html">
+                        Tutorial 1: Artificial neural networks (ANNs)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week3/tutorial2.html">
+                        Tutorial 2: Model Validation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week4/lecture.html">
+                        Lecture: Big Data in the public domain
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week4/tutorial1.html">
+                        Tutorial 1: Working with OpenStreetMap
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week4/tutorial2.html">
+                        Tutorial 2: Natural Hazard Risk Assessment
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week5/lecture.html">
+                        Lecture: Earth Observation & Google Earth Engine
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week5/tutorial1.html">
+                        Tutorial 1: Land-cover classification
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week5/tutorial2.html">
+                        Tutorial 2: Drought Detection
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week6/lecture.html">
+                        Lecture: Social Media and Natural Language Processing (NLP)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week6/tutorial1.html">
+                        Tutorial 1: Social Media & Natural Hazards
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week6/tutorial2.html">
+                        Tutorial 2: Social Media & Valuation of Landscapes
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week7/lecture.html">
+                        Lecture: A guide to visualisation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week8/exam.html">
+                        Exam preparation
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item">
+  
+
+
+<a class="navbar-brand logo" href="../intro.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    </div>
+    <div class="sidebar-start-items__item">
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -113,691 +624,379 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Course overview
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course overview</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../course_basics/course_intro.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course_basics/teachers.html">
-   Teachers
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course_basics/schedule.html">
-   Course schedule
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../course_basics/course_intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course_basics/teachers.html">Teachers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course_basics/schedule.html">Course schedule</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 1
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="lecture.html">
-   Lecture: Course Introduction
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Tutorial 1: Introduction to Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tutorial2.html">
-   Tutorial 2: Introduction to NumPy and Pandas
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tutorial3.html">
-   Tutorial 3: Introduction to Data Analysis
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="lecture.html">Lecture: Course Introduction</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tutorial 1: Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial2.html">Tutorial 2: Introduction to NumPy and Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial3.html">Tutorial 3: Introduction to Data Analysis</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 2
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week2/lecture.html">
-   Lecture: Introduction to Random Forests
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week2/tutorial1.html">
-   Tutorial 1: Data Exploration and regression analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week2/tutorial2.html">
-   Tutorial 2: Random Forest Regression
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/lecture.html">Lecture: Introduction to Random Forests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/tutorial1.html">Tutorial 1: Data Exploration and regression analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/tutorial2.html">Tutorial 2: Random Forest Regression</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 3
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week3/lecture.html">
-   Lecture: Introduction to Artificial Neural Networks and model validation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week3/tutorial1.html">
-   Tutorial 1: Artificial neural networks (ANNs)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week3/tutorial2.html">
-   Tutorial 2: Model Validation
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/lecture.html">Lecture: Introduction to Artificial Neural Networks and model validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/tutorial1.html">Tutorial 1: Artificial neural networks (ANNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/tutorial2.html">Tutorial 2: Model Validation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 4
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week4/lecture.html">
-   Lecture: Big Data in the public domain
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week4/tutorial1.html">
-   Tutorial 1: Working with OpenStreetMap
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week4/tutorial2.html">
-   Tutorial 2: Natural Hazard Risk Assessment
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/lecture.html">Lecture: Big Data in the public domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/tutorial1.html">Tutorial 1: Working with OpenStreetMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/tutorial2.html">Tutorial 2: Natural Hazard Risk Assessment</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 5
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week5/lecture.html">
-   Lecture: Earth Observation &amp; Google Earth Engine
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week5/tutorial1.html">
-   Tutorial 1: Land-cover classification
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week5/tutorial2.html">
-   Tutorial 2: Drought Detection
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/lecture.html">Lecture: Earth Observation &amp; Google Earth Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/tutorial1.html">Tutorial 1: Land-cover classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/tutorial2.html">Tutorial 2: Drought Detection</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 6
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week6/lecture.html">
-   Lecture: Social Media and Natural Language Processing (NLP)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week6/tutorial1.html">
-   Tutorial 1: Social Media &amp; Natural Hazards
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week6/tutorial2.html">
-   Tutorial 2: Social Media &amp; Valuation of Landscapes
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/lecture.html">Lecture: Social Media and Natural Language Processing (NLP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/tutorial1.html">Tutorial 1: Social Media &amp; Natural Hazards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/tutorial2.html">Tutorial 2: Social Media &amp; Valuation of Landscapes</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 7
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 7</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week7/lecture.html">
-   Lecture: A guide to visualisation
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week7/lecture.html">Lecture: A guide to visualisation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 8
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 8</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week8/exam.html">
-   Exam preparation
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/exam.html">Exam preparation</a></li>
 </ul>
 
     </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
+</nav>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  </div>
+  
 
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
 
-          
+  
+  <div id="rtd-footer-container"></div>
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
+      </div>
+      <main id="main-content" class="bd-main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
 
 
 
 <div class="col py-1 d-flex header-article-main">
     <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+        <label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" data-toggle="tooltip" data-placement="right" title="Toggle primary sidebar">
+            <span class="fa-solid fa-bars"></span>
+        </label>
     </div>
     <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://colab.research.google.com/github/ElcoK/BigData_AED/blob/main/week1/tutorial1.ipynb"
-   class="headerbtn"
+  <ul class="dropdown-menu">
+      <li><a href="https://colab.research.google.com/github/ElcoK/BigData_AED/blob/main/week1/tutorial1.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
 title="Launch on Colab"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="../_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</a>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
+  class="btn btn-sm"
   data-toggle="tooltip"
 data-placement="bottom"
 title="Fullscreen mode"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<div class="dropdown dropdown-repository-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/ElcoK/BigData_AED"
-   class="headerbtn"
+  <ul class="dropdown-menu">
+      <li><a href="https://github.com/ElcoK/BigData_AED" target="_blank"
+   class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
 title="Source repository"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
-<span class="headerbtn__text-container">repository</span>
+<span class="btn__text-container">repository</span>
 </a>
-
-      </li>
+</a>
       
-      <li>
-        <a href="https://github.com/ElcoK/BigData_AED/issues/new?title=Issue%20on%20page%20%2Fweek1/tutorial1.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
+      <li><a href="https://github.com/ElcoK/BigData_AED/issues/new?title=Issue%20on%20page%20%2Fweek1/tutorial1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
 title="Open an issue"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-lightbulb"></i>
   </span>
-<span class="headerbtn__text-container">open issue</span>
+<span class="btn__text-container">open issue</span>
 </a>
-
-      </li>
+</a>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/week1/tutorial1.ipynb"
-   class="headerbtn"
+  <ul class="dropdown-menu">
+      <li><a href="../_sources/week1/tutorial1.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
 title="Download source file"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-
-      </li>
+</a>
       
       <li>
-        
 <button onclick="printPdf(this)"
-  class="headerbtn"
+  class="btn btn-sm dropdown-item"
   data-toggle="tooltip"
 data-placement="left"
 title="Print to PDF"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</a>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary" data-toggle="tooltip" data-placement="left" title="Toggle secondary sidebar">
+            <span class="fa-solid fa-list"></span>
+        </label>
     </div>
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#important-before-we-start">
-   Important before we start
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning Objectives
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   1. Introduction
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#basic-python-data-types">
-   2. Basic Python Data Types
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#common-built-in-python-data-types">
-     Common built-in Python data types
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#numeric-data-types">
-     Numeric data types
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#arithmetic-operators">
-     Arithmetic Operators
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#none">
-     None
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#strings">
-     Strings
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#boolean">
-     Boolean
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#comparison-operators">
-     Comparison Operators
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#boolean-operators">
-     Boolean Operators
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#casting">
-     Casting
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lists-and-tuples">
-   3. Lists and Tuples
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#indexing-and-slicing-sequences">
-     Indexing and Slicing Sequences
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#list-methods">
-     List Methods
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sets">
-     Sets
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mutable-vs-immutable-types">
-     Mutable vs. Immutable Types
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#string-methods">
-   4. String Methods
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#string-formatting">
-     String formatting
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dictionaries">
-   5. Dictionaries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#empties">
-   6. Empties
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conditionals">
-   7. Conditionals
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inline-if-else">
-     Inline if/else
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#truth-value-testing">
-     Truth Value Testing
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
-</div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Tutorial 1: Introduction to Python</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#important-before-we-start">
-   Important before we start
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning Objectives
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   1. Introduction
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#basic-python-data-types">
-   2. Basic Python Data Types
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#common-built-in-python-data-types">
-     Common built-in Python data types
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#numeric-data-types">
-     Numeric data types
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#arithmetic-operators">
-     Arithmetic Operators
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#none">
-     None
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#strings">
-     Strings
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#boolean">
-     Boolean
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#comparison-operators">
-     Comparison Operators
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#boolean-operators">
-     Boolean Operators
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#casting">
-     Casting
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lists-and-tuples">
-   3. Lists and Tuples
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#indexing-and-slicing-sequences">
-     Indexing and Slicing Sequences
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#list-methods">
-     List Methods
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sets">
-     Sets
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mutable-vs-immutable-types">
-     Mutable vs. Immutable Types
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#string-methods">
-   4. String Methods
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#string-formatting">
-     String formatting
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dictionaries">
-   5. Dictionaries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#empties">
-   6. Empties
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conditionals">
-   7. Conditionals
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inline-if-else">
-     Inline if/else
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#truth-value-testing">
-     Truth Value Testing
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
             </div>
-            <main id="main-content" role="main">
-                
-              <div>
-                
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-1-introduction-to-python">
-<h1>Tutorial 1: Introduction to Python<a class="headerlink" href="#tutorial-1-introduction-to-python" title="Permalink to this headline">#</a></h1>
+            
+            
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tutorial 1: Introduction to Python</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#important-before-we-start">
+   Important before we start
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning Objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-python-data-types">
+   2. Basic Python Data Types
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#common-built-in-python-data-types">
+     Common built-in Python data types
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#numeric-data-types">
+     Numeric data types
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arithmetic-operators">
+     Arithmetic Operators
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#none">
+     None
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strings">
+     Strings
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#boolean">
+     Boolean
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparison-operators">
+     Comparison Operators
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#boolean-operators">
+     Boolean Operators
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#casting">
+     Casting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lists-and-tuples">
+   3. Lists and Tuples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing-and-slicing-sequences">
+     Indexing and Slicing Sequences
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#list-methods">
+     List Methods
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sets">
+     Sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mutable-vs-immutable-types">
+     Mutable vs. Immutable Types
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#string-methods">
+   4. String Methods
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#string-formatting">
+     String formatting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dictionaries">
+   5. Dictionaries
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#empties">
+   6. Empties
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conditionals">
+   7. Conditionals
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inline-if-else">
+     Inline if/else
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#truth-value-testing">
+     Truth Value Testing
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+            <article class="bd-article" role="main">
+              
+  <section id="tutorial-1-introduction-to-python">
+<h1>Tutorial 1: Introduction to Python<a class="headerlink" href="#tutorial-1-introduction-to-python" title="Permalink to this heading">#</a></h1>
 <p>Python is a programming language which allows us to give instructions to the computer. These instructions can be as simple as “add together these two numbers” or as complex as “give me the average CO2 concentration for 2020”. For the former we will be able to complete the task using only a single instruction but for the latter, we may have to write a larger program containing hundreds or thousands of instructions.</p>
 <p>This course is going to start from the beginning, showing you to talk to the computer to perform simple tasks and as you become more confident and follow the later courses, you will find that you are able to write much more complex programmes. Within this course, we assume no prior knowledge of Python. Experience with programming concepts or another programming language will help, but is not required to understand the material.</p>
 <p>Python is a well-established language, with the current version (version 3) released in 2008 and it is installed by default on nearly all modern Linux systems. Python is also available for OS X and Windows.</p>
@@ -807,13 +1006,13 @@ title="Print to PDF"
 </div><div class="alert alert-block alert-danger">
 <b>Important:</b> This tutorial is not part of your final grade. You simply have to pass it by answering the questions.
 </div><section id="important-before-we-start">
-<h2>Important before we start<a class="headerlink" href="#important-before-we-start" title="Permalink to this headline">#</a></h2>
+<h2>Important before we start<a class="headerlink" href="#important-before-we-start" title="Permalink to this heading">#</a></h2>
 <hr>
 Make sure that you save this file before you continue, else you will lose everything. To do so, go to Bestand/File and click on Een kopie opslaan in Drive/Save a Copy on Drive!
 <p>Now, rename the file into Week1_Tutorial1.ipynb. You can do so by clicking on the name in the top of this screen.</p>
 </section>
 <section id="learning-objectives">
-<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this heading">#</a></h2>
 <hr><ul class="simple">
 <li><p>Create, describe and differentiate standard Python datatypes such as <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">string</span></code>, <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">dict</span></code>, <code class="docutils literal notranslate"><span class="pre">tuple</span></code>, etc.</p></li>
 <li><p>Perform arithmetic operations like <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">**</span></code> on numeric values.</p></li>
@@ -835,7 +1034,7 @@ Make sure that you save this file before you continue, else you will lose everyt
     <li><span><a href="#empties" data-toc-modified-id="6.-Empties-6">6. Empties</a></span></li>
     <li><span><a href="#conditionals" data-toc-modified-id="7.-Conditionals-7">7. Conditionals</a></span></li></ul></div></section>
 <section id="introduction">
-<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <hr><p>Within this course, we use Jupyter notebooks to execute all our python code. A Jupyter notebook is a document that can combine live programming code, text, images, and pretty displays of data all in the same place. This combination makes Jupyter notebooks clutch for exploring data as well as for learning and teaching.</p>
 <p>A Jupyter notebook has a special .ipynb file extension and can only be opened if you have the application JupyterLab or Jupyter Notebook installed and running. One of the cool things about Jupyter Book, which powers this online textbook, is that you can open a Jupyter notebook on the internet without any prior installation or configuration — using services like Google Colaboratory (click on the rocket on the top of this page to open this page in Google Colaboratory).</p>
 <div class="admonition tip">
@@ -861,76 +1060,76 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="basic-python-data-types">
-<h2>2. Basic Python Data Types<a class="headerlink" href="#basic-python-data-types" title="Permalink to this headline">#</a></h2>
+<h2>2. Basic Python Data Types<a class="headerlink" href="#basic-python-data-types" title="Permalink to this heading">#</a></h2>
 <hr><p>A <strong>value</strong> is a piece of data that a computer program works with such as a number or text. There are different <strong>types</strong> of values: <code class="docutils literal notranslate"><span class="pre">42</span></code> is an integer and <code class="docutils literal notranslate"><span class="pre">&quot;Hello!&quot;</span></code> is a string. A <strong>variable</strong> is a name that refers to a value. In mathematics and statistics, we usually use variable names like $x$ and $y$. In Python, we can use any word as a variable name as long as it starts with a letter or an underscore. However, it should not be a <a class="reference external" href="https://docs.python.org/3.3/reference/lexical_analysis.html#keywords">reserved word</a> in Python such as <code class="docutils literal notranslate"><span class="pre">for</span></code>, <code class="docutils literal notranslate"><span class="pre">while</span></code>, <code class="docutils literal notranslate"><span class="pre">class</span></code>, <code class="docutils literal notranslate"><span class="pre">lambda</span></code>, etc. as these words encode special functionality in Python that we don’t want to overwrite!</p>
 <p>It can be helpful to think of a variable as a box that holds some information (a single number, a vector, a string, etc). We use the <strong>assignment operator</strong> <code class="docutils literal notranslate"><span class="pre">=</span></code> to assign a value to a variable.</p>
 <div class="alert alert-block alert-warning">
 <b>Tip:</b> See the <a href="https://docs.python.org/3/library/stdtypes.html">Python 3 documentation</a> for a summary of the standard built-in Python datatypes.
 </div><section id="common-built-in-python-data-types">
-<h3>Common built-in Python data types<a class="headerlink" href="#common-built-in-python-data-types" title="Permalink to this headline">#</a></h3>
-<table class="colwidths-auto table">
+<h3>Common built-in Python data types<a class="headerlink" href="#common-built-in-python-data-types" title="Permalink to this heading">#</a></h3>
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-align:left head"><p>English name</p></th>
-<th class="text-align:left head"><p>Type name</p></th>
-<th class="text-align:left head"><p>Type Category</p></th>
-<th class="text-align:left head"><p>Description</p></th>
-<th class="text-align:left head"><p>Example</p></th>
+<tr class="row-odd"><th class="head text-left"><p>English name</p></th>
+<th class="head text-left"><p>Type name</p></th>
+<th class="head text-left"><p>Type Category</p></th>
+<th class="head text-left"><p>Description</p></th>
+<th class="head text-left"><p>Example</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:left"><p>integer</p></td>
-<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
-<td class="text-align:left"><p>Numeric Type</p></td>
-<td class="text-align:left"><p>positive/negative whole numbers</p></td>
-<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">42</span></code></p></td>
+<tr class="row-even"><td class="text-left"><p>integer</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+<td class="text-left"><p>Numeric Type</p></td>
+<td class="text-left"><p>positive/negative whole numbers</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">42</span></code></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>floating point number</p></td>
-<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
-<td class="text-align:left"><p>Numeric Type</p></td>
-<td class="text-align:left"><p>real number in decimal form</p></td>
-<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">3.14159</span></code></p></td>
+<tr class="row-odd"><td class="text-left"><p>floating point number</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+<td class="text-left"><p>Numeric Type</p></td>
+<td class="text-left"><p>real number in decimal form</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">3.14159</span></code></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>boolean</p></td>
-<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
-<td class="text-align:left"><p>Boolean Values</p></td>
-<td class="text-align:left"><p>true or false</p></td>
-<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<tr class="row-even"><td class="text-left"><p>boolean</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+<td class="text-left"><p>Boolean Values</p></td>
+<td class="text-left"><p>true or false</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>string</p></td>
-<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
-<td class="text-align:left"><p>Sequence Type</p></td>
-<td class="text-align:left"><p>text</p></td>
-<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">&quot;I</span> <span class="pre">Can</span> <span class="pre">Has</span> <span class="pre">Cheezburger?&quot;</span></code></p></td>
+<tr class="row-odd"><td class="text-left"><p>string</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">str</span></code></p></td>
+<td class="text-left"><p>Sequence Type</p></td>
+<td class="text-left"><p>text</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">&quot;I</span> <span class="pre">Can</span> <span class="pre">Has</span> <span class="pre">Cheezburger?&quot;</span></code></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>list</p></td>
-<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">list</span></code></p></td>
-<td class="text-align:left"><p>Sequence Type</p></td>
-<td class="text-align:left"><p>a collection of objects - mutable &amp; ordered</p></td>
-<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">['Ali',</span> <span class="pre">'Xinyi',</span> <span class="pre">'Miriam']</span></code></p></td>
+<tr class="row-even"><td class="text-left"><p>list</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">list</span></code></p></td>
+<td class="text-left"><p>Sequence Type</p></td>
+<td class="text-left"><p>a collection of objects - mutable &amp; ordered</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">['Ali',</span> <span class="pre">'Xinyi',</span> <span class="pre">'Miriam']</span></code></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>tuple</p></td>
-<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">tuple</span></code></p></td>
-<td class="text-align:left"><p>Sequence Type</p></td>
-<td class="text-align:left"><p>a collection of objects - immutable &amp; ordered</p></td>
-<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">('Thursday',</span> <span class="pre">6,</span> <span class="pre">9,</span> <span class="pre">2018)</span></code></p></td>
+<tr class="row-odd"><td class="text-left"><p>tuple</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">tuple</span></code></p></td>
+<td class="text-left"><p>Sequence Type</p></td>
+<td class="text-left"><p>a collection of objects - immutable &amp; ordered</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">('Thursday',</span> <span class="pre">6,</span> <span class="pre">9,</span> <span class="pre">2018)</span></code></p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>dictionary</p></td>
-<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">dict</span></code></p></td>
-<td class="text-align:left"><p>Mapping Type</p></td>
-<td class="text-align:left"><p>mapping of key-value pairs</p></td>
-<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">{'name':'DSCI',</span> <span class="pre">'code':511,</span> <span class="pre">'credits':2}</span></code></p></td>
+<tr class="row-even"><td class="text-left"><p>dictionary</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">dict</span></code></p></td>
+<td class="text-left"><p>Mapping Type</p></td>
+<td class="text-left"><p>mapping of key-value pairs</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">{'name':'DSCI',</span> <span class="pre">'code':511,</span> <span class="pre">'credits':2}</span></code></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>none</p></td>
-<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">NoneType</span></code></p></td>
-<td class="text-align:left"><p>Null Object</p></td>
-<td class="text-align:left"><p>represents no value</p></td>
-<td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<tr class="row-odd"><td class="text-left"><p>none</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">NoneType</span></code></p></td>
+<td class="text-left"><p>Null Object</p></td>
+<td class="text-left"><p>represents no value</p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
 </tr>
 </tbody>
 </table>
 </section>
 <section id="numeric-data-types">
-<h3>Numeric data types<a class="headerlink" href="#numeric-data-types" title="Permalink to this headline">#</a></h3>
+<h3>Numeric data types<a class="headerlink" href="#numeric-data-types" title="Permalink to this heading">#</a></h3>
 <p>There are three distinct numeric types: <code class="docutils literal notranslate"><span class="pre">integers</span></code>, <code class="docutils literal notranslate"><span class="pre">floating</span> <span class="pre">point</span> <span class="pre">numbers</span></code>, and <code class="docutils literal notranslate"><span class="pre">complex</span> <span class="pre">numbers</span></code> (not covered here). We can determine the type of an object in Python using <code class="docutils literal notranslate"><span class="pre">type()</span></code>. We can print the value of the object using <code class="docutils literal notranslate"><span class="pre">print()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -978,35 +1177,35 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="arithmetic-operators">
-<h3>Arithmetic Operators<a class="headerlink" href="#arithmetic-operators" title="Permalink to this headline">#</a></h3>
+<h3>Arithmetic Operators<a class="headerlink" href="#arithmetic-operators" title="Permalink to this heading">#</a></h3>
 <p>Below is a table of the syntax for common arithmetic operations in Python:</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-align:center head"><p>Operator</p></th>
-<th class="text-align:center head"><p>Description</p></th>
+<tr class="row-odd"><th class="head text-center"><p>Operator</p></th>
+<th class="head text-center"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
-<td class="text-align:center"><p>addition</p></td>
+<tr class="row-even"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td class="text-center"><p>addition</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
-<td class="text-align:center"><p>subtraction</p></td>
+<tr class="row-odd"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+<td class="text-center"><p>subtraction</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
-<td class="text-align:center"><p>multiplication</p></td>
+<tr class="row-even"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
+<td class="text-center"><p>multiplication</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">/</span></code></p></td>
-<td class="text-align:center"><p>division</p></td>
+<tr class="row-odd"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">/</span></code></p></td>
+<td class="text-center"><p>division</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">**</span></code></p></td>
-<td class="text-align:center"><p>exponentiation</p></td>
+<tr class="row-even"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">**</span></code></p></td>
+<td class="text-center"><p>exponentiation</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">//</span></code></p></td>
-<td class="text-align:center"><p>integer division / floor division</p></td>
+<tr class="row-odd"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">//</span></code></p></td>
+<td class="text-center"><p>integer division / floor division</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">%</span></code></p></td>
-<td class="text-align:center"><p>modulo</p></td>
+<tr class="row-even"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">%</span></code></p></td>
+<td class="text-center"><p>modulo</p></td>
 </tr>
 </tbody>
 </table>
@@ -1102,7 +1301,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="none">
-<h3>None<a class="headerlink" href="#none" title="Permalink to this headline">#</a></h3>
+<h3>None<a class="headerlink" href="#none" title="Permalink to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">NoneType</span></code> is its own type in Python. It only has one possible value, <code class="docutils literal notranslate"><span class="pre">None</span></code> - it represents an object with no value. We’ll see it again in a later chapter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1127,7 +1326,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="strings">
-<h3>Strings<a class="headerlink" href="#strings" title="Permalink to this headline">#</a></h3>
+<h3>Strings<a class="headerlink" href="#strings" title="Permalink to this heading">#</a></h3>
 <p>Text is stored as a data type called a <code class="docutils literal notranslate"><span class="pre">string</span></code>. We can think of a string as a sequence of characters.</p>
 <p>We write strings as characters enclosed with either:</p>
 <ul class="simple">
@@ -1215,7 +1414,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="boolean">
-<h3>Boolean<a class="headerlink" href="#boolean" title="Permalink to this headline">#</a></h3>
+<h3>Boolean<a class="headerlink" href="#boolean" title="Permalink to this heading">#</a></h3>
 <p>The Boolean (<code class="docutils literal notranslate"><span class="pre">bool</span></code>) type has two values: <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1261,35 +1460,35 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="comparison-operators">
-<h3>Comparison Operators<a class="headerlink" href="#comparison-operators" title="Permalink to this headline">#</a></h3>
+<h3>Comparison Operators<a class="headerlink" href="#comparison-operators" title="Permalink to this heading">#</a></h3>
 <p>We can compare objects using comparison operators, and we’ll get back a Boolean result:</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-align:left head"><p>Operator</p></th>
-<th class="text-align:left head"><p>Description</p></th>
+<tr class="row-odd"><th class="head text-left"><p>Operator</p></th>
+<th class="head text-left"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">y</span> </code></p></td>
-<td class="text-align:left"><p>is <code class="docutils literal notranslate"><span class="pre">x</span></code> equal to <code class="docutils literal notranslate"><span class="pre">y</span></code>?</p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">y</span> </code></p></td>
+<td class="text-left"><p>is <code class="docutils literal notranslate"><span class="pre">x</span></code> equal to <code class="docutils literal notranslate"><span class="pre">y</span></code>?</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">!=</span> <span class="pre">y</span></code></p></td>
-<td class="text-align:left"><p>is <code class="docutils literal notranslate"><span class="pre">x</span></code> not equal to <code class="docutils literal notranslate"><span class="pre">y</span></code>?</p></td>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">!=</span> <span class="pre">y</span></code></p></td>
+<td class="text-left"><p>is <code class="docutils literal notranslate"><span class="pre">x</span></code> not equal to <code class="docutils literal notranslate"><span class="pre">y</span></code>?</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code></p></td>
-<td class="text-align:left"><p>is <code class="docutils literal notranslate"><span class="pre">x</span></code> greater than <code class="docutils literal notranslate"><span class="pre">y</span></code>?</p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code></p></td>
+<td class="text-left"><p>is <code class="docutils literal notranslate"><span class="pre">x</span></code> greater than <code class="docutils literal notranslate"><span class="pre">y</span></code>?</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;=</span> <span class="pre">y</span></code></p></td>
-<td class="text-align:left"><p>is <code class="docutils literal notranslate"><span class="pre">x</span></code> greater than or equal to <code class="docutils literal notranslate"><span class="pre">y</span></code>?</p></td>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;=</span> <span class="pre">y</span></code></p></td>
+<td class="text-left"><p>is <code class="docutils literal notranslate"><span class="pre">x</span></code> greater than or equal to <code class="docutils literal notranslate"><span class="pre">y</span></code>?</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">y</span></code></p></td>
-<td class="text-align:left"><p>is <code class="docutils literal notranslate"><span class="pre">x</span></code> less than <code class="docutils literal notranslate"><span class="pre">y</span></code>?</p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">y</span></code></p></td>
+<td class="text-left"><p>is <code class="docutils literal notranslate"><span class="pre">x</span></code> less than <code class="docutils literal notranslate"><span class="pre">y</span></code>?</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;=</span> <span class="pre">y</span></code></p></td>
-<td class="text-align:left"><p>is <code class="docutils literal notranslate"><span class="pre">x</span></code> less than or equal to <code class="docutils literal notranslate"><span class="pre">y</span></code>?</p></td>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;=</span> <span class="pre">y</span></code></p></td>
+<td class="text-left"><p>is <code class="docutils literal notranslate"><span class="pre">x</span></code> less than or equal to <code class="docutils literal notranslate"><span class="pre">y</span></code>?</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">is</span> <span class="pre">y</span></code></p></td>
-<td class="text-align:left"><p>is <code class="docutils literal notranslate"><span class="pre">x</span></code> the same object as <code class="docutils literal notranslate"><span class="pre">y</span></code>?</p></td>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">is</span> <span class="pre">y</span></code></p></td>
+<td class="text-left"><p>is <code class="docutils literal notranslate"><span class="pre">x</span></code> the same object as <code class="docutils literal notranslate"><span class="pre">y</span></code>?</p></td>
 </tr>
 </tbody>
 </table>
@@ -1330,23 +1529,23 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="boolean-operators">
-<h3>Boolean Operators<a class="headerlink" href="#boolean-operators" title="Permalink to this headline">#</a></h3>
+<h3>Boolean Operators<a class="headerlink" href="#boolean-operators" title="Permalink to this heading">#</a></h3>
 <p>We also have so-called “boolean operators” which also evaluates to either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>:</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-align:center head"><p>Operator</p></th>
-<th class="text-align:left head"><p>Description</p></th>
+<tr class="row-odd"><th class="head text-center"><p>Operator</p></th>
+<th class="head text-left"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">and</span> <span class="pre">y</span></code></p></td>
-<td class="text-align:left"><p>are <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> both True?</p></td>
+<tr class="row-even"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">and</span> <span class="pre">y</span></code></p></td>
+<td class="text-left"><p>are <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> both True?</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">or</span> <span class="pre">y</span></code></p></td>
-<td class="text-align:left"><p>is at least one of <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> True?</p></td>
+<tr class="row-odd"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">or</span> <span class="pre">y</span></code></p></td>
+<td class="text-left"><p>is at least one of <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> True?</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">x</span></code></p></td>
-<td class="text-align:left"><p>is <code class="docutils literal notranslate"><span class="pre">x</span></code> False?</p></td>
+<tr class="row-even"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">x</span></code></p></td>
+<td class="text-left"><p>is <code class="docutils literal notranslate"><span class="pre">x</span></code> False?</p></td>
 </tr>
 </tbody>
 </table>
@@ -1408,7 +1607,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="casting">
-<h3>Casting<a class="headerlink" href="#casting" title="Permalink to this headline">#</a></h3>
+<h3>Casting<a class="headerlink" href="#casting" title="Permalink to this heading">#</a></h3>
 <p>Sometimes we need to explicitly <strong>cast</strong> a value from one type to another. We can do this using functions like <code class="docutils literal notranslate"><span class="pre">str()</span></code>, <code class="docutils literal notranslate"><span class="pre">int()</span></code>, and <code class="docutils literal notranslate"><span class="pre">float()</span></code>. Python tries to do the conversion, or throws an error if it can’t.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1472,7 +1671,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </section>
 </section>
 <section id="lists-and-tuples">
-<h2>3. Lists and Tuples<a class="headerlink" href="#lists-and-tuples" title="Permalink to this headline">#</a></h2>
+<h2>3. Lists and Tuples<a class="headerlink" href="#lists-and-tuples" title="Permalink to this heading">#</a></h2>
 <hr><p>Lists and tuples allow us to store multiple things (“elements”) in a single object. The elements are <em>ordered</em> (we’ll explore what that means a little later). We’ll start with lists. Lists are defined with square brackets <code class="docutils literal notranslate"><span class="pre">[]</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1542,7 +1741,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </div>
 <section id="indexing-and-slicing-sequences">
-<h3>Indexing and Slicing Sequences<a class="headerlink" href="#indexing-and-slicing-sequences" title="Permalink to this headline">#</a></h3>
+<h3>Indexing and Slicing Sequences<a class="headerlink" href="#indexing-and-slicing-sequences" title="Permalink to this heading">#</a></h3>
 <p>We can access values inside a list, tuple, or string using square bracket syntax. Python uses <em>zero-based indexing</em>, which means the first element of the list is in position 0, not position 1.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1655,7 +1854,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="list-methods">
-<h3>List Methods<a class="headerlink" href="#list-methods" title="Permalink to this headline">#</a></h3>
+<h3>List Methods<a class="headerlink" href="#list-methods" title="Permalink to this heading">#</a></h3>
 <p>A list is an object and it has methods for interacting with its data. A method is like a function, it performs some operation with the data, but a method differs to a function in that it is defined on the object itself and accessed using a period <code class="docutils literal notranslate"><span class="pre">.</span></code>. For example, <code class="docutils literal notranslate"><span class="pre">my_list.append(item)</span></code> appends an item to the end of the list called <code class="docutils literal notranslate"><span class="pre">my_list</span></code>. You can see the documentation for more <a class="reference external" href="https://docs.python.org/3/tutorial/datastructures.html#more-on-lists">list methods</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1688,7 +1887,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="sets">
-<h3>Sets<a class="headerlink" href="#sets" title="Permalink to this headline">#</a></h3>
+<h3>Sets<a class="headerlink" href="#sets" title="Permalink to this heading">#</a></h3>
 <p>Another built-in Python data type is the <code class="docutils literal notranslate"><span class="pre">set</span></code>, which stores an <em>un-ordered</em> list of <em>unique</em> items. Being unordered, sets do not record element position or order of insertion and so do not support indexing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1730,7 +1929,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 <p>Above: throws an error because elements are not ordered and can’t be indexing.</p>
 </section>
 <section id="mutable-vs-immutable-types">
-<h3>Mutable vs. Immutable Types<a class="headerlink" href="#mutable-vs-immutable-types" title="Permalink to this headline">#</a></h3>
+<h3>Mutable vs. Immutable Types<a class="headerlink" href="#mutable-vs-immutable-types" title="Permalink to this heading">#</a></h3>
 <p>Strings and tuples are immutable types which means they can’t be modified. Lists are mutable and we can assign new values for its various entries. This is the main difference between lists and tuples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1816,7 +2015,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </section>
 </section>
 <section id="string-methods">
-<h2>4. String Methods<a class="headerlink" href="#string-methods" title="Permalink to this headline">#</a></h2>
+<h2>4. String Methods<a class="headerlink" href="#string-methods" title="Permalink to this heading">#</a></h2>
 <hr><p>There are various useful string methods in Python.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1889,7 +2088,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </div>
 <section id="string-formatting">
-<h3>String formatting<a class="headerlink" href="#string-formatting" title="Permalink to this headline">#</a></h3>
+<h3>String formatting<a class="headerlink" href="#string-formatting" title="Permalink to this heading">#</a></h3>
 <p>Python has ways of creating strings by “filling in the blanks” and formatting them nicely. This is helpful for when you want to print statements that include variables or statements. There are a few ways of doing this but I use and recommend <a class="reference external" href="https://docs.python.org/3.6/whatsnew/3.6.html#whatsnew36-pep498">f-strings</a> which were introduced in Python 3.6. All you need to do is put the letter “f” out the front of your string and then you can include variables with curly-bracket notation <code class="docutils literal notranslate"><span class="pre">{}</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1909,7 +2108,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div></section>
 </section>
 <section id="dictionaries">
-<h2>5. Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">#</a></h2>
+<h2>5. Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this heading">#</a></h2>
 <hr><p>A dictionary is a mapping between key-values pairs and is defined with curly-brackets:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2019,7 +2218,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="empties">
-<h2>6. Empties<a class="headerlink" href="#empties" title="Permalink to this headline">#</a></h2>
+<h2>6. Empties<a class="headerlink" href="#empties" title="Permalink to this heading">#</a></h2>
 <p>Sometimes you’ll want to create empty objects that will be filled later on.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2080,7 +2279,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="conditionals">
-<h2>7. Conditionals<a class="headerlink" href="#conditionals" title="Permalink to this headline">#</a></h2>
+<h2>7. Conditionals<a class="headerlink" href="#conditionals" title="Permalink to this heading">#</a></h2>
 <hr><p><a class="reference external" href="https://docs.python.org/3/tutorial/controlflow.html">Conditional statements</a> allow us to write programs where only certain blocks of code are executed depending on the state of the program. Let’s look at some examples and take note of the keywords, syntax and indentation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2128,7 +2327,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </div>
 <section id="inline-if-else">
-<h3>Inline if/else<a class="headerlink" href="#inline-if-else" title="Permalink to this headline">#</a></h3>
+<h3>Inline if/else<a class="headerlink" href="#inline-if-else" title="Permalink to this heading">#</a></h3>
 <p>We can write simple <code class="docutils literal notranslate"><span class="pre">if</span></code> statements “inline”, i.e., in a single line, for simplicity.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2159,7 +2358,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="truth-value-testing">
-<h3>Truth Value Testing<a class="headerlink" href="#truth-value-testing" title="Permalink to this headline">#</a></h3>
+<h3>Truth Value Testing<a class="headerlink" href="#truth-value-testing" title="Permalink to this heading">#</a></h3>
 <p>Any object can be tested for “truth” in Python, for use in <code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">while</span></code> (next chapter) statements.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">True</span></code> values: all objects return <code class="docutils literal notranslate"><span class="pre">True</span></code> unless they are a <code class="docutils literal notranslate"><span class="pre">bool</span></code> object with value <code class="docutils literal notranslate"><span class="pre">False</span></code> or have <code class="docutils literal notranslate"><span class="pre">len()</span></code> == 0</p></li>
@@ -2227,50 +2426,233 @@ Make sure that you save this file before you continue, else you will lose everyt
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
-              
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
+            </article>
+            
+
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="lecture.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Lecture: Course Introduction</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="tutorial2.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tutorial 2: Introduction to NumPy and Pandas</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+  <a class='left-prev' id="prev-link" href="lecture.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">Lecture: Course Introduction</p>
+      </div>
+  </a>
+  <a class='right-next' id="next-link" href="tutorial2.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">Tutorial 2: Introduction to NumPy and Pandas</p>
+  </div>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
 </div>
             </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
   
-    By Dr Elco Koks & Dr Thales Pupo-West<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
-    
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#important-before-we-start">
+   Important before we start
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning Objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-python-data-types">
+   2. Basic Python Data Types
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#common-built-in-python-data-types">
+     Common built-in Python data types
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#numeric-data-types">
+     Numeric data types
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#arithmetic-operators">
+     Arithmetic Operators
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#none">
+     None
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strings">
+     Strings
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#boolean">
+     Boolean
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparison-operators">
+     Comparison Operators
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#boolean-operators">
+     Boolean Operators
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#casting">
+     Casting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lists-and-tuples">
+   3. Lists and Tuples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing-and-slicing-sequences">
+     Indexing and Slicing Sequences
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#list-methods">
+     List Methods
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sets">
+     Sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mutable-vs-immutable-types">
+     Mutable vs. Immutable Types
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#string-methods">
+   4. String Methods
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#string-formatting">
+     String formatting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dictionaries">
+   5. Dictionaries
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#empties">
+   6. Empties
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conditionals">
+   7. Conditionals
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inline-if-else">
+     Inline if/else
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#truth-value-testing">
+     Truth Value Testing
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
 </div>
 
-
-      </div>
-    </div>
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+<div class="bd-footer-content__inner container">
   
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Elco Koks & Dr Thales Pupo-West
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2022.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+Last updated on None.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </div>
+        </footer>
+        
+
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
 
   </body>
 </html>

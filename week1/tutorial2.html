@@ -1,48 +1,56 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Tutorial 2: Introduction to NumPy and Pandas &#8212; Big Data for Sustainability Sciences</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=4ec06e9971c5264fbd345897d5258098f11cc577" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=8bf782fb4ee92b3d3646425e50f299c4e1fd152d"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -50,61 +58,564 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'week1/tutorial2';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Tutorial 3: Introduction to Data Analysis" href="tutorial3.html" />
     <link rel="prev" title="Tutorial 1: Introduction to Python" href="tutorial1.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="en">
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
+  </label>
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../intro.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
         
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../course_basics/course_intro.html">
+                        Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../course_basics/teachers.html">
+                        Teachers
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../course_basics/schedule.html">
+                        Course schedule
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="lecture.html">
+                        Lecture: Course Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="tutorial1.html">
+                        Tutorial 1: Introduction to Python
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Tutorial 2: Introduction to NumPy and Pandas
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="tutorial3.html">
+                        Tutorial 3: Introduction to Data Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week2/lecture.html">
+                        Lecture: Introduction to Random Forests
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week2/tutorial1.html">
+                        Tutorial 1: Data Exploration and regression analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week2/tutorial2.html">
+                        Tutorial 2: Random Forest Regression
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week3/lecture.html">
+                        Lecture: Introduction to Artificial Neural Networks and model validation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week3/tutorial1.html">
+                        Tutorial 1: Artificial neural networks (ANNs)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week3/tutorial2.html">
+                        Tutorial 2: Model Validation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week4/lecture.html">
+                        Lecture: Big Data in the public domain
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week4/tutorial1.html">
+                        Tutorial 1: Working with OpenStreetMap
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week4/tutorial2.html">
+                        Tutorial 2: Natural Hazard Risk Assessment
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week5/lecture.html">
+                        Lecture: Earth Observation & Google Earth Engine
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week5/tutorial1.html">
+                        Tutorial 1: Land-cover classification
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week5/tutorial2.html">
+                        Tutorial 2: Drought Detection
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week6/lecture.html">
+                        Lecture: Social Media and Natural Language Processing (NLP)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week6/tutorial1.html">
+                        Tutorial 1: Social Media & Natural Hazards
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week6/tutorial2.html">
+                        Tutorial 2: Social Media & Valuation of Landscapes
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week7/lecture.html">
+                        Lecture: A guide to visualisation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week8/exam.html">
+                        Exam preparation
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
       
       
-      <img src="../_static/logo.png" class="logo" alt="logo">
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
       
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
       
-      <h1 class="site-logo" id="site-title">Big Data for Sustainability Sciences</h1>
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../course_basics/course_intro.html">
+                        Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../course_basics/teachers.html">
+                        Teachers
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../course_basics/schedule.html">
+                        Course schedule
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="lecture.html">
+                        Lecture: Course Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="tutorial1.html">
+                        Tutorial 1: Introduction to Python
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Tutorial 2: Introduction to NumPy and Pandas
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="tutorial3.html">
+                        Tutorial 3: Introduction to Data Analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week2/lecture.html">
+                        Lecture: Introduction to Random Forests
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week2/tutorial1.html">
+                        Tutorial 1: Data Exploration and regression analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week2/tutorial2.html">
+                        Tutorial 2: Random Forest Regression
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week3/lecture.html">
+                        Lecture: Introduction to Artificial Neural Networks and model validation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week3/tutorial1.html">
+                        Tutorial 1: Artificial neural networks (ANNs)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week3/tutorial2.html">
+                        Tutorial 2: Model Validation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week4/lecture.html">
+                        Lecture: Big Data in the public domain
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week4/tutorial1.html">
+                        Tutorial 1: Working with OpenStreetMap
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week4/tutorial2.html">
+                        Tutorial 2: Natural Hazard Risk Assessment
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week5/lecture.html">
+                        Lecture: Earth Observation & Google Earth Engine
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week5/tutorial1.html">
+                        Tutorial 1: Land-cover classification
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week5/tutorial2.html">
+                        Tutorial 2: Drought Detection
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week6/lecture.html">
+                        Lecture: Social Media and Natural Language Processing (NLP)
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week6/tutorial1.html">
+                        Tutorial 1: Social Media & Natural Hazards
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week6/tutorial2.html">
+                        Tutorial 2: Social Media & Valuation of Landscapes
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week7/lecture.html">
+                        Lecture: A guide to visualisation
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../week8/exam.html">
+                        Exam preparation
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item">
+  
+
+
+<a class="navbar-brand logo" href="../intro.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    </div>
+    <div class="sidebar-start-items__item">
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -113,930 +624,502 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Course overview
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course overview</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../course_basics/course_intro.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course_basics/teachers.html">
-   Teachers
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../course_basics/schedule.html">
-   Course schedule
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../course_basics/course_intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course_basics/teachers.html">Teachers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../course_basics/schedule.html">Course schedule</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 1
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 1</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="lecture.html">
-   Lecture: Course Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tutorial1.html">
-   Tutorial 1: Introduction to Python
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Tutorial 2: Introduction to NumPy and Pandas
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tutorial3.html">
-   Tutorial 3: Introduction to Data Analysis
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="lecture.html">Lecture: Course Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html">Tutorial 1: Introduction to Python</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tutorial 2: Introduction to NumPy and Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial3.html">Tutorial 3: Introduction to Data Analysis</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 2
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 2</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week2/lecture.html">
-   Lecture: Introduction to Random Forests
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week2/tutorial1.html">
-   Tutorial 1: Data Exploration and regression analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week2/tutorial2.html">
-   Tutorial 2: Random Forest Regression
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/lecture.html">Lecture: Introduction to Random Forests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/tutorial1.html">Tutorial 1: Data Exploration and regression analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week2/tutorial2.html">Tutorial 2: Random Forest Regression</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 3
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 3</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week3/lecture.html">
-   Lecture: Introduction to Artificial Neural Networks and model validation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week3/tutorial1.html">
-   Tutorial 1: Artificial neural networks (ANNs)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week3/tutorial2.html">
-   Tutorial 2: Model Validation
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/lecture.html">Lecture: Introduction to Artificial Neural Networks and model validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/tutorial1.html">Tutorial 1: Artificial neural networks (ANNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/tutorial2.html">Tutorial 2: Model Validation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 4
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week4/lecture.html">
-   Lecture: Big Data in the public domain
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week4/tutorial1.html">
-   Tutorial 1: Working with OpenStreetMap
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week4/tutorial2.html">
-   Tutorial 2: Natural Hazard Risk Assessment
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/lecture.html">Lecture: Big Data in the public domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/tutorial1.html">Tutorial 1: Working with OpenStreetMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/tutorial2.html">Tutorial 2: Natural Hazard Risk Assessment</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 5
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week5/lecture.html">
-   Lecture: Earth Observation &amp; Google Earth Engine
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week5/tutorial1.html">
-   Tutorial 1: Land-cover classification
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week5/tutorial2.html">
-   Tutorial 2: Drought Detection
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/lecture.html">Lecture: Earth Observation &amp; Google Earth Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/tutorial1.html">Tutorial 1: Land-cover classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week5/tutorial2.html">Tutorial 2: Drought Detection</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 6
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week6/lecture.html">
-   Lecture: Social Media and Natural Language Processing (NLP)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week6/tutorial1.html">
-   Tutorial 1: Social Media &amp; Natural Hazards
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../week6/tutorial2.html">
-   Tutorial 2: Social Media &amp; Valuation of Landscapes
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/lecture.html">Lecture: Social Media and Natural Language Processing (NLP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/tutorial1.html">Tutorial 1: Social Media &amp; Natural Hazards</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week6/tutorial2.html">Tutorial 2: Social Media &amp; Valuation of Landscapes</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 7
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 7</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week7/lecture.html">
-   Lecture: A guide to visualisation
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week7/lecture.html">Lecture: A guide to visualisation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Week 8
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 8</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../week8/exam.html">
-   Exam preparation
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../week8/exam.html">Exam preparation</a></li>
 </ul>
 
     </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
+</nav>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
+  </div>
+  
 
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
 
-          
+  
+  <div id="rtd-footer-container"></div>
 
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
+      </div>
+      <main id="main-content" class="bd-main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
 
 
 
 <div class="col py-1 d-flex header-article-main">
     <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
+        <label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" data-toggle="tooltip" data-placement="right" title="Toggle primary sidebar">
+            <span class="fa-solid fa-bars"></span>
+        </label>
     </div>
     <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://colab.research.google.com/github/ElcoK/BigData_AED/blob/main/week1/tutorial2.ipynb"
-   class="headerbtn"
+  <ul class="dropdown-menu">
+      <li><a href="https://colab.research.google.com/github/ElcoK/BigData_AED/blob/main/week1/tutorial2.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
 title="Launch on Colab"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   
     <img src="../_static/images/logo_colab.png">
   </span>
-<span class="headerbtn__text-container">Colab</span>
+<span class="btn__text-container">Colab</span>
 </a>
-
-      </li>
+</a>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
+  class="btn btn-sm"
   data-toggle="tooltip"
 data-placement="bottom"
 title="Fullscreen mode"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<div class="dropdown dropdown-repository-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/ElcoK/BigData_AED"
-   class="headerbtn"
+  <ul class="dropdown-menu">
+      <li><a href="https://github.com/ElcoK/BigData_AED" target="_blank"
+   class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
 title="Source repository"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fab fa-github"></i>
   </span>
-<span class="headerbtn__text-container">repository</span>
+<span class="btn__text-container">repository</span>
 </a>
-
-      </li>
+</a>
       
-      <li>
-        <a href="https://github.com/ElcoK/BigData_AED/issues/new?title=Issue%20on%20page%20%2Fweek1/tutorial2.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
+      <li><a href="https://github.com/ElcoK/BigData_AED/issues/new?title=Issue%20on%20page%20%2Fweek1/tutorial2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
 title="Open an issue"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-lightbulb"></i>
   </span>
-<span class="headerbtn__text-container">open issue</span>
+<span class="btn__text-container">open issue</span>
 </a>
-
-      </li>
+</a>
       
-    </ul>
-  </div>
+  </ul>
 </div>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/week1/tutorial2.ipynb"
-   class="headerbtn"
+  <ul class="dropdown-menu">
+      <li><a href="../_sources/week1/tutorial2.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
    data-toggle="tooltip"
 data-placement="left"
 title="Download source file"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.ipynb</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-
-      </li>
+</a>
       
       <li>
-        
 <button onclick="printPdf(this)"
-  class="headerbtn"
+  class="btn btn-sm dropdown-item"
   data-toggle="tooltip"
 data-placement="left"
 title="Print to PDF"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-file-pdf"></i>
   </span>
-<span class="headerbtn__text-container">.pdf</span>
+<span class="btn__text-container">.pdf</span>
 </button>
-
-      </li>
+</a>
       
-    </ul>
-  </div>
+  </ul>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary" data-toggle="tooltip" data-placement="left" title="Toggle secondary sidebar">
+            <span class="fa-solid fa-list"></span>
+        </label>
     </div>
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#important-before-we-start">
-   Important before we start
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning Objectives
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#performing-the-exercise">
-   Performing the exercise
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction-to-python-packages">
-   1. Introduction to Python Packages
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#importing-a-package">
-     Importing a package
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction-to-numpy">
-   2. Introduction to NumPy
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#numpy-arrays">
-   3. NumPy Arrays
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-are-arrays">
-     What are Arrays?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creating-arrays">
-     Creating arrays
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#array-shapes">
-     Array Shapes
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#d-arrays">
-     1-d Arrays
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#array-operations-and-broadcasting">
-   4. Array Operations and Broadcasting
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#elementwise-operations">
-     Elementwise operations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#broadcasting">
-     Broadcasting
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reshaping-arrays">
-     Reshaping Arrays
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#indexing-and-slicing">
-   5. Indexing and slicing
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#numeric-indexing">
-     Numeric Indexing
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#boolean-indexing">
-     Boolean Indexing
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#more-useful-numpy-functions">
-   6. More Useful NumPy Functions
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#vectorization">
-     Vectorization
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction-to-pandas">
-   7. Introduction to Pandas
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas-series">
-   8. Pandas Series
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-are-series">
-     What are Series?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creating-series">
-     Creating Series
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#series-characteristics">
-     Series Characteristics
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#indexing-and-slicing-series">
-     Indexing and Slicing Series
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#series-operations">
-     Series Operations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data-types">
-     Data Types
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas-dataframes">
-   9. Pandas DataFrames
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-are-dataframes">
-     What are DataFrames?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creating-dataframes">
-     Creating DataFrames
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#indexing-and-slicing-dataframes">
-     Indexing and Slicing DataFrames
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#indexing-with">
-       Indexing with
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         []
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#indexing-with-loc-and-iloc">
-       Indexing with
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         .loc
-        </span>
-       </code>
-       and
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         .iloc
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
-       Boolean indexing
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#indexing-with-query">
-       Indexing with
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         .query()
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#indexing-cheatsheet">
-       Indexing cheatsheet
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reading-writing-data-from-external-sources">
-     Reading/Writing Data From External Sources
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#csv-files">
-       .csv files
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#other">
-       Other
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#common-dataframe-operations">
-     Common DataFrame Operations
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-ndarrays-and-series-and-dataframes">
-   10. Why ndarrays and Series and DataFrames?
-  </a>
- </li>
-</ul>
-
-    </nav>
-</div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Tutorial 2: Introduction to NumPy and Pandas</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#important-before-we-start">
-   Important before we start
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning Objectives
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#performing-the-exercise">
-   Performing the exercise
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction-to-python-packages">
-   1. Introduction to Python Packages
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#importing-a-package">
-     Importing a package
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction-to-numpy">
-   2. Introduction to NumPy
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#numpy-arrays">
-   3. NumPy Arrays
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-are-arrays">
-     What are Arrays?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creating-arrays">
-     Creating arrays
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#array-shapes">
-     Array Shapes
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#d-arrays">
-     1-d Arrays
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#array-operations-and-broadcasting">
-   4. Array Operations and Broadcasting
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#elementwise-operations">
-     Elementwise operations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#broadcasting">
-     Broadcasting
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reshaping-arrays">
-     Reshaping Arrays
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#indexing-and-slicing">
-   5. Indexing and slicing
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#numeric-indexing">
-     Numeric Indexing
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#boolean-indexing">
-     Boolean Indexing
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#more-useful-numpy-functions">
-   6. More Useful NumPy Functions
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#vectorization">
-     Vectorization
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction-to-pandas">
-   7. Introduction to Pandas
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas-series">
-   8. Pandas Series
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-are-series">
-     What are Series?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creating-series">
-     Creating Series
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#series-characteristics">
-     Series Characteristics
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#indexing-and-slicing-series">
-     Indexing and Slicing Series
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#series-operations">
-     Series Operations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data-types">
-     Data Types
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas-dataframes">
-   9. Pandas DataFrames
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#what-are-dataframes">
-     What are DataFrames?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creating-dataframes">
-     Creating DataFrames
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#indexing-and-slicing-dataframes">
-     Indexing and Slicing DataFrames
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#indexing-with">
-       Indexing with
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         []
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#indexing-with-loc-and-iloc">
-       Indexing with
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         .loc
-        </span>
-       </code>
-       and
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         .iloc
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
-       Boolean indexing
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#indexing-with-query">
-       Indexing with
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         .query()
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#indexing-cheatsheet">
-       Indexing cheatsheet
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#reading-writing-data-from-external-sources">
-     Reading/Writing Data From External Sources
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#csv-files">
-       .csv files
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#other">
-       Other
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#common-dataframe-operations">
-     Common DataFrame Operations
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#why-ndarrays-and-series-and-dataframes">
-   10. Why ndarrays and Series and DataFrames?
-  </a>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
             </div>
-            <main id="main-content" role="main">
-                
-              <div>
-                
-  <section class="tex2jax_ignore mathjax_ignore" id="tutorial-2-introduction-to-numpy-and-pandas">
-<h1>Tutorial 2: Introduction to NumPy and Pandas<a class="headerlink" href="#tutorial-2-introduction-to-numpy-and-pandas" title="Permalink to this headline">#</a></h1>
+            
+            
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tutorial 2: Introduction to NumPy and Pandas</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#important-before-we-start">
+   Important before we start
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning Objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#performing-the-exercise">
+   Performing the exercise
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-to-python-packages">
+   1. Introduction to Python Packages
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#importing-a-package">
+     Importing a package
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-to-numpy">
+   2. Introduction to NumPy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numpy-arrays">
+   3. NumPy Arrays
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-arrays">
+     What are Arrays?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-arrays">
+     Creating arrays
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#array-shapes">
+     Array Shapes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#d-arrays">
+     1-d Arrays
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#array-operations-and-broadcasting">
+   4. Array Operations and Broadcasting
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#elementwise-operations">
+     Elementwise operations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#broadcasting">
+     Broadcasting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reshaping-arrays">
+     Reshaping Arrays
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#indexing-and-slicing">
+   5. Indexing and slicing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#numeric-indexing">
+     Numeric Indexing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#boolean-indexing">
+     Boolean Indexing
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-useful-numpy-functions">
+   6. More Useful NumPy Functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vectorization">
+     Vectorization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-to-pandas">
+   7. Introduction to Pandas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandas-series">
+   8. Pandas Series
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-series">
+     What are Series?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-series">
+     Creating Series
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#series-characteristics">
+     Series Characteristics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing-and-slicing-series">
+     Indexing and Slicing Series
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#series-operations">
+     Series Operations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-types">
+     Data Types
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandas-dataframes">
+   9. Pandas DataFrames
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-dataframes">
+     What are DataFrames?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-dataframes">
+     Creating DataFrames
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing-and-slicing-dataframes">
+     Indexing and Slicing DataFrames
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#indexing-with">
+       Indexing with
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         []
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#indexing-with-loc-and-iloc">
+       Indexing with
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         .loc
+        </span>
+       </code>
+       and
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         .iloc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Boolean indexing
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#indexing-with-query">
+       Indexing with
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         .query()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#indexing-cheatsheet">
+       Indexing cheatsheet
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reading-writing-data-from-external-sources">
+     Reading/Writing Data From External Sources
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#csv-files">
+       .csv files
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#other">
+       Other
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#common-dataframe-operations">
+     Common DataFrame Operations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-ndarrays-and-series-and-dataframes">
+   10. Why ndarrays and Series and DataFrames?
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+            <article class="bd-article" role="main">
+              
+  <section id="tutorial-2-introduction-to-numpy-and-pandas">
+<h1>Tutorial 2: Introduction to NumPy and Pandas<a class="headerlink" href="#tutorial-2-introduction-to-numpy-and-pandas" title="Permalink to this heading">#</a></h1>
 <p>One of the most used packages within our discipline are NumPy and Pandas. This tutorial will focus on teaching you the basics of both of them.</p>
 <div class="alert alert-block alert-info">
 <b>Note:</b> This tutorial is heavily based upon the work of <a href="https://www.tomasbeuzen.com/python-programming-for-data-science/">others</a>
 </div><div class="alert alert-block alert-danger">
 <b>Important:</b> This tutorial is not part of your final grade. You simply have to pass it by answering the questions.
 </div><section id="important-before-we-start">
-<h2>Important before we start<a class="headerlink" href="#important-before-we-start" title="Permalink to this headline">#</a></h2>
+<h2>Important before we start<a class="headerlink" href="#important-before-we-start" title="Permalink to this heading">#</a></h2>
 <hr>
 Make sure that you save this file before you continue, else you will lose everything. To do so, go to Bestand/File and click on Een kopie opslaan in Drive/Save a Copy on Drive!
 <p>Now, rename the file into Week1_Tutorial2.ipynb. You can do so by clicking on the name in the top of this screen.</p>
@@ -1054,7 +1137,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 <li><span><a href="#pandas-dataframes" data-toc-modified-id="9.-Pandas-DataFrames-9"> Pandas DataFrames</a></span></li>
 <li><span><a href="#why-ndarrays-and-series-and-dataFrames?" data-toc-modified-id="10.-Why-ndarrays-and-Series-and-DataFrames?-10"> Why ndarrays and Series and DataFrames?</a></span></li></ul></div></section>
 <section id="learning-objectives">
-<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
+<h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this heading">#</a></h2>
 <hr><p><strong>NumPy</strong></p>
 <ul class="simple">
 <li><p>Use NumPy to create arrays with built-in functions inlcuding <code class="docutils literal notranslate"><span class="pre">np.array()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.arange()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.linspace()</span></code> and <code class="docutils literal notranslate"><span class="pre">np.full()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.zeros()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.ones()</span></code></p></li>
@@ -1075,11 +1158,11 @@ Make sure that you save this file before you continue, else you will lose everyt
 </ul>
 </section>
 <section id="performing-the-exercise">
-<h2>Performing the exercise<a class="headerlink" href="#performing-the-exercise" title="Permalink to this headline">#</a></h2>
+<h2>Performing the exercise<a class="headerlink" href="#performing-the-exercise" title="Permalink to this heading">#</a></h2>
 <p>You will do so by performing the scripts in this Python Jupyter notebook. To run any script in the code-boxes below use <em>crtl+enter</em>. In some instances, it is necessary to make changes to particular pieces of code in the code-boxes. When this is the case, this will be asked to you before you arrive at the actual script. This is indicated by means of an <strong>Action</strong>. When a script is running this is indicated by the * on the left side of the window.</p>
 </section>
 <section id="introduction-to-python-packages">
-<h2>1. Introduction to Python Packages<a class="headerlink" href="#introduction-to-python-packages" title="Permalink to this headline">#</a></h2>
+<h2>1. Introduction to Python Packages<a class="headerlink" href="#introduction-to-python-packages" title="Permalink to this heading">#</a></h2>
 <hr><p>Packages are an essential building block in programming. Without packages, we’d spend lots of time writing code that’s already been written. Imagine having to write code from scratch every time you wanted to parse a file in a particular format. You’d never get anything done! That’s why we always want to use packages.</p>
 <p>To understand Python packages, we’ll briefly need to look at scripts and modules. A <em>script</em> is something you execute in the shell to accomplish a defined task. To write a script, you’d type your code into your favorite text editor and save it with the .py extension. You can then use the python command in a terminal to execute your script.</p>
 <p>A module on the other hand is a Python program that you import, either in interactive mode or into your other programs. “Module” is really an umbrella term for reusable code.</p>
@@ -1089,7 +1172,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 <p><a class="reference external" href="https://www.labri.fr/perso/nrougier/from-python-to-numpy/"><strong>NumPy</strong></a> stands for “Numerical Python” and it is the standard Python library used for working with arrays (i.e., vectors &amp; matrices), linear algerba, and other numerical computations. NumPy is written in C, making NumPy arrays faster and more memory efficient than Python lists or arrays</p>
 <p><a class="reference external" href="https://pypi.org/project/pandas/"><strong>Pandas</strong></a> is most popular Python library for tabular data structures. You can think of Pandas as an extremely powerful version of Excel (but free and with a lot more features!)</p>
 <section id="importing-a-package">
-<h3>Importing a package<a class="headerlink" href="#importing-a-package" title="Permalink to this headline">#</a></h3>
+<h3>Importing a package<a class="headerlink" href="#importing-a-package" title="Permalink to this heading">#</a></h3>
 <p>We’ll import a package using the import statement:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span>
 </pre></div>
@@ -1097,7 +1180,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </section>
 </section>
 <section id="introduction-to-numpy">
-<h2>2. Introduction to NumPy<a class="headerlink" href="#introduction-to-numpy" title="Permalink to this headline">#</a></h2>
+<h2>2. Introduction to NumPy<a class="headerlink" href="#introduction-to-numpy" title="Permalink to this heading">#</a></h2>
 <hr><p>NumPy can be installed using <code class="docutils literal notranslate"><span class="pre">pip</span></code> (in google colab pandas and numpy packages are already installed, hence, we will skip this part):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install numpy
 
@@ -1105,9 +1188,9 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="numpy-arrays">
-<h2>3. NumPy Arrays<a class="headerlink" href="#numpy-arrays" title="Permalink to this headline">#</a></h2>
+<h2>3. NumPy Arrays<a class="headerlink" href="#numpy-arrays" title="Permalink to this heading">#</a></h2>
 <hr><section id="what-are-arrays">
-<h3>What are Arrays?<a class="headerlink" href="#what-are-arrays" title="Permalink to this headline">#</a></h3>
+<h3>What are Arrays?<a class="headerlink" href="#what-are-arrays" title="Permalink to this heading">#</a></h3>
 <p>Arrays are “n-dimensional” data structures that can contain all the basic Python data types, e.g., floats, integers, strings etc, but work best with numeric data. NumPy arrays (“ndarrays”) are homogenous, which means that items in the array should be of the same type. ndarrays are also compatible with numpy’s vast collection of in-built functions!</p>
 <p>Usually we import numpy with the alias <code class="docutils literal notranslate"><span class="pre">np</span></code> (to avoid having to type out n-u-m-p-y every time we want to use it):</p>
 <div class="cell docutils container">
@@ -1162,9 +1245,9 @@ Make sure that you save this file before you continue, else you will lose everyt
 <p>Above: NumPy converted the integer <code class="docutils literal notranslate"><span class="pre">1</span></code> into the string <code class="docutils literal notranslate"><span class="pre">'1'</span></code>!</p>
 </section>
 <section id="creating-arrays">
-<h3>Creating arrays<a class="headerlink" href="#creating-arrays" title="Permalink to this headline">#</a></h3>
+<h3>Creating arrays<a class="headerlink" href="#creating-arrays" title="Permalink to this heading">#</a></h3>
 <p>ndarrays are typically created using two main methods:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>From existing data (usually lists or tuples) using <code class="docutils literal notranslate"><span class="pre">np.array()</span></code>, like we saw above; or,</p></li>
 <li><p>Using built-in functions such as <code class="docutils literal notranslate"><span class="pre">np.arange()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.linspace()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.zeros()</span></code>, etc.</p></li>
 </ol>
@@ -1289,7 +1372,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="array-shapes">
-<h3>Array Shapes<a class="headerlink" href="#array-shapes" title="Permalink to this headline">#</a></h3>
+<h3>Array Shapes<a class="headerlink" href="#array-shapes" title="Permalink to this heading">#</a></h3>
 <p>As you just saw above, arrays can be of any dimension, shape and size you desire. In fact, there are three main array attributes you need to know to work out the characteristics of an array:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">.ndim</span></code>: the number of dimensions of an array</p></li>
@@ -1339,7 +1422,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 <p>After 3 dimensions, printing arrays starts getting pretty messy. As you can see above, the number of square brackets (<code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code>) in the printed output indicate how many dimensions there are: for example, above, the output starts with 4 square brackets <code class="docutils literal notranslate"><span class="pre">[[[[</span></code> indicative of a 4D array.</p>
 </section>
 <section id="d-arrays">
-<h3>1-d Arrays<a class="headerlink" href="#d-arrays" title="Permalink to this headline">#</a></h3>
+<h3>1-d Arrays<a class="headerlink" href="#d-arrays" title="Permalink to this heading">#</a></h3>
 <p>One of the most confusing things about numpy is 1-d arrays (vectors) can have 3 possible shapes!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1422,9 +1505,9 @@ Make sure that you save this file before you continue, else you will lose everyt
 </section>
 </section>
 <section id="array-operations-and-broadcasting">
-<h2>4. Array Operations and Broadcasting<a class="headerlink" href="#array-operations-and-broadcasting" title="Permalink to this headline">#</a></h2>
+<h2>4. Array Operations and Broadcasting<a class="headerlink" href="#array-operations-and-broadcasting" title="Permalink to this heading">#</a></h2>
 <hr><section id="elementwise-operations">
-<h3>Elementwise operations<a class="headerlink" href="#elementwise-operations" title="Permalink to this headline">#</a></h3>
+<h3>Elementwise operations<a class="headerlink" href="#elementwise-operations" title="Permalink to this heading">#</a></h3>
 <p>Elementwise operations refer to operations applied to each element of an array or between the paired elements of two arrays.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1486,7 +1569,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="broadcasting">
-<h3>Broadcasting<a class="headerlink" href="#broadcasting" title="Permalink to this headline">#</a></h3>
+<h3>Broadcasting<a class="headerlink" href="#broadcasting" title="Permalink to this heading">#</a></h3>
 <p>ndarrays with different sizes cannot be directly used in arithmetic operations:</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
@@ -1601,7 +1684,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="reshaping-arrays">
-<h3>Reshaping Arrays<a class="headerlink" href="#reshaping-arrays" title="Permalink to this headline">#</a></h3>
+<h3>Reshaping Arrays<a class="headerlink" href="#reshaping-arrays" title="Permalink to this heading">#</a></h3>
 <p>There are 3 key reshaping methods I want you to know about for reshaping numpy arrays:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">.rehshape()</span></code></p></li>
@@ -1689,10 +1772,10 @@ Make sure that you save this file before you continue, else you will lose everyt
 </section>
 </section>
 <section id="indexing-and-slicing">
-<h2>5. Indexing and slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">#</a></h2>
+<h2>5. Indexing and slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this heading">#</a></h2>
 <hr><p>Concepts of indexing should be pretty familiar by now. Indexing arrays is similar to indexing lists but there are just more dimensions.</p>
 <section id="numeric-indexing">
-<h3>Numeric Indexing<a class="headerlink" href="#numeric-indexing" title="Permalink to this headline">#</a></h3>
+<h3>Numeric Indexing<a class="headerlink" href="#numeric-indexing" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -1855,7 +1938,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="boolean-indexing">
-<h3>Boolean Indexing<a class="headerlink" href="#boolean-indexing" title="Permalink to this headline">#</a></h3>
+<h3>Boolean Indexing<a class="headerlink" href="#boolean-indexing" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -1906,7 +1989,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </section>
 </section>
 <section id="more-useful-numpy-functions">
-<h2>6. More Useful NumPy Functions<a class="headerlink" href="#more-useful-numpy-functions" title="Permalink to this headline">#</a></h2>
+<h2>6. More Useful NumPy Functions<a class="headerlink" href="#more-useful-numpy-functions" title="Permalink to this heading">#</a></h2>
 <p>Numpy has many built-in functions for mathematical operations, really it has almost every numerical operation you might want to do in its library. I’m not going to explore the whole library here, but as an example of some of the available functions, consider working out the hypotenuse of a triangle that with sides 3m and 4m:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1948,7 +2031,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </div>
 <section id="vectorization">
-<h3>Vectorization<a class="headerlink" href="#vectorization" title="Permalink to this headline">#</a></h3>
+<h3>Vectorization<a class="headerlink" href="#vectorization" title="Permalink to this heading">#</a></h3>
 <p>Broadly speaking, “vectorization” in NumPy refers to the use of optmized C code to perform an operation. Long-story-short, because numpy arrays are homogenous (contain the same dtype), we don’t need to check that we can perform an operation on elements of a sequence before we do the operation which results in a huge speed-up. You can kind of think of this concept as NumPy being able to perform an operation on the whole array at the same time rather than one-by-one (this is not actually the case, a super-efficient C loop is still running under the hood, but that’s an irrelevant detail). You can read more about vectorization <a class="reference external" href="https://www.pythonlikeyoumeanit.com/Module3_IntroducingNumpy/VectorizedOperations.html">here</a> but all you need to know is that most operations in NumPy are vectorized, so just try to do things at an “array-level” rather than an “element-level”, e.g.:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1987,7 +2070,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </section>
 </section>
 <section id="introduction-to-pandas">
-<h2>7. Introduction to Pandas<a class="headerlink" href="#introduction-to-pandas" title="Permalink to this headline">#</a></h2>
+<h2>7. Introduction to Pandas<a class="headerlink" href="#introduction-to-pandas" title="Permalink to this heading">#</a></h2>
 <hr><p>Pandas can be installed using <code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install pandas
 </pre></div>
@@ -2002,13 +2085,13 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="pandas-series">
-<h2>8. Pandas Series<a class="headerlink" href="#pandas-series" title="Permalink to this headline">#</a></h2>
+<h2>8. Pandas Series<a class="headerlink" href="#pandas-series" title="Permalink to this heading">#</a></h2>
 <hr><section id="what-are-series">
-<h3>What are Series?<a class="headerlink" href="#what-are-series" title="Permalink to this headline">#</a></h3>
+<h3>What are Series?<a class="headerlink" href="#what-are-series" title="Permalink to this heading">#</a></h3>
 <p>A Series is like a NumPy array but with labels. They are strictly 1-dimensional and can contain any data type (integers, strings, floats, objects, etc), including a mix of them. Series can be created from a scalar, a list, ndarray or dictionary using <code class="docutils literal notranslate"><span class="pre">pd.Series()</span></code> (<strong>note the captial “S”</strong>). Here are some example series:</p>
 </section>
 <section id="creating-series">
-<h3>Creating Series<a class="headerlink" href="#creating-series" title="Permalink to this headline">#</a></h3>
+<h3>Creating Series<a class="headerlink" href="#creating-series" title="Permalink to this heading">#</a></h3>
 <p>By default, series are labelled with indices starting from 0. For example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2059,7 +2142,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="series-characteristics">
-<h3>Series Characteristics<a class="headerlink" href="#series-characteristics" title="Permalink to this headline">#</a></h3>
+<h3>Series Characteristics<a class="headerlink" href="#series-characteristics" title="Permalink to this heading">#</a></h3>
 <p>Series can be given a <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute. I almost never use this but it might come up sometimes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2108,7 +2191,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="indexing-and-slicing-series">
-<h3>Indexing and Slicing Series<a class="headerlink" href="#indexing-and-slicing-series" title="Permalink to this headline">#</a></h3>
+<h3>Indexing and Slicing Series<a class="headerlink" href="#indexing-and-slicing-series" title="Permalink to this heading">#</a></h3>
 <p>Series are very much like ndarrays (in fact, series can be passed to most NumPy functions!). They can be indexed using square brackets <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> and sliced using colon <code class="docutils literal notranslate"><span class="pre">:</span></code> notation:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2218,7 +2301,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="series-operations">
-<h3>Series Operations<a class="headerlink" href="#series-operations" title="Permalink to this headline">#</a></h3>
+<h3>Series Operations<a class="headerlink" href="#series-operations" title="Permalink to this heading">#</a></h3>
 <p>Unlike ndarrays operations between Series (+, -, /, *) align values based on their <strong>LABELS</strong> (not their position in the structure). The resulting index will be the <strong><em>sorted union</em></strong> of the two indexes. This gives you the flexibility to run operations on series regardless of their labels.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2307,7 +2390,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="data-types">
-<h3>Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">#</a></h3>
+<h3>Data Types<a class="headerlink" href="#data-types" title="Permalink to this heading">#</a></h3>
 <p>Series can hold all the data types (<code class="docutils literal notranslate"><span class="pre">dtypes</span></code>) you’re used to, e.g., <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">bool</span></code>, etc. There are a few other special data types too (<code class="docutils literal notranslate"><span class="pre">object</span></code>, <code class="docutils literal notranslate"><span class="pre">DateTime</span></code> and <code class="docutils literal notranslate"><span class="pre">Categorical</span></code>) which we’ll talk about in this and later chapters. You can always read more about pandas dtypes <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/basics.html#dtypes">in the documentation too</a>. For example, here’s a series of <code class="docutils literal notranslate"><span class="pre">dtype</span></code> int64:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2389,13 +2472,13 @@ Make sure that you save this file before you continue, else you will lose everyt
 </section>
 </section>
 <section id="pandas-dataframes">
-<h2>9. Pandas DataFrames<a class="headerlink" href="#pandas-dataframes" title="Permalink to this headline">#</a></h2>
+<h2>9. Pandas DataFrames<a class="headerlink" href="#pandas-dataframes" title="Permalink to this heading">#</a></h2>
 <hr><section id="what-are-dataframes">
-<h3>What are DataFrames?<a class="headerlink" href="#what-are-dataframes" title="Permalink to this headline">#</a></h3>
+<h3>What are DataFrames?<a class="headerlink" href="#what-are-dataframes" title="Permalink to this heading">#</a></h3>
 <p>Pandas DataFrames are you’re new best friend. They are like the Excel spreadsheets you may be used to. DataFrames are really just Series stuck together! Think of a DataFrame as a dictionary of series, with the “keys” being the column labels and the “values” being the series data:</p>
 </section>
 <section id="creating-dataframes">
-<h3>Creating DataFrames<a class="headerlink" href="#creating-dataframes" title="Permalink to this headline">#</a></h3>
+<h3>Creating DataFrames<a class="headerlink" href="#creating-dataframes" title="Permalink to this heading">#</a></h3>
 <p>Dataframes can be created using <code class="docutils literal notranslate"><span class="pre">pd.DataFrame()</span></code> (note the capital “D” and “F”). Like series, index and column labels of dataframes are labelled starting from 0 by default:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2445,7 +2528,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </div>
 <p>Here’s a table of the main ways you can create dataframes (see the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/dsintro.html#dataframe">Pandas documentation</a> for more):</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Create DataFrame from</p></th>
 <th class="head"><p>Code</p></th>
@@ -2471,9 +2554,9 @@ Make sure that you save this file before you continue, else you will lose everyt
 </table>
 </section>
 <section id="indexing-and-slicing-dataframes">
-<h3>Indexing and Slicing DataFrames<a class="headerlink" href="#indexing-and-slicing-dataframes" title="Permalink to this headline">#</a></h3>
+<h3>Indexing and Slicing DataFrames<a class="headerlink" href="#indexing-and-slicing-dataframes" title="Permalink to this heading">#</a></h3>
 <p>There are several main ways to select data from a DataFrame:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">.loc[]</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code></p></li>
@@ -2491,7 +2574,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </div>
 <section id="indexing-with">
-<h4>Indexing with <code class="docutils literal notranslate"><span class="pre">[]</span></code><a class="headerlink" href="#indexing-with" title="Permalink to this headline">#</a></h4>
+<h4>Indexing with <code class="docutils literal notranslate"><span class="pre">[]</span></code><a class="headerlink" href="#indexing-with" title="Permalink to this heading">#</a></h4>
 <p>Select columns by single labels, lists of labels, or slices:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2538,7 +2621,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="indexing-with-loc-and-iloc">
-<h4>Indexing with <code class="docutils literal notranslate"><span class="pre">.loc</span></code> and <code class="docutils literal notranslate"><span class="pre">.iloc</span></code><a class="headerlink" href="#indexing-with-loc-and-iloc" title="Permalink to this headline">#</a></h4>
+<h4>Indexing with <code class="docutils literal notranslate"><span class="pre">.loc</span></code> and <code class="docutils literal notranslate"><span class="pre">.iloc</span></code><a class="headerlink" href="#indexing-with-loc-and-iloc" title="Permalink to this heading">#</a></h4>
 <p>Pandas created the methods <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> and <code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code> as more flexible alternatives for accessing data from a dataframe. Use <code class="docutils literal notranslate"><span class="pre">df.iloc[]</span></code> for indexing with integers and <code class="docutils literal notranslate"><span class="pre">df.loc[]</span></code> for indexing with labels. These are typically the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#ix-indexer-is-deprecated">recommended methods of indexing</a> in Pandas.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2629,7 +2712,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="id1">
-<h4>Boolean indexing<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<h4>Boolean indexing<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
 <p>Just like with series, we can select data based on boolean masks:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2654,7 +2737,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="indexing-with-query">
-<h4>Indexing with <code class="docutils literal notranslate"><span class="pre">.query()</span></code><a class="headerlink" href="#indexing-with-query" title="Permalink to this headline">#</a></h4>
+<h4>Indexing with <code class="docutils literal notranslate"><span class="pre">.query()</span></code><a class="headerlink" href="#indexing-with-query" title="Permalink to this heading">#</a></h4>
 <p>Boolean masks work fine, but I prefer to use the <code class="docutils literal notranslate"><span class="pre">.query()</span></code> method for selecting data. <code class="docutils literal notranslate"><span class="pre">df.query()</span></code> is a powerful tool for filtering data. It has an odd syntax, one of the strangest I’ve seen in Python, it is more like SQL - <code class="docutils literal notranslate"><span class="pre">df.query()</span></code> accepts a string expression to evaluate and it “knows” the names of the columns in your dataframe.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2682,8 +2765,8 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </section>
 <section id="indexing-cheatsheet">
-<h4>Indexing cheatsheet<a class="headerlink" href="#indexing-cheatsheet" title="Permalink to this headline">#</a></h4>
-<table class="colwidths-auto table">
+<h4>Indexing cheatsheet<a class="headerlink" href="#indexing-cheatsheet" title="Permalink to this heading">#</a></h4>
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Method</p></th>
 <th class="head"><p>Syntax</p></th>
@@ -2728,9 +2811,9 @@ Make sure that you save this file before you continue, else you will lose everyt
 </section>
 </section>
 <section id="reading-writing-data-from-external-sources">
-<h3>Reading/Writing Data From External Sources<a class="headerlink" href="#reading-writing-data-from-external-sources" title="Permalink to this headline">#</a></h3>
+<h3>Reading/Writing Data From External Sources<a class="headerlink" href="#reading-writing-data-from-external-sources" title="Permalink to this heading">#</a></h3>
 <section id="csv-files">
-<h4>.csv files<a class="headerlink" href="#csv-files" title="Permalink to this headline">#</a></h4>
+<h4>.csv files<a class="headerlink" href="#csv-files" title="Permalink to this heading">#</a></h4>
 <p>A lot of the time you will be loading .csv files for use in pandas. You can use the <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code> function for this. We’ll use a real dataset of weather variables summarized by CORGIS Dataset Project from National Oceanic and Atmospheric Administration, the National Weather Service daily weather reports. There are so many arguments that can be used to help read in your .csv file in an efficient and appropriate manner, feel free to check them out now (by using <code class="docutils literal notranslate"><span class="pre">shift</span> <span class="pre">+</span> <span class="pre">tab</span></code> in Jupyter, or typing <code class="docutils literal notranslate"><span class="pre">help(pd.read_csv)</span></code>).</p>
 <p>Pandas facilitates reading directly from a url - <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code> accepts urls as input:</p>
 <div class="cell docutils container">
@@ -2745,12 +2828,12 @@ Make sure that you save this file before you continue, else you will lose everyt
 <p>You can print a dataframe to .csv using <code class="docutils literal notranslate"><span class="pre">df.to_csv()</span></code>. Be sure to check out all of the possible arguments to write your dataframe exactly how you want it.</p>
 </section>
 <section id="other">
-<h4>Other<a class="headerlink" href="#other" title="Permalink to this headline">#</a></h4>
+<h4>Other<a class="headerlink" href="#other" title="Permalink to this heading">#</a></h4>
 <p>Pandas can read data from all sorts of other file types including HTML, JSON, Excel, Parquet, Feather, etc. There are generally dedicated functions for reading these file types, see the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/io.html#io-tools-text-csv-hdf5">Pandas documentation here</a>.</p>
 </section>
 </section>
 <section id="common-dataframe-operations">
-<h3>Common DataFrame Operations<a class="headerlink" href="#common-dataframe-operations" title="Permalink to this headline">#</a></h3>
+<h3>Common DataFrame Operations<a class="headerlink" href="#common-dataframe-operations" title="Permalink to this heading">#</a></h3>
 <p>DataFrames have built-in functions for performing most common operations, e.g., <code class="docutils literal notranslate"><span class="pre">.min()</span></code>, <code class="docutils literal notranslate"><span class="pre">idxmin()</span></code>, <code class="docutils literal notranslate"><span class="pre">sort_values()</span></code>, etc. They’re all documented in the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html">Pandas documentation here</a> but I’ll demonstrate a few below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2836,7 +2919,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </section>
 </section>
 <section id="why-ndarrays-and-series-and-dataframes">
-<h2>10. Why ndarrays and Series and DataFrames?<a class="headerlink" href="#why-ndarrays-and-series-and-dataframes" title="Permalink to this headline">#</a></h2>
+<h2>10. Why ndarrays and Series and DataFrames?<a class="headerlink" href="#why-ndarrays-and-series-and-dataframes" title="Permalink to this heading">#</a></h2>
 <p>At this point, you might be asking why we need all these different data structures. Well, they all serve different purposes and are suited to different tasks. For example:</p>
 <ul class="simple">
 <li><p>NumPy is typically faster/uses less memory than Pandas;</p></li>
@@ -2869,50 +2952,349 @@ Make sure that you save this file before you continue, else you will lose everyt
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
-              
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
+            </article>
+            
+
+            
+            
+            <footer class="bd-footer-article">
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="tutorial1.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Tutorial 1: Introduction to Python</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="tutorial3.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tutorial 3: Introduction to Data Analysis</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+  <a class='left-prev' id="prev-link" href="tutorial1.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">Tutorial 1: Introduction to Python</p>
+      </div>
+  </a>
+  <a class='right-next' id="next-link" href="tutorial3.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">Tutorial 3: Introduction to Data Analysis</p>
+  </div>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
 </div>
             </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
   
-    By Dr Elco Koks & Dr Thales Pupo-West<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
-    
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#important-before-we-start">
+   Important before we start
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning Objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#performing-the-exercise">
+   Performing the exercise
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-to-python-packages">
+   1. Introduction to Python Packages
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#importing-a-package">
+     Importing a package
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-to-numpy">
+   2. Introduction to NumPy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numpy-arrays">
+   3. NumPy Arrays
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-arrays">
+     What are Arrays?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-arrays">
+     Creating arrays
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#array-shapes">
+     Array Shapes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#d-arrays">
+     1-d Arrays
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#array-operations-and-broadcasting">
+   4. Array Operations and Broadcasting
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#elementwise-operations">
+     Elementwise operations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#broadcasting">
+     Broadcasting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reshaping-arrays">
+     Reshaping Arrays
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#indexing-and-slicing">
+   5. Indexing and slicing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#numeric-indexing">
+     Numeric Indexing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#boolean-indexing">
+     Boolean Indexing
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-useful-numpy-functions">
+   6. More Useful NumPy Functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vectorization">
+     Vectorization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-to-pandas">
+   7. Introduction to Pandas
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandas-series">
+   8. Pandas Series
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-series">
+     What are Series?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-series">
+     Creating Series
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#series-characteristics">
+     Series Characteristics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing-and-slicing-series">
+     Indexing and Slicing Series
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#series-operations">
+     Series Operations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-types">
+     Data Types
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pandas-dataframes">
+   9. Pandas DataFrames
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-are-dataframes">
+     What are DataFrames?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#creating-dataframes">
+     Creating DataFrames
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#indexing-and-slicing-dataframes">
+     Indexing and Slicing DataFrames
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#indexing-with">
+       Indexing with
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         []
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#indexing-with-loc-and-iloc">
+       Indexing with
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         .loc
+        </span>
+       </code>
+       and
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         .iloc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Boolean indexing
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#indexing-with-query">
+       Indexing with
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         .query()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#indexing-cheatsheet">
+       Indexing cheatsheet
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reading-writing-data-from-external-sources">
+     Reading/Writing Data From External Sources
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#csv-files">
+       .csv files
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#other">
+       Other
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#common-dataframe-operations">
+     Common DataFrame Operations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-ndarrays-and-series-and-dataframes">
+   10. Why ndarrays and Series and DataFrames?
+  </a>
+ </li>
+</ul>
+
+</nav>
 </div>
 
-
-      </div>
-    </div>
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+<div class="bd-footer-content__inner container">
   
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Elco Koks & Dr Thales Pupo-West
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+<p class="copyright">
+
+    &copy; Copyright 2022.<br>
+
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+Last updated on None.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </div>
+        </footer>
+        
+
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
 
   </body>
 </html>
