@@ -1022,6 +1022,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 <h2>2. Exploring the required datasets<a class="headerlink" href="#exploring-the-required-datasets" title="Permalink to this heading">#</a></h2>
 <hr><p>In the next code cell, we will specify our working directory using <code class="docutils literal notranslate"><span class="pre">os.chdir()</span></code>. This directory should contain all the datasets to be used during the tutorial.</p>
 <p>To know the current working directory of the file, <code class="docutils literal notranslate"><span class="pre">os.getcwd()</span></code> method can be used. After changing the path, one can verify the path of current working directory using this method. We will use <code class="docutils literal notranslate"><span class="pre">os.path.join()</span></code> to set the specific path to each of the data folders within the working directory. It enables us to join the main directory path with the data folder path.</p>
+<p>However, before we continue you need to make sure that you have downloaded the MSWEP data and stored it in your <code class="docutils literal notranslate"><span class="pre">Week5_Data</span></code> folder. You can download the data on Canvas through the download link within the module. Unzip the data locally, but make sure that you keep the folder structure (as you may see below when reading the data).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Name input file</span>
@@ -1033,7 +1034,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </div>
 </div>
-<p>Now that we have set the paths to the datasets, let us load the administrative boundaries shapefile using geopandas <code class="docutils literal notranslate"><span class="pre">gpd.read_file</span> <span class="pre">()</span></code> and in the process set the coordinate system to <strong>EPSG:4326</strong> (the standard global coordinate reference system). We will use the same coordinate system throughtout the tutorial.</p>
+<p>Now that we have set the paths to the datasets, let us load the administrative boundaries shapefile using geopandas <code class="docutils literal notranslate"><span class="pre">gpd.read_file()</span></code> and in the process set the coordinate system to <strong>EPSG:4326</strong> (the standard global coordinate reference system). We will use the same coordinate system throughtout the tutorial.</p>
 <p>Let’s start with loading the shapefile of the world boundaries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1049,8 +1050,8 @@ Make sure that you save this file before you continue, else you will lose everyt
 <b>Question 1:</b> In the code block below, we are plotting the Administrative boundaries, the `plot()` function in `pd.DataFrame.plot()` can take many parameters. Include the the linewidth, figure size, the y and x labels, color (indicate none), edgecolor. Don't forget to add the figure title. 
 </div><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">=</span><span class="n">data_Adminunits</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1">#add the alpha, linewidth, figsize, ploygon colors and edgecolor</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">=</span><span class="n">data_Adminunits</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">XXX</span><span class="p">)</span> <span class="c1">#add the alpha, linewidth, figsize, polygon colors and edgecolor</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;XXX&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1079,10 +1080,10 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 <section id="calculating-the-mask-of-the-region-of-interest">
 <h3>Calculating the mask of the region of interest<a class="headerlink" href="#calculating-the-mask-of-the-region-of-interest" title="Permalink to this heading">#</a></h3>
-<p>Now we are ready to apply the mask on the gridded dataset <strong>data</strong>. We select only the first timestep to speed up the process. For the same reason it is better to further “zoom” into the Western European countries. We specify the name of the coordinates (the defaults are lat and lon). You can play around with the coordinates. Use this bounding box <a class="reference external" href="https://boundingbox.klokantech.com/">here</a> to obtain the correct coordinates. Once you have created a bounding box, you can select the ‘CSV’ tab and copy paste the coordinates in the cell below.</p>
+<p>Now we are ready to apply the mask on the gridded dataset <strong>data</strong>. We select only the first timestep to speed up the process. For the same reason it is better to further “zoom” into the Western European countries. We specify the name of the coordinates (the defaults are lat and lon). You can play around with the coordinates. Use this bounding box <a class="reference external" href="https://boundingbox.klokantech.com/">here</a> to obtain the correct coordinates. Once you have created a bounding box, you can select the values to be presented in ‘CSV’ format, and copy paste the coordinates in the cell below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">sheds_mask_poly</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">lon</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">35</span><span class="p">),</span> <span class="n">lat</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">71</span><span class="p">,</span> <span class="mi">35</span><span class="p">)),</span><span class="n">lon_name</span> <span class="o">=</span> <span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="n">lat_name</span> <span class="o">=</span> <span class="s1">&#39;lat&#39;</span><span class="p">)</span> <span class="c1"># change the lat and lon slice to the bounding box of the selected region</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">sheds_mask_poly</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">lon</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">XXX</span><span class="p">),</span> <span class="n">lat</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">XXX</span><span class="p">)),</span><span class="n">lon_name</span> <span class="o">=</span> <span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="n">lat_name</span> <span class="o">=</span> <span class="s1">&#39;lat&#39;</span><span class="p">)</span> <span class="c1"># change the lat and lon slice to the bounding box of the selected region</span>
 <span class="n">mask</span>
 </pre></div>
 </div>
@@ -1099,9 +1100,9 @@ Make sure that you save this file before you continue, else you will lose everyt
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span>
 <span class="n">mask</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">)</span>
-<span class="n">data_Adminunits</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">facecolor</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">data_Adminunits</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">XXX</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;XXX&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1110,12 +1111,12 @@ Make sure that you save this file before you continue, else you will lose everyt
 </section>
 <section id="extracting-gridded-and-timeseries-data-of-the-area-of-interest">
 <h2>3. Extracting gridded and timeseries data of the area of interest<a class="headerlink" href="#extracting-gridded-and-timeseries-data-of-the-area-of-interest" title="Permalink to this heading">#</a></h2>
-<hr><p>We can now for each country we would like to aggregate the grid cells in the national borders to timeseries but before that we will work with gridded data first. The procedure is rather simple, we will focus on a single region and it is easy to extend it for multiple regions.</p>
+<hr><p>We can now for the selected country aggregate the grid cells in the national borders to timeseries but before that we will work with gridded data first. The procedure is rather simple, we will focus on a single region and it is easy to extend it for multiple regions.</p>
 <p>As first step, we will save the latitude and longitude vectors because we will use it later. Then, we select the mask points where the value is equal to target value (the region code). In the numpy array <code class="docutils literal notranslate"><span class="pre">sel_mask</span></code> all the values are nan except for the selected ones.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Extracting the precipitation data for the selected region</span>
-<span class="n">region_name</span> <span class="o">=</span> <span class="s1">&#39;Switzerland&#39;</span>    <span class="c1">#Selected country within the bounding region</span>
+<span class="n">region_name</span> <span class="o">=</span> <span class="s2">&quot;....&quot;</span>   <span class="c1">#Selected country within the bounding region</span>
 
 <span class="n">lat</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">lat</span><span class="o">.</span><span class="n">values</span>          <span class="c1"># the lat and lon values contained in the mask of the regions</span>
 <span class="n">lon</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">lon</span><span class="o">.</span><span class="n">values</span>
@@ -1151,13 +1152,15 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </div>
 <p>Now let’s plot the gridded precipitation data for the target region contained in <code class="docutils literal notranslate"><span class="pre">monthly_prec</span></code></p>
-<p><strong>Action</strong>  Inspect the code, change the label and title names and run the code to make the plot. Fill in the plot parameters in the code box below</p>
+<p><strong>Action</strong>  Inspect the code, add the title name and run the code to make the plot. Fill in the plot parameters in the code box below</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span>
 <span class="n">monthly_prec</span><span class="o">.</span><span class="n">precipitation</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">)</span>
 <span class="n">data_Adminunits</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">facecolor</span> <span class="o">=</span> <span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;XXX&quot;</span><span class="p">)</span> <span class="c1">#set the right size for the title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1177,9 +1180,9 @@ Make sure that you save this file before you continue, else you will lose everyt
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_prec_timeseries</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">df_prec_timeseries</span><span class="p">,</span><span class="s2">&quot;-o&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Precipitation[mm/day]&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="c1">#change</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span><span class="c1">#change </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;XXX&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span> <span class="c1">#change</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;XXX&#39;</span><span class="p">)</span><span class="c1">#change</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;XXX&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span><span class="c1">#change </span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1380,16 +1383,16 @@ Make sure that you save this file before you continue, else you will lose everyt
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_indice_timeseries</span><span class="o">.</span><span class="n">index</span><span class="p">,</span><span class="n">df_indice_timeseries</span><span class="p">,</span><span class="s2">&quot;-o&quot;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span> <span class="c1"># all the values below zero indicate drought conditions. Can be changed to indicate drought threshold</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;XXX&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;XXX&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;XXX&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 11:</b> Explain the drought pattern in the spi values timeseries above for the selected case study region.
+<b>Question 11:</b> Explain the drought pattern in the SPI values timeseries above for the selected case study region.
 </div><div class="alert alert-block alert-success">
 <b>Question 12:</b> Now that we have calculated SPI-1 above, change the accumulation number from 1 and calculate SPI-6 and SPI-12. What differences do you see in the drought characteristics and what does each represent.
 </div></section>
