@@ -1197,7 +1197,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 3:</b> Describe in your own words why we want to split our data into training data and test data. Why is this important for the evaluation of our results?
+<b>Question 3:</b> Describe in your own words why we want to split our data into training data and test data. Why is this important for the evaluation of our results? And what is the downside of this relative simple 80/20 split? Please refer back to some of the validation methods we have discussed in week 3.
 </div></section>
 <section id="classify-and-visualise-the-landsat-8-using-corine-land-cover">
 <h2>5. Classify and visualise the Landsat-8 using Corine Land Cover<a class="headerlink" href="#classify-and-visualise-the-landsat-8-using-corine-land-cover" title="Permalink to this heading">#</a></h2>
@@ -1369,8 +1369,8 @@ Make sure that you save this file before you continue, else you will lose everyt
 <p>As you can see in the cell below, to make sure we can run the <strong>Support Vector Machine</strong>, we substantially reduce our training data to only 20%, instead of 80%. We do this, because running the classifier on the entire training dataset would take an extremely long time to run.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trainingSample_SVM</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;random &lt;= 0.2&#39;</span><span class="p">);</span>
-<span class="n">validationSample_SVM</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;random &gt; 0.8&#39;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trainingSample_SVM</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;random &lt;= 0.2&#39;</span><span class="p">)</span>
+<span class="n">validationSample_SVM</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;random &gt; 0.8&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1499,14 +1499,14 @@ Make sure that you save this file before you continue, else you will lose everyt
 <p>And again, we split the data into training and validation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">randomColumn</span><span class="p">();</span>
-<span class="n">trainingSample</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;random &lt;= 0.8&#39;</span><span class="p">);</span>
-<span class="n">validationSample</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;random &gt; 0.8&#39;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">randomColumn</span><span class="p">()</span>
+<span class="n">trainingSample</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;random &lt;= 0.8&#39;</span><span class="p">)</span>
+<span class="n">validationSample</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;random &gt; 0.8&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>As the <strong>CART</strong> classifier performed best, we will re-use this one to train the algorithm through using the ESA WorldCover data.</p>
+<p>As the <strong>CART</strong> classifier performed reasonably well for CLC, we will re-use this one to train the algorithm through using the ESA WorldCover data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trainedClassifier</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Classifier</span><span class="o">.</span><span class="n">smileCart</span><span class="p">()</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
@@ -1514,7 +1514,7 @@ Make sure that you save this file before you continue, else you will lose everyt
   <span class="s1">&#39;features&#39;</span><span class="p">:</span> <span class="n">trainingSample</span><span class="p">,</span>
   <span class="s1">&#39;classProperty&#39;</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span>
   <span class="s1">&#39;inputProperties&#39;</span><span class="p">:</span> <span class="n">image</span><span class="o">.</span><span class="n">bandNames</span><span class="p">()</span>
-<span class="p">});</span>
+<span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -1546,7 +1546,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 <span class="p">};</span>
 
 <span class="c1">#Map.addLayer(lc, classVis, &#39;lc&#39;);</span>
-<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">ESAWorldCover_classified</span><span class="p">,</span> <span class="n">classVis</span><span class="p">,</span> <span class="s1">&#39;Classified&#39;</span><span class="p">);</span>
+<span class="n">Map</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">ESAWorldCover_classified</span><span class="p">,</span> <span class="n">classVis</span><span class="p">,</span> <span class="s1">&#39;Classified&#39;</span><span class="p">)</span>
 <span class="n">Map</span>
 </pre></div>
 </div>
