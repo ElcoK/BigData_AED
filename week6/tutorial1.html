@@ -434,7 +434,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-packages">1.Introducing the packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#social-media">2. Social Media</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-to-google-drive">Connect to google drive</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-to-google-drive">Connect to google drive</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#user-information">User Information</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-language-processing-nlp">3. Natural Language Processing (NLP)</a></li>
@@ -537,11 +540,12 @@ document.write(`
 <p>Twitter offers tools and programs that help people when emergencies and natural disasters strike, allowing channels of communication and humanitarian response, among other <a class="reference external" href="https://about.twitter.com/en/who-we-are/twitter-for-good">areas of focus</a> such as environmental conservation and sustainability.</p>
 <p>The <a class="reference external" href="https://developer.twitter.com/en">Twitter API</a> enables programmatic access to Twitter in unique and advanced ways. Twitter’s Developer Platform enables you to harness the power of Twitter’s open, global, real-time, and historical platform within your own applications. The platform provides tools, resources, data, and API products for you to integrate, and expand Twitter’s impact through research, solutions, and more.</p>
 <p>Unfortunately, Twitter has made their API policy very strict since February 12. As such, we cannot use their API within this tutorial. As such, we will use data that was previously retrieved by us (in the preparation of this tutorial).</p>
+<p>Download the ‘Week6_Data’ folder provided in Canvas and save it to your previously created BigData folder on your Google Drive.</p>
 <section id="connect-to-google-drive">
 <h3>Connect to google drive<a class="headerlink" href="#connect-to-google-drive" title="Permalink to this heading">#</a></h3>
 <hr>
 <p>To be able to read the data from Google Drive, we need to <em>mount</em> our Drive to this notebook.</p>
-<p>As you can see in the cell below, make sure that in your <strong>My Drive</strong> folder, where you created <strong>BigData</strong> folder and within that folder, you have created a <strong>Week5_Data</strong> folder in which you can store the files that are required to run this analysis.</p>
+<p>As you can see in the cell below, make sure that in your <strong>My Drive</strong> folder, where you created <strong>BigData</strong> folder and within that folder, you have created a <strong>Week6_Data</strong> folder in which you can store the files that are required to run this analysis.</p>
 <p>Please go the URL when its prompted in the box underneath the following cell, and copy the authorization code in that box.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -555,6 +559,10 @@ document.write(`
 </div>
 </div>
 </div>
+<section id="user-information">
+<h4>User Information<a class="headerlink" href="#user-information" title="Permalink to this heading">#</a></h4>
+<p>Trough Twitter API we can make requests such as getting the information of a user, for example, we can show the followers of a user or list the user’s latest post.</p>
+<p>The following line will open the previously retrieved information of the <a class="reference external" href="https://twitter.com/VU_IVM">IVM - VU</a> account.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;VU_user.jsonl&#39;</span><span class="p">)</span> 
@@ -565,7 +573,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>We can look at the data that you can extract for a given user using:</p>
+<p>Have look at the information provided by Twitter for a specific user using:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user</span>
@@ -591,14 +599,6 @@ document.write(`
 </div>
 <p>Now let’s see the latest 5 tweets the IVM has posted.</p>
 <p>The user_timeline() method uses the user_id as a parameter, and we can indicate how many tweets we want using the count parameter.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># user_id = user.id_str</span>
-<span class="c1"># Latest_tweets = api.user_timeline(user_id=user_id, count=5)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>We will use the data that was previously retrieved:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -650,6 +650,7 @@ When was the last time @VU_IVM tweeted/retweeted?
 <p>Please note that we can also make changes to our own account such as updating our profile and interacting with other users. If you’re enthusiastic about it, you can find more information <a class="reference external" href="https://www.jcchouinard.com/tweepy-basic-functions/">here</a> .</p>
 </section>
 </section>
+</section>
 <section id="natural-language-processing-nlp">
 <h2>3. Natural Language Processing (NLP)<a class="headerlink" href="#natural-language-processing-nlp" title="Permalink to this heading">#</a></h2>
 <hr><p>As mentioned in <a class="reference external" href="https://elcok.github.io/BigData_AED/week6/lecture.html">Lecture</a>, Natural language processing (NLP) is an area of computer science and artificial intelligence concerned with the interaction between computers and humans in natural language. The ultimate goal of NLP is to help computers understand language as well as we do.
@@ -657,7 +658,7 @@ There are two ways of understanding natural language: Syntactic and Semantic ana
 <p>There are different techniques for understanding text such as Parsing, Stemming, Text Segmentation, Named Entity Recognition, Relationship Extraction, and Sentiment Analysis (see <a class="reference external" href="https://elcok.github.io/BigData_AED/week6/lecture.html">Lecture</a>).</p>
 <p>We can start here by analyzing a user’s tweets by simply looking into the words he/she uses the most.</p>
 <p>Barack Obama (<a class="reference external" href="https://twitter.com/BarackObama">&#64;BarackObama</a>) has the Twitter account with the most followers according to <a class="reference external" href="https://www.tweetbinder.com/blog/top-twitter-accounts/">this website</a>. So let’s explore the words he uses the most.</p>
-<p>You can retrieve his last 200 tweets using the following lines:</p>
+<p>We retrieved his last 200 tweets:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;Obama_user.jsonl&#39;</span><span class="p">)</span> 
@@ -675,7 +676,7 @@ There are two ways of understanding natural language: Syntactic and Semantic ana
 </div>
 </div>
 </div>
-<p>In the previous section, we learned how to access get the text of each tweet by using [‘text’] so let’s go further first with only one tweet.</p>
+<p>In the previous section, we learned how to access get the <strong>text</strong> of each tweet by using [‘text’] so let’s go further first with only one tweet.</p>
 <p>What type of data does it contain?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -816,6 +817,7 @@ There are two ways of understanding natural language: Syntactic and Semantic ana
 <hr><p>We’ve learned how to retrieve the tweets of a specific user.
 Now it is time to retrieve them by using keywords that can be content in the text such as hashtags.
 That will allow us to analyze what is happening at a specific time and/or location.</p>
+<p>The following data contains 100 filtered tweets that contain the word “Earthquake”</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tweets_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;Earthquakes_tweets.jsonl&#39;</span><span class="p">)</span> 
@@ -975,7 +977,7 @@ That will allow us to analyze what is happening at a specific time and/or locati
 Mention at least one advantage and one disadvantage of not sharing the coordinates.
 </div><p>Unfortunately not all (or none) of the users share the real location nor allow the geolocation for the coordinates.</p>
 <p>Therefore, when we want to analyze a certain region we can’t use all the tweets and we need to further filter the information.</p>
-<p>Open the previously retrieved dataset:</p>
+<p>Open the previously retrieved dataset, it contains only the tweets with coordinates::</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">db_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;Earthquakes_wc_db.csv&#39;</span><span class="p">)</span> 
@@ -1000,7 +1002,7 @@ Mention at least one advantage and one disadvantage of not sharing the coordinat
 <p>We’ll continue with the earthquake example.</p>
 <p>Did you notice there is a user that uses the <a class="reference external" href="https://www.usgs.gov/programs/earthquake-hazards/earthquakes">USGS</a> as a source of its tweets?</p>
 <p>That’s right, it is ‘everyEarthquake’.</p>
-<p>Let’s retrieve the last 100 posts made by &#64;everyEarthquake:</p>
+<p>Let’s use the last 100 posts made by &#64;everyEarthquake:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">db_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;everyEarthquake_db.csl&#39;</span><span class="p">)</span> 
@@ -1091,7 +1093,7 @@ Mention at least one advantage and one disadvantage of not sharing the coordinat
 <b>Question 5:</b> Upload the map showing the reported earthquakes, showing the magnitude of the events.
 </div><div class="alert alert-block alert-success">
 <b>Question 6:</b> Where and when happen the earthquake with the highest magnitude? Which is its magnitude?
-</div><p>We can have a look at the map from the <a class="reference external" href="https://earthquake.usgs.gov/earthquakes/map/?extent=-68.0733,-194.23828&amp;extent=77.15716,199.51172&amp;listOnlyShown=true">USGS website</a>.</p>
+</div><p>We can have a look at the map from the <a class="reference external" href="https://earthquake.usgs.gov/earthquakes/map/?extent=-68.0733,-194.23828&amp;extent=77.15716,199.51172&amp;listOnlyShown=true">USGS website</a>.*</p>
 <div class="alert alert-block alert-success">
 <b>Question 7:</b> Do you see differences from the figure that you have generated?
 </div><p>As we have mentioned, users do not always share the location or the coordinates.</p>
@@ -1270,7 +1272,10 @@ The database contains tweets about floods located in Texas from 30/07/2014 to 15
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-packages">1.Introducing the packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#social-media">2. Social Media</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-to-google-drive">Connect to google drive</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-to-google-drive">Connect to google drive</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#user-information">User Information</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-language-processing-nlp">3. Natural Language Processing (NLP)</a></li>
