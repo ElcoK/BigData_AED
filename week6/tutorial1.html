@@ -434,8 +434,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-packages">1.Introducing the packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#social-media">2. Social Media</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authenticate-with-tweepy">Authenticate with Tweepy</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-user-information">Getting User Information</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-to-google-drive">Connect to google drive</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-language-processing-nlp">3. Natural Language Processing (NLP)</a></li>
@@ -498,9 +497,9 @@ document.write(`
 <p><em>We will first need to install these packages in the cell below. Uncomment them to make sure we can pip install them</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install geopandas</span>
-<span class="c1">#!pip install matplotlib</span>
-<span class="c1">#!pip install tweepy</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>geopandas
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>matplotlib
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>tweepy
 </pre></div>
 </div>
 </div>
@@ -517,8 +516,11 @@ document.write(`
 <span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
 <span class="kn">import</span> <span class="nn">tweepy</span>
 <span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1</span> <span class="kn">import</span> <span class="n">make_axes_locatable</span> 
+
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -534,81 +536,31 @@ document.write(`
 <p>Twitter has been proven to be a useful data source for many research communities (Ekta et al, 2017, Graff et al, 2022), from social science to computer science, it can advance research objectives on topics as diverse as the global conversations happening on Twitter. It is one of the most popular online social networking sites with around 450 million monthly <a class="reference external" href="https://www.demandsage.com/twitter-statistics/">active users</a> as of 2022. An important characteristic of Twitter is its real-time nature.</p>
 <p>Twitter offers tools and programs that help people when emergencies and natural disasters strike, allowing channels of communication and humanitarian response, among other <a class="reference external" href="https://about.twitter.com/en/who-we-are/twitter-for-good">areas of focus</a> such as environmental conservation and sustainability.</p>
 <p>The <a class="reference external" href="https://developer.twitter.com/en">Twitter API</a> enables programmatic access to Twitter in unique and advanced ways. Twitter’s Developer Platform enables you to harness the power of Twitter’s open, global, real-time, and historical platform within your own applications. The platform provides tools, resources, data, and API products for you to integrate, and expand Twitter’s impact through research, solutions, and more.</p>
-<p>To be able to use Twitter’s Developer Platform we need first a general account, and second to ask for an upgrade to a developer account.</p>
-<p>Here we show you how to gain access:</p>
-<ol class="arabic simple">
-<li><p>How to sign up on Twitter</p></li>
-</ol>
-<img src="https://github.com/ElcoK/BigData_AED/blob/main/_static/images/twitter_registration.gif?raw=1" class="bg-primary mb-1">
-<br>
-<ol class="arabic simple" start="2">
-<li><p>How to get access to the <a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api/getting-started/getting-access-to-the-twitter-api">Twitter API</a></p></li>
-</ol>
-<img src="https://github.com/ElcoK/BigData_AED/blob/main/_static/images/twtter_api.gif?raw=1" class="bg-primary mb-1">
-<br>
-<p>Do not forget to copy and save in a safe place your <code class="docutils literal notranslate"><span class="pre">API</span> <span class="pre">key</span></code> and <code class="docutils literal notranslate"><span class="pre">API</span> <span class="pre">key</span> <span class="pre">Secret</span></code>, we will need them later.</p>
-<img src="https://github.com/ElcoK/BigData_AED/blob/main/_static/images/API_Keys.PNG?raw=1" class="bg-primary mb-1">
-<br>
-<ol class="arabic simple" start="3">
-<li><p>How to get the tokens from the <a class="reference external" href="https://developer.twitter.com/en/portal/dashboard">Dashboard</a></p></li>
-</ol>
-<img src="https://github.com/ElcoK/BigData_AED/blob/main/_static/images/twitter_token.gif?raw=1" class="bg-primary mb-1">
-<br>
-<p>Do not forget to copy and save in a safe place your <code class="docutils literal notranslate"><span class="pre">Access</span> <span class="pre">Token</span></code> and <code class="docutils literal notranslate"><span class="pre">Access</span> <span class="pre">Token</span> <span class="pre">Secret</span></code>, we will need them later.</p>
-<img src="https://github.com/ElcoK/BigData_AED/blob/main/_static/images/Token.PNG?raw=1" class="bg-primary mb-1">
-<br>
-<ol class="arabic simple" start="4">
-<li><p>How to upgrade to an elevated access from the <a class="reference external" href="https://developer.twitter.com/en/portal/dashboard">Dashboard</a></p></li>
-</ol>
-<p><code class="docutils literal notranslate"><span class="pre">Please</span> <span class="pre">note</span> <span class="pre">that</span> <span class="pre">for</span> <span class="pre">this</span> <span class="pre">you</span> <span class="pre">will</span> <span class="pre">need</span> <span class="pre">to</span> <span class="pre">verify</span> <span class="pre">your</span> <span class="pre">account,</span> <span class="pre">adding</span> <span class="pre">also</span> <span class="pre">your</span> <span class="pre">phone</span> <span class="pre">number</span></code></p>
-<img src="https://github.com/ElcoK/BigData_AED/blob/main/_static/images/twitter_elevated.gif?raw=1" class="bg-primary mb-1">
-<br>
-<p>Note that you can also apply for premium access. For this tutorial, it is not necessary, but if you are interested you can have a look at the <a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api/premium/search-api/api-reference/premium-search#SearchRequests">Developer Platform</a> to learn about it.</p>
-<p>Now we are ready to start exploring <code class="docutils literal notranslate"><span class="pre">Tweepy</span></code>!</p>
-<section id="authenticate-with-tweepy">
-<h3>Authenticate with Tweepy<a class="headerlink" href="#authenticate-with-tweepy" title="Permalink to this heading">#</a></h3>
-<p>In order to gain access to Twitter information we first need to authenticate to the Twitter API.</p>
-<p>Replace <strong><code class="docutils literal notranslate"><span class="pre">Your_info</span></code></strong> with your Twitter credentials that you have obtained in the previous section.</p>
+<p>Unfortunately, Twitter has made their API policy very strict since February 12. As such, we cannot use their API within this tutorial. As such, we will use data that was previously retrieved by us (in the preparation of this tutorial).</p>
+<section id="connect-to-google-drive">
+<h3>Connect to google drive<a class="headerlink" href="#connect-to-google-drive" title="Permalink to this heading">#</a></h3>
+<hr>
+<p>To be able to read the data from Google Drive, we need to <em>mount</em> our Drive to this notebook.</p>
+<p>As you can see in the cell below, make sure that in your <strong>My Drive</strong> folder, where you created <strong>BigData</strong> folder and within that folder, you have created a <strong>Week5_Data</strong> folder in which you can store the files that are required to run this analysis.</p>
+<p>Please go the URL when its prompted in the box underneath the following cell, and copy the authorization code in that box.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># API keyws that yous saved earlier</span>
-<span class="n">api_key</span> <span class="o">=</span> <span class="s2">&quot;Your_info&quot;</span>
-<span class="n">api_secrets</span> <span class="o">=</span> <span class="s2">&quot;Your_info&quot;</span>
-<span class="n">access_token</span> <span class="o">=</span> <span class="s2">&quot;Your_info&quot;</span>
-<span class="n">access_secret</span> <span class="o">=</span> <span class="s2">&quot;Your_info&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/gdrive/&#39;</span><span class="p">,</span> <span class="n">force_remount</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/content/gdrive/My Drive/BigData/Week6_Data&quot;</span><span class="p">)</span>
+
+<span class="n">data_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;/content/gdrive/My Drive/BigData&#39;</span><span class="p">,</span><span class="s1">&#39;Week6_Data&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Now we’re going to use <code class="docutils literal notranslate"><span class="pre">tweepy</span></code> to authenticate to Twitter.</p>
-<p>The code includes a verification step to make sure we are successfully authenticated.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Authenticate to Twitter</span>
-<span class="n">auth</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">OAuthHandler</span><span class="p">(</span><span class="n">api_key</span><span class="p">,</span><span class="n">api_secrets</span><span class="p">)</span>
-<span class="n">auth</span><span class="o">.</span><span class="n">set_access_token</span><span class="p">(</span><span class="n">access_token</span><span class="p">,</span><span class="n">access_secret</span><span class="p">)</span>
- 
-<span class="n">api</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">API</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
- 
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">api</span><span class="o">.</span><span class="n">verify_credentials</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Successful Authentication&#39;</span><span class="p">)</span>
-<span class="k">except</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Failed authentication&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="getting-user-information">
-<h3>Getting User Information<a class="headerlink" href="#getting-user-information" title="Permalink to this heading">#</a></h3>
-<p>Now that we have successfully authenticated we can make Twitter API requests such as getting the information of a user, for example, we can show the followers of a user or list the user’s latest post.</p>
-<p>So let’s try it!</p>
-<p>The first step is to call the API to get the user that you want to get information from.</p>
-<p>The get_user() method can take a Twitter screen_name or the user_id as a parameter.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">get_user</span><span class="p">(</span><span class="n">screen_name</span><span class="o">=</span><span class="s1">&#39;VU_IVM&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;VU_user.jsonl&#39;</span><span class="p">)</span> 
+
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">user_file</span><span class="p">)</span>
+<span class="n">user</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -616,7 +568,7 @@ document.write(`
 <p>We can look at the data that you can extract for a given user using:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user</span><span class="o">.</span><span class="n">_json</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user</span>
 </pre></div>
 </div>
 </div>
@@ -625,14 +577,14 @@ document.write(`
 <p>Here are some examples:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.name: </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.screen_name: </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.location: </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">XXX</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.description: </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">XXXX</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.followers_count: </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">XXXX</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.listed_count: </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">listed_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.statuses_count: </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">statuses_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user urls: </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">entities</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">][</span><span class="s1">&#39;urls&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;expanded_url&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.name: </span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.screen_name: </span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;screen_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.location: </span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;XXXX&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.description: </span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;XXXX&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.followers_count: </span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;XXXX&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.listed_count: </span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;listed_count&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.statuses_count: </span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;statuses_count&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user urls: </span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;entities&#39;</span><span class="p">][</span><span class="s1">&#39;url&#39;</span><span class="p">][</span><span class="s1">&#39;urls&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;expanded_url&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -641,8 +593,23 @@ document.write(`
 <p>The user_timeline() method uses the user_id as a parameter, and we can indicate how many tweets we want using the count parameter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user_id</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">id_str</span>
-<span class="n">Latest_tweets</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">user_timeline</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="n">user_id</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="n">XX</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># user_id = user.id_str</span>
+<span class="c1"># Latest_tweets = api.user_timeline(user_id=user_id, count=5)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will use the data that was previously retrieved:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tweets_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;VU_tweets.jsonl&#39;</span><span class="p">)</span> 
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">tweets_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">tweets</span> <span class="o">=</span> <span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">]</span>
+
+<span class="n">Latest_tweets</span> <span class="o">=</span> <span class="n">tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1"># f = open(user_file)</span>
+<span class="c1"># user = json.load(f)</span>
 </pre></div>
 </div>
 </div>
@@ -651,7 +618,7 @@ document.write(`
 <p>You can do it by Uncomment the following line:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Latest_tweets[0]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -661,17 +628,17 @@ document.write(`
 <p>Here are some examples:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;username: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;description: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">XXX</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;text: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">XXX</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;date_time: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">created_at</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;location: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">XXX</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;coordinates: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">XXX</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;following: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">friends_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;followers: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">followers_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;totaltweets: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">statuses_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;retweetcount: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">retweet_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;hashtags: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">entities</span><span class="p">[</span><span class="s1">&#39;hashtags&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;username: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;screen_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;description: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;XXXXX&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;text: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;XXXX&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;date_time: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;created_at&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;location: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;XXXX&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;coordinates: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;XXXX&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;following: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;friends_count&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;followers: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;followers_count&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;totaltweets: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;statuses_count&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;retweetcount: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;retweet_count&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;hashtags: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;hashtags&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -690,22 +657,29 @@ There are two ways of understanding natural language: Syntactic and Semantic ana
 <p>There are different techniques for understanding text such as Parsing, Stemming, Text Segmentation, Named Entity Recognition, Relationship Extraction, and Sentiment Analysis (see <a class="reference external" href="https://elcok.github.io/BigData_AED/week6/lecture.html">Lecture</a>).</p>
 <p>We can start here by analyzing a user’s tweets by simply looking into the words he/she uses the most.</p>
 <p>Barack Obama (<a class="reference external" href="https://twitter.com/BarackObama">&#64;BarackObama</a>) has the Twitter account with the most followers according to <a class="reference external" href="https://www.tweetbinder.com/blog/top-twitter-accounts/">this website</a>. So let’s explore the words he uses the most.</p>
-<p>First, we will retrieve his last 200 tweets:</p>
+<p>You can retrieve his last 200 tweets using the following lines:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">get_user</span><span class="p">(</span><span class="n">screen_name</span><span class="o">=</span><span class="s1">&#39;BarackObama&#39;</span><span class="p">)</span>
-<span class="n">user_id</span> <span class="o">=</span> <span class="n">user</span><span class="o">.</span><span class="n">id_str</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;Obama_user.jsonl&#39;</span><span class="p">)</span> 
 
-<span class="n">Latest_tweets</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">user_timeline</span><span class="p">(</span><span class="n">user_id</span><span class="o">=</span><span class="n">user_id</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="n">XXX</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">user_file</span><span class="p">)</span>
+<span class="n">user</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="n">tweets_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;Obama_tweets.jsonl&#39;</span><span class="p">)</span> 
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">tweets_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">tweets</span> <span class="o">=</span> <span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">]</span>
+
+<span class="n">Latest_tweets</span> <span class="o">=</span> <span class="n">tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>In the previous section, we learned how to access get the text of each tweet by using .text so let’s go further first with only one tweet.</p>
+<p>In the previous section, we learned how to access get the text of each tweet by using [‘text’] so let’s go further first with only one tweet.</p>
 <p>What type of data does it contain?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">XXX</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;XXXX&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -742,7 +716,7 @@ There are two ways of understanding natural language: Syntactic and Semantic ana
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">concat_text</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Latest_tweets</span><span class="p">)):</span>
-    <span class="n">concat_text</span> <span class="o">=</span> <span class="n">concat_text</span> <span class="o">+</span><span class="s2">&quot; &quot;</span><span class="o">+</span> <span class="n">Latest_tweets</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">concat_text</span> <span class="o">=</span> <span class="n">concat_text</span> <span class="o">+</span><span class="s2">&quot; &quot;</span><span class="o">+</span> <span class="n">Latest_tweets</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 <span class="n">concat_text</span>
 <span class="n">words</span> <span class="o">=</span> <span class="n">word_count</span><span class="p">(</span><span class="n">concat_text</span><span class="p">)</span>
 </pre></div>
@@ -753,7 +727,8 @@ There are two ways of understanding natural language: Syntactic and Semantic ana
 <p>You can also see what the data looks like by Uncomment the line.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span><span class="si">}</span><span class="s1"> has used </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span><span class="si">}</span><span class="s1"> different words&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">screen_name</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s1">&#39;screen_name&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">screen_name</span><span class="si">}</span><span class="s1"> has used </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span><span class="si">}</span><span class="s1"> different words&#39;</span><span class="p">)</span>
 <span class="c1"># print(words)</span>
 </pre></div>
 </div>
@@ -778,7 +753,7 @@ There are two ways of understanding natural language: Syntactic and Semantic ana
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="n">XX</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="n">XX</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="n">XX</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The most used words by </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span><span class="si">}</span><span class="s1"> in the last 200 tweets</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The most used words by </span><span class="si">{</span><span class="n">screen_name</span><span class="si">}</span><span class="s1"> in the last 200 tweets</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;XXX&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">XX</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;XXX&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">XX</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
@@ -823,9 +798,9 @@ There are two ways of understanding natural language: Syntactic and Semantic ana
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="n">XX</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="n">XX</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="n">XX</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The most used words by </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span><span class="si">}</span><span class="s1"> in the last 200 tweets</span><span class="se">\n</span><span class="s1">Using a word filter&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;XXXX&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;XXXX&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The most used words by </span><span class="si">{</span><span class="n">screen_name</span><span class="si">}</span><span class="s1"> in the last 200 tweets</span><span class="se">\n</span><span class="s1">Using a word filter&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;XXX&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;XXX&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -841,12 +816,14 @@ There are two ways of understanding natural language: Syntactic and Semantic ana
 <hr><p>We’ve learned how to retrieve the tweets of a specific user.
 Now it is time to retrieve them by using keywords that can be content in the text such as hashtags.
 That will allow us to analyze what is happening at a specific time and/or location.</p>
-<p>We’ll start using the tweepy Cursor method to look for the latest 10 tweets that contain the word “Earthquake”</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tweets</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">Cursor</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">search</span><span class="p">,</span> <span class="s1">&#39;Earthquake&#39;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">tweet_mode</span><span class="o">=</span><span class="s1">&#39;extended&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">list_tweets</span> <span class="o">=</span> <span class="p">[</span><span class="n">tweet</span> <span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">tweets</span><span class="p">]</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">list_tweets</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tweets_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;Earthquakes_tweets.jsonl&#39;</span><span class="p">)</span> 
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">tweets_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">tweets</span> <span class="o">=</span> <span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">]</span>
+
+<span class="n">list_tweets</span> <span class="o">=</span> <span class="n">tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -854,7 +831,7 @@ That will allow us to analyze what is happening at a specific time and/or locati
 <p>You can see how the data looks like by Uncomment the following line:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># list_tweets</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -880,27 +857,28 @@ That will allow us to analyze what is happening at a specific time and/or locati
         <span class="c1"># we will iterate over each tweet in the</span>
         <span class="c1"># list for extracting information about each tweet</span>
         <span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">list_tweets</span><span class="p">:</span>
-                <span class="n">username</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span>
-                <span class="n">description</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">description</span>
-                <span class="n">date_time</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">created_at</span>
-                <span class="n">location</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">location</span>
-                <span class="n">following</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">friends_count</span>
-                <span class="n">followers</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">followers_count</span>
-                <span class="n">totaltweets</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">statuses_count</span>
-                <span class="n">retweetcount</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweet_count</span>
-                <span class="n">hashtags</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">entities</span><span class="p">[</span><span class="s1">&#39;hashtags&#39;</span><span class="p">]</span>
+                <span class="n">username</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;screen_name&#39;</span><span class="p">]</span>
+                <span class="n">description</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span>
+                <span class="n">date_time</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;created_at&#39;</span><span class="p">]</span>
+                <span class="n">location</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span>
+                <span class="n">following</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;friends_count&#39;</span><span class="p">]</span>
+                <span class="n">followers</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;followers_count&#39;</span><span class="p">]</span>
+                <span class="n">totaltweets</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;statuses_count&#39;</span><span class="p">]</span>
+                <span class="n">retweetcount</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;retweet_count&#39;</span><span class="p">]</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span>
+                <span class="n">hashtags</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;hashtags&#39;</span><span class="p">]</span>
 
         <span class="c1"># Retweets can be distinguished by</span>
         <span class="c1"># a retweeted_status attribute,</span>
         <span class="c1"># in case it is an invalid reference,</span>
         <span class="c1"># except block will be executed</span>
-                <span class="k">try</span><span class="p">:</span>
-                        <span class="n">text</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweeted_status</span><span class="o">.</span><span class="n">full_text</span>
-                <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-                        <span class="n">text</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">full_text</span>
-                <span class="n">hashtext</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">hashtags</span><span class="p">)):</span>
-                        <span class="n">hashtext</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hashtags</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+                <span class="c1"># try:</span>
+                <span class="c1">#         text = tweet.retweeted_status.full_text</span>
+                <span class="c1"># except AttributeError:</span>
+                <span class="c1">#         text = tweet.full_text</span>
+                <span class="c1"># hashtext = list()</span>
+                <span class="c1"># for j in range(0, len(hashtags)):</span>
+                <span class="c1">#         hashtext.append(hashtags[j][&#39;text&#39;])</span>
                 
                                 
                 <span class="c1"># Here we are appending all the</span>
@@ -908,7 +886,7 @@ That will allow us to analyze what is happening at a specific time and/or locati
                 <span class="n">ith_tweet</span> <span class="o">=</span> <span class="p">[</span><span class="n">username</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">date_time</span><span class="p">,</span>
                         <span class="n">location</span><span class="p">,</span> <span class="n">following</span><span class="p">,</span> 
                         <span class="n">followers</span><span class="p">,</span> <span class="n">totaltweets</span><span class="p">,</span>
-                        <span class="n">retweetcount</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">hashtext</span><span class="p">]</span>
+                        <span class="n">retweetcount</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">hashtags</span><span class="p">]</span>
                 <span class="n">db</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">db</span><span class="p">)]</span> <span class="o">=</span> <span class="n">ith_tweet</span>
         <span class="k">return</span> <span class="n">db</span>
 </pre></div>
@@ -946,36 +924,25 @@ That will allow us to analyze what is happening at a specific time and/or locati
         <span class="c1"># we will iterate over each tweet in the</span>
         <span class="c1"># list for extracting information about each tweet</span>
         <span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">list_tweets</span><span class="p">:</span>
-                <span class="n">username</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span>
-                <span class="n">description</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">description</span>
-                <span class="n">date_time</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">created_at</span>
-                <span class="n">location</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">location</span>
-                <span class="n">coordinates</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">coordinates</span>
-                <span class="n">following</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">friends_count</span>
-                <span class="n">followers</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">followers_count</span>
-                <span class="n">totaltweets</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">statuses_count</span>
-                <span class="n">retweetcount</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweet_count</span>
-                <span class="n">hashtags</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">entities</span><span class="p">[</span><span class="s1">&#39;hashtags&#39;</span><span class="p">]</span>
+                <span class="n">username</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;screen_name&#39;</span><span class="p">]</span>
+                <span class="n">description</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span>
+                <span class="n">date_time</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;created_at&#39;</span><span class="p">]</span>
+                <span class="n">location</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span>
+                <span class="n">coordinates</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;coordinates&#39;</span><span class="p">]</span>
+                <span class="n">following</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;friends_count&#39;</span><span class="p">]</span>
+                <span class="n">followers</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;followers_count&#39;</span><span class="p">]</span>
+                <span class="n">totaltweets</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;statuses_count&#39;</span><span class="p">]</span>
+                <span class="n">retweetcount</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;retweet_count&#39;</span><span class="p">]</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span>
+                <span class="n">hashtags</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;hashtags&#39;</span><span class="p">]</span>
 
-        <span class="c1"># Retweets can be distinguished by</span>
-        <span class="c1"># a retweeted_status attribute,</span>
-        <span class="c1"># in case it is an invalid reference,</span>
-        <span class="c1"># except block will be executed</span>
-                <span class="k">try</span><span class="p">:</span>
-                        <span class="n">text</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweeted_status</span><span class="o">.</span><span class="n">full_text</span>
-                <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-                        <span class="n">text</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">full_text</span>
-                <span class="n">hashtext</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">hashtags</span><span class="p">)):</span>
-                        <span class="n">hashtext</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hashtags</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
-                
                                 
                 <span class="c1"># Here we are appending all the</span>
                 <span class="c1"># extracted information in the DataFrame</span>
                 <span class="n">ith_tweet</span> <span class="o">=</span> <span class="p">[</span><span class="n">username</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">date_time</span><span class="p">,</span>
                         <span class="n">location</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">,</span> <span class="n">following</span><span class="p">,</span>
                         <span class="n">followers</span><span class="p">,</span> <span class="n">totaltweets</span><span class="p">,</span>
-                        <span class="n">retweetcount</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">hashtext</span><span class="p">]</span>
+                        <span class="n">retweetcount</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">hashtags</span><span class="p">]</span>
                 <span class="n">db</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">db</span><span class="p">)]</span> <span class="o">=</span> <span class="n">ith_tweet</span>
         <span class="k">return</span> <span class="n">db</span>
 </pre></div>
@@ -1008,97 +975,11 @@ That will allow us to analyze what is happening at a specific time and/or locati
 Mention at least one advantage and one disadvantage of not sharing the coordinates.
 </div><p>Unfortunately not all (or none) of the users share the real location nor allow the geolocation for the coordinates.</p>
 <p>Therefore, when we want to analyze a certain region we can’t use all the tweets and we need to further filter the information.</p>
-<p>The following function will filter the tweets and only save the tweets that contain coordinates:</p>
+<p>Open the previously retrieved dataset:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scrape</span><span class="p">(</span><span class="n">words</span><span class="p">,</span> <span class="n">numtweet</span><span class="p">):</span>
- 
-        <span class="c1"># Creating DataFrame using pandas</span>
-        <span class="n">db</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">,</span>
-                                   <span class="s1">&#39;description&#39;</span><span class="p">,</span>
-                                   <span class="s1">&#39;date_time&#39;</span><span class="p">,</span>
-                                   <span class="s1">&#39;location&#39;</span><span class="p">,</span>
-                                   <span class="s1">&#39;Coordinates&#39;</span><span class="p">,</span>
-                                   <span class="s1">&#39;X&#39;</span><span class="p">,</span>
-                                   <span class="s1">&#39;Y&#39;</span><span class="p">,</span>
-                                   <span class="s1">&#39;following&#39;</span><span class="p">,</span>
-                                   <span class="s1">&#39;followers&#39;</span><span class="p">,</span>
-                                   <span class="s1">&#39;totaltweets&#39;</span><span class="p">,</span>
-                                   <span class="s1">&#39;retweetcount&#39;</span><span class="p">,</span>
-                                   <span class="s1">&#39;text&#39;</span><span class="p">,</span>
-                                   <span class="s1">&#39;hashtags&#39;</span><span class="p">])</span>
- 
-        <span class="c1"># We are using .Cursor() to search</span>
-        <span class="c1"># through twitter for the required tweets.</span>
-        <span class="c1"># The number of tweets can be</span>
-        <span class="c1"># restricted using .items(number of tweets)</span>
-        <span class="n">tweets</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">Cursor</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">search</span><span class="p">,</span>
-                               <span class="n">words</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span>
-                               <span class="n">tweet_mode</span><span class="o">=</span><span class="s1">&#39;extended&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">(</span><span class="n">numtweet</span><span class="p">)</span>
- 
- 
-        <span class="c1"># .Cursor() returns an iterable object. Each item in</span>
-        <span class="c1"># the iterator has various attributes that you can </span>
-        <span class="c1"># access to get information about each tweet</span>
-        <span class="n">list_tweets</span> <span class="o">=</span> <span class="p">[</span><span class="n">tweet</span> <span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">tweets</span><span class="p">]</span>
- 
-        <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
- 
-        <span class="c1"># we will iterate over each tweet in the</span>
-        <span class="c1"># list for extracting information about each tweet</span>
-        <span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">list_tweets</span><span class="p">:</span>
-                <span class="n">username</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span>
-                <span class="n">description</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">description</span>
-                <span class="n">date_time</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">created_at</span>
-                <span class="n">location</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">location</span>
-                <span class="n">coordinates</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">coordinates</span>
-                <span class="n">x</span><span class="o">=</span><span class="mi">0</span>
-                <span class="n">y</span><span class="o">=</span><span class="mi">0</span>
-                <span class="n">following</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">friends_count</span>
-                <span class="n">followers</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">followers_count</span>
-                <span class="n">totaltweets</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">statuses_count</span>
-                <span class="n">retweetcount</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweet_count</span>
-                <span class="n">hashtags</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">entities</span><span class="p">[</span><span class="s1">&#39;hashtags&#39;</span><span class="p">]</span>
- 
-                <span class="c1"># Retweets can be distinguished by</span>
-                <span class="c1"># a retweeted_status attribute,</span>
-                <span class="c1"># in case it is an invalid reference,</span>
-                <span class="c1"># except block will be executed</span>
-                <span class="k">try</span><span class="p">:</span>
-                        <span class="n">text</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweeted_status</span><span class="o">.</span><span class="n">full_text</span>
-                <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-                        <span class="n">text</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">full_text</span>
-                <span class="n">hashtext</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">hashtags</span><span class="p">)):</span>
-                        <span class="n">hashtext</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hashtags</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
-                
-                <span class="c1"># Only considering the tweets with </span>
-                <span class="c1"># coordinates</span>
-                <span class="k">if</span> <span class="n">coordinates</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span> 
-                        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
-                <span class="k">else</span><span class="p">:</span>         
-                        <span class="c1"># Here we are appending all the</span>
-                        <span class="c1"># extracted information in the DataFrame</span>
-                        <span class="n">ith_tweet</span> <span class="o">=</span> <span class="p">[</span><span class="n">username</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">date_time</span><span class="p">,</span>
-                                <span class="n">location</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>  <span class="n">following</span><span class="p">,</span>
-                                <span class="n">followers</span><span class="p">,</span> <span class="n">totaltweets</span><span class="p">,</span>
-                                <span class="n">retweetcount</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">hashtext</span><span class="p">]</span>
-                        <span class="n">db</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">db</span><span class="p">)]</span> <span class="o">=</span> <span class="n">ith_tweet</span>
-                        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
-
-        <span class="c1"># Coordinates post-processing </span>
-        <span class="c1"># X &amp; Y coordinates</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">db</span><span class="p">)):</span>
-                <span class="n">db</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Coordinates</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;coordinates&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-                <span class="n">db</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Coordinates</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;coordinates&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
-        <span class="k">return</span> <span class="n">db</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">db</span> <span class="o">=</span> <span class="n">scrape</span><span class="p">(</span><span class="s1">&#39;Earthquake&#39;</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">db_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;Earthquakes_wc_db.csv&#39;</span><span class="p">)</span> 
+<span class="n">db</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">db_file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1119,86 +1000,11 @@ Mention at least one advantage and one disadvantage of not sharing the coordinat
 <p>We’ll continue with the earthquake example.</p>
 <p>Did you notice there is a user that uses the <a class="reference external" href="https://www.usgs.gov/programs/earthquake-hazards/earthquakes">USGS</a> as a source of its tweets?</p>
 <p>That’s right, it is ‘everyEarthquake’.</p>
-<p>So this time we’ll retrieve the tweets by a user using the following function:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">user</span><span class="p">(</span><span class="n">uID</span><span class="p">,</span> <span class="n">numtweet</span><span class="p">):</span>  
-        <span class="c1"># Creating DataFrame using pandas</span>
-        <span class="n">db</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">,</span>
-                                   <span class="s1">&#39;description&#39;</span><span class="p">,</span>
-                                   <span class="s1">&#39;date_time&#39;</span><span class="p">,</span>
-                                   <span class="s1">&#39;location&#39;</span><span class="p">,</span>
-                                   <span class="s1">&#39;Coordinates&#39;</span><span class="p">,</span>
-                                   <span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">,</span>
-                                   <span class="s1">&#39;following&#39;</span><span class="p">,</span>
-                                   <span class="s1">&#39;followers&#39;</span><span class="p">,</span>
-                                   <span class="s1">&#39;totaltweets&#39;</span><span class="p">,</span>
-                                   <span class="s1">&#39;retweetcount&#39;</span><span class="p">,</span>
-                                   <span class="s1">&#39;text&#39;</span><span class="p">,</span>
-                                   <span class="s1">&#39;hashtags&#39;</span><span class="p">])</span>
- 
-        <span class="c1"># Retrieving tweets by user</span>
-        <span class="n">list_tweets</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">user_timeline</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;everyEarthquake&#39;</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="n">numtweet</span><span class="p">)</span>
-        
-        
-        <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="c1"># we will iterate over each tweet in the</span>
-        <span class="c1"># list for extracting information about each tweet</span>
-        <span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">list_tweets</span><span class="p">:</span>
-                <span class="n">username</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">screen_name</span>
-                <span class="n">description</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">description</span>
-                <span class="n">date_time</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">created_at</span>
-                <span class="n">location</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">location</span>
-                <span class="n">coordinates</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">coordinates</span>
-                <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
-                <span class="n">following</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">friends_count</span>
-                <span class="n">followers</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">followers_count</span>
-                <span class="n">totaltweets</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">user</span><span class="o">.</span><span class="n">statuses_count</span>
-                <span class="n">retweetcount</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweet_count</span>
-                <span class="n">hashtags</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">entities</span><span class="p">[</span><span class="s1">&#39;hashtags&#39;</span><span class="p">]</span>
- 
-                <span class="c1"># Retweets can be distinguished by</span>
-                <span class="c1"># a retweeted_status attribute,</span>
-                <span class="c1"># in case it is an invalid reference,</span>
-                <span class="c1"># except block will be executed</span>
-                <span class="k">try</span><span class="p">:</span>
-                        <span class="n">text</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">retweeted_status</span><span class="o">.</span><span class="n">full_text</span>
-                <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
-                        <span class="n">text</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">text</span>
-                <span class="n">hashtext</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">hashtags</span><span class="p">)):</span>
-                        <span class="n">hashtext</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hashtags</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
-                
-                <span class="c1"># Only considering the tweets with </span>
-                <span class="c1"># coordinates</span>
-                <span class="k">if</span> <span class="n">coordinates</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span> 
-                        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
-                <span class="k">else</span><span class="p">:</span>
-                         
-                        <span class="c1"># Here we are appending all the</span>
-                        <span class="c1"># extracted information in the DataFrame</span>
-                        <span class="n">ith_tweet</span> <span class="o">=</span> <span class="p">[</span><span class="n">username</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">date_time</span><span class="p">,</span>
-                                <span class="n">location</span><span class="p">,</span> <span class="n">coordinates</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">following</span><span class="p">,</span>
-                                <span class="n">followers</span><span class="p">,</span> <span class="n">totaltweets</span><span class="p">,</span>
-                                <span class="n">retweetcount</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">hashtext</span><span class="p">]</span>
-                        <span class="n">db</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">db</span><span class="p">)]</span> <span class="o">=</span> <span class="n">ith_tweet</span>
-                        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
-
-        <span class="c1"># Coordinates post-processing </span>
-        <span class="c1"># X &amp; Y coordinates</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">db</span><span class="p">)):</span>
-                <span class="n">db</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Coordinates</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;coordinates&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-                <span class="n">db</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Coordinates</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;coordinates&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
-        <span class="k">return</span> <span class="n">db</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>Let’s retrieve the last 100 posts made by &#64;everyEarthquake:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">db</span> <span class="o">=</span> <span class="n">user</span><span class="p">(</span><span class="s1">&#39;everyEarthquake&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="c1"># db</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">db_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;everyEarthquake_db.csl&#39;</span><span class="p">)</span> 
+<span class="n">db</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">db_file</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1221,14 +1027,14 @@ Mention at least one advantage and one disadvantage of not sharing the coordinat
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
-<span class="n">world</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;XX&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.3</span><span class="p">)</span>
+<span class="n">world</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;XX&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="n">X</span><span class="p">)</span>
 <span class="n">dbg</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;XX&#39;</span><span class="p">)</span>
 
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;XXXX&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">XX</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;XXX&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="n">XX</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="n">XX</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;XXX&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="n">XX</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="n">XXX</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="n">XX</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="n">XX</span><span class="p">)</span>
 <span class="n">legend_elements</span> <span class="o">=</span> <span class="p">[</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;XXX&#39;</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;XX&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">)]</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">legend_elements</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.85</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
@@ -1248,7 +1054,7 @@ Mention at least one advantage and one disadvantage of not sharing the coordinat
     <span class="n">Mag</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">text_split</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
     <span class="n">dbg</span><span class="p">[</span><span class="s1">&#39;magnitude&#39;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">Mag</span>
     
-<span class="c1"># dbg </span>
+<span class="n">dbg</span> 
 </pre></div>
 </div>
 </div>
@@ -1270,7 +1076,7 @@ Mention at least one advantage and one disadvantage of not sharing the coordinat
          <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
          <span class="n">legend_kwds</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Magnitude&quot;</span><span class="p">,</span> <span class="s1">&#39;orientation&#39;</span><span class="p">:</span> <span class="s2">&quot;vertical&quot;</span><span class="p">},</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax</span><span class="p">)</span> 
 
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;XXX&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">XX</span><span class="p">)</span> <span class="c1"># set title</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;XXX&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span> <span class="c1"># set title</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;XXX&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="n">XX</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="n">XX</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;XXX&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="n">XX</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="n">XX</span><span class="p">)</span>
@@ -1304,14 +1110,9 @@ The database contains tweets about floods located in Texas from 30/07/2014 to 15
 <p>We can read the data using the following code:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>gdown<span class="w"> </span>11QfCIMHOjcgNvWMFsZTk5btXgYiRCXRq
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;tweets.jsonl&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Flood_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;Floods_tweets.jsonl&#39;</span><span class="p">)</span> 
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">Flood_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">tweets</span> <span class="o">=</span> <span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">tweets</span><span class="p">:</span>
     <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tweet</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
@@ -1469,8 +1270,7 @@ The database contains tweets about floods located in Texas from 30/07/2014 to 15
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-packages">1.Introducing the packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#social-media">2. Social Media</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authenticate-with-tweepy">Authenticate with Tweepy</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-user-information">Getting User Information</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-to-google-drive">Connect to google drive</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#natural-language-processing-nlp">3. Natural Language Processing (NLP)</a></li>
