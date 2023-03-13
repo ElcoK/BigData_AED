@@ -21,11 +21,13 @@ This week we will focus on how we can use Twitter data to map the impacts of nat
 :class: important
 - Understand the concept of Nature Language Processing
 - Gain a basic understand of how social media data can be explored and used.
-- Know how you can access Twitter data and use it in Python. 
+- Know how you can use Twitter data to analyze the occurence of natural hazards. 
+- Know how you can use social media data to identify landscape valuation patterns.
 `````
 
 ## Natural Language Processing
 Natural language processing (NLP) is an area of computer science and artificial intelligence concerned with the interaction between computers and humans in natural language. The ultimate goal of NLP is to help computers understand language as well as we do. It is the driving force behind things like virtual assistants, speech recognition, sentiment analysis, automatic text summarization, machine translation and much more. In this post, we’ll cover the basics of natural language processing, dive into some of its techniques and also learn how NLP has benefited from recent advances in deep learning.
+
 
 ### Why is Natural Language processing difficult?
 Human language is special for several reasons. It is specifically constructed to convey the speaker/writer's meaning. It is a complex system, although little children can learn it pretty quickly.
@@ -33,6 +35,21 @@ Human language is special for several reasons. It is specifically constructed to
 Another remarkable thing about human language is that it is all about symbols. According to Chris Manning, a machine learning professor at Stanford, it is a discrete, symbolic, categorical signaling system. This means we can convey the same meaning in different ways (i.e., speech, gesture, signs, etc.) The encoding by the human brain is a continuous pattern of activation by which the symbols are transmitted via continuous signals of sound and vision.
 
 Understanding human language is considered a difficult task due to its complexity. For example, there are an infinite number of different ways to arrange words in a sentence. Also, words can have several meanings and contextual information is necessary to correctly interpret sentences. Every language is more or less unique and ambiguous. Just take a look at the following newspaper headline “The Pope’s baby steps on gays.” This sentence clearly has two very different interpretations, which is a pretty good example of the challenges in natural language processing.
+
+
+### Key Definitions within NLP
+
+- **Tokenization** is, generally, an early step in the NLP process, a step which splits longer strings of text into smaller pieces, or tokens. Larger chunks of text can be tokenized into sentences, sentences can be tokenized into words, etc. Further processing is generally performed after a piece of text has been appropriately tokenized.
+- **Normalization** generally refers to a series of related tasks meant to put all text on a level playing field: converting all text to the same case (upper or lower), removing punctuation, expanding contractions, converting numbers to their word equivalents, and so on. Normalization puts all words on equal footing, and allows processing to proceed uniformly.
+- **Stemming** is the process of eliminating affixes (suffixed, prefixes, infixes, circumfixes) from a word in order to obtain a word stem.
+- **Lemmatization** is related to stemming, differing in that lemmatization is able to capture canonical forms based on a word's lemma. For example, stemming the word "better" would fail to return its citation form (another word for lemma); however, lemmatization would result in changing *better* into *good*.
+- **Corpus** (literally Latin for body) refers to a collection of texts. Such collections may be formed of a single language of texts, or can span multiple languages.
+- **Stop words** are those words which are filtered out before further processing of text, since these words contribute little to overall meaning, given that they are generally the most common words in a language. For instance, "the," "and," and "a," while all required words in a particular passage, don't generally contribute greatly to one's understanding of content.
+- **Part-Of-Speech (POS) tagging** consists of assigning a category tag to the tokenized parts of a sentence. The most popular POS tagging would be identifying words as nouns, verbs, adjectives, etc.
+- **Statistical Language Modeling** is the process of building a statistical language model which is meant to provide an estimate of a natural language. For a sequence of input words, the model would assign a probability to the entire sequence, which contributes to the estimated likelihood of various possible sequences. 
+- **Bag of words** is a particular representation model used to simplify the contents of a selection of text. The bag of words model omits grammar and word order, but is interested in the number of occurrences of words within the text. 
+- **n-grams** means a sequence of n-words. It is another representation model for simplifying text selection contents. As opposed to the orderless representation of bag of words, n-grams modeling is interested in preserving  sequences of N items from the text selection.
+- **Regular expressions** is a string of text that lets you create patterns that help match, locate, and manage text.
 
 ### Syntactic and Semantic Analysis
 Syntactic analysis (syntax) and semantic analysis (semantic) are the two primary techniques that lead to the understanding of natural language. Language is a set of valid sentences, but what makes a sentence valid? Syntax and semantics.
@@ -59,7 +76,7 @@ Speech recognition, for example, has gotten very good and works almost flawlessl
 Let’s look at some of the most popular techniques used in natural language processing. Note how some of them are closely intertwined and only serve as subtasks for solving larger problems.
 
  
-**PARSING**
+#### **PARSING**
 
 What is parsing? According to the dictionary, to parse is to “resolve a sentence into its component parts and describe their syntactic roles.”
 
@@ -78,7 +95,7 @@ A parse tree also provides us with information about the grammatical relationshi
 
 With structure I mean that we have the verb (“robbed”), which is marked with a “V” above it and a “VP” above that, which is linked with a “S” to the subject ("the thief”), which has a “NP” above it. This is like a template for a subject-verb relationship and there are many others for other types of relationships.
 
-**STEMMING**
+#### **STEMMING**
 
 Stemming is a technique that comes from morphology and information retrieval which is used in natural language processing for pre-processing and efficiency purposes. It’s defined by the dictionary as to “originate in or be caused by.”
 
@@ -95,7 +112,8 @@ These two sentences mean the exact same thing and the use of the word is identic
 Now, imagine all the English words in the vocabulary with all their different fixations at the end of them. To store them all would require a huge database containing many words that actually have the same meaning. This is solved by focusing only on a word’s stem. Popular algorithms for stemming include the Porter stemming algorithm from 1979, which still works well.
 
  
-**TEXT SEGMENTATION** 
+#### **TEXT SEGMENTATION** 
+
 Text segmentation in natural language processing is the process of transforming text into meaningful units like words, sentences, different topics, the underlying intent and more. Mostly, the text is segmented into its component words, which can be a difficult task, depending on the language. This is again due to the complexity of human language. For example, it works relatively well in English to separate words by spaces, except for words like “icebox” that belong together but are separated by a space. The problem is that people sometimes also write it as “ice-box.”
 
 
@@ -107,7 +125,7 @@ For example:
 
 Before NER: *Martin bought 300 shares of SAP in 2016.*
 
-After NER: *[Martin]Person bought 300 shares of [SAP]Organization in [2016]Time.*
+After NER: Martin **{Person}** bought 300 shares of SAP **{Organization}** in 2016 **{Time}**.
 
  
 **Relationship Extraction**
@@ -125,4 +143,3 @@ With the use of sentiment analysis, for example, we may want to predict a custom
 This explananation is strongly based upon the work of [others](https://builtin.com/data-science/introduction-nlp/) 
 ```
 
-## Access to Twitter Data
