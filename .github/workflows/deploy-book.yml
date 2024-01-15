@@ -15,11 +15,20 @@ on:
 
 # This job installs dependencies, builds the book, and pushes it to `gh-pages`
 jobs:
+
+
+    
   deploy-book:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write # We generate static HTML, JS, CSS so we need write access to the repo
+      pages: write
+      id-token: write
+      
     steps:
     - uses: actions/checkout@v2
-
+    
     # Install dependencies
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
