@@ -1,7 +1,7 @@
 Variable_name;Short_description;Household_or_person
 YEAR;Census year;H
 SAMPLE;IPUMS sample identifier;H
-SERIAL;Household serial number;H
+SERIAL;Household ID;H
 HHWT;Household weight;H
 REGION;Census region and division;H
 STATEFIP;State (FIPS code);H
@@ -18,10 +18,7 @@ TAXINCL;Mortgage payment includes property taxes;H
 INSINCL;Mortgage payment includes property insurance;H
 PROPINSR;Annual property insurance cost;H
 RENT;Monthly contract rent;H
-COSTELEC;Annual electricity cost;H
-COSTGAS;Annual gas cost;H
 COSTWATR;Annual water cost;H
-COSTFUEL;Annual home heating fuel cost;H
 HHINCOME;Total household income;H
 FOODSTMP;Food stamp recipiency;H
 KITCHEN;Kitchen or cooking facilities;H
