@@ -191,7 +191,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../week3/lecture.html">Lecture: Introduction to Artificial Neural Networks and model validation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../week3/tutorial1.html">Tutorial 1: Artificial neural networks (ANNs)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week3/tutorial2.html">Tutorial 2: Model Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week3/tutorial2.html">Tutorial 4: Validation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
 <ul class="nav bd-sidenav">
@@ -535,7 +535,8 @@ document.write(`
 <hr><p>Let’s start again with reading the data. It is the dataset that we produced in the previous <a class="reference external" href="https://elcok.github.io/BigData_AED/week2/tutorial1.html">Tutorial</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_in</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;https://github.com/ElcoK/BigData_AED/raw/main/week2/usadataforweek2tut2.csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#data_in = pd.read_csv(r&quot;https://github.com/ElcoK/BigData_AED/raw/main/week2/usadataforweek2tut2.csv&quot;)</span>
+<span class="n">data_in</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;usadataforweek2tut2_updatejan24.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -566,19 +567,19 @@ document.write(`
 <p>We don’t estimate the random forest model on the entire dataset, but we split the dataset in a training and testing sample, because we want to train the model on the training dataset and to test model performance on the test dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">training_data</span><span class="p">,</span> <span class="n">testing_data</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">training_data</span><span class="p">,</span> <span class="n">testing_data</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Next we split the training and testing data in two datasets, where x_train contains the explanatory variables and y_train contains the dependent variable. Recall that <strong>COSTENERGY</strong> is the sum of <strong>COSTELEC</strong>, <strong>COSTGAS</strong> and <strong>COSTFUEL</strong>, so they should also be removed from the explanatory variables.</p>
+<p>Next we split the training and testing data in two datasets, where x_train contains the explanatory variables and y_train contains the dependent variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train</span> <span class="o">=</span> <span class="n">training_data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">,</span> <span class="s1">&#39;COSTELEC&#39;</span><span class="p">,</span> <span class="s1">&#39;COSTGAS&#39;</span><span class="p">,</span> <span class="s1">&#39;COSTFUEL&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train</span> <span class="o">=</span> <span class="n">training_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">])</span>
 <span class="n">y_train</span> <span class="o">=</span> <span class="n">training_data</span><span class="p">[[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">]]</span>
-<span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span> <span class="c1">#here we convert y_train from a pandas dataframe with one column to a numpy array.   </span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span> <span class="c1">#here we convert y_train from a pandas dataframe with one column to a numpy array.</span>
 
-<span class="n">x_test</span> <span class="o">=</span> <span class="n">testing_data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">,</span> <span class="s1">&#39;COSTELEC&#39;</span><span class="p">,</span> <span class="s1">&#39;COSTGAS&#39;</span><span class="p">,</span> <span class="s1">&#39;COSTFUEL&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">testing_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">])</span>
 <span class="n">y_test</span> <span class="o">=</span> <span class="n">testing_data</span><span class="p">[[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">]]</span>
 <span class="n">y_test</span> <span class="o">=</span> <span class="n">y_test</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
 </pre></div>
@@ -603,11 +604,11 @@ document.write(`
 </div>
 </div>
 </div>
-<p>There are quite some missing values in the dependent variable <strong>COSTENERGY</strong>. And the number of NA’s in <strong>COSTENERGY</strong> is suspiciously similar to the number of missing values in some other variables, such as <strong>BUILTYR</strong>, <strong>ROOMS</strong>, <strong>HHINCOME</strong>, etc. Let’s check what happens if we remove the rows from the dataset when there is no value for <strong>COSTENERGY</strong>. Probably we can remove a lot of missing values all at once.</p>
+<p>There are quite some missing values in the dependent variable <strong>COSTENERGY</strong>. And the number of NA’s in <strong>COSTENERGY</strong> is suspiciously similar to the number of missing values in some other variables, such as <strong>BUILTYR2</strong>, <strong>ROOMS</strong>, <strong>HHINCOME</strong>, etc. Let’s check what happens if we remove the rows from the dataset when there is no value for <strong>COSTENERGY</strong>. Probably we can remove a lot of missing values all at once.</p>
 <p>In the following line of code we remove all rows (<code class="docutils literal notranslate"><span class="pre">axis</span> <span class="pre">=</span> <span class="pre">0</span></code> indicates rows, and <code class="docutils literal notranslate"><span class="pre">axis</span> <span class="pre">=</span> <span class="pre">1</span></code> indicates columns) for which <strong>COSTENERGY</strong> is NA.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datanan</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">])</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datanan</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -634,8 +635,6 @@ document.write(`
 <span class="n">datanan</span><span class="p">[</span><span class="s1">&#39;IND&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datanan</span><span class="p">[</span><span class="s1">&#39;IND&#39;</span><span class="p">]</span> <span class="c1"># fill na</span>
 <span class="n">datanan</span><span class="p">[</span><span class="s1">&#39;OCC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datanan</span><span class="p">[</span><span class="s1">&#39;OCC&#39;</span><span class="p">]</span> <span class="c1"># fill na</span>
 <span class="n">datanan</span><span class="p">[</span><span class="s1">&#39;EMPSTAT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datanan</span><span class="p">[</span><span class="s1">&#39;EMPSTAT&#39;</span><span class="p">]</span> <span class="c1"># fill na</span>
-<span class="n">datanan</span><span class="p">[</span><span class="s1">&#39;INCTOT&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datanan</span><span class="p">[</span><span class="s1">&#39;INCTOT&#39;</span><span class="p">]</span> <span class="c1"># fill na</span>
-<span class="n">datanan</span><span class="p">[</span><span class="s1">&#39;POVERTY&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">datanan</span><span class="p">[</span><span class="s1">&#39;POVERTY&#39;</span><span class="p">]</span> <span class="c1"># fill na</span>
 </pre></div>
 </div>
 </div>
@@ -643,11 +642,11 @@ document.write(`
 </section>
 <section id="training-the-random-forest-model">
 <h2>4. Training the random forest model<a class="headerlink" href="#training-the-random-forest-model" title="Permalink to this heading">#</a></h2>
-<hr><p>Now we can actually estimate the random forest model. Note that we use training and estimation of the random forest model interchangebly. In machine learning, we usually talk about training a model, while in statistics/econometrics, we would say estimating a model, but both words mean essentially the same.</p>
+<hr><p>Now we can actually estimate the random forest model. Note that we use the phrases <em>training a random forest model</em> or <em>estimating a the random forest model</em> interchangebly. In machine learning, we usually talk about training a model, while in statistics/econometrics, we would say estimating a model, but both terms mean essentially the same.</p>
 <p>Remember to split the data again in a training and testing set. Now we use the datanan dataset which has no missing values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">training_data</span><span class="p">,</span> <span class="n">testing_data</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">datanan</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">training_data</span><span class="p">,</span> <span class="n">testing_data</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">datanan</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -655,11 +654,11 @@ document.write(`
 <p>And now let’s rerun the model</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train</span> <span class="o">=</span> <span class="n">training_data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">,</span> <span class="s1">&#39;COSTELEC&#39;</span><span class="p">,</span> <span class="s1">&#39;COSTGAS&#39;</span><span class="p">,</span> <span class="s1">&#39;COSTFUEL&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train</span> <span class="o">=</span> <span class="n">training_data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">y_train</span> <span class="o">=</span> <span class="n">training_data</span><span class="p">[[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">]]</span>
 <span class="n">y_train</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
 
-<span class="n">x_test</span> <span class="o">=</span> <span class="n">testing_data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">,</span> <span class="s1">&#39;COSTELEC&#39;</span><span class="p">,</span> <span class="s1">&#39;COSTGAS&#39;</span><span class="p">,</span> <span class="s1">&#39;COSTFUEL&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">testing_data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">y_test</span> <span class="o">=</span> <span class="n">testing_data</span><span class="p">[[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">]]</span>
 <span class="n">y_test</span> <span class="o">=</span> <span class="n">y_test</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
 </pre></div>
@@ -686,8 +685,7 @@ document.write(`
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 4:</b> Upload your decision tree. </div><div class="alert alert-block alert-success">
-<b>Question 5:</b> Interpret what you see in the decision tree. Hint: Explain the terms squared_error, samples and value in the tree.  </div></section>
+<b>Question 4:</b> Interpret what you see in the decision tree. Hint: Explain the terms squared_error, samples and value in the tree.  </div></section>
 <section id="prediction-with-the-random-forest-model">
 <h2>5. Prediction with the random forest model<a class="headerlink" href="#prediction-with-the-random-forest-model" title="Permalink to this heading">#</a></h2>
 <hr><p>In the next line of code, we use the trained random forest model to predict the dependent variable of the testing dataset. We use the function predict of the random forest regressor.</p>
@@ -716,7 +714,7 @@ document.write(`
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 6:</b> Interpret the plot you have created to evaluate the performance of your model. </div><p>Next we check performance in terms of a numeric criterion. We can for example check the mean squared error or the R2.</p>
+<b>Question 5:</b> Interpret the plot you have created to evaluate the performance of your model. </div><p>Next we check performance in terms of a numeric criterion. We can for example check the mean squared error or the R2.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
@@ -734,24 +732,24 @@ document.write(`
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 7:</b> What are the values you receive for the <i>mean squared error</i> and the <i>r-squared</i>? Also explain the two terms. </div></section>
+<b>Question 6:</b> What are the values you receive for the <i>mean squared error</i> and the <i>r-squared</i>? Also explain the two terms. </div></section>
 <section id="parameter-tuning">
 <h2>7. Parameter tuning<a class="headerlink" href="#parameter-tuning" title="Permalink to this heading">#</a></h2>
-<hr><p>The R2 score is pretty low, so we want to try other hyperparameters. We will change the depth and the number of trees in the forest. In the code below, we run a for loop that tries 3 different n_estimators and 3 different depths, so we estimate 9 different random forest models. We save the mse and r2 of each model in a list, i.e. list_mse and list_r2.</p>
+<hr><p>The R2 score is pretty low, so we want to try other hyperparameters. We will change the depth and the number of trees in the forest. In the code below, we run a for loop that tries 3 different n_estimators and 3 different depths, so we estimate 9 different random forest models. We save the mse and r2 of each model in a list, i.e. list_mse and list_r2. It’ll take a minute or two to run.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_mse</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">list_r2</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="k">for</span> <span class="n">n_est</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">]:</span>
-    <span class="k">for</span> <span class="n">dep</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]:</span>
-       <span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="n">n_est</span><span class="p">,</span> <span class="n">max_features</span> <span class="o">=</span> <span class="s1">&#39;sqrt&#39;</span><span class="p">,</span> <span class="n">max_depth</span> <span class="o">=</span> <span class="n">dep</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span> 
+<span class="k">for</span> <span class="n">n_est</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">75</span><span class="p">,</span> <span class="mi">150</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">dep</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">]:</span>
+       <span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="n">n_est</span><span class="p">,</span> <span class="n">max_features</span> <span class="o">=</span> <span class="s1">&#39;sqrt&#39;</span><span class="p">,</span> <span class="n">max_depth</span> <span class="o">=</span> <span class="n">dep</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
        <span class="n">y_pred</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
        <span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
        <span class="n">r2</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
        <span class="n">list_mse</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mse</span><span class="p">)</span>
        <span class="n">list_r2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r2</span><span class="p">)</span>
-        
+
 <span class="nb">print</span><span class="p">(</span><span class="n">list_mse</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">list_r2</span><span class="p">)</span>
 </pre></div>
@@ -759,15 +757,15 @@ document.write(`
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 8:</b> Interpret the results. Which model performs best. Think about how the for loop works. You could use print(n_est) and print(dep) in the for loop to make life easier. </div><div class="alert alert-block alert-success">
-<b>Question 9:</b> Try another parameter space. Also think about the time the model needs to run. The higher the number of trees and the depth, the longer it takes to train the model. You can copy the code from the previous cell and change the numbers over which the for loop iterates, i.e. the numbers in [20,50,100] and [4,5,6].  </div></section>
+<b>Question 7:</b> Interpret the results. Which model performs best. Think about how the for loop works. You could add print(n_est) and print(dep) in the for loop to make life easier. </div><div class="alert alert-block alert-success">
+<b>Question 8:</b> Try another parameter space but think about the time the model needs to run! The higher the number of trees and the depth, the longer it takes to train the model. You can copy the code from the previous cell and change the numbers over which the for loop iterates, i.e. the numbers in [75,150] and [5,7,9]. Because of time, I would advice not to try more than 4 models. Report the hypermeters you tried and the R2 score. </div></section>
 <section id="feature-importance">
 <h2>8. Feature importance<a class="headerlink" href="#feature-importance" title="Permalink to this heading">#</a></h2>
-<hr><p>Next we want to see which variables have the most predictive value for <strong>ENERGYCOSTS</strong>. We can check the importance of each feature in the random forest model by calling rf.feature_importances_. We make a horizontal barplot to see the importance of each feature. You can fill in the hyperparameters.</p>
+<hr><p>Next we want to see which variables have the most predictive value for <strong>ENERGYCOSTS</strong>. We can check the importance of each feature in the random forest model by calling rf.feature_importances_. We make a horizontal barplot to see the importance of each feature. You can fill in the hyperparameters for n_estimators and max_depth.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="n">max_features</span> <span class="o">=</span> <span class="s1">&#39;sqrt&#39;</span><span class="p">,</span> <span class="n">max_depth</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span> 
-<span class="n">sorted_idx</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">feature_importances_</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span> <span class="c1">#we sort the importance of features from high to low. </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span> <span class="n">max_features</span> <span class="o">=</span> <span class="s1">&#39;sqrt&#39;</span><span class="p">,</span> <span class="n">max_depth</span> <span class="o">=</span> <span class="o">...</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">sorted_idx</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">feature_importances_</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span> <span class="c1">#we sort the importance of features from high to low.</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mf">10.5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">sorted_idx</span><span class="p">],</span> <span class="n">rf</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">[</span><span class="n">sorted_idx</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -776,8 +774,7 @@ document.write(`
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 10:</b> Upload the figure of the feature importance. </div><div class="alert alert-block alert-success">
-<b>Question 11:</b> According to the plot, which variables, also called features, are most important in the random forest? Should we leave out variables from the model. Hint: Not all variables in the model are meaningful, are they?  </div></section>
+<b>Question 9:</b> According to the plot, which variables, also called features, are most important in the random forest? Should we leave out variables from the model. Hint: Not all variables in the model are meaningful, are they?  </div></section>
 </section>
 
     <script type="text/x-thebe-config">

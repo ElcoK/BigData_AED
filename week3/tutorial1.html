@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'week3/tutorial1';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Tutorial 2: Model Validation" href="tutorial2.html" />
+    <link rel="next" title="Tutorial 4: Validation" href="tutorial2.html" />
     <link rel="prev" title="Lecture: Introduction to Artificial Neural Networks and model validation" href="lecture.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -191,7 +191,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lecture.html">Lecture: Introduction to Artificial Neural Networks and model validation</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Tutorial 1: Artificial neural networks (ANNs)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial2.html">Tutorial 2: Model Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial2.html">Tutorial 4: Validation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
 <ul class="nav bd-sidenav">
@@ -506,6 +506,8 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>tensorflow
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>keras-visualizer
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pydot
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>graphviz
 </pre></div>
 </div>
 </div>
@@ -531,7 +533,8 @@ document.write(`
 <hr><p>We use the data same that we also used to estimate the OLS model. It includes the variables you created in the first tutorial and it deals with missing values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;https://github.com/ElcoK/BigData_AED/raw/main/week2/usadataforOLS.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;unicode_escape&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#data1 = pd.read_csv(r&quot;https://github.com/ElcoK/BigData_AED/raw/main/week2/usadataforOLS.csv&quot;, sep = &#39;,&#39;, encoding = &#39;unicode_escape&#39;)</span>
+<span class="n">data1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;usadataforOLS_updatejan24.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;unicode_escape&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -544,18 +547,17 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Like we did in the last tutorial, we will drop duplicates based on the variable SERIAL. (Remember that persons from the same household have the same SERIAL number.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="n">data1</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="n">keep</span><span class="o">=</span><span class="s2">&quot;first&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span><span class="o">.</span><span class="n">columns</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>In addition, we drop several columns from the dataframe that are not useful.</p>
+<p>We drop several columns from the dataframe that are not useful.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="n">data1</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Unnamed: 0&#39;</span><span class="p">,</span> <span class="s1">&#39;YEAR&#39;</span><span class="p">,</span> <span class="s1">&#39;SAMPLE&#39;</span><span class="p">,</span> <span class="s1">&#39;HHWT&#39;</span><span class="p">,</span> <span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span><span class="s1">&#39;PERWT&#39;</span><span class="p">,</span> <span class="s1">&#39;RELATE&#39;</span><span class="p">,</span> <span class="s1">&#39;RELATED&#39;</span><span class="p">,</span> <span class="s1">&#39;COUNTYFIP&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="n">data1</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;YEAR&#39;</span><span class="p">,</span> <span class="s1">&#39;SAMPLE&#39;</span><span class="p">,</span> <span class="s1">&#39;HHWT&#39;</span><span class="p">,</span> <span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span><span class="s1">&#39;PERWT&#39;</span><span class="p">,</span> <span class="s1">&#39;RELATE&#39;</span><span class="p">,</span> <span class="s1">&#39;RELATED&#39;</span><span class="p">,</span> <span class="s1">&#39;COUNTYFIP&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -571,10 +573,10 @@ document.write(`
 </section>
 <section id="one-hot-encoding">
 <h2>2. One-hot encoding<a class="headerlink" href="#one-hot-encoding" title="Permalink to this heading">#</a></h2>
-<hr><p>We have some categorical variables in our data? Before we can include them in the ANN, we need to first transform them into <em>dummy variables</em>. This is called one-hot encoding. A dummy variable takes the value of either 1 or 0. In our dataset, the variable REGION has nine distinct values (32, 42, 41, 33, 11, 31, 21, 22, and 12), each representing a unique region. That means that to transform the REGION variable into <em>dummies</em>, we actually need to create nine new columns in our dataset, one for each region separatly. For example, if the <em>sample unit</em> in our data (i.e., row), belows to REGION 32, in our new “REGION_32” column, it will have a value of 1, while all other sample units that are from a different region will have a value of 0 in the “REGION_32” column. We can create new dummy variables (columns) in our dataset based on REGION using the function get_dummies from the pandas package. We give the columns of the dummy variables a prefix ‘REGION’ after which follows the region number. Then we concatenate (pd.concat) the dataframe one_hot horizontally (axis = 1) to the original dataframe with all the data.</p>
+<hr><p>We have some categorical variables in our data. Before we can include them in the ANN, we need to first transform them into <em>dummy variables</em>. This is called one-hot encoding. A dummy variable takes the value of either 1 or 0. In our dataset, the variable REGION has nine distinct values (32, 42, 41, 33, 11, 31, 21, 22, and 12), each representing a unique region. That means that to transform the REGION variable into <em>dummies</em>, we actually need to create nine new columns in our dataset, one for each region separatly. For example, if the <em>sample unit</em> in our data (i.e., row), belows to REGION 32, in our new “REGION_32” column, it will have a value of 1, while all other sample units that are from a different region will have a value of 0 in the “REGION_32” column. We can create new dummy variables (columns) in our dataset based on REGION using the function get_dummies from the pandas package. We give the columns of the dummy variables a prefix ‘REGION’ after which follows the region number. Then we concatenate (pd.concat) the dataframe one_hot horizontally (axis = 1) to the original dataframe with all the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">one_hot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">data1</span><span class="p">[</span><span class="s1">&#39;REGION&#39;</span><span class="p">],</span> <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;REGION_&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">one_hot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">data1</span><span class="p">[</span><span class="s1">&#39;REGION&#39;</span><span class="p">],</span> <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;REGION&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">one_hot</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 <span class="n">datann</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">datann</span><span class="p">,</span> <span class="n">one_hot</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -607,18 +609,18 @@ We calculate the normalized variables ourselves, but we could also add a normali
 <p>First, we split the data in training and testing data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">training_data</span><span class="p">,</span> <span class="n">testing_data</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">datann</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">training_data</span><span class="p">,</span> <span class="n">testing_data</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">datann</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>In our first neural network model, we are going to construct a linear model with one explanantory variable, which is the age of the youngest household member, i.e. YOUNGEST.</p>
+<p>In our first neural network model, we are going to construct a linear model with one explanantory variable, which is the age of the youngest household member, i.e. OLDEST.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train</span> <span class="o">=</span> <span class="n">training_data</span><span class="p">[[</span><span class="s1">&#39;YOUNGEST&#39;</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train</span> <span class="o">=</span> <span class="n">training_data</span><span class="p">[[</span><span class="s1">&#39;OLDEST&#39;</span><span class="p">]]</span>
 <span class="n">y_train</span> <span class="o">=</span> <span class="n">training_data</span><span class="p">[[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">]]</span>
 
-<span class="n">x_test</span> <span class="o">=</span> <span class="n">testing_data</span><span class="p">[[</span><span class="s1">&#39;YOUNGEST&#39;</span><span class="p">]]</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">testing_data</span><span class="p">[[</span><span class="s1">&#39;OLDEST&#39;</span><span class="p">]]</span>
 <span class="n">y_test</span> <span class="o">=</span> <span class="n">testing_data</span><span class="p">[[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
@@ -628,7 +630,7 @@ We calculate the normalized variables ourselves, but we could also add a normali
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">linearmodel_normalizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Normalization</span><span class="p">(</span><span class="n">input_shape</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,],</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="n">linearmodel_normalizer</span><span class="o">.</span><span class="n">adapt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_train</span><span class="p">[</span><span class="s1">&#39;YOUNGEST&#39;</span><span class="p">]))</span>
+<span class="n">linearmodel_normalizer</span><span class="o">.</span><span class="n">adapt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_train</span><span class="p">[</span><span class="s1">&#39;OLDEST&#39;</span><span class="p">]))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">linearmodel_normalizer</span><span class="o">.</span><span class="n">mean</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -660,11 +662,11 @@ Before the output layer, we add the normalizing layer.</p>
 </div>
 <p>From the summary, we can see that we have three parameters in the normalization layer and 2 parameters in the output layer.</p>
 <div class="alert alert-block alert-success">
-<b>Question 2:</b> Does this model have hidden layers? (You might want to refer to the Python package's information.)
+<b>Question 2:</b> Does this model have hidden layers?
 </div><p>Let’s visualize the neural network model. We quickly build the model again, but without the normalizer layer, because the keras visualizer library did not allow for this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">keras_visualizer</span> <span class="kn">import</span> <span class="n">visualizer</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">keras_visualizer</span> <span class="kn">import</span> <span class="n">visualizer</span>
 
 <span class="n">linearmodelplot</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
       <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">input_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)),</span>
@@ -672,9 +674,9 @@ Before the output layer, we add the normalizing layer.</p>
 
 <span class="n">linearmodelplot</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mean_squared_error&#39;</span><span class="p">)</span>
 
-<span class="n">visualizer</span><span class="p">(</span><span class="n">linearmodelplot</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;png&#39;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+<span class="n">visualizer</span><span class="p">(</span><span class="n">linearmodelplot</span><span class="p">,</span> <span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;linear_model&#39;</span><span class="p">,</span> <span class="n">file_format</span> <span class="o">=</span> <span class="s1">&#39;png&#39;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="c1"># You find the graph when you click on the folder icon in the top left.</span>
-<span class="c1"># The file is called graph.png. </span>
+<span class="c1"># The file is called linear_model.png.</span>
 </pre></div>
 </div>
 </div>
@@ -699,7 +701,7 @@ Before the output layer, we add the normalizing layer.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nr_epochs</span> <span class="o">=</span> 
 
 <span class="n">history_linearmodel</span> <span class="o">=</span> <span class="n">linearmodel</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
-    <span class="n">x_train</span><span class="p">[</span><span class="s1">&#39;YOUNGEST&#39;</span><span class="p">],</span>
+    <span class="n">x_train</span><span class="p">[</span><span class="s1">&#39;OLDEST&#39;</span><span class="p">],</span>
     <span class="n">y_train</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">],</span>
     <span class="n">epochs</span><span class="o">=</span><span class="n">nr_epochs</span><span class="p">,</span>
     <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="c1"># Shows the training progress.</span>
@@ -711,7 +713,8 @@ Before the output layer, we add the normalizing layer.</p>
 <p>Let’s see the training progress of the model. We plot the training loss and the validation loss. Recall that the loss function was specified as the mean absolute error of the model. We should see a curve going down, this is the learning process.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history_linearmodel</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;loss&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history_linearmodel</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;loss&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history_linearmodel</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;val_loss&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epoch&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">)</span>
@@ -738,7 +741,7 @@ Before the output layer, we add the normalizing layer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span> <span class="o">=</span> <span class="n">datann</span><span class="p">[[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">]]</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">datann</span><span class="p">[[</span><span class="s2">&quot;YOUNGEST&quot;</span><span class="p">]]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">datann</span><span class="p">[[</span><span class="s2">&quot;OLDEST&quot;</span><span class="p">]]</span>
 <span class="n">X</span><span class="p">[</span><span class="s1">&#39;Constant&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="n">regressionOLS</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
@@ -752,10 +755,10 @@ Before the output layer, we add the normalizing layer.</p>
 <div class="alert alert-block alert-success">
 <b>Question 4:</b> The parameters of the neural network model are very different from the parameters in the OLS regression, why is that do you think? The number of epochs you chose will not have such a large effect on the parameters, so that is not the answer.   
 </div>
-<p>Next we take a look at the predictions by the model. We let the model predict on an array of x that goes from 0 till the maximum of YOUNGEST, divided in 200 equal steps. Using the function predict, we obtain the predicted ENERGYCOSTS, given by y in the code.</p>
+<p>Next we take a look at the predictions by the model. We let the model predict on an array of x that goes from 0 till the maximum of OLDEST, divided in 200 equal steps. Using the function predict, we obtain the predicted ENERGYCOSTS, given by y in the code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">x_train</span><span class="p">[</span><span class="s1">&#39;YOUNGEST&#39;</span><span class="p">])),</span> <span class="mi">200</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">x_train</span><span class="p">[</span><span class="s1">&#39;OLDEST&#39;</span><span class="p">])),</span> <span class="nb">round</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">x_train</span><span class="p">[</span><span class="s1">&#39;OLDEST&#39;</span><span class="p">])),</span> <span class="mi">200</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">linearmodel</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -763,27 +766,28 @@ Before the output layer, we add the normalizing layer.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">datann</span><span class="p">[</span><span class="s1">&#39;YOUNGEST&#39;</span><span class="p">],</span> <span class="n">datann</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">datann</span><span class="p">[</span><span class="s1">&#39;OLDEST&#39;</span><span class="p">],</span> <span class="n">datann</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Predictions&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;YOUNGEST&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;OLDEST&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 5:</b> Can you derive the parameters of the linear regression given by y = m + bx from this plot? Use code to find out the values of m and b.    
+<b>Question 5:</b> Can you derive the parameters of the linear regression given by y = m + bx in this plot? Use code to find out the values of m and b. Are they similar to the coefficients of the OLS model?    
 </div></section>
 <section id="a-non-linear-neural-network-model">
 <h2>6. A non-linear neural network model<a class="headerlink" href="#a-non-linear-neural-network-model" title="Permalink to this heading">#</a></h2>
-<hr><p>Now we are going to build a non-linear neural network model. We include two hidden layers in the model, the first one has 128 units and the second one 64 units. Relu is the activivation function in these two layers and the output layer has a linear activation function, because we deal with a regression problem. Note that linear is the default activation function, so we don’t have to specify it.</p>
+<hr><p>Now we are going to build a non-linear neural network model. We include two hidden layers in the model, the first one has 64 units and the second one 32 units. Relu is the activivation function in these two layers and the output layer has a linear activation function, because we deal with a regression problem. Note that linear is the default activation function, so we don’t have to specify it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nonlinear_model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
       <span class="n">linearmodel_normalizer</span><span class="p">,</span>
-      <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
-      <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+      <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">input_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)),</span>
       <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
   <span class="p">])</span>
 
@@ -799,25 +803,22 @@ Before the output layer, we add the normalizing layer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nonlinear_modelplot</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
-      <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">input_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)),</span>
-      <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+      <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">input_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)),</span>
       <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
   <span class="p">])</span>
 
-<span class="n">visualizer</span><span class="p">(</span><span class="n">nonlinear_modelplot</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;png&#39;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">visualizer</span><span class="p">(</span><span class="n">nonlinear_modelplot</span><span class="p">,</span> <span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;nonlinear_model&#39;</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s1">&#39;png&#39;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="c1"># You find the graph when you click on the folder icon in the top left.</span>
-<span class="c1"># The file is called graph.png. </span>
+<span class="c1"># The file is called nonlinear_model.png.</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="alert alert-block alert-success">
-<b>Question 6:</b> The more nodes and layers an ANN model has, the more flexible it becomes, often resulting in a better model fit to the training data. That is generally something desirable, as long as the model is not overfitting... Explain with your own words what is the problem with overfitting.
-</div><p>Next, we compile the model. We use a smaller learning rate this time.</p>
+<p>Next, we compile the model. We use a smaller learning rate this time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nonlinear_model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mean_absolute_error&#39;</span><span class="p">,</span>
-                <span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="mf">0.00005</span><span class="p">),</span>
+                <span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="mf">0.0005</span><span class="p">),</span>
                 <span class="n">metrics</span> <span class="o">=</span> <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">MeanSquaredError</span><span class="p">()])</span>
 </pre></div>
 </div>
@@ -828,9 +829,9 @@ Before the output layer, we add the normalizing layer.</p>
 </div><p>And we train the model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nr_epochs</span> <span class="o">=</span> <span class="mi">20</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nr_epochs</span> <span class="o">=</span> <span class="mi">25</span>
 <span class="n">history_nonlinearmodel</span> <span class="o">=</span> <span class="n">nonlinear_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
-    <span class="n">x_train</span><span class="p">[</span><span class="s1">&#39;YOUNGEST&#39;</span><span class="p">],</span>
+    <span class="n">x_train</span><span class="p">[</span><span class="s1">&#39;OLDEST&#39;</span><span class="p">],</span>
     <span class="n">y_train</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">],</span>
     <span class="n">epochs</span><span class="o">=</span><span class="n">nr_epochs</span><span class="p">,</span>
     <span class="c1"># Show logging.</span>
@@ -859,15 +860,17 @@ Before the output layer, we add the normalizing layer.</p>
 <p>And next we take a look at the predictions by the non-linear neural network.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">x_train</span><span class="p">[</span><span class="s1">&#39;YOUNGEST&#39;</span><span class="p">])),</span> <span class="mi">200</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">x_train</span><span class="p">[</span><span class="s1">&#39;OLDEST&#39;</span><span class="p">])),</span> <span class="nb">round</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">x_train</span><span class="p">[</span><span class="s1">&#39;OLDEST&#39;</span><span class="p">])),</span> <span class="mi">200</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">nonlinear_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">datann</span><span class="p">[</span><span class="s1">&#39;YOUNGEST&#39;</span><span class="p">],</span> <span class="n">datann</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">datann</span><span class="p">[</span><span class="s1">&#39;OLDEST&#39;</span><span class="p">],</span> <span class="n">datann</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Predictions&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;YOUNGEST&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;OLDEST&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;nonlinearpred.png&#39;</span><span class="p">,</span> <span class="n">dpi</span> <span class="o">=</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -880,10 +883,10 @@ Before the output layer, we add the normalizing layer.</p>
 <hr><p>In this part, we are going to estimate a neural network on all variables in the training dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train</span> <span class="o">=</span> <span class="n">training_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">,</span><span class="s1">&#39;COSTELEC&#39;</span><span class="p">,</span> <span class="s1">&#39;COSTGAS&#39;</span><span class="p">,</span> <span class="s1">&#39;COSTFUEL&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_train</span> <span class="o">=</span> <span class="n">training_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">y_train</span> <span class="o">=</span> <span class="n">training_data</span><span class="p">[[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">]]</span>
 
-<span class="n">x_test</span> <span class="o">=</span> <span class="n">testing_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">,</span><span class="s1">&#39;COSTELEC&#39;</span><span class="p">,</span> <span class="s1">&#39;COSTGAS&#39;</span><span class="p">,</span> <span class="s1">&#39;COSTFUEL&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">testing_data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">y_test</span> <span class="o">=</span> <span class="n">testing_data</span><span class="p">[[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
@@ -909,8 +912,8 @@ Before the output layer, we add the normalizing layer.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fullmodel</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
       <span class="n">fullmodel_normalizer</span><span class="p">,</span>
-      <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
-      <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+      <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">input_shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],)),</span>
+      <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
       <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
   <span class="p">])</span>
 
@@ -924,12 +927,12 @@ Before the output layer, we add the normalizing layer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fullmodelplot</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
-      <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">input_shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],)),</span>
-      <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+      <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">input_shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],)),</span>
+      <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
       <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
   <span class="p">])</span>
 
-<span class="n">visualizer</span><span class="p">(</span><span class="n">fullmodelplot</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;png&#39;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">visualizer</span><span class="p">(</span><span class="n">fullmodelplot</span><span class="p">,</span> <span class="n">file_name</span> <span class="o">=</span> <span class="s1">&#39;full_model&#39;</span><span class="p">,</span> <span class="n">file_format</span><span class="o">=</span><span class="s1">&#39;png&#39;</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -938,7 +941,7 @@ Before the output layer, we add the normalizing layer.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fullmodel</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mean_absolute_error&#39;</span><span class="p">,</span>
-                <span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="mf">0.00005</span><span class="p">),</span>
+                <span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="mf">0.1</span><span class="p">),</span>
                 <span class="n">metrics</span> <span class="o">=</span> <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">MeanSquaredError</span><span class="p">()])</span>
 </pre></div>
 </div>
@@ -982,15 +985,15 @@ Before the output layer, we add the normalizing layer.</p>
 <hr><p>In this last step, we take a look at the performance of the model on the testing dataset. We check the value of the mean absolute error and mean squared error of the three models using the function evaluate.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_loss_linear</span> <span class="o">=</span> <span class="n">linearmodel</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">[</span><span class="s1">&#39;YOUNGEST&#39;</span><span class="p">],</span> <span class="n">y_test</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">],</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">test_loss_nonlinear</span> <span class="o">=</span> <span class="n">nonlinear_model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">[</span><span class="s1">&#39;YOUNGEST&#39;</span><span class="p">],</span> <span class="n">y_test</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">],</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_loss_linear</span> <span class="o">=</span> <span class="n">linearmodel</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">[</span><span class="s1">&#39;OLDEST&#39;</span><span class="p">],</span> <span class="n">y_test</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">],</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">test_loss_nonlinear</span> <span class="o">=</span> <span class="n">nonlinear_model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">[</span><span class="s1">&#39;OLDEST&#39;</span><span class="p">],</span> <span class="n">y_test</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">],</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">test_loss_full</span> <span class="o">=</span> <span class="n">fullmodel</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">[</span><span class="s1">&#39;COSTENERGY&#39;</span><span class="p">],</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 9:</b> Interpret the results. Which model performed best? 
+<b>Question 9:</b> Interpret the results. Which model performed best?
 </div></section>
 </section>
 
@@ -1038,7 +1041,7 @@ Before the output layer, we add the normalizing layer.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tutorial 2: Model Validation</p>
+        <p class="prev-next-title">Tutorial 4: Validation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
