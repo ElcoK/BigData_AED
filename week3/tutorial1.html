@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'week3/tutorial1';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Tutorial 4: Validation" href="tutorial2.html" />
+    <link rel="next" title="Tutorial 2: Validation" href="tutorial2.html" />
     <link rel="prev" title="Lecture: Introduction to Artificial Neural Networks and model validation" href="lecture.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -191,7 +191,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lecture.html">Lecture: Introduction to Artificial Neural Networks and model validation</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Tutorial 1: Artificial neural networks (ANNs)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial2.html">Tutorial 4: Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial2.html">Tutorial 2: Validation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
 <ul class="nav bd-sidenav">
@@ -504,10 +504,8 @@ document.write(`
 <p>Now we will import these packages in the cell below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>tensorflow
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>keras-visualizer
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>keras-visualizer
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pydot
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>graphviz
 </pre></div>
 </div>
 </div>
@@ -533,8 +531,7 @@ document.write(`
 <hr><p>We use the data same that we also used to estimate the OLS model. It includes the variables you created in the first tutorial and it deals with missing values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#data1 = pd.read_csv(r&quot;https://github.com/ElcoK/BigData_AED/raw/main/week2/usadataforOLS.csv&quot;, sep = &#39;,&#39;, encoding = &#39;unicode_escape&#39;)</span>
-<span class="n">data1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;usadataforOLS_updatejan24.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;unicode_escape&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;https://github.com/ElcoK/BigData_AED/raw/main/week2/usadataforOLS.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;unicode_escape&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1041,7 +1038,7 @@ Before the output layer, we add the normalizing layer.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tutorial 4: Validation</p>
+        <p class="prev-next-title">Tutorial 2: Validation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

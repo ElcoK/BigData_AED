@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Tutorial 4: Validation &#8212; Big Data for Sustainability Sciences</title>
+    <title>Tutorial 2: Validation &#8212; Big Data for Sustainability Sciences</title>
   
   
   
@@ -191,7 +191,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lecture.html">Lecture: Introduction to Artificial Neural Networks and model validation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tutorial1.html">Tutorial 1: Artificial neural networks (ANNs)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tutorial 4: Validation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tutorial 2: Validation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
 <ul class="nav bd-sidenav">
@@ -435,7 +435,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Tutorial 4: Validation</h1>
+    <h1>Tutorial 2: Validation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -463,8 +463,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="tutorial-4-validation">
-<h1>Tutorial 4: Validation<a class="headerlink" href="#tutorial-4-validation" title="Permalink to this heading">#</a></h1>
+  <section id="tutorial-2-validation">
+<h1>Tutorial 2: Validation<a class="headerlink" href="#tutorial-2-validation" title="Permalink to this heading">#</a></h1>
 <p>You can also create content with Jupyter Notebooks. This means that you can include
 code blocks and their outputs in your book.</p>
 <h2>Tutorial Outline<span class="tocSkip"></span></h2>
@@ -486,7 +486,6 @@ code blocks and their outputs in your book.</p>
 <section id="introducing-the-packages">
 <h2>1.Introducing the packages<a class="headerlink" href="#introducing-the-packages" title="Permalink to this heading">#</a></h2>
 <hr><p>Within this tutorial, we are going to make use of the following packages:</p>
-<p><em>We will first need to install these packages in the cell below. Uncomment them to make sure we can pip install them</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
@@ -516,7 +515,7 @@ code blocks and their outputs in your book.</p>
 <hr><p>Read the data. We use the data that we also used to estimate the OLS model in the first tutorial of week 2. It includes the variables you created in the first tutorial of week 2 and it deals with missing values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;usadataforOLS_updatejan24.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;unicode_escape&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;https://github.com/ElcoK/BigData_AED/raw/main/week2/usadataforOLS.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;unicode_escape&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
