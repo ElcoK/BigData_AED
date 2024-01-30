@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'week3/tutorial1';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Tutorial 2: Validation" href="tutorial2.html" />
+    <link rel="next" title="Tutorial 2: Model Validation" href="tutorial2.html" />
     <link rel="prev" title="Lecture: Introduction to Artificial Neural Networks and model validation" href="lecture.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -191,7 +191,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lecture.html">Lecture: Introduction to Artificial Neural Networks and model validation</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Tutorial 1: Artificial neural networks (ANNs)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial2.html">Tutorial 2: Validation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial2.html">Tutorial 2: Model Validation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
 <ul class="nav bd-sidenav">
@@ -692,7 +692,7 @@ Before the output layer, we add the normalizing layer.</p>
 </section>
 <section id="training-a-neural-network-model">
 <h2>5. Training a neural network model<a class="headerlink" href="#training-a-neural-network-model" title="Permalink to this heading">#</a></h2>
-<hr><p>Let’s start training the model using the function fit. In the code below, you can decide on the number of epochs, but we advise to choose a number between 15 and 40 (there is no right or wrong here), because it takes about 4 seconds per epoch to train the model. In each epoch, the neural network goes through all the training data and optimizes the parameters using the Adam optimizer. The more often the model sees the data, the more accurate the parameter estimates become. In each epoch we use 20% of the training data to validate the results.</p>
+<hr><p>Let’s start training the model using the function fit. In the code below, you can decide on the number of epochs, but we advise to choose a number between 25 and 40 (there is no right or wrong here), because it takes about 4 seconds per epoch to train the model. In each epoch, the neural network goes through all the training data and optimizes the parameters using the Adam optimizer. The more often the model sees the data, the more accurate the parameter estimates become. In each epoch we use 20% of the training data to validate the results.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nr_epochs</span> <span class="o">=</span> 
@@ -1038,7 +1038,7 @@ Before the output layer, we add the normalizing layer.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tutorial 2: Validation</p>
+        <p class="prev-next-title">Tutorial 2: Model Validation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
