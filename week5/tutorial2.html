@@ -527,15 +527,12 @@ document.write(`
 </div>
 </div>
 </div>
-<p>As you may or may not have seen while installing, there was a warning that we need to restart our runtime. To do so, click on <strong>Runtime</strong> in the topbar menu and click on <strong>Runtime opnieuw starten</strong>/<strong>Restart runtime</strong>.</p>
 <p>Now we will import these packages in the cell below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">rasterio</span>
 <span class="kn">import</span> <span class="nn">cdsapi</span>
 <span class="kn">import</span> <span class="nn">shapely</span> 
-<span class="kn">import</span> <span class="nn">rioxarray</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span>
 <span class="kn">import</span> <span class="nn">urllib3</span>
 <span class="kn">import</span> <span class="nn">pyproj</span>
@@ -548,10 +545,8 @@ document.write(`
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 
-<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LinearSegmentedColormap</span><span class="p">,</span><span class="n">ListedColormap</span>
-<span class="kn">from</span> <span class="nn">matplotlib.patches</span> <span class="kn">import</span> <span class="n">Patch</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">ListedColormap</span>
 <span class="kn">from</span> <span class="nn">zipfile</span> <span class="kn">import</span> <span class="n">ZipFile</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span><span class="p">,</span> <span class="n">cycler</span>
 <span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
 <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
 <span class="kn">from</span> <span class="nn">zipfile</span> <span class="kn">import</span> <span class="n">ZipFile</span>
