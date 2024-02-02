@@ -17,7 +17,7 @@ kernelspec:
 
 This week we will focus on what we can do with earth observation data and learn how to use the google earth engine to unleash the potential of earth observation data.
 
-`````{admonition} Learning objectives week 5
+`````{admonition} Learning objectives week 4
 :class: important
 - Gain a basic understanding of the Google Earth Engine.
 - Understand and know how you can use the Google Earth engine in Python. 
