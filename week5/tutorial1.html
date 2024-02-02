@@ -780,9 +780,7 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="alert alert-block alert-success">
-<b>Question 5:</b> In the rasterization process, we use the `.make_geocube()` function. Please elaborate on the following: i)why is it important to specify the right coordinate system? What could happen if you choose the wrong coordinate system? ii) which resolution did you choose and why? iii)Why did the first result did not give us the right output with the correct colors? How did you solve this? 
-</div><p>As we can see in the figure above, the land-use categories have turned into numbers, instead of land-use categories described by a string value.</p>
+<p>As we can see in the figure above, the land-use categories have turned into numbers, instead of land-use categories described by a string value.</p>
 <p>This is of course a lot harder to interpret. Let’s re-do some parts to make sure we can properly link them back to the original data.</p>
 <p>To do so, we will first need to make sure that we know which values (numbers) are connected to each land-use category. Instead of trying to match, let’s predefine this ourselves!</p>
 <p>We will start with creating a dictionary that allows us to couple a number to each category:</p>
@@ -849,7 +847,9 @@ document.write(`
 </div>
 </div>
 </div>
-<p>But to be honest, this legend is still not entirely what we are looking for. So let’s do some Python magic to get a legend like we desire when plotting a land-use map</p>
+<div class="alert alert-block alert-success">
+<b>Question 5:</b> In the rasterization process, we use the `.make_geocube()` function. Please elaborate on the following: i)why is it important to specify the right coordinate system? What could happen if you choose the wrong coordinate system? ii) which resolution did you choose and why? iii)Why did the first result did not give us the right output with the correct colors? How did you solve this? 
+</div><p>But to be honest, this legend is still not entirely what we are looking for. So let’s do some Python magic to get a legend like we desire when plotting a land-use map</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unique_classes</span> <span class="o">=</span> <span class="n">landuse</span><span class="o">.</span><span class="n">landuse</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
@@ -900,9 +900,7 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="alert alert-block alert-success">
-<b>Question 6:</b> Please upload the final figure of your rasterized land-use map for your region of interest.
-</div></section>
+</section>
 <section id="extracting-buildings-from-openstreetmap">
 <h2>4. Extracting buildings from OpenStreetMap<a class="headerlink" href="#extracting-buildings-from-openstreetmap" title="Permalink to this heading">#</a></h2>
 <hr><p>There is a lot more data to extract from OpenStreetMap besides land-use information. Let’s extract some building data. To do so, we use the <em>“building”</em> tag.</p>
@@ -932,7 +930,7 @@ document.write(`
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 7:</b>  Let's have a look at the extracted building information. Please describe in your own words the information it contains. Is there specific information that suprises you to see, and do you think anything is missing that you expected? 
+<b>Question 6:</b>  Let's have a look at the extracted building information. Please describe in your own words the information it contains. Is there specific information that suprises you to see, and do you think anything is missing that you expected? 
 </div></section>
 <section id="analyze-and-visualize-building-stock">
 <h2>5. Analyze and visualize building stock<a class="headerlink" href="#analyze-and-visualize-building-stock" title="Permalink to this heading">#</a></h2>
@@ -959,7 +957,7 @@ document.write(`
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 8:</b>  Please upload a figure that shows the development of building stock over the years in your region of interest. 
+<b>Question 7:</b>  Please upload a figure that shows the development of building stock over the years in your region of interest. Make sure it contains all the necessary elements (labels on the axis, title, etc.)
 </div><p>What we also noticed is that quite some buildings are identified as ‘yes’. This is not very useful as it does not really say much about the use of the building.</p>
 <p>Let’s see for how many buildings this is the case:</p>
 <div class="cell docutils container">
@@ -1026,7 +1024,7 @@ document.write(`
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 9:</b>  Please upload a figure of your building stock map of your region of interest. Make sure that the interpretation is clear. If necessary, merge multiple categories into one (i.e., when some categories only contain 1 or 2 buildings).
+<b>Question 8:</b>  Please upload a figure of your building stock map of your region of interest. Make sure that the interpretation is clear. If necessary, merge multiple categories into one (i.e., when some categories only contain 1 or 2 buildings).
 </div></section>
 <section id="extracting-roads-from-openstreetmap">
 <h2>6. Extracting roads from OpenStreetMap<a class="headerlink" href="#extracting-roads-from-openstreetmap" title="Permalink to this heading">#</a></h2>
@@ -1095,7 +1093,7 @@ document.write(`
 </pre></div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 10:</b>  The last element of this tutorial is to play around with routing. Please explain in your own words what the .shortest_path() algorithm does. Include the term 'Dijkstra algorithm' in your answer.
+<b>Question 9:</b>  The last element of this tutorial is to play around with routing. Please explain in your own words what the .shortest_path() algorithm does. Include the term 'Dijkstra algorithm' in your answer.
 </div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">origin_node</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">nearest_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">area</span><span class="p">[</span><span class="s1">&#39;bbox_west&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">area</span><span class="p">[</span><span class="s1">&#39;bbox_north&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -1124,7 +1122,7 @@ document.write(`
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 11:</b>  Please add one more routes on a map and upload the resulting figure here.
+<b>Question 10:</b>  Please add one more routes on a map and upload the resulting figure here.
 </div></section>
 </section>
 

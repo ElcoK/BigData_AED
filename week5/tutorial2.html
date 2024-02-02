@@ -561,7 +561,7 @@ document.write(`
 <h3>Connect to google drive<a class="headerlink" href="#connect-to-google-drive" title="Permalink to this heading">#</a></h3>
 <hr class="docutils" />
 <p>To be able to read the data from Google Drive, we need to <em>mount</em> our Drive to this notebook.</p>
-<p>As you can see in the cell below, make sure that in your <strong>My Drive</strong> folder, you have created a <strong>BigData</strong> folder and within that folder, you have created a <strong>Week4_Data</strong> folder in which you can store the files that are required to run this analysis.</p>
+<p>As you can see in the cell below, make sure that in your <strong>My Drive</strong> folder, you have created a <strong>BigData</strong> folder and within that folder, you have created a <strong>Week5_Data</strong> folder in which you can store the files that are required to run this analysis.</p>
 <p>Please go the URL when its prompted in the box underneath the following cell, and copy the authorization code in that box.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -571,7 +571,7 @@ document.write(`
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/content/gdrive/My Drive/BigData/&quot;</span><span class="p">)</span>
 
-<span class="n">data_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;/content/gdrive/My Drive/BigData/&#39;</span><span class="p">,</span><span class="s1">&#39;Week4_Data&#39;</span><span class="p">)</span>
+<span class="n">data_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;/content/gdrive/My Drive/BigData/&#39;</span><span class="p">,</span><span class="s1">&#39;Week5_Data&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -714,9 +714,7 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="alert alert-block alert-success">
-<b>Question 3:</b> Upload the windstorm map of your chosen area.
-</div></section>
+</section>
 <section id="id2">
 <h3>Flood data<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <hr class="docutils" />
@@ -748,7 +746,7 @@ document.write(`
 <p>Now it is pretty difficult to explore the data for our area of interest, so let’s clip the flood data.</p>
 <p>We want to clip our flood data to our chosen area. The code, however, is very inefficient and will run into memories issues on Google Colab. As such, we first need to clip it by using a bounding box, followed by the actual clip.</p>
 <div class="alert alert-block alert-success">
-<b>Question 4:</b> Please provide the lines of code below in which you show how you have clipped the flood map to your area.
+<b>Question 3:</b> Please provide the lines of code below in which you show how you have clipped the flood map to your area.
 </div>
 <p><em>A few hints</em>:</p>
 <ul class="simple">
@@ -867,7 +865,7 @@ document.write(`
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 5:</b> Describe the different land-use classes within your region that you see on the Corine Land Cover map.
+<b>Question 4:</b> Describe the different land-use classes within your region that you see on the Corine Land Cover map.
 </div></section>
 <section id="perform-a-damage-assessment-using-coring-land-cover">
 <h2>5. Perform a damage assessment using Coring Land Cover<a class="headerlink" href="#perform-a-damage-assessment-using-coring-land-cover" title="Permalink to this heading">#</a></h2>
@@ -875,7 +873,7 @@ document.write(`
 <p>To Assess the damage for both the flood and windstorm event, we are going to make use of the <a class="reference external" href="https://damagescanner.readthedocs.io/en/latest/">DamageScanner</a>, which is a tool to calculate potential flood damages based on inundation depth and land use using depth-damage curves in the Netherlands. The DamageScanner was originally developed for the ‘Netherlands Later’ project <a class="reference external" href="https://www.rivm.nl/bibliotheek/digitaaldepot/WL_rapport_Overstromingsrisicos_Nederland.pdf">(Klijn et al., 2007)</a>.  The original land-use classes were based on the Land-Use Scanner in order to evaluate the effect of future land-use change on flood damages. We have tailored the input of the DamageScanner to make sure it can estimate the damages using Corine Land Cover.</p>
 <p>Because the simplicity of the model, we can use this for any raster-based hazard map with some level of intensity. Hence, we can use it for both hazards.</p>
 <div class="alert alert-block alert-success">
-<b>Question 6:</b>  Describe in your own words what the `DamageScanner()` function does. Please walk us through the different steps. Which inputs do you need to be able to run this damage assessment?
+<b>Question 5:</b>  Describe in your own words what the `DamageScanner()` function does. Please walk us through the different steps. Which inputs do you need to be able to run this damage assessment?
 </div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">DamageScanner</span><span class="p">(</span><span class="n">landuse_map</span><span class="p">,</span><span class="n">inun_map</span><span class="p">,</span><span class="n">curve_path</span><span class="p">,</span><span class="n">maxdam_path</span><span class="p">,</span><span class="n">cellsize</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
@@ -1071,7 +1069,7 @@ document.write(`
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 7:</b>  Describe the various steps you have taken to make sure that the windstorm map is now exactly the same extent as the corine land cover map. Feel free to include lines of code in your answer and also describe the different functions you have used along the way.
+<b>Question 6:</b>  Describe the various steps you have taken to make sure that the windstorm map is now exactly the same extent as the corine land cover map. Feel free to include lines of code in your answer and also describe the different functions you have used along the way.
 </div><p>Now its finally time to do our damage assessment! To do so, we need to convert our data to <code class="docutils literal notranslate"><span class="pre">numpy.arrays()</span></code> to do our calculation:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1149,7 +1147,7 @@ document.write(`
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 8:</b> Describe the results of the flood and wind damage assessments. Do you notice any differences between the outcomes? Do you observe specific land-use classes that are severely damaged?
+<b>Question 7:</b> Describe the results of the flood and wind damage assessments. Do you notice any differences between the outcomes? Do you observe specific land-use classes that are severely damaged?
 </div></section>
 </section>
 <section id="perform-a-damage-assessment-of-the-road-network-using-openstreetmap">
@@ -1223,7 +1221,7 @@ document.write(`
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 9:</b> Upload a figure of the cleaned road network (e.g. in which you do not see any of the listed road types anymore)
+<b>Question 8:</b> Upload a figure of the cleaned road network (e.g. in which you do not see any of the listed road types anymore)
 </div><p>Nice! now let’s start with the damage calculation. As you already have may have noticed, our data is now not stored in raster format, but in vector format. One way to deal with this issue is to convert our vector data to raster data, but we will lose a lot of information and detail. As such, we will perform the damage assessment on the road elements, using the xarray flood map.</p>
 <p>Let’s start with preparing the flood data into vector format:</p>
 <div class="cell docutils container">
@@ -1327,7 +1325,7 @@ document.write(`
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 10:</b> Describe the various steps we have taken to perform the damage assessment on the road network. How is this approach different compared to the raster-based approach? Highlight the differences you find most important. Include any line of code you may want to include to make your story clear.
+<b>Question 9:</b> Describe the various steps we have taken to perform the damage assessment on the road network. How is this approach different compared to the raster-based approach? Highlight the differences you find most important. Include any line of code you may want to include to make your story clear.
 </div><p>And let’s plot the results</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1339,7 +1337,7 @@ document.write(`
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 11:</b> Describe the most severely damaged parts of the road network. Use Google Maps to identify these roads. Are you surprised by the results?
+<b>Question 10:</b> Describe the most severely damaged parts of the road network. Use Google Maps to identify these roads. Are you surprised by the results?
 </div></section>
 </section>
 
