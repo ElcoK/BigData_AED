@@ -47,13 +47,14 @@ The most common license for public data is the Creative Commons license. Creativ
 You can find all the information about the Creative Commons license [here](https://creativecommons.org/about/cclicenses/).
 
 ## FAIR - principles
-The FAIR principles constitute a set of guidelines for effective data management, formally introduced in a pivotal 2016 paper authored by a collaborative consortium of scientists and organizations, [published in the journal Scientific Data](https://www.nature.com/articles/sdata201618). FAIR stands for  Findability, Accessibility, Interoperability, and Reuse. These principles prioritize ensuring that data is easily discoverable, accessible, interoperable, and reusable. At its core, the FAIR framework seeks to address the challenges posed by the ever-expanding volume and complexity of data, coupled with the accelerating pace at which new data is generated. Especially when dealing with big and publicly accessible data, a clear set of rules and principles are essential to ensure the reproducability of your work.  
+The FAIR principles constitute a set of guidelines for effective data management, formally introduced in a pivotal 2016 paper authored by a collaborative consortium of scientists and organizations, [published in the journal Scientific Data](https://www.nature.com/articles/sdata201618). FAIR stands for  **F**indability, **A**ccessibility, **I**nteroperability, and **R**euse. These principles prioritize ensuring that data is easily discoverable, accessible, interoperable, and reusable. At its core, the FAIR framework seeks to address the challenges posed by the ever-expanding volume and complexity of data, coupled with the accelerating pace at which new data is generated. Especially when dealing with big and publicly accessible data, a clear set of rules and principles are essential to ensure the reproducability of your work.  
 
 The acronym FAIR encapsulates a set of principles that extend beyond mere data organization; they underscore the necessity for machine-actionability. As our dependence on computational systems continues to intensify, the FAIR principles emphasize the importance of enabling these systems to autonomously discover, access, interoperate, and reuse data with minimal human intervention. This distinctive feature ensures that the principles remain relevant in the face of evolving technological landscapes and the increasing reliance on automated processes in data management.
 
 `````{admonition} The FAIR-principles
 :class: tip
 **To be Findable**:
+
 F1. (meta)data are assigned a globally unique and persistent identifier
 
 F2. data are described with rich metadata (defined by R1 below)
@@ -63,6 +64,7 @@ F3. metadata clearly and explicitly include the identifier of the data it descri
 F4. (meta)data are registered or indexed in a searchable resource
 
 **To be Accessible**:
+
 A1. (meta)data are retrievable by their identifier using a standardized communications protocol
 
 A1.1 the protocol is open, free, and universally implementable
@@ -72,6 +74,7 @@ A1.2 the protocol allows for an authentication and authorization procedure, wher
 A2. metadata are accessible, even when the data are no longer available
 
 **To be Interoperable**:
+
 I1. (meta)data use a formal, accessible, shared, and broadly applicable language for knowledge representation.
 
 I2. (meta)data use vocabularies that follow FAIR principles
@@ -79,6 +82,7 @@ I2. (meta)data use vocabularies that follow FAIR principles
 I3. (meta)data include qualified references to other (meta)data
 
 **To be Reusable**:
+
 R1. meta(data) are richly described with a plurality of accurate and relevant attributes
 
 R1.1. (meta)data are released with a clear and accessible data usage license
