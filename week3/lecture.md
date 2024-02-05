@@ -26,25 +26,11 @@ This week we will focus on the basic concepts of machine learning and how we can
 
 ## Artificial neural networks
 
-Artificial Neural Networks (ANNs) are computational models inspired by the structure and function of biological neurons. ANNs consist of interconnected processing nodes or "neurons" that are organized into layers, which are used to process information and make predictions.
+Artificial Neural Networks (ANNs, or simply "neural nets") are computational models inspired by the structure and function of biological neurons. ANNs consist of interconnected processing nodes or "neurons" that are organized into layers, which are used to process information and make predictions.
 
-In an ANN, information is passed from one layer to another through the connections between the neurons, with each neuron applying mathematical transformations to the input it receives. The weights and biases of the connections between the neurons are adjusted during training to minimize a predefined loss function, which measures the difference between the model's predictions and the actual values.
+In an ANN, information is passed from one layer to another through the connections between the neurons, with each neuron applying mathematical transformations to the input it receives. The weights and biases of the connections between the neurons are adjusted during training to minimize a predefined *loss function*, which measures the difference between the model's predictions and the actual values (much like in linear regression when the model minimizes the sum of the squared residuals).
 
-Once trained, an ANN can be used to make predictions by passing input data through the network and computing the output values produced by the final layer. ANNs have been applied in a wide range of fields, including image classification, speech recognition, natural language processing, and financial forecasting, among others.
-
-Examples ANN models used in sustainability include, among many other applications:
-
-1.  Solar energy forecasting: ANNs are used to predict solar energy production, taking into account various meteorological factors such as temperature, wind, and cloud cover.
-
-2.  Building energy consumption prediction: ANNs are used to predict energy consumption in buildings based on factors such as occupancy, temperature, and lighting levels.
-
-3.  Water resource management: ANNs are used to optimize water resource management, including predicting water demand and managing irrigation systems.
-
-4.  Waste management: ANNs are used to predict and manage waste generation and disposal, including the optimization of waste collection and recycling processes.
-
-5.  Air pollution control: ANNs are used to predict and control air pollution levels, taking into account factors such as traffic, industry, and weather.
-
-6.  Agricultural sustainability: ANNs are used to optimize crop selection, irrigation systems, and pesticide usage for more sustainable agricultural practices.
+Once trained, an ANN can be used to make predictions by passing input data through the network and computing the output values produced by the final layer. ANNs have been applied in a wide range of fields, including image classification, speech recognition, natural language processing, and forecasting, among others.
 
 ### ANNs for classification and regression
 
@@ -52,7 +38,7 @@ ANNs used for classification are designed to categorize input data into one or m
 
 In contrast, ANNs used for regression are designed to predict continuous target values based on input data. They have a single output node with a linear activation function and are trained to minimize the difference between the predicted values and the true target values.
 
-In summary, neural networks used for classification are designed to categorize input data into discrete classes, while neural networks used for regression are designed to predict continuous target values. The architecture and training process for each type of neural network will vary depending on the problem being solved.
+The architecture and training process for each type of neural network will vary depending on the problem being solved.
 
 ### What are the advantages of using ANNs?
 
@@ -70,8 +56,6 @@ ANNs are widely used because they offer several advantages, including:
 
 6.  Ability to generalize: ANNs can generalize from the training data to make accurate predictions on unseen data, which is an important property for many applications.
 
-Overall, these advantages make ANNs a powerful tool for solving a wide range of problems and explain why they are widely used in many fields such as computer vision, natural language processing, and healthcare, among others.
-
 ### What are the disadvantages of using ANNs?
 
 While powerful, ANNs are not perfect. Some disadvantages of using ANNs are:
@@ -85,8 +69,6 @@ While powerful, ANNs are not perfect. Some disadvantages of using ANNs are:
 4.  Computational cost: ANNs can be computationally expensive to train, especially ANNs with many parameters. This can make it challenging to train the model on large datasets or to run the model in real-time applications.
 
 5.  Difficulty in feature selection: ANNs are designed to automatically extract relevant features from the input data, but this process can be difficult to control. In some cases, the model may extract features that are not meaningful or even that harm the performance of the model.
-
-Overall, while ANN models have many strengths, their complexity and the challenges associated with training and interpreting the models can sometimes make them difficult to use in practice.
 
 ### Types of ANNs
 
@@ -102,13 +84,11 @@ There are several different types of ANNs, some of the most common are:
 
 5.  **Generative Adversarial Networks (GANs):** These are a type of ANN used for generating new data that resembles a given training set. GANs consist of two ANNs, a generator and a discriminator, that are trained simultaneously in a zero-sum game framework.
 
-These are some of the most widely used types of ANNs. However, there are many other specialized variants and hybrid models that have been developed for specific applications.
+These are some of the most widely used types of ANNs. However, there are many other specialized variants and hybrid models that have been developed (and many more that are currently under development) for specific applications.
 
 ### ANNs and Deep Learning
 
-Deep learning is a subfield of machine learning that focuses on using ANNs with many layers, known as deep neural networks. The term "deep" refers to the number of layers in the network, which can range from dozens to hundreds or even thousands. Deep learning algorithms have been particularly successful in solving problems in computer vision, natural language processing, and speech recognition.
-
-In essence, deep learning is a type of machine learning that uses neural networks with many layers, and ANNs are a type of machine learning algorithm that can be used for deep learning.
+Deep learning is a subfield of machine learning that focuses on using ANNs with many layers, known as *deep neural networks*. The term "deep" refers to the number of layers in the network, which can range from dozens to hundreds or even thousands. Deep learning algorithms have been particularly successful in solving problems in computer vision, natural language processing, and speech recognition.
 
 
 ## Model validation
@@ -135,9 +115,11 @@ These are common problems in machine learning where a model performs well on the
 
 In contrast, **underfitting** occurs when a model is too simple and does not capture the complexity of the relationship between the features and the target variable. This can lead to a model with a high training error and a high testing error, indicating that it is not fitting the training data well and is not generalizing to new data. Underfitting is often caused by having too few features or a model with too few parameters relative to the size of the training set.
 
-Both overfitting and underfitting can be addressed by using techniques such as regularization, feature selection, and early stopping, as well as by increasing the size of the training set or using a more complex model with more parameters. The goal is to find a model that has a good balance between fitting the data well and generalizing to new data.
+Both overfitting and underfitting can be addressed by using techniques such as *regularization*, *feature selection*, and *early stopping*, as well as by increasing the size of the training set or using a more complex model with more parameters. The goal is to find a model that has a good balance between fitting the data well and generalizing to new data:
 
-*Note: **Regularization** adds a penalty term to the loss function that the model is trying to minimize, which discourages the model from assigning too much importance to any one feature. **Early stopping** involves monitoring the performance of the model on a validation set during the training process and stopping the training when the performance on the validation set stops improving or starts to deteriorate. The idea behind early stopping is to strike a balance between training the model long enough to capture the underlying patterns in the data, but not so long that it starts to fit the noise in the data. **Feature selection** is the process of selecting a subset of the most relevant and informative features from the dataset to use in building a machine learning model. It is a crucial step in the modeling process as it can significantly impact the model's performance, reduce the risk of overfitting, and increase interpretability.*
+**-Regularization** adds a penalty term to the *loss function* that the model is trying to minimize, which discourages the model from assigning too much importance to any one feature.
+**-Early stopping** involves monitoring the performance of the model on a validation set during the training process and stopping the training when the performance on the validation set stops improving or starts to deteriorate. The idea behind early stopping is to strike a balance between training the model long enough to capture the underlying patterns in the data, but not so long that it starts to fit the noise in the data.
+**-Feature selection** is the process of selecting a subset of the most relevant and informative features from the dataset to use in building a machine learning model. It is a crucial step in the modeling process as it can significantly impact the model's performance, reduce the risk of overfitting, and increase interpretability.
 
 #### **Cross-validation**
 
@@ -179,9 +161,9 @@ The choice of which performance metric to use depends on the nature of the data 
 
 #### **Hyperparameter tuning**
 
-This involves selecting the best set of hyperparameters for a model, which can greatly impact its performance. Grid search and random search are common methods used for hyperparameter tuning.
+This involves selecting the best set of hyperparameters for a model, which can greatly impact its performance. Grid search and random search are common methods used for hyperparameter tuning:
 
-*Note: Model **hyperparameters** are parameters that are set before training a machine learning model and cannot be learned from the data during the training process. They are different from model parameters, which are learned from the data and determine the model's output. Examples of hyperparameters include the learning rate in gradient descent, the number of trees in a random forest, the regularization strength in a linear regression, the number of hidden layers in a neural network, and the number of clusters in a K-Means algorithm. Hyperparameters play a crucial role in determining the model's performance and must be chosen carefully.*
+-Model **hyperparameters** are parameters that are set before training a machine learning model and cannot be learned from the data during the training process. They are different from model parameters, which are learned from the data and determine the model's output. Examples of hyperparameters include the learning rate in gradient descent, the number of trees in a random forest, the regularization strength in a linear regression, the number of hidden layers in a neural network, and the number of clusters in a K-Means algorithm. Hyperparameters play a crucial role in determining the model's performance and must be chosen carefully.
 
 #### **Bias-variance tradeoff**
 
