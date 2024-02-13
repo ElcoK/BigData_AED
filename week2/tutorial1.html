@@ -679,7 +679,7 @@ As you can see, there are several options in the seaborn (imported as sns) heatm
 </div>
 </div>
 </div>
-<p>The column <strong>count</strong> indicates the number of persons in each household and each household is uniquely identified by the <strong>SERIAL</strong> column. Rename the column <strong>count</strong> to <strong>HHSIZE</strong> in the empty code block below.</p>
+<p>The names of the dataframe <em>serialcount</em> are a bit confusing, because the <strong>index</strong> column corresponds to the <strong>SERIAL</strong> number and the column <strong>SERIAL</strong> corresponds to the <em>household size</em>, so let’s rename the <strong>SERIAL</strong> column to <strong>HHSIZE</strong> and the <strong>index</strong> column to <strong>SERIAL</strong>.</p>
 <p>Then we add the column <strong>HHSIZE</strong> (household) size to our data using the <code class="docutils literal notranslate"><span class="pre">.merge()</span></code> function. Within the <code class="docutils literal notranslate"><span class="pre">merge()</span></code> function, you have to define on which column you want to merge the two dataframes using the <code class="docutils literal notranslate"><span class="pre">on</span></code> argument. Merge on the <strong>SERIAL</strong> column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
