@@ -524,6 +524,7 @@ document.write(`
 <p><a class="reference external" href="https://pandas.pydata.org/docs/"><strong>Pandas</strong></a> is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python programming language.</p>
 <p><a class="reference external" href="https://www.tweepy.org/"><strong>tweepy</strong></a> is an easy-to-use Python library for accessing the Twitter API.</p>
 <p><a class="reference external" href="https://pypi.org/project/wordcloud/"><strong>wordcloud</strong></a> is a little word cloud generator in Python.</p>
+<p><em>We will first need to install these packages in the cell below. Uncomment them to make sure we can pip install them</em></p>
 <p>Now we will import these packages in the cell below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -611,9 +612,9 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.name: </span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.screen_name: </span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;screen_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.location: </span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;XXXX&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.description: </span><span class="si">{</span><span class="n">XXXX</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.followers_count: </span><span class="si">{</span><span class="n">XXXX</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.location: </span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;XXXX&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># change the XXXX for the field we want to print</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.description: </span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;XXXX&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.followers_count: </span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;XXXX&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.listed_count: </span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;listed_count&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user.statuses_count: </span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;statuses_count&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;user urls: </span><span class="si">{</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;entities&#39;</span><span class="p">][</span><span class="s1">&#39;url&#39;</span><span class="p">][</span><span class="s1">&#39;urls&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;expanded_url&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -648,11 +649,11 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;username: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;screen_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;description: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;XXXX]}&quot;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;description: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;XXXX&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span><span class="c1"># change the XXXX for the field we want to print</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;text: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;XXXX&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;date_time: XXXX&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;location: </span><span class="si">{</span><span class="n">XXXX</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;coordinates: </span><span class="si">{</span><span class="n">XXXX</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;date_time: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;XXXX&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;location: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;XXXX&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;coordinates: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;XXXX&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;following: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;friends_count&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;followers: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;followers_count&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;totaltweets: </span><span class="si">{</span><span class="n">Latest_tweets</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;statuses_count&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -720,9 +721,9 @@ There are two ways of understanding natural language: Syntactic and Semantic ana
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize a tokenizer</span>
 <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">RegexpTokenizer</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\w+&#39;</span><span class="p">)</span>
-<span class="n">normalized_sentence</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">XXXX</span><span class="p">))</span>
+<span class="n">normalized_sentence</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">XXXX</span><span class="p">))</span> <span class="c1"># Change the XXXX for the sentence you want to normalize</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Normalized sentence: </span><span class="si">{</span><span class="n">normalized_sentence</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Length: </span><span class="si">{</span><span class="n">XXXX</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Length: </span><span class="si">{</span><span class="n">XXXX</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># Print the length of the normalized sentence</span>
 </pre></div>
 </div>
 </div>
@@ -754,7 +755,7 @@ There are two ways of understanding natural language: Syntactic and Semantic ana
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">filtered_sentence</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">normalized_sentence</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">w</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="n">stop_words</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">filtered_sentence</span><span class="p">)),</span> <span class="nb">print</span><span class="p">(</span><span class="n">filtered_sentence</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Filtered sentence: </span><span class="si">{</span><span class="n">filtered_sentence</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Length: </span><span class="si">{</span><span class="n">XXXX</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Length: </span><span class="si">{</span><span class="n">XXXX</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># Print the length of the filtered sentence</span>
 </pre></div>
 </div>
 </div>
@@ -774,9 +775,9 @@ There are two ways of understanding natural language: Syntactic and Semantic ana
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lemmatize filtered words</span>
-<span class="n">lemmatized</span> <span class="o">=</span> <span class="p">[</span><span class="n">wnl</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="s2">&quot;v&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">XXXX</span><span class="p">]</span>
+<span class="n">lemmatized</span> <span class="o">=</span> <span class="p">[</span><span class="n">wnl</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="s2">&quot;v&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">XXXX</span><span class="p">]</span> <span class="c1"># Change the XXXX for the sentence you want to lemmatize</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Lemmatized sentence: </span><span class="si">{</span><span class="n">lemmatized</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Length: </span><span class="si">{</span><span class="n">XXXX</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Length: </span><span class="si">{</span><span class="n">XXXX</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># Print the length of the lematized sentence</span>
 </pre></div>
 </div>
 </div>
@@ -793,9 +794,9 @@ There are two ways of understanding natural language: Syntactic and Semantic ana
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Stem filtered words</span>
-<span class="n">stemmed</span> <span class="o">=</span> <span class="p">[</span><span class="n">ps</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">XXXX</span><span class="p">]</span>
+<span class="n">stemmed</span> <span class="o">=</span> <span class="p">[</span><span class="n">ps</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">XXXX</span><span class="p">]</span> <span class="c1"># Change the XXXX for the sentence you want to stem</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Stemmed sentence: </span><span class="si">{</span><span class="n">stemmed</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Length: </span><span class="si">{</span><span class="n">XXXX</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Length: </span><span class="si">{</span><span class="n">XXXX</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># Print the length of the stemmed sentence</span>
 </pre></div>
 </div>
 </div>
@@ -841,7 +842,8 @@ Here’s an example:</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make sure to change the XXX in order to have a nice plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">unique</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="n">XX</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="n">XX</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="n">XX</span><span class="p">)</span>
@@ -923,7 +925,7 @@ Here’s an example:</p>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word_tokens</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">XXXX</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word_tokens</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">XXXX</span><span class="p">)</span> <span class="c1"># Change the XXXX for the sentence you want to tokenize</span>
 </pre></div>
 </div>
 </div>
@@ -954,9 +956,9 @@ Here’s an example:</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">screen_name</span> <span class="o">=</span> <span class="n">user</span><span class="p">[</span><span class="s1">&#39;screen_name&#39;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;User = </span><span class="si">{</span><span class="n">screen_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Corpus size = </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">corpus</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Tokens size = </span><span class="si">{</span><span class="n">XXXX</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Normalized size = </span><span class="si">{</span><span class="n">XXXX</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Filtered size = </span><span class="si">{</span><span class="n">XXXX</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Tokens size = </span><span class="si">{</span><span class="n">XXXX</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># Print the length of the tikenized sentence</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Normalized size = </span><span class="si">{</span><span class="n">XXXX</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># Print the length of the normalized sentence</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Filtered size = </span><span class="si">{</span><span class="n">XXXX</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># Print the length of the filtered sentence</span>
 </pre></div>
 </div>
 </div>
@@ -989,7 +991,8 @@ Here’s an example:</p>
 <p>Let’s start visualizing the data using a bar plot</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make sure to change the XXX in order to have a nice plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">unique</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">70</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="n">XX</span><span class="p">)</span>
@@ -1006,7 +1009,7 @@ Here’s an example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unique words = </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">unique</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Non-frequent words = </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">count</span><span class="p">[</span><span class="n">count</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">XXXX</span><span class="p">])</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># Filter the counts</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Non-frequent words = </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">count</span><span class="p">[</span><span class="n">count</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">5</span><span class="p">])</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># Filter the counts</span>
 </pre></div>
 </div>
 </div>
@@ -1016,8 +1019,9 @@ Here’s an example:</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count_filter</span> <span class="o">=</span> <span class="mi">10</span>
 
+<span class="c1"># Make sure to change the XXX in order to have a nice plot</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">unique</span><span class="p">[</span><span class="n">count</span> <span class="o">&gt;</span> <span class="n">count_filter</span><span class="p">],</span> <span class="n">count</span><span class="p">[</span><span class="n">count</span> <span class="o">&gt;</span> <span class="n">XXXX</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">unique</span><span class="p">[</span><span class="n">count</span> <span class="o">&gt;</span> <span class="n">count_filter</span><span class="p">],</span> <span class="n">count</span><span class="p">[</span><span class="n">count</span> <span class="o">&gt;</span> <span class="n">XXXX</span><span class="p">])</span> <span class="c1"># Filter the counts</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="n">XX</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">70</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="n">XX</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The most used words by </span><span class="si">{</span><span class="n">screen_name</span><span class="si">}</span><span class="s1"> in the retreived 200 tweets</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
@@ -1049,6 +1053,7 @@ Here’s an example:</p>
             <span class="n">filtered_words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">unique_counts</span><span class="o">.</span><span class="n">items</span><span class="p">())[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
             <span class="n">filtered_count</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">unique_counts</span><span class="o">.</span><span class="n">items</span><span class="p">())[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
 
+<span class="c1"># Make sure to change the XXX in order to have a nice plot</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">filtered_words</span><span class="p">,</span> <span class="n">XXXX</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="n">XX</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">70</span><span class="p">)</span>
@@ -1111,7 +1116,7 @@ Here’s an example:</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the function with the rome_corpus and our mask to create word cloud</span>
 <span class="n">title</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;The most used words by </span><span class="si">{</span><span class="n">screen_name</span><span class="si">}</span><span class="s1"> in the retreived 200 tweets</span><span class="se">\n</span><span class="s1">&#39;</span>
-<span class="n">generate_better_wordcloud</span><span class="p">(</span><span class="n">XXXX</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">usa_mask</span><span class="p">)</span>
+<span class="n">generate_better_wordcloud</span><span class="p">(</span><span class="n">XXXX</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">usa_mask</span><span class="p">)</span> <span class="c1"># Make sure to use the function with the correct Data and a nice title</span>
 </pre></div>
 </div>
 </div>
@@ -1325,6 +1330,7 @@ Mention at least one advantage and one disadvantage of not sharing the coordinat
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">world</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">gpd</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_path</span><span class="p">(</span><span class="s1">&#39;naturalearth_lowres&#39;</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;font.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;16&#39;</span>
 
+<span class="c1"># Make sure to change the XXX in order to have a nice plot</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
 <span class="n">world</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;xxx&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span> <span class="n">xx</span><span class="p">)</span>
@@ -1364,7 +1370,9 @@ Mention at least one advantage and one disadvantage of not sharing the coordinat
 <p>Now let’s see what the plot looks like:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot size of the circle</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make sure to change the XXX in order to have a nice plot</span>
+
+<span class="c1">#Plot size of the circle</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">dbg</span><span class="o">.</span><span class="n">magnitude</span>
 
 <span class="c1">#Plot color of the circle</span>
@@ -1455,7 +1463,7 @@ The database contains tweets about floods located in Texas from 30/07/2014 to 15
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_tweets</span><span class="p">(</span><span class="n">XXXX</span><span class="p">,</span> <span class="s1">&#39;XXXX&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_tweets</span><span class="p">(</span><span class="n">XXXX</span><span class="p">,</span> <span class="s1">&#39;XXXX&#39;</span><span class="p">)</span> <span class="c1"># tweets, title</span>
 </pre></div>
 </div>
 </div>
@@ -1478,7 +1486,7 @@ The database contains tweets about floods located in Texas from 30/07/2014 to 15
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tweets</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">filtered_tweets</span><span class="p">))</span>
 
-<span class="n">plot_tweets</span><span class="p">(</span><span class="n">XXXX</span><span class="p">,</span> <span class="s1">&#39;XXXX&#39;</span><span class="p">)</span>
+<span class="n">plot_tweets</span><span class="p">(</span><span class="n">XXXX</span><span class="p">,</span> <span class="s1">&#39;XXXX&#39;</span><span class="p">)</span> <span class="c1"># tweets, title</span>
 </pre></div>
 </div>
 </div>
@@ -1494,7 +1502,7 @@ The database contains tweets about floods located in Texas from 30/07/2014 to 15
 
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tweets</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">filtered_tweets</span><span class="p">))</span>
-<span class="n">plot_tweets</span><span class="p">(</span><span class="n">filtered_tweets</span><span class="p">,</span> <span class="s1">&#39;XXXX&#39;</span><span class="p">)</span>
+<span class="n">plot_tweets</span><span class="p">(</span><span class="n">filtered_tweets</span><span class="p">,</span> <span class="s1">&#39;XXXX&#39;</span><span class="p">)</span> <span class="c1"># tweets, title</span>
 </pre></div>
 </div>
 </div>
