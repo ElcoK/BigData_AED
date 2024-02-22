@@ -522,18 +522,8 @@ document.write(`
 <p><a class="reference external" href="https://www.nltk.org/"><strong>NLTK</strong></a> is a platform for building Python programs to work with human language data.</p>
 <p><a class="reference external" href="https://numpy.org/doc/stable/"><strong>NumPy</strong></a> is a Python library that provides a multidimensional array object, various derived objects, and an assortment of routines for fast operations on arrays.</p>
 <p><a class="reference external" href="https://pandas.pydata.org/docs/"><strong>Pandas</strong></a> is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python programming language.</p>
-<p><a class="reference external" href="https://www.tweepy.org/"><strong>tweepy</strong></a> is an easy-to-use Python library for accessing the Twitter API.</p>
 <p><a class="reference external" href="https://pypi.org/project/wordcloud/"><strong>wordcloud</strong></a> is a little word cloud generator in Python.</p>
 <p><em>We will first need to install these packages in the cell below. Uncomment them to make sure we can pip install them</em></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>geopandas
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>matplotlib
-</pre></div>
-</div>
-</div>
-</div>
-<p>As you may or may not have seen while installing, there was a warning that we need to restart our runtime. To do so, click on <strong>Runtime</strong> in the topbar menu and click on <strong>Runtime opnieuw starten</strong>/<strong>Restart runtime</strong>.</p>
 <p>Now we will import these packages in the cell below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -543,21 +533,18 @@ document.write(`
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">date</span>
 <span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
-<span class="kn">import</span> <span class="nn">tweepy</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 
 <span class="kn">from</span> <span class="nn">mpl_toolkits.axes_grid1</span> <span class="kn">import</span> <span class="n">make_axes_locatable</span>
 
-<span class="c1">#NEW</span>
-<span class="kn">from</span> <span class="nn">wordcloud</span> <span class="kn">import</span> <span class="n">WordCloud</span><span class="p">,</span> <span class="n">ImageColorGenerator</span>
+<span class="kn">from</span> <span class="nn">wordcloud</span> <span class="kn">import</span> <span class="n">WordCloud</span>
 <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="kn">import</span> <span class="nn">nltk</span>
 <span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
 <span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span><span class="p">,</span> <span class="n">RegexpTokenizer</span>
 <span class="kn">from</span> <span class="nn">nltk.stem</span> <span class="kn">import</span> <span class="n">WordNetLemmatizer</span><span class="p">,</span> <span class="n">PorterStemmer</span>
-<span class="kn">import</span> <span class="nn">string</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
