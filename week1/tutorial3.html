@@ -1278,7 +1278,7 @@ The Pandas team recommends <strong>Method 2 (re-assign)</strong>, for a <a class
 <img alt="../_images/groupby_2.png" class="bg-primary mb-1" src="../_images/groupby_2.png" />
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfg</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfg</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1286,7 +1286,7 @@ The Pandas team recommends <strong>Method 2 (re-assign)</strong>, for a <a class
 <p>We can apply multiple functions using <code class="docutils literal notranslate"><span class="pre">.aggregate()</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfg</span><span class="o">.</span><span class="n">aggregate</span><span class="p">([</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfg</span><span class="p">[[</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span><span class="s1">&#39;Distance&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">aggregate</span><span class="p">([</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1306,7 +1306,7 @@ The Pandas team recommends <strong>Method 2 (re-assign)</strong>, for a <a class
 <p>By the way, you can use aggregate for non-grouped dataframes too. This is pretty much what <code class="docutils literal notranslate"><span class="pre">df.describe</span></code> does under-the-hood:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">num_range</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Time&#39;</span><span class="p">,</span><span class="s1">&#39;Distance&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">num_range</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
