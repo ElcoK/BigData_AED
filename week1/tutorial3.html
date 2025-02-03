@@ -461,7 +461,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#renaming-columns">Renaming Columns</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-the-index">Changing the Index</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-removing-columns">Adding/Removing Columns</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-removing-rows">Adding/Removing Rows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-rows">Removing Rows</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-reshaping">3. DataFrame Reshaping</a><ul class="nav section-nav flex-column">
@@ -854,29 +854,12 @@ The Pandas team recommends <strong>Method 2 (re-assign)</strong>, for a <a class
 </div>
 </div>
 </section>
-<section id="adding-removing-rows">
-<h3>Adding/Removing Rows<a class="headerlink" href="#adding-removing-rows" title="Permalink to this heading">#</a></h3>
-<p>You won’t often be adding rows to a dataframe manually (you’ll usually add rows through concatenating/joining - that’s coming up next). You can add/remove rows of a dataframe in two ways:</p>
-<ol class="arabic simple">
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">.append()</span></code> to add rows</p></li>
-<li><p>Use <code class="docutils literal notranslate"><span class="pre">.drop()</span></code> to drop rows</p></li>
-</ol>
+<section id="removing-rows">
+<h3>Removing Rows<a class="headerlink" href="#removing-rows" title="Permalink to this heading">#</a></h3>
+<p>You can remove rows of a dataframe through the use of  <code class="docutils literal notranslate"><span class="pre">.drop()</span></code> to drop rows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Let’s add a new row to the bottom of this dataframe:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">another_row</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="s2">&quot;12 Oct 2019, 00:10:57&quot;</span><span class="p">,</span> <span class="s2">&quot;Morning Ride&quot;</span><span class="p">,</span> <span class="s2">&quot;Ride&quot;</span><span class="p">,</span>
-                             <span class="mi">2331</span><span class="p">,</span> <span class="mf">12.67</span><span class="p">,</span> <span class="s2">&quot;Washed and oiled bike last night&quot;</span><span class="p">]],</span>
-                           <span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
-                           <span class="n">index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">33</span><span class="p">])</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">another_row</span><span class="p">)</span>
-<span class="n">df</span>
 </pre></div>
 </div>
 </div>
@@ -1469,7 +1452,7 @@ The Pandas team recommends <strong>Method 2 (re-assign)</strong>, for a <a class
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#renaming-columns">Renaming Columns</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-the-index">Changing the Index</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-removing-columns">Adding/Removing Columns</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-removing-rows">Adding/Removing Rows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-rows">Removing Rows</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-reshaping">3. DataFrame Reshaping</a><ul class="nav section-nav flex-column">
