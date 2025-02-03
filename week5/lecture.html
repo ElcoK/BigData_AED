@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Lecture: Big Data in the public domain &#8212; Big Data for Sustainability Sciences</title>
+    <title>Lecture: Earth Observation &amp; Google Earth Engine &#8212; Big Data for Sustainability Sciences</title>
   
   
   
@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'week5/lecture';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Tutorial 1: Working with OpenStreetMap" href="tutorial1.html" />
-    <link rel="prev" title="Tutorial 2: Drought Detection" href="../week4/tutorial2.html" />
+    <link rel="next" title="Tutorial 1: Land-cover classification" href="tutorial1.html" />
+    <link rel="prev" title="Tutorial 2: Natural Hazard Risk Assessment" href="../week4/tutorial2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -195,15 +195,15 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 4</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../week4/lecture.html">Lecture: Earth Observation &amp; Google Earth Engine</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week4/tutorial1.html">Tutorial 1: Land-cover classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../week4/tutorial2.html">Tutorial 2: Drought Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/lecture.html">Lecture: Big Data in the public domain</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/tutorial1.html">Tutorial 1: Working with OpenStreetMap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week4/tutorial2.html">Tutorial 2: Natural Hazard Risk Assessment</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 5</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture: Big Data in the public domain</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial1.html">Tutorial 1: Working with OpenStreetMap</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial2.html">Tutorial 2: Natural Hazard Risk Assessment</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture: Earth Observation &amp; Google Earth Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial1.html">Tutorial 1: Land-cover classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial2.html">Tutorial 2: Drought Detection</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Week 6</span></p>
 <ul class="nav bd-sidenav">
@@ -452,7 +452,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lecture: Big Data in the public domain</h1>
+    <h1>Lecture: Earth Observation & Google Earth Engine</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -462,9 +462,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-data-sources">Overview of data sources</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#licensing-of-data-in-the-public-domain">Licensing of data in the public domain</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fair-principles">FAIR - principles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-learning">Supervised learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-learning-algorithms">Supervised learning algorithms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupervised-learning">Unsupervised learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-main-differences-between-supervised-and-unsupervised-learning-labeled-data">The main differences between supervised and unsupervised learning: Labeled data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-key-differences-between-supervised-and-unsupervised-learning">Other key differences between supervised and unsupervised learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#google-earth-engine">Google Earth Engine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-gain-access-to-the-google-earth-engine">How to gain access to the Google Earth Engine</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sources">Sources</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -476,68 +483,80 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="lecture-big-data-in-the-public-domain">
-<h1>Lecture: Big Data in the public domain<a class="headerlink" href="#lecture-big-data-in-the-public-domain" title="Permalink to this heading">#</a></h1>
-<p>This week we will focus on the large amount of data available in the public domain that we can utilize within our research in sustainability sciences.</p>
+  <section id="lecture-earth-observation-google-earth-engine">
+<h1>Lecture: Earth Observation &amp; Google Earth Engine<a class="headerlink" href="#lecture-earth-observation-google-earth-engine" title="Permalink to this heading">#</a></h1>
+<p>This week we will focus on what we can do with earth observation data and learn how to use the google earth engine to unleash the potential of earth observation data.</p>
 <div class="important admonition">
-<p class="admonition-title">Learning objectives week 5</p>
+<p class="admonition-title">Learning objectives week 4</p>
 <ul class="simple">
-<li><p>Understand what type of data is available.</p></li>
-<li><p>Understand how licensing works.</p></li>
-<li><p>Know how to access OpenStreetMap and perform basic spatial analysis on this data.</p></li>
-<li><p>Know how to combine different open-access spatial datasets to perform a natural hazards risk assessment.</p></li>
+<li><p>Gain a basic understanding of the Google Earth Engine.</p></li>
+<li><p>Understand and know how you can use the Google Earth engine in Python.</p></li>
+<li><p>Understand the differences between supervised and unsupervised learning</p></li>
+<li><p>Know how to apply a supervised classification algorithm.</p></li>
+<li><p>Understand how droughts can be detected through remote sensing.</p></li>
 </ul>
 </div>
-<section id="overview-of-data-sources">
-<h2>Overview of data sources<a class="headerlink" href="#overview-of-data-sources" title="Permalink to this heading">#</a></h2>
-<p>There are many places on online where we can find large amounts of public data to be used within our discipline. Below we highlight a few of the most used data sources.</p>
+<section id="supervised-learning">
+<h2>Supervised learning<a class="headerlink" href="#supervised-learning" title="Permalink to this heading">#</a></h2>
+<p>Supervised learning uses a training set to teach models to yield the desired output. This training dataset includes inputs and correct outputs, which allow the model to learn over time. The algorithm measures its accuracy through the loss function, adjusting until the error has been sufficiently minimized.</p>
+<p>Supervised learning can be separated into two types of problems when data mining—classification and regression:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://developers.google.com/earth-engine/datasets"><strong>Google Earth Engine Data Catalogue</strong></a>.Earth Engine’s public data archive includes more than forty years of historical imagery and scientific datasets, updated and expanded daily.</p></li>
-<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/#!/home"><strong>Copernicus Climate Data Store</strong></a>. CDS datasets include observations, historical climate data records, estimates of Essential Climate Variables (ECVs) derived from Earth observations, global and regional climate reanalyses of past observations, seasonal forecasts and climate projections. Access to data is open, free and unrestricted.</p></li>
-<li><p><a class="reference external" href="https://ourworldindata.org/"><strong>Our World in Data</strong></a>. Our World in Data (OWID) is a scientific online publication that focuses on large global problems such as poverty, disease, hunger, climate change, war, existential risks, and inequality.</p></li>
-<li><p><a class="reference external" href="https://www.worldpop.org/"><strong>Worldpop</strong></a>. Open access spatial demographic datasets built using transparent approaches.</p></li>
-<li><p><a class="reference external" href="https://www.wcrp-climate.org/about-wcrp/wcrp-overview"><strong>CMIP6</strong></a>. Coupled Model Intercomparison Project Phase 6. The objective of CMIP is to better understand past, present and future climate changes arising from natural, unforced variability or in response to changes in radiative forcing in a multi-model context. This understanding includes assessments of model performance during the historical period and quantifications of the causes of the spread in future projections. An important goal of CMIP is to make the multi-model output publicly available in a standardized format.</p></li>
-<li><p><a class="reference external" href="https://www.openstreetmap.org/"><strong>OpenStreetMap</strong></a>. A  free, editable map of the whole world that is being built by volunteers largely from scratch and released with an open-content license.</p></li>
-<li><p><a class="reference external" href="https://thinkhazard.org/en/"><strong>ThinkHazard</strong></a>. ThinkHazard! provides a general view of the hazards, for a given location. The hazard levels provided are based on published hazard data, provided by a range of private, academic and public organizations.</p></li>
-<li><p><a class="reference external" href="https://ec.europa.eu/eurostat"><strong>Eurostat</strong></a>. Statistics and data on Europe. Both tabular and spatially explicit.</p></li>
-<li><p><a class="reference external" href="https://www.emdat.be/"><strong>EM-DAT</strong></a>.EM-DAT contains essential core data on the occurrence and effects of over 22,000 mass disasters in the world from 1900 to the present day.</p></li>
-<li><p><a class="reference external" href="https://www.ipums.org/"><strong>IPUMS</strong></a>. IPUMS provides census and survey data from around the world integrated across time and space.</p></li>
-<li><p><a class="reference external" href="https://gadm.org/"><strong>GADM</strong></a>. GADM provides maps and spatial data for all countries and their sub-divisions.</p></li>
-<li><p><a class="reference external" href="https://global-flood-database.cloudtostreet.ai/"><strong>Global Flood Database</strong></a>. The Global Flood Database contains maps of the extent and temporal distribution of 913 flood events occurring between 2000-2018.</p></li>
+<li><p><strong>Classification</strong> uses an algorithm to accurately assign test data into specific categories. It recognizes specific entities within the dataset and attempts to draw some conclusions on how those entities should be labeled or defined. Common classification algorithms are linear classifiers, support vector machines (SVM), decision trees, k-nearest neighbor, and random forest, which are described in more detail below.</p></li>
+<li><p><strong>Regression</strong> is used to understand the relationship between dependent and independent variables. It is commonly used to make projections, such as for sales revenue for a given business. Linear regression, logistical regression, and polynomial regression are popular regression algorithms.</p></li>
 </ul>
 </section>
-<section id="licensing-of-data-in-the-public-domain">
-<h2>Licensing of data in the public domain<a class="headerlink" href="#licensing-of-data-in-the-public-domain" title="Permalink to this heading">#</a></h2>
-<p>The most common license for public data is the Creative Commons license. Creative Commons licenses give everyone from individual creators to large institutions a standardized way to grant the public permission to use their creative work under copyright law. From the reuser’s perspective, the presence of a Creative Commons license on a copyrighted work answers the question, “What can I do with this work?”</p>
-<p>You can find all the information about the Creative Commons license <a class="reference external" href="https://creativecommons.org/about/cclicenses/">here</a>.</p>
+<section id="supervised-learning-algorithms">
+<h2>Supervised learning algorithms<a class="headerlink" href="#supervised-learning-algorithms" title="Permalink to this heading">#</a></h2>
+<p>Various algorithms and computation techniques are used in supervised machine learning processes. We already discussed <strong>Random Forests</strong> and <strong>Neural Networks</strong> in detail during the lectures. Below you can find an overview of some of the other algorithms that you can apply within our tutorial.</p>
+<p><strong>Naive Bayes</strong>
+Naive Bayes is classification approach that adopts the principle of class conditional independence from the Bayes Theorem. This means that the presence of one feature does not impact the presence of another in the probability of a given outcome, and each predictor has an equal effect on that result. There are three types of Naïve Bayes classifiers: Multinomial Naïve Bayes, Bernoulli Naïve Bayes, and Gaussian Naïve Bayes. This technique is primarily used in text classification, spam identification, and recommendation systems.</p>
+<p><strong>Support vector machine (SVM)</strong>
+A support vector machine is a popular supervised learning model developed by Vladimir Vapnik, used for both data classification and regression. That said, it is typically leveraged for classification problems, constructing a hyperplane where the distance between two classes of data points is at its maximum. This hyperplane is known as the decision boundary, separating the classes of data points (e.g., oranges vs. apples) on either side of the plane.</p>
+<p><strong>K-nearest neighbor</strong>
+K-nearest neighbor, also known as the KNN algorithm, is a non-parametric algorithm that classifies data points based on their proximity and association to other available data. This algorithm assumes that similar data points can be found near each other. As a result, it seeks to calculate the distance between data points, usually through Euclidean distance, and then it assigns a category based on the most frequent category or average.</p>
+<p>Its ease of use and low calculation time make it a preferred algorithm by data scientists, but as the test dataset grows, the processing time lengthens, making it less appealing for classification tasks. KNN is typically used for recommendation engines and image recognition.</p>
 </section>
-<section id="fair-principles">
-<h2>FAIR - principles<a class="headerlink" href="#fair-principles" title="Permalink to this heading">#</a></h2>
-<p>The FAIR principles constitute a set of guidelines for effective data management, formally introduced in a pivotal 2016 paper authored by a collaborative consortium of scientists and organizations, <a class="reference external" href="https://www.nature.com/articles/sdata201618">published in the journal Scientific Data</a>. FAIR stands for  <strong>F</strong>indability, <strong>A</strong>ccessibility, <strong>I</strong>nteroperability, and <strong>R</strong>euse. These principles prioritize ensuring that data is easily discoverable, accessible, interoperable, and reusable. At its core, the FAIR framework seeks to address the challenges posed by the ever-expanding volume and complexity of data, coupled with the accelerating pace at which new data is generated. Especially when dealing with big and publicly accessible data, a clear set of rules and principles are essential to ensure the reproducability of your work.</p>
-<p>The acronym FAIR encapsulates a set of principles that extend beyond mere data organization; they underscore the necessity for machine-actionability. As our dependence on computational systems continues to intensify, the FAIR principles emphasize the importance of enabling these systems to autonomously discover, access, interoperate, and reuse data with minimal human intervention. This distinctive feature ensures that the principles remain relevant in the face of evolving technological landscapes and the increasing reliance on automated processes in data management.</p>
-<div class="tip admonition">
-<p class="admonition-title">The FAIR-principles</p>
-<p><strong>To be Findable</strong>:</p>
-<p>F1. (meta)data are assigned a globally unique and persistent identifier</p>
-<p>F2. data are described with rich metadata (defined by R1 below)</p>
-<p>F3. metadata clearly and explicitly include the identifier of the data it describes</p>
-<p>F4. (meta)data are registered or indexed in a searchable resource</p>
-<p><strong>To be Accessible</strong>:</p>
-<p>A1. (meta)data are retrievable by their identifier using a standardized communications protocol</p>
-<p>A1.1 the protocol is open, free, and universally implementable</p>
-<p>A1.2 the protocol allows for an authentication and authorization procedure, where necessary</p>
-<p>A2. metadata are accessible, even when the data are no longer available</p>
-<p><strong>To be Interoperable</strong>:</p>
-<p>I1. (meta)data use a formal, accessible, shared, and broadly applicable language for knowledge representation.</p>
-<p>I2. (meta)data use vocabularies that follow FAIR principles</p>
-<p>I3. (meta)data include qualified references to other (meta)data</p>
-<p><strong>To be Reusable</strong>:</p>
-<p>R1. meta(data) are richly described with a plurality of accurate and relevant attributes</p>
-<p>R1.1. (meta)data are released with a clear and accessible data usage license</p>
-<p>R1.2. (meta)data are associated with detailed provenance</p>
-<p>R1.3. (meta)data meet domain-relevant community standards</p>
-</div>
-<p>You can read more about the FAIR-principes <a class="reference external" href="https://www.go-fair.org/fair-principles/">here</a></p>
+<section id="unsupervised-learning">
+<h2>Unsupervised learning<a class="headerlink" href="#unsupervised-learning" title="Permalink to this heading">#</a></h2>
+<p>Unsupervised learning uses machine learning algorithms to analyze and cluster unlabeled data sets. These algorithms discover hidden patterns in data without the need for human intervention (hence, they are “unsupervised”).</p>
+<p>Unsupervised learning models are used for three main tasks: clustering, association and dimensionality reduction:</p>
+<ul class="simple">
+<li><p><strong>Clustering</strong> is a data mining technique for grouping unlabeled data based on their similarities or differences. For example, K-means clustering algorithms assign similar data points into groups, where the K value represents the size of the grouping and granularity. This technique is helpful for market segmentation, image compression, etc.</p></li>
+<li><p><strong>Association</strong> is another type of unsupervised learning method that uses different rules to find relationships between variables in a given dataset. These methods are frequently used for market basket analysis and recommendation engines, along the lines of “Customers Who Bought This Item Also Bought” recommendations.</p></li>
+<li><p><strong>Dimensionality</strong> reduction is a learning technique used when the number of features  (or dimensions) in a given dataset is too high. It reduces the number of data inputs to a manageable size while also preserving the data integrity. Often, this technique is used in the preprocessing data stage, such as when autoencoders remove noise from visual data to improve picture quality.</p></li>
+</ul>
+</section>
+<section id="the-main-differences-between-supervised-and-unsupervised-learning-labeled-data">
+<h2>The main differences between supervised and unsupervised learning: Labeled data<a class="headerlink" href="#the-main-differences-between-supervised-and-unsupervised-learning-labeled-data" title="Permalink to this heading">#</a></h2>
+<p>The main distinction between the two approaches is the use of labeled datasets. To put it simply, supervised learning uses labeled input and output data, while an unsupervised learning algorithm does not.</p>
+<p>In supervised learning, the algorithm “learns” from the training dataset by iteratively making predictions on the data and adjusting for the correct answer. While supervised learning models tend to be more accurate than unsupervised learning models, they require upfront human intervention to label the data appropriately. For example, a supervised learning model can predict how long your commute will be based on the time of day, weather conditions and so on. But first, you’ll have to train it to know that rainy weather extends the driving time.</p>
+<p>Unsupervised learning models, in contrast, work on their own to discover the inherent structure of unlabeled data. Note that they still require some human intervention for validating output variables. For example, an unsupervised learning model can identify that online shoppers often purchase groups of products at the same time. However, a data analyst would need to validate that it makes sense for a recommendation engine to group baby clothes with an order of diapers, applesauce and sippy cups.</p>
+</section>
+<section id="other-key-differences-between-supervised-and-unsupervised-learning">
+<h2>Other key differences between supervised and unsupervised learning<a class="headerlink" href="#other-key-differences-between-supervised-and-unsupervised-learning" title="Permalink to this heading">#</a></h2>
+<p><strong>Goals</strong>: In supervised learning, the goal is to predict outcomes for new data. You know up front the type of results to expect. With an unsupervised learning algorithm, the goal is to get insights from large volumes of new data. The machine learning itself determines what is different or interesting from the dataset.</p>
+<p><strong>Applications</strong>: Supervised learning models are ideal for spam detection, sentiment analysis, weather forecasting and pricing predictions, among other things. In contrast, unsupervised learning is a great fit for anomaly detection, recommendation engines, customer personas and medical imaging.</p>
+<p><strong>Complexity</strong>: Supervised learning is a simple method for machine learning, typically calculated through the use of statistical software like R or Python. In unsupervised learning, you need powerful tools for working with large amounts of unclassified data. Unsupervised learning models are computationally complex because they need a large training set to produce intended outcomes.</p>
+<p><strong>Drawbacks</strong>: Supervised learning models can be time-consuming to train, and the labels for input and output variables require expertise. Meanwhile, unsupervised learning methods can have wildly inaccurate results unless you have human intervention to validate the output variables.</p>
+</section>
+<section id="google-earth-engine">
+<h2>Google Earth Engine<a class="headerlink" href="#google-earth-engine" title="Permalink to this heading">#</a></h2>
+<p>Google Earth Engine is a cloud-based platform for planetary-scale geospatial analysis that brings Google’s computational capabilities to bear on a variety of high-impact societal issues including deforestation, drought, disaster, disease, food security, water management, climate monitoring and environmental protection.</p>
+<p>The Google Earth Engine consists of a multi-petabyte analysis-ready data catalog co-located with a high-performance, intrinsically parallel computation service. It is accessed and controlled through an Internet-accessible application programming interface (API) and an associated web-based interactive development environment (IDE) that enables rapid prototyping and visualization of results.</p>
+<p>The data catalog houses a large repository of publicly available geospatial datasets, including observations from a variety of satellite and aerial imaging systems in both optical and non-optical wavelengths, environmental variables, weather and climate forecasts and hindcasts, land cover, topographic and socio-economic datasets. All of this data is preprocessed to a ready-to-use but information-preserving form that allows efficient access and removes many barriers associated with data management.</p>
+<p>Users can access and analyze data from the public catalog as well as their own private data using a library of operators provided by the Earth Engine API. These operators are implemented in a large parallel processing system that automatically subdivides and distributes computations, providing high-throughput analysis capabilities. Users access the API either through a thin client library or through a web-based interactive development environment built on top of that client library.</p>
+</section>
+<section id="how-to-gain-access-to-the-google-earth-engine">
+<h2>How to gain access to the Google Earth Engine<a class="headerlink" href="#how-to-gain-access-to-the-google-earth-engine" title="Permalink to this heading">#</a></h2>
+<p>To be able to use the Google Earth Engine during the tutorial, we will need to sign up.</p>
+<p>The first step is to register. To do so, you have to go to the <a class="reference external" href="https://signup.earthengine.google.com/#!/">Sign-up page</a>. You can use your university account to register.</p>
+<section id="sources">
+<h3>Sources<a class="headerlink" href="#sources" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.ibm.com/cloud/learn/supervised-learning">IBM Supervised Learning Explained</a></p></li>
+<li><p><a class="reference external" href="https://www.ibm.com/cloud/blog/supervised-vs-unsupervised-learning">IBM Supervised vs Unsupervised Learning Explained</a></p></li>
+</ul>
+</section>
 </section>
 </section>
 
@@ -577,7 +596,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Tutorial 2: Drought Detection</p>
+        <p class="prev-next-title">Tutorial 2: Natural Hazard Risk Assessment</p>
       </div>
     </a>
     <a class="right-next"
@@ -585,7 +604,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Tutorial 1: Working with OpenStreetMap</p>
+        <p class="prev-next-title">Tutorial 1: Land-cover classification</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -604,9 +623,16 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-data-sources">Overview of data sources</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#licensing-of-data-in-the-public-domain">Licensing of data in the public domain</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fair-principles">FAIR - principles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-learning">Supervised learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-learning-algorithms">Supervised learning algorithms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unsupervised-learning">Unsupervised learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-main-differences-between-supervised-and-unsupervised-learning-labeled-data">The main differences between supervised and unsupervised learning: Labeled data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-key-differences-between-supervised-and-unsupervised-learning">Other key differences between supervised and unsupervised learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#google-earth-engine">Google Earth Engine</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-gain-access-to-the-google-earth-engine">How to gain access to the Google Earth Engine</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sources">Sources</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
