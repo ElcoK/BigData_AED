@@ -530,27 +530,27 @@ document.write(`
 <p>Now we will import these packages in the cell below:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">cdsapi</span>
-<span class="kn">import</span> <span class="nn">shapely</span> 
-<span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="kn">import</span> <span class="nn">urllib3</span>
-<span class="kn">import</span> <span class="nn">pyproj</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cdsapi</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">shapely</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib3</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyproj</span>
 
-<span class="kn">import</span> <span class="nn">osmnx</span> <span class="k">as</span> <span class="nn">ox</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
-<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">osmnx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ox</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">networkx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nx</span>
 
-<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">ListedColormap</span>
-<span class="kn">from</span> <span class="nn">zipfile</span> <span class="kn">import</span> <span class="n">ZipFile</span>
-<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
-<span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlopen</span>
-<span class="kn">from</span> <span class="nn">zipfile</span> <span class="kn">import</span> <span class="n">ZipFile</span>
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.colors</span><span class="w"> </span><span class="kn">import</span> <span class="n">ListedColormap</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">zipfile</span><span class="w"> </span><span class="kn">import</span> <span class="n">ZipFile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">io</span><span class="w"> </span><span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.request</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlopen</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">zipfile</span><span class="w"> </span><span class="kn">import</span> <span class="n">ZipFile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
 
 <span class="n">urllib3</span><span class="o">.</span><span class="n">disable_warnings</span><span class="p">()</span>
 </pre></div>
@@ -565,10 +565,10 @@ document.write(`
 <p>Please go the URL when its prompted in the box underneath the following cell, and copy the authorization code in that box.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">drive</span>
 <span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/gdrive/&#39;</span><span class="p">)</span>
 
-<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/content/gdrive/My Drive/BigData/&quot;</span><span class="p">)</span>
 
 <span class="n">data_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;/content/gdrive/My Drive/BigData/&#39;</span><span class="p">,</span><span class="s1">&#39;Week5_Data&#39;</span><span class="p">)</span>
@@ -876,7 +876,7 @@ document.write(`
 <b>Question 5:</b>  Describe in your own words what the `DamageScanner()` function does. Please walk us through the different steps. Which inputs do you need to be able to run this damage assessment?
 </div><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">DamageScanner</span><span class="p">(</span><span class="n">landuse_map</span><span class="p">,</span><span class="n">inun_map</span><span class="p">,</span><span class="n">curve_path</span><span class="p">,</span><span class="n">maxdam_path</span><span class="p">,</span><span class="n">cellsize</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">DamageScanner</span><span class="p">(</span><span class="n">landuse_map</span><span class="p">,</span><span class="n">inun_map</span><span class="p">,</span><span class="n">curve_path</span><span class="p">,</span><span class="n">maxdam_path</span><span class="p">,</span><span class="n">cellsize</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
         
     <span class="c1"># load land-use map</span>
     <span class="n">landuse</span> <span class="o">=</span> <span class="n">landuse_map</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -955,7 +955,7 @@ document.write(`
 <p>The first thing we are going to do is try to make sure our data will be in the correct resolution (moving from <strong>1km</strong> to <strong>100m</strong>). To do so, we will use the <code class="docutils literal notranslate"><span class="pre">rio.reproject()</span></code> function. You will see that specify the resolution as <strong>100</strong>. Because <strong>EPSG:3035</strong> is a coordinate system in meters, we can simply use meters to define the resolution. We use the <code class="docutils literal notranslate"><span class="pre">rio.clip()</span></code> function to make sure we clip it again to our area of interest. The function below (<code class="docutils literal notranslate"><span class="pre">match_rasters</span></code>) will do the hard work for us. Please note all the input variables to understand what’s happening.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">match_rasters</span><span class="p">(</span><span class="n">hazard</span><span class="p">,</span><span class="n">landuse</span><span class="p">,</span><span class="n">haz_crs</span><span class="o">=</span><span class="mi">3035</span><span class="p">,</span><span class="n">lu_crs</span><span class="o">=</span><span class="mi">3035</span><span class="p">,</span><span class="n">resolution</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">hazard_col</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;FX&#39;</span><span class="p">]):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">match_rasters</span><span class="p">(</span><span class="n">hazard</span><span class="p">,</span><span class="n">landuse</span><span class="p">,</span><span class="n">haz_crs</span><span class="o">=</span><span class="mi">3035</span><span class="p">,</span><span class="n">lu_crs</span><span class="o">=</span><span class="mi">3035</span><span class="p">,</span><span class="n">resolution</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">hazard_col</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;FX&#39;</span><span class="p">]):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Clips, reprojections, and matches the resolutions of two rasters, `hazard` and `landuse`,</span>
 <span class="sd">    to prepare them for further analysis.</span>
@@ -1266,7 +1266,7 @@ document.write(`
 <p>We will need a bunch of functions to make sure we can do our calculations. They are specified below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">reproject</span><span class="p">(</span><span class="n">df_ds</span><span class="p">,</span><span class="n">current_crs</span><span class="o">=</span><span class="s2">&quot;epsg:4326&quot;</span><span class="p">,</span><span class="n">approximate_crs</span> <span class="o">=</span> <span class="s2">&quot;epsg:3035&quot;</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">reproject</span><span class="p">(</span><span class="n">df_ds</span><span class="p">,</span><span class="n">current_crs</span><span class="o">=</span><span class="s2">&quot;epsg:4326&quot;</span><span class="p">,</span><span class="n">approximate_crs</span> <span class="o">=</span> <span class="s2">&quot;epsg:3035&quot;</span><span class="p">):</span>
     <span class="n">geometries</span> <span class="o">=</span> <span class="n">df_ds</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span>
     <span class="n">coords</span> <span class="o">=</span> <span class="n">shapely</span><span class="o">.</span><span class="n">get_coordinates</span><span class="p">(</span><span class="n">geometries</span><span class="p">)</span>
     <span class="n">transformer</span><span class="o">=</span><span class="n">pyproj</span><span class="o">.</span><span class="n">Transformer</span><span class="o">.</span><span class="n">from_crs</span><span class="p">(</span><span class="n">current_crs</span><span class="p">,</span> <span class="n">approximate_crs</span><span class="p">,</span><span class="n">always_xy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1274,11 +1274,11 @@ document.write(`
     
     <span class="k">return</span> <span class="n">shapely</span><span class="o">.</span><span class="n">set_coordinates</span><span class="p">(</span><span class="n">geometries</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">new_coords</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> 
 
-<span class="k">def</span> <span class="nf">buffer_assets</span><span class="p">(</span><span class="n">assets</span><span class="p">,</span><span class="n">buffer_size</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">buffer_assets</span><span class="p">(</span><span class="n">assets</span><span class="p">,</span><span class="n">buffer_size</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
     <span class="n">assets</span><span class="p">[</span><span class="s1">&#39;buffered&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">shapely</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="n">assets</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">buffer_size</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">assets</span>
 
-<span class="k">def</span> <span class="nf">overlay_hazard_assets</span><span class="p">(</span><span class="n">df_ds</span><span class="p">,</span><span class="n">assets</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">overlay_hazard_assets</span><span class="p">(</span><span class="n">df_ds</span><span class="p">,</span><span class="n">assets</span><span class="p">):</span>
 
     <span class="c1">#overlay </span>
     <span class="n">hazard_tree</span> <span class="o">=</span> <span class="n">shapely</span><span class="o">.</span><span class="n">STRtree</span><span class="p">(</span><span class="n">df_ds</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
@@ -1287,7 +1287,7 @@ document.write(`
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span>  <span class="n">hazard_tree</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">assets</span><span class="o">.</span><span class="n">buffered</span><span class="p">,</span><span class="n">predicate</span><span class="o">=</span><span class="s1">&#39;intersects&#39;</span><span class="p">)</span>
     
-<span class="k">def</span> <span class="nf">get_damage_per_asset</span><span class="p">(</span><span class="n">asset</span><span class="p">,</span><span class="n">df_ds</span><span class="p">,</span><span class="n">assets</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_damage_per_asset</span><span class="p">(</span><span class="n">asset</span><span class="p">,</span><span class="n">df_ds</span><span class="p">,</span><span class="n">assets</span><span class="p">):</span>
     <span class="c1"># find the exact hazard overlays:</span>
     <span class="n">get_hazard_points</span> <span class="o">=</span> <span class="n">df_ds</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">asset</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;hazard_point&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
     <span class="n">get_hazard_points</span> <span class="o">=</span> <span class="n">get_hazard_points</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">shapely</span><span class="o">.</span><span class="n">intersects</span><span class="p">(</span><span class="n">get_hazard_points</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">assets</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">asset</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">geometry</span><span class="p">)]</span>
