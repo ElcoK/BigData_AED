@@ -451,7 +451,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-the-data-and-having-a-first-look">2. Reading the data and having a first look</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis">3. Exploratory data analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-new-variables">4. Creating new variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nonlinear-relationships">5. Nonlinear relationships</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-analysis">6. Regression analysis</a></li>
 </ul>
             </nav>
@@ -634,9 +633,14 @@ Hint: Every dot (.) indicates a new function.
 </div>
 </div>
 </div>
-<div class="alert alert-block alert-success">
-<b>Question 3:</b> We just showed how to explore the OWNERSHP and HHINCOME variables. Choose a different variable and describe it. What are the units, and does it make sense to use value_counts() to understand this variable or would you rather use something different?
-</div><p>Now we are going to take a look at the variable we want to predict in a later stage, energy costs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># code block to create your own plot of a distribution of a variable. </span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we are going to take a look at the variable we want to predict in a later stage, energy costs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -659,15 +663,14 @@ As you can see, there are several options in the seaborn (imported as sns) heatm
 </div>
 </div>
 <div class="alert alert-block alert-success">
-    <b>Question 4:</b> Which variable is most correlated to <b>COSTENERGY</b> and which variable the least?  
+    <b>Question 3:</b> Which variable is most correlated to <b>COSTENERGY</b> and which variable the least?  
 </div></section>
 <section id="creating-new-variables">
 <h2>4. Creating new variables<a class="headerlink" href="#creating-new-variables" title="Permalink to this heading">#</a></h2>
-<hr><p>The dataset consists of households and individuals. Energy costs are a household variable, i.e. all members of the household have the same energy costs. Age and sex are individual variables, so the relationship between age or sex with energy costs is likely to be low. Think of a family with children, where a 3-year old daughter has the same energy costs as the 40-year old father. But maybe we can use these two variables, AGE and SEX in another way to make them more useful. We can for example create a variable with number of children in a household, or number of women, age of the oldest person in the household etc. To create these variables, we need to know which individuals belong to the same household and luckily this is exactly what the column SERIAL indicates, as SERIAL is the household ID.</p>
-<p>Before we go into the variables SEX and AGE, we are going to create a new variable household size based on the variable SERIAL.</p>
+<hr><p>One variable that is not present in the dataset, but will most likely have a high impact on energy costs is the number of household members. We can create a new variable HHSIZE (household size) using the column SERIAL, which identifies household IDs (i.e., all members of the same household share the same ID). To create a new column HHSIZE, we will count the occurrences of each unique household ID in the SERIAL column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">serialcount</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">serialcount</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -679,7 +682,7 @@ As you can see, there are several options in the seaborn (imported as sns) heatm
 </div>
 </div>
 </div>
-<p>The names of the dataframe <em>serialcount</em> are a bit confusing, because the <strong>index</strong> column corresponds to the <strong>SERIAL</strong> number and the column <strong>SERIAL</strong> corresponds to the <em>household size</em>, so let’s rename the <strong>SERIAL</strong> column to <strong>HHSIZE</strong> and the <strong>index</strong> column to <strong>SERIAL</strong>.</p>
+<p>The column <strong>count</strong> indicates the number of persons in each household and each household is uniquely identified by the <strong>SERIAL</strong> column. Rename the column <strong>count</strong> to <strong>HHSIZE</strong> in the empty code block below.</p>
 <p>Then we add the column <strong>HHSIZE</strong> (household) size to our data using the <code class="docutils literal notranslate"><span class="pre">.merge()</span></code> function. Within the <code class="docutils literal notranslate"><span class="pre">merge()</span></code> function, you have to define on which column you want to merge the two dataframes using the <code class="docutils literal notranslate"><span class="pre">on</span></code> argument. Merge on the <strong>SERIAL</strong> column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -688,122 +691,185 @@ As you can see, there are several options in the seaborn (imported as sns) heatm
 </div>
 </div>
 </div>
-<div class="alert alert-block alert-success">
-    <b>Question 5:</b> Please explain what the .merge() function does. Also explain the option 'on' and 'how'.
-</div><p>Now we have merged a new variable HHSIZE to the dataframe. Next we will use the variable SEX to create a new variable. It is possible that women use more energy than men, or the other way around, so the number of women (or men) could be a useful variable for predicting energy costs. To obtain the household size, we simply counted the number of occurances of each serial number, but to obtain the number of women per household, we also need the column SEX. The variable SEX has two values, 1 represents a male and 2 represents a female.</p>
-<p>We use the function <code class="docutils literal notranslate"><span class="pre">value_count()</span></code> to obtain the number of women and men per serial number, i.e., per unique household.</p>
+<p>It is important to realize that the dataset contains household variables and individual variables. Household variables have the same value for the entire household (e.g. energy costs) and individual variables differ within the household (e.g. age and gender). Individual variables are not very meaningful in predicting a household variable, such as energy costs. Think of a family with children, where a 3-year old daughter has the same energy costs as the 40-year old father. Therefore, it doesn’t make sense to include AGE or SEX in the model in their current form. In this section, we will create new variables based on the variable AGE (We assume that SEX doesn’t have a large effects on energy costs anyway). In the next steps, we are going to create a new variable (columns) which indicates the number of young children in a household. We hypothesize that young children will increase the household’s energy bill (more dirty laundry, so increased usage of washing machine and dryer).</p>
+<p>First, we create a column “YOUNGERTHAN”. Choose an age between 1 and 8.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gendercount</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="s1">&#39;SEX&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">gendercount</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;YOUNGERTHAN&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;AGE&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="c1">#fill in age</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>It is always good to realize that in many cases, multiple ways exist to obtain the same result. The following line of code produces the same results:</p>
+<p>This will create a new column with True and False (True for individuals younger than the given age). Let’s convert this to integers because it’s easier to work with numbers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gendercount</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span><span class="s1">&#39;SEX&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span><span class="s1">&#39;SEX&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">gendercount</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;YOUNGERTHAN&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;YOUNGERTHAN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="alert alert-block alert-success">
-    <b>Question 6:</b> There are different ways to obtain the same result. Please describe the two lines of code above and explain how they take a different approach, but yet achieve the same outcome.
-</div><p>In the next steps you are going to write code that merges a new variable called <strong>‘NR_OF_WOMEN’</strong> (number of women) to the existing dataframe. The following hints guide you through the steps.</p>
-<p><em>Three lines of code is sufficient. Hint 1 is given for the first line of code, Hint 2 for the second line, and Hint 3a, 3b, 3c for the third line of code.</em></p>
-<ul class="simple">
-<li><p><strong>Hint 1</strong>: You want to create a variable that indicates the number of women per household using the dataframe gendercount. The only thing you have to do is keep the number of the women in the dataframe gendercount, i.e., use SEX == 2. Store this dataframe as a new dataframe named womencount, hence your first line of code starts with womencount = .</p></li>
-<li><p><strong>Hint 2</strong>: Change the variable name of 0 to NR_OF_WOMEN in the dataframe womencount. 0 is not a string (so it’s not ‘0’), but a number.</p></li>
-<li><p><strong>Hint 3a</strong>: In the third line of code you merge the dataframe womencount women to the dataframe data.</p></li>
-<li><p><strong>Hint 3b</strong>: Think about the column SEX in the womencount dataframe. It has no meaning anymore, since you only kept the women in the dataframe (all values in the column SEX are 2). Hence, it is not meaningful to merge the column SEX of the womencount dataframe to the data dataframe. Also, there is already a column SEX in the data dataframe, so when we merge another dataframe with the same column name, the column names are changed to SEX_x and SEX_y when we merge them. Hence, to avoid confusion you only want to include the columns NR_OF_WOMEN and SERIAL in the womencount dataframe when we merge it to data dataframe (Hint: you could for example use double square brackets).</p></li>
-<li><p><strong>Hint 3c</strong>: See the line of code where we merged serialcount to data.</p></li>
-</ul>
+<p>Now we will count the number of young children in each household. In the following line of code, we create a new dataframe, <b>childcount</b>, which gives us the number of individuals within SERIAL and YOUNGERTHAN. Specifically, this dataframe will show the count of household members younger than the given age (YOUNGERTHAN == 1) and those older than the given age (YOUNGERTHAN == 0).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">womencount</span> <span class="o">=</span>
-<span class="n">womencount</span> <span class="o">=</span>
-<span class="n">data</span>  <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">childcount</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="s1">&#39;YOUNGERTHAN&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">childcount</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>When you succesfully merged the number of women the dataframe, what do you do with the nan values? Fill in the dots. The fillna function automatically replaces nan values with the number between the brackets.</p>
+<p>The following line of code gives the same result.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;NR_OF_WOMEN&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;NR_OF_WOMEN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">childcount</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span><span class="s1">&#39;YOUNGERTHAN&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="s1">&#39;YOUNGERTHAN&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">childcount</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="alert alert-block alert-success">
-    <b>Question 7:</b> Please provide the three lines of code you have written to succesfully create and merge the new variable <b>NR_OF_WOMEN</b>. Also describe how you solved/filled the NaN values.
-</div></section>
-<section id="nonlinear-relationships">
-<h2>5. Nonlinear relationships<a class="headerlink" href="#nonlinear-relationships" title="Permalink to this heading">#</a></h2>
-<hr><p>We are going to create two new variables based on age. First we want to create a variable with the age of the oldest person.</p>
+    <b>Question 4:</b> Please describe what the following line of Python code does:
+<br> childcount = data[['SERIAL','YOUNGERTHAN']].groupby(['SERIAL', 'YOUNGERTHAN']).size().reset_index()
+</div><p>We want to count the number of household members that are younger than the given age, so we run:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">oldest</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">childcount1</span> <span class="o">=</span> <span class="n">childcount</span><span class="p">[</span><span class="n">childcount</span><span class="p">[</span><span class="s1">&#39;YOUNGERTHAN&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>We want to change the name of the column <strong>AGE</strong> to <strong>OLDEST</strong>, because we already have a column <strong>AGE</strong> in the dataframe data. Then we merge it to the dataframe.</p>
+<p>This creates a new dataframe, <b> childcount1 </b>, which only contains the number of household members younger than the given age for each household ID (SERIAL). We drop the column YOUNGERTHAN and we rename the remaining two columns:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">oldest</span> <span class="o">=</span> <span class="n">oldest</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;AGE&#39;</span><span class="p">:</span><span class="s1">&#39;OLDEST&#39;</span><span class="p">})</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">oldest</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">childcount1</span> <span class="o">=</span> <span class="n">childcount1</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;YOUNGERTHAN&#39;</span><span class="p">])</span>
+<span class="n">childcount1</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="s1">&#39;NR_OF_YOUNGCHILDREN&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Now create a variable yourself with the age of the youngest person, named <strong>YOUNGEST</strong>, and add it to the dataframe data. Follow the same approach as how you added the <strong>OLDEST</strong> column.</p>
+<p>Then we merge childcount1 to data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">youngest</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="s1">&#39;AGE&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
-<span class="n">youngest</span> <span class="o">=</span> 
-<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">childcount1</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>When we inspect the values in the column YOUNGERTHAN of data, we notice something:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;NR_OF_YOUNGCHILDREN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="alert alert-block alert-success">
-    <b>Question 8:</b> Please provide the three lines of code you have written to succesfully create and merge the new variable <b>YOUNGEST</b>.
-</div><p>Let’s check if the correlation of the oldest and youngest person with energy costs is higher than the correlation of age with energy costs.</p>
-<div class="cell docutils container">
+    <b>Question 5:</b> Why are there so many NaN values? Use the following code block to fill in the NaN and report the line of code. 
+</div><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s2">&quot;COSTENERGY&quot;</span><span class="p">,</span><span class="s2">&quot;YOUNGEST&quot;</span><span class="p">,</span> <span class="s2">&quot;OLDEST&quot;</span><span class="p">,</span> <span class="s2">&quot;AGE&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span>
-                           <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span> <span class="o">=</span> <span class="s2">&quot;.2f&quot;</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;RdBu&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fill in the nans in column NR_OF_YOUNGCHILDREN in data</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>A possible explanation for the low correlation could be that the relationship between age and energy costs is not linear. Let’s see the average energy costs over the age of the oldest person in the household in a barplot.</p>
+<p>Now we will visualize the relationship between the number of young children and energy costs.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;OLDEST&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;COSTENERGY&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">,</span> <span class="n">ci</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">],</span> <span class="c1">#position of xticks.</span>
-           <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">])</span> <span class="c1">#values of xticks.</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">15</span><span class="p">,</span><span class="mi">95</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Oldest vs Cost of Energy&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;NR_OF_YOUNGCHILDREN&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;COSTENERGY&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Nr of young children in household vs Cost of Energy&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>In the graph we see that especially households where the oldest member is young, energy costs are relatively low. Then energy costs increase until the age of 55 (maybe these are families with children) and then stabilizes.</p>
+<p>In the next steps, you are going to create another variable based on age. We hypothesize that older people use relative more energy than younger people, because older people are more likely to be retired and spend more time at home than younger people with a job. (The dataset dates from pre covid, so working from home was not a thing yet). We don’t have information on retirement, so will proxy retirement by age.</p>
+<p>We follow the same steps as we used to determine the number of young children. See how we can combine two lines of code in one:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;OLDERTHAN&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;AGE&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="c1">#fill in an age between 62 and 68. </span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Create a dataframe, <b> eldercount </b>, that gives the number of people older than the given age and younger than the given age per household ID (SERIAL).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eldercount</span> <span class="o">=</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Similar as before, we are only interested in the number of household members older than the given age.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eldercount1</span> <span class="o">=</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we drop the columns OLDERTHAN and we rename the columns.</p>
+<div class="alert alert-block alert-success">
+    <b>Question 6:</b> If you run the next two lines of code, you will get an error. Explain what goes wrong and add the missing part. 
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eldercount1</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;OLDERTHAN&#39;</span><span class="p">])</span>
+<span class="n">eldercount1</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="s1">&#39;NR_OF_ELDERLY&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then, we merge eldercount1 to data. Note that we create a new dataframe, <b> datatest </b>, and that we do a <b> right merge </b>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datatest</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">eldercount1</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;right&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success">
+    <b>Question 7:</b> Can you explain what happens when we do a right merge? Hint: Inspect the number of rows in data, datatest and eldercount1. Additionally, describe the other options available for the how parameter in the merge function and explain how they affect the resulting dataframe (datatest). 
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># code block to test different merges. datatest = data.merge(eldercount1, on = &#39;SERIAL&#39;, how = &#39;&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Run the following lines to merge eldercount1 to data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">eldercount1</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;SERIAL&#39;</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;NR_OF_ELDERLY&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;NR_OF_ELDERLY&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;NR_OF_ELDERLY&#39;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;COSTENERGY&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Nr of elderly in household vs Cost of Energy&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="alert alert-block alert-success">
+    <b>Question 8:</b> The figure shows that there is no linear relationship between the number of elderly in a household and the household's energy costs. Therefore, we will also create a binary variable that just indicates the presence of elderly persons in the household. In the next code block, create this new variable <b> ELDERLY_PRESENT </b> and report your code. </div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;ELDERLY_PRESENT&#39;</span><span class="p">]</span> <span class="o">=</span> 
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="regression-analysis">
 <h2>6. Regression analysis<a class="headerlink" href="#regression-analysis" title="Permalink to this heading">#</a></h2>
 <hr><p>In the last part we are going to estimate a first model to predict energy costs of households. We will use a simple Ordinary Least Squares regression model. To  make life a bit easier, download the dataset for the OLS regression in the following line of code (it includes the new variables you created and it deals with missing values). We use the package statsmodels to estimate the OLS regression. We could also use the sklearn library, but the statsmodels package has the advantage that it includes standard errors of the coefficient estimates. This means that we can say something about the significance of the explanantory variables and the causality between the explanatory variables and the dependent variable, something which is not possible with a machine learning model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataOLS</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;https://github.com/ElcoK/BigData_AED/raw/main/week2/usadataforOLS.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;unicode_escape&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#dataOLS = pd.read_csv(r&quot;https://github.com/ElcoK/BigData_AED/raw/main/week2/usadataforOLS_updatejan25.csv&quot;, sep = &#39;,&#39;, encoding = &#39;unicode_escape&#39;)</span>
+<span class="n">dataOLS</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;usadataforOLS_updatejan25.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;unicode_escape&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -817,7 +883,7 @@ As you can see, there are several options in the seaborn (imported as sns) heatm
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">dataOLS</span><span class="p">[[</span><span class="s2">&quot;ROOMS&quot;</span><span class="p">,</span> <span class="s2">&quot;HHINCOME&quot;</span><span class="p">,</span> <span class="s2">&quot;BUILTYR2&quot;</span><span class="p">,</span> <span class="s2">&quot;VEHICLES&quot;</span><span class="p">,</span> <span class="s2">&quot;FARM&quot;</span><span class="p">,</span> <span class="s2">&quot;OWNERSHP&quot;</span><span class="p">,</span> <span class="s2">&quot;YOUNGEST&quot;</span><span class="p">,</span> <span class="s2">&quot;OLDEST&quot;</span><span class="p">,</span> <span class="s2">&quot;HHSIZE&quot;</span><span class="p">,</span> <span class="s2">&quot;NR_OF_WOMEN&quot;</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">dataOLS</span><span class="p">[[</span><span class="s2">&quot;ROOMS&quot;</span><span class="p">,</span> <span class="s2">&quot;HHINCOME&quot;</span><span class="p">,</span> <span class="s2">&quot;BUILTYR2&quot;</span><span class="p">,</span> <span class="s2">&quot;VEHICLES&quot;</span><span class="p">,</span> <span class="s2">&quot;FARM&quot;</span><span class="p">,</span> <span class="s2">&quot;OWNERSHP&quot;</span><span class="p">,</span> <span class="s2">&quot;HHSIZE&quot;</span><span class="p">,</span> <span class="s2">&quot;NR_OF_ELDERLY&quot;</span><span class="p">,</span> <span class="s2">&quot;NR_OF_YOUNGCHILDREN&quot;</span><span class="p">]]</span>
 <span class="n">X</span><span class="p">[</span><span class="s1">&#39;Constant&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 </pre></div>
 </div>
@@ -914,7 +980,6 @@ As you can see, there are several options in the seaborn (imported as sns) heatm
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-the-data-and-having-a-first-look">2. Reading the data and having a first look</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis">3. Exploratory data analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-new-variables">4. Creating new variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nonlinear-relationships">5. Nonlinear relationships</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-analysis">6. Regression analysis</a></li>
 </ul>
   </nav></div>
