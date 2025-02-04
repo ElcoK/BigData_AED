@@ -638,8 +638,7 @@ document.write(`
 <p>Remember to split the data again in a training and testing set. Now we use the datanan dataset which has no missing values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datanan</span> <span class="o">=</span> <span class="n">datanan</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">training_data</span><span class="p">,</span> <span class="n">testing_data</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">datanan</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">training_data</span><span class="p">,</span> <span class="n">testing_data</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">datanan</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -728,7 +727,7 @@ document.write(`
 <b>Question 6:</b> What are the values you receive for the <i>mean squared error</i> and the <i>r-squared</i>? Also explain the two terms. </div></section>
 <section id="parameter-tuning">
 <h2>7. Parameter tuning<a class="headerlink" href="#parameter-tuning" title="Permalink to this heading">#</a></h2>
-<hr><p>The R2 score is pretty low, so we want to try other hyperparameters. We will change the depth and the number of trees in the forest. In the code below, we run a for loop that tries 3 different n_estimators and 3 different depths, so we estimate 9 different random forest models. We save the mse and r2 of each model in a list, i.e. list_mse and list_r2. It’ll take a minute or two to run.</p>
+<hr><p>The R2 score is pretty low, so we want to try other hyperparameters. We will change the depth and the number of trees in the forest. In the code below, we run a for loop that tries 2 different n_estimators and 3 different depths, so we estimate 6 different random forest models. We save the mse and r2 of each model in a list, i.e. list_mse and list_r2. It’ll take a minute or two to run.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_mse</span> <span class="o">=</span> <span class="p">[]</span>
