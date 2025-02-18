@@ -472,7 +472,7 @@ document.write(`
 <h2>Important before we start<a class="headerlink" href="#important-before-we-start" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
 <p>Make sure that you save this file before you continue, else you will lose everything. To do so, go to <strong>Bestand/File</strong> and click on <strong>Een kopie opslaan in Drive/Save a Copy on Drive</strong>!</p>
-<p>Now, rename the file into Week5_Tutorial1.ipynb. You can do so by clicking on the name in the top of this screen.</p>
+<p>Now, rename the file into Week4_Tutorial1.ipynb. You can do so by clicking on the name in the top of this screen.</p>
 </section>
 <section id="learning-objectives">
 <h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this heading">#</a></h2>
@@ -503,12 +503,14 @@ document.write(`
 <p><a class="reference external" href="https://matplotlib.org/"><strong>Matplotlib</strong></a> is a comprehensive Python package for creating static, animated, and interactive visualizations in Python. Matplotlib makes easy things easy and hard things possible.</p>
 <p><a class="reference external" href="https://corteva.github.io/geocube"><strong>Geocube</strong></a> is a Python package to convert geopandas vector data into rasterized data.</p>
 <p><a class="reference external" href="https://docs.xarray.dev/"><strong>xarray</strong></a> is a Python package that allows for easy and efficient use of multi-dimensional arrays.</p>
+<p><a class="reference external" href="https://pypi.org/project/folium/"><strong>folium</strong></a> is a Python package to visualise data on an interactive map</p>
 <p><em>We will first need to install these packages in the cell below. Uncomment them to make sure we can pip install them</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>osmnx
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>geocube
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>contextily
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>folium
 </pre></div>
 </div>
 </div>
@@ -517,7 +519,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> 
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">osmnx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ox</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -530,7 +532,8 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.patches</span><span class="w"> </span><span class="kn">import</span> <span class="n">Patch</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">geocube.api.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_geocube</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">urllib</span><span class="w"> </span><span class="kn">import</span> <span class="n">request</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 
 <span class="o">%</span><span class="k">matplotlib</span> inline
 </pre></div>
@@ -567,13 +570,11 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="alert alert-block alert-success">
-<b>Question 1:</b> To make sure we understand which area you focus on, please submit the figure that outlines your area.
-</div><p>Now we are satisfied with the selected area, we are going to extract the land-use information from OpenStreetMap. To find the right information from OpenStreetMap, we use <strong>tags</strong>.</p>
+<p>Now we are satisfied with the selected area, we are going to extract the land-use information from OpenStreetMap. To find the right information from OpenStreetMap, we use <strong>tags</strong>.</p>
 <p>As you will see in the cell below, we use the tags <em>“landuse”</em> and <em>“natural”</em>. We need to use the <em>“natural”</em> tag to ensure we also obtain water bodies and other natural elements.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tags</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;landuse&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;natural&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>   
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tags</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;landuse&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;natural&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
 <span class="n">landuse</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">features_from_place</span><span class="p">(</span><span class="n">place_name</span><span class="p">,</span> <span class="n">tags</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -582,16 +583,26 @@ document.write(`
 <p>In case the above does not work, you can continue the assignment by using the code below (make sure you remove the hashtags to run it). If you decide to use the data as specified below, also change the map at the start to ‘Kampen’.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># remote_url = &#39;https://github.com/ElcoK/BigData_AED/raw/main/week5/kampen_landuse.gpkg&#39;</span>
-<span class="c1"># file = &#39;kampen_landuse.gpkg&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># url = &quot;https://github.com/VU-IVM/BigData_AED/raw/main/week4/kampen_landuse.gpkg&quot;  # RAW URL</span>
+<span class="c1"># file = &quot;kampen_landuse.gpkg&quot;</span>
 
-<span class="c1"># request.urlretrieve(remote_url, file)</span>
-<span class="c1">#landuse = gpd.GeoDataFrame.from_file(&#39;kampen_landuse.gpkg&#39;)</span>
+<span class="c1"># response = requests.get(url)</span>
+<span class="c1"># with open(file, &quot;wb&quot;) as f:</span>
+<span class="c1">#     f.write(response.content)</span>
+
+<span class="c1"># landuse = gpd.read_file(file)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>To ensure we really only get the area that we want, we use geopandas’s <code class="docutils literal notranslate"><span class="pre">clip</span></code> function to only keep the area we want. This function does exactly the same as the <code class="docutils literal notranslate"><span class="pre">clip</span></code> function in QGIS.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">landuse</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">landuse</span><span class="p">,</span> <span class="n">area</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>When we want to visualize or analyse the data, we want all information in a single column. However, at the moment, all information that was tagged as <em>“natural”</em>, has no information stored in the <em>“landuse”</em> tags. It is, however, very convenient if we can just use a single column for further exploration of the data.</p>
 <p>To overcome this issue, we need to add the missing information to the landuse column, as done below. Let’s first have a look which categories we have in the <strong>natural</strong> column.</p>
 <div class="cell docutils container">
@@ -614,7 +625,7 @@ document.write(`
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 2:</b> Please provide in the answer box in Canvas the code that you used to make sure that all land uses are now registered within the landuse column.
+<b>Question 1:</b> Please provide in the answer box in Canvas the code that you used to make sure that all land uses are now registered within the landuse column.
 </div><p>Our next step is to prepare the visualisation of a map. What better way to explore land-use information than plotting it on a map?</p>
 <p>As you will see below, we can create a dictionary with color codes that will color each land-use class based on the color code provided in this dictionary.</p>
 <div class="cell docutils container">
@@ -622,7 +633,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">color_dict</span> <span class="o">=</span> <span class="p">{</span>  <span class="s2">&quot;grass&quot;</span><span class="p">:</span><span class="s1">&#39;#c3eead&#39;</span><span class="p">,</span>               <span class="s2">&quot;railway&quot;</span><span class="p">:</span> <span class="s2">&quot;#000000&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;forest&quot;</span><span class="p">:</span><span class="s1">&#39;#1c7426&#39;</span><span class="p">,</span>              <span class="s2">&quot;orchard&quot;</span><span class="p">:</span><span class="s1">&#39;#fe6729&#39;</span><span class="p">,</span>
                 <span class="s2">&quot;residential&quot;</span><span class="p">:</span><span class="s1">&#39;#f13013&#39;</span><span class="p">,</span>         <span class="s2">&quot;industrial&quot;</span><span class="p">:</span><span class="s1">&#39;#0f045c&#39;</span><span class="p">,</span>
-                <span class="s2">&quot;retail&quot;</span><span class="p">:</span><span class="s1">&#39;#b71456&#39;</span><span class="p">,</span>              <span class="s2">&quot;education&quot;</span><span class="p">:</span><span class="s1">&#39;#d61181&#39;</span><span class="p">,</span>              
+                <span class="s2">&quot;retail&quot;</span><span class="p">:</span><span class="s1">&#39;#b71456&#39;</span><span class="p">,</span>              <span class="s2">&quot;education&quot;</span><span class="p">:</span><span class="s1">&#39;#d61181&#39;</span><span class="p">,</span>
                 <span class="s2">&quot;commercial&quot;</span><span class="p">:</span><span class="s1">&#39;#981cb8&#39;</span><span class="p">,</span>          <span class="s2">&quot;farmland&quot;</span><span class="p">:</span><span class="s1">&#39;#fcfcb9&#39;</span><span class="p">,</span>
                 <span class="s2">&quot;cemetery&quot;</span><span class="p">:</span><span class="s1">&#39;#c39797&#39;</span><span class="p">,</span>            <span class="s2">&quot;construction&quot;</span><span class="p">:</span><span class="s1">&#39;#c0c0c0&#39;</span><span class="p">,</span>
                 <span class="s2">&quot;meadow&quot;</span><span class="p">:</span><span class="s1">&#39;#c3eead&#39;</span><span class="p">,</span>              <span class="s2">&quot;farmyard&quot;</span><span class="p">:</span><span class="s1">&#39;#fcfcb9&#39;</span><span class="p">,</span>
@@ -633,7 +644,7 @@ document.write(`
                 <span class="s2">&quot;landfill&quot;</span> <span class="p">:</span> <span class="s2">&quot;#B08C4D&quot;</span><span class="p">,</span>          <span class="s2">&quot;recreation_ground&quot;</span> <span class="p">:</span> <span class="s2">&quot;#c3eead&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;brownfield&quot;</span> <span class="p">:</span> <span class="s2">&quot;#B08C4D&quot;</span><span class="p">,</span>        <span class="s2">&quot;village_green&quot;</span> <span class="p">:</span> <span class="s2">&quot;#f13013&quot;</span> <span class="p">,</span>
                 <span class="s2">&quot;military&quot;</span><span class="p">:</span> <span class="s2">&quot;#52514E&quot;</span><span class="p">,</span>            <span class="s2">&quot;garden&quot;</span> <span class="p">:</span> <span class="s1">&#39;#c3eead&#39;</span>
-             <span class="p">}</span> 
+             <span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -657,7 +668,7 @@ document.write(`
 </div>
 <p>In case anything is missing, add them to the color_dict dictionairy and re-run that cell.</p>
 <div class="alert alert-block alert-success">
-<b>Question 3:</b> Show us in Canvas (i) which land-use categories you had to add, and (ii) how your final color dictionary looks like.
+<b>Question 2:</b> Show us in Canvas (i) which land-use categories you had to add, and (ii) how your final color dictionary looks like.
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -685,7 +696,7 @@ document.write(`
 <span class="c1"># add color scheme</span>
 <span class="n">color_scheme_map</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">color_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 <span class="n">cmap</span> <span class="o">=</span> <span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;landuse&#39;</span><span class="p">,</span>
-                                     <span class="n">colors</span><span class="o">=</span><span class="n">color_scheme_map</span><span class="p">)</span>  
+                                     <span class="n">colors</span><span class="o">=</span><span class="n">color_scheme_map</span><span class="p">)</span>
 
 <span class="c1"># and plot the land-use map.</span>
 <span class="n">landuse</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">landuse</span><span class="p">[</span><span class="s1">&#39;col_landuse&#39;</span><span class="p">],</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -698,9 +709,9 @@ document.write(`
 <span class="c1"># add a legend:</span>
 <span class="n">legend_elements</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">iter_</span><span class="p">,</span><span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">color_dict</span><span class="p">):</span>
-    <span class="n">legend_elements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Patch</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="n">color_scheme_map</span><span class="p">[</span><span class="n">iter_</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="n">item</span><span class="p">))</span>        
+    <span class="n">legend_elements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Patch</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="n">color_scheme_map</span><span class="p">[</span><span class="n">iter_</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="n">item</span><span class="p">))</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">legend_elements</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;#fefdfd&#39;</span><span class="p">,</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">},</span><span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="mf">1.02</span><span class="p">,</span><span class="mf">0.2</span><span class="p">))</span> 
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">legend_elements</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;#fefdfd&#39;</span><span class="p">,</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">},</span><span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="mf">1.02</span><span class="p">,</span><span class="mf">0.2</span><span class="p">))</span>
 
 <span class="c1"># add a title</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">place_name</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
@@ -709,7 +720,7 @@ document.write(`
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 4:</b> Please upload a figure of your land-use map, using OpenStreetMap. 
+<b>Question 3:</b> Please upload a figure of your land-use map, using OpenStreetMap. Also, state which landuse class is the most dominant?
 </div></section>
 <section id="rasterize-land-use-information">
 <h2>3. Rasterize land-use information<a class="headerlink" href="#rasterize-land-use-information" title="Permalink to this heading">#</a></h2>
@@ -730,14 +741,14 @@ document.write(`
 <ul class="simple">
 <li><p>Through the <code class="docutils literal notranslate"><span class="pre">vector_data</span></code> argument we have to state which dataframe we want to rasterize.</p></li>
 <li><p>Through the <code class="docutils literal notranslate"><span class="pre">output_crs</span></code> argument we have to state the coordinate reference system (CRS). We use the OpenStreetMap default EPSG:4326.</p></li>
-<li><p>Through the <code class="docutils literal notranslate"><span class="pre">resolution</span></code> argument we have to state the resolution. In our case, we will have to set this in degrees. 0.01 degrees is equivalent to roughly 10km around the equator.</p></li>
+<li><p>Through the <code class="docutils literal notranslate"><span class="pre">resolution</span></code> argument we have to state the resolution. In our case, we will have to set this in degrees. 0.01 degrees is equivalent to roughly 1 km around the equator.</p></li>
 <li><p>Through the <code class="docutils literal notranslate"><span class="pre">categorical_enums</span></code> argument we specify the different land-use categories.</p></li>
 </ul>
 <p>Play around with the different resolutions to find the level of detail. The higher the resolution (i.e., the more zeros behind the comma), the longer it will take to rasterize.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">landuse_grid</span> <span class="o">=</span> <span class="n">make_geocube</span><span class="p">(</span>
-    <span class="n">vector_data</span><span class="o">=</span><span class="n">XXXX</span><span class="p">,</span>
+    <span class="n">vector_data</span><span class="o">=</span><span class="n">xxxx</span><span class="p">,</span>
     <span class="n">output_crs</span><span class="o">=</span><span class="s2">&quot;epsg:4326&quot;</span><span class="p">,</span>
     <span class="n">resolution</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">XXXX</span><span class="p">,</span> <span class="n">XXXX</span><span class="p">),</span>
     <span class="n">categorical_enums</span><span class="o">=</span><span class="n">categorical_enums</span>
@@ -823,7 +834,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unique_classes</span> <span class="o">=</span> <span class="n">landuse</span><span class="o">.</span><span class="n">landuse</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-<span class="n">colormap_raster</span> <span class="o">=</span> <span class="p">[</span><span class="n">color_dict</span><span class="p">[</span><span class="n">lu_class</span><span class="p">]</span> <span class="k">for</span> <span class="n">lu_class</span> <span class="ow">in</span> <span class="n">unique_classes</span><span class="p">]</span> 
+<span class="n">colormap_raster</span> <span class="o">=</span> <span class="p">[</span><span class="n">color_dict</span><span class="p">[</span><span class="n">lu_class</span><span class="p">]</span> <span class="k">for</span> <span class="n">lu_class</span> <span class="ow">in</span> <span class="n">unique_classes</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -847,12 +858,12 @@ document.write(`
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 5:</b> In the rasterization process, we use the `.make_geocube()` function. Please elaborate on the following: i)why is it important to specify the right coordinate system? What could happen if you choose the wrong coordinate system? ii) which resolution did you choose and why? iii)Why did the first result did not give us the right output with the correct colors? How did you solve this? 
+<b>Question 4:</b> In the rasterization process, we use the `.make_geocube()` function. Please elaborate on the following: i)why is it important to specify the right coordinate system? What could happen if you choose the wrong coordinate system? ii) which resolution did you choose and why? iii)Why did the first result did not give us the right output with the correct colors? How did you solve this?
 </div><p>But to be honest, this legend is still not entirely what we are looking for. So let’s do some Python magic to get a legend like we desire when plotting a land-use map</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unique_classes</span> <span class="o">=</span> <span class="n">landuse</span><span class="o">.</span><span class="n">landuse</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-<span class="n">colormap_raster</span> <span class="o">=</span> <span class="p">[</span><span class="n">color_dict</span><span class="p">[</span><span class="n">lu_class</span><span class="p">]</span> <span class="k">for</span> <span class="n">lu_class</span> <span class="ow">in</span> <span class="n">unique_classes</span><span class="p">]</span> 
+<span class="n">colormap_raster</span> <span class="o">=</span> <span class="p">[</span><span class="n">color_dict</span><span class="p">[</span><span class="n">lu_class</span><span class="p">]</span> <span class="k">for</span> <span class="n">lu_class</span> <span class="ow">in</span> <span class="n">unique_classes</span><span class="p">]</span>
 <span class="n">color_dict_raster</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">landuse</span><span class="o">.</span><span class="n">landuse</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),[</span><span class="s1">&#39;#ffffff&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">colormap_raster</span><span class="p">))</span>
 
 <span class="c1"># We create a colormar from our list of colors</span>
@@ -914,11 +925,14 @@ document.write(`
 <p>In case the above does not work, you can continue the assignment by using the code below (make sure you remove the hashtags to run it). If you decide to use the data as specified below, also change the map at the start to ‘Kampen’.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># remote_url = &#39;https://github.com/ElcoK/BigData_AED/raw/main/week5/kampen_buildings.gpkg&#39;</span>
-<span class="c1"># file = &#39;kampen_buildings.gpkg&#39;</span>
-<span class="c1">#  </span>
-<span class="c1"># #request.urlretrieve(remote_url, file)</span>
-<span class="c1"># buildings = gpd.GeoDataFrame.from_file(&#39;kampen_buildings.gpkg&#39;)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># url = &quot;https://github.com/VU-IVM/BigData_AED/raw/main/week4/kampen_buildings.gpkg&quot;  # RAW URL</span>
+<span class="c1"># file = &quot;kampen_buildings.gpkg&quot;</span>
+
+<span class="c1"># response = requests.get(url)</span>
+<span class="c1"># with open(file, &quot;wb&quot;) as f:</span>
+<span class="c1">#     f.write(response.content)</span>
+
+<span class="c1"># buildings = gpd.read_file(file)</span>
 </pre></div>
 </div>
 </div>
@@ -941,7 +955,7 @@ document.write(`
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 6:</b>  Let's have a look at the extracted building information. Please describe in your own words the information it contains. Is there specific information that suprises you to see, and do you think anything is missing that you expected? 
+<b>Question 5:</b>  Let's have a look at the extracted building information. Please describe in your own words the information it contains. Is there specific information that suprises you to see, and do you think anything is missing that you expected?
 </div></section>
 <section id="analyze-and-visualize-building-stock">
 <h2>5. Analyze and visualize building stock<a class="headerlink" href="#analyze-and-visualize-building-stock" title="Permalink to this heading">#</a></h2>
@@ -968,7 +982,7 @@ document.write(`
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 7:</b>  Please upload a figure that shows the development of building stock over the years in your region of interest. Make sure it contains all the necessary elements (labels on the axis, title, etc.)
+<b>Question 6:</b>  Please upload a figure that shows the development of building stock over the years in your region of interest. Make sure it contains all the necessary elements (labels on the axis, title, etc.)
 </div><p>What we also noticed is that quite some buildings are identified as ‘yes’. This is not very useful as it does not really say much about the use of the building.</p>
 <p>Let’s see for how many buildings this is the case:</p>
 <div class="cell docutils container">
@@ -982,12 +996,13 @@ document.write(`
 <p>Now let’s visualize the buildings again. We need to create a similar color dictionary as we did for the land-use categories. Now its up to you to make it!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">color_dict</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;yes&#39;</span> <span class="p">:</span> <span class="s2">&quot;#f1134b&quot;</span><span class="p">,</span> 
-              <span class="s1">&#39;house&#39;</span><span class="p">:</span><span class="s1">&#39;#f13013&#39;</span><span class="p">,</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">color_dict</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;yes&#39;</span> <span class="p">:</span> <span class="s2">&quot;#f1134b&quot;</span><span class="p">,</span>
+              <span class="s1">&#39;house&#39;</span><span class="p">:</span><span class="s1">&#39;#f13013&#39;</span><span class="p">,</span>
               <span class="s1">&#39;industrial&#39;</span><span class="p">:</span><span class="s1">&#39;#0f045c&#39;</span><span class="p">,</span>
-              <span class="s1">&#39;farm&#39;</span><span class="p">:</span><span class="s1">&#39;#fcfcb9&#39;</span><span class="p">,</span> 
+              <span class="s1">&#39;farm&#39;</span><span class="p">:</span><span class="s1">&#39;#fcfcb9&#39;</span><span class="p">,</span>
               <span class="s1">&#39;bungalow&#39;</span><span class="p">:</span><span class="s1">&#39;#f13013&#39;</span><span class="p">,</span>
-              <span class="s1">&#39;service&#39;</span><span class="p">:</span><span class="s1">&#39;#CB8DDB&#39;</span> <span class="p">}</span>
+              <span class="s1">&#39;service&#39;</span><span class="p">:</span><span class="s1">&#39;#CB8DDB&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;apartments&#39;</span><span class="p">:</span> <span class="s1">&#39;#020122&#39;</span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -999,7 +1014,7 @@ document.write(`
              <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">color_dict</span> <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span>  <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">color_dict</span><span class="p">)</span><span class="o">-</span><span class="nb">set</span><span class="p">(</span><span class="n">buildings</span><span class="o">.</span><span class="n">building</span><span class="o">.</span><span class="n">unique</span><span class="p">()))}</span>
 
 <span class="n">map_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">color_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">(),[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">color_dict</span><span class="p">))]))</span>
-<span class="n">buildings</span><span class="p">[</span><span class="s1">&#39;col_landuse&#39;</span><span class="p">]</span> <span class="o">=</span><span class="n">buildings</span><span class="o">.</span><span class="n">building</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">color_dict</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+<span class="n">buildings</span><span class="p">[</span><span class="s1">&#39;col_landuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">buildings</span><span class="o">.</span><span class="n">building</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">color_dict</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1012,7 +1027,7 @@ document.write(`
 <span class="c1"># add color scheme</span>
 <span class="n">color_scheme_map</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">color_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 <span class="n">cmap</span> <span class="o">=</span> <span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;landuse&#39;</span><span class="p">,</span>
-                                     <span class="n">colors</span><span class="o">=</span><span class="n">color_scheme_map</span><span class="p">)</span>  
+                                     <span class="n">colors</span><span class="o">=</span><span class="n">color_scheme_map</span><span class="p">)</span>
 
 <span class="c1"># and plot the land-use map.</span>
 <span class="n">buildings</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">buildings</span><span class="p">[</span><span class="s1">&#39;col_landuse&#39;</span><span class="p">],</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -1025,9 +1040,9 @@ document.write(`
 <span class="c1"># add a legend:</span>
 <span class="n">legend_elements</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">iter_</span><span class="p">,</span><span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">color_dict</span><span class="p">):</span>
-    <span class="n">legend_elements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Patch</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="n">color_scheme_map</span><span class="p">[</span><span class="n">iter_</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="n">item</span><span class="p">))</span>        
+    <span class="n">legend_elements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Patch</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="n">color_scheme_map</span><span class="p">[</span><span class="n">iter_</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="n">item</span><span class="p">))</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">legend_elements</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;#fefdfd&#39;</span><span class="p">,</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">},</span><span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="mf">1.02</span><span class="p">,</span><span class="mf">0.2</span><span class="p">))</span> 
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">legend_elements</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;#fefdfd&#39;</span><span class="p">,</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">},</span><span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="mf">1.02</span><span class="p">,</span><span class="mf">0.2</span><span class="p">))</span>
 
 <span class="c1"># add a title</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">place_name</span><span class="p">,</span><span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
@@ -1083,10 +1098,42 @@ document.write(`
 </div>
 </div>
 </div>
-<p>It would also be interesting to explore the network a little but more interactively. <strong>OSMnx</strong> has a function called <code class="docutils literal notranslate"><span class="pre">plot_graph_folium()</span></code>, which allow us to use the <a class="reference external" href="https://python-visualization.github.io/folium/quickstart.html#Getting-Started">folium</a> package to plot data interactively on a map.</p>
+<p>It would also be interesting to explore the network a little but more interactively. Package <a class="reference external" href="https://python-visualization.github.io/folium/quickstart.html#Getting-Started">folium</a> to plot data interactively on a map.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m1</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">plot_graph_folium</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">popup_attribute</span><span class="o">=</span><span class="s2">&quot;highway&quot;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#8b0000&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The following function plots the Graph on an interactive map using Folium</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_graph_folium</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">popup_attribute</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+  <span class="c1"># Convert grpah to geodataframe</span>
+  <span class="n">gdf_nodes</span><span class="p">,</span> <span class="n">gdf_edges</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">graph_to_gdfs</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+  <span class="c1"># Centroid of the folium map</span>
+  <span class="n">center_lat</span> <span class="o">=</span> <span class="n">gdf_nodes</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+  <span class="n">center_lon</span> <span class="o">=</span> <span class="n">gdf_nodes</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+  <span class="n">m</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">center_lat</span><span class="p">,</span> <span class="n">center_lon</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+  <span class="c1"># Plotting edges in the map</span>
+  <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">gdf_edges</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+      <span class="k">if</span> <span class="s1">&#39;geometry&#39;</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+          <span class="n">popup_text</span> <span class="o">=</span> <span class="p">(</span>
+              <span class="sa">f</span><span class="s2">&quot;Highway Type: </span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">popup_attribute</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Unknown&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+          <span class="p">)</span>
+          <span class="n">folium</span><span class="o">.</span><span class="n">PolyLine</span><span class="p">(</span>
+              <span class="n">locations</span><span class="o">=</span><span class="p">[(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">)</span> <span class="k">for</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">coords</span><span class="p">],</span>
+              <span class="n">color</span><span class="o">=</span> <span class="n">color</span><span class="p">,</span>
+              <span class="n">weight</span><span class="o">=</span> <span class="n">weight</span><span class="p">,</span>
+              <span class="n">popup</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">Popup</span><span class="p">(</span><span class="n">popup_text</span><span class="p">,</span> <span class="n">max_width</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+          <span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m1</span> <span class="o">=</span> <span class="n">plot_graph_folium</span> <span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">popup_attribute</span><span class="o">=</span><span class="s2">&quot;highway&quot;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#8b0000&quot;</span><span class="p">)</span>
 <span class="n">m1</span>
 </pre></div>
 </div>
@@ -1099,13 +1146,13 @@ document.write(`
 <p>Let’s first select two random start and end points from the graph and compute the shortest route between them through using the <code class="docutils literal notranslate"><span class="pre">shortest_path()</span></code> function of the <code class="docutils literal notranslate"><span class="pre">NetworkX</span></code> package.</p>
 <p>The function  <code class="docutils literal notranslate"><span class="pre">ox.nearest_nodes()</span></code> looks for the nearest point in your network based on a <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">Y</span></code> coordinate. For example, in the code below, the origin node is based on the northwestern corner of your bounding box, whereas the destination node is based on the coordinates of the southeastern corner of your bounding box.</p>
 <p>So this can also be rewritten as:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">origin_node</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">nearest_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="mf">4.65465</span><span class="p">,</span> <span class="mf">56.6778</span><span class="p">)</span> 
-<span class="n">destination_node</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">nearest_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="mf">4.61055</span><span class="p">,</span> <span class="mf">59.5487</span><span class="p">)</span> 
-<span class="n">route</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">shortest_path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">origin_node</span><span class="p">,</span> <span class="n">destination_node</span><span class="p">)</span> 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">origin_node</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">nearest_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="mf">4.65465</span><span class="p">,</span> <span class="mf">56.6778</span><span class="p">)</span>
+<span class="n">destination_node</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">nearest_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="mf">4.61055</span><span class="p">,</span> <span class="mf">59.5487</span><span class="p">)</span>
+<span class="n">route</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">shortest_path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">origin_node</span><span class="p">,</span> <span class="n">destination_node</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 9:</b>  The last element of this tutorial is to play around with routing. Please explain in your own words what the .shortest_path() algorithm does. Include the term 'Dijkstra algorithm' in your answer.
+<b>Question 8:</b>  The last element of this tutorial is to play around with routing. Please explain in your own words what the .shortest_path() algorithm does. Include the term 'Dijkstra algorithm' in your answer.
 </div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">origin_node</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">nearest_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">area</span><span class="p">[</span><span class="s1">&#39;bbox_west&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">area</span><span class="p">[</span><span class="s1">&#39;bbox_north&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -1118,23 +1165,54 @@ document.write(`
 <p>We can plot the route with folium. Like above, you can pass keyword args along to folium PolyLine to style the lines.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m2</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">plot_route_folium</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_route_folium</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span> <span class="n">weight</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+
+    <span class="c1"># Convert grpah to geodataframe</span>
+    <span class="n">gdf_nodes</span><span class="p">,</span> <span class="n">gdf_edges</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">graph_to_gdfs</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+    <span class="c1"># Centre of the folium map</span>
+    <span class="n">center_lat</span> <span class="o">=</span> <span class="n">gdf_nodes</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">center_lon</span> <span class="o">=</span> <span class="n">gdf_nodes</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="n">center_lat</span><span class="p">,</span> <span class="n">center_lon</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+
+    <span class="c1"># Plot all the edges in the road network</span>
+    <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">gdf_edges</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="k">if</span> <span class="s1">&#39;geometry&#39;</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+            <span class="n">folium</span><span class="o">.</span><span class="n">PolyLine</span><span class="p">(</span>
+                <span class="n">locations</span><span class="o">=</span><span class="p">[(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">)</span> <span class="k">for</span> <span class="n">lon</span><span class="p">,</span> <span class="n">lat</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">coords</span><span class="p">],</span>
+                <span class="n">color</span><span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">,</span>
+                <span class="n">weight</span><span class="o">=</span> <span class="n">weight</span><span class="p">,</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+    <span class="n">route_coords</span> <span class="o">=</span> <span class="p">[(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;y&#39;</span><span class="p">],</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s1">&#39;x&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">route</span><span class="p">]</span>
+
+    <span class="c1"># Plot the route as a highlighted  polyline</span>
+    <span class="n">folium</span><span class="o">.</span><span class="n">PolyLine</span><span class="p">(</span>
+        <span class="n">locations</span><span class="o">=</span><span class="n">route_coords</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span> <span class="n">color</span><span class="p">,</span>
+        <span class="n">weight</span><span class="o">=</span> <span class="n">weight</span><span class="p">,</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+    <span class="c1"># Adding markers for start and end</span>
+    <span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span><span class="n">route_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">icon</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">Icon</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">),</span> <span class="n">popup</span><span class="o">=</span><span class="s2">&quot;Start&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span><span class="n">route_coords</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">icon</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">Icon</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">),</span> <span class="n">popup</span><span class="o">=</span><span class="s2">&quot;End&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">m</span>  <span class="c1"># Return the map</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m2</span> <span class="o">=</span> <span class="n">plot_route_folium</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
 <span class="n">m2</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Plot the route with folium on top of the previously created map</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m3</span> <span class="o">=</span> <span class="n">ox</span><span class="o">.</span><span class="n">plot_route_folium</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">route</span><span class="p">,</span> <span class="n">route_map</span><span class="o">=</span><span class="n">m1</span><span class="p">,</span> <span class="n">popup_attribute</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
-<span class="n">m3</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="alert alert-block alert-success">
-<b>Question 10:</b>  Please add one more routes on a map and upload the resulting figure here.
+<b>Question 9:</b>  Please add one more routes on a map and upload the resulting figure here.
 </div></section>
 </section>
 
