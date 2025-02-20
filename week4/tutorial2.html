@@ -447,10 +447,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-before-we-start">Important before we start</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-packages">1.Introducing the packages</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-to-google-drive">Connect to google drive</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-packages">1.Introducing the packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-and-accessing-natural-hazard-data">2. Downloading and accessing natural hazard data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windstorm-data">Windstorm Data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flood-data">Flood Data</a></li>
@@ -558,31 +555,6 @@ document.write(`
 </div>
 </div>
 </div>
-<section id="connect-to-google-drive">
-<h3>Connect to google drive<a class="headerlink" href="#connect-to-google-drive" title="Permalink to this heading">#</a></h3>
-<hr class="docutils" />
-<p>To be able to read the data from Google Drive, we need to <em>mount</em> our Drive to this notebook.</p>
-<p>As you can see in the cell below, make sure that in your <strong>My Drive</strong> folder, you have created a <strong>BigData</strong> folder and within that folder, you have created a <strong>Week4_Data</strong> folder in which you can store the files that are required to run this analysis.</p>
-<p>Please go the URL when its prompted in the box underneath the following cell, and copy the authorization code in that box.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">drive</span>
-<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/gdrive/&#39;</span><span class="p">)</span>
-
-<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;/content/gdrive/My Drive/BigData/&quot;</span><span class="p">)</span>
-
-<span class="n">data_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;/content/gdrive/My Drive/BigData/&#39;</span><span class="p">,</span><span class="s1">&#39;Week4_Data&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mounted at /content/gdrive/
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 </section>
 <section id="downloading-and-accessing-natural-hazard-data">
 <h2>2. Downloading and accessing natural hazard data<a class="headerlink" href="#downloading-and-accessing-natural-hazard-data" title="Permalink to this heading">#</a></h2>
@@ -629,7 +601,7 @@ document.write(`
 <span class="c1"># and now we open and extract the data</span>
 <span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">zipurl</span><span class="p">)</span> <span class="k">as</span> <span class="n">zipresp</span><span class="p">:</span>
     <span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">zipresp</span><span class="o">.</span><span class="n">read</span><span class="p">()))</span> <span class="k">as</span> <span class="n">zfile</span><span class="p">:</span>
-        <span class="n">zfile</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">data_path</span><span class="p">)</span>
+        <span class="n">zfile</span><span class="o">.</span><span class="n">extractall</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -725,7 +697,7 @@ document.write(`
 <p>And similarly, we want to open the flood map. But now we do not have to unzip the file anymore and we can directly open it through using <code class="docutils literal notranslate"><span class="pre">xarray</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flood_map_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span><span class="s1">&#39;floodmap_EFAS_RP100_C.tif&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flood_map_path</span> <span class="o">=</span> <span class="s1">&#39;floodmap_EFAS_RP100_C.tif&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -785,14 +757,13 @@ document.write(`
 </section>
 <section id="download-and-access-copernicus-land-cover-data">
 <h2>4. Download and access Copernicus Land Cover data<a class="headerlink" href="#download-and-access-copernicus-land-cover-data" title="Permalink to this heading">#</a></h2>
-<hr><p>Unfortunately, there is no API option to download the <a class="reference external" href="https://land.copernicus.eu/pan-european/corine-land-cover">Corine Land Cover</a> data. We will have to download the data from the website first.</p>
-<p>To do so, we will first have to register ourselves again on the website. Please find in the video clip below how to register yourself on the website of the <a class="reference external" href="https://land.copernicus.eu/">Copernicus Land Monitoring Service</a>:</p>
-<img alt="https://github.com/ElcoK/BigData_AED/blob/main/_static/images/CLMS_registration.gif?raw=1" class="bg-primary mb-1" src="https://github.com/ElcoK/BigData_AED/blob/main/_static/images/CLMS_registration.gif?raw=1" />
-<p>Now click on the Login button in the top right corner to login on the website. There are many interesting datasets on this website, but we just want to download the Corine Land Cover data, and specifically the latest version: <a class="reference external" href="https://land.copernicus.eu/pan-european/corine-land-cover/clc2018?tab=download">Corine Land Cover 2018</a>. To do so, please select the <strong>Corine Land Cover - 100 meter</strong>. Now click on the large green Download button. Your download should start any minute.</p>
-<p>Slightly annoying, the file you have downloaded is double zipped. Its slightly inconvenient to open this through Python and within Google Drive. So let’s unzip it twice outside of Python (on your local machine) and then direct yourself to the <code class="docutils literal notranslate"><span class="pre">DATA</span></code> directory within the unzipped file. Here you can find a file called <code class="docutils literal notranslate"><span class="pre">U2018_CLC2018_V2020_20u1.tif</span></code>. Drop this file into this week’s data directory, as specified at the start of this tutorial when we mounted our Google Drive.</p>
+<hr><p>There is no easy API option to download the <a class="reference external" href="https://land.copernicus.eu/pan-european/corine-land-cover">Corine Land Cover</a> data. We will have to download the data from the website first.</p>
+<p>To do so, we will first have to register ourselves again on the website. You will have the create a login account for the European Commission. If you click on login at the Copernicus Land page, you will be redirected <a class="reference external" href="https://ecas.ec.europa.eu/cas/eim/external/register.cgi">here</a> if you click on the <strong>register</strong> button.</p>
+<p>Now click on the Login button in the top right corner to login on the website. There are many interesting datasets on this website, but we just want to download the Corine Land Cover data, and specifically the latest version: <a class="reference external" href="https://land.copernicus.eu/en/products/corine-land-cover/clc2018#download">Corine Land Cover 2018</a>. To do so, please select the <strong>u2018_clc2018_v2020_20u1_raster100m</strong>. Now click on the <strong>Add to Cart</strong>  button. Then go to your card and click on <strong>Process download request</strong>. It could be the case that you will be queued.</p>
+<p>Slightly annoying, the file you have downloaded is double zipped. Its slightly inconvenient to open this through Python and within Google Drive. So let’s unzip it twice outside of Python (on your local machine) and then direct yourself to the <code class="docutils literal notranslate"><span class="pre">DATA</span></code> directory within the unzipped file. Here you can find a file called <code class="docutils literal notranslate"><span class="pre">U2018_CLC2018_V2020_20u1.tif</span></code>. Drop this file into this week’s data directory, which you can find on the left-hand side of the Google collaboratory.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CLC_location</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span><span class="s1">&#39;U2018_CLC2018_V2020_20u1.tif&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CLC_location</span> <span class="o">=</span> <span class="s1">&#39;U2018_CLC2018_V2020_20u1.tif&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -1035,7 +1006,7 @@ document.write(`
         <span class="n">hazard</span> <span class="o">=</span> <span class="n">hazard</span><span class="o">.</span><span class="n">rio</span><span class="o">.</span><span class="n">reproject_match</span><span class="p">(</span><span class="n">landuse</span><span class="p">)</span>
 
     <span class="c1"># return the new landuse and hazard map</span>
-    <span class="k">return</span> <span class="n">landuse</span><span class="p">,</span><span class="n">hazard</span>
+    <span class="k">return</span> <span class="n">hazard</span><span class="p">,</span><span class="n">landuse</span>
 </pre></div>
 </div>
 </div>
@@ -1043,7 +1014,7 @@ document.write(`
 <p>Now let’s run the <code class="docutils literal notranslate"><span class="pre">match_rasters</span></code> function and let it do its magic.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CLC_region_wind</span><span class="p">,</span> <span class="n">windstorm</span> <span class="o">=</span> <span class="n">match_rasters</span><span class="p">(</span><span class="n">windstorm_europe</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">windstorm</span><span class="p">,</span><span class="n">CLC_region_wind</span> <span class="o">=</span> <span class="n">match_rasters</span><span class="p">(</span><span class="n">windstorm_europe</span><span class="p">,</span>
                                            <span class="n">CLC_region</span><span class="p">,</span>
                                            <span class="n">haz_crs</span><span class="o">=</span><span class="mi">3035</span><span class="p">,</span>
                                            <span class="n">lu_crs</span><span class="o">=</span><span class="mi">3035</span><span class="p">,</span>
@@ -1431,10 +1402,7 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-before-we-start">Important before we start</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-packages">1.Introducing the packages</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connect-to-google-drive">Connect to google drive</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-packages">1.Introducing the packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#downloading-and-accessing-natural-hazard-data">2. Downloading and accessing natural hazard data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windstorm-data">Windstorm Data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flood-data">Flood Data</a></li>
