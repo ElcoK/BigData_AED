@@ -635,15 +635,9 @@ document.write(`
                 <span class="s2">&quot;residential&quot;</span><span class="p">:</span><span class="s1">&#39;#f13013&#39;</span><span class="p">,</span>         <span class="s2">&quot;industrial&quot;</span><span class="p">:</span><span class="s1">&#39;#0f045c&#39;</span><span class="p">,</span>
                 <span class="s2">&quot;retail&quot;</span><span class="p">:</span><span class="s1">&#39;#b71456&#39;</span><span class="p">,</span>              <span class="s2">&quot;education&quot;</span><span class="p">:</span><span class="s1">&#39;#d61181&#39;</span><span class="p">,</span>
                 <span class="s2">&quot;commercial&quot;</span><span class="p">:</span><span class="s1">&#39;#981cb8&#39;</span><span class="p">,</span>          <span class="s2">&quot;farmland&quot;</span><span class="p">:</span><span class="s1">&#39;#fcfcb9&#39;</span><span class="p">,</span>
-                <span class="s2">&quot;cemetery&quot;</span><span class="p">:</span><span class="s1">&#39;#c39797&#39;</span><span class="p">,</span>            <span class="s2">&quot;construction&quot;</span><span class="p">:</span><span class="s1">&#39;#c0c0c0&#39;</span><span class="p">,</span>
                 <span class="s2">&quot;meadow&quot;</span><span class="p">:</span><span class="s1">&#39;#c3eead&#39;</span><span class="p">,</span>              <span class="s2">&quot;farmyard&quot;</span><span class="p">:</span><span class="s1">&#39;#fcfcb9&#39;</span><span class="p">,</span>
-                <span class="s2">&quot;plant_nursery&quot;</span><span class="p">:</span><span class="s1">&#39;#eaffe2&#39;</span><span class="p">,</span>       <span class="s2">&quot;scrub&quot;</span><span class="p">:</span><span class="s1">&#39;#98574d&#39;</span><span class="p">,</span>
-                <span class="s2">&quot;allotments&quot;</span><span class="p">:</span><span class="s1">&#39;#fbffe2&#39;</span><span class="p">,</span>          <span class="s2">&quot;reservoir&quot;</span><span class="p">:</span><span class="s1">&#39;#8af4f2&#39;</span><span class="p">,</span>
                 <span class="s2">&quot;static_caravan&quot;</span><span class="p">:</span><span class="s1">&#39;#ff3a55&#39;</span><span class="p">,</span>      <span class="s2">&quot;wetlands&quot;</span><span class="p">:</span> <span class="s2">&quot;#c9f5e5&quot;</span><span class="p">,</span>
                 <span class="s2">&quot;water&quot;</span><span class="p">:</span> <span class="s2">&quot;#c9e5f5&quot;</span><span class="p">,</span>              <span class="s2">&quot;beach&quot;</span><span class="p">:</span> <span class="s2">&quot;#ffeead&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;landfill&quot;</span> <span class="p">:</span> <span class="s2">&quot;#B08C4D&quot;</span><span class="p">,</span>          <span class="s2">&quot;recreation_ground&quot;</span> <span class="p">:</span> <span class="s2">&quot;#c3eead&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;brownfield&quot;</span> <span class="p">:</span> <span class="s2">&quot;#B08C4D&quot;</span><span class="p">,</span>        <span class="s2">&quot;village_green&quot;</span> <span class="p">:</span> <span class="s2">&quot;#f13013&quot;</span> <span class="p">,</span>
-                <span class="s2">&quot;military&quot;</span><span class="p">:</span> <span class="s2">&quot;#52514E&quot;</span><span class="p">,</span>            <span class="s2">&quot;garden&quot;</span> <span class="p">:</span> <span class="s1">&#39;#c3eead&#39;</span>
              <span class="p">}</span>
 </pre></div>
 </div>
@@ -857,9 +851,7 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="alert alert-block alert-success">
-<b>Question 4:</b> In the rasterization process, we use the `.make_geocube()` function. Please elaborate on the following: i)why is it important to specify the right coordinate system? What could happen if you choose the wrong coordinate system? ii) which resolution did you choose and why? iii)Why did the first result did not give us the right output with the correct colors? How did you solve this?
-</div><p>But to be honest, this legend is still not entirely what we are looking for. So let’s do some Python magic to get a legend like we desire when plotting a land-use map</p>
+<p>But to be honest, this legend is still not entirely what we are looking for. So let’s do some Python magic to get a legend like we desire when plotting a land-use map</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">unique_classes</span> <span class="o">=</span> <span class="n">landuse</span><span class="o">.</span><span class="n">landuse</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
@@ -910,7 +902,9 @@ document.write(`
 </div>
 </div>
 </div>
-</section>
+<div class="alert alert-block alert-success">
+<b>Question 4:</b> In the rasterization process, we use the `.make_geocube()` function. Please elaborate on the following: i)why is it important to specify the right coordinate system? What could happen if you choose the wrong coordinate system? ii) which resolution did you choose and why? iii)Why did the first result did not give us the right output with the correct colors? How did you solve this?
+</div></section>
 <section id="extracting-buildings-from-openstreetmap">
 <h2>4. Extracting buildings from OpenStreetMap<a class="headerlink" href="#extracting-buildings-from-openstreetmap" title="Permalink to this heading">#</a></h2>
 <hr><p>There is a lot more data to extract from OpenStreetMap besides land-use information. Let’s extract some building data. To do so, we use the <em>“building”</em> tag.</p>
@@ -1212,7 +1206,7 @@ document.write(`
 </div>
 </div>
 <div class="alert alert-block alert-success">
-<b>Question 9:</b>  Please add one more routes on a map and upload the resulting figure here.
+<b>Question 9:</b>  Please add one more routes on a map and upload the resulting figure here. To do so, we suggest you to copy-paste the three lines that we have provided directly under Question 8 (the creation of an origin node, destination node and the route). For example, the area['bbox_west'] and the area['bbox_north'] are combined to provide a starting point for the route. We want you to pick a different coordinate within the geographical space of this network to start your route. And do the same for the destination node. You can then redefine a new route, and use the `plot_route_folum()` code to plot that route again.
 </div></section>
 </section>
 
