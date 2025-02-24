@@ -617,9 +617,14 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">landuse</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">landuse</span><span class="o">.</span><span class="n">natural</span><span class="o">==</span><span class="s1">&#39;water&#39;</span><span class="p">,</span><span class="s1">&#39;landuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;water&#39;</span>
 <span class="n">landuse</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">landuse</span><span class="o">.</span><span class="n">natural</span><span class="o">==</span><span class="s1">&#39;wetland&#39;</span><span class="p">,</span><span class="s1">&#39;landuse&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;wetlands&#39;</span>
-
-
-<span class="n">landuse</span> <span class="o">=</span> <span class="n">landuse</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;landuse&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once we believe that all relevant categories are added, we may remove any remaining rows that have a <strong>NaN</strong> value for land use.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">landuse</span> <span class="o">=</span> <span class="n">landuse</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;landuse&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
