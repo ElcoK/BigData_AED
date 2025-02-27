@@ -484,7 +484,7 @@ document.write(`
 <h2>Important before we start<a class="headerlink" href="#important-before-we-start" title="Permalink to this heading">#</a></h2>
 <hr>
 Make sure that you save this file before you continue, else you will lose everything. To do so, go to Bestand/File and click on Een kopie opslaan in Drive/Save a Copy on Drive!
-<p>Now, rename the file into Week4_Tutorial2.ipynb. You can do so by clicking on the name in the top of this screen.</p>
+<p>Now, rename the file into Week5_Tutorial2.ipynb. You can do so by clicking on the name in the top of this screen.</p>
 </section>
 <section id="learning-objectives">
 <h2>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this heading">#</a></h2>
@@ -517,6 +517,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#installing the python packages required</span>
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>regionmask
 <span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>statistics
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>netcdf4
 </pre></div>
 </div>
 </div>
@@ -603,7 +604,7 @@ Make sure that you save this file before you continue, else you will lose everyt
 <p>Now let’s load the gridded daily precipitation dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">weather_file</span><span class="p">,</span><span class="n">chunks</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;time&quot;</span><span class="p">:</span><span class="mi">10</span><span class="p">})</span>    
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">weather_file</span><span class="p">,</span><span class="n">chunks</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;time&quot;</span><span class="p">:</span><span class="mi">10</span><span class="p">},</span> <span class="n">engine</span> <span class="o">=</span> <span class="s2">&quot;h5netcdf&quot;</span><span class="p">)</span>    
 <span class="n">data</span>
 </pre></div>
 </div>
@@ -622,10 +623,10 @@ Make sure that you save this file before you continue, else you will lose everyt
 </div>
 <section id="calculating-the-mask-of-the-region-of-interest">
 <h3>Calculating the mask of the region of interest<a class="headerlink" href="#calculating-the-mask-of-the-region-of-interest" title="Permalink to this heading">#</a></h3>
-<p>Now we are ready to apply the mask on the gridded dataset <strong>data</strong>. We select only the first timestep to speed up the process. For the same reason it is better to further “zoom” into the Western European countries. We specify the name of the coordinates (the defaults are lat and lon). You can play around with the coordinates. Use this bounding box <a class="reference external" href="https://boundingbox.klokantech.com/">here</a> to obtain the correct coordinates. Once you have created a bounding box, you can select the values to be presented in ‘CSV’ format, and copy paste the coordinates in the cell below.</p>
+<p>Now we are ready to apply the mask on the gridded dataset <strong>data</strong>. We select only the first timestep to speed up the process. For the same reason it is better to further “zoom” into the Western European countries. We specify the name of the coordinates (the defaults are lat and lon). You can play around with the coordinates. Use this bounding box <a class="reference external" href="https://boundingbox.klokantech.com/">here</a> to obtain the correct coordinates. Once you have created a bounding box, you can select the values to be presented in ‘CSV’ format, and copy paste the coordinates in the cell below. Also, input latitude bounds in descending order.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">sheds_mask_poly</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">lon</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">XXX</span><span class="p">),</span> <span class="n">lat</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">XXX</span><span class="p">)),</span><span class="n">lon_name</span> <span class="o">=</span> <span class="s1">&#39;lon&#39;</span><span class="p">,</span> <span class="n">lat_name</span> <span class="o">=</span> <span class="s1">&#39;lat&#39;</span><span class="p">)</span> <span class="c1"># change the lat and lon slice to the bounding box of the selected region</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">sheds_mask_poly</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">lon</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">XXX</span><span class="p">),</span> <span class="n">lat</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="n">XXX</span><span class="p">)))</span> <span class="c1"># change the lat and lon slice to the bounding box of the selected region</span>
 <span class="n">mask</span>
 </pre></div>
 </div>
