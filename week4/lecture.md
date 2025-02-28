@@ -17,7 +17,7 @@ kernelspec:
 
 This week we will focus on the large amount of data available in the public domain that we can utilize within our research in sustainability sciences.
 
-`````{admonition} Learning objectives week 5
+`````{admonition} Learning objectives week 4
 :class: important
 - Understand what type of data is available.
 - Understand how licensing works.
